@@ -2,6 +2,7 @@ project:
   type: website
   render:
     - "index.qmd"
+    - "curriculum.qmd"
     - "foundations/**/*.qmd"
     - "foundations/**/*.md"
     - "courses/**/*.qmd"
@@ -9,7 +10,7 @@ project:
 
 website:
   title: "ISOE School"
-  site-url: ""
+  site-url: "https://wirsteve.github.io/isoe-school/"
   search: true
   reader-mode: true
   sidebar:
@@ -17,6 +18,7 @@ website:
     collapse-level: 2
     contents:
       - index.qmd
+      - curriculum.qmd
       - section: "Foundations"
         contents: "foundations/**"
       - section: "Courses"

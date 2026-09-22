@@ -1,0 +1,40 @@
+name: Auto-merge to main
+
+on:
+  push:
+    branches:
+      - "claude/**"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: auto-merge-main
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Merge pushed branch into main
+        run: |
+          git fetch origin "${GITHUB_REF_NAME}"
+          git merge --no-ff "origin/${GITHUB_REF_NAME}" -m "Auto-merge ${GITHUB_REF_NAME} into main"
+          git push origin main
+
+      - name: Trigger site publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run publish.yml --ref main

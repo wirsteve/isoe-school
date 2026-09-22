@@ -1,13 +1,19 @@
 # Repo rules for every Claude session
 
 1. **Read before writing:** `TEACHING.md`, then `.claude/course-authoring/learner-profile.md`,
-   then the relevant `plans/<slug>.md`.
-2. **Public repo.** Never write employer names, internal SOPs, system or vendor
+   then `plans/curriculum.md`, then the relevant `plans/<slug>.md`.
+2. **"Continue" means the whole curriculum, not one course.** When the user types `Continue`
+   (or anything that doesn't name a specific course), use the `create-course` skill: it reads
+   `plans/curriculum.md`'s progress tracker and "Next up" line to decide which course and
+   module to build next, scoping a new course first if the next one hasn't been started. When
+   the user does name a course or module, build that instead, regardless of sequence.
+3. **Public repo.** Never write employer names, internal SOPs, system or vendor
    configurations, audit findings, or anything non-public. Scenarios use a fictional
    "Lakeshore Blood Center."
-3. **Throughput rules (keep usage limits from biting):**
+4. **Throughput rules (keep usage limits from biting):**
    - Build at most **one module per session** (lesson + practice + resources). Update the
-     plan file's progress log, publish, then tell the user to start a fresh session.
+     plan file's progress log, update `plans/curriculum.md`'s progress tracker, publish, then
+     tell the user to start a fresh session.
    - The plan file is the memory between sessions. Anything the next session needs goes
      there, not in chat.
    - Read regulations from `sources/` (local copies), never re-fetch them from the web.
@@ -16,17 +22,17 @@
      (create-course Phase 2) and the final audit.
    - Reuse `foundations/` modules; never re-teach something a foundation already covers.
      Link to it instead.
-4. **Accuracy:** every regulatory claim cites its source (e.g., 21 CFR 606.160(b)(1)).
+5. **Accuracy:** every regulatory claim cites its source (e.g., 21 CFR 606.160(b)(1)).
    Quote CFR text only from `sources/`. Never invent a citation, a clause number, or an
    AABB standard number. If unsure, say so in the lesson and flag it in the plan.
-5. **Site mechanics:** Quarto builds the sidebar automatically from folders. Pages order
+6. **Site mechanics:** Quarto builds the sidebar automatically from folders. Pages order
    by the `order:` front-matter field. Hidden answers use
    `::: {.callout-tip collapse="true"}`. If `quarto` is available, render before
    publishing and fix any errors; if it isn't (cloud sessions), don't install it — the
    GitHub Action renders the site.
-6. **Publish** with the `publish` skill: one commit and one push per module. In cloud
+7. **Publish** with the `publish` skill: one commit and one push per module. In cloud
    sessions, pushing your working branch is enough: `auto-merge.yml` merges it into
    main and deploys the site. Never ask the user to review or merge a pull request.
-7. **The user is not technical.** Never ask them to run commands, edit files, or use
+8. **The user is not technical.** Never ask them to run commands, edit files, or use
    git. Report results in plain English, ending with the live page link:
    `https://<github-username>.github.io/isoe-school/`.
