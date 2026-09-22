@@ -44,7 +44,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 |---|---|---|---|
 | 1 | `aabb-qse-framework` | Name the parts of AABB's Quality System Essentials, place any quality activity (a deviation, a change, an audit, a document revision) in the right one, and say how the framework mirrors ISO 9001's structure and the ITIL practices you already run | Published |
 | 2 | `deviations-and-nonconformances` | Take an unplanned event from discovery through containment, impact assessment, product disposition, and a documented reportability decision, and decide, with written reasoning, whether it needs a CAPA | Published |
-| 3 | `capa-root-cause-to-effectiveness` | Tell a real root cause from "human error," choose corrective and preventive actions that change the process, and set an effectiveness check with a measurable criterion that could actually fail | Not started |
+| 3 | `capa-root-cause-to-effectiveness` | Tell a real root cause from "human error," choose corrective and preventive actions that change the process, and set an effectiveness check with a measurable criterion that could actually fail | Published |
 | 4 | `change-control-for-regulated-systems` | Take any change to a regulated process, document, piece of equipment, supplier, or system through request, impact and risk assessment, approval, implementation, and verification, and name the record that proves each step | Not started |
 | 5 | `document-control-and-records` | Follow a controlled document from draft through approval, issue, revision, and retirement, tell a document from a record, and explain how an obsolete version ends up in use and what control stops it | Not started |
 | 6 | `quality-risk-management` | Run a real quality decision through ICH Q9(R1)'s process (risk assessment, control, communication, review) using an FMEA or risk ranking and filtering, and choose how much formality the decision deserves | Not started |
@@ -768,3 +768,85 @@ not yet quoted.
   wrong binder"), corrective/preventive actions that change the process, and an
   effectiveness check. Not yet published/pushed — publish step still pending in this
   session.
+
+- **2026-09-22**: Module 3, `capa-root-cause-to-effectiveness`, drafted (`index.qmd` lesson +
+  `resources.qmd`, `order: 17`/`18` as assigned; not yet published/pushed as of this entry —
+  that's a separate step). No new source fetch was needed: this module reuses
+  `sources/cfr/606.100.md` (paragraph (c)'s "conclusions and followup" sentence, already quoted
+  in full by the foundation and quoted again here) and `sources/cfr/606.171.md`. One new
+  citation not used by any earlier lesson: **606.171(f)**, the "should be investigated in
+  accordance with the applicable provisions of parts 211, 606, and 820" sentence — used as a
+  teaching point about "should" vs. "shall" inside a regulation, not as a CAPA-methodology
+  requirement. `sources/aabb/qse-framework.md` was reused (not re-verified) for QSE 9's name
+  ("Process Improvement," formerly "Process Improvement Through Corrective and Preventive
+  Action") and theme; no AABB standards text was quoted. Continued the Part-606-word-search
+  finding already logged above ("corrective," "preventive," "root cause" never appear in Part
+  606) as this module's "not a regulatory requirement" check-understanding question (Q2).
+
+  **The specific CAPA this module lands on — module 4 must pick up the same fix, and modules
+  6–7 should reference this same outcome:**
+  - **Root cause (5 Whys, ending at step 5):** Lakeshore's document-control process has no
+    verified/tracked distribution step — no review-date trigger, no required acknowledgment of
+    receipt — for controlled paper procedure copies used during downtime events at satellite
+    sites. That gap is why a superseded revision of the downtime SOP (with a weaker,
+    periodic-only deferred-donor-list refresh cadence) was still physically present in
+    Brookfield's binder instead of the current revision. Explicitly **not** "Brookfield staff
+    used the wrong binder" — staff followed the binder in front of them correctly at every
+    step; the module states this plainly and treats "root cause: human error, action: retrain
+    staff" as the dead-end first draft the scenario opens with and then corrects.
+  - **Corrective action (fixes Brookfield specifically):** immediate replacement of
+    Brookfield's downtime binder with the current SOP revision, with the site lead's signed,
+    dated acknowledgment of receipt (not just "binder was mailed").
+  - **Preventive action 1 (extent-of-condition, immediate):** audit every other Lakeshore
+    satellite site's downtime binder now for the same exposure (current SOP revision
+    physically present, correct list-refresh cadence); fix on the spot any site found
+    non-compliant.
+  - **Preventive action 2 (the system fix — this is what module 4 must carry forward as its
+    change-control scenario):** a document-control system/process change that ties
+    satellite-site controlled paper copies to a tracked distribution list with required
+    acknowledgment of receipt, or an automated review-date trigger for binders used during
+    downtime events. This module explicitly hands this off as a change request and does
+    **not** walk it through change control — module 4 should open from exactly this
+    description of the fix.
+  - **Effectiveness check (the falsifiable one):** at Lakeshore's next scheduled
+    document-control audit of all collection sites, roughly six months after the corrective/
+    preventive actions are implemented, zero sites are found holding a superseded revision of
+    any downtime procedure or a stale deferred-donor list. Data source: the audit's
+    site-by-site findings, owned by Quality. Pre-agreed failure definition, stated explicitly
+    in the lesson: even one non-compliant site at that audit means the CAPA is **not**
+    effective and must be reopened or extended, not closed. Three closure outcomes are named
+    (close / extend / reopen), not just close.
+  - **Not resolved here, flagged for later modules if needed:** no specific count of "how many
+    other satellite sites" exists yet (module 2 also left this open) — a later module may
+    invent a number for its own scenario (e.g., module 6's risk-ranking-the-backlog exercise)
+    and should log that choice if so. The six-month audit interval for the effectiveness check
+    is this module's own invented number, not sourced from AABB material — treat it as a
+    reasonable teaching choice, not a cited requirement, if a later module reuses it.
+
+  Scope check against this file's "Module 3" boundary section: covered root cause analysis
+  (5 Whys, named and shown once, not taught as a workshop; fishbone named in one line and not
+  taught), the human-error trap, corrective vs. preventive action mapped to the actual root
+  cause, and effectiveness-check mechanics in real depth. Did **not** teach change-control
+  mechanics (request/approval/implementation/verification) — named module 4 in prose only, no
+  link, per instructions. Did **not** re-teach correction vs. corrective action or
+  preventive/detective/corrective controls (pointed to `risk-and-controls-vocabulary`
+  implicitly by using the vocabulary directly). Did **not** formally risk-rank the CAPA
+  backlog (left to module 6). Opened by naming QSE 9 (Process Improvement) per module 1's
+  established convention. Check-your-understanding includes the required "retrained staff as
+  corrective action" question (Q1, honest answer: no) and the required "not a regulatory
+  requirement" question (Q2: Part 606 does not require a formal CAPA/root-cause process by its
+  own text).
+
+  resources.qmd: 3 links (Cornell LII 606.100, Cornell LII 606.171, GovInfo CFR collection),
+  all curl-verified HTTP 200 this session. ASQ's public root-cause/5-Whys pages were checked
+  (`asq.org/quality-resources/five-whys`, `/fishbone`, `/root-cause-analysis`) and all returned
+  HTTP 403 (Cloudflare bot-block) to this session's automated requests, so none were listed;
+  resources.qmd says so in one line rather than silently omitting a fourth link.
+
+  **For module 4:** open from this module's exact preventive action 2 (the document-control
+  system/process change described above) as the change-control scenario. The module should
+  also be able to name other, smaller changes this CAPA's actions imply (e.g., the binder
+  swap and site audits are actions, not necessarily formal "changes" themselves — module 4's
+  drafter should decide whether any of Brookfield's own corrective action needs its own
+  change record, or whether it's covered as an immediate correction, consistent with this
+  course's correction-vs-corrective-action framing).
