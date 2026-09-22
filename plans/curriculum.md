@@ -267,7 +267,7 @@ has no `plans/<slug>.md` file until its first session.
 | `risk-and-controls-vocabulary` | 1 / 1 | Done |
 | `blood-center-operations` | 5 / 5 | Done |
 | `quality-system-essentials` | 7 / 7 | Done |
-| `directing-the-quality-analyst` | 1 / 6 | In progress |
+| `directing-the-quality-analyst` | 2 / 6 | In progress |
 | `csv-and-becs` | 0 / 7 | Not started |
 | `data-integrity-and-records` | 0 / 6 | Not started |
 | `fda-and-aabb-in-practice` | 0 / 6 | Not started |
@@ -276,9 +276,9 @@ has no `plans/<slug>.md` file until its first session.
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `directing-the-quality-analyst` (Track 6), module 2: `reviewing-deviations-and-
-capas`. See `plans/directing-the-quality-analyst.md` for the full module list, scoping
-decisions, and exact `order:` values. Note: modules 4 and 5 (validation-package and
-vendor-risk-assessment review) are deliberately scoped to decision-trail-only depth for now,
-since `csv-and-becs` and `vendor-and-third-party-risk-management` aren't built yet — the plan
-file names a "Deliberately deferred" table to revisit once those courses exist.
+**Next up:** `directing-the-quality-analyst` (Track 6), module 3: `escalation-criteria`. See
+`plans/directing-the-quality-analyst.md` for the full module list, scoping decisions, and exact
+`order:` values. Note: modules 4 and 5 (validation-package and vendor-risk-assessment review)
+are deliberately scoped to decision-trail-only depth for now, since `csv-and-becs` and
+`vendor-and-third-party-risk-management` aren't built yet — the plan file names a "Deliberately
+deferred" table to revisit once those courses exist.

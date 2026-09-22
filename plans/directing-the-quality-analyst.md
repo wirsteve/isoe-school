@@ -90,7 +90,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 | # | Slug | Finish line | Depth now | Status |
 |---|---|---|---|---|
 | 1 | `qa-deliverables-and-ownership` | Name what your QA produces, who writes, approves, and is only informed of each piece, and what your own signature means on each. Apply one short "cold-read test" to any of it. | Full | Published |
-| 2 | `reviewing-deviations-and-capas` | Read a deviation and CAPA write-up the way an assessor will, find the gaps that make it indefensible (missing reasoning, evidence that doesn't prove the claim, scope that stops short, an effectiveness check that can't fail), sort them by severity, and send it back in a way that produces a better second draft | Full | Not started |
+| 2 | `reviewing-deviations-and-capas` | Read a deviation and CAPA write-up the way an assessor will, find the gaps that make it indefensible (missing reasoning, evidence that doesn't prove the claim, scope that stops short, an effectiveness check that can't fail), sort them by severity, and send it back in a way that produces a better second draft | Full | Published |
 | 3 | `escalation-criteria` | Sort any event into "call me now," "tell me today," or "your call, tell me at our one-on-one." Know which events go past you and which your QA must be able to take around you. Write escalation criteria keyed to "reasonably suggesting," not "confirmed," so internal escalation beats the regulatory clock. | Full | Not started |
 | 4 | `reviewing-validation-packages` | Review a BECS validation impact assessment and test summary for its decision trail (stated scope against the four critical functions, acceptance criteria set before execution, failures recorded rather than silently re-run, approvals before deployment), and say plainly which questions (was the testing *enough*?) you can't answer yet | Lighter (decision trail only) | Not started |
 | 5 | `reviewing-vendor-risk-assessments` | Review a vendor risk assessment your QA wrote for whether its evidence covers the service Lakeshore actually buys and the risk that triggered the review, whether the tier follows from the function, and whether the risk decision has an owner with authority, without yet reading a SOC 2 report in technical depth | Lighter (decision trail only) | Not started |
@@ -891,3 +891,94 @@ AICPA SOC page only if it verifies, labeled "what a SOC 2 is, for later."
   the QA's first full deviation/CAPA packet, locking the facts this module's log flagged as
   still open (who dispositioned the units, relabel vs. destroy, exact push timestamp, CAPA
   actions and effectiveness check) per the "Scenario plan" section above.
+
+- **2026-09-22**: Module 2 (`reviewing-deviations-and-capas`) drafted — `index.qmd`
+  (`order: 30`) and `resources.qmd` (`order: 31`). Not committed/pushed yet (held for review
+  per this session's instructions). No new source fetch was needed; quoted only from files
+  already in `sources/` (606.100(b)(16) — new to this course; 606.100(c), 606.171(b)(1)(i)/
+  (b)(3), and 606.160(b)(7)(iii) — reused).
+  1. **ICCBBA deviation/CAPA packet — facts locked, exact wording, for module 5 to reuse
+     without contradiction:**
+     - IDs: **DEV-1147** (deviation) / **CAPA-1147-A** (CAPA).
+     - BECS deployment log timestamp for the vendor's ICCBBA table push: **01:58 a.m.
+       Wednesday** (consistent with `component-processing-and-labeling`'s "correct at 1:59
+       a.m., one revision behind since 2:00").
+     - Affected units: **~40**, predominantly leukoreduced red cells plus several pooled
+       cryoprecipitate, printed **02:00–06:15 a.m.** (the stated, *incomplete* investigation
+       window — see gap list below).
+     - Discovered by **Third-shift Processing Supervisor M. Colvin** at 06:15 a.m. shift
+       change.
+     - **Disposition: relabel all affected units against the current ICCBBA table and release
+       to inventory** — signed (incorrectly, a planted gap) by **M. Colvin, Processing
+       Supervisor**, dated 09/03, i.e. before the Quality Analyst's own review (09/05).
+       Lakeshore's SOP-named disposition authority (per module 1's established phrasing) is
+       "the medical director or a delegated quality officer" — not the processing supervisor.
+       No named individual filled that correct role on this document; the gap is the
+       mismatch, not a competing name. **If a later module names a specific medical director
+       or delegated quality officer, that name is new and should be logged here.**
+     - **Reportability determination: Not reportable** (stated with no reasoning shown — a
+       planted gap; the call is presented as *probably correct* per the lesson's own analysis
+       of 606.171(b)(3), contingent on the unproven "none shipped" claim).
+     - Root cause as **stated** (a planted gap — vendor-blame): "The BECS vendor pushed the
+       ICCBBA table update without notifying Lakeshore in advance."
+     - CAPA corrective action: "All 40 affected units relabeled and re-verified against the
+       current ICCBBA table; completed 09/04."
+     - **CAPA preventive actions (exact wording, module 5 must reuse #1 verbatim):**
+       1. **"Reassess the BECS vendor, focused on change notification."** — this is the
+          handoff to module 5's vendor risk assessment.
+       2. "Pursue a contract amendment requiring advance notice of future ICCBBA table
+          pushes. Target date: TBD." (the planted loose-end gap — no owner, no date).
+     - **CAPA effectiveness check (exact wording, planted gap — a vendor promise, not
+       falsifiable, no window or data source):** "Vendor has confirmed it will notify
+       Lakeshore in advance of future ICCBBA table updates."
+     - Status at review: **deviation Closed (opened 09/03, closed 09/10); CAPA Open (opened
+       09/05)** — this status split is the module's planted **non-gap** (QSE m2's "different
+       clocks," taught as correct, not an error).
+  2. **Six planted gaps, one per cold-read-test bucket** (Conclusion came back clean —
+     deliberately, to show not every bucket has a hit):
+     - Evidence (must fix before sign): "none shipped" rests only on Supervisor Colvin's
+       statement, no BECS distribution/inventory query against the 40 DINs — the QA's "stops
+       at the first credible source" pattern instance.
+     - Evidence/scope, **Director-only IT-evidence catch** (must fix before sign):
+       investigation window bounded at 06:15 a.m. (when Colvin noticed), not at the full
+       BECS table-version-change and print-job log history; no statement on units printed
+       after 06:15 or at other print stations.
+     - Reasoning (fix going forward on its own; folded into the must-fix evidence finding
+       above): "Not reportable" stated with no reasoning shown — the QA's "right conclusion,
+       reasoning off the page" pattern instance.
+     - Reasoning/root cause (must fix before sign): vendor-blame, per the plan's required
+       framing — masks the real cause (`becs-in-the-pipeline`'s already-named "vendor-change-
+       governance failure": Lakeshore's own change model treats vendor content pushes to BECS
+       as non-changes). Visibly steers both preventive actions outward at the vendor.
+     - Criteria first (must fix before sign): the effectiveness check is a vendor promise —
+       unfalsifiable, no data source, no window.
+     - Decision trail (must fix before sign): disposition signed by the processing
+       supervisor, not the SOP-named authority, and dated before the QA's own review.
+     - Loose ends (fix going forward): preventive action 2 (contract amendment) has no owner
+       or date. The deviation-closed/CAPA-open split in the same bucket is the **non-gap**,
+       not a seventh gap.
+  3. **Planted non-gap confirmed present:** deviation Closed while CAPA is Open — matches
+     QSE m2's "different clocks," and the reveal explicitly corrects a learner who flags it
+     as an error.
+  4. **Boundary with module 3 kept to the required one/two sentences:** a single "One line
+     before you move on" paragraph in the reveal notes that an unproven "none shipped" claim
+     could flip the reportability picture and would need to reach the Director fast, then
+     names `escalation-criteria` by name without teaching tiers, paths, or criteria. Module
+     3's specific hook ("FDA requires internal escalation within 24 hours") does not appear
+     here.
+  5. **The QA's two-part pattern:** both instances present and explicitly called out in the
+     reveal — (a) right conclusion, reasoning off the page (the "not reportable" call), and
+     (b) stops at the first credible source (Supervisor Colvin's word on "none shipped").
+     Not labeled "the pattern" by name (module 6 is where the cross-module pattern gets
+     named); each instance stands on its own here.
+  6. **Citations used:** 606.100(b)(16) (labeling safeguards, new to this course, exactly as
+     the sourcing notes flagged it for this module) alongside reused 606.100(c), 606.171(b)
+     (1)(i)/(b)(3) (deliberately *not* 606.171(c)'s "reasonably suggesting" clock, which the
+     sourcing notes reserve for module 3), and 606.160(b)(7)(iii). No Part 11 clause used
+     (module 2 has none earmarked in the sourcing notes).
+  7. **Word count:** ~4,100 words including tables, headings, and the full document block
+     quote — above this course's usual 3,000–3,800 aim, which the task brief explicitly
+     allowed for this module given the full document it has to carry.
+  8. **Resources.qmd:** three links, all curl-verified 200 this session — Cornell LII for
+     606.171, 606.100, and 606.160.
+  Next: build m3, `escalation-criteria` — the one-night, several-calls escalation drill.

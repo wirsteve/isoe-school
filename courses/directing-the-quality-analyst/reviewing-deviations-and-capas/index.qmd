@@ -1,0 +1,394 @@
+---
+title: "Reviewing deviation and CAPA write-ups"
+order: 30
+---
+
+## The ticket
+
+Your Quality Analyst (QA) routes you a deviation and CAPA (corrective and preventive action)
+packet for supervisory review: the ICCBBA (International Council for Commonality in Blood
+Banking Automation, the organization that governs the barcode standard on every unit Lakeshore
+ships) product-code-table event from the processing lab — the one where a vendor update to BECS
+(Blood Establishment Computer Software, the system that gates donor eligibility, quarantine
+release, and label printing) pushed mid-shift, and roughly 40 units printed final labels against
+a table that had just gone stale underneath them. It never got written up as a deviation at the
+time. Now it has, and it's sitting in your queue with a note: "Ready to close. Need your
+sign-off."
+
+You already know exactly which box you're being asked to sign, because the last module made you
+work it out the hard way: this is supervisory review, squarely yours. Not the quality decision —
+disposition and reportability belong to whoever Lakeshore's SOP names for that, and it isn't you.
+Your question is narrower and, this time, entirely within your authority: is this document
+defensible? Would it survive someone reading it cold, a year from now, with her not in the room?
+
+## Why this matters — and the ITIL bridge
+
+You already review this shape of document every week, just under a different name: a direct
+report's postmortem or post-incident review (PIR). You check for contributing factors, action
+items with named owners, and whether those action items actually closed instead of quietly
+aging out. None of that instinct is wrong here. What's new is how much further the quality
+version has to go before it's actually finished.
+
+A postmortem's worst common failure is "third-party outage, no action" — the vendor's platform
+went down, so the story ends there, and nobody asks what Lakeshore's own monitoring, failover, or
+contract terms should have caught first. You're about to read a write-up with exactly that shape,
+wearing a different vendor's name. Where this version demands more than any postmortem you've
+reviewed: a reportability call that starts a legal clock at discovery, not at write-up; a
+disposition decision that has to sit with a specific, SOP-named authority, not whoever's closest
+to the keyboard; an effectiveness check that has to be able to fail; and a reader — an FDA
+investigator or AABB assessor — who can cite Lakeshore a finding for missing reasoning even when
+the conclusion turns out to have been right. "I'd have approved this ticket" and "this would
+survive an inspector" are different bars, and this module is where you learn to read for the
+second one on a real, complete document.
+
+## The rule in plain English — how to actually review one of these
+
+Don't read a deviation and CAPA packet front to back. Read it in the order an assessor reads it,
+because that order is what actually tests the document:
+
+1. **Start with the conclusions.** What's the disposition? What's the reportability call? Read
+   these first and hold them loosely — you're about to check whether anything on the rest of the
+   page actually earns them.
+2. **Then the evidence and extent.** What's the proof behind each conclusion, and does it cover
+   the *whole* claim — every affected unit, the *whole* time window, not just the part someone
+   happened to notice?
+3. **Then the root cause.** Is it systemic, or does it stop at the first plausible-sounding
+   external explanation?
+4. **Then the effectiveness check**, last, because it only means anything once you know what it's
+   supposed to be checking.
+
+That's a deliberate reversal of how the document is written — narrative first, checks last.
+Reading conclusions first, before the narrative primes you, keeps you from unconsciously grading
+the document on how convincing the story sounds instead of on whether it's actually proven.
+
+Once you've read it that way, run the same instrument module 1 gave you — the **cold-read test**
+— named exactly the same six ways every time: **Conclusion, Evidence, Reasoning, Criteria first,
+Decision trail, Loose ends.** Sort whatever it finds with **gap triage**: **must fix before I
+sign**, **fix going forward**, or **fine as is**. Neither instrument gets re-taught here — you
+already have them. This is the first time you point them at a real, complete document instead of
+a one-line example.
+
+Three things make this review harder than a postmortem, worth naming before you read the packet:
+
+**The Director-only IT-evidence check.** Somewhere in almost every document your QA writes,
+there's a claim IT evidence could confirm or break, and you're often the only reviewer positioned
+to know that evidence exists and where it lives — a BECS change or deployment log, print-job
+history, a table-version timestamp, a deployment date next to an approval signature. A Quality
+reviewer without your background can only take the write-up's word for these. You can go check.
+
+**"Polished but hollow."** A well-formatted document, with clean headings and every field filled
+in, can be *less* defensible than a terse one — the formatting itself signals confidence the
+content hasn't earned. Don't let good formatting lower your guard; read a document that looks this
+clean more slowly, not less.
+
+**Consistency across documents.** Does the CAPA's stated cause actually match the facts the
+deviation record already established? A CAPA that quietly narrows what the deviation found is its
+own kind of gap, even when each document reads fine alone.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.100(b)(16) | "Six-oh-six point one-hundred, paragraph b, sub-sixteen" | Written SOPs must cover "labeling procedures, including safeguards to avoid labeling mixups." | The exact safeguard that failed: a vendor content push reached the label printers mid-shift with nothing stopping labels from printing against a table that had just changed underneath them. |
+| 21 CFR 606.100(c) | "...paragraph c" | Records reviewed before release; a thorough investigation, "including the conclusions and followup," of any discrepancy. | Already the backbone of the deviation and CAPA modules in `quality-system-essentials` — the word "conclusions" is exactly what this packet's reportability line is missing. |
+| 21 CFR 606.171(b)(1)(i) / (b)(3) | "...paragraph b, sub-one, clause i / sub-three" | A deviation from CGMP or an applicable regulation, that may affect safety, purity, or potency, *and* involves distributed product, is reportable. | The actual test behind "Not reportable." The second prong — distribution — is met only if nothing shipped, which is exactly the fact this packet never proves. |
+| 21 CFR 606.160(b)(7)(iii) | "...paragraph b, sub-seven, clause iii" | Biological product deviations are kept among an establishment's general records. | The record requirement this whole packet exists to satisfy — reused from module 1. |
+
+## The actual text
+
+The labeling-safeguards requirement, quoted verbatim from `sources/cfr/606.100.md` — not quoted by
+any earlier lesson in this curriculum:
+
+> (16) Labeling procedures, including safeguards to avoid labeling mixups.
+
+The regulatory floor underneath the whole event: a vendor's content push landing on the print
+floor mid-shift, with nothing routed for Quality's review, is exactly the kind of gap this clause
+exists to prevent — a safeguard that either wasn't there or didn't fire.
+
+The investigation standard, quoted verbatim from `sources/cfr/606.100.md`, already the backbone of
+two `quality-system-essentials` modules:
+
+> All records pertinent to the lot or unit maintained pursuant to these regulations shall be
+> reviewed before the release or distribution of a lot or unit of final product... A thorough
+> investigation, including the conclusions and followup, of any unexplained discrepancy or the
+> failure of a lot or unit to meet any of its specifications shall be made and recorded.
+
+Hold onto "including the conclusions." A reportability line that states an answer with no visible
+reasoning hasn't produced a conclusion in this clause's sense — it's produced an assertion.
+
+The reportability test itself, quoted verbatim from `sources/cfr/606.171.md`:
+
+> (b) ... You must report any event... if that event meets all the following criteria: (1)(i)
+> Represents a deviation from current good manufacturing practice, applicable regulations,
+> applicable standards, or established specifications that may affect the safety, purity, or
+> potency of that product; or... and (3) Involves distributed blood or blood components.
+
+Two prongs, both required. The first isn't really in dispute here; printing against a stale
+ICCBBA table is exactly the kind of deviation this clause has in mind. The second — "involves
+distributed blood or blood components" — is where this document actually lives or dies: if
+nothing shipped, "not reportable" is right; if something did, the call flips. The whole
+determination rests on one unproven fact.
+
+And the record requirement, quoted verbatim from `sources/cfr/606.160.md`, reused from module 1:
+
+> (7) General records: ... (iii) Biological product deviations.
+
+## The packet on your desk
+
+Here it is, formatted and routed the way your QA actually sends these — competent at first
+glance, headings filled in, signatures in place:
+
+> **LAKESHORE BLOOD CENTER — DEVIATION REPORT AND CAPA SUMMARY**
+>
+> **Deviation ID:** DEV-1147 &nbsp;|&nbsp; **Status:** Closed &nbsp;|&nbsp; **Date opened:**
+> Wed 09/03 &nbsp;|&nbsp; **Date closed:** 09/10
+> **CAPA ID:** CAPA-1147-A &nbsp;|&nbsp; **Status:** Open &nbsp;|&nbsp; **Date opened:** 09/05
+> **Prepared by:** Quality Analyst
+>
+> **Description:** BECS deployment log shows the vendor's quarterly ICCBBA product code table
+> update applied at 01:58 a.m. Wednesday, outside any scheduled change window and without prior
+> routing to Quality.
+>
+> **Extent of condition:** Approximately 40 units affected — predominantly leukoreduced red
+> blood cells, plus several pooled cryoprecipitate units — printed final labels between 02:00
+> and 06:15 a.m. against the prior table version.
+>
+> **Investigation:** Third-shift Processing Supervisor M. Colvin noticed a product code
+> mismatch at 06:15 a.m. shift change and halted printing. Per Supervisor Colvin, none of the
+> affected units have shipped; all remain in Lakeshore inventory pending relabel.
+>
+> **Root cause:** The BECS vendor pushed the ICCBBA table update without notifying Lakeshore in
+> advance.
+>
+> **Reportability determination (21 CFR 606.171):** Not reportable.
+>
+> **Disposition:** Relabel all affected units against the current ICCBBA table and release to
+> inventory.
+> *Signed:* M. Colvin, Processing Supervisor. **Date:** 09/03.
+> *Reviewed:* Quality Analyst. **Date:** 09/05.
+>
+> ---
+>
+> **CAPA-1147-A**
+>
+> **Corrective action:** All 40 affected units relabeled and re-verified against the current
+> ICCBBA table; completed 09/04.
+>
+> **Preventive actions:**
+> 1. Reassess the BECS vendor, focused on change notification.
+> 2. Pursue a contract amendment requiring advance notice of future ICCBBA table pushes.
+>    Target date: TBD.
+>
+> **Effectiveness check:** Vendor has confirmed it will notify Lakeshore in advance of future
+> ICCBBA table updates.
+>
+> **Prepared by:** Quality Analyst. **Date:** 09/05.
+
+**Before you read on: run the cold-read test yourself. Find the gaps, and decide what you'd send
+back — you have everything you need.**
+
+## The reveal
+
+Organized by the six questions, not by the document's own order — because that's how you'd
+actually work it, and because the document's order is part of what's hiding the gaps.
+
+**Conclusion.** Clean, actually. There are exactly two, each stated plainly: disposition
+(relabel and release) and reportability (not reportable). No gap here — worth noting explicitly,
+because not every finding on a real document is a problem, and pretending otherwise trains
+defensive writing.
+
+**Evidence.** This is where the packet actually breaks, in two connected ways.
+
+First: "none of the affected units have shipped" rests entirely on Supervisor Colvin's word. Not
+an unreasonable person to ask — he's who caught it — but his statement isn't evidence that
+nothing shipped, it's a starting point for finding evidence. `component-processing-and-labeling`
+already named the artifact an inspector would ask for: a BECS distribution or inventory query, run
+against all 40 affected donation identification numbers (DINs), showing where every one of them
+is right now. That query isn't in this document, and nothing suggests it was run. This is your
+QA's pattern in its most common shape: stopping at the first credible-sounding source instead of
+the source that actually proves the claim. A supervisor's say-so is credible. It isn't proof.
+
+Second — one you're positioned to catch in a way Quality alone often isn't: the investigation is
+scoped to 02:00–06:15 a.m., the window Supervisor Colvin happened to be watching. That's not the
+same thing as the actual exposure window. The deployment log already in this document puts the
+push at 01:58 a.m. — so where's the record showing printing was fully corrected right after 06:15,
+and not still running against the stale table for another ten minutes at a second print station
+nobody was watching? You know where that record lives: the table-version-change history and
+print-job log BECS keeps, tied to the same DINs. A reviewer without your background would have no
+reason to ask for it — they'd read "02:00 to 06:15" as a fact about the world instead of a fact
+about when one person happened to be looking. That gap is genuinely yours to catch.
+
+Triage: **must fix before I sign.** Both threads feed directly into the reportability call below —
+this isn't a cosmetic gap, it's the one everything else is standing on.
+
+**Reasoning.** Two separate issues, both instances of the same underlying pattern.
+
+The reportability line — "not reportable" — states a conclusion with no reasoning shown at all.
+Run the actual test from 606.171(b): the first prong (a deviation that may affect safety, purity,
+or potency) is close to undeniable here. The second prong — distribution — is where the real
+argument has to live, and it's exactly the fact the Evidence section just showed is unproven. The
+conclusion is very likely correct. The write-up just doesn't show its work, which means right now
+it's an assertion wearing a conclusion's clothes. Triage: on its own, this would be **fix going
+forward** — add the reasoning, the conclusion probably survives. Combined with the unproven
+evidence underneath it, though, it's part of the same **must fix before I sign** finding above.
+This is the other half of your QA's pattern: usually right, reasoning off the page.
+
+The root cause — "the vendor pushed the update without notifying Lakeshore" — is a different kind
+of reasoning problem: not thin, but pointed at the wrong system. It's vendor-blame, the external
+twin of "human error," and the exact "third-party outage, no action" shape a bad postmortem takes.
+`becs-in-the-pipeline` already named the real cause when this event first surfaced: not that the
+vendor is untrustworthy, but that Lakeshore's own change model treats a vendor's content push to
+BECS as a data refresh instead of a change — nothing in Lakeshore's process routed it for review
+before it hit the print floor. Notice what the wrong root cause does downstream: every preventive
+action in this CAPA is aimed at the vendor (reassess them, amend their contract), and none touch
+Lakeshore's own change classification. A misdiagnosed root cause visibly steers the fix. Triage:
+**must fix before I sign.**
+
+**Criteria first.** The effectiveness check — "vendor has confirmed it will notify Lakeshore in
+advance of future ICCBBA table updates" — is a promise, not a check. Run the test
+`capa-root-cause-to-effectiveness` already gave you: could this fail? No. It only records that the
+vendor said something; it doesn't measure whether the failure mode actually stopped, and it has no
+data source, no time window, and no pre-agreed definition of what "not effective" would even look
+like. It's implementation evidence dressed up as a result. Triage: **must fix before I sign** — as
+written, this CAPA cannot close on a real effectiveness result, because none is possible from what
+it says.
+
+**Decision trail.** The disposition — relabel and release — is signed by M. Colvin, Processing
+Supervisor, on 09/03. Lakeshore's SOP consistently names "the medical director or a delegated
+quality officer" as disposition authority — the same authority module 1's stack almost let you
+sign over by mistake. It isn't the processing supervisor's box, however well-formatted the
+signature line looks. Notice the date too: the disposition is signed 09/03, two days *before* the
+Quality Analyst's own review on 09/05 — the units were already released before anyone with a
+documented review role had looked at the file. Triage: **must fix before I sign.** A structural
+authority gap, not a stylistic one — the kind of thing an assessor finds in the time it takes to
+read two signature lines.
+
+**Loose ends.** Two things live here, and they're not the same kind of finding.
+
+First, notice what's *not* wrong: the deviation record is closed while the CAPA is still open.
+That's exactly right — `deviations-and-nonconformances` already taught you these run on different
+clocks. Closing the deviation says "we know what happened to the product and made the required
+calls." Closing the CAPA, separately and later, says "we've proven the system won't do this
+again." If you flagged this as an inconsistency, that's a fair instinct to have and a useful
+correction to get now, on a document where it costs nothing — the two statuses being different
+isn't the gap.
+
+The real loose end sits inside the still-open CAPA: preventive action 2, "pursue a contract
+amendment... target date: TBD," has no owner and no date — exactly what this question is built to
+catch. Triage: **fix going forward.** It doesn't undermine anything the packet has concluded so
+far, but it can't stay TBD forever on a document someone will eventually check for aging.
+
+**One line before you move on.** If "none shipped" turns out to be wrong once someone actually
+runs the BECS query, the reportability picture changes — a distributed unit would flip prong two
+of 606.171(b) — and that's the kind of thing that would need to reach you fast, not wait for the
+next scheduled review. Deciding how fast, and through what path, is `escalation-criteria`'s job;
+this module only teaches you to notice when a review has surfaced that kind of trigger.
+
+**Sending it back.** The move isn't to rewrite the document yourself — that trains your QA to wait
+for your red pen instead of writing more carefully the first time. Send it back with questions:
+
+- "What BECS record shows none of the 40 units shipped — can you run the distribution query
+  against all 40 DINs and attach it?"
+- "What does the table-version-change and print-job history show, start to finish — not just
+  the window Supervisor Colvin was watching?"
+- "Walk me through the reasoning behind 'not reportable' — what does it depend on?"
+- "If a different vendor pushed something similar next quarter, what in our own process would
+  catch it before it reached the print floor?"
+- "What would tell us the vendor's promise is working, six months from now, that isn't just
+  their word again?"
+- "Who signs disposition on this per our SOP, and has that person actually reviewed it?"
+- "Who owns the contract-amendment action, and by when?"
+
+## What an inspector or assessor would actually look for
+
+An assessor pulling this same file runs a version of the review you just did, without you in the
+room to ask follow-ups — which is exactly why the answers have to already be in writing. They'll
+ask for the BECS distribution query against all 40 DINs, not the supervisor's statement. They'll
+pull the table-version-change and print-job logs themselves and check them against the stated
+02:00–06:15 window, because that's a record they know how to request. They'll read the
+effectiveness check and ask, in some form, "how would this fail?" — a check that can't gets
+written up on its own. And they'll check the disposition signature against Lakeshore's own SOP,
+because a mismatch there isn't a technicality — it's evidence the quality system doesn't actually
+control who decides what. A bad answer to "how do you know nothing shipped" sounds exactly like
+this document reads: "the supervisor said so." A good answer is a query result with a timestamp.
+
+## Common traps
+
+**"A supervisor's word is good enough — he's the one who caught it."** He's a credible source for
+what he personally observed, not a substitute for a system-of-record query — and the difference
+matters most exactly when a regulatory conclusion depends on it, the way "not reportable" depends
+here on "none shipped."
+
+**"The conclusion is probably right, so the missing reasoning doesn't matter."** The trap built
+for a document like this one. "Not reportable" is likely correct — that doesn't make the write-up
+defensible. An assessor doesn't grade on whether you landed on the right answer; they grade on
+whether the page shows how you got there. A right answer with no shown reasoning is still a
+finding.
+
+**Vendor-blame as root cause.** "The vendor didn't notify us" feels like an explanation because it
+names a real fact. It isn't a root cause unless nothing on Lakeshore's side could plausibly have
+caught it — and here, something could have: Quality review of BECS changes, which this event never
+got routed through. Blaming the vendor is the deviation-and-CAPA world's "third-party outage, no
+action," and it produces the same downstream failure: preventive actions aimed entirely outward,
+while the internal gap stays open.
+
+## What this means for your job
+
+- **Read conclusions first, evidence and extent second, root cause third, effectiveness check
+  last.** Reading front to back lets the narrative sell you the ending before you've checked
+  whether it's earned.
+- **Whenever a document says "none," "nothing," or "no impact," ask what query or record proves
+  it — not who said it.** A named, credible source is a lead, not evidence.
+- **Distrust any effectiveness check phrased as a promise, a confirmation, or "the vendor says."**
+  If you can't picture what a *failed* version of that check would look like, it isn't one.
+- **Know where your own IT evidence lives, and go get it yourself when a claim depends on it** —
+  deployment logs, print-job history, table-version timestamps, a deployment date next to an
+  approval signature. This is the one check in the whole packet nobody but you is positioned to
+  run.
+- **Send gaps back as questions, sorted by gap triage, not as a rewritten document.** A "must fix
+  before I sign" question demands an answer before you sign anything. A "fix going forward" note
+  can wait for the next draft without holding up this one.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: A different CAPA closes with: "Effectiveness check: BECS help desk confirms the corrected downtime binder was mailed to all satellite sites." Real effectiveness check, or something else?
+
+Implementation evidence, not an effectiveness check — the same gap as this module's vendor
+promise, wearing a different vendor. It confirms an action happened; it doesn't check whether the
+failure mode actually stopped, because of course the binders were mailed once the corrective
+action was done. Ask instead: what data source, checked on what schedule, could show a site was
+still running a superseded binder, and what result would count as a fail? Confirming the mailing
+is worth recording — it just isn't the check.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A different deviation states, "Root cause: donor phlebotomy station was short-staffed that shift, so the pre-donation history review was rushed." Is naming a staffing shortage as root cause a "must fix before I sign," "fix going forward," or "fine as is"?
+
+Must fix before I sign — vendor-blame's sibling, not a real root cause. "Short-staffed" describes
+a condition, not a system failure: it doesn't explain why the process has no control that catches
+a rushed review when staffing is thin. Run the same test used on the vendor: if the exact same
+shift happened again, same staffing level, would anything go differently? As written, no. Push one
+level further before it's a real root cause.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A vendor risk questionnaire states, "Vendor confirms it maintains 24/7 monitoring of its platform," and the QA's write-up treats that as evidence the monitoring requirement is met. What's the parallel to this module's evidence gap?
+
+The same "stops at the first credible source" pattern, one document type over. A vendor's own
+self-attestation is a credible-sounding source — it's still the vendor's word about itself, not
+independent proof. The question is the same one you'd ask about "none shipped": what's the
+evidence *behind* the claim — an audit result, a report, a log excerpt — not just the claim
+restated with a vendor's name attached to it. You'll see this shape again when this course reaches
+vendor risk assessments.
+:::
+
+## Where this goes next
+
+This module was about a document: something written after the fact, judged on whether it would
+survive a cold read. The next module, `escalation-criteria`, is about an event: something
+happening in real time, often before any document exists at all, judged on whether it reaches you
+— and how fast. A review like the one you just ran can surface an escalation trigger a document's
+author missed entirely, the way an unproven "none shipped" claim did here. Recognizing that moment
+is as far as this module goes; sorting it into "call me now" versus "tell me at our one-on-one" is
+next.
