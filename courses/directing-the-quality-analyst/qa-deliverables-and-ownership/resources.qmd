@@ -1,0 +1,27 @@
+---
+title: "Resources: What your QA produces, and who owns it"
+order: 29
+---
+
+Each link below was checked this session and loads.
+
+- **[21 CFR 606.100 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)**
+  — the source for this module's central contrast: paragraph (c)'s first sentence (product-record
+  review before release) versus its second sentence (the thorough, documented investigation of a
+  discrepancy). Local verbatim copy: `sources/cfr/606.100.md`.
+
+- **[21 CFR 11.10 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.10)**
+  — the full "Controls for closed systems" section this module's paragraph (j) comes from: written
+  policies holding individuals accountable for actions taken under their electronic signatures.
+  Local verbatim copy: `sources/cfr/11.10.md`.
+
+- **[21 CFR 606.20 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.20)**
+  — the Personnel section behind this module's competence floor: paragraph (b)'s "adequate in
+  number, educational background, training and experience" standard. Local verbatim copy:
+  `sources/cfr/606.20.md`.
+
+- **[AABB Quality Systems Framework (2021, public discussion draft PDF)](https://www.aabb.org/docs/default-source/default-document-library/standards/aabb-quality-systems-framework-2021.pdf?sfvrsn=a11081d1_2)**
+  — AABB's own public description of the ten Quality System Essentials, including QSE 1
+  (Organization) and QSE 2 (Resources), the two this module draws on for executive responsibility
+  and competence. Use it to see the theme and scope of each QSE in AABB's own words; don't cite a
+  standard number from it — see `sources/aabb/qse-framework.md` for why.

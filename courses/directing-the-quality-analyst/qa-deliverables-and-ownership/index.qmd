@@ -1,0 +1,356 @@
+---
+title: "What your QA produces, and who owns it"
+order: 28
+---
+
+## The ticket
+
+Monday morning, five things are waiting from your Quality Analyst (QA), all routed within the
+same hour.
+
+1. A deviation packet — a shipping-cooler temperature excursion caught on a routine audit,
+   nothing shipped out of range, contained the same day — with a signature line on the last
+   page: "Final disposition approval: ______." A sticky note on top says "needs your sign-off
+   before I can close it."
+2. The validation impact assessment for last month's BECS (Blood Establishment Computer
+   Software) operating-system patch — the one she rejected outright until someone wrote this
+   down — routed to you "for approval."
+3. The annual reassessment of one of Lakeshore's reagent suppliers, due this quarter, routed
+   "for sign-off."
+4. A one-line message: a night-shift supervisor asked her whether she should call you at 2 a.m.
+   if something similar happens again this week, and she wants to know what you want her to
+   tell him.
+5. A first draft of next quarter's management-review packet, for you to skim before she
+   finalizes it.
+
+Five documents, five requests to put your name on something, all landing before your coffee's
+finished. You start with the deviation packet, because it's shortest. You're two words into
+signing "Final disposition approval" when something stops you: you don't actually know what
+disposition authority means at Lakeshore, or whether it's yours to give.
+
+It isn't. Every deviation you've seen her close — going back to the Owen Pruitt donation and
+the Brookfield binder — named "the medical director or a delegated quality officer" as the
+person who decides what happens to the product. Not you. Not IT. You almost signed a box that
+was never built for your name.
+
+You put the pen down and look at the other four items differently. The patch assessment wants
+your approval too — but you *are* supposed to be in that box, as the system's owner, the way
+the change-control lesson from `quality-system-essentials` already established. The vendor
+reassessment wants a "sign-off" you're not sure is the same kind of act as either of the first
+two. The 2 a.m. question isn't asking you to sign anything at all. And the management-review
+draft doesn't want your signature — it wants you to have read it before Thursday.
+
+Five requests, four different things "your name on this" actually means, and you only caught
+the one that mattered because you happened to read the label on the box before your hand moved.
+That's the gap this lesson closes.
+
+## Why this matters — and the ITIL bridge
+
+You already do a version of this every week. A change ticket lands in your queue and you know,
+without being told, whether you're the implementer, the approver, or just a name on the
+notification list — that's RACI (responsible, accountable, consulted, informed), the framework
+that keeps one person from silently owning three different roles on the same piece of work. A
+CAB (change advisory board) approval means something specific too: you're attesting the change
+is safe to deploy from a service-risk read, not that you personally verified every line the
+engineer wrote.
+
+Your QA's deliverables ask you to run that same RACI discipline, except the roles now carry
+regulatory weight, and one of the boxes was never built for someone in IT's reporting line to
+sign at all. The failure mode this lesson exists to prevent isn't a bad decision — it's a
+**misattributed** one. A signature in the wrong box doesn't just look sloppy to an assessor; it
+reads as evidence that nobody at Lakeshore actually knows who's accountable for what, which
+calls every other signature in the building into question at once.
+
+There's a second concept you already own that applies here with more teeth than usual:
+**separation of duties (SoD)**. You've lived this under SOX (Sarbanes-Oxley, the law that
+requires financial controls be split so no one person can both initiate and approve the same
+transaction) — the person who cuts a purchase order can't also approve it, even if they're
+honest, because the control protects the *system* from a single point of failure, not because
+anyone's assumed dishonest. Your QA's independence on quality decisions is the same control in
+different clothes: she has to be free to reach a disposition, a reportability call, or a "this
+change isn't validated yet" rejection that your IT priorities would rather not hear, and the
+control only works if nothing about the reporting line quietly erodes it — more on exactly what
+this does and doesn't require below.
+
+Where the blood-industry version demands more than your IT world usually does: a signature on a
+regulated record isn't a soft approval you can walk back with "I glanced at it and it looked
+fine." It's an accountable, attributable act — the kind an inspector reads as a claim you made,
+personally, about what you verified. "I didn't really look" is not a defense once your name is
+on the line; it's the finding.
+
+## The rule in plain English
+
+**What your QA actually produces.** No two blood centers structure this identically, so treat
+what follows as **typical, not a fixed list** — confirm the actual map against Lakeshore's own
+org chart and SOPs before you rely on it. At most blood centers, a Quality Analyst's output
+clusters into eight kinds of work:
+
+- Deviation and CAPA (corrective and preventive action) records
+- Change-control quality reviews and impact assessments
+- Validation impact assessments for systems like BECS
+- Document-control work (drafting, reviewing, and retiring controlled procedures)
+- Supplier and vendor assessments
+- Participation in internal and external audits
+- Inputs to management review
+- Support during an inspection or assessment (pulling records, answering an investigator's
+  questions)
+
+**Three kinds of review sit on top of that list, and they belong to different people:**
+
+1. **Supervisory review — yours.** Is the write-up defensible, complete, internally
+   consistent, and consistent with what IT independently knows? Does it show its reasoning? Is
+   it her best work? This is the review a good manager runs on any direct report's output, aimed
+   at a document instead of a postmortem.
+2. **Quality approval — Quality leadership or the medical director, per Lakeshore's own SOPs.**
+   Is the *quality decision* itself right — disposition, reportability, release?
+3. **Independent assessment — internal audit, AABB, or FDA.** Does practice actually match the
+   paper, checked by someone with no stake in either answer?
+
+You own #1 on everything she writes. You never own #2 — that's the line the deviation packet
+almost made you cross. And #3 isn't yours to perform at all; it's the outside check on whether
+#1 and #2 were done honestly.
+
+**What your signature attests to changes with the box you're in**, and there are three
+possibilities:
+
+- **Supervisor.** Your name means "I reviewed this, it's defensible, and I'd stand behind it if
+  someone asked me about it cold." It does not mean you agree with — or have the authority to
+  make — the underlying quality call.
+- **System-owner co-approver.** On BECS and other IT/validated-system changes, `becs-in-the-
+  pipeline` and the change-control lesson already established that you're a *named* approver
+  alongside Quality, as the system's owner — "both required, neither sufficient alone." Here your
+  signature means something closer to Quality's: a real, substantive approval, not a courtesy.
+  This is the box the patch assessment belongs in.
+- **Informed.** No signature at all — you're on the notification list because you need to know,
+  not because anyone needs your consent. The management-review draft and most document-control
+  routine work land here.
+
+**Delegation's static half** — the part that doesn't move with her track record, as opposed to
+the part that widens over time as she earns it (a later module's job):
+
+- **Her decisions alone.** Routine, well-precedented calls: closing a low-severity deviation
+  with a documented cause statement and no CAPA, minor document revisions that don't touch a
+  controlled process, day-to-day audit-participation logistics.
+- **Your concurrence required.** Anything where you're a named system-owner co-approver — BECS
+  and validated-system changes, IT vendor decisions with a quality dimension.
+- **Decisions that stay with you regardless.** Whether a document is ready to leave your desk
+  under your name at all — that supervisory sign-off can't be delegated back to her, because it's
+  a check *on* her work, not a task she performs — and the call to escalate something above both
+  of you.
+
+**Protecting her independence isn't a regulatory requirement you can cite — be precise about
+that.** There's no FDA regulation in this curriculum's sources that requires quality decisions to
+sit outside an IT reporting line, and this lesson won't invent one. What's real is the SoD
+principle from the ITIL bridge above, plus a fact you can act on directly: Lakeshore's own SOPs
+already name who holds disposition and quality-approval authority, and it isn't you. Treat that
+as the boundary. Your job is making sure nothing about "she reports to me" quietly pressures a
+quality call — never rushing a disposition to hit a change-freeze date, never treating a rejected
+patch as a performance issue. You coach the quality of her write-ups. You never coach the outcome
+of her quality decisions.
+
+**The shared instrument you'll use on all of it: the cold-read test.** Every document she hands
+you, whatever kind it is, gets the same question: *would this survive an inspector reading it
+cold, a year from now, with her not in the room?* Six questions do the work, and they're worth
+memorizing by name, because every later module in this course applies them by these exact
+labels:
+
+1. **Conclusion.** What does this document decide? Is there exactly one, stated plainly?
+2. **Evidence.** What objective evidence supports it — attached or retrievable — and does it
+   cover the *whole* claim?
+3. **Reasoning.** Is the path from evidence to conclusion written down, or only the answer?
+4. **Criteria first.** Was the bar — acceptance criterion, effectiveness criterion, risk tier —
+   set *before* the result was known?
+5. **Decision trail.** Who decided, with what authority, and in what order — do the dates show
+   assessment before approval before implementation?
+6. **Loose ends.** Is every open item owned and dated? Is anything marked "closed" while it still
+   depends on something "TBD"?
+
+This is this course's own synthesis of what you've already been taught to look for — QSE's
+"what an inspector would actually look for" sections, its effectiveness-check discipline, its
+insistence on a written reportability determination — collected into one habit instead of three
+separate checklists. It isn't an AABB checklist or an FDA form. No citation attaches to it because
+none exists; label it industry practice, or just call it what it is: how you read.
+
+Once the cold-read test finds something, it needs a bucket, not a red pen through everything at
+once. **Gap triage** sorts every finding into one of three categories:
+
+- **Must fix before I sign** — the document is indefensible without it.
+- **Fix going forward** — a real weakness that doesn't undermine *this* conclusion.
+- **Fine as is** — looks odd, isn't actually wrong.
+
+That third category matters as much as the first. A director who red-pens everything trains a
+QA to write defensively, padding every document against imagined objections, instead of writing
+clearly. Not every rough edge is a gap.
+
+**A quick worked example**, small enough to run in thirty seconds, before you ever try this on a
+full document — that's module 2's job, not this one. The foundation lesson on risk vocabulary
+showed a deviation closed with exactly one line: *"Closed — no patient impact."* Run the six
+questions against it. Conclusion: there is one, and it's stated (no patient impact). Evidence:
+none attached — nothing shows what was checked. Reasoning: absent entirely; the line states an
+outcome, not a path to it. Criteria first: no criterion is named at all. Decision trail: no
+author, no date, no authority shown. Loose ends: unknowable, because nothing else is written.
+Triage verdict: **must fix before I sign** — not because the conclusion is probably wrong (it
+might well be right), but because nothing on the page lets anyone but the person who wrote it
+believe it.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 11.10(j) | "Eleven point ten, paragraph j" | Written policies holding individuals accountable and responsible for actions taken under their electronic signatures, to deter falsification. | The regulatory grounding for "your signature means something specific" — it doesn't just mean "sign here," it means Lakeshore has to be able to hold you to whatever the box you signed actually claims. |
+| 21 CFR 606.100(c) | "Six-oh-six point one-hundred, paragraph c" | First sentence: product records reviewed before release or distribution. Second sentence: a thorough, documented investigation of any discrepancy. | The contrast behind this module's regulatory-requirement question below — a real record-review requirement exists, but it's product-record review, not your supervisory review of her write-up. |
+| 21 CFR 606.160(b)(7)(iii) | "Six-oh-six point one-sixty, paragraph b, sub-seven, clause iii" | Biological product deviations must be kept among an establishment's general records. | The reason a deviation record exists at all for you to review — the regulation requires the record; Lakeshore's own SOP decides who signs the disposition box on it. |
+| 21 CFR 606.20(b) | "Six-oh-six point twenty, paragraph b" | Personnel performing collection, processing, testing, storage, or distribution steps must be adequate in number, training, and experience, with "a thorough understanding of the procedures or control operations they perform." | The regulatory floor under the question "is she qualified to write what she's writing" — worth having in your pocket before you ever coach a gap in her competence, not her judgment. |
+
+## The actual text
+
+Your signature's accountability, quoted verbatim from `sources/cfr/11.10.md`:
+
+> (j) The establishment of, and adherence to, written policies that hold individuals accountable
+> and responsible for actions initiated under their electronic signatures, in order to deter
+> record and signature falsification.
+
+That's a policy requirement, not a description of what any one signature must mean — Lakeshore
+decides that, box by box, in its own SOPs. What the regulation actually demands is that whatever
+Lakeshore decides, it's written down and enforced, so "I signed it but didn't really mean
+anything by it" isn't an available defense once a policy exists.
+
+The contrast at the center of this module, quoted verbatim from `sources/cfr/606.100.md`:
+
+> All records pertinent to the lot or unit maintained pursuant to these regulations shall be
+> reviewed before the release or distribution of a lot or unit of final product. The review or
+> portions of the review may be performed at appropriate periods during or after blood
+> collecting, processing, compatibility testing and storing. A thorough investigation, including
+> the conclusions and followup, of any unexplained discrepancy or the failure of a lot or unit to
+> meet any of its specifications shall be made and recorded.
+
+Read the first sentence carefully: it *does* require record review before a unit is released —
+but that's a review of the *product's* records, by whoever Lakeshore's SOP assigns to release
+authority, performed as part of getting the unit out the door. It is not a requirement that a
+Director review, let alone approve, the deviation write-up that documents an investigation after
+the fact. Those are two different reviews, on two different clocks, and conflating them is
+exactly how you'd have ended up signing a box the SOP never gave you.
+
+The record requirement behind the deviation packet itself, quoted verbatim from
+`sources/cfr/606.160.md`:
+
+> (7) General records: ... (iii) Biological product deviations.
+
+And the competence floor, quoted verbatim from `sources/cfr/606.20.md`:
+
+> (b) The personnel responsible for the collection, processing, compatibility testing, storage or
+> distribution of blood or blood components shall be adequate in number, educational background,
+> training and experience... to assure competent performance of their assigned functions... All
+> personnel shall have capabilities commensurate with their assigned functions, a thorough
+> understanding of the procedures or control operations they perform, the necessary training or
+> experience, and adequate information concerning the application of pertinent provisions of this
+> part to their respective functions.
+
+AABB's Quality System Essentials (QSE) framework builds directly on top of that floor — no
+standard number, paraphrased only, from `sources/aabb/qse-framework.md`: **Organization** (QSE 1)
+covers executive management's responsibility and authority, including who can approve exceptions
+to policy — the theme behind why a disposition box belongs to someone specific — and
+**Resources** (QSE 2) covers job qualifications, competence assessment, and training — the theme
+behind 606.20(b) above, formalized into an ongoing program rather than a one-time hiring bar.
+
+## What an inspector or assessor would actually look for
+
+An assessor reading Lakeshore's deviation, change, and validation files doesn't ask "did the
+Director sign this." They ask a sharper question: **does the signature on this line match the
+authority Lakeshore's own SOP assigns to that line?** A disposition box signed by an IT director
+instead of the named quality authority is a finding on its own, independent of whether the
+disposition itself was correct — it reads as a quality system that doesn't actually control who
+decides what.
+
+They'll also look for **evidence your review happened at all**, not just that it happened
+correctly — comments, questions back to the author, a dated mark distinguishing "reviewed" from
+"received." A review that leaves no trace is functionally invisible to someone reading the file
+later. And on independence specifically, an assessor watching a QA who reports through IT will
+look for whether she has ever actually rejected or delayed something IT wanted — a patch, a
+change window, a go-live date — and whether that rejection survived without being quietly
+overridden through the reporting line. One instance of independence exercised and respected is
+worth more than any policy statement about it.
+
+## Common traps
+
+**"My signature always means the same thing."** It doesn't, and this module exists because that
+assumption is exactly what almost got a disposition signed in the wrong box. Supervisor,
+system-owner co-approver, and informed are three different acts, and the only way to avoid
+signing the wrong one is to ask which box you're in before your hand moves, every time — not to
+assume consistency that isn't actually there.
+
+**"She reports to me, so FDA requires me to sign off on her quality decisions" — or its mirror,
+"since she reports to me, her independence is really just a courtesy I extend."** Both are wrong,
+and both are versions of the same regulatory-requirement question worth asking directly: **does
+FDA require the Director to approve every deviation record?** No. Who approves a disposition is
+Lakeshore's own SOP choice, not a federal mandate — what the regulation actually requires is the
+investigation and its record (606.100(c), 606.160(b)(7)(iii)), not any particular person's
+signature on it. That cuts both ways: you can't claim FDA forces your hand onto the disposition
+line, and you can't wave away her independence as optional because no regulation in this
+curriculum's sources spells it out as a citable requirement either. What holds her independence in
+place is the separation-of-duties principle and Lakeshore's own SOP naming someone else for that
+box — real, but not the kind of thing you cite chapter and verse to an inspector.
+
+## What this means for your job
+
+- **Before you sign anything, name the box out loud: supervisor, system-owner co-approver, or
+  informed.** If you can't say which one in one sentence, don't sign yet — go find out.
+- **Learn Lakeshore's own SOP-named authorities for disposition and quality approval before you
+  need them under pressure.** The Monday stack almost turned into a finding because that knowledge
+  wasn't already reflexive.
+- **Run the cold-read test on anything before you sign it, not just the documents that feel
+  weighty.** Conclusion, Evidence, Reasoning, Criteria first, Decision trail, Loose ends — six
+  questions, thirty seconds on something small, longer on something that matters.
+- **Sort every finding with gap triage before you say anything to her: must fix before I sign, fix
+  going forward, or fine as is.** Sending back a document with every line marked "must fix" teaches
+  defensive writing, not better writing.
+- **Protect her independence as a daily habit, not a policy you filed once.** Never let a
+  deadline, a change freeze, or a go-live date become the reason a quality call gets rushed.
+
+One line on what this module doesn't cover: exactly which events have to reach you, and how fast,
+is module 3's job. For now, just know the map exists.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA routes a deviation packet to you "for approval," with a disposition signature line on the last page. What's the right move?
+
+Check Lakeshore's own SOP for who holds disposition authority before you sign anything. In this
+curriculum, that authority has consistently been named as the medical director or a delegated
+quality officer — not the IT Director, even though the QA reports to him. Your legitimate role on
+this document is supervisory review: is it defensible, complete, and does it show its reasoning?
+That's a real review worth doing carefully. It just isn't the same act as disposition approval,
+and routing habits (a form that's always gone to "the boss") can put your name on a line that was
+never built for it.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: "FDA requires the Director to approve every deviation record before it can close." True or false?
+
+False. Nothing in this curriculum's sources — 606.100(c) or 606.160(b)(7)(iii) — names who at a
+blood establishment must sign a deviation's disposition. What's actually required is the
+investigation itself, made and recorded, and the record's existence among the establishment's
+general records. *Who* signs which box is Lakeshore's own SOP choice. Worth noting the flip side
+in the same breath: 606.100(c)'s first sentence does require product records to be reviewed
+before release — a real, regulation-tier requirement — but that's a different review, on a
+different clock, performed by whoever holds release authority, not your supervisory read of the
+deviation write-up after the fact.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A one-paragraph closure note reads only "Closed — no patient impact." Using gap triage, is this fine as is, fix going forward, or must fix before you sign?
+
+Must fix before you sign. Running the cold-read test on it: there's a conclusion, but no
+evidence, no reasoning, no stated criterion, and no visible decision trail — nothing on the page
+would let a stranger reach the same conclusion, whether or not the conclusion itself happens to be
+correct. That's not a stylistic nitpick you can defer to "fix going forward"; a document this thin
+can't be defended if someone asks about it a year from now, which is the whole point of the test.
+:::
+
+## Where this goes next
+
+You now have the map: what she typically produces, who writes it, who approves it, who's merely
+informed, what your own signature means in each role, and one instrument — the cold-read test,
+plus gap triage — for reading any of it. The next module, `reviewing-deviations-and-capas`, is
+where you actually use that instrument on a real, complete document: a full deviation and CAPA
+packet, planted gaps and all, read the way an assessor would read it cold.
