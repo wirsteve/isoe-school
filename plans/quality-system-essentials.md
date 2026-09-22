@@ -43,7 +43,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 | # | Slug | Finish line | Status |
 |---|---|---|---|
 | 1 | `aabb-qse-framework` | Name the parts of AABB's Quality System Essentials, place any quality activity (a deviation, a change, an audit, a document revision) in the right one, and say how the framework mirrors ISO 9001's structure and the ITIL practices you already run | Published |
-| 2 | `deviations-and-nonconformances` | Take an unplanned event from discovery through containment, impact assessment, product disposition, and a documented reportability decision, and decide, with written reasoning, whether it needs a CAPA | Not started |
+| 2 | `deviations-and-nonconformances` | Take an unplanned event from discovery through containment, impact assessment, product disposition, and a documented reportability decision, and decide, with written reasoning, whether it needs a CAPA | Published |
 | 3 | `capa-root-cause-to-effectiveness` | Tell a real root cause from "human error," choose corrective and preventive actions that change the process, and set an effectiveness check with a measurable criterion that could actually fail | Not started |
 | 4 | `change-control-for-regulated-systems` | Take any change to a regulated process, document, piece of equipment, supplier, or system through request, impact and risk assessment, approval, implementation, and verification, and name the record that proves each step | Not started |
 | 5 | `document-control-and-records` | Follow a controlled document from draft through approval, issue, revision, and retirement, tell a document from a record, and explain how an obsolete version ends up in use and what control stops it | Not started |
@@ -682,3 +682,89 @@ not yet quoted.
   `courses/quality-system-essentials/aabb-qse-framework/index.qmd` and
   `resources.qmd`, and this course's status table above updated to "Drafted." Not yet
   pushed to the site as of this log entry — publish step still pending in this session.
+
+- **2026-09-22**: Module 2, `deviations-and-nonconformances`, drafted (`index.qmd` lesson +
+  `resources.qmd`, `order: 15`/`16` as assigned; not yet published/pushed as of this entry
+  — that's a separate step). No new source fetch was needed or performed: this module's
+  citations (606.100(b)'s product-deviation-investigation-SOP clause, 606.100(c)'s last
+  sentence, 606.160(b)(7)(iii), 630.10(e)(2)(iii), 630.10(h), and 606.171(b)(1)(i)/(b)(3))
+  were all already present verbatim in `sources/cfr/606.100.md`, `606.160.md`, `630.10.md`,
+  and `606.171.md` from earlier modules/foundations. Confirmed 606.171 is NOT re-taught in
+  depth here — it's applied, with one line pointing back to `risk-and-controls-vocabulary`
+  for the full treatment. `sources/aabb/qse-framework.md` was reused (not re-verified) for
+  QSE 7's name and theme; no AABB standards text was quoted.
+
+  **Through-line facts locked here — module 3's drafter must reuse these exactly, and
+  modules 4–7 should treat them as fixed:**
+  - Donor: **Owen Pruitt.** Deferred **Tuesday** (two days before the event) at
+    **Lakeshore's downtown donor center**, for **travel to a country on the malaria-risk
+    list**, disclosed during the history interview — the eligibility factor at
+    **630.10(e)(2)(iii)**. This deferral is temporary and was active/on file at BECS at
+    the time of the second donation.
+  - Site where the miss occurred: **Lakeshore's Brookfield satellite collection site**
+    (open Friday evenings; no live BECS connection during a downtime event — relies on a
+    paper downtime binder).
+  - Trigger event: a **scheduled overnight BECS maintenance window, Friday night.**
+    Brookfield switched to its paper downtime procedure per its binder, which is correct
+    practice — the binder itself is the problem, not the staff's use of it.
+  - Root cause set up (for module 3, not resolved by module 2): the downtime binder held a
+    **superseded SOP revision** whose deferred-donor-list refresh cadence didn't require a
+    reprint immediately before a downtime event. The printed list in use Friday night was
+    dated the **previous Monday** — four days stale, and specifically didn't include a
+    deferral entered the day *after* that list was printed (Tuesday). Module 2 states the
+    proximate cause only ("a superseded procedure was in use at a remote site") and
+    explicitly frames "staff followed the binder correctly" — module 3's job is root cause
+    of *why* the superseded revision was there and wasn't caught.
+  - Donation and product: **Owen donated Friday night at Brookfield.** A **leukoreduced red
+    blood cell (RBC) component** from that donation cleared testing **Saturday**, was
+    released from quarantine **Sunday**, and was shipped to **Riverside General Hospital**
+    (the same fictional consignee `storage-distribution-and-hemovigilance` already
+    established) to fill a standing order. As of Monday's discovery, it is quarantined at
+    Riverside, **not transfused**. (Deliberately left non-transfused — keeps the module
+    focused on the deviation/reportability process rather than a patient-harm narrative;
+    later modules should preserve this fact unless a later module has a specific teaching
+    reason to change it, and must say so in its own log entry if it does.)
+  - Discovery: **Monday morning**, via routine post-downtime reconciliation (entering
+    Friday night's paper transactions into BECS), which immediately flagged Owen's donor ID
+    as deferred.
+  - Disposition: unit stays **quarantined at Riverside pending Lakeshore's full
+    determination**; any other components from the same donation still in Lakeshore's own
+    inventory are quarantined immediately on discovery. Disposition authority named
+    generically ("the medical director or a delegated quality officer") — no specific AABB
+    standard number invoked for who holds that authority, since none is verified.
+  - Reportability determination: **module 2 concludes this IS reportable** under
+    606.171(b)(1)(i) (deviation from an applicable regulation — 630.10(h) — that may
+    affect safety, purity, or potency) and (b)(3) (distributed product). This was a
+    deliberate scoping choice per this file's instruction not to soften a genuinely
+    reportable call. The 45-day clock is stated as starting Monday, at discovery. BPDR
+    filing mechanics (Form FDA-3486) are explicitly named and deferred to
+    `fda-and-aabb-in-practice`.
+  - CAPA decision: module 2 ends with an explicit **"yes, this needs a CAPA"**, reasoned as
+    a systemic document-control gap (a superseded procedure surviving at a remote site,
+    plausibly affecting other sites too) rather than "staff error." Module 2 states plainly
+    that the deviation record and the CAPA run on different clocks, and that the deviation
+    can close (disposition + reportability filed) without waiting on the CAPA. Module 3
+    should open from this exact CAPA yes/no rationale and do the actual root-cause work
+    (why the superseded revision existed and wasn't caught by any control) that module 2
+    deliberately stopped short of.
+  - One-line-only mentions module 2 made and did NOT expand on, per this file's module
+    boundaries: planned deviations/pre-approved exceptions (one paragraph, pointing to the
+    change-control module); extent-of-condition checks for *other sites* running the same
+    superseded binder revision (raised as a question the investigation must answer, not
+    resolved with a specific count of affected sites — a later module may specify a number
+    if it needs one, and should log that choice if so).
+
+  Scope check against this file's "Module 2" boundary section: stayed at discovery-
+  through-reportability-and-CAPA-yes/no altitude; did not teach root-cause methodology,
+  5 Whys/fishbone, or effectiveness checks (module 3's job); did not walk through planned-
+  deviation mechanics or BPDR filing mechanics. Opened by naming QSE 7 (Deviations,
+  Nonconformances, and Adverse Events) per module 1's established convention. Check-your-
+  understanding includes the required "does every deviation need a CAPA?" question with the
+  honest nuanced answer (Q2).
+
+  **For module 3:** pick up the through-line facts above exactly. The CAPA is already
+  opened conceptually (yes-decision made in module 2); module 3's job is root cause (why
+  the superseded downtime-binder revision existed and wasn't caught — not "staff used the
+  wrong binder"), corrective/preventive actions that change the process, and an
+  effectiveness check. Not yet published/pushed — publish step still pending in this
+  session.

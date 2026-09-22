@@ -1,0 +1,26 @@
+---
+title: "Resources: Deviations and nonconformances"
+order: 16
+---
+
+Each link below was checked this session and loads.
+
+- **[21 CFR 606.100 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)**
+  — the SOP-requirement regulation, including paragraph (b)'s clause on written procedures for
+  product-deviation investigations, quoted in this lesson. The local verbatim copy used here lives
+  at `sources/cfr/606.100.md`.
+
+- **[21 CFR 606.171 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.171)**
+  — the biological product deviation reporting rule this lesson applies to Owen Pruitt's donation.
+  Already the full subject of the `risk-and-controls-vocabulary` foundation lesson; use this as a
+  stable, citable mirror of the same text. Local copy: `sources/cfr/606.171.md`.
+
+- **[21 CFR 630.10 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/630.10)**
+  — general donor eligibility requirements, including paragraph (h) (must not collect from a
+  deferred donor) and the travel-history eligibility factor in paragraph (e)(2)(iii), both quoted
+  or cited in this lesson. Local copy: `sources/cfr/630.10.md`.
+
+- **[GovInfo: Code of Federal Regulations collection](https://www.govinfo.gov/app/collection/cfr)**
+  — the U.S. Government Publishing Office's official CFR collection, useful as a fallback primary
+  source if a specific eCFR or Cornell page is ever unreachable, and for pulling an official PDF of
+  a full CFR part when you need one for the record.

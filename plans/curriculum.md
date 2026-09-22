@@ -266,7 +266,7 @@ has no `plans/<slug>.md` file until its first session.
 | `regulatory-landscape-orientation` | 1 / 1 | Done |
 | `risk-and-controls-vocabulary` | 1 / 1 | Done |
 | `blood-center-operations` | 5 / 5 | Done |
-| `quality-system-essentials` | 1 / 7 | In progress |
+| `quality-system-essentials` | 2 / 7 | In progress |
 | `directing-the-quality-analyst` | 0 / 6 | Not started |
 | `csv-and-becs` | 0 / 7 | Not started |
 | `data-integrity-and-records` | 0 / 6 | Not started |
@@ -276,6 +276,6 @@ has no `plans/<slug>.md` file until its first session.
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `quality-system-essentials` (Track 2), module 2: `deviations-and-nonconformances`.
+**Next up:** `quality-system-essentials` (Track 2), module 3: `capa-root-cause-to-effectiveness`.
 See `plans/quality-system-essentials.md` for the full module list, scoping decisions, and exact
 `order:` values to use for each file.
