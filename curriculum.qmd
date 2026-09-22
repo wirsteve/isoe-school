@@ -1,0 +1,66 @@
+---
+title: "Curriculum"
+subtitle: "The whole roadmap, not just one course"
+order: 1
+toc: true
+---
+
+This page is the map. Full detail (module lists, prerequisites, the session-by-session plan)
+lives in the repo at `plans/curriculum.md` — this is the reader-friendly version.
+
+## The idea
+
+A Director of IT Service Operations & Excellence at a multi-state blood services organization
+needs to be credible in four directions at once: with FDA, with AABB, with the CIO, and with
+the Quality Analyst who reports to him. That takes more than one course. It takes enough of the
+blood-banking, regulatory, and quality-systems world to ask the right question and catch a
+wrong answer — without trying to become the Quality Analyst's job.
+
+## Six things this curriculum builds
+
+1. **How a blood center actually works** — donor to hospital, and where IT sits in that
+   pipeline.
+2. **How to read the regulatory landscape** — telling an FDA regulation, FDA guidance, AABB
+   standard, and industry practice apart, and knowing which one is binding.
+3. **Quality systems** — deviations, CAPA, change control, document control, audits: the AABB
+   Quality System Essentials, in practice.
+4. **Validation and BECS** — reading a validation package, Part 11, and data integrity (ALCOA+)
+   for electronic records.
+5. **Security, privacy, and vendor oversight** — where HIPAA and FDA expectations overlap, and
+   what a BECS vendor's change notice obligates you to do.
+6. **The ITSM bridge and directing the Quality Analyst** — translating ITIL practice into
+   AABB/FDA language for the CIO, and reviewing a direct report's work well enough to catch what
+   an inspector would catch.
+
+## Tracks
+
+| Track | Courses |
+|---|---|
+| Foundations | Reading a CFR citation · The regulatory landscape |
+| 1. Blood Center Operations | Blood center operations, donor to hospital |
+| 2. Quality Systems & Compliance | Quality system essentials · FDA & AABB in practice |
+| 3. Validation, BECS & Data Integrity | CSV & BECS · Data integrity & records |
+| 4. Security, Privacy & Vendors | Security, privacy & vendor oversight |
+| 5. ITSM Bridge | ITSM for regulated blood services *(capstone)* |
+| 6. Directing the Quality Analyst | Directing the Quality Analyst |
+
+## Recommended order — first six months
+
+Sequenced for what matters most, first: understand the business, then run the quality systems
+and direct the Quality Analyst, then go deep on validation and BECS, then round out security,
+vendors, and the capstone that ties it back to the CIO.
+
+1. Foundations (regulatory landscape orientation)
+2. Blood center operations
+3. Quality system essentials
+4. Directing the Quality Analyst
+5. CSV & BECS
+6. Data integrity & records
+7. FDA & AABB in practice (inspection readiness)
+8. Security, privacy & vendor oversight
+9. ITSM for regulated blood services *(capstone)*
+
+## How courses appear here
+
+Courses show up in the sidebar under **Courses** as they're built — one module at a time, one
+module per work session. Nothing here is built yet; this page describes the plan.
