@@ -47,7 +47,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 | 3 | `capa-root-cause-to-effectiveness` | Tell a real root cause from "human error," choose corrective and preventive actions that change the process, and set an effectiveness check with a measurable criterion that could actually fail | Published |
 | 4 | `change-control-for-regulated-systems` | Take any change to a regulated process, document, piece of equipment, supplier, or system through request, impact and risk assessment, approval, implementation, and verification, and name the record that proves each step | Published |
 | 5 | `document-control-and-records` | Follow a controlled document from draft through approval, issue, revision, and retirement, tell a document from a record, and explain how an obsolete version ends up in use and what control stops it | Published |
-| 6 | `quality-risk-management` | Run a real quality decision through ICH Q9(R1)'s process (risk assessment, control, communication, review) using an FMEA or risk ranking and filtering, and choose how much formality the decision deserves | Not started |
+| 6 | `quality-risk-management` | Run a real quality decision through ICH Q9(R1)'s process (risk assessment, control, communication, review) using an FMEA or risk ranking and filtering, and choose how much formality the decision deserves | Published |
 | 7 | `internal-audits-and-management-review` | Explain what internal assessments do inside the quality system and what management review must do with their outputs, and judge whether a management-review packet shows a quality system that is actually working | Not started |
 
 Status values: Not started / Drafted / Published.
@@ -1035,3 +1035,92 @@ not yet quoted.
   this file's existing Module 6 scoping. No new through-line facts were locked that module 6 must
   preserve beyond what's summarized above; the new near-miss scenario in this module is optional
   material, not a required fact for module 6 to carry forward.
+
+- **2026-09-22**: Module 6, `quality-risk-management`, drafted (`index.qmd` lesson +
+  `resources.qmd`, `order: 23`/`24` as assigned; not yet published/pushed as of this entry —
+  publish is a separate step). No new source fetch was needed for CFR text: 606.100(c) was reused
+  verbatim from `sources/cfr/606.100.md`, already fully quoted by the foundation. **ICH Q9(R1)
+  was re-verified this session**: `curl -sS -o /dev/null -w "%{http_code}"` against
+  `https://database.ich.org/sites/default/files/ICH_Q9%28R1%29_Guideline_Step4_2023_0126_0.pdf`
+  returned HTTP 200 (591,282 bytes), and a WebFetch pass over the same PDF confirmed the Section
+  4 (Responsibilities → Initiating → Risk Assessment [Identification/Analysis/Evaluation] → Risk
+  Control [Reduction/Acceptance] → Risk Communication → Risk Review), Section 5 (5.1 Formality,
+  5.2 Risk-Based Decision-Making, 5.3 Managing and Minimizing Subjectivity — both 5.1 and 5.3
+  confirmed as R1-specific additions), and Annex I.2 (FMEA)/I.8 (Risk Ranking and Filtering)
+  structure this file already recorded as verified. No verbatim ICH text was quoted in the
+  lesson — its process is described in this course's own words, the same approach
+  `risk-and-controls-vocabulary` used, per this file's sourcing-notes framing (even though that
+  section notes ICH's legal notice would permit verbatim quotation with attribution, this
+  drafter chose paraphrase throughout for consistency with the foundation's established pattern
+  and because no verbatim copy is saved to `sources/ich/`). `sources/aabb/qse-framework.md` was
+  reused (not re-verified) for the AABB-QSE-placement paragraph; per this file's own Module 6
+  caveat, the lesson does **not** firmly claim risk assessment maps onto AABB's blood-bank
+  Standards specifically under Organization (QSE 1) — it states the 2021 framework's placement,
+  flags it as unverified for this specific Standards set, and frames ICH Q9 as cutting across
+  several QSEs (Process Control, Deviations) rather than owning one, per instructions.
+
+  **The worked example — module 7's drafter should know this exact outcome:** module 6 reopens
+  module 4's informal impact/risk assessment of the tracked-distribution-and-acknowledgment
+  process (the CAPA's change-control fix) and reruns it as a full ICH Q9(R1) process with an
+  illustrative FMEA (Failure Mode and Effects Analysis), using a stated 1–5 likelihood/severity/
+  detectability scale (explicitly framed as illustrative, not a cited standard). Five failure
+  modes were identified and scored; the two that cleared an illustrative RPN (Risk Priority
+  Number) threshold of 40 were **(1) site-lead turnover with no handoff** (RPN 60) and **(2) an
+  acknowledgment on file but the physical binder never actually swapped** (RPN 50) — deliberately
+  chosen so that failure mode 2, which no incident has yet surfaced, outranks failure mode 1, the
+  near-miss module 5 already caught by luck. The teaching point: a formal FMEA surfaces risks
+  informal reasoning doesn't, because informal reasoning tends to re-score the risk you already
+  have a war story about. Risk Control responses: risk reduction for both top items (a physical-
+  binder check added to the standing audit for #2; reviving module 3's un-built "automated
+  review-date trigger" option for #1 — **this is a real, named, still-open gap in the
+  through-line that module 7 or any later module could pick up as a concrete improvement, not
+  just teaching color**), and explicit, on-the-record risk acceptance for the three lower-scoring
+  items (RPN 16–30). Risk Communication and Risk Review stages were both taught against this same
+  worked example, with Risk Review scheduled to align with the standing document-control audit
+  interval module 3 set (six months).
+
+  A second, lighter tool — **risk ranking and filtering** — was applied separately to a
+  *portfolio* question: sorting Lakeshore's satellite sites into high/medium/low bins (by time
+  since last review, staff turnover, volume, and prior findings) to decide which sites an
+  upcoming downtime-readiness audit checks first. This is deliberately the same audit module 7
+  is expected to open with, per this file's existing Module 6/7 scoping — **module 7 should treat
+  "which sites get audited first" as already framed by this risk-ranking exercise**, and can
+  either reuse it directly or build its own audit-scope scenario from it. No specific site names
+  or counts were invented for this exercise (kept generic, consistent with modules 2–3 leaving
+  the "how many other sites" question open); a later module may specify actual site names/counts
+  if it needs them for its own scenario and should log that choice if so.
+
+  Formality (the R1-specific theme) was taught explicitly as the judgment call of how much rigor
+  a decision earns, using the modules 2–5 informal calls as the "legitimately informal" baseline
+  and the tracked-distribution mechanism's FMEA as the "earns full rigor" case, with R1's
+  subjectivity-minimization point (defined scales, consistent scoring convention) folded in as a
+  practical caution — including an explicit note that the illustrative detectability scale in
+  this lesson is inverted from casual intuition (higher number = harder to detect), stated
+  plainly to avoid the exact subjectivity trap the lesson teaches about.
+
+  Scope check against this file's Module 6 boundary section: did **not** re-derive likelihood/
+  severity/detectability, inherent/residual risk, or preventive/detective/corrective controls —
+  used them directly, with one link back to `risk-and-controls-vocabulary`. Covered the R1
+  additions (formality, managing subjectivity) explicitly as new-in-R1 material. Did **not**
+  build out NIST RMF/ISO 31000 comparisons (left to `grc-frameworks-and-risk-management`) or
+  validation/GAMP 5 risk content (left to `csv-and-becs`). Named the other Annex I tools (FMECA,
+  FTA, HACCP, HAZOP, PHA) in one line without teaching them. Opened without a single-QSE framing,
+  consistent with this file's note that module 6 has no clean QSE home. Check-your-understanding
+  includes the required "ICH Q9 requires an FMEA" question (Q1, honest answer: false — this is
+  this course's designated hook for that claim, per this file's "This is NOT a regulatory
+  requirement" list).
+
+  resources.qmd: 3 links (the ICH Q9(R1) PDF re-verified this session, Cornell LII 606.100,
+  GovInfo CFR collection), all curl/WebFetch-verified HTTP 200 this session. No NIST or other
+  additional risk-framework source was added — GRC/NIST RMF comparison is explicitly
+  `grc-frameworks-and-risk-management`'s territory per this file's "What belongs to other
+  courses" table, and adding one here risked blurring that boundary without a clear teaching
+  need.
+
+  **For module 7:** the audit that opens `internal-audits-and-management-review` can reuse this
+  module's risk-ranking-and-filtering exercise (which sites get checked first) directly, or treat
+  it as already-settled context. The still-open "automated review-date trigger" gap (module 3's
+  unresolved "or," now also flagged by this module's FMEA as a top-priority risk reduction option)
+  is available if module 7 wants a concrete finding for its audit scenario to surface, but isn't
+  required — module 7 may also introduce its own findings. No through-line facts beyond what's
+  summarized above need to carry forward.

@@ -1,0 +1,354 @@
+---
+title: "Quality risk management"
+order: 23
+---
+
+## The ticket
+
+The Owen Pruitt story is closed. Six months of clean audits, a CAPA (corrective and preventive
+action) shut on real effectiveness data, and — two weeks before that final audit — the tracked
+distribution-and-acknowledgment process module 4 built caught a departed site lead's overdue
+acknowledgment before it became a new incident. Your Quality Analyst told you that story with
+something close to pride: "That's the process actually working."
+
+She's back in your office a week later, and this time she's not proud. She's uneasy.
+
+"I keep thinking about how we caught that overdue acknowledgment. We caught it because someone
+happened to notice the flag inside 72 hours. What if it had been a slower week? I scored it in my
+head as 'this shouldn't matter much' when we built it — likelihood, severity, detectability, the
+way you taught me — and I wasn't wrong, exactly. But I did it in about four minutes, standing at
+your desk. I don't have anything written down that says *why* I believed it, and I don't know
+what I didn't think of."
+
+That's the right instinct, and the exact gap this module closes. Every risk call this course's
+story has made — how severe the extent-of-condition gap was, how likely a distribution miss might
+be, how much scrutiny the change deserved — was reasoned through correctly, using the vocabulary
+`risk-and-controls-vocabulary` gave you. None of it ran through a *formal, documented process*. It
+lived in a conversation, a quick judgment, a few sentences in a lesson. Today you're going to take
+one of those calls — the tracked-distribution process's own risk assessment, from module 4 — and
+run it again, properly, using the actual structured method the industry names for this: ICH
+Q9(R1).
+
+## Why this matters — and the ITIL bridge
+
+You already do informal risk triage well — that's not the problem this module solves. The
+problem is that "good at informal triage" and "can produce a risk assessment that survives
+someone else reading it six months later, or an assessor asking to see it" are two different
+skills, and Lakeshore has been running entirely on the first one.
+
+You already scale rigor to stakes without saying so: a well-understood, low-blast-radius patch
+gets a quick call from whoever's on shift; a finding that could take down a critical system, or
+one nobody's seen before, gets a documented review with more than one set of eyes. ICH Q9's
+Revision 1 (R1) — the current version of the guideline, adopted in 2023 — makes that scaling an
+explicit, named part of the method instead of an unstated instinct. That's this module's real
+payoff: not a new scoring technique, but a framework for the judgment call you're already
+half-making, about *how much* rigor a given decision earns.
+
+ICH stands for the International Council for Harmonisation of Technical Requirements for
+Pharmaceuticals for Human Use — the same body `risk-and-controls-vocabulary` introduced. Q9 is
+its **Quality Risk Management (QRM)** guideline: guideline-tier, the same fourth flavor of "you
+have to" the foundation flagged — not an FDA regulation, not an AABB Standard, but a harmonized
+international document regulators including FDA have adopted as the accepted method for doing
+quality risk assessment defensibly. The foundation told you this by name. This module is where
+you learn to actually run it.
+
+The strongest bridge to your own world: ICH Q9 formalizes a **risk register with a real process
+behind it** — the same idea you'd use to prioritize security findings or major-incident
+postmortems, except with a named lifecycle (assess, control, communicate, review) instead of a
+spreadsheet someone updates when they remember to. The R1 formality point translates directly:
+**not every ticket gets a full root-cause review with an executive readout.** A P4 with a known
+workaround closes with a note; a novel P1 that took down a regulated system gets the full
+postmortem and a follow-up review weeks later. ICH Q9(R1) says the same about risk assessments —
+match the ceremony to the stakes, and be able to say why you picked the level you picked.
+
+## ICH Q9(R1)'s process, in plain English
+
+Four stages, run as a deliberate, iterative sequence — not a one-time checklist you fill out and
+file away.
+
+**1. Risk Assessment**, broken into three steps:
+
+- **Risk Identification** — systematically naming what could go wrong, not just "what's gone
+  wrong before." Every plausible failure mode, including ones you haven't been burned by yet.
+- **Risk Analysis** — scoring each identified risk using vocabulary you already own: likelihood,
+  severity, and detectability.
+- **Risk Evaluation** — comparing scores against a stated threshold to decide which risks need
+  action and which are acceptable as-is.
+
+**2. Risk Control:**
+
+- **Risk Reduction** — adding, strengthening, or redesigning a control to lower likelihood,
+  severity, or (most often, in this course's world) detectability.
+- **Risk Acceptance** — a deliberate, documented decision that a residual risk is tolerable. This
+  is easiest to skip informally: an unscored risk nobody acts on isn't "accepted," it's
+  unexamined. Q9 insists acceptance be a real, owned decision, not a default by inaction.
+
+**3. Risk Communication.** Sharing the assessment and its reasoning with the people who need it —
+decision-makers, the teams who own the controls, sometimes regulators or assessors. A risk
+assessment that lives only in the head of the person who ran it hasn't been communicated, however
+good the analysis was.
+
+**4. Risk Review.** Revisiting the assessment on a defined trigger — a set interval, a new event,
+a process change — to confirm the risks and controls still hold. This is the stage an informal
+gut call almost never gets, because nothing forces a return to a conversation that happened
+standing at someone's desk.
+
+Two tools do the scoring and prioritizing work. ICH Q9's Annex I names several others (FMECA,
+fault tree analysis, HACCP, HAZOP, preliminary hazard analysis) — worth knowing the names exist,
+not worth learning here. Two matter at your altitude:
+
+- **FMEA (Failure Mode and Effects Analysis)** — for each way a process can fail, score
+  likelihood, severity, and detectability (usually as numbers on a defined scale), multiply them
+  into a **Risk Priority Number (RPN)**, and use the ranked list to decide what gets attention
+  first. The tool for taking one process apart, step by step, to find weaknesses you don't
+  already know about.
+- **Risk Ranking and Filtering** — a lighter alternative: sort a *group* of risks into a small
+  number of bins (high/medium/low is typical) using whatever criteria matter, then work the bins
+  in order. The tool for a portfolio question — which of several sites, findings, or backlog
+  items gets attention first — where full numeric rigor on every item costs more than it's worth.
+
+And the R1-specific addition that ties the whole thing together: **formality**. Not every risk
+decision deserves the same process. R1 makes explicit that the rigor and documentation of a risk
+assessment should scale with how uncertain, important, and complex the decision actually is. A
+well-understood, lower-stakes call — like most of what your QA reasoned through in real time
+across modules 2 through 5 — can legitimately stay informal, as long as the reasoning is written
+down somewhere, even briefly. A higher-stakes, novel, or systemic decision earns the full
+process. R1 also spends real attention on **minimizing subjectivity**: two people scoring the
+same risk can land in different places, so the guideline pushes toward defined scales, consistent
+training on how to use them, and, where it helps, more than one person doing the scoring —
+because a numeric RPN feels objective and isn't automatically so. Choosing the right level of
+formality, and building enough structure that two different Quality Analysts would score a risk
+the same way, is itself the skill this module is teaching you to direct.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| ICH Q9(R1) | "The ICH Q9, Revision 1, Quality Risk Management guideline" | Guideline-tier: a globally harmonized method for running a risk-management process, adopted by regulators including FDA — not itself a numbered legal requirement. Cited by title and revision, not by part/section/paragraph, because it isn't organized like the CFR. | Supplies the four-stage process and the FMEA/risk-ranking toolkit this whole module uses — named, not codified. |
+| 21 CFR 606.100(c) | "Six-oh-six point one-hundred, paragraph c" | A thorough investigation, including conclusions and followup, of any discrepancy — made and recorded. Already quoted in full in `risk-and-controls-vocabulary`. | The regulatory floor underneath *any* risk-based reasoning at Lakeshore, however formal: whatever level of rigor you choose, the investigation and its reasoning still have to be recorded. |
+
+Worth restating from `regulatory-landscape-orientation`: a citation's own format tells you its
+tier before you read a word of it. A part-section-paragraph reference like `606.100(c)` is a
+regulation. A named guideline with a revision number, like `ICH Q9(R1)`, is guidance — binding
+because industry and regulators have converged on it, not because a statute wrote it into law.
+
+## The actual text
+
+This module has almost no regulatory text to quote, and that's the point, not an oversight.
+21 CFR Part 606 doesn't name "risk management," "FMEA," or "risk assessment" as a formal process
+anywhere — the same tiering pattern modules 3, 4, and 5 already found for CAPA, change control,
+and document control. The one piece worth re-anchoring is 606.100(c), quoted verbatim from
+`sources/cfr/606.100.md`, already fully quoted in the foundation:
+
+> A thorough investigation, including the conclusions and followup, of any unexplained discrepancy
+> or the failure of a lot or unit to meet any of its specifications shall be made and recorded.
+
+Read "thorough" and "recorded" against this module's whole argument: the regulation demands real
+reasoning, written down. It says nothing about *how* rigorous that reasoning has to look — a
+numeric FMEA and a three-sentence informal risk call can both satisfy "thorough investigation,
+recorded," depending on what's actually at stake. Formality is a judgment ICH Q9(R1) structures;
+it isn't a line 606.100(c) draws for you.
+
+Because ICH Q9(R1) itself is a real, copyrighted guideline without a saved verbatim copy in
+`sources/`, this module describes its structure in its own words, above — the same approach
+`risk-and-controls-vocabulary` used — rather than quoting the guideline's text.
+
+Where does quality risk management sit in AABB's Quality System Essentials (QSE) framework —
+the ten-part structure module 1 gave you? Unlike every other module in this course, it doesn't
+have one clean answer. AABB's public Quality Systems Framework places formal risk assessment
+under **Organization** (QSE 1), which also owns management review — but whether that placement
+maps cleanly onto the specific AABB Standards set governing blood banks and transfusion services
+isn't verified from current public material, so this lesson doesn't claim it firmly. The more
+accurate framing, and the one worth telling your CIO: **quality risk management isn't one drawer
+in the filing cabinet — it's the reasoning method that runs inside several of them.** You've
+already seen it show up informally inside Process Control (module 4's change impact assessment)
+and Deviations (module 2's severity call). ICH Q9 is the discipline that makes that reasoning
+consistent everywhere it appears, not a single QSE with its own chapter.
+
+## Redoing module 4's call, formally
+
+Here's the specific risk call to formalize: module 4's impact and risk assessment of the
+tracked-distribution-and-acknowledgment process — the mechanism that, two weeks before module 5's
+closing scene, caught a departed site lead's overdue acknowledgment. At the time, that assessment
+was a few sentences of likelihood/severity/detectability reasoning, done well and done fast, but
+never written down as its own artifact. Running it as a full FMEA is the higher-formality call
+this decision deserves now: it's the single mechanism standing between Lakeshore and a repeat of
+Owen Pruitt's event, across every satellite site at once — systemic stakes, and a control that's
+never had a documented failure-mode analysis of its own.
+
+**Risk Identification.** Instead of asking "how likely is a distribution miss" in the abstract,
+name the specific ways the process can fail:
+
+1. A site lead departs or changes roles, and the acknowledgment obligation isn't handed off.
+2. An email or fax is lost silently — misrouted, filtered, never delivered — with no bounce
+   signal anyone notices.
+3. A site lead signs an acknowledgment for the wrong document version (a mismatch nobody catches).
+4. A new satellite site opens and never gets added to the distribution list at all.
+5. An acknowledgment comes back signed and dated, but the physical binder at the site is never
+   actually updated — the paperwork exists; the swap doesn't.
+
+**Risk Analysis.** Score each on a simple illustrative scale — 1 (low) to 5 (high) for likelihood
+and severity, same range for detectability, with one convention stated plainly because it trips
+people up: **score detectability so a *higher* number means a failure is *harder* to catch.**
+That's the opposite of how "good detectability" sounds in conversation, but it's how a numeric
+RPN scale is normally built, precisely so a hard-to-catch failure pushes the priority score *up*,
+not down. This scale is illustrative only — nothing here is an AABB or ICH-mandated numbering
+system.
+
+| Failure mode | Likelihood | Severity | Detectability | RPN |
+|---|---|---|---|---|
+| 1. Site-lead turnover, no handoff | 3 | 5 | 4 | **60** |
+| 5. Acknowledgment on file, binder not actually swapped | 2 | 5 | 5 | **50** |
+| 2. Delivery lost silently, no bounce signal | 2 | 5 | 3 | 30 |
+| 4. New site never added to distribution list | 1 | 5 | 5 | 25 |
+| 3. Acknowledgment signed for wrong version | 1 | 4 | 4 | 16 |
+
+**Risk Evaluation.** Set a threshold — here, an illustrative cut-off of RPN 40 marks "needs a
+control change before the next audit cycle." Two failure modes clear it: turnover-without-handoff
+(60) and acknowledgment-without-physical-verification (50).
+
+Now notice what the formal process just bought you that the four-minute informal version
+didn't: **failure mode 1 — the exact scenario the near-miss already surfaced — isn't even the
+top risk.** Failure mode 5, "the acknowledgment is real but nobody ever confirms the binder
+itself was physically swapped," outranks it once you actually score it, and nothing in the
+story so far has tested that gap. That's the entire value proposition of running Risk
+Identification and Analysis formally instead of trusting your instinct: instinct tends to
+re-score the risk you already have a war story about. A structured process forces you to name
+and score the ones you haven't been burned by yet.
+
+**Risk Control.** For failure mode 5 (RPN 50), **risk reduction**: require the periodic
+document-control audit to specifically check the physical binder, not just the acknowledgment
+record, and consider a lighter spot-check between full audits. For failure mode 1 (RPN 60),
+**risk reduction**: this is exactly module 3's unresolved "or" — an automated review-date
+trigger, not built when tracked distribution alone resolved that choice, is the concrete fix a
+formal FMEA surfaces as worth revisiting. For the lower-scoring items (16–30), **risk
+acceptance**: stated explicitly and on the record, not silence — "low RPN, existing overdue-flag
+control already catches most of this class."
+
+**Risk Communication.** The scored table, the flagged failure modes, and the acceptance decisions
+go to Quality and to you as the system owner, in writing, as part of the record — not a hallway
+conversation. Same discipline `change-control-for-regulated-systems` already demanded of an
+impact assessment: "we talked it through" isn't an artifact an assessor can read.
+
+**Risk Review.** Scheduled, not left to chance: reassess this FMEA at Lakeshore's next standing
+document-control audit interval — the cadence module 3 set for the CAPA's own effectiveness check
+— or immediately if either flagged failure mode occurs before then. A risk assessment that never
+gets revisited is this module's own named trap, below.
+
+## A second tool for a different question: risk ranking and filtering
+
+Not every risk decision needs FMEA's full numeric weight. Suppose your QA has to decide, with
+finite audit staff, which of Lakeshore's satellite sites to check first for downtime readiness —
+the audit that sets up `internal-audits-and-management-review`, the next module. A five-
+failure-mode FMEA per site, across a dozen sites, would cost more time than the decision is
+worth. This is what risk ranking and filtering is for: sort sites into **high / medium / low**
+bins using a short list of qualitative factors — time since the site's last document-control
+review, staff turnover in the last year, donation volume, any prior finding on record — and
+audit the high bin first. No RPNs: a faster tool, chosen deliberately because *which site goes
+first* doesn't justify FMEA's overhead, even though the underlying risk is the same one the FMEA
+above just took apart in detail.
+
+That's the formality judgment in miniature: same risk vocabulary, same guideline, two different
+tools, chosen because the two decisions aren't actually the same size.
+
+## What an inspector or assessor would actually look for
+
+Not a full FMEA for every decision Lakeshore makes — that expectation would be its own red flag,
+a sign the organization doesn't understand proportionate rigor. What they'd look for is a
+**documented risk assessment with visible reasoning, scaled to the stakes of the decision it
+supports.** For a routine, well-understood call, a short, dated note showing the
+likelihood/severity/detectability reasoning is enough. For a decision like the
+tracked-distribution mechanism — systemic, novel at the time, and the sole safeguard against a
+repeat of a reportable event — they'd expect something closer to the FMEA above: named failure
+modes, a scoring method, an evaluation threshold, explicit control or acceptance decisions, and a
+scheduled review date. What draws a finding isn't "no full FMEA here" in isolation — it's a
+higher-stakes decision with *no* documented reasoning at all, or a risk assessment done once and
+never revisited even though the process it covers changed underneath it.
+
+## Common traps
+
+**"Every risk decision needs a full FMEA."** The overkill trap: teams that treat every call with
+maximum ceremony burn out their own rigor budget and stop reading the scores that matter. ICH
+Q9(R1) rejects this directly — FMEA is one optional tool among several, and formality should
+scale with stakes, not apply uniformly.
+
+**Treating a systemic or novel risk informally because it's easier.** The mirror-image trap.
+Module 4's original impact assessment wasn't wrong to be informal at the time — the CAPA's fix
+hadn't shipped yet, and a quick call was reasonable to get moving. But once that mechanism became
+the standing, systemic safeguard for every satellite site, leaving it forever informal is exactly
+the kind of decision R1's formality logic says earns more ceremony — which is why this module
+exists.
+
+**An FMEA done once and never revisited.** A risk assessment with no Risk Review step isn't
+finished, it's frozen. A scored FMEA from a year ago, unchanged while the process it describes
+has since been modified twice, tells an assessor the score was never load-bearing — an artifact
+produced once to satisfy a request, not a live decision tool.
+
+## What this means for your job
+
+- **Ask which level of formality a risk decision got, not just what the answer was.** "We decided
+  X" is incomplete. "Informally, because it's well-understood and low-stakes" or "a full FMEA,
+  because this is systemic" are both legitimate — a decision with no stated formality level is
+  the gap.
+- **When a QA hands you an RPN, ask what the detectability score means on her scale** before
+  trusting the ranking. A flipped or undefined convention silently inverts every priority
+  downstream of it.
+- **Push for risk acceptance to be a written, owned decision — never a default.** An unscored or
+  unaddressed low-priority risk isn't "accepted." It's unexamined, and an assessor reads the
+  difference immediately.
+- **Ask when a risk assessment was last reviewed**, the same way you'd ask when a CAPA's
+  effectiveness check ran. A risk score with no review date is a snapshot pretending to be a
+  decision.
+- **When a QA proposes full FMEA rigor for something routine, or a gut call for something
+  systemic, that mismatch is the finding.** Coach the formality call, not just the score — the
+  same judgment you'd use deciding which incident earns a full postmortem and which one closes
+  with a note.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA says, "ICH Q9 requires every risk decision to go through a full FMEA with a numeric RPN." True or false?
+
+False, and worth being precise about. ICH Q9 lists FMEA as one of several optional tools in its
+Annex — Risk Ranking and Filtering is another, named for exactly the cases where FMEA's full
+rigor isn't warranted. R1's formality guidance says explicitly that the effort and documentation
+a risk assessment deserves should scale with the decision's uncertainty, importance, and
+complexity — a guideline that mandated maximum ceremony every time would contradict its own
+principle. Tell your CIO: Q9 gives you a toolkit and a rule for choosing from it, not a single
+method applied uniformly.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: The formal FMEA on the tracked-distribution process ranked "acknowledgment on file but binder not physically swapped" above "site-lead turnover" — the failure mode the near-miss already caught. Does that mean the near-miss catch wasn't actually valuable?
+
+No — it means something more useful. The near-miss catch was real evidence the overdue-
+acknowledgment flag works as designed, and it's worth keeping. What the formal FMEA adds is a
+*second* risk, equally or more severe, that no incident has surfaced yet and that informal
+reasoning — built from the one scare Lakeshore has actually lived through — was never going to
+find on its own. That's the specific value of running Risk Identification and Analysis formally
+instead of trusting instinct: instinct re-scores the risk you already have a story about. A
+structured process finds the one you don't.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A satellite site's downtime binder audit is six months away. Is it acceptable to leave the tracked-distribution process's risk assessment as a one-time FMEA done today, with no further review?
+
+No. ICH Q9(R1)'s process names Risk Review as its own stage for exactly this reason — a risk
+assessment never revisited isn't a decision tool, it's a snapshot. The FMEA above should be
+reassessed on a defined schedule (aligning it with the standing document-control audit interval
+module 3 set is a reasonable choice) or immediately if either high-RPN failure mode occurs before
+then. Skipping Risk Review is one of this module's named traps for a reason: it's the step an
+informal call almost never gets, and the step that keeps a formal one honest.
+:::
+
+## Where this goes next
+
+The through-line's risk calls are formalized: the tracked-distribution process now has a
+documented FMEA with a threshold, control decisions, and a review date, plus a lighter tool —
+risk ranking and filtering — ready for the next decision that's really about ordering a
+portfolio, not scoring one mechanism in depth. That ordering question is where the course goes
+next. `internal-audits-and-management-review`, the final module, picks up the audit this lesson
+set up — which sites get checked first, what an internal audit inside a quality system is for,
+and what Lakeshore's management review has to do with everything this story has produced: a
+closed CAPA, a controlled change, a working document-control process, and now, a formally scored
+risk.
