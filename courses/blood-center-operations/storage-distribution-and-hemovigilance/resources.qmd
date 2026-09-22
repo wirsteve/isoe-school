@@ -1,0 +1,29 @@
+---
+title: "Resources"
+order: 2
+---
+
+External links for this lesson. All checked to load from a plain request as of the date this
+page was written. (Note: eCFR's own site — ecfr.gov — blocks automated/proxied traffic with a
+bot check in this repo's build environment, even though a human browser reaches it fine; the
+regulation text quoted in this lesson comes from eCFR's public Versioner API instead, and the
+links below use verified-loading mirrors of the same official text.)
+
+- **[Cornell LII: 21 CFR 606.165, current text](https://www.law.cornell.edu/cfr/text/21/606.165)**
+  — the distribution and receipt record requirements this lesson quotes to mark the exact point
+  a unit crosses from Lakeshore's system of record into a hospital's.
+
+- **[Cornell LII: 21 CFR 606.170, current text](https://www.law.cornell.edu/cfr/text/21/606.170)**
+  — the adverse reaction file and fatality reporting requirements this lesson builds its
+  transfusion-reaction section around, including the forwarding obligation that keeps Lakeshore
+  in the loop after a reaction is traced to the product.
+
+- **[Cornell LII: 21 CFR 600.15, current text](https://www.law.cornell.edu/cfr/text/21/600.15)**
+  — the full shipping-temperature table this lesson excerpts, including the row for Red Blood
+  Cells and every other blood product on the list; also shows the vaccine products this lesson
+  didn't quote, since the section covers all of Part 600's biologics, not just blood.
+
+- **[GovInfo: Code of Federal Regulations](https://www.govinfo.gov/app/collection/cfr)** — the
+  U.S. Government Publishing Office's official, legally authoritative annual CFR archive. Use
+  this for the official, dated, legally citable version of a specific year's text — for example,
+  to confirm exactly what 606.170 said on the date of a past reaction investigation.

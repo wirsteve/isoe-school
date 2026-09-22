@@ -26,7 +26,7 @@ Build in order. One module per session (lesson `index.qmd` + `resources.qmd`).
 | 1 | `donor-recruitment-and-screening` | Walk a donor from recruitment through registration, health history, and the eligibility decision, and name the record that proves that decision was made correctly | Published |
 | 2 | `collection-and-testing` | Follow a donation from venipuncture through the required infectious-disease and blood-typing panel, and explain why nothing leaves quarantine until every result is in | Published |
 | 3 | `component-processing-and-labeling` | Explain how one donation becomes several products with different shelf lives, and read an ISBT 128 label well enough to say what each part of it guarantees | Published |
-| 4 | `storage-distribution-and-hemovigilance` | Track a released unit through storage, shipping, and the hospital transfusion service to the patient, and say what has to happen, and be reported, when something goes wrong | Not started |
+| 4 | `storage-distribution-and-hemovigilance` | Track a released unit through storage, shipping, and the hospital transfusion service to the patient, and say what has to happen, and be reported, when something goes wrong | Published |
 | 5 | `becs-in-the-pipeline` | Point at every place BECS touches the pipeline, and say in two sentences to a CIO why it isn't governed like a normal enterprise application | Not started |
 
 Pages live at `courses/blood-center-operations/<slug>/index.qmd` and `.../resources.qmd`.
@@ -298,3 +298,75 @@ flag it in the progress log below.
   distribution and hemovigilance/adverse-event-reporting sources (likely Part 606 storage/
   distribution sections beyond 606.40, and Part 600 fatality/adverse-experience reporting per the
   sourcing notes above) fetched.
+- **2026-09-22** — Module 4, `storage-distribution-and-hemovigilance`, drafted (lesson `index.qmd`
+  + `resources.qmd`), not yet published (per this session's instructions — written for review,
+  not committed/pushed). Fetched three new sources via the eCFR Versioner API: `sources/cfr/
+  606.165.md` (Distribution and receipt; procedures and records — the paired shipper/receiver
+  record, (a)-(c), that marks the exact point a unit crosses from Lakeshore's system into a
+  hospital's), `sources/cfr/606.170.md` (Adverse reaction file — (a) the investigation-and-
+  forwarding requirement for any adverse reaction, including the "copies... forwarded to and
+  maintained by the manufacturer or collecting facility" clause when the product is found at
+  fault, and (b) fatal-complication reporting to CBER within 7 days, filed by the collecting
+  facility for a donor reaction or by the facility that performed compatibility testing for a
+  transfusion reaction — this is the fatality-reporting citation the task asked to verify, and it
+  checked out cleanly, real section, confirmed text, no invented numbering needed), and
+  `sources/cfr/600.15.md` (Temperatures during shipment — the product-by-product shipping
+  temperature table; saved with the full table verbatim, including the vaccine rows outside this
+  lesson's scope, per the fetch-source skill's verbatim-only rule, rather than trimming the
+  source file itself). All three appended to `sources/INDEX.md`. Reused already-saved
+  `sources/cfr/606.160.md` for one more clause (b)(3)(iii), storage temperature charts, already
+  established in the reading-a-cfr-citation foundation lesson — no new fetch needed. Did not
+  re-fetch or re-quote 606.171 (BPDR reportability); referenced the risk-and-controls-vocabulary
+  foundation lesson by name instead, per the module's explicit scope limit (deviations/CAPA/BPDR
+  mechanics belong to Track 2). Could not find or use a real AABB public hemovigilance page —
+  aabb.org's own pages returned 404 on every URL pattern tried (site appears to be JS-rendered,
+  no crawlable links found in raw HTML either) — resources.qmd uses four verified links instead
+  (three Cornell LII mirrors plus GovInfo), which is within TEACHING.md's 2-4 range; flagging this
+  in case a later session wants to try again with a working AABB URL.
+  LIS vs. HIS given their first proper, distinguishing treatment per the module-4 hand-off rule:
+  LIS defined as the hospital-side lab/blood-bank system running compatibility testing and
+  crossmatch; HIS defined as the hospital's broader clinical/EHR-adjacent system holding nursing
+  documentation and the transfusion record itself. Framed as a real governance question (what
+  data crosses the Lakeshore-to-hospital boundary via 606.165(b)/(c)'s paired records — the lot
+  number, but not Riverside's crossmatch results or HIS documentation) rather than a technical
+  aside. BECS given its fourth and final clause in this course's running definition: "it drives
+  inventory, shipping, and final disposition" — exact wording, one clause only, matching the
+  module-5 hand-off rule; the other three clauses (system of record for donor eligibility/
+  deferrals — module 1; gate for quarantine release — module 2; controls whether a final label
+  can print — module 3) are named in this module's own text for module 5 to reference directly
+  when it assembles the full BECS picture.
+  Scenario: a released, correctly labeled unit of leukoreduced Red Blood Cells ships from
+  Lakeshore to a fictional Riverside General Hospital with an in-range temperature chart the
+  whole trip (used to teach storage/shipping monitoring as a control that worked, not a
+  near-miss); Riverside crossmatches and transfuses it two days later; ten minutes in, the patient
+  has a non-fatal febrile-type reaction, which triggers Riverside's 606.170(a) investigation and
+  raises the question of what Lakeshore's obligations are versus Riverside's. Used to teach the
+  ITSM bridge exactly as scoped (temperature monitoring as condition monitoring with alarms and a
+  defined response; the reaction as the incident; hemovigilance reporting as the external
+  notification obligation; traceback as problem management on a regulatory clock) and to ground
+  two common traps: "once it ships, it's the hospital's problem" (busted by 606.170(a)'s
+  forwarding-to-Lakeshore clause) and confusing Riverside's transfusion service with an extension
+  of Lakeshore's own quality system (it isn't — separately regulated, inspected on its own cycle).
+  Check-understanding Q2 is deliberately a "this is NOT a regulatory requirement" question (a
+  non-fatal reaction does not trigger 606.170(b)'s FDA notification, only (a)'s internal
+  investigation/forwarding), per TEACHING.md's requirement that not every question resolve to
+  "yes, cite the rule."
+  Resources.qmd links (Cornell LII 606.165, Cornell LII 606.170, Cornell LII 600.15, GovInfo CFR
+  collection) all verified via curl to return HTTP 200 before listing. Nothing else flagged as
+  uncertain.
+  **For module 5, `becs-in-the-pipeline` (the last module of this course):** all four BECS
+  clauses are now on record, verbatim, ready to be assembled — (1) module 1: "the system of
+  record for donor eligibility and deferrals," (2) module 2: holds units in quarantine and
+  releases them (described narratively as "no product carrying this donation's identifier moves
+  past release... until BECS says the gate has opened," not tied to a single quoted clause
+  because module 2 deliberately treated quarantine status as a general system behavior rather
+  than naming BECS by name — worth double-checking this doesn't read as a gap when module 5
+  assembles the full picture), (3) module 3: "it controls whether a final label can print," (4)
+  module 4: "it drives inventory, shipping, and final disposition." Module 5 should also pick up
+  the LIS/HIS distinction from this module rather than re-deriving it, and can lean on this
+  module's framing of the hospital handoff as the moment BECS visibility ends and a
+  Lakeshore-external system takes over. Next: module 5, `becs-in-the-pipeline` — the real, full
+  introduction to BECS (why FDA treats it as a regulated medical device, not ordinary enterprise
+  software) and this course's hand-off to Track 3's validation/CSV coursework. Likely needs FDA
+  guidance on blood establishment computer software fetched and verified (guidance-tier, not
+  regulation — label it as such).
