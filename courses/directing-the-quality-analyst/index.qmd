@@ -1,0 +1,80 @@
+---
+title: "Directing the Quality Analyst"
+order: 27
+---
+
+## The finish line
+
+By the end of this course you can take a deviation write-up, a CAPA (corrective and
+preventive action), a validation package, or a vendor risk assessment your Quality Analyst
+(QA) wrote, and read it the way an FDA investigator or AABB assessor will: cold, a year from
+now, with her not in the room. You'll catch the gaps they'd catch before the document leaves
+your desk. You'll also know which events have to reach you directly, which ones go past you,
+and how fast.
+
+You already review a direct report's work every week: change tickets, postmortems, runbooks,
+a vendor's security questionnaire. None of that changes. What changes is who reads the
+document after you, and what they're allowed to do about a gap. This course is about the
+difference between "I'd approve this in IT" and "this would survive an inspector."
+
+## Before you start
+
+This course builds on everything published so far:
+
+- [Reading a CFR citation](../../foundations/reading-a-cfr-citation/index.qmd)
+- [Regulatory landscape orientation](../../foundations/regulatory-landscape-orientation/index.qmd)
+  — you'll check that your QA labels regulation, guidance, AABB Standard, and industry
+  practice correctly in everything she writes.
+- [Risk and controls vocabulary](../../foundations/risk-and-controls-vocabulary/index.qmd)
+  — likelihood, severity, detectability, and correction versus corrective action are the
+  words you'll use to push back.
+- [Blood Center Operations](../blood-center-operations/index.qmd), especially
+  [BECS in the pipeline](../blood-center-operations/becs-in-the-pipeline/index.qmd), whose
+  patch fight and validation impact assessment come back in module 4.
+- [Quality System Essentials](../quality-system-essentials/index.qmd), the whole course.
+  It taught what a good deviation, CAPA, change, and management-review packet look like.
+  This course teaches you to find what's missing from a real one.
+
+## The six modules
+
+Each module is one sitting, and each has its own finish line.
+
+1. **What your QA produces, and who owns it.** Name what your QA produces, who writes,
+   approves, and only needs to see each piece, and what your own signature means on it.
+   Learn one short test for reviewing any of it.
+2. **Reviewing deviation and CAPA write-ups.** Read a real (and flawed) write-up the way an
+   assessor would. Find the missing reasoning, the evidence that doesn't prove the claim,
+   the scope that stops too soon, and the effectiveness check that can't fail. Then send it
+   back so the second draft is better.
+3. **Escalation: what has to reach you, and how fast.** Sort any event into "call me now,"
+   "tell me today," or "your call, tell me at our one-on-one." Know which events go past
+   you, and which ones your QA must be able to take around you. Write escalation criteria
+   that beat the regulatory clocks instead of chasing them.
+4. **Reviewing a validation package: the decision trail.** Review a BECS (Blood
+   Establishment Computer Software) validation impact assessment or test summary for scope,
+   criteria set before testing, failures handled honestly, and sign-offs in the right order.
+5. **Reviewing a vendor risk assessment: the decision trail.** Check whether your QA's
+   evidence actually covers the service Lakeshore buys and the risk that triggered the
+   review, and whether someone with authority owns the risk decision.
+6. **Coaching your QA and reporting upward.** Turn repeated review findings into coaching
+   that changes how she works, and give her more decision rights as her judgment proves out.
+   Report quality, IT, and risk performance to your CIO with measures that don't reward
+   hiding problems.
+
+## How deep each module goes, and why
+
+Modules 1, 2, 3, and 6 go to full depth now. Everything they need is already built: the
+quality system machinery, the regulatory clocks, and the risk vocabulary.
+
+Modules 4 and 5 are deliberately narrower for now, and you should know that going in. The
+courses that teach validation methodology (`csv-and-becs`) and vendor and third-party risk
+(`vendor-and-third-party-risk-management`) aren't built yet. So these two modules teach
+the half of the review you can do today. That half is the **decision trail**: what was
+decided, on what evidence, against what criteria, by whom, and in what order. An assessor
+asks those questions first, and you can answer them without being a validation engineer or
+a SOC 2 (System and Organization Controls 2) reader. What these modules won't do yet is
+teach you whether the testing was technically enough or what a SOC 2 report's fine print
+means. Each one says plainly where that line is. Both will be deepened once those courses
+exist.
+
+Modules appear in the sidebar as they're built.
