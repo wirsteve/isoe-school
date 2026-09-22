@@ -262,7 +262,7 @@ has no `plans/<slug>.md` file until its first session.
 
 | Course | Modules built | Status |
 |---|---|---|
-| `reading-a-cfr-citation` | 0 / 1 (placeholder only) | Not started |
+| `reading-a-cfr-citation` | 1 / 1 | Done |
 | `regulatory-landscape-orientation` | 0 / — | Not started |
 | `risk-and-controls-vocabulary` | 0 / — | Not started |
 | `blood-center-operations` | 0 / 5 | Not started |
@@ -276,4 +276,4 @@ has no `plans/<slug>.md` file until its first session.
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `reading-a-cfr-citation` — replace the placeholder with the real first lesson.
+**Next up:** `regulatory-landscape-orientation` — the second foundation.

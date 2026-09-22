@@ -1,0 +1,29 @@
+---
+title: "Resources"
+order: 2
+---
+
+External links for this lesson. All verified to load.
+
+- **[eCFR homepage](https://www.ecfr.gov)** — the Electronic Code of Federal Regulations, the
+  free, continuously updated, unofficial-but-authoritative online version of the CFR. This is
+  where you look up any citation you're handed, and where the source text for this lesson came
+  from.
+
+- **[Understanding the eCFR](https://www.ecfr.gov/reader-aids/understanding-the-ecfr)** —
+  eCFR's own explainer on how the CFR is structured (titles, chapters, parts, sections) and how
+  the online edition relates to the official printed CFR published by the National Archives.
+  Read this once if the title/chapter/subchapter/part/section breakdown in this lesson's
+  decoder table needs reinforcing.
+
+- **[21 CFR 606.160, current text](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-F/part-606/subpart-D/section-606.160)**
+  — the live, continuously updated version of the exact section quoted in this lesson. Regulations
+  get amended; this link always shows the current text, unlike the dated snapshot saved in this
+  repo's `sources/` folder. Use this to check whether a section has changed since a lesson was
+  written.
+
+- **[GovInfo: Code of Federal Regulations](https://www.govinfo.gov/app/collection/cfr)** — the
+  U.S. Government Publishing Office's official, legally authoritative annual CFR archive (PDF
+  and XML, by year). eCFR is the practical day-to-day tool; GovInfo is where you go if you ever
+  need the official, dated, legally citable version of a specific year's CFR text — for
+  example, to confirm exactly what a regulation said on the date of a past inspection.

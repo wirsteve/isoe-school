@@ -2,4 +2,237 @@
 title: "Reading a CFR citation"
 order: 1
 ---
-*Placeholder. Claude Code replaces this with the first foundation lesson.*
+
+## The ticket
+
+A Quality Analyst at Lakeshore Blood Center forwards you a deviation report. A unit of red
+blood cells sat at the wrong storage temperature for four hours before someone caught it on a
+chart review. The write-up ends with one line: "Corrective action: retrain staff on 606.160."
+
+You supervise this person. Your CIO is going to ask you what happened. Before you can answer
+either of them, you need to know what "606.160" actually is, what it requires, and whether
+retraining is even the right fix — or whether it's a fig leaf over a records gap that's about
+to become a bigger problem.
+
+Right now you can't tell. That's the gap this lesson closes.
+
+## Why this rule exists
+
+Blood banking runs on paper and screens, not just refrigerators. A unit of blood is only as
+trustworthy as the trail behind it: who drew it, what it tested for, what temperature it lived
+at, who released it, who received it. If that trail has a hole, nobody — not Lakeshore, not
+FDA, not the hospital that transfused the unit — can answer the question that matters after
+something goes wrong: *was this unit safe, and how do we know?*
+
+FDA's answer is a records requirement with teeth: 21 CFR 606.160. It doesn't just say "keep
+good records." It enumerates categories of records a blood establishment must maintain —
+donor records, processing records, storage and distribution records, compatibility test
+records, quality control records — and sets rules for how long to keep them and what they have
+to contain.
+
+In ITSM terms, this is your **configuration management database (CMDB) and audit trail
+requirements, written into federal law, for a product that goes into a human body.** You
+already know why a CMDB with gaps is dangerous — you can't run change enablement, root cause
+analysis, or an incident postmortem against records that don't exist or don't match reality.
+Same failure mode here, except the "asset" is a unit of blood, the "incident" is a patient
+reaction, and the auditor isn't your compliance team — it's an FDA investigator with statutory
+authority to shut down manufacturing.
+
+## The rule, in plain English
+
+606.160 says a blood establishment has to keep specific records for specific things, in real
+time, and keep them long enough to be useful if something goes wrong later. Four ideas do most
+of the work:
+
+- **Record concurrently, not retroactively.** You document a step *as* it happens, not from
+  memory afterward.
+- **Cover the whole chain.** Donor screening, collection, processing, storage, distribution,
+  and compatibility testing each get their own record categories — not one generic log.
+- **Make records complete enough to reconstruct history.** Who did the work, when, what the
+  result was, and how it was interpreted — not just a checkbox that it happened.
+- **Keep them long enough to matter.** Retention is tied to the product's expiration date, not
+  a fixed calendar rule, because the question "was this unit safe" can surface months after the
+  unit is gone.
+
+At Lakeshore, that means the four-hour temperature excursion isn't just an unfortunate lapse —
+it's a gap in a *storage record* that 606.160(b)(3) specifically requires the center to
+maintain. The deviation report itself, once written and retained, becomes part of the record
+trail the rule demands. "Retrain staff" doesn't touch that. More on this in the traps section.
+
+## Citation decoder
+
+This is the first CFR citation in the curriculum, so before decoding 606.160 itself, here's how
+the whole numbering system is built — top to bottom, broadest to narrowest.
+
+| Level | Value here | What it means |
+|---|---|---|
+| Title | 21 | One of 50 subject-matter titles in the CFR. Title 21 is Food and Drugs — it covers FDA's entire regulatory turf, from food labeling to medical devices to blood. |
+| Chapter | I | A major subdivision of the title, assigned to one agency. Chapter I is FDA. |
+| Subchapter | F | A grouping of related parts within the chapter. Subchapter F is Biologics. |
+| Part | 606 | A specific regulatory program. Part 606 is Current Good Manufacturing Practice (CGMP) for Blood and Blood Components — the rules for *how* blood gets collected and processed, not just what's allowed. |
+| Subpart | D | A thematic grouping within the part. Subpart D is Records and Reports. |
+| Section | 606.160 | The actual rule. Section numbers restart within each part, so "606.160" only means something in combination with "Part 606" — that's why the full citation always includes the part number as the first three digits. |
+| Paragraph | (b)(1) | A specific clause inside the section. Paragraphs nest: (b) is a top-level paragraph, (1) is a numbered subparagraph inside it, and you'll see a third level like (b)(1)(viii) go one deeper still, using lowercase roman numerals. |
+
+Two things worth locking in now, because every later lesson assumes them:
+
+**"Part" and "section" are not interchangeable**, even though people say both loosely.
+"Part 606" is the whole CGMP program — dozens of sections. "Section 606.160" is one rule inside
+it. When someone says "we're out of compliance with Part 606," ask which section — that's the
+difference between a program-level statement and an actionable finding.
+
+**Reading a full citation aloud:** "606.160(b)(1)" is read as "six-oh-six point one-six-oh,
+paragraph b, subparagraph one" — or more naturally in conversation, "section 606.160,
+paragraph (b)(1)." You don't need to recite "Title 21, Chapter I, Subchapter F" out loud in
+normal use; those are for locating the rule in the code, not for talking about it day to day.
+Inspectors and Quality Analysts alike just say "606.160(b)(1)."
+
+Here's the decoder applied to two specific clauses this lesson uses:
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.160(b)(3) | "Six-oh-six point one-six-oh, paragraph b, sub-three" | Storage and distribution records, including storage temperature with initialed temperature recorder charts | The four-hour excursion has to show up in the unit's storage record, temperature-charted and initialed — not just described in a deviation narrative |
+| 21 CFR 606.160(d) | "Six-oh-six point one-six-oh, paragraph d" | Retention: individual product records kept at least 10 years after processing, or 6 months past the latest expiration date, whichever is later | Whatever record gets generated from this deviation has a retention clock attached to it, not a "keep it a while" expectation |
+
+## The actual text
+
+Quoting 606.160(b)(3) verbatim, from the storage and distribution records list (source:
+`sources/cfr/606.160.md`, retrieved from eCFR):
+
+> (3) Storage and distribution records:
+>
+> (i) Distribution and disposition, as appropriate, of blood and blood products.
+>
+> (ii) Visual inspection of whole blood and red blood cells during storage and immediately
+> before distribution.
+>
+> (iii) Storage temperature, including initialed temperature recorder charts.
+>
+> (iv) Reissue, including records of proper temperature maintenance.
+>
+> (v) Emergency release of blood, including signature of requesting physician obtained before
+> or after release.
+
+Clause (iii) is the one that bites Lakeshore directly: "storage temperature, including
+initialed temperature recorder charts" is not optional documentation — it's a named record
+category. If the four-hour excursion isn't reflected in an initialed chart, the *record itself*
+is deficient, independent of whatever caused the temperature problem in the first place.
+
+And the retention clause, 606.160(d), in the regulation's own words:
+
+> Records shall be retained for such interval beyond the expiration date for the blood or blood
+> component as necessary to facilitate the reporting of any unfavorable clinical reactions. You
+> must retain individual product records no less than 10 years after the records of processing
+> are completed or 6 months after the latest expiration date for the individual product,
+> whichever is the later date.
+
+Note the word choice: "shall" and "must" both appear here. Both are regulatory language in this
+section — FDA uses "must" in some CFR provisions (typically ones written or revised more
+recently, in plain-language style) and "shall" in others, but within Part 606 both carry
+binding force. That's different from FDA *guidance* documents, which use "should" — a signal
+this lesson's traps section comes back to.
+
+## What an inspector would actually look for
+
+An FDA investigator doesn't ask "do you have a records policy." They ask for the record. For
+this scenario, that means: pull the storage temperature chart for the affected unit, show it
+initialed, show the time span, and show what happened when the temperature went out of range.
+
+The document that proves compliance here is the **temperature recorder chart plus the
+deviation record**, not the training log. Ownership sits with whoever runs blood storage
+operations — a lab or quality operations lead, with the Quality Analyst responsible for the
+deviation file and its CAPA (corrective and preventive action — the quality-system term for
+"fix the immediate problem, then fix the process that let it happen," CAPA gets its own lesson
+later in the curriculum).
+
+A bad answer sounds like: "we retrained staff, so it won't happen again." That answers
+*why* the excursion happened, maybe. It says nothing about whether the record itself now meets
+606.160(b)(3) — was the chart initialed, is the deviation traceable to the specific unit, is
+retention now attached per 606.160(d). An inspector who hears "we retrained staff" as the whole
+answer will ask to see the chart next. If it's missing or incomplete, the finding isn't "staff
+made an error" — it's "the records system has a gap," which is a much worse finding because it
+implies every other unit's chart might have the same problem.
+
+## Common traps
+
+**"Part 606 is 'the blood regulation,' so any blood rule is 606.something."** Not true. Donor
+eligibility and testing requirements live largely in Part 630 and Part 610 — you'll see
+610.40 and 630.40 cited inside 606.160 itself, cross-referencing those parts. Part 606 is
+specifically about *manufacturing practice* — the CGMP program. A citation to "606" doesn't
+tell you the topic; you need the section.
+
+**"If it's on FDA's website and sounds authoritative, it's a regulation."** FDA publishes
+guidance documents constantly — recommendations on how to comply, written in "should" language,
+that are not themselves binding law. CFR text is regulation: enacted through formal rulemaking,
+binding, cited with a Title-Part-Section-Paragraph reference like the one in this lesson, using
+"shall" or "must." Guidance documents explain FDA's current thinking on how to meet a
+regulation, are cited by document title and date, and use "should." A third category — AABB
+Standards — is a private accreditation body's requirements, binding only if Lakeshore holds
+AABB accreditation, and cited by standard number, never quoted verbatim here since AABB
+Standards text is copyrighted. Confusing these three is one of the fastest ways to lose
+credibility with an inspector or in a written response to a 483 (FDA's form for documenting
+inspectional observations) — citing a guidance document as if it were a regulatory requirement,
+or vice versa, reads as not understanding the difference. The next foundation lesson,
+`regulatory-landscape-orientation`, is built entirely around telling these apart.
+
+## What this means for your job
+
+- **Don't accept "we fixed the process" as a closed deviation until you've seen the record it
+  produced.** The corrective action and the record are two different deliverables — a training
+  session doesn't repair a missing chart entry.
+- **When a Quality Analyst cites a section number to you, ask them to say the paragraph too.**
+  "606.160" alone is a pointer to a page with a dozen sub-requirements. "606.160(b)(3)" tells
+  you exactly what's at issue. If they can't give you the paragraph, they may not have actually
+  looked at the text.
+- **Retention isn't a records-management afterthought — it's a regulatory clock.** Any system
+  or vendor decision that touches blood product records (a new BECS platform, a document
+  archive migration, a retention policy change) has to respect 606.160(d)'s 10-year-or-6-months
+  math, not your organization's generic IT retention schedule.
+- **Distinguish "shall/must" from "should" the moment someone cites something to you.** If a
+  recommendation comes to you as a hard requirement, ask what it's actually citing — a CFR
+  section, a guidance document, or an AABB standard. The escalation path and the risk exposure
+  are different for each.
+- **A records gap is a worse finding than a records error.** An investigator who finds one bad
+  temperature chart has a data point. One who finds that your process doesn't reliably produce
+  a chart at all has a systemic finding — and systemic findings are what turn into consent
+  decrees, not just 483 observations.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: A colleague says "we're covered under Part 606 for our temperature logging." Is that specific enough to know your obligation?
+
+No. Part 606 covers all of blood CGMP — donor deferral cross-references, general provisions,
+records, reports, and more. Temperature logging specifically falls under 606.160(b)(3),
+inside the Records subpart. "Part 606" tells you the general topic area; only the section (and
+usually the paragraph) tells you the actual requirement. Always ask for the section number.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: The Quality Analyst says "FDA guidance requires 10-year record retention for blood products." Is that accurate?
+
+Not as stated. The 10-year-or-6-months-past-expiration retention rule comes from 21 CFR
+606.160(d) — that's a *regulation*, not guidance. The word "guidance" here is being used
+loosely to mean "FDA rule," which is exactly the kind of imprecision that causes problems in an
+inspection response. Correcting this distinction, and knowing when something really is
+guidance rather than regulation, is worth catching every time — it's the subject of the next
+foundation lesson.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A unit's temperature chart is missing an initial next to one entry, but the temperature value itself was correct and in range. Does 606.160(b)(3) still apply?
+
+Yes. 606.160(b)(3)(iii) requires "storage temperature, including initialed temperature
+recorder charts" — the initial is part of the record requirement, not decoration. A correct
+temperature value on an unsigned chart doesn't satisfy the rule; the record has to show who
+attested to it. This is a smaller finding than a missing chart entirely, but it's still a
+finding, and it's the kind of gap a records audit is built to catch.
+:::
+
+## Where this goes next
+
+You can now take apart any CFR citation you'll see in this curriculum and know what each piece
+means. The next foundation, `regulatory-landscape-orientation`, builds directly on the traps
+section above: given any rule — a CFR section, an FDA guidance document, an AABB standard, or
+just "how we've always done it" — you'll be able to say which category it's in and which one
+actually binds Lakeshore.
