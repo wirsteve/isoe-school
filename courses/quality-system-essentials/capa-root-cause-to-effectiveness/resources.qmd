@@ -1,0 +1,29 @@
+---
+title: "Resources: CAPA — root cause to effectiveness check"
+order: 18
+---
+
+Each link below was checked this session and loads.
+
+- **[21 CFR 606.100 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)**
+  — the SOP and investigation regulation. Paragraph (c)'s "conclusions and followup" sentence is
+  this module's regulatory floor under root cause analysis. Local verbatim copy:
+  `sources/cfr/606.100.md`.
+
+- **[21 CFR 606.171 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.171)**
+  — the biological product deviation reporting rule. Paragraph (f)'s "should be investigated"
+  language, quoted in this lesson, is a rare example of guidance-tier wording inside an otherwise
+  "must"-heavy regulation. Local copy: `sources/cfr/606.171.md`.
+
+- **[GovInfo: Code of Federal Regulations collection](https://www.govinfo.gov/app/collection/cfr)**
+  — the U.S. Government Publishing Office's official CFR collection. Use it as a fallback primary
+  source if eCFR or Cornell is ever unreachable, or to pull an official PDF of a full CFR part for
+  the record.
+
+A note on this module's fourth possible link: ASQ (American Society for Quality) publishes public
+pages on root cause analysis and the 5 Whys technique, and would otherwise be a good industry-
+practice reference for this lesson. Its site returned an HTTP 403 to this session's automated
+requests (a bot-blocking response, not a broken page — a human browser likely reaches it fine), so
+it isn't listed here. If you want a plain-language walkthrough of 5 Whys or fishbone diagrams
+beyond what this lesson covers, search "ASQ five whys" or "ASQ root cause analysis" directly in
+your own browser.

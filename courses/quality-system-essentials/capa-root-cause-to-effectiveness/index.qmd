@@ -1,0 +1,327 @@
+---
+title: "CAPA: root cause to effectiveness check"
+order: 17
+---
+
+## The ticket
+
+Wednesday. The Owen Pruitt deviation record is closed — discovery, containment, extent-of-condition,
+disposition, and a documented "yes, reportable" call are all filed, exactly where `deviations-and-
+nonconformances` left them. Your Quality Analyst drops a new document on your desk: the CAPA
+(corrective and preventive action) investigation the deviation record's CAPA decision opened.
+
+It's short. One paragraph:
+
+> **Root cause:** Brookfield staff did not verify that the deferred-donor list in the downtime
+> binder was current before using it during Friday night's downtime event.
+> **Corrective action:** Retrain Brookfield collection staff on the downtime procedure.
+
+She's ready to route it for sign-off. You've seen this exact shape of write-up before — on the IT
+side, it's the ticket that closes "root cause: user error, action: additional training," and you
+already know how that one ages. Ask the question an assessor would ask next: if you retrain
+Brookfield's staff today, and the exact same Friday night happens again — same maintenance window,
+same binder, same stale list — does anything go differently? On the facts as written, no. That's
+the tell. This write-up hasn't found the root cause yet; it's found a place to stop looking.
+
+"Push it one more level," you tell her. "What you've written is where the failure surfaced. I want
+to know why it was there to surface."
+
+## Why this matters — and the ITIL bridge
+
+This module lives in **QSE 9** of AABB's Quality System Essentials framework — **Process
+Improvement** (an older AABB template titled it "Process Improvement Through Corrective and
+Preventive Action," which is exactly the ground this module covers). CAPA stands for **corrective
+and preventive action**: the process that turns "we know what happened" into "we've proven it can't
+happen the same way again."
+
+The failure mode this QSE exists to prevent is the one your draft write-up just walked into: an
+organization that documents a *cause* without ever finding the *root* cause, closes the file, and
+discovers eighteen months later that the exact same failure mode produced a second event — at a
+different site, with a different donor, and a CAPA file that shows the org already "fixed" this
+once. An assessor reading two CAPAs for the same underlying gap, a year apart, doesn't read that as
+bad luck. They read it as a quality system that investigates events without ever touching the
+system that produces them.
+
+You already run half of this discipline under a different name. CAPA is **problem management** —
+root cause analysis, the permanent-fix half of the incident/problem split you use every week. Module
+2 was the other half: **incident management**, restore service, contain the immediate problem,
+decide what happens to this specific unit. Problem management exists because incident management,
+run well, still leaves the underlying cause untouched — service is restored, but the same root
+cause produces the same incident again unless something separately fixes it. CAPA is that separate
+motion, applied to a regulated process instead of a service.
+
+Here's the piece ITIL practitioners routinely skip that this QSE makes mandatory: **proving the fix
+worked.** A problem record in most shops closes when the permanent fix ships. CAPA doesn't get to
+do that — it stays open until someone checks, later, with real data, whether the failure mode
+actually stopped. That's the **effectiveness check**, and it's this module's headline skill.
+
+One more bridge, worth naming because you'll hear the phrase constantly once you start reading
+deviation and CAPA files: **"root cause: human error" is the quality world's "closed: user error"**
+ticket resolution code. You already treat that resolution with suspicion in your own incident
+reviews — not because people never make mistakes, but because "user error" so often means "we
+stopped looking at the point where a human touched it, instead of asking why the system let that
+touch cause harm." A CAPA log that leans on "human error" gets read by an inspector with exactly
+that same suspicion, for exactly the same reason.
+
+## The CAPA process in plain English
+
+CAPA has four moving parts, in order: **root cause analysis**, then a **corrective action**, then a
+**preventive action**, then an **effectiveness check**. Skip the order and the whole thing falls
+apart — you can't pick a real corrective action until you know the real cause, and you can't check
+effectiveness against a criterion you never wrote down.
+
+**Root cause analysis.** The goal is to keep asking "why" past the first answer, until you land on
+something that's actually *systemic* — a gap in a process, a control, or a system design — rather
+than a description of a person's behavior in the moment. AABB's framework treats this as central to
+Process Improvement; a common, well-known technique for doing it is the **5 Whys**: state the
+problem, ask why it happened, take that answer and ask why *it* happened, and keep going — typically
+five rounds, sometimes fewer, sometimes more — until further "why" questions stop producing new
+system-level answers. (A **fishbone diagram**, also called an Ishikawa diagram, is the other
+common tool — it sorts candidate causes into categories like people, process, equipment, and
+materials, useful when a failure has several plausible contributing branches instead of one linear
+chain. This event has one clean chain, so 5 Whys is the better fit; you'll want the fishbone
+approach for messier events later.)
+
+Run it on Brookfield:
+
+1. **Why did Owen's donation get accepted at Brookfield despite an active deferral?** Because the
+   printed deferred-donor list in Brookfield's downtime binder was four days stale — dated the
+   previous Monday — and didn't include Owen's deferral, entered the following Tuesday.
+2. **Why was the list four days stale?** Because the version of the downtime procedure in
+   Brookfield's binder didn't require pulling and printing a fresh deferred-donor list immediately
+   before a downtime event — it only called for a periodic refresh on a set calendar.
+3. **Why was that outdated refresh requirement still what Brookfield was following?** Because
+   Brookfield's binder held a **superseded revision** of the downtime SOP — an earlier version that
+   predates whatever later revision, if any, tightened the refresh requirement.
+4. **Why did a superseded revision survive in active use at a live collection site?** Because
+   nothing in Lakeshore's document-control process confirms, and tracks, that every satellite
+   site's physical binder copy was actually swapped for the current revision when the SOP was last
+   updated. Distribution to remote sites runs on an honor system — someone is supposed to replace
+   the page — not on a verified, acknowledged handoff.
+5. **Why does document control have no verified distribution step for satellite-site procedure
+   copies?** Because the document-control system has no mechanism — no review-date trigger, no
+   required acknowledgment, no periodic reconciliation — tied specifically to *controlled paper
+   copies used during downtime events at remote sites*, where there's no BECS connection to catch a
+   stale version the way there might be at a networked site. **This is the root cause**: a
+   document-control gap, not a Brookfield staffing or training gap. Staff followed the binder in
+   front of them correctly, every step.
+
+Compare that to your QA's first draft, which stopped after step 1. "Staff didn't check the list was
+current" isn't wrong — it's just the *symptom*, restated as if it were the explanation. Push past it
+and the actual finding is uncomfortable in a more useful way: this isn't a Brookfield problem. It's
+a Lakeshore document-control problem that happens to have surfaced first at Brookfield.
+
+**Corrective action** fixes the instance in front of you — the specific failure mode, at the
+specific site where it was found. For Brookfield: replace the binder's downtime SOP with the current
+revision immediately, and get the site lead's signed, dated acknowledgment that it's been swapped —
+not "the binder was mailed," but confirmation it's physically in place and the old page is gone.
+That's necessary. It's also not sufficient, because it does nothing about every other site that
+might be running the identical superseded revision right now.
+
+**Preventive action** is where the root cause actually gets addressed, because the root cause was
+never "Brookfield's binder" — it was "no verified distribution process for satellite-site downtime
+procedures." Two preventive actions follow directly from the root cause, and both trace straight
+back to the extent-of-condition question module 2 raised and deliberately left open:
+
+- **Extent-of-condition check, now:** audit every other Lakeshore satellite site's downtime binder
+  for the same exposure — is the current SOP revision physically present, and is the deferred-donor
+  list refresh cadence what the current procedure requires? Fix, on the spot, any site found holding
+  a superseded copy.
+- **The system fix:** a change to how Lakeshore's document-control process handles controlled paper
+  copies at remote sites — for example, a document-control system enhancement that ties satellite
+  binders to a tracked distribution list with required acknowledgment of receipt, or an automated
+  review-date trigger that flags any site whose binder hasn't been confirmed current since the last
+  SOP revision. That's a real change to a controlled process (and possibly a system), which means it
+  doesn't get implemented informally — it becomes a change request and goes through formal change
+  control, the subject of the next module. CAPA's job stops at *deciding* this fix is needed and
+  handing it off with a clear description of what has to change and why; walking it through
+  approval, implementation, and verification is `change-control-for-regulated-systems`'s job, not
+  this one.
+
+**Effectiveness check** is the part almost everyone shortcuts, and it's this course's headline
+skill for a reason. An effectiveness check has four required pieces: a **measurable criterion**, a
+**time window**, a **data source**, and a **pre-agreed definition of failure** — written down before
+you check, not decided afterward depending on what you find. "Confirmed the binder was replaced" is
+not an effectiveness check. It confirms *implementation* — that the action happened — which is a
+different, easier question than whether the action *worked*.
+
+A real effectiveness check for this CAPA: **at Lakeshore's next scheduled document-control audit of
+all collection sites, roughly six months after the corrective and preventive actions are
+implemented, zero sites are found holding a superseded revision of any downtime procedure or a
+deferred-donor list older than the current SOP's required refresh point.** The data source is the
+audit's site-by-site findings, owned by Quality. The pre-agreed failure definition is explicit: even
+one out-of-compliance site at that audit means the CAPA is **not** effective — reopened or extended,
+not quietly closed with a note about "one outlier."
+
+Notice what makes that check genuinely capable of failing. It doesn't ask "was the fix rolled out" —
+you already know that from the corrective/preventive action records. It asks a question about the
+world *after* the fix that could come back either way, checked by someone independent of the people
+who implemented it, on a schedule set in advance.
+
+CAPA closure follows from that check, and it has three possible outcomes, not one: **close** it if
+the effectiveness check passes clean; **extend** it — same actions, more time or a wider check — if
+the data is inconclusive or the interval was too short to tell yet; or **reopen** it as a new,
+escalated CAPA if the check fails outright, because a failed effectiveness check means the root
+cause wasn't the real one, or the action didn't actually address it. An inspector who finds a CAPA
+"closed" the same week its corrective action was implemented, with no effectiveness data anywhere in
+the file, has found a CAPA that was never actually verified — only completed. And a backlog of CAPAs
+sitting open past their effectiveness-check date, untouched, is its own finding: it tells an assessor
+the organization opens CAPAs it doesn't have the discipline to close correctly.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.100(c), last sentence | "Six-oh-six point one-hundred, paragraph c" | A thorough investigation — including conclusions and followup — of any unexplained discrepancy or failure to meet specifications, made and recorded. Already quoted in full in `risk-and-controls-vocabulary`. | The regulatory floor under root cause analysis itself: a discrepancy write-up that stops at "staff didn't check the list" hasn't produced the "conclusions" this clause demands. |
+| 21 CFR 606.171(f) | "Six-oh-six point one-seven-one, paragraph f" | States that biological product deviations, *whether or not reportable*, "should be investigated" per Parts 211, 606, and 820 — deliberately guidance-tier language ("should"), inside a regulation otherwise full of "must." | Worth reading closely for the word choice alone: even FDA's own reporting rule signals that investigation *depth* — root cause, CAPA structure — is expected practice, not a codified "shall." |
+
+That's a short table on purpose. This module's investigation-depth requirement is the same
+606.100(c) clause module 2 already introduced, applied differently — to *why*, not *what*. There's
+no new citation carrying CAPA's structure, because Part 606 doesn't name one.
+
+## The actual text
+
+606.100(c)'s last sentence, already quoted in full earlier in this course, worth isolating here
+because it's doing different work than it did in module 2. Quoted verbatim from
+`sources/cfr/606.100.md`:
+
+> A thorough investigation, including the conclusions and followup, of any unexplained discrepancy
+> or the failure of a lot or unit to meet any of its specifications shall be made and recorded.
+
+Module 2 read this as the requirement to investigate *at all*. Read it again for root cause: the
+word is **conclusions**, plural, with **followup** named separately. A one-line cause statement
+("staff didn't check the list") isn't a conclusion in the sense this clause means — it's an
+observation. The conclusion is the systemic finding (the document-control gap); the followup is the
+corrective and preventive actions and the effectiveness check that proves they worked.
+
+606.171(f), quoted verbatim from `sources/cfr/606.171.md`, worth reading for its word choice as much
+as its content:
+
+> This part supplements and does not supersede other provisions of the regulations in this chapter.
+> All biological product deviations, whether or not they are required to be reported under this
+> section, should be investigated in accordance with the applicable provisions of parts 211, 606,
+> and 820 of this chapter.
+
+**Should**, not **shall** — inside a regulation that uses "must" eleven times in the same section.
+That's not sloppy drafting; it's the regulatory text itself marking investigation depth as expected
+practice rather than a codified mandate. This is worth stating plainly, because it's a genuine
+regulation-versus-standard distinction, not a technicality: **21 CFR Part 606 never uses the words
+"corrective," "preventive," or "root cause."** CAPA — as a named, structured process with those four
+specific stages — comes from AABB Standards' Process Improvement QSE, not from Part 606's text. The
+regulatory hook underneath the whole CAPA structure is 606.100(c)'s "conclusions and followup" and
+606.171(f)'s "should be investigated." Everything else — 5 Whys, corrective versus preventive,
+effectiveness checks with a defined failure criterion — is AABB Standard and accepted industry
+practice sitting on top of that floor, not FDA regulatory text spelling out a methodology. Keep the
+tiers labeled when you talk to your CIO about this: the law says "investigate thoroughly and record
+your conclusions"; AABB's Standards say "here's the structured process that satisfies that."
+
+## What an inspector or assessor would actually look for
+
+A CAPA file that would survive a real assessor's read has four things, and any one missing is a
+finding — again, independent of whether the underlying event caused harm.
+
+**Documented root cause analysis, not a one-line cause statement.** The assessor wants the actual
+reasoning — the 5-Whys chain or its equivalent — not just the final answer. "Root cause: document-
+control gap," with no visible path to that conclusion, reads the same as no analysis at all: you
+can't tell whether it's real or guessed.
+
+**Actions that map to the stated root cause, both types present.** If the root cause is systemic (a
+gap that could exist elsewhere) and the action file shows only a Brookfield-specific fix, that gap
+between diagnosis and response is visible on its own — the preventive half is simply missing.
+
+**An effectiveness check that was actually performed, with a real pass/fail record** — not a CAPA
+closed the same week the action was implemented, with "verified complete" standing in for "verified
+effective." The assessor wants the check's date, the data pulled, and the explicit call: pass or
+fail against the pre-agreed criterion.
+
+**A CAPA log with aging visible.** An open CAPA past its effectiveness-check date, with no update,
+is itself a finding — it says the organization doesn't track its own commitments, which undercuts
+every other CAPA in the file, closed or not.
+
+## Common traps
+
+**"Root cause: human error. Corrective action: retrain staff."** This is the dead end your QA's
+first draft walked into, and it's the single most common gap in real CAPA files. It fails a simple
+test: if the same circumstances recurred exactly, with the retrained staff back on shift, would
+anything go differently? For Brookfield, no — the binder would still hold the wrong revision, and
+retrained staff would still follow it correctly, straight into the same gap. "Human error" is a
+description of where the failure surfaced, not an explanation of why the system let it surface
+there.
+
+**Corrective action without preventive action.** Fixing Brookfield's binder and calling the CAPA
+done addresses one instance of a failure mode that, by the root cause itself, is plausibly sitting
+at every other satellite site. A CAPA that stops at the corrective step has fixed the symptom
+someone happened to find, not the system that produced it — and the next site to surface the same
+gap makes the first CAPA look, in hindsight, like it never understood its own cause.
+
+**An effectiveness check that can't fail.** "Confirmed the new binder was distributed to all sites"
+is implementation evidence, not an effectiveness check — of course the binders were distributed, or
+the corrective action wasn't done. A check that can't fail isn't measuring anything. "Confirmed the
+current procedure is actually in place and being followed correctly at all sites, verified at the
+next scheduled audit" can fail, which is exactly what makes it worth checking.
+
+## What this means for your job
+
+- **Read past the first "why" on every CAPA your QA brings you.** If retraining, reminding, or
+  re-emphasizing a procedure is the entire corrective action, ask what changed about the process
+  itself — not the person.
+- **Ask explicitly whether a CAPA's preventive action was scoped to "everywhere this root cause
+  could exist," not just "where it was found."** A single-site fix for a systemic cause is a red
+  flag on its own, independent of how good that single-site fix is.
+- **Never sign off on a CAPA's effectiveness check before asking what data it's based on and
+  whether it was written down before the check ran.** An effectiveness criterion decided after
+  looking at the results isn't a check — it's a rationalization.
+- **Track CAPA aging as its own metric, not a footnote.** An open CAPA sitting past its
+  effectiveness-check date is a finding you should surface before an assessor does.
+- **When a fix requires changing a controlled process or a system, expect it to leave CAPA and enter
+  change control.** A CAPA that tries to implement its own fix informally, without a change record,
+  is a gap you should catch before it becomes someone else's finding.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA proposes closing this CAPA with "corrective action: retrain Brookfield staff on checking the deferred-donor list before every donor." Is retraining a legitimate corrective action here?
+
+No. Retraining addresses a person's behavior, and the root cause analysis showed the people
+involved didn't do anything wrong — they followed the binder in front of them correctly. The actual
+root cause is a document-control gap: no verified process ensures satellite-site procedure binders
+hold the current revision. Retraining Brookfield's staff changes nothing about whether the next SOP
+revision reaches every site's binder reliably. A corrective action has to change the process that
+produced the failure, not add instructions for the people who were already following the process as
+given to them.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: True or false: 21 CFR Part 606 requires Lakeshore to run a formal CAPA process with documented root cause analysis.
+
+False, as worded. Part 606's text never uses the words "corrective," "preventive," or "root cause" —
+the regulatory hook is 606.100(c)'s requirement for a "thorough investigation... including
+conclusions and followup," plus 606.171(f)'s "should be investigated" language, both of which set an
+expectation without specifying a methodology. The structured CAPA process — root cause analysis,
+corrective and preventive action, an effectiveness check — comes from AABB Standards' Process
+Improvement QSE (binding on Lakeshore through accreditation) and from accepted quality-system
+practice, not from Part 606's own words. Don't tell your CIO "the FDA requires a CAPA process" —
+tell them FDA requires a documented, conclusive investigation, and AABB's Standards are what turn
+that into the specific four-stage process this lesson just walked through.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Your QA wants to close this CAPA as soon as Brookfield's binder is replaced and the other sites' audit comes back clean. Reasonable?
+
+No — that closes on implementation, not effectiveness. Confirming the actions happened is necessary
+but answers a different question than whether they worked. This CAPA's effectiveness check is a
+scheduled, independent re-check — at the next document-control audit, roughly six months out — that
+looks for the same failure mode across every site, with a pre-agreed rule that even one site found
+non-compliant means the CAPA isn't effective yet. Closing the day the actions are implemented skips
+the one step that actually distinguishes a CAPA from a to-do list: proving, later, with real data,
+that the fix held.
+:::
+
+## Where this goes next
+
+Two of this CAPA's actions are still just decisions on paper: Brookfield's binder swap and the
+other-sites audit can happen right away, but the real system fix — a document-control process or
+system change that ties satellite-site procedure copies to a tracked, acknowledged distribution —
+can't just be switched on. It has to go through **`change-control-for-regulated-systems`**, the next
+module, which picks up exactly where this one stops: turning a CAPA's "here's what needs to change"
+into a formally requested, assessed, approved, and verified change.
