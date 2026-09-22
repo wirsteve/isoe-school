@@ -1,0 +1,30 @@
+---
+title: "Resources"
+order: 2
+---
+
+External links for this lesson. All checked to load from this environment as of the date this
+page was written. (As with the previous foundation lesson: eCFR's own rendered pages block
+automated/proxied traffic here even though a human browser reaches them fine, so the CFR link
+below is a verified-loading mirror of the same official text rather than the eCFR page itself.
+The regulation text quoted in this lesson comes straight from eCFR's public API regardless.)
+
+- **[Cornell LII: 21 CFR 606.171, current text](https://www.law.cornell.edu/cfr/text/21/606.171)**
+  — Cornell Law School's Legal Information Institute mirrors the current CFR, including the
+  biological product deviation reporting section (BPDR) quoted in this lesson. Use this to check
+  whether the reporting trigger or the 45-day deadline has changed since this lesson was written;
+  the dated snapshot in this repo's `sources/` folder won't update automatically.
+
+- **[ICH Q9(R1): Quality Risk Management](https://database.ich.org/sites/default/files/ICH_Q9(R1)_Guideline_Step4_2023_0126.pdf)**
+  — the actual current guideline this lesson's risk-ranking vocabulary is built on, published by
+  the International Council for Harmonisation. Read the risk assessment section (Section 5,
+  "Risk Assessment") if you want the source-level definitions of hazard, harm, and risk behind
+  likelihood/severity/detectability — this is guidance-tier methodology, not an FDA regulation,
+  which is exactly the distinction this lesson's Q1 checks for.
+
+- **[NIST CSRC Glossary: residual risk](https://csrc.nist.gov/glossary/term/residual_risk)**
+  — NIST's Computer Security Resource Center glossary entry for residual risk, useful as a
+  plain, non-GxP-specific definition to cross-check the inherent-vs-residual distinction in this
+  lesson against the same vocabulary as it's used in security/GRC contexts. Track 4 of this
+  curriculum (`grc-frameworks-and-risk-management`) will lean on this same NIST vocabulary
+  directly.

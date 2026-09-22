@@ -1,0 +1,292 @@
+---
+title: "Risk and controls vocabulary"
+order: 3
+---
+
+## The ticket
+
+Wednesday afternoon at Lakeshore Blood Center, two deviations land on your Quality Analyst's
+desk within four hours of each other.
+
+**Deviation A:** a donor's required callback — a follow-up question on a travel-history item
+from the eligibility interview — went out a day late. The unit stayed quarantined the entire
+time; nothing shipped; the donor answered the question fine once reached. No product was ever
+at risk.
+
+**Deviation B:** a platelet unit had its label swapped with a physically adjacent unit during
+component processing — correct blood type, wrong donor ID printed on the bag. It was caught at
+the final pre-release barcode scan, seconds before it would have loaded onto the hospital
+courier van. It did not leave the building.
+
+Your Quality Analyst ranks the label mix-up "high" and the late callback "low," and wants to
+open a CAPA (corrective and preventive action) for the label issue only, closing the callback
+deviation with a note. Before it goes into this month's quality council packet, she asks you to
+concur.
+
+You don't have a gut check for this yet. Both events ended with zero patient impact. Both were
+"caught." So what actually makes one deviation more dangerous than the other, and why does
+"caught in time" not automatically mean "handled"? That's the vocabulary this lesson gives you.
+
+## Why this vocabulary exists
+
+You already do this triage every week, just with different words. When an incident comes in,
+you don't treat every P1 the same as every P3 — you weigh how likely it is to recur against how
+bad it would be if it did, and that weighing decides whether it goes to the CAB (change advisory
+board) as an emergency or waits for next week's batch. Problem management runs the same motion
+in reverse: find the root cause, then ask what would actually stop it from happening again versus
+what would just help you notice faster next time.
+
+The blood industry runs the identical logic, formalized under a name you'll now start seeing
+constantly: **the ICH Q9 Quality Risk Management approach.** ICH stands for the International
+Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use — a body
+that writes harmonized guidelines adopted across pharma and biologics regulators worldwide,
+including FDA. ICH Q9 is a *guideline*, not an FDA regulation and not an AABB Standard — a fourth
+flavor of "you have to," issued by an international harmonization body rather than FDA. Its core
+idea is the same one behind an engineering FMEA (Failure Mode and Effects Analysis) risk priority
+number, just applied to quality decisions instead of hardware failure modes: **rank risk by how
+likely it is, how bad it would be, and how easily you'd catch it before it does damage.**
+
+Here's the direct translation into vocabulary you already own:
+
+- **Risk ranking (likelihood × severity × detectability)** is the same motion as scoring an
+  incident or change by probability and business impact before deciding how it gets handled.
+- **Preventive / detective / corrective controls** map onto problem management's "eliminate the
+  root cause versus just alarm on it faster" distinction, and onto change management's choice
+  between blocking a risky change outright versus having a fast, tested rollback ready.
+- **Inherent vs. residual risk** is the same question you ask about any control you're about to
+  invest in: how much risk is actually left over *after* you deploy it, not how much risk existed
+  before you started, and not how much risk you'd like to believe is gone because a control
+  exists on paper.
+
+The value-add here isn't the concept of risk itself — you already run risk-based decisions daily.
+It's this specific vocabulary, because every deviation form, CAPA template, and validation
+protocol you'll review at Lakeshore assumes you already speak it fluently, the same way an ITIL
+practitioner assumes everyone in the room already knows what "impact and urgency" mean.
+
+## The vocabulary, in plain English
+
+**Likelihood** — how probable is it that this failure mode happens (again, or at all)? For
+Deviation A, the callback process failing is somewhat plausible under staffing pressure —
+moderate likelihood. For Deviation B, a label swap during manual processing is a known failure
+mode in any manual labeling step — also plausible, arguably higher, because it happens at a point
+in the process with less redundancy built in.
+
+**Severity** — if the failure isn't caught, how bad is the outcome? A late callback, worst case,
+delays a donor's status update — annoying, low patient-safety consequence. A label swap that
+reaches a hospital, worst case, means a patient receives blood typed and tracked under the wrong
+donor identity — a severe patient-safety and traceability failure. Severity is where Deviation B
+clearly outranks Deviation A.
+
+**Detectability** — how likely is a failure to be caught *before* it causes harm, given the
+controls already in place? This is the piece most people skip, and it's why "it didn't reach the
+patient" isn't the whole story. The label mix-up was almost undetected — it survived processing
+and was only caught at the very last scan, the last line of defense. The late callback was
+inherently low-risk to detect, because the unit was quarantined the entire time by a separate,
+independent control (quarantine status), not because anyone caught a mistake in progress. Low
+detectability (hard to catch) pushes risk *up*; a near-miss caught only at the last possible
+checkpoint is a flashing signal that your detection margin is thin, even though nothing bad
+happened this time.
+
+**Inherent risk vs. residual risk** — inherent risk is how risky the activity is with *no*
+controls at all: manually processing and labeling two visually similar platelet units next to
+each other, unaided, is inherently high-risk. Residual risk is what's left *after* your actual
+controls are applied — the barcode scan, the second-check step, the quarantine hold. The label
+mix-up shows why this distinction matters: residual risk looked acceptable on paper, right up
+until the near-miss proved the margin between "caught" and "shipped" was one scan wide. A
+control existing is not the same as residual risk being low; ask how much inherent risk the
+control actually removes, and how much margin is left if it fails once.
+
+**Preventive control** — stops the failure from happening at all. Requiring two people to
+independently verify donor ID before a label prints, instead of one person doing it alone, is
+preventive: it removes the opportunity for the error, not just catches it after.
+
+**Detective control** — catches the failure after it occurs, before it causes harm. The final
+barcode scan that caught the label mix-up is a detective control — it worked, but only because it
+existed at the very end of the line, with nothing after it.
+
+**Corrective control** (the "action" in CAPA) — what you do *after* a failure is caught: fix the
+immediate instance, and fix the process so the same failure mode is less likely to recur. Pulling
+the mislabeled unit and relabeling it correctly is a correction; redesigning the processing
+station layout so visually similar units aren't placed adjacent to each other during manual
+labeling is the corrective *action* — the part meant to change the future likelihood, which is
+exactly problem management's "prevent recurrence" motion, just under a different name.
+
+Notice the trap in your QA's proposed ranking: she called the label mix-up "high" (right, on
+severity and thin detectability) and the callback "low" (defensible, on severity) — but "low"
+doesn't mean "no CAPA." It means the corrective action might be lighter, not that closing it
+with a note is correct without that same risk reasoning written down.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.100(c) | "Title 21, Part 606, Section 100, paragraph c" | A thorough investigation — including conclusions and followup — of any unexplained discrepancy or failure of a lot or unit to meet specifications, made and recorded. | The regulatory floor under *both* deviations: neither can be closed with a shrug, regardless of how "low" its risk ranking turns out to be. |
+| 21 CFR 606.171(b)(1)(i)–(ii) | "Title 21, Part 606, Section 171, paragraph b, subparagraph 1, clauses i and ii" | Defines what makes a deviation reportable to FDA as a BPDR (biological product deviation report): a deviation from CGMP/applicable requirements, or an unexpected/unforeseeable event, that *may affect* the safety, purity, or potency of a distributed product. | The test for whether Deviation B's near-miss crosses into mandatory-reporting territory — and the reason "it didn't reach the patient" doesn't end the analysis. |
+| 21 CFR 606.171(c) | "Title 21, Part 606, Section 171, paragraph c" | A 45-calendar-day reporting deadline, starting from when you acquire information reasonably suggesting a reportable event occurred — not from when the investigation finishes. | Whichever way the risk ranking lands, the reporting clock (if it applies) starts at discovery, so the ranking decision itself can't be allowed to stall. |
+
+## The actual text
+
+21 CFR 606.100(c) is the same "thorough investigation" language from the previous foundation
+lesson, and it applies here without any carve-out for how minor a deviation looks. Quoting
+verbatim from `sources/cfr/606.100.md`:
+
+> All records pertinent to the lot or unit maintained pursuant to these regulations shall be
+> reviewed before the release or distribution of a lot or unit of final product. The review or
+> portions of the review may be performed at appropriate periods during or after blood
+> collecting, processing, compatibility testing and storing. A thorough investigation, including
+> the conclusions and followup, of any unexplained discrepancy or the failure of a lot or unit to
+> meet any of its specifications shall be made and recorded.
+
+Read that against the risk vocabulary: "thorough investigation... conclusions and followup" is
+the regulation's way of demanding you actually *do* the likelihood/severity/detectability
+reasoning and write it down — not just record that something happened. A discrepancy with a
+one-line closure note and no stated reasoning fails this regulation regardless of how the
+deviation was ranked, because the investigation itself is the requirement, not the outcome.
+
+Whether Deviation B has to go further — to FDA, not just into Lakeshore's own quality
+record — is a separate question, answered by 606.171. Quoting verbatim from
+`sources/cfr/606.171.md`:
+
+> (b) *What do I report under this section?* You must report any event, and information relevant
+> to the event, associated with the manufacturing, to include testing, processing, packing,
+> labeling, or storage, or with the holding or distribution, of both licensed and unlicensed
+> blood or blood components, including Source Plasma, if that event meets all the following
+> criteria:
+>
+> (1) Either:
+>
+> (i) Represents a deviation from current good manufacturing practice, applicable regulations,
+> applicable standards, or established specifications that may affect the safety, purity, or
+> potency of that product; or
+>
+> (ii) Represents an unexpected or unforeseeable event that may affect the safety, purity, or
+> potency of that product...
+
+Notice the word doing all the work: **"may affect."** Not "did affect." The label mix-up never
+reached a patient, but a mislabeled unit — wrong donor ID on a bag that nearly shipped — is
+exactly the kind of event that *may affect* traceability and, through it, safety, which is why
+severity and detectability (not just "did harm occur") drive whether this section is even in
+play. And critically, 606.171 only governs *distributed* product:
+
+> (3) Involves distributed blood or blood components.
+
+The unit in Deviation B was caught before distribution — so on the facts given, 606.171's
+reporting trigger likely isn't met *for this specific unit*. But that determination itself has to
+be made and documented, not assumed, because if the same failure mode had been one scan later,
+the calculus flips entirely. If it does apply, the clock is unforgiving:
+
+> (c) *When do I report under this section?* You should report a biological product deviation as
+> soon as possible but you must report at a date not to exceed 45-calendar days from the date you,
+> your agent, or another person who performs a manufacturing, holding, or distribution step under
+> your control, acquire information reasonably suggesting that a reportable event has occurred.
+
+That 45-day clock starts on *discovery*, before the investigation is even finished. This is why
+risk ranking can't be a leisurely exercise — the reportability question has to be asked early,
+even if the final answer is "no."
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB assessor reviewing this month's deviation log doesn't just check
+whether Deviation B got a CAPA and Deviation A didn't. They look for a **documented risk
+assessment or justification** attached to each deviation, showing the actual reasoning: what was
+the likelihood, what was the severity, what was the detectability, and did the response actually
+match that reasoning. "Closed — no patient impact" is not that document. It states an outcome,
+not a rationale, and it's the single most common gap investigators find in deviation files —
+not that the wrong decision was made, but that no one can show *how* the decision was made.
+
+For Deviation B specifically, they'll also want the 606.171 reportability determination in
+writing — even if the conclusion is "not reportable, distribution never occurred" — because a
+near-miss with no documented reportability analysis reads as an oversight or an avoided question.
+The document that protects Lakeshore isn't the CAPA alone; it's the risk reasoning behind it,
+owned by Quality, expected to exist *before* anyone asks for it.
+
+## Common traps
+
+**"Severity is the only thing that matters — rank by worst-case outcome and stop there."** This
+is the trap in treating "no patient impact" as the end of the analysis. Two deviations with
+identical worst-case severity can carry very different real risk once you factor in likelihood
+and detectability. A label mix-up caught only at the last possible scan has a thinner safety
+margin than one caught three checkpoints earlier — same severity, very different residual risk.
+
+**"A control exists on paper, so residual risk is low."** The barcode scan existed the whole
+time Deviation B was in process — it just happened to be the *last* line of defense, not one of
+several. A control's existence tells you nothing about how much inherent risk it actually
+removes, or how much margin is left if it's the only thing standing between a mistake and a
+shipped unit. Assess residual risk against what the control catches and where it sits in the
+process, not against whether a line for it exists in the SOP.
+
+**"The barcode scan that caught the mix-up is a corrective action — problem solved."** It's not.
+The scan is a *detective* control — it caught the error after it happened, which is valuable,
+but it did nothing to stop the mislabeling and doesn't reduce the likelihood of the next one.
+Confusing "we caught it" (detective) with "we fixed it" (corrective) is how a CAPA gets closed
+after adding zero preventive value — the process that produced the error stays untouched.
+
+## What this means for your job
+
+- **When a QA hands you a risk ranking, ask for all three factors, not just severity.** If the
+  write-up only answers "how bad," send it back before it reaches the quality council.
+- **Treat a near-miss caught at the last checkpoint as a real signal, not a save.** "It didn't
+  reach the patient" isn't "the risk was low." Ask what would have happened if the control that
+  caught it had run a half-second later, or hadn't run at all.
+- **When someone proposes a fix, ask which control type it actually is before you approve it.**
+  "We'll watch for it more closely" is detective, not preventive. If every CAPA response in a
+  file is detective-only, that pattern is worth escalating on its own.
+- **Ask explicitly whether a deviation's 606.171 reportability has been assessed and documented,
+  every time — even when the answer is "no."** The absence of that determination is itself the
+  finding an inspector will flag, regardless of whether reporting was actually required.
+- **"Closed, no patient impact" is a conclusion with the reasoning missing, not a risk
+  assessment.** If that's the entire justification on file, 606.100(c)'s investigation
+  requirement isn't satisfied yet, no matter how the ranking would have come out on paper.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA says the likelihood × severity × detectability risk-ranking method is "an FDA requirement for every deviation." Accurate?
+
+Not quite. The three-factor risk-ranking approach comes from the ICH Q9 Quality Risk Management
+guideline — an international harmonization guideline, not an FDA regulation, and not something
+21 CFR 606 spells out by name or by formula. What *is* an FDA regulatory requirement is 606.100(c):
+a thorough, documented investigation of any discrepancy. ICH Q9's likelihood/severity/detectability
+structure is simply the accepted, defensible *method* the industry uses to make that investigation
+rigorous rather than arbitrary — it's guidance-tier methodology in service of a regulation-tier
+requirement, not itself codified law. Calling it "the regulation" is the same category mistake the
+previous foundation lesson covered, just with a different source at the top of the pyramid.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: The label mix-up (Deviation B) never reached a patient. Does that mean it doesn't need a 606.171 reportability review at all?
+
+No — and this is the trap in the scenario. 606.171's trigger language is "may affect" safety,
+purity, or potency, not "did affect," and it explicitly covers events that are unexpected or
+unforeseeable even without confirmed harm. What *does* matter for 606.171 specifically is
+paragraph (b)(3): the event has to involve *distributed* product. Since this unit was caught
+before it left the building, the reporting trigger likely isn't met on these facts — but "likely
+isn't met" still has to be a documented determination, made and filed, not an assumption skipped
+because nothing bad happened. Skipping the documentation is the finding, even when the eventual
+conclusion turns out to be correct.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The barcode scan caught the mislabeled unit before it shipped. Your QA calls the scan itself "the corrective action" and wants to close the deviation on that basis. Correct?
+
+No. The scan is a detective control — it caught an error that had already occurred, which is
+exactly its job, but it didn't prevent the mislabeling and it doesn't reduce the likelihood of it
+happening again. A corrective action has to address the failure mode itself: relabeling the
+specific unit correctly is the immediate correction, and something like changing how similar
+units are physically separated during manual labeling, or requiring independent verification
+before a label prints, would be the corrective *action* that actually lowers future likelihood.
+Calling the detective control "the fix" and closing the deviation there leaves the root cause
+completely untouched.
+:::
+
+## Where this goes next
+
+That's the third and final foundation module. Between this lesson and `regulatory-landscape-
+orientation`, you can now do two things every downstream course assumes: sort any rule into
+statute, regulation, guidance, or standard and say which one binds — and rank any deviation,
+vendor gap, or system finding by likelihood, severity, and detectability, then say plainly
+whether a proposed fix is preventive, detective, or corrective. The curriculum now moves into
+Track 1, `blood-center-operations`, where you'll walk the actual donor-to-hospital pipeline and
+start placing both of these vocabularies against real regulated steps — not hypothetical
+deviations, but the specific points in the process where a likelihood-severity-detectability
+call and a regulation-versus-guidance call both have to happen in real time.
