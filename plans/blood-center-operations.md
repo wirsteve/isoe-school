@@ -25,7 +25,7 @@ Build in order. One module per session (lesson `index.qmd` + `resources.qmd`).
 |---|---|---|---|
 | 1 | `donor-recruitment-and-screening` | Walk a donor from recruitment through registration, health history, and the eligibility decision, and name the record that proves that decision was made correctly | Published |
 | 2 | `collection-and-testing` | Follow a donation from venipuncture through the required infectious-disease and blood-typing panel, and explain why nothing leaves quarantine until every result is in | Published |
-| 3 | `component-processing-and-labeling` | Explain how one donation becomes several products with different shelf lives, and read an ISBT 128 label well enough to say what each part of it guarantees | Not started |
+| 3 | `component-processing-and-labeling` | Explain how one donation becomes several products with different shelf lives, and read an ISBT 128 label well enough to say what each part of it guarantees | Published |
 | 4 | `storage-distribution-and-hemovigilance` | Track a released unit through storage, shipping, and the hospital transfusion service to the patient, and say what has to happen, and be reported, when something goes wrong | Not started |
 | 5 | `becs-in-the-pipeline` | Point at every place BECS touches the pipeline, and say in two sentences to a CIO why it isn't governed like a normal enterprise application | Not started |
 
@@ -236,3 +236,65 @@ flag it in the progress log below.
   uncertain. Next: module 3, `component-processing-and-labeling` — will need component-specific
   processing/modification and labeling sources (606.121 labeling, and Part 640 component-specific
   standards) fetched, plus ICCBBA public material for ISBT 128 itself.
+- **2026-09-22** — Module 3, `component-processing-and-labeling`, drafted (lesson `index.qmd` +
+  `resources.qmd`), not yet published. Fetched two new sources via the eCFR Versioner API:
+  `sources/cfr/606.121.md` (Container label — the core citation for this module: general label
+  requirements in (a)-(b), required content in (c)(1)-(4)/(c)(8)/(c)(9), the machine-readable
+  barcode requirement in (c)(13) listing unique facility identifier/lot number/product code/ABO-Rh
+  as the required minimum data elements, the color-coding rules in (d), and the "NOT FOR
+  TRANSFUSION" and emergency-release labeling in (f)/(h); product-specific subparagraphs under (e)
+  for Whole Blood/Red Blood Cells/Plasma/Source Plasma and the autologous-labeling content under
+  (i) were summarized rather than quoted in full, as director-altitude judgment — full text is
+  linked via Cornell LII in resources.qmd) and `sources/cfr/610.53.md` (Dating periods for Whole
+  Blood and blood components — the full storage-temperature/dating-period table, used to show that
+  one donation's components run on genuinely different expiration clocks: platelets 5 days,
+  red cells 21-42 days depending on additive/irradiation, plasma frozen up to 5 years, cryo 1
+  year). Both appended to `sources/INDEX.md`. Confirmed by direct grep of both fetched Part 606
+  and Part 610 XML that neither ISBT 128 nor ICCBBA is named anywhere in either part's text — this
+  grounds the module's regulation-vs-standard teaching point (606.121(c)(13) requires *a*
+  CBER-approved machine-readable format with specific data elements; it never mandates ISBT 128 by
+  name) with actual source verification, not assumption.
+  ISBT 128 given its full, definitive treatment per the module-3 hand-off rule: defined as an
+  international standard (not regulation, not AABB Standard) for terminology/identification/
+  coding/labeling of blood, cell, tissue and other products of human origin, maintained by ICCBBA
+  (International Council for Commonality in Blood Banking Automation), a global nonprofit
+  registration/standards-management authority. Covered in the lesson: the DIN (picked up directly
+  from module 2's one-sentence forward-pointer, not redefined as a new acronym), the product code
+  (what it identifies — component + modifications + additive/anticoagulant — and why an outdated
+  product-code-table entry is a real labeling problem even when the physical product is correct),
+  ABO/Rh and expiration date/time as the other core machine-readable elements, and ICCBBA's role
+  administering the "unique facility identifier" 606.121(c)(2)/(c)(13)(A) requires without naming
+  who assigns it. ICCBBA's own site (iccbba.org) was reachable and fetched successfully (both via
+  WebFetch and via curl returning HTTP 200 on the homepage) — used for the standard's own framing
+  language ("global standard for the terminology, identification, coding and labeling of medical
+  products of human origin," ICCBBA as "the standards development and management authority for
+  ISBT 128," Code 128/2-D data matrix/RFID as delivery mechanisms). One page fetch returned HTTP
+  404 from curl (`iccbba.org/isbt-128/`) despite WebFetch rendering real-looking content from the
+  same URL — treated as unverified and not used or linked; the resources.qmd link instead points to
+  the confirmed-200 homepage. Flag for later modules: exact DIN character structure (country/year
+  encoding, digit count) and exact product-code format were **not** independently verified via a
+  live fetch beyond ICCBBA's general framing language — the lesson describes both functionally
+  (what they identify and why) without asserting a specific character structure, and no later
+  module should assume more precision than that unless a session fetches and verifies ICCBBA's more
+  detailed technical documentation.
+  Scenario: continuing Tuesday's donation from module 2, a vendor-pushed BECS update at 2 a.m.
+  refreshes ICCBBA's product code table mid-shift with no change-control review; ~40 units label
+  Print between 2:00-6:15 a.m. carrying now-outdated product codes before anyone catches it at
+  shift handoff. Used to teach the ITSM bridge exactly as scoped (ISBT 128 as a CMDB naming
+  convention enforced by an international registration authority and auditable by an inspector;
+  a product-code-table push into a live labeling system as a change under change control, not a
+  content edit) and to ground the "label is governed data, not a sticker" trap. BECS named for a
+  third time, third clause: "it controls whether a final label can print" — exact wording an
+  inspector/module-5 session should reuse for consistency.
+  **Release-eligible hand-off wording for module 4**: this module ends with "a component isn't
+  eligible for release into inventory until it carries a complete, correct label reflecting
+  [separation, modifications, dating] — accurately, and against the *current* version of whatever
+  table or standard the label's coded content depends on." Module 4 should open from a component
+  that has already cleared that bar — storage, shipping, distribution, and hospital handoff of an
+  already-correctly-labeled unit, not labeling itself.
+  Resources.qmd links (Cornell LII 606.121, Cornell LII 610.53, ICCBBA homepage, GovInfo CFR
+  collection) all verified via curl/WebFetch to return real content (HTTP 200) before listing.
+  Next: module 4, `storage-distribution-and-hemovigilance` — will need storage/shipping/
+  distribution and hemovigilance/adverse-event-reporting sources (likely Part 606 storage/
+  distribution sections beyond 606.40, and Part 600 fatality/adverse-experience reporting per the
+  sourcing notes above) fetched.

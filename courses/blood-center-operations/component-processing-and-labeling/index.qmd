@@ -1,0 +1,375 @@
+---
+title: "Component processing and labeling"
+order: 2
+---
+
+## The ticket
+
+Wednesday, 6:40 a.m., shift handoff. Tuesday's donation — the one module 2 followed through
+quarantine — cleared every test overnight and is sitting released in Lakeshore Blood Center's
+processing lab: a bag of red cells, a bag of plasma, a bag of platelets, all still bulk
+components without their final labels. That part is routine. What isn't routine is what the
+overnight supervisor flags next.
+
+Around 2:00 a.m., Lakeshore's Blood Establishment Computer Software (BECS — the system you've
+seen do two jobs already: holding donor eligibility in module 1, gating quarantine release in
+module 2) received a scheduled vendor update. Buried inside was a routine-looking content
+refresh: the latest quarterly product code table published by ICCBBA (International Council for
+Commonality in Blood Banking Automation — more on exactly who that is shortly), the organization
+that governs the barcode standard printed on every unit Lakeshore ships. Nobody flagged the
+timing for Quality's review — it looked like reference data, not a system change.
+
+Between 2:00 and 6:15 a.m., roughly forty units — mostly leukoreduced red cells, plus a few
+pooled cryoprecipitate units — finished processing and had their final labels printed. Every one
+of those labels carries a product code that was correct at 1:59 a.m. and has been one revision
+behind since 2:00. None of the forty units have shipped. They're sitting in inventory, correctly
+typed, correctly separated, correctly modified — and, as of this morning, carrying barcodes that
+no longer match what ICCBBA's current table says those codes mean.
+
+Your Quality Analyst wants to know: are these units actually mislabeled? And if they are, what
+has to happen before any of them is eligible to leave quarantine-adjacent status and enter
+Lakeshore's real inventory? Answering that requires knowing what a blood component label
+actually has to say, why it says it in a barcode instead of just words, and who gets to decide
+what that barcode means.
+
+## Why this rule exists — and the ITSM bridge
+
+The physical product here is fine. The red cells are still red cells, still the right blood
+type, still processed and stored correctly. What's actually at risk is whether the *label* —
+the thing every downstream system and person trusts without re-verifying the product itself —
+still accurately says what the product is. A hospital transfusion service scans a barcode and
+trusts it. Lakeshore's own inventory system trusts it. If the code on the label no longer means
+what the current, authoritative table says it means, that trust is now resting on stale data,
+not a stale product — and the two are easy to confuse, because nothing about the bag looks
+wrong.
+
+You already have a name for this failure mode, just under a different label (no pun intended):
+**configuration identity and naming standards.** Think about what happens when a CI naming or
+tagging schema changes and gets pushed into a production CMDB integration without change control:
+every CI tagged under the old schema isn't *wrong*, exactly, but it no longer describes itself the
+way the current standard says it should, and anything downstream that trusts the tag inherits that
+drift silently. Now raise the stakes: imagine that naming standard isn't yours to define. It's set
+by an international registration authority, applied identically at every accredited blood
+establishment on six continents, and an FDA investigator or AABB assessor can ask you,
+specifically, to prove you're using the current version.
+
+That's exactly what ISBT 128 is, and it's why this module exists: **ISBT 128 is what a CMDB
+naming convention would look like if an international registration authority enforced it and
+an inspector audited it.** And the second half of this morning's problem is a distinct but
+related ITSM failure: pushing an updated product code table into a live, production
+label-printing pipeline — mid-shift, with no advance review, no test run, no coordinated
+timing with Quality — is a **change**, not a content edit. Treating it as the latter is how a
+vendor's "routine data refresh" becomes forty units with a data-integrity gap nobody signed off
+on creating.
+
+## The rule, in plain English
+
+A donation doesn't become inventory-ready the moment it clears quarantine. Five things have to
+happen, roughly in this order, before a component is eligible for release:
+
+1. **Separation.** A single whole blood donation gets spun and split into distinct components —
+   typically red cells, plasma, and platelets, sometimes further processed into cryoprecipitate
+   — each one a physically different product with a different clinical use and, critically, a
+   different shelf life. (Apheresis, the machine-collection method module 2 mentioned in
+   passing, produces a more targeted single component directly, but everything from here on
+   applies the same way either way.)
+2. **Modifications, where ordered or required.** A component may get one or more further
+   treatments before it's finished: **leukoreduction** (filtering out white blood cells to
+   reduce certain transfusion reactions), **irradiation** (treating the product to prevent a
+   rare but serious reaction in vulnerable patients), **washing** (removing residual plasma
+   proteins), or **pooling** (combining several donations' worth of a component — cryoprecipitate
+   and some platelet products are commonly pooled — into a single unit). This lesson names these
+   because they change what has to appear on the label; it doesn't teach when each one is
+   clinically indicated — that's a transfusion-medicine decision, not a Director-level regulatory
+   one.
+3. **Expiration dating, specific to the exact component and modification.** This is not one
+   clock. It's several, running in parallel from the same donation, and they can differ by orders
+   of magnitude — you'll see the actual numbers in the next section.
+4. **The container label**, carrying a defined set of required content, some of it human-readable
+   text and some of it a machine-readable barcode.
+5. **Release-eligibility.** A component isn't eligible for release into inventory until it
+   carries a complete, correct label reflecting everything above — accurately, and against the
+   *current* version of whatever table or standard the label's coded content depends on. This is
+   where this module ends; what happens to a released, correctly labeled unit next — storage,
+   shipping, distribution to a hospital — is module 4's job.
+
+Lakeshore's forty units cleared steps 1 through 3 without incident. The problem sits entirely in
+step 4, and it's specifically what makes step 5 — release-eligibility — genuinely uncertain
+until someone checks.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.121(c)(1)–(4) | "Six-oh-six point one-two-one, paragraph c, sub-one through sub-four" | The container label must include the product's proper name, the manufacturer's identity and unique facility identifier, the donor/lot number, and the expiration date (with the hour, if the dating period is 72 hours or less). | The baseline human-readable content every one of Lakeshore's forty units already has correct — this isn't where the problem is. |
+| 21 CFR 606.121(c)(9) | "Six-oh-six point one-two-one, paragraph c, sub-nine" | The ABO group and Rh type must be conspicuously designated on the label, using a defined format based on the Anti-D test result. | Also unaffected this morning — ABO/Rh typing doesn't depend on the product code table at all. |
+| 21 CFR 606.121(c)(13) | "Six-oh-six point one-two-one, paragraph c, sub-thirteen" | The label must carry a machine-readable barcode, approved for use by FDA's Center for Biologics Evaluation and Research (CBER), containing at minimum: a unique facility identifier, the lot number relating to the donor, the product code, and ABO/Rh. | The exact requirement Lakeshore's forty units are now in question against — the product code inside that barcode is the piece that drifted. |
+| 21 CFR 606.121(c)(8)(ii) | "Six-oh-six point one-two-one, paragraph c, sub-eight, clause ii" | A transfusion-intended product's label must carry the statement pointing to the Circular of Information (a separate reference document, not repeated on the label itself). | Brief context: the label doesn't have to say everything about the product — it has to say enough, and point to where the rest lives. |
+| 21 CFR 610.53(b) | "Six-ten point five-three, paragraph b" | A table of fixed dating periods (maximum time a product can be stored before expiring), specific to each product type, storage temperature, and modification. | The regulatory reason Tuesday's red cells, plasma, and platelets are already running on three separate expiration clocks, not one. |
+
+## The actual text
+
+Start with the baseline content requirement, quoted verbatim from `sources/cfr/606.121.md`
+(retrieved from eCFR):
+
+> (c) The container label must include the following information, as well as other specialized
+> information as required in this section for specific products:
+>
+> (1) The proper name of the product in a prominent position, with any appropriate modifiers and
+> attributes.
+>
+> (2) The name, address, unique facility identifier, and, if a licensed product, the license
+> number of each manufacturer...
+>
+> (3) The donor or lot number relating the unit to the donor...
+>
+> (4)(i) The expiration date, including the day, month, and year, and, if the dating period for
+> the product is 72 hours or less, including any product prepared in a system that might
+> compromise sterility, the hour of expiration.
+
+Notice (4)(i) closely: most components get a day/month/year expiration, but anything with a
+72-hour-or-shorter dating period — pooled platelets prepared in an open system are a common
+example — has to carry an actual expiration *hour*, not just a date. That's not a formatting
+preference; it's the regulation recognizing that some components age out fast enough that "today"
+isn't precise enough.
+
+Now the requirement actually in question this morning — the machine-readable barcode:
+
+> (13) The container label of blood or blood components intended for transfusion must bear
+> encoded information in a format that is machine-readable and approved for use by the Director,
+> CBER.
+>
+> ...
+>
+> (iii) *What information must be machine-readable?* Each label must have machine-readable
+> information that contains, at a minimum:
+>
+> (A) A unique facility identifier;
+>
+> (B) Lot number relating to the donor;
+>
+> (C) Product code; and
+>
+> (D) ABO and Rh of the donor...
+
+Read that list carefully, because it's doing something worth noticing: **it never says "ISBT
+128."** The regulation requires a machine-readable format approved by CBER, containing those
+four specific elements. It doesn't name a standard. That distinction matters, and this lesson
+comes back to it directly in the traps section below — for now, hold onto this: the *requirement*
+for a scannable product code is regulation. The *specific standard* nearly every U.S. blood
+establishment uses to satisfy it is something else entirely.
+
+The Circular of Information reference, briefly — the label doesn't repeat clinical guidance, it
+points to a separate document required to accompany the product:
+
+> (ii) "See circular of information for indications, contraindications, cautions, and methods of
+> infusion."
+
+That's the whole label-side footprint of the Circular of Information for this lesson's purposes:
+a required pointer statement, not required content on the label itself. The Circular is a
+standard reference document about the product type that a transfusion service consults
+separately — this lesson names it so you recognize the citation when your Quality Analyst uses
+it, not to teach its contents.
+
+And now the reason Tuesday's three components are already running on different clocks, from the
+dating table in `sources/cfr/610.53.md`:
+
+| Product | Storage temperature | Dating period |
+|---|---|---|
+| Red Blood Cells, additive solution | Between 1 and 6 °C | 42 days from date of collection |
+| Red Blood Cells, irradiated | Between 1 and 6 °C | 28 days from date of irradiation, or original dating, whichever is shorter |
+| Platelets | Between 20 and 24 °C | 5 days from date of collection |
+| Fresh Frozen Plasma | −18 °C or colder | 1 year from date of collection |
+| Cryoprecipitated AHF | −18 °C or colder | 1 year from date of collection of source blood (or oldest source blood in a pre-storage pool) |
+
+Same Tuesday donation. Same DIN underneath every one of these. Four completely different
+expiration clocks, and the platelets are already burning through theirs the fastest — five days,
+full stop, no exceptions in the table for a good storage record. That's the concrete answer to
+this module's finish line: one donation becomes several products, and "different shelf lives"
+isn't a rounding error, it's a 73-fold difference between the shortest dating period here and the
+longest.
+
+## ISBT 128, in full
+
+Module 2 gave you one sentence about this: the donation gets a globally standardized identifier
+called the Donation Identification Number, or DIN, under a labeling system called ISBT 128. Here's
+the rest of it.
+
+**ISBT 128** is an international standard — not an FDA regulation, not an AABB Standard, a fourth
+category worth holding distinctly per the regulatory-landscape foundation lesson's framework —
+for the terminology, identification, coding, and labeling of blood, cell, tissue, and other
+medical products of human origin. Its name comes from Code 128, the barcode symbology the
+standard was originally built around (modern implementations also use 2-D data matrix symbols and
+RFID tags, which pack more encoded data into less physical space, but the name stuck).
+
+**ICCBBA** — the International Council for Commonality in Blood Banking Automation — is the
+global nonprofit organization that develops and manages ISBT 128, describing its own mission as
+enhancing patient safety by leading the standard's development and administration. It's a
+registration authority in an active sense, not a one-time publisher: it governs the standard's
+content on an ongoing basis, including, as this morning's near-miss shows, the product code
+tables that define exactly what each code on a label means.
+
+That governance relationship answers a question this lesson's regulation quote left open: who
+actually assigns the "unique facility identifier" that 606.121(c)(2) and (c)(13)(A) require? The
+regulation doesn't say. In practice, it's ICCBBA, through ISBT 128, that issues and administers
+that identifier to every accredited blood and tissue establishment worldwide — a regulation
+requiring *something exist*, and an industry standard supplying *the mechanism* that satisfies
+it, exactly the relationship the regulatory-landscape-orientation foundation lesson taught you to
+expect.
+
+Four data elements, working together on every ISBT 128 label, are what this module's finish line
+actually asks you to be able to read:
+
+- **The Donation Identification Number (DIN).** Assigned at the moment of collection — the number
+  module 2 already showed you tying the donor, the bag, and the sample tubes together. It's
+  globally unique: no other facility, anywhere, in ISBT 128's registry, will ever assign that
+  same number to a different donation. That global uniqueness is what makes it possible for a
+  hospital receiving a unit from Lakeshore to trust the number the same way it would trust one
+  issued by any other ISBT 128 facility on earth, without needing to know anything about
+  Lakeshore's internal systems.
+- **The product code.** A separate code from the DIN, identifying exactly what the product *is*
+  — the component type, plus whatever modifications were applied (leukoreduced, irradiated,
+  washed, pooled) and the anticoagulant or additive solution used. This is the piece that drifted
+  in this morning's scenario: two units can share an identical DIN-adjacent appearance and still
+  carry meaningfully different product codes if one was irradiated and the other wasn't, and the
+  code — not the bag's visual appearance — is what a scanning system and a transfusion service
+  actually rely on to know the difference.
+- **ABO and Rh**, encoded alongside the human-readable designation required by 606.121(c)(9).
+- **Expiration date (and hour, where required)**, encoded to match exactly what 606.121(c)(4)(i)
+  and the 610.53 dating table require in human-readable form.
+
+Put together, those four elements are why a "globally governed identifier" — really, a whole
+governed *system* of identifiers — is the backbone of traceability for this course. A DIN that
+means the same thing everywhere, checked against a product code table that means the same thing
+everywhere, is what lets Lakeshore, a hospital three states away, and an FDA investigator all
+agree on what a bag of blood actually is, without trusting each other's internal records. Break
+that agreement silently, with no physical product ever being wrong, and you've still broken the
+thing the barcode exists to provide.
+
+This is also where BECS earns its third clause in this course's running definition: system of
+record for donor eligibility (module 1), gate for quarantine release (module 2), and here,
+**it controls whether a final label can print** — exactly the control this morning's forty units
+passed through, using data that had drifted without anyone treating the drift as a change.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB assessor reconstructing this morning's forty units doesn't ask
+Lakeshore to characterize the incident. They ask for specific artifacts.
+
+**The product code table version history** — proof of exactly when the ICCBBA update was
+received, when it was applied inside BECS, and what changed between the old and new versions for
+the affected codes. Without this, nobody can answer the threshold question: did the meaning of
+these units' printed codes actually change in a way that matters?
+
+**The change record for the vendor's software push itself** — treated as a change to a production
+system, under the written procedure 606.100(b) already requires Lakeshore to maintain for its
+labeling operations (a citation from the regulatory-landscape-orientation foundation lesson). A
+push with no advance review, no test, and no documented risk assessment of what happens to units
+mid-print is itself a finding — the same shape of gap the risk-and-controls-vocabulary foundation
+lesson called out: a conclusion with the reasoning missing.
+
+**The donor/lot number and DIN record** for each of the forty units, tying each one back to its
+donation under the identity link 606.160(c) already established in module 2 — proof that whatever
+correction happens next reaches every affected unit, not just the ones someone remembers.
+
+A bad answer to "how do you know which units printed against the outdated table" sounds like "the
+supervisor noticed something looked off at shift change." That's a lucky catch, not a control. The
+control an inspector expects is a timestamped, queryable record of which print jobs ran against
+which table version — the same shape of evidence module 2 taught you to expect for quarantine
+status, applied here to label content instead of release status.
+
+## Common traps
+
+**"The label is just a sticker — printing it correctly is a packaging concern, not a quality
+concern."** This morning's scenario is built specifically to break that assumption. Nothing about
+the physical product changed; the entire problem lives in whether printed, coded data still
+matches a governed standard's current definition. 606.121 is a CGMP labeling regulation, not a
+packaging spec, precisely because a label that misrepresents what a product is — even subtly,
+even only in a barcode nobody but a scanner reads — is exactly as dangerous as a labeling error
+someone can see with their own eyes. Arguably more dangerous, because nobody visually double-checks
+a machine-readable field the way they'd double-check printed text.
+
+**"ISBT 128 is an FDA requirement."** It's an easy assumption, because 606.121(c)(13) requires a
+machine-readable barcode and nearly every U.S. blood establishment uses ISBT 128 to satisfy that
+requirement — but read the regulation's own words again: it requires a CBER-approved
+machine-readable format containing four specific data elements. It never names ISBT 128. ISBT 128
+is industry-standard tier, maintained by ICCBBA, layered on top of a regulation that requires
+*something* like it to exist without mandating that specific standard by name. Calling ISBT 128
+"the FDA rule" in a deviation report or a vendor conversation is the same category mistake the
+regulatory-landscape-orientation foundation lesson opened with, just with a new source at the top
+of the sentence.
+
+**"All the components from one donation share the same expiration date, since they came from the
+same draw."** They don't, and 610.53's dating table is the proof: platelets from Tuesday's
+donation expire in five days; the red cells have 42 if they're in additive solution; the plasma,
+frozen, is good for a year. Treating "one donation" as "one expiration date" is a fast way to miss
+that the platelets need attention on a completely different timeline than everything else that
+same draw produced.
+
+## What this means for your job
+
+- **Ask whether a vendor's "routine data update" to a production labeling system went through the
+  same change control as any other production change** — advance review, test run, coordinated
+  timing, documented risk assessment. A product code table looks like reference data. It behaves
+  like a live configuration change the moment it's wired into a system that prints labels on it.
+- **When a labeling deviation lands on your desk, ask whether it's a wrong-physical-product
+  problem or a wrong-data-describing-a-correct-product problem before you accept a proposed fix.**
+  They look similar in a deviation summary and require completely different corrective actions.
+- **Push back on "ISBT 128 requires it" as a stand-alone citation.** Ask whether the actual
+  requirement traces to 606.121 (regulation, FDA-enforced) or to the standard layered on top
+  (industry-standard tier, ICCBBA-governed). The escalation path and who owns the fix differ.
+- **Treat the product code table the way you'd treat any authoritative external reference data
+  your systems depend on** — know who owns updating it, how your systems consume new versions,
+  and what your rollback plan is if a version turns out to have been applied incorrectly.
+- **When "nothing shipped" is the whole story on a labeling near-miss, ask what the actual
+  detection margin was** — the same likelihood/severity/detectability discipline from the
+  risk-and-controls-vocabulary foundation lesson applies here exactly as it did to the platelet
+  label swap in that lesson's own scenario.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The Quality Analyst reports that the forty units' ABO/Rh, DIN, and expiration dates are all still correct — only the product code is a table-revision behind. Does that mean they're fine to release as-is?
+
+No. 606.121(c)(13)(iii)(C) lists the product code as one of the required minimum elements of the
+machine-readable barcode, on equal footing with facility identifier, lot number, and ABO/Rh — it's
+not a lesser field. An outdated product code may still describe exactly the right product, or it
+may not; the whole point of a governed, centrally revised table is that Lakeshore can't know which
+without checking the specific code against the current version. Until that check happens — and,
+if needed, the label is corrected — these units aren't release-eligible, even though nothing about
+the physical product itself is in question.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: True or false: 21 CFR 606.121 requires blood establishments to label their products using ISBT 128.
+
+False. 606.121(c)(13) requires a machine-readable barcode, approved by CBER, containing a unique
+facility identifier, donor/lot number, product code, and ABO/Rh — but the regulation's text never
+names ISBT 128. ISBT 128, maintained by ICCBBA, is the near-universal industry standard blood
+establishments use to satisfy that requirement, not a standard the regulation itself mandates by
+name. That makes it industry-standard tier under the regulatory-landscape-orientation foundation's
+four-tier framework — practically universal in the U.S. blood industry, but not itself the source
+of the legal requirement.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Tuesday's single donation produced red cells, plasma, and platelets. Since they all came from the same draw and carry the same underlying DIN, do they share one expiration date?
+
+No. 610.53(b)'s dating table sets a separate clock for each product type and storage condition:
+platelets stored at room temperature expire in 5 days from collection; red cells in additive
+solution get 42 days; frozen plasma is good for a year. Same donation, same DIN tying them
+together for traceability — but four (or more) completely different expiration clocks running in
+parallel from the moment of separation. The platelets are always the most time-pressured product
+of the group, regardless of how the rest of the donation is doing.
+:::
+
+## Where this goes next
+
+However this morning's forty units get resolved, the pattern this module teaches doesn't change:
+a component isn't release-eligible until it carries a complete, correct label — human-readable
+content matching 606.121, a machine-readable barcode whose every element, including the product
+code, checks out against the current standard, and an expiration clock specific to exactly what
+it is. Module 4, `storage-distribution-and-hemovigilance`, picks up from a component that's
+cleared that bar: how a released, correctly labeled unit is stored and monitored, shipped, handed
+off to a hospital's own transfusion service, and — if something still goes wrong after all of
+this — what has to happen and be reported next.

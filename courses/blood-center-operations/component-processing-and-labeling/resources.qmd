@@ -1,0 +1,34 @@
+---
+title: "Resources"
+order: 2
+---
+
+External links for this lesson. All checked to load from a plain request as of the date this
+page was written. (Note: eCFR's own site — ecfr.gov — blocks automated/proxied traffic with a
+bot check in this repo's build environment, even though a human browser reaches it fine; the
+regulation text quoted in this lesson comes from eCFR's public Versioner API instead, and the
+links below use verified-loading mirrors of the same official text.)
+
+- **[Cornell LII: 21 CFR 606.121, current text](https://www.law.cornell.edu/cfr/text/21/606.121)**
+  — Cornell Law School's Legal Information Institute mirror of the container label requirements
+  quoted throughout this lesson, including the full, unabridged text of the machine-readable
+  labeling requirement this lesson excerpts. Use this to check the current text and to see the
+  product-specific label content (Whole Blood, Red Blood Cells, Plasma, Source Plasma, autologous
+  units) this director-level lesson didn't quote in full.
+
+- **[Cornell LII: 21 CFR 610.53, current text](https://www.law.cornell.edu/cfr/text/21/610.53)**
+  — the dating-period table this lesson draws from to show how one donation's components expire
+  on different schedules. Same use case: check for amendments against the dated snapshot in
+  `sources/`.
+
+- **[ICCBBA](https://iccbba.org/)** — the nonprofit standards organization that develops and
+  administers ISBT 128, the barcode labeling standard this lesson covers in full. Use this as the
+  primary source for ISBT 128 itself: what it is, what it covers, and how ICCBBA governs it —
+  remember that everything on this site is industry-standard material, not FDA regulation or
+  guidance, per this lesson's regulation-versus-standard distinction.
+
+- **[GovInfo: Code of Federal Regulations](https://www.govinfo.gov/app/collection/cfr)** — the
+  U.S. Government Publishing Office's official, legally authoritative annual CFR archive. Use
+  this for the official, dated, legally citable version of a specific year's text — for example,
+  to confirm exactly what 606.121 said on the date of a past inspection or a labeling deviation
+  investigation.
