@@ -5,15 +5,21 @@
 2. **"Continue" means the whole curriculum, not one course.** When the user types `Continue`
    (or anything that doesn't name a specific course), use the `create-course` skill: it reads
    `plans/curriculum.md`'s progress tracker and "Next up" line to decide which course and
-   module to build next, scoping a new course first if the next one hasn't been started. When
-   the user does name a course or module, build that instead, regardless of sequence.
+   module to build next, scoping a new course first if the next one hasn't been started, then
+   keeps building module after module (rule 4) until the curriculum is done or the session hits
+   a limit. When the user does name a course or module, build that instead, regardless of
+   sequence.
 3. **Public repo.** Never write employer names, internal SOPs, system or vendor
    configurations, audit findings, or anything non-public. Scenarios use a fictional
    "Lakeshore Blood Center."
 4. **Throughput rules (keep usage limits from biting):**
-   - Build at most **one module per session** (lesson + practice + resources). Update the
-     plan file's progress log, update `plans/curriculum.md`'s progress tracker, publish, then
-     tell the user to start a fresh session.
+   - Build **module after module in curriculum order, for as long as the session allows**
+     (lesson + resources). After each module: update the plan file's progress log, update
+     `plans/curriculum.md`'s progress tracker, publish immediately, then move straight to the
+     next unbuilt module. Stop only when the curriculum is done or the session hits a real
+     limit — never after just one module.
+   - Delegate the actual drafting of each module to a subagent so the main session's context
+     stays clean across many modules in one sitting.
    - The plan file is the memory between sessions. Anything the next session needs goes
      there, not in chat.
    - Read regulations from `sources/` (local copies), never re-fetch them from the web.
