@@ -1,0 +1,332 @@
+---
+title: "Deviations and nonconformances"
+order: 15
+---
+
+## The ticket
+
+Monday, 7:50 a.m. Your Quality Analyst is standing in your doorway before you've finished your
+coffee, holding a printout with one line highlighted in yellow.
+
+Friday night, Lakeshore ran a scheduled overnight maintenance window on BECS (Blood
+Establishment Computer Software — the system that gates donor eligibility, quarantine release,
+and labeling across every collection site). During the window, Lakeshore's Brookfield satellite
+collection site — open Friday evenings, without a live BECS connection during downtime — switched
+to its paper downtime procedure, the way it's supposed to. Staff checked each donor against the
+site's printed deferred-donor list from the downtime binder, the way they're supposed to.
+
+One donor, Owen Pruitt, had been deferred two days earlier — Tuesday — at Lakeshore's downtown
+donor center, after disclosing recent travel to a country on the malaria-risk list during his
+history interview. The Brookfield site's printed list was dated the previous Monday. Owen's
+deferral wasn't on it. He donated Friday night. Nobody at Brookfield did anything wrong by the
+binder they had in front of them.
+
+This morning's post-downtime reconciliation — entering Friday night's paper transactions into
+BECS — hit his donor ID and BECS immediately flagged him: deferred, active, reason on file. Your
+QA already checked what happened to the unit. A leukoreduced red cell component from that
+donation cleared testing Saturday, released from quarantine Sunday, and shipped to Riverside
+General Hospital to fill a standing order. It's sitting in Riverside's inventory right now,
+untransfused, as far as anyone knows.
+
+"I need to open a deviation," she says. "I don't know yet how much further this goes."
+
+## Why this matters — and the ITIL bridge
+
+This is QSE 7 in AABB's Quality System Essentials framework — **Deviations, Nonconformances, and
+Adverse Events** — the drawer module 1 told you to come back to when a real event landed on your
+desk. This is that event, opened up in full.
+
+Start with the failure mode this QSE exists to prevent: an organization that only *reacts* to
+things going wrong, inconsistently, with no record of what it did or why, learns nothing and
+proves nothing. A deviation system exists to force the same four questions every time, regardless
+of how minor the event looks in the moment: what happened, how far did it spread, what did we do
+about the product, and does anyone outside this building need to know. Skip it and you get exactly
+what almost happened here: a donor whose donation should have been blocked, caught not by a
+control built to catch it, but by routine data entry three days later — after a unit had already
+left the building.
+
+You already run this triage constantly. When something breaks, you open an incident, you
+diagnose and contain it, you restore service, you close the ticket. A deviation write-up is
+*structurally* an incident record — same discovery-to-closure shape, same instinct to contain
+first and ask why later. But the quality version demands three things ITIL incident management
+was never built to ask:
+
+- **Product disposition.** Your "service" here is a physical unit of blood sitting in a hospital
+  refrigerator. Closing an IT incident means service is restored. Closing this one means someone
+  with the authority to decide has determined, in writing, what happens to that physical unit —
+  and to every other unit that might be connected to it.
+- **A regulatory clock that starts at discovery, not at resolution.** The `risk-and-controls-
+  vocabulary` foundation already walked you through 606.171's 45-day reporting clock. It starts
+  the moment you have information suggesting a reportable event — this morning, for Lakeshore —
+  whether or not the investigation is finished.
+- **Impact assessment as extent-of-condition, not "which users are affected."** An incident asks
+  who's degraded right now. A deviation asks a colder question: what *else* does this touch — other
+  units from the same donation, other donors checked against the same stale list, other sites
+  still running the same downtime binder.
+
+`becs-in-the-pipeline` called this "one incident, two tracks" — an IT incident track that closes
+when service is restored, and a separate quality/deviation track that closes only when Quality has
+documented its determination. This module *is* that second track, run start to finish.
+
+## Vocabulary check: four words that get used loosely
+
+AABB's framework — and most real quality systems — use these terms without drawing hard lines
+between them, and that's worth saying plainly rather than pretending otherwise. What actually
+matters to an assessor isn't which word Lakeshore's SOP picks; it's that the SOP defines its terms
+and applies them consistently.
+
+- **Deviation** — a departure from an approved policy, process, procedure, regulation, or
+  specification. Brookfield collecting from a deferred donor is a deviation from 630.10(h) below.
+- **Nonconformance** — a failure to meet a specified requirement, often used for a product or
+  material that doesn't meet spec. Overlaps heavily with "deviation" in everyday use.
+- **Adverse event** — an untoward occurrence tied to a donor or a patient. Not what happened here —
+  no one was harmed — but it's the third word in this QSE's name because the same intake-and-
+  investigate machinery handles all three.
+- **Near-miss** — an event caught before its potential consequence materialized, with no product
+  affected. The foundation's label-swap example was a near-miss. This one isn't — a component
+  shipped — which is why the analysis below lands harder than it would have if reconciliation had
+  caught it Saturday morning instead of Monday.
+- **Complaint** — a problem reported from outside Lakeshore (a hospital, a donor) instead of found
+  internally. Not this event, but a fifth entry point into the same process.
+
+## The process in plain English
+
+Five stages, and Owen Pruitt's donation runs through all five.
+
+**1. Discovery.** However it's found — routine reconciliation, an audit, a complaint, a monitoring
+alarm, self-report — the clock (both the internal investigation clock and, potentially, 606.171's
+45-day clock) starts here, at the moment of discovery, not when the deviation record gets opened
+or the investigation wraps up. For Lakeshore, discovery was Monday morning's reconciliation entry.
+
+**2. Immediate containment and correction.** Before anything else: stop the bleeding. This is
+*correction* in the foundation's sense — fixing this instance, not the process. For this event,
+containment means: quarantine any remaining component from Owen's donation still in Lakeshore's
+inventory immediately, and notify Riverside General Hospital, today, that the shipped unit needs
+to be held and not transfused pending Lakeshore's determination. Containment doesn't wait for the
+investigation to finish, and it doesn't require knowing yet whether the event is reportable.
+
+**3. Impact and extent assessment.** Now ask the colder question: what else does this touch?
+Apply the likelihood/severity/detectability reasoning the foundation already gave you — don't
+re-derive it, just run it. Severity here is real: a donor deferred specifically for
+travel-related transfusion-transmitted-infection risk actually donated, and the unit reached a
+hospital. Detectability was poor: nothing in the downtime process itself caught it; only
+unrelated, routine data entry three days later did. Extent-of-condition means checking further
+than this one unit: were other components prepared from Owen's donation, and where are they now?
+Did any *other* donor get checked against that same stale list during Friday's downtime window? Is
+the binder's superseded list-refresh procedure running at any other satellite site right now?
+That last question is the one that turns "one donor's donation" into "how many sites have this
+exposure."
+
+**4. Product disposition.** Someone with documented disposition authority — whoever Lakeshore's
+SOP names for this, typically the medical director or a delegated quality officer, not whoever
+happens to be on shift — decides, in writing, what happens to the product: quarantine, destroy,
+retrieve, or release. For Owen's unit, disposition is straightforward once containment has already
+put a hold on it at Riverside: it stays quarantined pending Lakeshore's full determination and does
+not get transfused. The disposition record proves that decision was made deliberately, by someone
+with the authority to make it — not that the unit happened to still be sitting in a fridge when
+someone thought to check.
+
+**5. Documented reportability determination.** This is 606.171, already taught in full in the
+foundation — apply it, don't re-derive it. Run the test: does this event represent a deviation
+from an applicable regulation that may affect safety, purity, or potency (606.171(b)(1)(i)), and
+does it involve *distributed* product (606.171(b)(3))? Here, both are true, and this isn't a close
+call. Collecting from a donor deferred under 630.10(h) is a direct deviation from an applicable
+regulation; the deferral reason exists specifically because travel to certain regions carries a
+transfusion-transmitted-infection risk, which is exactly the kind of thing that "may affect"
+safety; and the red cell unit was released and shipped to Riverside. This is reportable. Say so
+plainly rather than softening it — a documented "not reportable" would be the wrong conclusion on
+these facts. The 45-day clock started Monday, at discovery, not whenever the write-up gets
+finished. (Filing Form FDA-3486 itself — the BPDR's filing mechanics — belongs to a later course;
+this module stops at the determination.)
+
+Then the sixth question, which decides where this event goes next.
+
+**Does this need a CAPA (corrective and preventive action — the process that fixes not just this
+instance, but the system that allowed it)?** The line isn't drawn by the form; it's drawn by the
+question you're asking. "What happened, to what, how far did it spread, and what did we do with
+the product" is deviation management — everything above. "Why did the system let this happen, and
+how do we prove it won't recur" is a different question entirely, and it's CAPA's whole job. In
+practice, plenty of organizations put a short cause statement right on the deviation form, and a
+small event might get nothing more than that. But this one doesn't stay small once you look at it:
+the proximate explanation is "Brookfield's downtime binder held a superseded SOP revision that
+didn't require refreshing the deferred-donor list immediately before a downtime event." That's not
+"staff used the wrong binder" — staff followed the binder they had, correctly. It's a document-
+control gap that could be sitting at every other satellite site right now, which means "retrain the
+Brookfield staff" would fix nothing. **Yes, this needs a CAPA**, with that proximate cause as its
+starting point — and *why* that's the right call, not "human error," is the next module's entire
+job.
+
+One more thing worth stating explicitly, because it's a genuinely common point of confusion: the
+deviation and the CAPA run on **different clocks**. Lakeshore can close this deviation record —
+disposition made, reportability determined and filed — without waiting for the CAPA to finish
+investigating and fixing the underlying document-control gap. Closing the deviation says "we know
+what happened to this product and we've told the people we're required to tell." Closing the CAPA,
+much later, says "we've proven the system won't do this again." Don't let a deviation sit open for
+weeks waiting on a CAPA that hasn't even started its root-cause work.
+
+A one-line note on a related but different animal: a **planned deviation** (a pre-approved
+exception to a policy, justified and signed off *before* it happens, typically requiring the
+medical director's approval) is the controlled cousin of what just happened at Brookfield — this
+one wasn't planned or approved by anyone, which is exactly what makes it reportable instead of
+routine. Planned deviations get their real treatment in the change-control module later in this
+course.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.100(b) | "Six-oh-six point one-hundred, paragraph b" | Written SOPs required for, among other things, "all steps in the investigation of product deviations related to § 606.171," available to staff in the areas where they're performed. | The regulatory floor under Lakeshore's whole deviation-investigation process — and under the downtime binder itself, which is a procedure that has to be current where it's used. |
+| 21 CFR 630.10(e)(2)(iii) | "Six-thirty point one-oh, paragraph e, sub-two, clause iii" | Travel to, or residence in, an area endemic for a transfusion-transmitted infection is an eligibility factor the donor history assessment must cover. | The basis for Owen's Tuesday deferral at the downtown center. |
+| 21 CFR 630.10(h) | "Six-thirty point one-oh, paragraph h" | An establishment must not collect from a donor found ineligible or deferred, unless an exception applies. | The specific rule Brookfield's stale list caused Lakeshore to violate Friday night — the deviation at the center of this event. |
+| 21 CFR 606.171(b)(1)(i) / (b)(3) | "Six-oh-six point one-seven-one, paragraph b, sub-one, clause i / sub-three" | A deviation from an applicable regulation that may affect safety, purity, or potency, involving *distributed* product, is reportable. | Already taught in full in `risk-and-controls-vocabulary`. Applied here: both prongs are met, so this event is reportable. |
+| 21 CFR 606.160(b)(7)(iii) | "Six-oh-six point one-sixty, paragraph b, sub-seven, clause iii" | Biological product deviations must be kept among an establishment's general records. | The record that has to exist once the 606.171 determination is made — the deviation record itself, filed and retrievable. |
+
+## The actual text
+
+The SOP requirement behind the whole investigation process, quoted verbatim from
+`sources/cfr/606.100.md` — the clause naming product-deviation investigations specifically, not
+quoted by any earlier lesson in this curriculum:
+
+> Establishments must establish, maintain, and follow written standard operating procedures for
+> all steps in the collection, processing, compatibility testing, storage, and distribution of
+> blood and blood components for allogeneic transfusion, autologous transfusion, and further
+> manufacturing purposes; for all steps in the investigation of product deviations related to
+> § 606.171; and for all steps in recordkeeping related to current good manufacturing practice and
+> other applicable requirements and standards. Such procedures must be available to the personnel
+> for use in the areas where the procedures are performed.
+
+Read the last sentence with Brookfield specifically in mind: "available to the personnel for use
+in the areas where the procedures are performed" is the regulation's own language for exactly the
+gap this event exposes — a downtime binder physically present at the satellite site, but holding a
+superseded revision. Available and current aren't the same thing, and this sentence expects both.
+
+The eligibility rule Friday's donation violated, quoted verbatim from `sources/cfr/630.10.md`:
+
+> (h) *What must you do when a donor is not eligible?* You must not collect blood or blood
+> components from a donor found to be ineligible prior to collection based on criteria in
+> §§ 630.10 or 630.15, or deferred under § 610.41 of this chapter or § 630.30(b)(2), unless this
+> subchapter provides an exception. You must defer donors found to be ineligible and you must
+> notify the donor of their deferral under § 630.40.
+
+No exception in this subchapter covers "the site's copy of the deferral list was several days
+old." That's precisely why this is a deviation and not a judgment call.
+
+606.100(c)'s investigation standard, already quoted in full in the foundation — worth its last
+sentence here, since it's the clause that requires the write-up itself, not just the disposition:
+
+> A thorough investigation, including the conclusions and followup, of any unexplained discrepancy
+> or the failure of a lot or unit to meet any of its specifications shall be made and recorded.
+
+And the record requirement that closes the loop, quoted verbatim from `sources/cfr/606.160.md`:
+
+> (7) General records: ... (iii) Biological product deviations.
+
+A reportability determination that only lives in an email thread doesn't satisfy this. It has to
+land in the general records this clause names.
+
+## What an inspector or assessor would actually look for
+
+An FDA investigator or AABB assessor pulling this deviation file wants four things, and a gap in
+any one is a finding on its own — regardless of whether the underlying event ever caused harm.
+
+**A timestamped discovery date**, tied to when Lakeshore actually acquired the information — the
+Monday reconciliation entry, not the Friday donation. This is what the 45-day clock measures
+against, and a vague or backdated discovery date turns a defensible reportability call into a
+credibility problem fast.
+
+**Evidence that containment happened before the investigation finished.** Riverside's hold
+notification and the quarantine of any remaining product need timestamps that land the same day as
+discovery, not "eventually," once the full write-up was complete.
+
+**A documented extent-of-condition check**, not "checked, nothing else found." What sites were
+reviewed, what was searched for, and what the negative result actually rules out. "We looked" is
+not an artifact; a list of what was checked is.
+
+**The reportability determination itself, in writing, with the reasoning shown** — even when the
+answer would have been "not reportable." A file that jumps from "here's what happened" straight to
+"here's the CAPA," with no visible 606.171 analysis in between, reads as an avoided question.
+
+## Common traps
+
+**"We contained it, so the deviation is closed."** Containment stops the immediate problem —
+Riverside holding the unit — but it doesn't answer any of the other four questions this process
+demands: how far it spread, what the formal disposition is, whether it's reportable, and whether
+it needs a CAPA. A deviation record that stops at "contained" the same day is missing most of its
+own required content.
+
+**"Every deviation needs a CAPA" — or its mirror image, "this one clearly doesn't need one."** Both
+are wrong the same way: they skip the reasoning. Some deviations genuinely close with a short cause
+statement and no formal CAPA — a legitimate outcome, not a shortcut, *as long as the reasoning is
+written down.* What an inspector penalizes isn't "too few" or "too many" CAPAs — it's a CAPA
+decision, in either direction, with no documented rationale behind it.
+
+**Confusing the correction with the deviation record.** Holding Owen's unit at Riverside is a
+correction — necessary, immediate, and not itself the deviation record. The deviation record is
+the document that captures discovery, containment, impact assessment, disposition, reportability,
+and the CAPA decision, together, as one traceable file. Treating the correction as if it *were* the
+record — "we fixed it, so we're done documenting" — is how a file ends up with a quarantine
+timestamp and nothing else.
+
+## What this means for your job
+
+- **When your QA hands you a deviation, ask for all five pieces in writing, every time:**
+  discovery date, containment, extent-of-condition, disposition, and the 606.171 call. A file
+  missing any one of the five isn't finished, regardless of how the event turned out.
+- **Treat "caught before it caused harm" and "handled" as two different claims.** This event's
+  severity didn't change because reconciliation eventually caught it; it changed because a unit
+  had already shipped by the time anyone looked.
+- **Push back on a CAPA decision — yes or no — that doesn't show its reasoning.** "Low risk,
+  closed" and "opened a CAPA" are both fine answers. Neither is acceptable without the
+  likelihood/severity/detectability reasoning behind it.
+- **Ask whether the extent-of-condition check reached other sites, not just other units from this
+  one donation.** The real exposure isn't Owen's unit — it's every satellite site that might be
+  running the same superseded downtime binder right now.
+- **Watch the two clocks separately.** Don't let a deviation sit open waiting on CAPA progress,
+  and don't let a CAPA get rushed because someone wants the deviation file closed by month-end.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA says, "The red cell unit hasn't been transfused yet, so this isn't reportable — nothing was actually affected." Accurate?
+
+No. 606.171(b)(1)'s test is "may affect," not "did affect," and paragraph (b)(3)'s trigger is
+*distribution*, not transfusion. The unit left Lakeshore's control and reached Riverside — that
+satisfies (b)(3) on its own. Whether it was ever transfused is a fact worth knowing for the
+investigation, but it doesn't change whether the reporting trigger was met. This is the exact
+"caught in time" mistake the foundation's label-mix-up example was built to head off, now showing
+up with a real distributed unit instead of a near-miss.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Does every deviation at Lakeshore need a full CAPA?
+
+No — and that's not a loophole, it's the honest answer. The deviation-versus-CAPA line is drawn by
+the question being asked, not by a rule that every open deviation escalates automatically. A small,
+well-understood, one-off event can close with a short cause statement and no formal CAPA, and that
+can be entirely correct. What makes this particular event different is the proximate cause: a
+superseded procedure surviving in active use at a remote site isn't a one-off human mistake, it's
+a systemic gap that's plausibly sitting at other sites too — which is exactly the kind of finding
+that has to become a CAPA. The requirement isn't "open a CAPA for everything." It's "write down why
+you did or didn't," every time, so the decision can survive someone else reading the file later.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Your QA argues, "We don't need to check whether any other Brookfield donors were affected Friday night — Owen's the only one who was actually deferred." Reasonable?
+
+No. Extent-of-condition assessment isn't about who was deferred — it's about who was checked
+against a control that was broken at the time. Every donor screened at Brookfield during Friday's
+downtime window was checked against the same stale list, which means the same failure mode was
+live for all of them, whether or not any of them happened to be deferred. The investigation has to
+show that check was actually run, with a stated result, not just assume it because only one match
+turned up. This is also where the question about *other sites* running the same superseded binder
+revision belongs — the same reasoning, one level up.
+:::
+
+## Where this goes next
+
+The deviation record is closable: discovery, containment, impact assessment, disposition, and a
+documented "yes, this is reportable" determination are all in place. What's still open is the
+harder question this module deliberately didn't answer — not "what happened," but "why did the
+system let it happen, and how do we prove the fix actually works." That's `capa-root-cause-to-
+effectiveness`, the next module, and it picks up this exact event: the same superseded downtime
+binder, the same stale deferral list, starting from the CAPA decision this module just made.
