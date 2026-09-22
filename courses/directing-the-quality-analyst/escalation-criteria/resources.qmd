@@ -1,0 +1,26 @@
+---
+title: "Resources: Escalation criteria"
+order: 33
+---
+
+Each link below was checked this session and loads.
+
+- **[21 CFR 606.171 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.171)**
+  — this module's central citation: paragraph (c)'s "reasonably suggesting" clock-start
+  language, the whole argument for why internal escalation has to key on suspicion, not
+  confirmation. Local verbatim copy: `sources/cfr/606.171.md`.
+
+- **[21 CFR 606.170 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.170)**
+  — the fatality-notification requirement in paragraph (b), reused from
+  `storage-distribution-and-hemovigilance`, and the filer distinction (collecting facility vs.
+  compatibility-testing facility) behind this module's fatality-call drill item. Local verbatim
+  copy: `sources/cfr/606.170.md`.
+
+- **[21 CFR 606.100 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)**
+  — paragraph (b)(19), named only, behind the "consignee notification or retrieval" trigger
+  category. Local verbatim copy: `sources/cfr/606.100.md`.
+
+- **[GovInfo: Code of Federal Regulations](https://www.govinfo.gov/app/collection/cfr)** — the
+  U.S. Government Publishing Office's official, legally authoritative annual CFR archive. Use
+  this when you need the officially citable text for a specific year, rather than eCFR's
+  continuously updated current version.
