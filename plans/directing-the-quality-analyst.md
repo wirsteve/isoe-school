@@ -89,7 +89,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 
 | # | Slug | Finish line | Depth now | Status |
 |---|---|---|---|---|
-| 1 | `qa-deliverables-and-ownership` | Name what your QA produces, who writes, approves, and is only informed of each piece, and what your own signature means on each. Apply one short "cold-read test" to any of it. | Full | Not started |
+| 1 | `qa-deliverables-and-ownership` | Name what your QA produces, who writes, approves, and is only informed of each piece, and what your own signature means on each. Apply one short "cold-read test" to any of it. | Full | Published |
 | 2 | `reviewing-deviations-and-capas` | Read a deviation and CAPA write-up the way an assessor will, find the gaps that make it indefensible (missing reasoning, evidence that doesn't prove the claim, scope that stops short, an effectiveness check that can't fail), sort them by severity, and send it back in a way that produces a better second draft | Full | Not started |
 | 3 | `escalation-criteria` | Sort any event into "call me now," "tell me today," or "your call, tell me at our one-on-one." Know which events go past you and which your QA must be able to take around you. Write escalation criteria keyed to "reasonably suggesting," not "confirmed," so internal escalation beats the regulatory clock. | Full | Not started |
 | 4 | `reviewing-validation-packages` | Review a BECS validation impact assessment and test summary for its decision trail (stated scope against the four critical functions, acceptance criteria set before execution, failures recorded rather than silently re-run, approvals before deployment), and say plainly which questions (was the testing *enough*?) you can't answer yet | Lighter (decision trail only) | Not started |
@@ -823,3 +823,71 @@ AICPA SOC page only if it verifies, labeled "what a SOC 2 is, for later."
   contents of `sources/` for usable hooks. 606.171(a) (contract steps), 606.171(c)'s
   "reasonably suggesting," and 11.10's introductory "persons who use" sentence were never
   quoted before and fit this course. Next: build m1, `qa-deliverables-and-ownership`.
+
+- **2026-09-22**: Module 1 (`qa-deliverables-and-ownership`) drafted — `index.qmd`
+  (`order: 28`) and `resources.qmd` (`order: 29`). Not committed/pushed yet (held for
+  review per this session's instructions).
+  1. **606.20 fetched and verified, not a fallback.** Ran the eCFR Versioner API against
+     part 606 and confirmed 606.20(b)'s text matches what the plan believed ("adequate in
+     number, educational background, training and experience... a thorough understanding
+     of the procedures or control operations they perform"). Saved to
+     `sources/cfr/606.20.md`, logged in `sources/INDEX.md`. Used it as the module's
+     competence-floor citation instead of falling back to an AABB QSE 2 paraphrase alone —
+     QSE 2 (Resources) is still paraphrased alongside it (no standard number), per the
+     framework note.
+  2. **Part 11 budget for this module: only 11.10(j) was used** (the "what your signature
+     means" hook), deliberately leaving 11.10's introductory sentence and 11.10(a) free for
+     module 4, which the sourcing notes assign the intro sentence to as its "yes, cite the
+     rule" hook. Don't add another Part 11 clause to module 1 later without checking module
+     4's plan first.
+  3. **Cold-read test — final wording, reuse verbatim in modules 2, 4, and 5:**
+     *Would this document survive an inspector reading it cold, a year from now, with its
+     author not in the room?* Six named questions:
+     1. **Conclusion.** What does this document decide? Is there exactly one, stated
+        plainly?
+     2. **Evidence.** What objective evidence supports it — attached or retrievable — and
+        does it cover the *whole* claim?
+     3. **Reasoning.** Is the path from evidence to conclusion written down, or only the
+        answer?
+     4. **Criteria first.** Was the bar — acceptance criterion, effectiveness criterion,
+        risk tier — set *before* the result was known?
+     5. **Decision trail.** Who decided, with what authority, and in what order — do the
+        dates show assessment before approval before implementation?
+     6. **Loose ends.** Is every open item owned and dated? Is anything marked "closed"
+        while it still depends on something "TBD"?
+  4. **Gap triage — final wording, reuse verbatim:** *must fix before I sign* (the document
+     is indefensible without it) / *fix going forward* (a real weakness that doesn't
+     undermine this conclusion) / *fine as is* (looks odd, isn't actually wrong). No changes
+     from the plan's wording — module 1 kept it as drafted there.
+  5. **Worked example used:** the foundation `risk-and-controls-vocabulary` line, *"Closed —
+     no patient impact,"* run through all six cold-read questions in a few sentences (not a
+     full document review). Triage verdict: must fix before I sign, because nothing on the
+     page supports the conclusion — not because the conclusion is likely wrong.
+  6. **Monday-stack scenario, specifics invented beyond the plan (log for later modules'
+     consistency, though none of these are currently planned to recur):** a shipping-cooler
+     temperature excursion deviation packet (contained same day, nothing shipped out of
+     range) with a "Final disposition approval" signature line on its last page — the box
+     the Director almost signed, which Lakeshore's SOP reserves for "the medical director or
+     a delegated quality officer" (reusing the disposition-authority phrasing already
+     established in `quality-system-essentials` m2, not a new invented authority). The
+     vendor item was deliberately kept generic (an unnamed reagent supplier's routine annual
+     reassessment) rather than the BECS vendor, since the BECS vendor reassessment tied to
+     module 2's CAPA can't exist yet in story time — module 2 hasn't run the ICCBBA event as
+     a deviation yet. If a later module wants a "vendor reassessment" callback to this
+     scenario, it should be this generic reagent-supplier one, not the BECS vendor.
+  7. **Independence framing:** stayed inside the boundary — no citation attached to QA
+     independence from IT, 211.22/210.2 not mentioned at all (not even to reject them by
+     number, to avoid planting the citation in a learner's memory). Independence is grounded
+     only in the SOX/SoD bridge and "Lakeshore's SOP names someone else for that box."
+  8. **"Not a regulatory requirement" hook used exactly as planned:** "FDA requires the
+     Director to approve every deviation record" (false), paired with the 606.100(c)
+     first-sentence contrast (product-record review before release *is* required, but isn't
+     the Director's supervisory review). Appears in both the traps section and Check Your
+     Understanding Q2.
+  9. Word count: ~3,800 words including tables and headings (TEACHING.md's 2,000–4,000
+     target; toward the upper end of this module's own 2,800–3,600 aim, trimmed once for
+     length).
+  Next: build m2, `reviewing-deviations-and-capas` — the ICCBBA product-code-table event as
+  the QA's first full deviation/CAPA packet, locking the facts this module's log flagged as
+  still open (who dispositioned the units, relabel vs. destroy, exact push timestamp, CAPA
+  actions and effectiveness check) per the "Scenario plan" section above.
