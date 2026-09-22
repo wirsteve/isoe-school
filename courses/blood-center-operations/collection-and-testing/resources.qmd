@@ -1,0 +1,33 @@
+---
+title: "Resources"
+order: 2
+---
+
+External links for this lesson. All checked to load from a plain request as of the date this
+page was written. (Note: eCFR's own site — ecfr.gov — blocks automated/proxied traffic with a
+bot check in this repo's build environment, even though a human browser reaches it fine; the
+regulation text quoted in this lesson comes from eCFR's public Versioner API instead, and the
+links below use verified-loading mirrors of the same official text.)
+
+- **[Cornell LII: 21 CFR 610.40, current text](https://www.law.cornell.edu/cfr/text/21/610.40)**
+  — Cornell Law School's Legal Information Institute mirror of the infectious-disease test
+  requirements quoted throughout this lesson, including the release-restriction and reactive-
+  result provisions. Use this to check the current text, since the copy in this repo's `sources/`
+  folder is a dated snapshot.
+
+- **[Cornell LII: 21 CFR 606.40, current text](https://www.law.cornell.edu/cfr/text/21/606.40)**
+  — the facilities regulation that requires a designated quarantine storage location, quoted in
+  this lesson's "actual text" section. Same use case: check for amendments against the dated
+  snapshot in `sources/`.
+
+- **[Cornell LII: Title 21, Part 610 browse index](https://www.law.cornell.edu/cfr/text/21/part-610)**
+  — the full general biological product standards part this lesson's testing citation sits
+  inside, including § 610.41 (donor deferral on a reactive result) and § 610.46–.47 (lookback
+  and consignee notification procedures), which this director-level lesson names but doesn't
+  quote — your Quality Analyst will cite these directly when a reactive result actually occurs.
+
+- **[GovInfo: Code of Federal Regulations](https://www.govinfo.gov/app/collection/cfr)** — the
+  U.S. Government Publishing Office's official, legally authoritative annual CFR archive. Use
+  this for the official, dated, legally citable version of a specific year's text — for example,
+  to confirm exactly what 610.40 said on the date of a past inspection or a reactive-result
+  investigation.

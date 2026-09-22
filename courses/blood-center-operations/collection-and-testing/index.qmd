@@ -1,0 +1,319 @@
+---
+title: "Collection and testing"
+order: 2
+---
+
+## The ticket
+
+A whole blood unit is drawn from a donor at a Lakeshore Blood Center mobile site Tuesday
+morning. The phlebotomist ties the donor, the collection bag, and a set of small sample tubes
+together under one number before the needle ever goes in — the same number will follow this
+donation through every record it generates from here forward. By Tuesday afternoon, the unit
+has already moved to Lakeshore's processing lab and been spun down and split into three separate
+products: red cells into a refrigerator, plasma into a freezer, platelets into a room-temperature
+agitator in a different part of the building. Meanwhile, the sample tubes drawn alongside the
+unit are in the testing lab, running through the infectious-disease and blood-typing panel that
+has to clear before any of this becomes something a hospital can use.
+
+Wednesday morning, one of those tests comes back reactive.
+
+Now Lakeshore doesn't have one product to deal with. It has three — a bag of red cells, a bag of
+plasma, and a bag of platelets, sitting in three different pieces of equipment, each one
+traceable only by that same number assigned Tuesday morning. All three have to be found and
+placed on hold before anyone downstream touches them, and the clock on that started the moment
+the result posted, not whenever someone happens to notice. Understanding how Lakeshore finds all
+three, and what stops any one of them from moving in the meantime, is what this module is about.
+
+## Why this rule exists — and the ITSM bridge
+
+The failure mode here is direct: a unit that carries a transfusion-transmitted infection, or the
+wrong blood type, has to be stopped before it reaches a patient — and by the time a test result
+comes back, the physical product it applies to may already be sitting in three different
+locations, not one. If Lakeshore's control against that risk depended on *finishing testing
+before doing anything else with the unit*, this scenario would be a crisis: real blood centers
+don't work that way, because component shelf life is short and processing has to start fast to
+get any usable product out of the collection at all. The actual control has to work regardless of
+where the physical product is or how many pieces it's been split into.
+
+You already know this shape of problem, just under a different name: **quarantine is a change
+freeze, or a release gate, not a sequencing rule.** In change management, you don't necessarily
+block every build or deployment activity until every check has run — you build, you test, you
+stage, often in parallel — but you have one authoritative gate that nothing crosses into
+production until every required check has passed and that pass/fail is recorded. The freeze isn't
+about *when* work happens; it's about what's allowed to move forward before the gate opens. A
+reactive infectious-disease result is a failed gate, and — this is the part that's easy to
+underweight if you're thinking of it as just a red status flag — a failed gate here carries
+downstream obligations a failed build never does: the donor has to be deferred and told why, and
+in some cases, *every prior donation from that donor has to be traced and reviewed*, which is a
+lookback investigation, not just a rejected release.
+
+The mechanism that makes this work, operationally, is a status field — "quarantine status" —
+attached to every product derived from a donation inside Lakeshore's Blood Establishment
+Computer Software (BECS, the system of record you saw named in module 1 for donor eligibility;
+here it's doing the equivalent job for product release), checked automatically before that
+product can be released, shipped, or used, no matter where it physically sits. That's the part
+worth sitting with: the control isn't "don't touch the unit until testing finishes." It's "no
+product carrying this donation's identifier moves past release, regardless of what's already
+happened to it physically, until BECS says the gate has opened."
+
+## The rule, in plain English
+
+Four things are true about every donation Lakeshore collects, and they run in parallel with each
+other, not in sequence:
+
+1. **The donation gets one identifying number that ties everything to it.** The donor, the
+   collection bag, and every sample tube drawn alongside it are linked under a single number at
+   the moment of collection — the record that lets Lakeshore later ask "which products came from
+   this donation" and get a complete answer, even after the bag has been split into several
+   physical products. (This number is the seed of something you'll get the full picture of in
+   module 3: the Donation Identification Number, or DIN — a globally standardized identifier under
+   a labeling system called ISBT 128. One sentence is all this module needs; the rest is module
+   3's job.)
+2. **Component separation can start almost immediately.** Whole blood collected Tuesday morning
+   can be spun, separated, and moved into its component-specific storage the same afternoon — this
+   is routine, not a shortcut, because red cells, plasma, and platelets each have very different
+   shelf lives and processing windows that don't wait on a lab result. (Apheresis donation — where
+   a machine draws blood, separates out only the component being collected, such as platelets, and
+   returns the rest to the donor during the same visit — produces a more targeted product faster,
+   but the identity and testing rules that follow are the same either way; this module doesn't go
+   deeper into the apheresis-versus-whole-blood mechanics than that.)
+3. **The sample tubes run through the required testing panel on their own timeline**, in the
+   testing lab, independent of wherever the physical components have already gone. This includes
+   the infectious-disease screening panel (tests for evidence of HIV, hepatitis B and C, and
+   several other transfusion-transmitted infections) and the blood-typing work (ABO group, Rh
+   factor, and a screen for unexpected antibodies).
+4. **Nothing tagged with that donation's number is released, shipped, or used until every required
+   result is in and passes.** That's the gate. It doesn't matter that the platelets have been
+   sitting ready since Tuesday afternoon — if Wednesday's result is still pending, or comes back
+   reactive, the platelets, the plasma, and the red cells are all still subject to the same hold,
+   because they all still carry the same donation identifier.
+
+If a result comes back reactive, three things happen, not one: every product from that donation
+gets pulled from wherever it's sitting and quarantined or destroyed; the donor is deferred, and
+depending on which test was reactive, further supplemental testing and a possible lookback into
+that donor's prior donations may be triggered; and the donor is notified, the same obligation
+module 1 covered for eligibility deferrals, now running on a reactive-test trigger instead.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.160(c) | "Six-oh-six point one-six-oh, paragraph c" | A donor number must be assigned to each accepted donor that relates the collected unit, the donor's medical record, and any component or product made from that unit, together. | The number assigned Tuesday morning that lets Lakeshore find the platelets, plasma, and red cells all from the same reactive donation, even after they've been split into three physical locations. |
+| 21 CFR 606.160(b)(1)(iii) | "Six-oh-six point one-six-oh, paragraph b, sub-one, clause iii" | Records must capture donor adverse reaction complaints and reports, including the results of investigation and followup. | If Tuesday's donor had a reaction during the draw — lightheadedness, a hematoma — that has its own record requirement, independent of whatever the sample tubes turn up later. |
+| 21 CFR 610.40(a)(1)–(2) | "Six-ten point four-oh, paragraph a, sub-one and sub-two" | Each donation must be tested for evidence of infection due to a defined list of relevant transfusion-transmitted infections. | The panel running on Tuesday's sample tubes all day Tuesday and Wednesday morning — the work that produces the reactive result. |
+| 21 CFR 606.40(a)(3), (4), (6) | "Six-oh-six point four-oh, paragraph a, sub-three, sub-four, sub-six" | A blood establishment's facilities must provide adequate space for storage of blood and components pending completion of testing, quarantine storage pending repeat testing of questionable results, and quarantine storage/handling/disposition of unsuitable products. | The physical and procedural reason "quarantine" is a real, defined status at Lakeshore, not an informal label — it's a facility requirement, not just a BECS field. |
+| 21 CFR 610.40(g) | "Six-ten point four-oh, paragraph g" | Blood and blood components may be released or shipped prior to completion of infectious-disease testing only in documented medical emergencies or FDA-approved further-manufacturing cases — otherwise, testing has to be complete first. | The rule that keeps Tuesday afternoon's separated platelets sitting in quarantine rather than shipping, even though they're physically ready, because this isn't one of the narrow exceptions. |
+| 21 CFR 610.40(h)(1) | "Six-ten point four-oh, paragraph h, sub-one" | Blood or blood components with a reactive screening test, or collected from a donor with a prior reactive result, must not be shipped or used, with narrow exceptions. | Wednesday's result — the specific rule that puts all three of Tuesday's products on hold at once, wherever they are. |
+
+## The actual text
+
+Start with the number that ties everything together — the one assigned before the needle goes
+in — quoted verbatim from `sources/cfr/606.160.md`:
+
+> (c) A donor number shall be assigned to each accepted donor, which relates the unit of blood
+> collected to that donor, to his medical record, to any component or blood product from that
+> donor's unit of blood, and to all records describing the history and ultimate disposition of
+> these products.
+
+Read that plainly: one number, and everything derived from that donation — the medical record,
+every component, every disposition record — has to trace back to it. That's the identity link
+that lets Lakeshore's system find the plasma and the red cells the moment the platelets show up as
+linked to a reactive donation, without anyone having to remember or manually search where each
+product physically went.
+
+The adverse-reaction record requirement, for the donor side of Tuesday's draw, from the same
+source:
+
+> (iii) Donor adverse reaction complaints and reports, including results of all investigations
+> and followup.
+
+Now the testing requirement itself, quoted verbatim from `sources/cfr/610.40.md`:
+
+> (a) *Human blood and blood components.* Except as specified in paragraphs (c) and (d) of this
+> section, you, an establishment that collects blood and blood components for transfusion or for
+> use in manufacturing a product... must comply with the following requirements:
+>
+> (1) Test each donation for evidence of infection due to the relevant transfusion-transmitted
+> infections described in § 630.3(h)(1)(i) through (iii) of this chapter (HIV, HBV, and HCV).
+>
+> (2) Test each donation for evidence of infection due to the relevant transfusion-transmitted
+> infections described in § 630.3(h)(1)(iv) through (vii) of this chapter (HTLV, syphilis, West
+> Nile virus, and Chagas disease)...
+
+Notice the phrase "each donation" — not "each product." One donation, tested once at the sample
+level, and the result has to govern every product that donation produced, however many pieces it
+was split into by the time the result comes back.
+
+The facilities requirement that makes "quarantine" a defined physical and procedural reality, not
+an informal hold, quoted verbatim from `sources/cfr/606.40.md`:
+
+> (3) The storage of blood or blood components pending completion of tests.
+>
+> (4) The quarantine storage of blood or blood components in a designated location pending
+> repetition of those tests that initially gave questionable serological results.
+>
+> (6) The quarantine storage, handling and disposition of products and reagents not suitable for
+> use.
+
+Lakeshore's building itself, under this requirement, has to have somewhere specific for
+Tuesday's platelets to sit while they're pending testing — and somewhere specific for them to sit
+if Wednesday's result comes back questionable. This is why "quarantine" at a real blood center
+means a designated location and a documented status, not just "someone remembered not to ship it."
+
+The rule that keeps everything on hold by default, quoted verbatim from `sources/cfr/610.40.md`:
+
+> (g) *Release or shipment prior to testing.* Human blood or blood components that are required
+> to be tested for evidence of infection due to relevant transfusion-transmitted infections
+> designated in paragraph (a) of this section may be released or shipped prior to completion of
+> testing in the following circumstances provided that you label the blood or blood components
+> under § 606.121(h) of this chapter, you complete the tests... as soon as possible after release
+> or shipment, and that you provide the results promptly to the consignee:
+>
+> (1) Only in appropriately documented medical emergency situations; or
+>
+> (2) For further manufacturing use as approved in writing by FDA.
+
+Read the structure of that paragraph carefully: it's written as an exception, which means the
+default it's carving an exception *from* is "you don't release or ship until testing is
+complete." Lakeshore's platelets sitting quarantined Wednesday morning aren't waiting because of
+some separate policy choice — they're waiting because 610.40(g) makes "wait" the rule and
+"release early" the narrow, documented exception.
+
+And the rule that actually fires on Wednesday's reactive result, quoted verbatim from the same
+source:
+
+> (h) *Restrictions on shipment or use* — (1) *Reactive screening test.* You must not ship or use
+> human blood or blood components that have a reactive screening test for evidence of infection
+> due to relevant transfusion-transmitted infection(s) designated in paragraph (a) of this
+> section or that are collected from a donor with a previous record of a reactive screening test
+> for evidence of infection due to relevant transfusion-transmitted infection(s) designated in
+> paragraph (a) of this section, except as provided in paragraphs (h)(2)(i) through (h)(2)(vii)
+> of this section.
+
+That prohibition attaches to "blood or blood components" — plural, and not scoped to whichever
+product happens to still be sitting in the testing lab's fridge. It reaches the platelets in the
+agitator and the plasma in the freezer exactly as much as it reaches a hypothetical unit that
+hadn't been processed yet. The text later cross-references § 610.41 as the regulation governing
+the donor's own deferral once a reactive result is confirmed — the donor side of Wednesday's
+consequence, running alongside the product side.
+
+## What an inspector would actually look for
+
+An FDA investigator reconstructing Wednesday's reactive result doesn't ask Lakeshore to describe
+its quarantine philosophy. They ask for three things, and a gap in any one is a finding on its
+own.
+
+**The donation record showing the single donor number**, and every product record that traces
+back to it — proof that Lakeshore's system actually resolved "platelets in the agitator," "plasma
+in the freezer," and "red cells in the refrigerator" as the same donation, per 606.160(c), rather
+than three separate lookups someone had to do manually.
+
+**A timestamped quarantine action on all three products**, not just the one that happened to
+still be in the testing lab. If the platelets' quarantine flag was set at a different time than
+the plasma's, or later than the moment the result posted, that gap — however small — is exactly
+the finding an investigator is trained to look for, because it's the gap where a unit could have
+shipped.
+
+**The donor notification and, if applicable, the lookback record.** 606.160(b)(1)(viii) — from
+the same source already in this course's `sources/cfr/606.160.md` — requires records of
+"quarantine; consignee notification; testing; notification of a transfusion recipient... and
+disposition" performed under the regulations governing reactive-donor followup. An investigator
+expects to see this chain complete: not just "the platelets were destroyed," but who was told,
+when, and what happened to every prior donation from that donor that might also need review.
+
+A bad answer to "how do you know all three products got quarantined, not just the one in the
+lab" sounds like "the technician who saw the result would have called processing." That describes
+a hope, not a control. The control an inspector is looking for is a system-wide status check keyed
+to the donation number, not a phone call that depends on someone remembering where the other two
+products went.
+
+## Common traps
+
+**"If the components are already separated and sitting in storage, testing must already be
+done."** This is exactly backwards, and it's the trap this module's scenario is built to catch.
+Component separation and infectious-disease testing run in parallel, not in sequence — Lakeshore
+routinely has fully processed, physically ready products sitting in storage while their sample
+tubes are still in the testing lab. The parallelism isn't a shortcut or a compliance gap; it's
+normal operational necessity, made safe entirely by the quarantine status attached to the
+donation number, not by any assumption about how far along processing has gotten.
+
+**"A negative result on one test in the panel clears the whole thing."** The infectious-disease
+panel under 610.40(a) covers several distinct infections, each with its own test — a negative HIV
+result says nothing about the hepatitis C result, which may still be pending or may come back
+reactive on its own. Release requires every required test in the panel to be complete and
+passing, per 610.40(g)'s framing of testing completion as the condition for release — not "the
+tests we've gotten back so far look fine."
+
+## What this means for your job
+
+- **Ask how quarantine status propagates the moment a result posts, not just how it's recorded.**
+  A system that correctly flags the unit in the testing lab's own inventory but takes an overnight
+  batch job to flag the same donation's components sitting elsewhere has a real window where a
+  product could ship. Ask for the actual latency, not the intended design.
+- **Don't accept "someone would have caught it" for multi-product donations.** The moment a
+  donation is split into components, the question stops being "is the unit on hold" and becomes
+  "are all of its products on hold, everywhere they physically are." That's a systems question, not
+  a staffing question.
+- **Know that a reactive result is at minimum three separate obligations, not one.** Product
+  disposition, donor deferral, and donor notification (and possibly lookback into that donor's
+  prior donations) all fire off the same trigger. If your Quality Analyst's report only closes out
+  the product side, ask what happened on the donor side.
+- **Treat the donation identifier as the single source of truth for "what does this result
+  apply to."** If two systems — say, the processing lab's inventory and the testing lab's LIS
+  (laboratory information system) — can disagree about which products trace back to a given
+  donation number, that's a data-integrity gap with the same shape as the unmerged donor record
+  from module 1, just on the product side instead of the identity side.
+- **When a vendor or process change touches how quarantine status is set or checked, ask what
+  happens to products that were already released to a different workflow stage before the change.**
+  A gate that only checks status at one point in the pipeline isn't a gate; it's a gate at one
+  intersection on a road with several on-ramps.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Wednesday's test comes back reactive. What actually has to happen, and to what?
+
+At minimum: every product derived from Tuesday's donation — the red cells, the plasma, and the
+platelets, wherever each physically is — must be quarantined or destroyed under 610.40(h)(1),
+found via the single donor number required by 606.160(c). Separately, the donor is deferred (the
+regulation governing that deferral, § 610.41, is cross-referenced directly inside 610.40(h)) and
+must be notified, the same notification obligation module 1 covered for eligibility deferrals,
+now triggered by a reactive test instead. Depending on which test was reactive, Lakeshore may also
+have to review the donor's prior donations for lookback. It's a product-side action and at least
+two donor-side actions, not just "throw away the unit."
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Lakeshore's platelets were fully processed and sitting in storage a full day before the testing panel finished. Is that sequence itself a compliance problem?
+
+No — and this is worth being precise about, because it's not what 610.40 actually regulates.
+Nothing in 610.40 requires processing to wait for testing to finish; it requires that *release or
+shipment* wait for testing to finish (610.40(g)), with narrow, documented exceptions. Processing
+components ahead of a testing result is normal blood-center operations, not a shortcut around the
+rule. The compliance question is never "did processing start before testing finished" — it's
+"did anything move past quarantine before the gate opened." Confusing the two is exactly the trap
+this module opens with.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A sample tube gets mislabeled during Tuesday's draw, but the collection bag itself is labeled correctly. Is that a minor paperwork issue, since the physical product isn't affected?
+
+No. 606.160(c) is what makes a test result on a sample tube mean anything at all for the products
+made from that donation — it's the record that relates the tube, the bag, the donor, and every
+component back to one number. A mislabeled tube breaks that link at its weakest point: either the
+wrong result gets associated with this donation's products, or this donation's own result never
+gets matched to them, and either failure defeats the entire testing-and-quarantine system
+regardless of how correct the bag's own label is. The identity link is what gives a test result
+its meaning; a tube-level identity error is a testing-system failure, not a clerical one.
+:::
+
+## Where this goes next
+
+Tuesday's donation, if it clears every result, is now three correctly identified, correctly
+quarantined-then-released products — but they're still bulk components without their final
+labels, without modifications like leukoreduction or irradiation applied, and without the
+expiration dating that depends on exactly which component they are. Module 3,
+`component-processing-and-labeling`, picks up from here: how one donation becomes several
+distinct products with different shelf lives, what has to happen to a component before it's
+eligible for release into inventory, and the full ISBT 128 standard behind the barcode that the
+DIN mentioned in this module is only the first piece of.

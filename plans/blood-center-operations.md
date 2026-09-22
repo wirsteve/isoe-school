@@ -24,7 +24,7 @@ Build in order. One module per session (lesson `index.qmd` + `resources.qmd`).
 | # | Slug | Finish line | Status |
 |---|---|---|---|
 | 1 | `donor-recruitment-and-screening` | Walk a donor from recruitment through registration, health history, and the eligibility decision, and name the record that proves that decision was made correctly | Published |
-| 2 | `collection-and-testing` | Follow a donation from venipuncture through the required infectious-disease and blood-typing panel, and explain why nothing leaves quarantine until every result is in | Not started |
+| 2 | `collection-and-testing` | Follow a donation from venipuncture through the required infectious-disease and blood-typing panel, and explain why nothing leaves quarantine until every result is in | Published |
 | 3 | `component-processing-and-labeling` | Explain how one donation becomes several products with different shelf lives, and read an ISBT 128 label well enough to say what each part of it guarantees | Not started |
 | 4 | `storage-distribution-and-hemovigilance` | Track a released unit through storage, shipping, and the hospital transfusion service to the patient, and say what has to happen, and be reported, when something goes wrong | Not started |
 | 5 | `becs-in-the-pipeline` | Point at every place BECS touches the pipeline, and say in two sentences to a CIO why it isn't governed like a normal enterprise application | Not started |
@@ -192,3 +192,47 @@ flag it in the progress log below.
   Nothing flagged as uncertain. Next: module 2, `collection-and-testing` — will need Part 606
   (quarantine/testing sections), Part 610, and Part 640 sources fetched; can reuse 606.160
   already on hand for the records angle.
+- **2026-09-22** — Module 2, `collection-and-testing`, drafted (lesson `index.qmd` +
+  `resources.qmd`), not yet published. Fetched two new sources via the eCFR Versioner API:
+  `sources/cfr/610.40.md` (test requirements — the core infectious-disease testing panel,
+  the default-hold-until-tested rule in (g), and the reactive-result shipment/use restriction
+  in (h)(1); paragraphs (c) and (d), covering dedicated and autologous donation exceptions, were
+  left out of the local excerpt as out of scope) and `sources/cfr/606.40.md` (facilities — found
+  by checking Part 606 Subpart C per the scoping note, and it turned out to hold a direct,
+  citable quarantine requirement: (a)(3)/(4)/(6) require a designated quarantine storage location
+  for products pending testing, pending repeat testing, and for unsuitable products). Both
+  appended to `sources/INDEX.md`. Reused already-saved `sources/cfr/606.160.md` for two more
+  clauses not yet quoted elsewhere in this course: (c) (the donor-number/identity link — the
+  regulatory basis for the DIN forward-pointer) and (b)(1)(iii) (donor adverse reaction records).
+  Did not fetch 606.145 (platelet bacterial detection) — judged unnecessary for a director-level
+  treatment of this module's scope and would have crowded the lesson without adding a citation
+  the finish line needs. Did not find or cite a Part 606 Subpart E source for ABO/Rh typing
+  procedure itself, since the only codified typing requirements found are inside 606.121
+  (labeling), which is explicitly module 3's territory — typing is described narratively in the
+  lesson instead of citing a labeling-section clause out of scope.
+  Scenario: a Tuesday-morning whole blood donation is fully processed into three separated
+  components (red cells, plasma, platelets, in three different storage locations) by Tuesday
+  afternoon while the sample tubes are still running the infectious-disease panel; Wednesday, one
+  test comes back reactive, and all three products — not one — have to be located and quarantined
+  by the same donation number. Used to teach the ITSM bridge (quarantine as a change freeze /
+  release gate, not a sequencing rule — parallel work is normal, the gate is what matters) and the
+  parallelism nuance the plan flagged: components get physically separated within hours of
+  collection while testing runs in parallel, which is exactly why quarantine status (not
+  processing order) is the real control. DIN (Donation Identification Number) forward-pointer
+  language used: "This number is the seed of something you'll get the full picture of in module
+  3: the Donation Identification Number, or DIN — a globally standardized identifier under a
+  labeling system called ISBT 128. One sentence is all this module needs; the rest is module 3's
+  job." Module 3 should pick up ISBT 128 from that exact framing (DIN already named and defined
+  as an acronym; don't redefine DIN as a new acronym, and don't re-explain the donor-number-links-
+  everything concept, which is grounded here in 606.160(c)). BECS was not renamed or redefined in
+  this module — not mentioned at all, since nothing in this module's scope needed a new one-clause
+  addition to the BECS definition (the module-5 hand-off rule expects one new thing per module,
+  but quarantine status here is described as a system behavior generally, not attributed
+  specifically to BECS by name, since the donation/testing systems in play are more the LIS
+  (laboratory information system, named only in passing) than BECS specifically — worth a check in
+  module 5 that this doesn't create a gap in the "BECS does X" accumulation). Resources.qmd links
+  (Cornell LII 610.40, Cornell LII 606.40, Cornell LII Part 610 browse index, GovInfo CFR
+  collection) all verified via curl to return real content before listing. Nothing else flagged as
+  uncertain. Next: module 3, `component-processing-and-labeling` — will need component-specific
+  processing/modification and labeling sources (606.121 labeling, and Part 640 component-specific
+  standards) fetched, plus ICCBBA public material for ISBT 128 itself.
