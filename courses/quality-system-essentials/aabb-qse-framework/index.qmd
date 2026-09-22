@@ -1,0 +1,300 @@
+---
+title: "The AABB quality system at a glance"
+order: 13
+---
+
+## The ticket
+
+Your new Quality Analyst's first week ends with her handing you two things: an org chart
+and the table of contents from Lakeshore's quality manual. You expected the org chart to
+make sense immediately — it does, mostly. The table of contents doesn't. It's organized
+into ten sections with headers like "Process Control," "Assessments: Internal and
+External," and "Deviations, Nonconformances, and Adverse Events." Nowhere does it say
+"change management." Nowhere does it say "incident." Nowhere does it say "knowledge base."
+
+"This is how AABB structures it," she says, meaning the American Association of Blood
+Banks, Lakeshore's accrediting body. "Everything we do lives in one of these ten
+buckets. It's called the QSE framework — Quality System Essentials."
+
+Three weeks later, an AABB assessor is on-site for Lakeshore's accreditation survey. In
+the closing meeting she says, almost in passing, "I didn't see your change-control
+process cross-referenced anywhere under Process Control." Your Quality Analyst nods like
+this is a completely normal sentence. You don't, yet — but you're the one who has to sit
+in that room and sound like you belong there, and you can't do that by re-reading the
+org chart. You need the buckets themselves, and you need to know how they map onto
+things you already run.
+
+## Why this framework exists — and the ITIL bridge
+
+Start with what a "quality system" actually is, because the term gets used loosely.
+It's not the Quality department, and it isn't quality control (the testing that checks
+whether a specific unit or process met spec). A quality system is the whole
+organizational machine — policies, processes, procedures, records, people, and
+oversight — built to make sure the organization reliably does what it says it does, and
+can prove it. Quality control is one input into that machine, not the machine itself.
+
+AABB didn't invent this idea; it packaged it. In 1997, AABB launched a defined set of
+Quality System Essentials — the original QSEs — as a deliberate shift in the industry's
+posture: from *catching* errors after the fact (inspect the output, reject the bad
+units) to *preventing* them by controlling the process that produces the output in the
+first place. That shift followed a period in which FDA had been citing blood
+establishments for basic good-manufacturing-practice gaps — a track record that made
+"we caught it before it shipped" look a lot less reassuring than it used to. AABB
+updated the QSE template again in 2023, and current AABB Standards editions are built on
+that updated structure. The number of QSEs has stayed at **ten** across that update; some
+chapter titles have shifted slightly in wording edition to edition, but the ten themes
+haven't.
+
+Here's the bridge, and it's a genuinely close one, not a stretch: **a QSE framework is
+functionally the same move as ITIL's service value chain and practices.** You already
+run a set of interlocking practices — incident, problem, change enablement,
+configuration management, service catalog, continual improvement — specifically so that
+your organization's operational work is structured, auditable, and comparable across
+teams and time, instead of ad hoc and tribal-knowledge-dependent. That's exactly what
+the QSEs are for, aimed at a quality system instead of a service management system. You
+are not learning a new kind of thinking here. You're learning AABB's vocabulary for a
+kind of thinking you already do daily.
+
+The single strongest version of this bridge: **ISO 9001, the international quality
+management standard, and ISO/IEC 20000-1, the IT service management standard, share the
+same harmonized clause structure** — context, leadership, planning, support, operation,
+performance evaluation, improvement (clauses 4 through 10, under ISO's common "Annex
+SL"-style framework used across multiple management-system standards). If you've worked
+near an ISO 20000 or ISO 27001 certification, you've seen this shape before, even if
+nobody called it that. AABB's QSEs aren't literally ISO 9001's clauses — they're AABB's
+own framework — but they organize the same underlying territory: who's accountable,
+what resources and competence are required, how work is controlled, how you document and
+keep records, how you catch and fix what goes wrong, how you check whether the whole
+system is actually working. A blood center's quality system and an IT service management
+system are answering the same category of question about two different kinds of "product."
+
+A few concrete pairings, at the level of "which drawer does this go in," not a full
+crosswalk (that full mapping is its own future lesson, and it's worth more depth than a
+single-lesson table can give it):
+
+- **Documents and Records** ↔ knowledge management, and to a lesser extent
+  configuration management for the controlled-copy problem.
+- **Deviations, Nonconformances, and Adverse Events** ↔ incident management.
+- **Process Improvement** ↔ problem management, specifically the root-cause and
+  permanent-fix half of it.
+- **Process Control**, which is where change control sits ↔ change enablement.
+- **Supplier and Customer Issues** ↔ supplier management.
+- **Assessments: Internal and External** ↔ your own internal audits and service
+  reviews, feeding a continual-improvement register.
+
+Hold those loosely for now. Every later module in this course opens by naming which QSE
+it lives in, and by the time you've been through all of them, these pairings will be
+concrete instead of abstract. This lesson's job is narrower: give you the map, not the
+tour.
+
+## The framework in plain English
+
+**QSE (Quality System Essential)** is AABB's term for one of ten defined categories that
+together organize every requirement in its accreditation standards. Think of it as ten
+labeled drawers. Every policy, procedure, record, and control a blood establishment
+maintains gets filed into exactly one of them (sometimes more than one, when a topic
+genuinely spans categories — more on that below). An AABB assessor doesn't audit
+Lakeshore department by department; she audits QSE by QSE, checking that each drawer is
+actually full of what its label promises, not just labeled.
+
+A structural note before the list: this session verified the ten-QSE structure directly
+from AABB's own public material — including a dated, effective document (a proposed
+edition of AABB's Standards with a real effective date that has already passed) — but
+AABB doesn't post a single plain "here is the current definitive list" page, and the
+exact wording of a chapter title has drifted slightly between editions. Treat the names
+below as accurate to the theme, and double-check exact current wording against whatever
+edition is on Lakeshore's shelf before you put a title in a document that has to survive
+word-for-word scrutiny.
+
+The ten QSEs, in AABB's own numbering:
+
+1. **Organization** — who's accountable. Executive management's responsibility and
+   authority for the quality system, management review of its effectiveness, and who has
+   authority to approve an exception to policy.
+2. **Resources** — staffing, qualifications, and competence. Job descriptions, training,
+   competence assessment, continuing education.
+3. **Equipment** — equipment (including IT systems, explicitly) selection,
+   qualification, use, monitoring, and maintenance.
+4. **Supplier and Customer Issues** — qualifying suppliers and managing customer
+   agreements. (You'll see this titled slightly differently across documents —
+   "Supplier and Customer Agreements" in one, "Suppliers and Customers" in another —
+   same drawer, different label on it.)
+5. **Process Control** — the largest of the ten in most editions: validating processes,
+   and controlling how the actual operational work — including change control — gets
+   done correctly and consistently.
+6. **Documents and Records** — the document lifecycle (draft through retirement) and
+   record retention.
+7. **Deviations, Nonconformances, and Adverse Events** — capturing, assessing,
+   investigating, and disposing of anything that fails to meet a requirement, plus
+   reporting some of those events to outside agencies (FDA, in Lakeshore's case).
+8. **Assessments: Internal and External** — Lakeshore's own internal quality
+   assessments, plus supporting external assessments by AABB, FDA, and other regulators.
+9. **Process Improvement** — corrective and preventive action: fixing not just the
+   instance, but the process that allowed it.
+10. **Facilities and Safety** — physical space, environmental monitoring, and
+    occupational and biohazard safety.
+
+Two things worth flagging explicitly. First: a real activity can touch more than one
+QSE. A document revision that changes a validated process is a Documents and Records
+event *and* a Process Control event, and a good quality system's cross-references say so
+rather than pretending it fits neatly in one drawer. Second: this course spends its next
+six modules living almost entirely inside QSEs 5, 6, 7, and 9 — process control (change),
+documents and records, deviations, and process improvement (CAPA) — because that's where
+an IT Director's regulated work concentrates. QSEs 1 through 4, 8, and 10 matter and
+you'll place things in them, but they're not where you'll spend depth in this course.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.100(d) | "Six-oh-six point one-hundred, paragraph d" | Permits a facility to build its SOPs on named organizations' manuals — AABB's by name — as long as those procedures are at least as strict as Part 606 itself. | The one place FDA's own regulatory text names AABB directly. It doesn't adopt the QSE framework as federal law; it lets Lakeshore use AABB's structure as a floor to build on. |
+
+One callback worth having open next to this table: the `regulatory-landscape-orientation`
+foundation already built a full citation-format decoder for statute, FDA regulation, FDA
+guidance, and AABB Standard — including the rule that an AABB Standard is cited by
+number and title only, never quoted verbatim, because the text is copyrighted. Everything
+in this lesson about the QSEs follows that same rule: names and themes, never AABB's
+actual requirement text.
+
+## The actual text
+
+Quoted verbatim from `sources/cfr/606.100.md`, retrieved from eCFR — this is the same
+606.100 that two earlier foundation lessons already grounded, now read for what it says
+about AABB specifically:
+
+> (d) In addition to the requirements of this subpart and in conformity with this
+> section, any facility may utilize current standard operating procedures such as the
+> manuals of the organizations, as long as such specific procedures are consistent with,
+> and at least as stringent as, the requirements contained in this part.
+>
+> (1) American Association of Blood Banks.
+
+Read that carefully, the same way you'd read a vendor contract clause a lawyer flagged.
+It's permission, not adoption. It says Lakeshore *may* build its SOPs on AABB's manuals
+as a starting point — provided the result is at least as strict as Part 606's own
+requirements. It does not say the QSE framework itself is an FDA requirement, and it
+does not hand AABB's Standards FDA's enforcement authority. An earlier module in this
+curriculum confirmed, by searching Part 606's full text, that "AABB" appears exactly
+once in the entire part's regulatory text — right here, in 606.100(d). Every other place
+AABB shows up in Lakeshore's world is accreditation-tier, not regulation-tier. That single
+fact is the cleanest possible proof that the QSE framework and Part 606 are two separate
+obligations that happen to overlap in subject matter, not one obligation wearing two
+names.
+
+## What an inspector or assessor would actually look for
+
+An FDA investigator doesn't ask about QSEs. That vocabulary is AABB's, not FDA's, and an
+investigator's checklist runs off Part 606 and related CFR sections directly — a point
+worth holding onto, because it's easy to let QSE language creep into a document you'll
+later hand to FDA, where it will read as an unfamiliar and slightly confusing dialect.
+
+An **AABB assessor** is a different conversation entirely, and this is where the QSE
+structure becomes the actual audit trail. She isn't checking whether Lakeshore's quality
+manual *uses* the right ten headers — that's necessary, not sufficient. She's checking
+whether each QSE has real, working substance behind its label: does "Process Control"
+actually contain a change-control process with records showing it's followed, not just a
+section header with that name and nothing filed under it? Does "Assessments: Internal
+and External" show evidence of internal audits actually happening on schedule, with
+findings that go somewhere, not a policy stating that they should? The artifact she
+wants is a **cross-reference or index** — something that maps Lakeshore's actual SOPs,
+records, and org-chart accountabilities onto each of the ten QSEs — maintained by
+whoever owns the quality manual, typically your Quality Analyst or the quality
+department more broadly. A quality manual with the right ten section headers and thin or
+missing content underneath one of them is exactly the gap the assessor in this lesson's
+opening scenario just caught: "I didn't see your change-control process cross-referenced
+anywhere under Process Control" is another way of saying "the label exists; I couldn't
+find the drawer's contents."
+
+## Common traps
+
+**"The QSEs are an FDA requirement."** They're not, and this is worth stating plainly
+because it's the easiest possible mislabeling in this whole lesson. Using the
+`regulatory-landscape-orientation` foundation's four-tier framework: the QSE structure
+sits at the AABB Standard tier — binding on Lakeshore because Lakeshore holds AABB
+accreditation, enforced through accreditation assessment, not federal inspection. 606.100(d)
+is the one clause where FDA's own text touches AABB by name, and even there it's
+permission to use AABB's manuals as an SOP floor, not an adoption of AABB's framework as
+federal law. Calling a QSE gap "an FDA violation" in an internal report or a CAB
+conversation overstates the consequence and points people at the wrong regulator when
+they go looking for the fix.
+
+**"Our quality manual just needs the right section headers."** This is the failure mode
+the assessor's comment in the opening scenario catches directly. Structure without
+substance — ten correctly labeled sections with real content under some of them and
+thin or copied-language filler under others — reads to an assessor exactly like a change
+ticket with a filled-in template and no actual impact assessment behind it: the form is
+right, the work isn't there. The QSE headers are a map for organizing genuine quality
+work, not a compliance checkbox you satisfy by having the right table of contents.
+
+## What this means for your job
+
+- **Learn the ten QSE names well enough to place any quality activity in one (or name
+  which two it spans) without looking it up.** That's the whole finish line of this
+  lesson, and it's the vocabulary every later module and every AABB assessor
+  conversation assumes you already have.
+- **When your Quality Analyst cites a QSE by name, ask what's actually filed under it,
+  not whether the label is correct.** "We have a Process Control section" tells you
+  nothing an assessor would accept. "Here's the change-control SOP and the last six
+  months of change records cross-referenced under Process Control" does.
+- **Don't let "QSE" and "FDA requirement" blur together in a document that leaves your
+  building.** A deviation report, a CAB packet, or an inspection response that cites a
+  QSE gap as if it were a Part 606 violation is a mislabeling error an inspector or
+  assessor will both notice — for opposite reasons.
+- **Use the ISO 9001 / ITIL bridge to orient yourself fast in an unfamiliar quality
+  conversation, then verify the specific mapping before you act on it.** "This sounds
+  like change enablement" is a good first instinct and a bad final answer — QSE-land
+  demands more than ITIL does in ways the next several modules will spell out one at a
+  time.
+- **Ask for the cross-reference index, not just the manual's table of contents.**
+  If Lakeshore's quality system doesn't have a document mapping SOPs and records to each
+  QSE, that's a gap worth raising before an assessor finds it first.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your Quality Analyst says, "AABB Standards require us to organize our quality manual into these ten QSE sections — it's a federal requirement." Accurate?
+
+Half right, in a way that matters. AABB Standards do require Lakeshore's quality system
+to be built on the QSE structure — that part is accurate, and because Lakeshore is
+AABB-accredited, it's practically mandatory. But "federal requirement" is wrong. This is
+the AABB Standard tier from the `regulatory-landscape-orientation` foundation, not the
+FDA regulation tier: binding on Lakeshore through accreditation, enforced by AABB
+assessment, not by FDA inspection. The one place FDA's own text touches AABB is 606.100(d),
+which permits using AABB's manuals as an SOP floor — it doesn't make the QSE framework
+itself a federal requirement. Correcting "federal requirement" to "AABB accreditation
+requirement" isn't pedantic; citing the wrong regulator in a written response is the kind
+of error that undermines credibility with both of them.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A change to a validated blood-processing procedure gets revised, approved, and reissued. Which QSE does that activity belong to?
+
+Both Process Control and Documents and Records, genuinely — this is the "touches more
+than one drawer" case flagged above, not a trick question with one right answer. The
+change itself — assessing the change's impact, getting it approved, validating it if
+needed — lives in Process Control. Once approved, revising the controlled document,
+issuing the new version, and retiring the old one is a Documents and Records activity.
+A quality manual that cross-references this kind of event under both QSEs is doing it
+right; one that forces it into only one is hiding half the audit trail.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The AABB assessor's comment in this lesson's opening scenario — "I didn't see your change-control process cross-referenced anywhere under Process Control" — what gap is she actually pointing at?
+
+Not a missing section header (the QSE structure format assumption is already satisfied)
+and not a Part 606 violation (QSEs aren't FDA's vocabulary). She's pointing at a
+structure-without-substance gap: the Process Control drawer exists and is labeled
+correctly, but the actual change-control process and its records aren't indexed under
+it, so she can't find the evidence that it's real and working. The fix isn't rewording a
+header — it's building or fixing the cross-reference that connects the label to the
+actual SOPs and records behind it.
+:::
+
+## Where this goes next
+
+You now have the map: ten QSEs, what each one covers, and how the whole framework sits
+relative to Part 606 and to the ITIL practices you already run. The next module,
+`deviations-and-nonconformances`, opens by naming its QSE — Deviations, Nonconformances,
+and Adverse Events — and takes a real event at Lakeshore from discovery all the way
+through containment, impact assessment, product disposition, and a documented
+reportability decision. That's this framework's seventh drawer, opened up in full.
