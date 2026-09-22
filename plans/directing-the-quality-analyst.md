@@ -93,7 +93,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 | 2 | `reviewing-deviations-and-capas` | Read a deviation and CAPA write-up the way an assessor will, find the gaps that make it indefensible (missing reasoning, evidence that doesn't prove the claim, scope that stops short, an effectiveness check that can't fail), sort them by severity, and send it back in a way that produces a better second draft | Full | Published |
 | 3 | `escalation-criteria` | Sort any event into "call me now," "tell me today," or "your call, tell me at our one-on-one." Know which events go past you and which your QA must be able to take around you. Write escalation criteria keyed to "reasonably suggesting," not "confirmed," so internal escalation beats the regulatory clock. | Full | Published |
 | 4 | `reviewing-validation-packages` | Review a BECS validation impact assessment and test summary for its decision trail (stated scope against the four critical functions, acceptance criteria set before execution, failures recorded rather than silently re-run, approvals before deployment), and say plainly which questions (was the testing *enough*?) you can't answer yet | Lighter (decision trail only) | Published |
-| 5 | `reviewing-vendor-risk-assessments` | Review a vendor risk assessment your QA wrote for whether its evidence covers the service Lakeshore actually buys and the risk that triggered the review, whether the tier follows from the function, and whether the risk decision has an owner with authority, without yet reading a SOC 2 report in technical depth | Lighter (decision trail only) | Not started |
+| 5 | `reviewing-vendor-risk-assessments` | Review a vendor risk assessment your QA wrote for whether its evidence covers the service Lakeshore actually buys and the risk that triggered the review, whether the tier follows from the function, and whether the risk decision has an owner with authority, without yet reading a SOC 2 report in technical depth | Lighter (decision trail only) | Published |
 | 6 | `coaching-and-reporting-upward` | Turn repeated review findings into coaching that changes how your QA works, widen her decision rights as her judgment proves out, and report quality, IT, and risk performance upward with measures that show trend, aging, and effectiveness, without turning any of them into a target that teaches under-reporting | Full | Not started |
 
 Status values: Not started / Drafted / Published.
@@ -1176,3 +1176,108 @@ AICPA SOC page only if it verifies, labeled "what a SOC 2 is, for later."
   questionnaire vs. on-site audit — not judgeable yet, per the plan's "Depth and altitude"
   section). Cross-check VIA-0842's facts above stay untouched by module 5's drafting; nothing in
   module 5's candidate gap list depends on rewriting this module's timeline.
+
+- **2026-09-22**: Module 5 (`reviewing-vendor-risk-assessments`) drafted — `index.qmd` (`order: 36`)
+  and `resources.qmd` (`order: 37`). Not committed/pushed yet (held for review per this session's
+  instructions). No new source fetch was needed; quoted only from files already saved:
+  `sources/cfr/11.10.md` (introductory sentence, reused briefly from `reviewing-validation-packages`,
+  no new Part 11 clause spent) and `sources/cfr/606.171.md` (paragraph (a), new to this course, used
+  only as the planned contrast). AABB QSE 4 (Suppliers and Customers) paraphrased only from
+  `sources/aabb/qse-framework.md`, no standard number.
+  1. **606.171(a) — used, not dropped, as a contrast only.** Read the saved text carefully first:
+     paragraph (a) reaches a party performing "a manufacturing, holding, or distribution step" while
+     the product is in the establishment's control — that step counts as "performed under your
+     control," and the establishment must have a procedure for receiving that party's deviation
+     information directly. The lesson quotes exactly that sentence, then states plainly that a BECS
+     (Blood Establishment Computer Software) software vendor does **not** perform a manufacturing,
+     holding, or distribution step and isn't described by this clause — what reaches a software
+     vendor instead is Lakeshore's own 11.10 obligation to control the systems it uses, plus AABB's
+     Suppliers and Customers QSE (paraphrase only). The contrast held up cleanly on a careful read of
+     the source text, so it was kept rather than dropped. No standard number was invented anywhere
+     near it.
+  2. **The BECS vendor risk assessment — facts locked, exact wording, for module 6's reference:**
+     - **Assessment ID: VRA-0219.** Triggered by CAPA-1147-A, preventive action 1 ("Reassess the
+       BECS vendor, focused on change notification"), quoted verbatim from module 2's lock.
+       **Date opened: 09/22. Date completed: 10/06** — chosen to sit inside CAPA-1147-A's still-open
+       window (opened 09/05, no closure date yet), and deliberately earlier than VIA-0842's
+       November timeline (module 4), so the two documents don't need to be read in a forced order.
+     - **Qualification method: remote vendor risk questionnaire only, no on-site audit** — with a
+       documented, signed method rationale ("an on-site audit is not required for an established
+       SaaS vendor at this risk tier, per Lakeshore's vendor risk-tiering procedure," reviewed same
+       day the assessment opened). This is the planted **non-gap**: audit-vs-questionnaire
+       sufficiency is out of scope (`vendor-and-third-party-risk-management`'s job), and the only
+       reviewable question — whether the method choice was documented and reasoned — comes back
+       "yes." Mirrors `reviewing-validation-packages`'s "twelve tests, rationale signed" non-gap
+       structure exactly.
+     - **Change notification (the triggering risk): vendor questionnaire response "Yes, we notify
+       customers in advance of any change that may affect their systems," no supporting
+       documentation.** This is the **headline catch**: directly contradicted by DEV-1147's own
+       BECS deployment log (vendor pushed the ICCBBA table update at 01:58 a.m., no advance notice)
+       — a cross-document consistency check between this assessment and Lakeshore's own deviation
+       record from module 2, made prominent as the lesson's central finding, flagged first under
+       Evidence and referenced again in the traps and takeaways sections.
+     - **Security review: "SOC 2 report reviewed. Clean opinion, no exceptions noted,"** with no
+       statement of scope, period, or relevance to change notification specifically. Kept
+       deliberately generic per the plan — no SOC 2 mechanics (Type I/II, Trust Services Criteria,
+       exceptions reading) explained or asserted anywhere in the lesson.
+     - **Risk tier: Low — "established vendor, large installed base," reasoning by reputation, not
+       function.** The reveal contrasts this against `becs-in-the-pipeline`'s four critical
+       functions (eligibility, release, labeling, disposition) that this vendor's product performs
+       or gates at Lakeshore.
+     - **Decision trail, two gaps:** (a) one signature ("Quality Analyst") covers both the
+       quality/supplier-qualification lens and the remote-access security lens, when
+       `escalation-criteria`'s already-established privacy/security owner should hold the second
+       lens separately; (b) "Residual risk: Accepted" with no named individual authority attached,
+       called back explicitly to `quality-risk-management`'s "a real, owned decision, not a default
+       by inaction" framing.
+     - **Loose end:** "Recommend contract amendment for change notification," no owner, no date, no
+       explicit tie back to CAPA-1147-A — echoing `becs-in-the-pipeline`'s "put vendor change
+       notification in the contract, not in good faith" line, named directly in the reveal.
+  3. **Six planted gaps, mapped to cold-read-test buckets (Conclusion and Criteria first came back
+     clean, deliberately — the sixth candidate module-1 flagged as needing at least one clean bucket
+     per document held here too):** Evidence (two connected threads: the self-attestation
+     contradiction, and the SOC 2 scope/period/relevance gap) — must fix before sign; Reasoning
+     (tier by reputation, not function) — must fix before sign; Decision trail (two findings: single
+     signature for two lenses, and unowned residual-risk acceptance) — both must fix before sign;
+     Loose ends (unowned, undated, unlinked contract-amendment recommendation) — fix going forward.
+  4. **The QA's pattern, third instance (for module 6 to name across m2, m4, and m5):** both halves
+     present again — (a) right conclusion (continue using the vendor is plausibly still correct)
+     with reasoning off the page (the tier's actual reasoning is reputation, not function); (b)
+     stops at the first credible source, in its clearest form yet — the vendor's own "yes" on a
+     questionnaire, when Lakeshore's own deviation record was one click away and said the opposite.
+     "Where this goes next" explicitly tells the Director he's now seen this pattern a third time,
+     setting up module 6's coaching-the-pattern opening.
+  5. **The explicit boundary statement — echoes module 4's exact pattern**, placed directly after
+     "The rule in plain English"'s bulleted list, opening with the same "Here's the boundary, stated
+     plainly, because pretending otherwise would be worse than naming it" line, naming
+     `vendor-and-third-party-risk-management` (not yet built) as the course that will teach SOC 2
+     mechanics (Type I/II, Trust Services Criteria, complementary user entity controls, bridge
+     letters, subservice-organization carve-outs) and vendor risk-tiering/qualification methodology,
+     and closing with the required working-answer clause: route technical adequacy of vendor
+     security evidence to "Lakeshore's security team, or whoever owns third-party security review,"
+     and ask to see *that* review documented. Repeated, compressed, at the non-gap moment in the
+     reveal and again in the traps and takeaways sections.
+  6. **"Not a regulatory requirement" hook used exactly as planned:** "FDA requires a SOC 2 report
+     from every BECS vendor" → False, appears as Check Your Understanding Q1, paired with what
+     actually reaches a software vendor (11.10's obligation on the user, plus AABB's supplier QSE —
+     not a named-by-number FDA SOC 2 mandate).
+  7. **Deliberately excluded, confirmed absent:** SOC 2 Type I vs. Type II, Trust Services Criteria,
+     complementary user entity controls, bridge letters, subservice-organization carve-outs, ISO
+     27001 certificate/SoA reading, and vendor risk-tiering methodology in technical depth. No
+     assertion about whether audit-vs-questionnaire was the objectively right call.
+  8. **Word count:** ~4,300 words including tables, headings, and the full document block quote —
+     above this module's own 3,000–3,800 aim and TEACHING.md's 4,000 ceiling by a modest margin,
+     trimmed twice for length; the overage follows m2's and m4's precedent that a module carrying a
+     full planted document plus a six-question reveal runs longer than a module without one.
+  9. **Resources.qmd:** five links, all curl-verified this session — Cornell LII for 606.171 (new)
+     and 11.10 (reused), GovInfo's CFR collection, AABB's canonical "Updated Quality Systems
+     Essentials" page (the correct canonical URL, not the older redirecting one), and one AICPA/CIMA
+     SOC page — verified this session to return real, substantial content (not a bot-block or
+     captcha-only page) despite an unrelated CAPTCHA script reference elsewhere on the page — listed
+     per the plan's "what a SOC 2 is, for later" framing, not for any technical SOC 2 content.
+  Next: build m6, `coaching-and-reporting-upward` — the last module of this course. It should open
+  by naming the QA's two-part pattern across m2, m4, and m5 (this module's "Where this goes next"
+  sets that up explicitly), then move into coaching technique, the delegation ladder, documented
+  competence, rebuilding QSE m7's superficial management-review packet, system vs. individual KPIs,
+  and the Director's one-page quarterly report to the CIO. Use the strongest model for this final
+  module's audit pass per CLAUDE.md rule 4.

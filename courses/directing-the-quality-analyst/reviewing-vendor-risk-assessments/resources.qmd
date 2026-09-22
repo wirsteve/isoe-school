@@ -1,0 +1,33 @@
+---
+title: "Resources: Reviewing a vendor risk assessment"
+order: 37
+---
+
+Each link below was checked this session and loads.
+
+- **[21 CFR 606.171 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.171)**
+  — the full "Reporting of product deviations" section, including paragraph (a), this module's
+  contrast clause: a party performing a manufacturing, holding, or distribution step under a blood
+  establishment's control is reached directly by the regulation; a software vendor generally isn't.
+  Local verbatim copy: `sources/cfr/606.171.md`.
+
+- **[21 CFR 11.10 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.10)**
+  — the full "Controls for closed systems" section, including the introductory sentence this module
+  reuses: the obligation to control a system sits on "persons who use" it, not its vendor. Local
+  verbatim copy: `sources/cfr/11.10.md`.
+
+- **[GovInfo: Code of Federal Regulations](https://www.govinfo.gov/app/collection/cfr)**
+  — the government's own dated, authenticated CFR collection. Use this when a citation needs to be
+  tied to a specific published edition rather than the current rolling text Cornell's LII shows.
+
+- **[AABB: Updated Quality Systems Essentials](https://www.aabb.org/standards-accreditation/standards/about-aabb-standards/updated-quality-systems-essentials)**
+  — AABB's current landing page on the QSE (Quality System Essentials) structure, including
+  Suppliers and Customers (QSE 4), the theme this module draws on for qualifying and managing a
+  vendor. Use it as a starting point; see `sources/aabb/qse-framework.md` for what's confirmed and
+  what still needs re-checking before citing a specific edition.
+
+- **[AICPA & CIMA: System and Organization Controls (SOC) Suite of Services](https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services)**
+  — the body that maintains the SOC 2 (System and Organization Controls 2) framework this module
+  names but deliberately doesn't teach the mechanics of. Use it only for what a SOC 2 report *is*,
+  as background for later — reading what a specific report actually says is
+  `vendor-and-third-party-risk-management`'s job, not this module's.
