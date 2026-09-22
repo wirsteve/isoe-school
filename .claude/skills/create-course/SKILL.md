@@ -1,13 +1,14 @@
 ---
 name: create-course
-description: Build one module of a course (or scope a new course) in the ISOE School curriculum. Use when the user says "Create a course: I want to be able to <finish line>", "Continue", "Continue the course", or names a specific course/module to build. Reads plans/curriculum.md to decide what's next when nothing specific is named.
+description: Build module after module of a course (or scope a new course) in the ISOE School curriculum, for as long as the session allows. Use when the user says "Create a course: I want to be able to <finish line>", "Continue", "Continue the course", or names a specific course/module to build. Reads plans/curriculum.md to decide what's next when nothing specific is named.
 ---
 
 # Create course
 
-Builds the ISOE School curriculum one module at a time. Read `CLAUDE.md`, `TEACHING.md`,
-`.claude/course-authoring/learner-profile.md`, and `plans/curriculum.md` before doing anything
-else — in that order, every session, no exceptions (CLAUDE.md rule 1).
+Builds the ISOE School curriculum, module after module, publishing each one as it's finished.
+Read `CLAUDE.md`, `TEACHING.md`, `.claude/course-authoring/learner-profile.md`, and
+`plans/curriculum.md` before doing anything else — in that order, every session, no exceptions
+(CLAUDE.md rule 1).
 
 ## Figure out what to build
 
@@ -20,9 +21,19 @@ else — in that order, every session, no exceptions (CLAUDE.md rule 1).
    build its first module. If it has a plan file, build the next unbuilt module listed there.
 3. **User named a specific course or module** → build that one, regardless of sequence.
 
-Never build more than one module per session (CLAUDE.md throughput rule). "Scope a course" (Phase
-1/2) and "build its first module" (Phase 3) together in one session is fine and expected — that's
-still one module's worth of new content, just with its syllabus alongside it.
+Keep building modules in curriculum order for as long as the session allows (CLAUDE.md
+throughput rule) — after finishing one module, immediately move to the next unbuilt module and
+repeat the full loop (figure out what to build → Phase 3 → After building, including publish)
+until the curriculum is done or the session hits a limit. "Scope a course" (Phase 1/2) and
+"build its first module" (Phase 3) together in one pass is fine and expected.
+
+Delegate the actual drafting of each module (Phase 3) to a subagent so the main session's context
+stays clean across many modules in one sitting. Give the subagent everything it needs in the
+prompt — the module's finish line, the relevant slice of `plans/<slug>.md`, the learner profile,
+and the lesson spine from `TEACHING.md` — since it starts with no memory of this conversation.
+Have it report back the files it wrote and anything it flagged (missing source, uncertain
+citation). Run Phase 2 (course map) yourself with the strongest available model rather than
+delegating it — it sets the syllabus every later module depends on.
 
 ## Phase 1 — Scope the course (new courses only)
 
@@ -46,9 +57,9 @@ Draft everything else (Phase 3) with the default model.
 ## Phase 3 — Build one module
 
 Follow the lesson spine in `TEACHING.md` exactly, in order, for the module's lesson page.
-Build three pages under `courses/<slug>/<module-slug>/`:
-- `index.qmd` — the lesson (the 11-step spine).
-- `practice.qmd` — 5–8 scenario problems, easy to hard, per `TEACHING.md`.
+Build two pages under `courses/<slug>/<module-slug>/`:
+- `index.qmd` — the lesson (the 10-step spine, including the inline "check your
+  understanding" questions — there is no separate practice page).
 - `resources.qmd` — 2–4 verified external links.
 
 Every regulatory claim needs a source. Check `sources/INDEX.md` first; if the citation isn't
@@ -59,17 +70,26 @@ Add the module to `_quarto.yml`'s render list if the sidebar doesn't already pic
 automatically via the `courses/**` glob (it should — check `_quarto.yml` before adding anything
 manually).
 
-## After building
+## After building each module
 
-1. Update `plans/<slug>.md`: mark the module built, append a progress-log entry.
-2. Update `plans/curriculum.md`'s progress tracker row for this course, and update **Next up**
+1. Audit the finished lesson against `TEACHING.md`'s spine — every step present, every citation
+   sourced from `sources/`, length in range, phone-readable. Fix anything missing before moving
+   on.
+2. Update `plans/<slug>.md`: mark the module built, append a progress-log entry.
+3. Update `plans/curriculum.md`'s progress tracker row for this course, and update **Next up**
    to point at the next module in the recommended sequence.
-3. If this was the course's last module, mark it done in `plans/curriculum.md` and set **Next
-   up** to the next course in the recommended sequence (scope it next session).
-4. Invoke the `publish` skill.
-5. Report to the user in plain English: what was built, and the live site URL. Tell them to
-   start a fresh session (or just type "Continue" again in a new one) for the next module — do
-   not keep building in this session.
+4. If this was the course's last module, mark it done in `plans/curriculum.md` and set **Next
+   up** to the next course in the recommended sequence.
+5. Invoke the `publish` skill — one commit, one push, per module, immediately. Never batch
+   multiple modules into one publish; a session that stops mid-stream should still have
+   everything up to that point live.
+6. Loop back to "Figure out what to build" for the next module. Keep going until the curriculum
+   is done or the session hits a real limit (usage, time, or an explicit stop from the user).
+
+Only when stopping for good (curriculum complete, or the session is ending): report to the user
+in plain English which modules are now live, with links, and what's next. Do not tell them to
+start a fresh session — "Continue" in a new session picks up wherever this one left off either
+way.
 
 ## Guardrails
 

@@ -5,8 +5,9 @@ modeled on [Professor Claude](https://github.com/radlinsky/professor-claude) but
 rebuilt for regulatory learning. Claude does all the building from
 **claude.ai/code** (Claude Code in the browser). You just read the site.
 
-**How it works:** each Claude session writes one module as plain files and pushes them.
-`auto-merge.yml` merges the branch into main, and `publish.yml` builds the site with
+**How it works:** each Claude session writes module after module as plain files, publishing
+(committing and pushing) after every single one so nothing is lost mid-session.
+`auto-merge.yml` merges each push into main, and `publish.yml` builds the site with
 Quarto and deploys it to GitHub Pages. It's free, works on your phone, and has no
 per-page API calls, so there's nothing to rate-limit.
 
