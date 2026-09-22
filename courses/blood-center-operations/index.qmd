@@ -1,0 +1,55 @@
+---
+title: "Blood Center Operations"
+order: 1
+---
+
+## The finish line
+
+By the end of this course you can walk a single unit of blood from the moment a donor is
+recruited to the moment it is transfused into a patient, name the regulated step at every
+stage, and say which system — BECS, LIS, or HIS — touches it and why.
+
+That's the whole point of putting this course first. You can't govern a system you can't
+place in the workflow, and you can't push back on a vendor, a Quality Analyst, or an
+inspector about a step you can't describe.
+
+## Before you start
+
+This course assumes the three foundations, which are short and already built:
+
+- [Reading a CFR citation](../../foundations/reading-a-cfr-citation/index.qmd) — so a
+  citation in a lesson is something you can read aloud and act on, not a string of numbers.
+- [Regulatory landscape orientation](../../foundations/regulatory-landscape-orientation/index.qmd)
+  — so you can tell an FDA regulation from FDA guidance from an AABB standard, and say
+  which one binds.
+- [Risk and controls vocabulary](../../foundations/risk-and-controls-vocabulary/index.qmd)
+  — so likelihood, severity, detectability, and preventive/detective/corrective mean one
+  thing here and everywhere later.
+
+If you skipped them, start there. Every module below leans on all three.
+
+## The five modules
+
+Each module is one sitting, and each has its own finish line.
+
+1. **Donor recruitment and screening** — walk a donor from recruitment through registration,
+   health history, and the eligibility decision, and name the record that proves the decision
+   was made correctly.
+2. **Collection and testing** — follow a donation from the needle through the required
+   infectious-disease and blood-typing panel, and explain why nothing leaves quarantine until
+   every result is in.
+3. **Component processing and labeling** — explain how one donation becomes several products
+   with different shelf lives, and read an ISBT 128 label well enough to say what each part of
+   it guarantees.
+4. **Storage, distribution, and hemovigilance** — track a released unit through storage,
+   shipping, and the hospital transfusion service to the patient, and say what has to happen,
+   and be reported, when something goes wrong.
+5. **BECS in the pipeline** — point at every place Blood Establishment Computer Software
+   touches the pipeline, and say in two sentences to your CIO why it isn't governed like a
+   normal enterprise application.
+
+Modules one through four build the pipeline in order. Module five goes back over the same
+pipeline with the systems map laid on top, which is where this course hands off to the
+validation and BECS track later.
+
+Modules appear in the sidebar as they're built.
