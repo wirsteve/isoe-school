@@ -1,0 +1,328 @@
+---
+title: "Storage, distribution, and hemovigilance"
+order: 2
+---
+
+## The ticket
+
+Thursday, 3:15 p.m. A unit of leukoreduced Red Blood Cells — O positive, correctly separated,
+correctly labeled, release-eligible in Lakeshore Blood Center's inventory since Tuesday — is
+pulled for a scheduled shipment to Riverside General Hospital, a fictional 340-bed hospital
+forty minutes away that runs no blood collection program of its own and depends entirely on
+Lakeshore for red cell supply. The unit rides in a validated shipping container with a
+continuous temperature monitor. The courier logs delivery at 4:05 p.m.; the temperature chart
+reads in range end to end. Riverside's blood bank receives the unit, logs it into their own
+inventory, and it sits there until 9:40 p.m. Friday, when it's issued for a scheduled surgical
+patient.
+
+At 9:52 p.m., ten minutes into the transfusion, the patient spikes a fever and starts chilling.
+The nurse stops the transfusion — protocol, not overreaction — and Riverside's transfusion
+service opens an investigation: what happened, was the product at fault, and who needs to know.
+
+Two separate questions follow, and they don't have the same answer. What does Riverside have to
+do about this? And what, if anything, does Lakeshore — a blood center two organizations and one
+loading dock removed from the bedside — have to do about it too? Answering both is what this
+module is about: everything that happens to a released, correctly labeled unit after module 3
+left off, through the hospital, into the patient, and — when something goes wrong — back out
+again.
+
+## Why this matters — and the ITSM bridge
+
+The failure mode here isn't subtle: a unit that's correctly typed, correctly labeled, and
+correctly released can still hurt a patient if it degrades in transit, or if the transfusion
+itself triggers a reaction nobody expected and nobody traces back to its source. Everything
+module 3 built — the label, the barcode, the DIN — exists so that when something *does* go
+wrong downstream, Lakeshore and Riverside can both answer "which unit, from which donation,
+handled how" without guessing. This module is where that traceability actually gets used.
+
+You already run every piece of this, under different names. **Temperature monitoring in storage
+and in transit is condition monitoring with alarms and a defined response** — the same shape as
+watching a production database's latency dashboard: a threshold breach should trigger an alert
+and a documented action, not wait for someone to notice a chart looks off during a routine
+review. **A transfusion reaction is the incident** — it happens in real time, at the point of
+service, and it demands an immediate operational response (stop the transfusion) independent of
+whatever investigation follows. **Hemovigilance reporting — the practice of tracking and
+reporting adverse events tied to blood products and transfusions, the term this field uses for
+what you'd call incident reporting with an external regulator on the distribution list — is the
+notification obligation that fires once the incident is confirmed.** And **traceback — working
+backward from a reaction to the donation, and forward again to every other product that donation
+produced — is problem management, except it runs against a fixed regulatory clock, not an
+internal SLA you set yourselves.**
+
+The sharper point, and the one this scenario is built to surface: **the moment this unit crossed
+Lakeshore's loading dock, it crossed into a system Lakeshore doesn't control.** Riverside's
+blood bank has its own records, its own staff, its own regulatory obligations as a transfusion
+service. That handoff boundary — what data travels with the unit, and what Lakeshore can and
+can't see once it's on the other side — isn't a shipping logistics detail. It's a real
+governance question, the same one you'd ask about a system that hands a customer record to a
+partner's platform: what exactly crossed the boundary, and what happens when something on their
+side needs to trace back to something on yours.
+
+## The rule, in plain English
+
+Five things happen, in this order, to a component that's already cleared module 3's bar —
+correctly labeled, release-eligible:
+
+1. **Storage and monitoring.** While a unit sits in Lakeshore's inventory, its storage
+   temperature has to stay within the product-specific range and has to be recorded — an
+   initialed chart, not a memory. This is condition monitoring: a defined range, a continuous
+   record, and — operationally, even where the regulation doesn't spell out the word "alarm" —
+   a response plan for when the reading drifts.
+2. **Shipping.** When a unit moves — Lakeshore to Riverside, or anywhere else — it has to stay
+   within a specified temperature range for its product type, for the whole trip, and the
+   shipment and its receipt both have to be recorded, tied to the unit's identity, so either
+   party can reconstruct who sent what, to whom, and when.
+3. **Distribution and receipt.** Lakeshore's shipping record and Riverside's receiving record
+   are two halves of the same transaction — this is the exact point where the unit crosses from
+   Lakeshore's system of record into Riverside's.
+4. **The hospital's own transfusion service.** Once Riverside has the unit, they run their own
+   regulated activity before anyone transfuses it: **compatibility testing** — crossmatching the
+   unit against the specific patient's blood sample to confirm it won't provoke an immune
+   reaction. This is Riverside's job, under Riverside's own CGMP obligations as a transfusion
+   service, not Lakeshore's. Lakeshore's part of the story is already done by the time this
+   happens; this lesson names it because a Director needs to know this handoff exists, not
+   because it's Lakeshore's process to govern.
+5. **Transfusion, and — if something goes wrong — reaction investigation and reporting.** The
+   nurse administering the unit is the last line of defense and the first to notice a problem.
+   What happens after that split into obligations that land differently depending on who's
+   involved and how serious it is — the subject of the rest of this module.
+
+Here's where LIS and HIS finally get distinguished properly, because this is the first module
+where both organizations' systems are genuinely in play at once. **LIS (Laboratory Information
+System)** is the system that manages lab and blood-bank testing workflows — at a hospital, this
+is typically what runs compatibility testing, tracks a unit through crossmatch, and holds the
+transfusion service's own records. **HIS (Hospital Information System)** is the hospital's
+broader clinical and administrative system — patient orders, nursing documentation, the record
+of the transfusion actually being administered and what happened during it, often the same
+system doctors and nurses know as the EHR (electronic health record). They're not the same
+system, and they don't do the same job: the LIS is where "is this unit safe to give this
+patient" gets answered; the HIS is where "this patient received this unit, and here's what
+happened" gets recorded. A reaction investigation at Riverside typically has to pull from both.
+
+None of this is Lakeshore's system. That's the point. Lakeshore's own system of record — BECS —
+stops mattering the moment distribution to Riverside is recorded; everything from Riverside's
+receipt forward lives in systems Lakeshore has no visibility into except what specifically comes
+back to them. That's the handoff boundary, and it's exactly as real a governance question as
+which fields a partner API does and doesn't return.
+
+This is also where BECS earns its fourth and final clause in this course's running definition —
+system of record for donor eligibility and deferrals (module 1), gate for quarantine release
+(module 2), control over whether a final label can print (module 3), and here: **it drives
+inventory, shipping, and final disposition.** That's all this module adds; module 5 puts the
+full picture together.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 600.15 | "Six hundred point one-five" | Blood and blood components must be maintained at a specified temperature range, by product type, during shipment. | The requirement the validated shipping container and its temperature monitor exist to satisfy on Thursday's 40-minute trip to Riverside. |
+| 21 CFR 606.165(a)–(c) | "Six-oh-six point one-six-five, paragraphs a through c" | Distribution and receipt procedures must let the shipment or receipt of each unit be readily traced; distribution records (the shipper's side) and receipt records (the receiver's side) each carry defined content, tied to the unit's lot number. | The two-sided record — Lakeshore's shipping entry, Riverside's receiving entry — that marks the exact point the unit crosses from Lakeshore's system into Riverside's. |
+| 21 CFR 606.160(b)(3)(iii) | "Six-oh-six point one-six-oh, paragraph b, sub-three, clause iii" | Storage temperature must be recorded, including initialed temperature recorder charts. | Already covered in the first foundation lesson — reused here for the record Lakeshore's own inventory has to produce while this unit sits waiting to ship. |
+| 21 CFR 606.170(a) | "Six-oh-six point one-seven-oh, paragraph a" | Adverse reaction complaints and reports require a thorough investigation, written up with conclusions and followup; if the product is found at fault, copies go to the manufacturer or collecting facility. | The rule that puts Riverside's investigation of Friday night's reaction on the record — and the clause that pulls Lakeshore back in if the product turns out to be the cause. |
+| 21 CFR 606.170(b) | "Six-oh-six point one-seven-oh, paragraph b" | A fatal complication of blood collection or transfusion must be phoned or electronically reported to FDA's CBER as soon as possible, with a written report within 7 days — filed by the collecting facility for a donor reaction, or by the facility that performed compatibility testing for a transfusion reaction. | The specific, narrow, deadline-driven obligation that would apply if Friday night's reaction had been fatal — and, notice, it would be Riverside's obligation to file, not Lakeshore's, because Riverside performed the compatibility testing. |
+
+## The actual text
+
+Start with the shipping temperature requirement, quoted verbatim from `sources/cfr/600.15.md`
+(retrieved from eCFR):
+
+> The following products shall be maintained during shipment at the specified temperatures:
+>
+> ...Red Blood Cells (liquid product): Between 1 and 10 °C.
+
+That's a two-degree-wide floor and an eight-degree-wide ceiling, for the whole trip — not an
+average, not a "mostly in range." Thursday's shipping container and its continuous monitor exist
+specifically to prove that range held from Lakeshore's dock to Riverside's receiving desk.
+
+Now the two-sided record that marks the handoff itself, quoted verbatim from
+`sources/cfr/606.165.md`:
+
+> (a) Distribution and receipt procedures shall include a system by which the distribution or
+> receipt of each unit can be readily determined to facilitate its recall, if necessary.
+>
+> (b) Distribution records shall contain information to readily facilitate the identification of
+> the name and address of the consignee, the date and quantity delivered, the lot number of the
+> unit(s), the date of expiration or the date of collection, whichever is applicable, or for
+> crossmatched blood and blood components, the name of the recipient.
+>
+> (c) Receipt records shall contain the name and address of the collecting facility, date
+> received, donor or lot number assigned by the collecting facility and the date of expiration or
+> the date of collection, whichever is applicable.
+
+Read (b) and (c) side by side and notice what they don't share: Lakeshore's distribution record
+carries the consignee's name and address and the delivered quantity; Riverside's receipt record
+carries the collecting facility's name and address and the date received. Both sides carry the
+lot number — the thing that actually ties them together — but each record is built for its own
+side of the transaction, not a shared, jointly-owned record either party can query the other's
+half of. That's the LIS/HIS boundary in regulatory form: the lot number crosses, a defined slice
+of metadata crosses with it, and everything else — Riverside's crossmatch results, its nursing
+documentation, whatever its own LIS and HIS capture about this specific patient — stays entirely
+inside systems 606.165 never requires Lakeshore to see.
+
+Lakeshore's own storage-side obligation while this unit waited to ship, already established in
+the first foundation lesson from `sources/cfr/606.160.md`:
+
+> (iii) Storage temperature, including initialed temperature recorder charts.
+
+Now the record that actually gets generated once Friday night's reaction happens, quoted
+verbatim from `sources/cfr/606.170.md`:
+
+> (a) Records shall be maintained of any reports of complaints of adverse reactions regarding
+> each unit of blood or blood product arising as a result of blood collection or transfusion. A
+> thorough investigation of each reported adverse reaction shall be made. A written report of the
+> investigation of adverse reactions, including conclusions and followup, shall be prepared and
+> maintained as part of the record for that lot or unit of final product by the collecting or
+> transfusing facility. When it is determined that the product was at fault in causing a
+> transfusion reaction, copies of all such written reports shall be forwarded to and maintained by
+> the manufacturer or collecting facility.
+
+Read that last sentence carefully, because it's the answer to this module's opening question.
+Riverside runs the investigation — they're the "transfusing facility." But if that investigation
+concludes the product itself was at fault, the regulation requires the report to come back to
+Lakeshore — "the manufacturer or collecting facility" — and Lakeshore has to maintain it. The
+obligation doesn't stop at Riverside's door just because Riverside did the transfusing.
+
+And the narrower, harder-deadline obligation that would have applied if this had gone worse,
+quoted verbatim from the same source:
+
+> (b) When a complication of blood collection or transfusion is confirmed to be fatal, the
+> Director, Office of Compliance and Biologics Quality, CBER, must be notified by telephone,
+> facsimile, express mail, or electronically transmitted mail as soon as possible. A written
+> report of the investigation must be submitted to the Director, Office of Compliance and
+> Biologics Quality, CBER... within 7 days after the fatality by the collecting facility in the
+> event of a donor reaction, or by the facility that performed the compatibility tests in the
+> event of a transfusion reaction.
+
+Notice who reports what. A *donor* reaction fatality is reported by the collecting facility —
+Lakeshore, if this had happened during Tuesday's draw. A *transfusion* reaction fatality is
+reported by whoever performed the compatibility testing — Riverside, not Lakeshore, because
+Riverside is the one who ran the crossmatch this module's rule-in-plain-English section named
+above. Same regulation, same 7-day clock, two entirely different filers depending on which side
+of the DIN's lifecycle the fatality happened on.
+
+One more obligation exists and is deliberately not re-taught here: if Riverside's investigation
+turns up something that looks like a manufacturing or process deviation on Lakeshore's side —
+not just an unlucky immune reaction, but an actual gap in how the unit was collected, processed,
+or handled — that can trigger Lakeshore's own biological product deviation reporting obligation
+under 21 CFR 606.171, on its own 45-day clock. The risk-and-controls-vocabulary foundation
+lesson already covered exactly how that reportability determination works and what "may affect"
+means in that section's text. This lesson doesn't re-derive it — just flags that this is the
+door 606.170(a)'s "copies... forwarded to" clause can open.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB assessor reconstructing Friday night's reaction doesn't ask either
+organization to narrate what happened. They ask for specific records, on both sides of the
+loading dock.
+
+**Lakeshore's shipping record and Riverside's receipt record**, matched against each other by lot
+number, per 606.165(b) and (c) — proof the handoff itself is traceable, not just remembered.
+
+**The temperature chart covering the unit's time in Lakeshore's inventory and its time in
+transit** — the initialed storage chart under 606.160(b)(3)(iii) plus whatever continuous
+monitoring record the shipping container produced against 600.15's range. A gap here doesn't
+just raise a documentation question; it removes the evidence that would rule the product itself
+in or out as a cause of Friday night's reaction.
+
+**Riverside's own compatibility testing and adverse reaction investigation records**, which an
+FDA investigator visiting *Riverside* — a separate inspection, under Riverside's own registration
+as a transfusion service — would ask for directly, not through Lakeshore. And if that
+investigation concludes the product was at fault, **the copy of that report that 606.170(a)
+requires be forwarded to and maintained by Lakeshore** — a bad answer here sounds like "we never
+heard back from the hospital," because the regulation doesn't make that outcome optional.
+
+A bad answer to "how do you know what happened to this unit between your dock and the patient"
+sounds like "the hospital would have called us if it mattered." That's a hope resting on another
+organization's goodwill, not a control. The control an inspector expects to see is the paired
+distribution/receipt record plus a documented adverse-reaction forwarding process that doesn't
+depend on Riverside remembering to pick up the phone.
+
+## Common traps
+
+**"Once it ships, it's the hospital's problem."** This is the trap the whole scenario is built to
+break. Lakeshore's manufacturing responsibility for the unit is largely done at distribution —
+but 606.170(a)'s forwarding requirement means Lakeshore's *record-keeping and reportability*
+obligations don't end at the loading dock. If Riverside's investigation implicates the product,
+that finding has to come back to Lakeshore, get maintained, and potentially feed a 606.171 BPDR
+determination on Lakeshore's own clock. "Not our problem anymore" is exactly the wrong instinct
+the moment an investigation names your product as a possible cause.
+
+**"The hospital's transfusion service is basically an extension of Lakeshore's quality system."**
+Wrong in the opposite direction. Riverside's compatibility testing, its LIS, its HIS
+documentation of the transfusion — none of it is Lakeshore's system, SOP, or regulatory
+obligation to govern. Riverside is a separately regulated transfusion service, inspected on its
+own cycle, filing its own 606.170(b) fatality report if one's ever needed. Treating Riverside's
+process as something Lakeshore's Quality Analyst should audit directly is a scope error; the real
+point of leverage is the paired record at the handoff, not oversight of what happens after it.
+
+## What this means for your job
+
+- **Ask whether your shipping process treats temperature monitoring as condition monitoring with
+  a defined alert-and-response plan, or just as a chart someone reviews after the fact.** 600.15
+  sets the range; it doesn't by itself guarantee anyone notices a breach in time to act on it —
+  that gap is a process question worth asking your Quality Analyst directly.
+- **When a reaction gets reported by a hospital, ask immediately whether 606.170(a)'s forwarding
+  requirement has actually been triggered and honored** — don't wait for the hospital to
+  volunteer a copy of their investigation. If your process depends on the hospital remembering to
+  send it, that's a gap you own, not one you can hand off.
+- **Know which fatality-reporting clock applies before assuming it's yours.** A donor-reaction
+  fatality is Lakeshore's 7-day filing under 606.170(b); a transfusion-reaction fatality is the
+  compatibility-testing facility's filing — usually the hospital's. Confusing the two wastes the
+  narrow window either deadline gives you.
+- **Treat the distribution/receipt record pair, not a phone call, as your actual traceability
+  control across the LIS/HIS boundary.** If Lakeshore's system and a hospital's system can
+  disagree about which lot number went where, that's the same data-integrity gap this course has
+  flagged from module 1 onward, just at the last handoff instead of the first.
+- **Don't confuse "the hospital's transfusion service does this too" with "Lakeshore governs
+  this too."** Crossmatching, HIS documentation, and Riverside's own investigation process are
+  real, regulated activities — just not activities your Quality Analyst reports on or Lakeshore's
+  SOPs control.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Thursday's temperature chart shows the unit stayed in range the entire 40-minute trip to Riverside. Does that fact alone close out any regulatory question this scenario raises?
+
+No — and this is worth being precise about. The in-range chart satisfies 600.15's shipping
+temperature requirement and gives Lakeshore its half of the traceability record under 606.165.
+But it says nothing about what happens next: Riverside's compatibility testing, the transfusion
+itself, and Friday night's reaction are separate events governed by separate parts of this
+module's rule. A clean shipping record rules out one possible cause of the reaction (a
+temperature-related product problem) — it doesn't close the investigation, and it doesn't touch
+606.170(a)'s requirement that the reaction itself still be investigated and documented.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Friday night's reaction turns out to be non-fatal — the patient recovers fully after the transfusion is stopped. Does 21 CFR 606.170 require Lakeshore to independently notify FDA about it?
+
+No — and this is one of those places where the honest answer is "there's no regulatory
+requirement here," not "yes, cite the rule." 606.170(b)'s FDA notification and 7-day written
+report only apply when a complication is *confirmed to be fatal*. A non-fatal reaction still
+triggers 606.170(a)'s investigation-and-record requirement — Riverside has to investigate and
+document it, and forward a copy to Lakeshore if the product is found at fault — but that's an
+internal record-keeping and forwarding obligation, not an FDA notification. Treating every
+reaction as automatically FDA-reportable overstates the rule in exactly the direction the
+regulatory-landscape-orientation foundation lesson warned against.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Riverside's nurse documents that she stopped the transfusion at 9:52 p.m. and recorded the patient's vitals. Is that entry most likely captured in Riverside's LIS or their HIS?
+
+Most likely the HIS (Hospital Information System) — the clinical/administrative system where
+nursing documentation, orders, and the record of what happened during patient care actually live,
+often the same system staff call the EHR. Riverside's LIS (Laboratory Information System) is
+where the blood bank side lives: the compatibility testing and crossmatch results that cleared
+this unit for this patient before the transfusion started. A full reaction investigation
+typically has to pull from both systems — the LIS to confirm what was tested and matched, the HIS
+to confirm what actually happened at the bedside — which is exactly why the boundary between
+those two systems matters the moment an investigation needs to reconstruct the full picture.
+:::
+
+## Where this goes next
+
+That's the full donor-to-patient pipeline, told in order: eligibility, collection and testing,
+processing and labeling, and now storage, distribution, the hospital handoff, and what has to
+happen when something goes wrong afterward. Module 5, `becs-in-the-pipeline` — the last module of
+this course — goes back over this exact same ground, but with the systems lens on: every place
+BECS touched this pipeline, gathered into one picture, and why FDA treats it as a different kind
+of software than anything else your organization runs.
