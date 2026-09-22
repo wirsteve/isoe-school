@@ -1,0 +1,33 @@
+---
+title: "Resources: Internal audits and management review"
+order: 26
+---
+
+Four external links, each checked this session for a working response.
+
+- **[21 CFR 606.100, Standard operating procedures — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)**
+  The full text of the section behind this module's one citation — paragraph (c)'s
+  "thorough investigation... conclusions and followup" requirement, the same regulatory
+  floor under every deviation this course has covered, including one discovered through
+  internal audit. Use this when you want the regulation's exact wording without the
+  eCFR site's own navigation chrome.
+
+- **[GovInfo: Code of Federal Regulations collection](https://www.govinfo.gov/app/collection/CFR)**
+  The U.S. Government Publishing Office's official CFR collection — the fallback source
+  when eCFR itself is unreachable, and the version courts and agencies treat as the
+  authoritative annual compilation. Use it to browse Title 21 by year or confirm a
+  citation against the official printed edition.
+
+- **[AABB: Updated Quality Systems Essentials](https://www.aabb.org/standards-accreditation/standards/about-aabb-standards/updated-quality-systems-essentials)**
+  AABB's own public page describing the 2023 update to the QSE (Quality System Essential)
+  template — the framework this module's two QSEs, Assessments: Internal and External and
+  Organization, come from. Use it for the plain-language description of why and how the
+  template changed; it doesn't list the ten QSE titles itself (see the framework PDF
+  below for that).
+
+- **[AABB: PROPOSED Quality Systems Framework (2021 discussion draft PDF)](https://www.aabb.org/docs/default-source/default-document-library/standards/aabb-quality-systems-framework-2021.pdf?sfvrsn=a11081d1_2)**
+  The public document `sources/aabb/qse-framework.md` was built from — spells out all ten
+  QSEs, including QSE 8 (Assessments: Internal and External) and QSE 1 (Organization,
+  which names management review), each with a short "Key Concepts" description. Read it
+  for the structure and themes only; it's a proposed discussion draft, so don't cite a
+  standard number from it as current or adopted.

@@ -48,7 +48,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 | 4 | `change-control-for-regulated-systems` | Take any change to a regulated process, document, piece of equipment, supplier, or system through request, impact and risk assessment, approval, implementation, and verification, and name the record that proves each step | Published |
 | 5 | `document-control-and-records` | Follow a controlled document from draft through approval, issue, revision, and retirement, tell a document from a record, and explain how an obsolete version ends up in use and what control stops it | Published |
 | 6 | `quality-risk-management` | Run a real quality decision through ICH Q9(R1)'s process (risk assessment, control, communication, review) using an FMEA or risk ranking and filtering, and choose how much formality the decision deserves | Published |
-| 7 | `internal-audits-and-management-review` | Explain what internal assessments do inside the quality system and what management review must do with their outputs, and judge whether a management-review packet shows a quality system that is actually working | Not started |
+| 7 | `internal-audits-and-management-review` | Explain what internal assessments do inside the quality system and what management review must do with their outputs, and judge whether a management-review packet shows a quality system that is actually working | Published |
 
 Status values: Not started / Drafted / Published.
 
@@ -1124,3 +1124,89 @@ not yet quoted.
   is available if module 7 wants a concrete finding for its audit scenario to surface, but isn't
   required — module 7 may also introduce its own findings. No through-line facts beyond what's
   summarized above need to carry forward.
+
+- **2026-09-22**: Module 7, `internal-audits-and-management-review`, drafted (`index.qmd` lesson +
+  `resources.qmd`, `order: 25`/`26` as assigned; **not published/pushed — this drafting session was
+  scoped to write files for review only, per its own instructions; the orchestrating session must
+  still run `publish`**). **This is the seventh and final module — `quality-system-essentials` is
+  now fully drafted, all 7/7.** No new source fetch was performed or needed. The single citation
+  (606.100(c)) was reused verbatim from `sources/cfr/606.100.md`, already quoted in full by the
+  foundation and reused in modules 2 and 6. The "Part 606 never names audit/self-inspection/
+  management review" claim was **not independently re-verified this session** — it reuses this
+  file's own first progress-log entry (2026-09-22, course-scoping session), which already ran a
+  full-Part-606-text search and logged that "audit" and "management review" do not appear in Part
+  606's text alongside "corrective," "preventive," "root cause," and "change control." If a future
+  session needs to cite that absence with fresh certainty (e.g., because Part 606 has since been
+  amended), re-run the eCFR Versioner API full-text search rather than trusting this note
+  indefinitely. `sources/aabb/qse-framework.md` was reused (not re-verified) for QSE 8's name
+  ("Assessments: Internal and External") and QSE 1's name ("Organization," which the source file's
+  own paraphrase already ties to management review) and their themes; no AABB standards text was
+  quoted.
+
+  **The scenario, and how it lands the course's capstone:** picked up module 6's risk-ranking-and-
+  filtering thread directly — the downtime-readiness audit of high-priority satellite sites (per
+  module 6's high/medium/low bins) is complete. Three of four high-priority sites passed clean.
+  The fourth — a new site, **Fairview**, invented for this module and not part of the locked
+  through-line facts (logged here per this file's own convention for a drafter adding scenario
+  material) — produced a real finding that deliberately validates module 6's formal FMEA over
+  informal instinct: a signed, dated acknowledgment of the current downtime SOP revision was on
+  file, but the physical binder itself still held the superseded revision. This is exactly failure
+  mode 5 from module 6's FMEA table (RPN 50, "acknowledgment on file, binder not actually
+  swapped") — the risk the *formal* process ranked above the near-miss Lakeshore had already lived
+  through, now showing up as a real finding rather than a hypothetical. The QA opens it through
+  the *same* five-stage deviation process module 2 taught (discovery, containment, extent-of-
+  condition, disposition, CAPA decision) — the module's explicit teaching point that an audit
+  finding is a deviation discovered through a different channel, not a separate or lighter-weight
+  system. The management-review packet she then drafts is deliberately built to look complete and
+  be superficial (raw counts with no trend, aging, or effectiveness data attached) as the
+  scenario's central tension, contrasted against what a real packet needs (inputs: audit results
+  including disposition, CAPA trends/aging/effectiveness, change-control metrics, risk-assessment
+  outputs; outputs: resourcing decisions, policy changes, a documented effectiveness judgment).
+
+  Scope check against this file's Module 7 boundary section: covered internal assessment as QSE 8
+  at a structural level (planned/periodic/independent), named system/process audits and tracer
+  audits in one paragraph each without teaching methodology, stated auditor independence in one
+  sentence and forward-pointed to `fda-and-aabb-in-practice` for program design — did **not** teach
+  audit scheduling methodology, evidence sampling, or nonconformance grading. Covered management
+  review's inputs/outputs and the Director's participatory role, explicitly framed as
+  leadership-level, not QA-level. Did **not** build a KPI dashboard or reporting-upward mechanics
+  (left to Track 5/6 per this file's "what belongs to other courses" table). Opened by naming both
+  QSE 8 and QSE 1 (Organization), since this module spans two drawers, consistent with module 1's
+  "a real activity can touch more than one QSE" framing and module 6's own no-single-QSE precedent.
+  Check-your-understanding includes the required "management review is an FDA requirement" question
+  (Q1, honest answer: no — this file's designated hook for that exact claim) plus two applied
+  questions (Q2: whether an audit-discovered finding gets a lighter process than an
+  externally-discovered one — honest answer: no; Q3: whether a bare CAPA count is enough to judge
+  system health — honest answer: no, the finish line's central skill).
+
+  resources.qmd: 4 links (Cornell LII 606.100, GovInfo CFR collection, AABB's live "Updated Quality
+  Systems Essentials" page, and the AABB 2021 proposed Quality Systems Framework PDF), all
+  curl-verified HTTP 200 this session. Note: the shorter AABB URL
+  `aabb.org/standards-accreditation/quality/quality-systems-essentials` (used informally above)
+  301-redirects to the "updated-quality-systems-essentials" page actually listed — per this file's
+  own instruction to check AABB redirects with `curl -D -` before listing two AABB links, only the
+  final, redirect-target URL was listed, not both.
+
+  **Course status: `quality-system-essentials` is 7/7 drafted, 6/7 published as of this entry**
+  (modules 1–6 were logged as published in earlier sessions per this file's progress log; module 7
+  itself is drafted only — publish it, then flip module 7's status-table row and this course's
+  entry in `plans/curriculum.md`'s progress tracker to fully reflect 7/7 published).
+
+  **Notes for `fda-and-aabb-in-practice` (next course in this track) to reuse when it's eventually
+  scoped:** this module deliberately left a full audit-program design untaught — auditor
+  independence/competency criteria, schedule-building methodology, evidence sampling, and
+  nonconformance grading are all still fully open territory for that course's own drafter. The
+  Fairview scenario (a new satellite site, invented for this module, with a documented "binder not
+  swapped" finding) is available as a jumping-off point if that course wants a concrete finding to
+  walk through a full investigation or a 483-response exercise, but nothing requires reusing it.
+  Also still open and named twice now (module 6's FMEA and this module's finding both flag it):
+  Lakeshore has never built the automated document-control review-date trigger module 3 left as an
+  unbuilt "or" — a real, recurring, on-the-record gap any later course could pick up as a concrete
+  improvement scenario.
+
+  **Notes for `directing-the-quality-analyst` (Track 6) to reuse when it's eventually scoped:** this
+  module's management-review-packet critique (raw counts vs. trend/aging/effectiveness analysis) is
+  deliberately kept at "what the Director should ask for," per this file's Track 6 boundary note —
+  it does not build a review checklist or coaching script. Track 6 owns building that checklist and
+  the coaching technique for how a Director walks a QA through fixing a superficial packet before it
+  reaches management review or an assessor.

@@ -266,7 +266,7 @@ has no `plans/<slug>.md` file until its first session.
 | `regulatory-landscape-orientation` | 1 / 1 | Done |
 | `risk-and-controls-vocabulary` | 1 / 1 | Done |
 | `blood-center-operations` | 5 / 5 | Done |
-| `quality-system-essentials` | 6 / 7 | In progress |
+| `quality-system-essentials` | 7 / 7 | Done |
 | `directing-the-quality-analyst` | 0 / 6 | Not started |
 | `csv-and-becs` | 0 / 7 | Not started |
 | `data-integrity-and-records` | 0 / 6 | Not started |
@@ -276,6 +276,8 @@ has no `plans/<slug>.md` file until its first session.
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `quality-system-essentials` (Track 2), module 7 (final): `internal-audits-and-
-management-review`. See `plans/quality-system-essentials.md` for the full module list, scoping
-decisions, and exact `order:` values to use for each file.
+**Next up:** `directing-the-quality-analyst` (Track 6). `quality-system-essentials` (Track 2's
+first course) is fully built and published — per the recommended sequence (Phase 3),
+`directing-the-quality-analyst` is pulled forward here for its immediate people-management
+payoff, ahead of `csv-and-becs` and `fda-and-aabb-in-practice`. Scope the course (Phase 1/2),
+then build its first module.

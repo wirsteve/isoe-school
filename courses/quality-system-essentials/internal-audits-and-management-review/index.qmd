@@ -1,0 +1,348 @@
+---
+title: "Internal audits and management review"
+order: 25
+---
+
+## The ticket
+
+Three weeks after your Quality Analyst's FMEA (Failure Mode and Effects Analysis) scored
+the tracked-distribution-and-acknowledgment process, the audit it set up is done. Using
+`quality-risk-management`'s risk ranking and filtering — sites sorted into high, medium,
+and low bins by turnover, volume, and time since last review — her team checked
+downtime-readiness at the four high-priority satellite sites first.
+
+Three came back clean. The fourth, Lakeshore's Fairview collection site, didn't. The site
+lead's signed, dated acknowledgment of the current downtime SOP (standard operating
+procedure) revision was on file, right where module 4's tracked-distribution process
+expects it. But when the auditor actually opened the binder, it still held the *previous*
+revision. The acknowledgment was real. The swap never happened.
+
+Your QA catches your eye before you can say anything. "That's failure mode five. The one
+the FMEA ranked above the one we already lived through." She's right — RPN
+(Risk Priority Number) 50, "acknowledgment on file, binder never actually swapped," the
+risk a formal process surfaced that nobody's war story would have found. It just stopped
+being a hypothetical.
+
+"I'm opening this the same way I opened Owen Pruitt's," she says. "Discovery today,
+containment first, extent-of-condition next — how many other sites have a real binder
+that doesn't match their acknowledgment — then disposition and a CAPA (corrective and
+preventive action) call. It just started in an audit instead of a reconciliation report."
+
+That instinct is exactly right, and it's the first half of what this module teaches. The
+second half shows up two days later, when she hands you the draft packet for next week's
+quarterly management review — the standing meeting where Lakeshore's executive and
+quality leadership look at the whole quality system, and where you're expected to sit in
+as the system owner for everything IT-adjacent. It reads clean:
+
+> *Internal audit: 4 sites reviewed, 1 finding, corrective action initiated.*
+> *CAPA log: 5 closed this quarter, 3 open.*
+> *Change control: 12 changes processed, no overdue verifications.*
+> *Risk management: FMEA on file for the distribution process.*
+
+Every line is true. Every line is also, on its own, almost useless. Nothing here says
+whether the finding count is rising or falling, whether any of those five "closed" CAPAs
+closed on real effectiveness data or just on "the fix shipped," or whether anyone with
+authority actually decided to do anything differently because of what's in this packet.
+Before you sit in that room, you have to know the difference between a packet that
+*looks* complete and one that actually shows a quality system working. That's this
+module's whole job.
+
+## Why this matters — and the ITIL bridge
+
+Start with the failure mode both halves of this module exist to prevent. A quality
+system that never independently checks whether real practice matches its own documented
+requirements drifts, quietly, until an outside party — an AABB (American Association of
+Blood Banks) assessor or an FDA investigator — finds the gap first, at the worst possible
+moment: during an inspection, with a citation attached. Internal assessment is Lakeshore's
+own early-warning system, run on its own schedule, before anyone else is watching.
+
+And a quality system that only ever looks at findings one at a time never sees the
+pattern underneath them. One finding — a binder that didn't get swapped — looks like
+noise. Four findings like it across a year, each closed individually and never looked at
+together, is signal: a mechanism with a real, recurring weak point. Nobody at the
+finding-by-finding level is positioned to see that. Someone has to periodically pull back
+and look at the whole system's performance at once. That's management review's entire
+reason to exist, and it's why this module — not the QA's audit work, but what leadership
+does with what the audit (and everything else this course taught) produces — is squarely
+your altitude, not just hers.
+
+You already run both halves of this, under different names. **Internal audit** is your
+own internal service review or compliance check: the exercise of going and confirming
+that a process actually runs the way its documentation says it does, instead of assuming
+it does because nobody's complained. If you've sat through an ISO 20000 or ISO 27001
+internal audit, or run a SOX-style internal control test, you've done this exact motion —
+independent eyes checking practice against paper, on a schedule, whether or not anything
+looks broken.
+
+**Management review** is your quarterly governance board or executive service review —
+ITIL 4 names this loop "evaluate, direct, monitor": leadership periodically steps back
+from ticket-by-ticket firefighting to look at aggregate metrics — SLA (service-level
+agreement) trend lines, major-incident counts, backlog aging — and makes resourcing and
+policy calls at the system level. The bridge holds all the way through, with one test
+that decides whether either practice is real or theater, in both worlds: **did the
+meeting produce documented decisions and resource commitments, or did it produce a status
+readout everyone nodded at?** A governance board that only ever reviews slides and never
+approves a budget line or kills a bad process is exactly Q9's "risk assessment that lives
+only in someone's head" from the last module, wearing an executive calendar invite instead
+of a whiteboard.
+
+## The process in plain English
+
+Two related practices, and this course closes by showing how they connect to everything
+that came before.
+
+**Internal assessment — QSE (Quality System Essential) 8, Assessments: Internal and
+External**, module 1's eighth drawer. Structurally, it's a **planned, periodic,
+independent** look at whether Lakeshore's actual practice matches what its documents say
+it should be doing. Three words carry the weight:
+
+- **Planned** — scheduled in advance, the way module 6's risk ranking decided which sites
+  get checked first, not triggered only when something already looks wrong.
+- **Periodic** — run on a defined interval, so drift gets caught on a schedule instead of
+  by luck.
+- **Independent** — the person checking the work isn't the person who did it. AABB's
+  public framework names auditor independence explicitly. This module states that fact
+  and stops there — *how* Lakeshore builds and staffs an independent audit program
+  (who qualifies as independent, how auditors get trained and assessed for competence,
+  how a schedule gets built, how evidence gets sampled) is a full course of its own,
+  named below. Here, independence is a property the audit has to have, not a skill this
+  lesson teaches you to design.
+
+You'll meet two shapes of internal audit in practice. A **system or process audit**
+checks one process across many instances — exactly what Fairview's team just ran,
+checking downtime-readiness across several sites. A **tracer audit** runs the opposite
+direction: it follows one specific unit from donor to final disposition and checks every
+control it should have passed through along the way. If Lakeshore ever ran a tracer audit
+on Owen Pruitt's donation, it would retrace donor eligibility, collection, testing,
+quarantine, release, and distribution — the exact path `deviations-and-nonconformances`
+already walked you through, checked step by step instead of reconstructed after the fact.
+
+Here's the connection this module exists to make explicit, and it's the most important
+sentence in this section: **an internal audit finding is not a separate kind of problem
+with its own process. It is a deviation, discovered through a different channel, and it
+runs through the exact same five stages `deviations-and-nonconformances` already taught
+you** — discovery, containment, impact and extent assessment, disposition, and a
+documented CAPA decision. Module 2 named several ways a deviation gets discovered
+(routine reconciliation, a complaint, a monitoring alarm, self-report). Internal audit is
+simply one more entry point into that same machinery, not a parallel track with looser
+rules. Fairview's binder finding gets a discovery date (the day the auditor opened the
+binder), containment (pull the superseded revision, confirm the current one goes in
+today), an extent-of-condition check (does the same acknowledgment-without-swap gap exist
+at any other site, including the three that passed this round), a disposition, and a
+CAPA decision — reasoned exactly the way module 3 taught, not waved through because "we
+found it ourselves and it's already basically fixed."
+
+**Management review — largely QSE 1, Organization**, module 1's first drawer, the one
+that also owns executive accountability for the quality system as a whole. Structurally,
+it's a **defined, periodic** review — quarterly is typical, but the specific cadence is
+Lakeshore's own policy choice, not a number this lesson invents — by organizational
+leadership, using **specific inputs** to produce **specific outputs**. This is where
+every module in this course lands:
+
+**Inputs**, all of them things this course's earlier modules already produce:
+
+- Internal (and external) audit results — not just a finding count, but what happened to
+  each finding.
+- Deviation and CAPA trends: how many, what kind, and — critically — CAPA **aging**,
+  because an overdue CAPA backlog is itself a finding, per module 3.
+- CAPA effectiveness data specifically: closures backed by a passed effectiveness check
+  (module 5's clean six-month audit), not just "implemented."
+- Change control metrics: volume, on-time implementation and verification, per module 4.
+- Risk assessment outputs: FMEA results, accepted risks and their reasoning, and whether
+  scheduled risk reviews actually happened, per module 6.
+- Complaints and training status, named by AABB's framework as inputs too, in one line —
+  not built out further here.
+
+**Outputs**, and this is the half a superficial packet skips: **resourcing decisions**
+(more audit staff, a budget line for the automated review-date trigger module 3 left
+unbuilt and module 6's FMEA flagged again), **policy or process changes** (tightening the
+document-control audit to always include a physical binder check, the exact fix module 6
+proposed for failure mode 5), and a **documented judgment**, signed by leadership, on
+whether the quality system is effective as a whole. A management review that produces a
+set of approved minutes with none of these three things in it hasn't actually happened,
+whatever the meeting invite said.
+
+This is squarely where you sit. Auditing isn't your job — your QA and her team do that.
+But management review is a leadership function, and as the owner of the systems several
+of this course's inputs run on (the tracked-distribution mechanism, BECS's reconciliation
+process), you're one of the people this meeting expects real input and real decisions
+from — not just a seat in the room.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.100(c) | "Six-oh-six point one-hundred, paragraph c" | A thorough investigation, including conclusions and followup, of any discrepancy shall be made and recorded. Already quoted in full in `risk-and-controls-vocabulary` and reused in modules 2 and 6. | The same regulatory floor under Fairview's finding as under Owen Pruitt's — a thorough, recorded investigation, regardless of which channel discovered the discrepancy. |
+
+That's the whole table, and that's deliberate, not an oversight — see below.
+
+## The actual text
+
+This module has almost no new regulatory text, for the same reason `capa-root-cause-to-
+effectiveness`, `change-control-for-regulated-systems`, and `document-control-and-records`
+each found before it: this course's earlier full-text search of Part 606 (run while
+scoping the course, and not contradicted by anything found while drafting this module)
+turned up no occurrence of "audit," "management review," or "self-inspection" anywhere in
+Part 606's regulatory text. Neither internal assessment nor management review is named by
+FDA's blood-manufacturing regulation. What Part 606 requires is the same investigation
+standard every deviation in this course has already had to satisfy, quoted verbatim from
+`sources/cfr/606.100.md`:
+
+> A thorough investigation, including the conclusions and followup, of any unexplained
+> discrepancy or the failure of a lot or unit to meet any of its specifications shall be
+> made and recorded.
+
+Read that against Fairview's binder finding specifically: the regulation doesn't care
+*how* the discrepancy was discovered — a routine data-entry catch, a hospital complaint,
+or an internal auditor opening a binder are all equally "an unexplained discrepancy," and
+all equally owe Lakeshore a thorough, recorded investigation. That's the regulatory floor
+underneath the "same process, different entry point" point this whole module makes.
+
+The structured practices built on top of that floor — a scheduled, independent internal
+audit program, and a periodic management review with defined inputs and outputs — are
+AABB's Quality Systems Framework, not Part 606's text. Assessments: Internal and External
+(QSE 8) is where AABB places internal audit; management review sits under Organization
+(QSE 1), the same drawer that owns executive accountability for the whole quality system.
+Both are binding on Lakeshore through AABB accreditation, the same tier every "this isn't
+in Part 606's words" finding in this course has landed on for CAPA, change control, and
+document control.
+
+## What an inspector or assessor would actually look for
+
+Two different artifacts, for two different practices, and a gap in either is a real
+finding on its own.
+
+**For internal audit**, evidence it actually happens on schedule, with findings that go
+somewhere. An audit calendar with dates that were kept, a completed audit report per
+cycle — not "the schedule says we do this," but records showing it was done — and, for
+every finding, a trail leading into the deviation/CAPA system: a discovery date, a
+disposition, a CAPA decision with reasoning. An audit program that produces findings that
+disappear into a spreadsheet nobody else reads is functionally the same gap as a deviation
+record that never reaches a reportability determination.
+
+**For management review**, evidence the meeting produced something. Minutes showing who
+attended (the right leadership, not just Quality), the specific inputs actually reviewed
+(not "quality metrics were discussed" — which metrics, with what trend), and — this is
+the tell an assessor reads fastest — **documented decisions and resource commitments tied
+to dates and owners**, not a summary of what was said. "Management review occurred" with
+an attendance sheet and nothing else is close to worthless as evidence; "management
+review decided to fund an automated document-control review-date trigger, owner assigned,
+target date set" is exactly what the practice is supposed to produce.
+
+## Common traps
+
+**"Management review is just a status update meeting."** The single most common failure
+of this practice, and the one this module's opening scenario is built around. A packet
+full of accurate counts — findings closed, CAPAs closed, changes processed — is a status
+report. Management review isn't finished until it has produced a documented decision:
+resources committed, a policy changed, or an explicit, signed judgment that the system is
+effective as-is. A meeting that reviews the same three bullet points every quarter with no
+decision attached to any of them hasn't been doing management review; it's been reading
+the packet out loud.
+
+**Treating an internally-found deviation more leniently than one an outsider caught.**
+"We found this ourselves, during our own audit, so it's not as serious" is a real and
+tempting instinct, and it's exactly backwards from what an assessor expects. A finding
+discovered through internal audit gets the *same* discovery-to-CAPA process as one a
+hospital complaint or a routine reconciliation catch would trigger — same containment
+urgency, same extent-of-condition rigor, same reportability test if it applies. An
+assessor who sees an audit-log entry get a softer, faster, less-documented path than an
+externally-triggered deviation reads that as exactly what it is: a double standard that
+undermines the credibility of the internal audit program itself.
+
+**A packet that lists metrics without analyzing them.** "5 CAPAs closed, 3 open" is a
+count. "5 closed, all with passed effectiveness checks; 3 open, average age 40 days,
+trending down from last quarter's 65" is analysis — the same finding count, turned into
+something a decision can actually be based on. The gap between these two sentences is the
+entire difference between a management-review packet that shows a working system and one
+that just shows someone kept a tally.
+
+## What this means for your job
+
+- **Ask for the trend, not the count.** "How many findings this cycle" tells you almost
+  nothing on its own. "Is that number rising, falling, or flat against the last three
+  cycles, and why" is the question a working management review has already answered
+  before you walk into the room.
+- **Check that "closed" means closed on effectiveness data, not on "the fix shipped."**
+  Module 3 taught you this distinction once already; a management-review packet is where
+  it matters most, because it's easy for a summary slide to quietly collapse "implemented"
+  and "proven effective" into the same word.
+- **Watch for a double standard between audit-discovered and externally-discovered
+  findings.** If an internal-audit finding is moving faster, with less documentation, than
+  a comparable deviation caught some other way, that gap is itself worth raising — before
+  an assessor raises it for you.
+- **Come to management review with your own inputs prepared, not just an opinion.** As
+  the owner of the systems several of this course's inputs run through, you're expected to
+  bring real numbers — change-control metrics, risk-review status on anything you own — not
+  just react to what Quality presents.
+- **Leave the meeting with something written down.** If management review didn't produce a
+  documented decision, a resourcing commitment, or an explicit effectiveness judgment with
+  your name or your budget attached to at least one line, ask what the meeting actually
+  decided before you sign off that it happened.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA says, "Management review is an FDA requirement for every blood establishment — Part 606 requires it." True or false?
+
+False, and it's this module's designated version of a pattern the whole course has taught:
+Part 606's text never uses the phrase "management review," the same way it never named
+CAPA, change control, or document control. This course's earlier full-text search of Part
+606 found no occurrence of "audit," "management review," or "self-inspection" anywhere in
+its regulatory text. Management review is an AABB Standards requirement, under the
+Organization QSE — binding on Lakeshore because it holds AABB accreditation, enforced
+through assessment, not FDA inspection. Tell your CIO: the law requires a thorough,
+recorded investigation of any discrepancy, whoever finds it and however it's found; AABB's
+Standards are what require leadership to periodically step back and judge the whole system
+against everything that investigation work has produced.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Your QA says, "We found the Fairview binder gap ourselves during an internal audit, so it doesn't need the full deviation process the way Owen Pruitt's event did — we can just log it as a quick audit note and fix it." Reasonable?
+
+No. An internal audit finding is a deviation discovered through a particular channel, not
+a lighter-weight category of problem. It owes the same discovery date, containment,
+extent-of-condition check, disposition, and documented CAPA decision as any other
+deviation — regardless of who found it or how routine the finding felt in the moment.
+Treating an audit-sourced finding more leniently than an externally-discovered one is
+exactly the double standard this module's common traps section names, and it's one of the
+fastest ways to undermine an assessor's confidence in the audit program itself: if internal
+audit findings get a shortcut, why would anyone trust the audit program to surface the
+ones that matter?
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The management-review packet says "CAPA log: 5 closed this quarter, 3 open." Is that enough for a director to judge whether Lakeshore's quality system is actually working?
+
+No — it's a count, not an analysis, and this module's whole finish line is learning to
+tell the difference. A working management-review input would say how many of those five
+closures had a passed effectiveness check behind them (versus just "implemented"), what
+the three open CAPAs' aging looks like against Lakeshore's own targets, and whether that
+trend is improving or worsening compared to prior quarters. A packet that stops at the raw
+count looks complete and tells you almost nothing you could act on — which is exactly the
+gap between a management-review packet that shows a system working and one that just shows
+someone kept score.
+:::
+
+## Where this goes next
+
+This closes `quality-system-essentials`. One event — a stale deferral list, a superseded
+downtime binder, a unit that shipped before anyone caught it — ran the whole machinery
+this course built, module by module: a deviation taken from discovery through a documented
+reportability call, a CAPA that found a real system cause and proved its fix worked, a
+change controlled through impact assessment and verified implementation, a document-control
+process that finally keeps the wrong version out of the building, a formally scored risk
+assessment, and now an internal audit whose finding ran through that same deviation machinery
+one more time — feeding a management review built to turn all of it into resourcing
+decisions and a real judgment about whether the system works.
+
+Two places to go from here. `fda-and-aabb-in-practice`, the next course in this track, is
+where the audit-program design work this module deliberately left alone lives: auditor
+independence and competency, building an actual audit schedule, evidence sampling,
+nonconformance grading — plus facing an FDA inspection or AABB assessment directly,
+Form 483 observations, and what a recall or a Warning Letter actually means. It isn't
+built yet. And if what you want next is sharper at reviewing your own QA's work
+product — her deviation write-ups, her CAPA effectiveness checks, her audit findings,
+closely enough to catch what an inspector would catch before it leaves your building —
+that's `directing-the-quality-analyst`, also not yet built, and the course this
+curriculum's own sequencing recommends you take next.
