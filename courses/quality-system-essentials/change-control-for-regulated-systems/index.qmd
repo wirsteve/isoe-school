@@ -1,0 +1,324 @@
+---
+title: "Change control for regulated systems"
+order: 19
+---
+
+## The ticket
+
+Two weeks after the Brookfield binder gets swapped, your Quality Analyst is back with what
+looks like good news: she's drafted the fix for the CAPA's (corrective and preventive action)
+real finding — the document-control gap that let a superseded SOP (standard operating
+procedure) survive in an active collection binder. Her plan: add every satellite site to a
+tracked distribution list, and require each site lead to sign and date an acknowledgment
+every time a controlled document changes. Good idea. Then she tells you how she wants to ship
+it.
+
+"I'll email the site leads today — new distribution list attached, tell them to print it,
+sign it, and fax it back. I can have this closed out before next month's audit."
+
+That's the version that should stop you. Not because the idea is wrong — it's the right fix.
+Because "I'll email it and call it done" is a corrective action with no request behind it, no
+one who assessed what else it touches, no defined approver with the authority to say yes, and
+no plan to confirm afterward that it actually works, as opposed to merely existing. You've
+seen this shape of shortcut before, just wearing IT's clothes instead of Quality's: it's the
+same move as pushing a production change straight from a developer's laptop because "we know
+it's fine." On a system that only affects service availability, that's a bad habit. On a
+system that's supposed to keep a superseded blood-safety procedure out of a satellite site's
+hands, it's the exact failure this whole CAPA exists to close — a well-intentioned person
+doing the right thing the wrong way, with no record proving any of it.
+
+"Write it up as a change," you tell her. "Not a memo. A change."
+
+## Why this matters — and the ITIL bridge
+
+This module lives in **QSE 5** of AABB's Quality System Essentials (QSE) framework —
+**Process Control**, the QSE that covers keeping validated, controlled processes working
+correctly, including when they change. Change control's job is to make sure that when
+something regulated moves — a procedure, a piece of equipment, a supplier, a document, a
+system — it moves through a documented decision, not an act of good faith.
+
+The failure mode this QSE exists to prevent is exactly the one your QA's memo idea walked
+into. An uncontrolled change to a regulated process doesn't just risk being wrong on its own
+terms — it erases the paper trail that would let anyone, including Lakeshore itself, later
+prove the change was reasoned through at all. Picture the audit version of this: an assessor
+asks "who approved this new distribution requirement, and what did they check before they
+signed off?" and the honest answer is "nobody approved it — it went out in an email." That
+answer reads exactly like an *uncontrolled* change to the process this whole CAPA was
+supposed to fix — which, to an assessor, looks less like progress and more like the same
+document-control discipline gap that produced Owen Pruitt's event in the first place, just
+relocated one level up.
+
+You already run this discipline under a name you know well: **change enablement** — request
+for change (RFC), impact and risk assessment, a change advisory board (CAB) or defined
+approver, implementation, and a post-implementation review (PIR). Nothing about that shape is
+new to you. What's new is what the regulated version demands *in addition* to what your normal
+change process already asks:
+
+- Your CAB usually scores **service risk** — will this break something, will users notice,
+  what's the blast radius. A regulated change adds a second axis your normal criteria were
+  never built to catch: **does this change put a controlled process, document, or system out
+  of a compliant, working state** — a question with a "yes" answer even when the service-risk
+  score is low.
+- **Quality is a required approver, not a notified party.** On a normal IT change, Quality
+  might get a courtesy heads-up. On a regulated change, Quality's sign-off has to exist in the
+  record as an actual approval — the same distinction `becs-in-the-pipeline` drew for BECS
+  (Blood Establishment Computer Software) changes, and it's true for a document-control
+  process change for the same underlying reason: someone with authority over the regulated
+  outcome has to actually evaluate it, not just hear about it.
+- **Training and document issuance have to complete before the change's effective date**,
+  not after. Your ordinary change process is usually satisfied once the change deploys
+  cleanly. A regulated change isn't done deploying until the people who have to follow the new
+  procedure have the new procedure and know it's new — which is precisely the step this CAPA's
+  fix exists to guarantee never gets skipped again.
+- **The PIR becomes a verification with actual evidence**, not "deployed without errors."
+  You'll come back to this at the end of the process, because it's the same discipline module 3
+  demanded of the CAPA's effectiveness check: don't accept "we shipped it" as proof that it
+  worked.
+
+One more mapping worth having ready: your normal model probably has a **standard change** —
+pre-approved, low-risk, routine — and an **emergency change** for something that can't wait
+for the normal cycle. The regulated world has close analogs. A change type whose risk has
+already been assessed and documented once can be pre-approved for repeat use, the same idea as
+a standard change. And where you'd reach for an emergency change, AABB's framework instead
+allows a **planned deviation** (also called a pre-approved exception) — a documented, justified
+departure from a policy, process, or procedure, approved *in advance* by the medical director
+or a delegated quality officer for a specific, defined situation. It's a controlled way to say
+"we can't do it exactly by the book this one time," decided before the fact, not an emergency
+change rushed through after something's already broken. `deviations-and-nonconformances`
+mentioned this in passing; this is where it actually belongs.
+
+## The process in plain English
+
+Five stages, in order, and skipping one breaks the ones after it — you can't approve a change
+whose impact was never assessed, and you can't verify a change that was never actually
+approved as a defined, documented thing.
+
+**1. Change request.** What's changing, why, and how far it reaches. For this CAPA's fix:
+*Lakeshore's document-control process for satellite-site controlled paper copies changes from
+an unverified "mail it and assume it arrived" model to a tracked distribution list, with a
+required signed and dated acknowledgment of receipt from each site lead whenever a controlled
+downtime procedure is revised.* The request names the trigger (the Owen Pruitt/Brookfield
+CAPA), the scope (every satellite collection site currently holding a downtime binder, not
+just Brookfield), and what problem it's solving (the exact root cause module 3 landed on: no
+verified distribution step for remote-site controlled copies). A request that can't state its
+own scope in a sentence isn't ready to move to the next stage.
+
+**2. Impact and risk assessment.** What else does this touch, and how risky is getting it
+wrong? This is where you apply the risk vocabulary `risk-and-controls-vocabulary` already gave
+you — **likelihood**, **severity**, **detectability** — to the change itself, not to the
+original event. Ask: how likely is it that the new distribution process fails to reach a site
+(a site lead changes, an email bounces, a fax machine jams)? How severe is a miss — does it
+recreate the exact same exposure this CAPA exists to close? How detectable would a miss be
+before it causes real harm — does the new process include anything that would catch a site
+that never acknowledges receipt, or does it rely on someone happening to notice?
+
+The impact assessment also asks who else needs to weigh in, beyond the people writing the
+change: Quality, because this touches a controlled-document process; site operations
+leadership, because it changes what every satellite site lead is now required to do; and,
+since implementing tracked distribution and acknowledgment tracking likely means an
+enhancement to whatever document-control system or spreadsheet Lakeshore runs this on, IT,
+because that's a system change with its own testing and rollback questions. This is also where
+you ask the validation question in its general form — **does this change require validation or
+re-validation of anything it touches, and who decides?** — without turning it into a full
+validation methodology exercise. (If any single piece of this CAPA's fix had actually touched
+BECS itself — say, an automated export that pulls the deferred-donor list directly into a
+site's downtime binder before every shift — that one piece would need the validation impact
+assessment `becs-in-the-pipeline` already walked you through, with Quality as a blocking
+approver on that specific piece. This CAPA's fix doesn't touch BECS; it's worth knowing the
+general process reaches that case too, because a later CAPA's fix might.)
+
+**3. Approval.** A named approver, with real authority to say no, not a courtesy sign-off after
+the decision's already made. For this change: **Quality approves it as the owner of the
+document-control process and its compliance outcome, and you (or your delegate) approve it as
+the owner of the system the tracked-distribution mechanism will run on.** Neither approval
+alone is sufficient. Quality without IT's sign-off approves a process that might not be
+technically feasible as designed. IT without Quality's sign-off ships a working system that
+nobody with regulatory authority has actually agreed solves the right problem. Both have to
+sign, and both have to be real evaluations — an assessor who finds an approval signature dated
+the same day as implementation, on a form that shows no evidence anyone actually reviewed the
+impact assessment first, treats that the same as no approval at all.
+
+**4. Implementation.** The change goes live — but "live" has an extra requirement here that a
+normal IT change doesn't carry: **every site lead has to receive the new distribution
+requirement and understand what changed, and every current controlled document has to reach
+every site, before the change's effective date**, not trickling out over the following weeks
+while some sites are still running the old, unverified process. This is the concrete version
+of the ITIL bridge point above — implementation isn't complete when the system update ships;
+it's complete when the people the change depends on are actually equipped to follow it.
+
+**5. Verification.** Does the record now genuinely prove the change worked — not just that it
+deployed? This is the same "prove it, don't just claim it" standard module 3 demanded of the
+CAPA's effectiveness check, applied on a shorter clock. Verification here isn't "confirmed the
+new distribution list exists" — that's implementation evidence, the same trap module 3 named
+for "confirmed the binder was replaced." A real verification issues the next real controlled-
+document revision through the new process and confirms, with a dated record, that the
+distribution list generated correctly, every site lead's acknowledgment actually came back
+signed and dated, and any site that didn't acknowledge within the expected window got flagged
+— not silently missed. That's distinct from, and doesn't replace, the CAPA's own six-month
+effectiveness check from module 3 (zero sites holding a superseded revision at the next
+document-control audit). Verification proves the *mechanism* works; the CAPA's effectiveness
+check proves the *problem* is actually gone. You need both, and they check different things.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.100(b), first sentence | "Six-oh-six point one-hundred, paragraph b" | Written SOPs required for every CGMP (current good manufacturing practice) step, maintained and followed — not just written once. | The floor this whole change has to land on: whatever the new distribution process looks like, the result still has to be a written, controlled procedure Lakeshore actually follows — not an email thread standing in for one. |
+| 21 CFR 606.100(b), "must be available…" sentence | Same citation, later clause | The procedure "must be available to the personnel for use in the areas where the procedures are performed." | This is the exact requirement Owen Pruitt's event violated, and the exact requirement this change is built to satisfy going forward — the right revision, physically present, at the point of use, every time. |
+
+That's a short table because there's no new AABB standard number to add to it — see "the
+actual text" below for why.
+
+## The actual text
+
+Both clauses come from 21 CFR 606.100(b), quoted verbatim from `sources/cfr/606.100.md` —
+already introduced by `becs-in-the-pipeline` for a different purpose, worth reading again with
+change control specifically in mind:
+
+> Establishments must establish, maintain, and follow written standard operating procedures for
+> all steps in the collection, processing, compatibility testing, storage, and distribution of
+> blood and blood components for allogeneic transfusion, autologous transfusion, and further
+> manufacturing purposes… Such procedures must be available to the personnel for use in the
+> areas where the procedures are performed.
+
+Read it as a standing obligation, not a one-time event: "establish, **maintain**, and follow."
+A procedure has to stay correct and stay in the hands of the people using it, through every
+revision, indefinitely — which is exactly the obligation an uncontrolled change (a memo, an
+undocumented tweak, a "we'll get to the paperwork later") puts at risk the moment it happens,
+whether or not anything goes wrong that particular time.
+
+Here's the regulation-versus-standard distinction worth stating plainly, the same way module 3
+did for CAPA: **the words "change control" do not appear anywhere in 21 CFR Part 606.**
+Part 606 requires that procedures exist, stay current, and stay available where used — it
+never spells out a request-assess-approve-implement-verify methodology for *how* a change to
+one of those procedures has to be handled. That structured process comes from AABB's Quality
+Systems Framework, under the Process Control QSE — binding on Lakeshore through accreditation,
+not through the CFR's own text. Keep the tiers labeled the way you always have in this course:
+the regulation says the procedure has to be correct and available; AABB's Standards say here's
+the disciplined process that gets you there and lets you prove it.
+
+## What an inspector or assessor would actually look for
+
+An assessor reviewing this change wouldn't ask whether the new distribution process works
+today. They'd ask for the **change record**, and they'd expect it to show all five stages, each
+with a name and a date attached — not a single memo standing in for the whole thing.
+
+**A documented request**, showing what was changing and why, tied back to the CAPA that
+triggered it. A change with no visible origin — no linked CAPA, no stated reason — reads as a
+change nobody can explain, regardless of how sound it turned out to be.
+
+**A written impact and risk assessment**, not a conversation someone remembers having. The
+assessor wants to see that someone actually asked "what else does this touch" and wrote down
+the answer, including who was consulted, before approval — not a retroactive justification
+assembled after the fact because an assessor asked.
+
+**Named approvers with dated signatures**, from both the process side and the system side —
+Quality and IT, not one function rubber-stamping for the other. A single signature where two
+were required is a visible gap, the same kind of gap module 3 flagged for a CAPA missing its
+preventive half.
+
+**Evidence that training and document issuance finished before the effective date** — not
+"site leads were notified," but a dated record showing every site actually received the current
+document and every acknowledgment came back, before the old process was retired.
+
+**A verification record with actual evidence**, dated after implementation, showing the
+mechanism was tested against real use — not a change closed the same day it deployed, with
+nothing checking whether it actually functions as designed.
+
+A change record missing any one of these five doesn't need to have caused a problem to be a
+finding. The assessor is reading for whether the *process* was followed, the same way they'd
+read a CAPA file for whether the effectiveness check happened — independently of whether things
+turned out fine this time.
+
+## Common traps
+
+**"It's just a document-control process change, not a system change, so it doesn't need the
+same rigor."** This is close cousin to your sysadmin's "it's just an OS patch" argument from
+`becs-in-the-pipeline`, and it fails for the same underlying reason: the regulation's standard
+is what the change touches, not how big it looks from where you're standing. The entire CAPA
+this module continues exists *because* a process gap, not a system bug, let a real event
+happen. Treating "process, not system" as automatically lower-risk ignores the lesson the CAPA
+itself just taught.
+
+**Approving a change without a documented impact assessment.** "We talked it through in a
+hallway and it seemed fine" is not an artifact an assessor can read. If the impact assessment
+doesn't exist as a written record, the approval that follows it isn't really an informed
+approval — it's a decision made on the honor system, which is the exact failure mode this whole
+change is supposed to eliminate from Lakeshore's document-control process.
+
+**Skipping verification because implementation "obviously worked."** The email went out, the
+new list exists, so surely it's fine — this is implementation evidence standing in for
+verification evidence, the identical substitution module 3 warned against for the CAPA's
+effectiveness check. A change that was never verified is a change nobody has actually confirmed
+does what it was approved to do; it's simply been assumed into existence.
+
+## What this means for your job
+
+- **Before signing off on any regulated change, ask to see the request, the impact assessment,
+  and the approval as three separate, dated artifacts** — not one memo doing the job of all
+  three. If they've collapsed into a single document written after the fact, the process wasn't
+  actually followed in order.
+- **Never let "we already fixed it" substitute for change control**, however well-intentioned.
+  A good fix implemented outside the process is, on the record, indistinguishable from an
+  uncontrolled change — and it's the uncontrolled change an assessor will actually see.
+- **Insist that Quality's approval and your own (or IT's) approval are both real, both
+  documented, and neither is a formality for the other.** A regulated change with one approver
+  wearing two hats on paper is a gap waiting to be found.
+- **Confirm training and document issuance completed before the effective date, with a record**
+  — not "we sent it out," but "every site has it and every site acknowledged it."
+- **Treat verification as a distinct step from implementation, every time**, and ask what
+  evidence proves the change worked, not just that it shipped. This is the same discipline you
+  already apply to a CAPA's effectiveness check — apply it here too, on its own shorter clock.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA argues that 21 CFR Part 606 requires Lakeshore to run a formal change-control process before revising a controlled procedure. True or false?
+
+False, as worded. Part 606's own text never uses the phrase "change control." What it does
+require, in 606.100(b), is that written procedures be established, *maintained*, and kept
+available where they're used — a standing obligation that any change has to respect, but the
+regulation doesn't spell out a request-assess-approve-implement-verify methodology for getting
+there. That structured process is AABB's Quality Systems Framework, under the Process Control
+QSE — binding on Lakeshore through accreditation, not through the CFR's own words. Tell your
+CIO: the law requires the procedure to stay correct and available; AABB's Standards supply the
+disciplined process that proves it stayed that way through every revision.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Your QA wants to email the new distribution list directly to site leads today and treat the CAPA's fix as closed once everyone's replied. Is that acceptable?
+
+No. That approach has no documented request, no impact and risk assessment, no named approver
+with authority over the outcome, and no planned verification — it's a well-intentioned fix
+implemented outside change control entirely. On paper, an uncontrolled change to a
+document-control process is indistinguishable from the same kind of gap that produced the
+original event: something changed, and there's no record showing anyone assessed it or
+approved it first. The fix itself may be exactly right. It still has to go through a request,
+an impact and risk assessment, a real approval from both Quality and IT, controlled
+implementation with training and document issuance completed first, and a verification step
+afterward — five separate, dated pieces of a record, not one email.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The new distribution system goes live and every site lead's email shows as "delivered." Is the change verified?
+
+No — that's implementation evidence, not verification evidence, and it's the same substitution
+module 3 flagged for a CAPA's effectiveness check ("confirmed the binder was replaced" proves
+implementation, not that the fix worked). "Delivered" only shows the message arrived; it
+doesn't show a site lead actually signed and dated an acknowledgment, and it doesn't show the
+system would catch a site that never responds. A real verification issues the next real
+document revision through the new process and checks, with a dated record, that acknowledgments
+actually came back and that a non-responding site gets flagged rather than quietly missed.
+Delivery confirms the message went out. Verification confirms the process actually does its
+job.
+:::
+
+## Where this goes next
+
+This change is now approved, implemented, and verified — which means Lakeshore has a new,
+current revision of the downtime SOP and a live distribution-and-acknowledgment process behind
+it. But an approved change only gets you a document that's *supposed* to be controlled. Whether
+it actually stays controlled — how it's drafted, reviewed, issued with an effective date,
+trained on, periodically reviewed, and eventually retired without a stray copy surviving
+somewhere the way the old revision survived at Brookfield — is document control's own job, the
+subject of the next module, `document-control-and-records`.
