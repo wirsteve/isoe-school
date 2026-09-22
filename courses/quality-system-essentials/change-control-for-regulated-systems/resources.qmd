@@ -1,0 +1,23 @@
+---
+title: "Resources: Change control for regulated systems"
+order: 20
+---
+
+Each link below was checked this session and loads.
+
+- **[21 CFR 606.100 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)**
+  — the SOP (standard operating procedure) regulation this module's citations both come from:
+  the "establish, maintain, and follow" requirement in paragraph (b), and the sentence requiring
+  procedures to be available where they're performed. Local verbatim copy:
+  `sources/cfr/606.100.md`.
+
+- **[AABB Quality Systems Framework (2021, public discussion draft PDF)](https://www.aabb.org/docs/default-source/default-document-library/standards/aabb-quality-systems-framework-2021.pdf?sfvrsn=a11081d1_2)**
+  — AABB's own public description of the ten Quality System Essentials, including QSE 5,
+  Process Control, the home of change control in this module. Use it to see the theme and
+  scope of Process Control in AABB's own words; don't cite a standard number from it — see
+  `sources/aabb/qse-framework.md` for why.
+
+- **[GovInfo: Code of Federal Regulations collection](https://www.govinfo.gov/app/collection/cfr)**
+  — the U.S. Government Publishing Office's official CFR collection. Use it as a fallback
+  primary source if eCFR or Cornell is ever unreachable, or to pull an official PDF of a full
+  CFR part for the record.

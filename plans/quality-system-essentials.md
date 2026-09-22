@@ -45,7 +45,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 | 1 | `aabb-qse-framework` | Name the parts of AABB's Quality System Essentials, place any quality activity (a deviation, a change, an audit, a document revision) in the right one, and say how the framework mirrors ISO 9001's structure and the ITIL practices you already run | Published |
 | 2 | `deviations-and-nonconformances` | Take an unplanned event from discovery through containment, impact assessment, product disposition, and a documented reportability decision, and decide, with written reasoning, whether it needs a CAPA | Published |
 | 3 | `capa-root-cause-to-effectiveness` | Tell a real root cause from "human error," choose corrective and preventive actions that change the process, and set an effectiveness check with a measurable criterion that could actually fail | Published |
-| 4 | `change-control-for-regulated-systems` | Take any change to a regulated process, document, piece of equipment, supplier, or system through request, impact and risk assessment, approval, implementation, and verification, and name the record that proves each step | Not started |
+| 4 | `change-control-for-regulated-systems` | Take any change to a regulated process, document, piece of equipment, supplier, or system through request, impact and risk assessment, approval, implementation, and verification, and name the record that proves each step | Published |
 | 5 | `document-control-and-records` | Follow a controlled document from draft through approval, issue, revision, and retirement, tell a document from a record, and explain how an obsolete version ends up in use and what control stops it | Not started |
 | 6 | `quality-risk-management` | Run a real quality decision through ICH Q9(R1)'s process (risk assessment, control, communication, review) using an FMEA or risk ranking and filtering, and choose how much formality the decision deserves | Not started |
 | 7 | `internal-audits-and-management-review` | Explain what internal assessments do inside the quality system and what management review must do with their outputs, and judge whether a management-review packet shows a quality system that is actually working | Not started |
@@ -850,3 +850,104 @@ not yet quoted.
   drafter should decide whether any of Brookfield's own corrective action needs its own
   change record, or whether it's covered as an immediate correction, consistent with this
   course's correction-vs-corrective-action framing).
+
+- **2026-09-22**: Module 4, `change-control-for-regulated-systems`, drafted (`index.qmd` lesson
+  + `resources.qmd`, `order: 19`/`20` as assigned; not yet published/pushed as of this entry —
+  publish is a separate step). No new source fetch was needed or performed. Citations reused
+  verbatim from `sources/cfr/606.100.md`: 606.100(b)'s first sentence ("establish, maintain,
+  and follow written standard operating procedures…") and its "must be available to the
+  personnel for use in the areas where the procedures are performed" sentence — both already
+  in `sources/`, the second one not yet isolated as its own citation-decoder row by any earlier
+  lesson (it was quoted once before, inside a longer block, by `becs-in-the-pipeline`).
+  `sources/aabb/qse-framework.md` was reused (not re-verified) for QSE 5's name ("Process
+  Control") and theme; no AABB standards text was quoted. Deliberately did **not** cite 21 CFR
+  Part 211 — this file's own "Regulatory hooks beyond Part 606" section flags that applicability
+  as unverified, and no verification was attempted this session, so the lesson states plainly
+  that "change control" doesn't appear in Part 606's text and stops there, the same tiering this
+  file already committed to.
+
+  **The change-control scenario, and the specific approved/implemented/verified change — module
+  5's drafter should pick up the resulting controlled document from exactly this outcome:**
+  - Continued the through-line exactly as locked by modules 2–3: no new event, no new facts,
+    no substitute scenario. The change request formalizes module 3's preventive action 2
+    verbatim — Lakeshore's document-control process for satellite-site controlled paper copies
+    moves from an unverified "mail it and assume it arrived" model to a **tracked distribution
+    list with a required signed, dated acknowledgment of receipt from each site lead** whenever
+    a controlled downtime procedure is revised. (Module 3 offered this "or" an automated
+    review-date trigger; this module resolved the "or" by choosing tracked distribution plus
+    acknowledgment as the approved design — a review-date trigger was not built. If a later
+    module needs an automated reminder mechanism, that would be a new, separate change, not
+    something already implemented here.)
+  - **The rushed/under-assessed version this module uses for tension** (per its own "common
+    traps" and opening scenario, not implemented): the QA's initial instinct to email the new
+    distribution list to site leads and treat signed-and-faxed-back replies as "done," with no
+    change request, no impact assessment, no named approver, and no verification. The lesson
+    stops this and routes it through the formal process instead — this is scenario framing, not
+    an actual implemented shortcut, so module 5 should not treat "a memo was sent" as part of
+    the real history.
+  - **Impact/risk assessment (informal, in-lesson, using the foundation's likelihood/severity/
+    detectability vocabulary already taught — not a new formal risk tool, which is module 6's
+    job):** applied to the change itself (how likely is a distribution miss, how severe if one
+    recurs, how detectable before harm), not re-litigating the original event's risk.
+  - **Approvers, named and reasoned, not a single signature:** **Quality**, as owner of the
+    document-control process and its compliance outcome, and **the Director (IT, as owner of the
+    system the tracked-distribution/acknowledgment mechanism runs on)** — both required, neither
+    sufficient alone. No specific system name was invented (kept generic: "whatever document-
+    control system or spreadsheet Lakeshore runs this on"); module 5 can name a specific system
+    if its own scenario needs one, and should log that choice if so.
+  - **Implementation requirement stated explicitly:** every site lead receives the new
+    requirement and the current controlled document, and acknowledgments are collected, *before*
+    the change's effective date — not trickling out afterward.
+  - **Verification (distinct from, and not a replacement for, the CAPA's own six-month
+    effectiveness check from module 3):** the next real controlled-document revision is issued
+    through the new process, and the record confirms the distribution list generated correctly,
+    every site lead's acknowledgment came back signed and dated, and a non-responding site gets
+    flagged rather than silently missed. This is a short-loop, post-implementation check that the
+    *mechanism* works; module 3's six-month audit still separately proves the *problem* (stale
+    binders) is actually gone. Module 5 and any later module referencing this CAPA should keep
+    these two checks distinct and not conflate them.
+  - **The one-paragraph BECS (Blood Establishment Computer Software) touchpoint**, per this
+    file's module 4 boundary instructions: the lesson states, hypothetically and in one
+    paragraph, that if any piece of this CAPA's fix had touched BECS itself (its own example:
+    an automated deferred-donor-list export into a site's binder), that piece alone would need
+    the validation impact assessment and Quality's blocking sign-off from `becs-in-the-pipeline`,
+    with the actual methodology left to Track 3. This CAPA's actual fix does not touch BECS, so
+    no validation methodology was taught and no GAMP 5/IQ-OQ-PQ content appears anywhere in the
+    lesson.
+  - **Planned deviations / pre-approved exceptions**, covered as instructed (AABB's public
+    framework, paraphrased, no standard number, no new fetch) as the change-control world's
+    analog to an ITIL emergency change: a documented, justified departure from policy, approved
+    in advance by the medical director or a delegated quality officer for a specific situation.
+    Named as one paragraph in the ITIL-bridge section; not built out into its own mechanics,
+    consistent with this file's module 4 boundary ("Also not here: ... document issuance
+    mechanics" and the general instruction to keep this section brief).
+
+  Scope check against this file's "Module 4" boundary section: taught change control as general
+  QSE (Quality System Essentials) machinery (request → impact/risk assessment → approval →
+  implementation → verification) applied to a non-BECS, document-control process/system change;
+  did **not** teach BECS-specific validation methodology, GAMP 5, IQ/OQ/PQ, or the V-model; did
+  **not** restage the OS-patch scenario from `becs-in-the-pipeline` (referenced it by name for
+  the ITIL bridge and the one-paragraph BECS-touchpoint only); did **not** build a formal risk
+  tool (module 6's job) — applied the foundation's likelihood/severity/detectability vocabulary
+  informally, as instructed; did **not** teach vendor-change-notification mechanics (named a
+  vendor-initiated change as one input type only, in the "change request" paragraph's framing —
+  actually not even that specifically, so if module 4's finish line needs a vendor-change
+  example later, note that this draft didn't include one) or document-issuance mechanics (module
+  5's job). Opened by naming QSE 5 (Process Control) per module 1's established convention.
+  Check-your-understanding includes the required "change control is not named in Part 606"
+  question (Q1) plus two applied questions (Q2: the memo shortcut; Q3: implementation evidence
+  vs. verification evidence).
+
+  resources.qmd: 3 links (Cornell LII 606.100, the AABB Quality Systems Framework 2021 PDF,
+  GovInfo CFR collection), all curl-verified HTTP 200 this session.
+
+  **For module 5:** open from this module's approved outcome — a tracked distribution list with
+  required signed/dated acknowledgment of receipt, now live, with the next controlled-document
+  revision already used to verify the mechanism works. Module 5 picks up from "the change is
+  approved and the document has to be issued, trained, and the old one pulled" per this file's
+  module 5 boundary section — it should treat the distribution-and-acknowledgment mechanism as
+  the concrete tool that finally gives Lakeshore document control over satellite-site binders,
+  and can use it directly when teaching issue/revision/retirement and controlled-vs-uncontrolled
+  copies. No automated review-date trigger exists yet in the through-line (module 3's "or" was
+  resolved toward tracked distribution instead) — if module 5 wants one, it should introduce and
+  log it as a new element, not assume it already exists.
