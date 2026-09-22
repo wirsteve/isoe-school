@@ -1,0 +1,5 @@
+---
+title: "Foundations"
+order: 0
+---
+Shared building blocks. Each one is taught once and linked wherever a course needs it.

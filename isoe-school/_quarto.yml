@@ -1,0 +1,32 @@
+project:
+  type: website
+  render:
+    - "index.qmd"
+    - "foundations/**/*.qmd"
+    - "foundations/**/*.md"
+    - "courses/**/*.qmd"
+    - "courses/**/*.md"
+
+website:
+  title: "ISOE School"
+  site-url: ""
+  search: true
+  reader-mode: true
+  sidebar:
+    style: floating
+    collapse-level: 2
+    contents:
+      - index.qmd
+      - section: "Foundations"
+        contents: "foundations/**"
+      - section: "Courses"
+        contents: "courses/**"
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    toc: true
+    toc-depth: 2
+    smooth-scroll: true

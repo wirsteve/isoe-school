@@ -1,0 +1,5 @@
+---
+title: "Reading a CFR citation"
+order: 1
+---
+*Placeholder. Claude Code replaces this with the first foundation lesson.*

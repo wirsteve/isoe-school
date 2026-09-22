@@ -1,0 +1,18 @@
+---
+title: "ISOE School"
+subtitle: "Blood-center IT, regulation, and IS governance, built for one learner"
+toc: false
+---
+
+Personal courses built with Claude. Each course starts with a **finish line**, something
+concrete you'll be able to do, and works backward to the fundamentals.
+
+**How to use it:** open a course from the sidebar, start at its syllabus, and go
+module by module. Every lesson follows the same order: scenario, why the rule exists,
+the rule in plain English, the actual text, the evidence an inspector would ask for,
+common traps, and a self-check. Tap a collapsed box to reveal an answer.
+
+**Foundations** are shared building blocks, like reading a CFR citation. They're taught
+once and linked wherever a course needs them.
+
+*Public regulatory material only. Scenarios use the fictional Lakeshore Blood Center.*
