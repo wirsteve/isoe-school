@@ -1,0 +1,396 @@
+---
+title: "Reviewing a vendor risk assessment: the decision trail"
+order: 36
+---
+
+## The ticket
+
+CAPA-1147-A (corrective and preventive action, the record from `reviewing-deviations-and-capas`
+that's still open) has one preventive action left outstanding: "Reassess the BECS (Blood
+Establishment Computer Software) vendor, focused on change notification." That's the CAPA your
+QA (Quality Analyst) opened after the ICCBBA (International Council for Commonality in Blood
+Banking Automation) product-code-table event — the vendor push that landed on the print floor at
+01:58 a.m. with no warning to anyone, printing roughly 40 units against a table that had just gone
+stale underneath them.
+
+Today the reassessment lands in your inbox: a vendor risk assessment of the BECS vendor, routed
+"for sign-off." You already know, from `qa-deliverables-and-ownership`, which box that word puts
+you in — supervisory review, the same one you ran on the deviation packet itself and on the
+validation impact assessment for the OS patch. Is this document defensible? Would it survive
+someone reading it cold, a year from now, with her not in the room? This time the question isn't
+about a shift on the print floor. It's about whether the document proves the vendor actually fixed
+the thing that caused it.
+
+## Why this matters — and the ITIL bridge
+
+You've run this exact motion dozens of times in your IT career: a vendor risk questionnaire lands
+on your desk, a SOC 2 (System and Organization Controls 2, an independent auditor's report on a
+vendor's controls) report gets attached, someone tiers the vendor low, medium, or high, and you
+sign off on continuing the relationship. Third-party security due diligence is a skill you already
+have. None of that instinct is wrong here.
+
+Three things push past what a normal vendor review demands of you.
+
+**This isn't a generic annual check — it's a reassessment answering one specific failure.** A
+routine security questionnaire asks broad questions about a vendor's general posture. This
+document has one job: does the vendor now actually notify Lakeshore before pushing a change, the
+exact thing that didn't happen in September? An assessment that reads like a generic
+questionnaire, when it exists to answer a specific incident, has already missed its own point.
+
+**A second lens sits beside the security one, and it isn't optional.** Your security review asks
+"can we trust this vendor with our systems and data." A blood establishment's supplier
+qualification asks a related question: does this vendor's product perform a function that affects
+whether a unit of blood is safe to release, and does Lakeshore's relationship with them control
+that risk. Two different lenses — quality/supplier-qualification and security/remote-access — need
+two different owners, not one signature standing in for both. And because `becs-in-the-pipeline`
+and `reviewing-validation-packages` already established that a change to BECS can move it out of
+its validated condition, a vendor risk assessment here carries a different stake than most vendor
+questionnaires you've signed off on: it's protecting the pipeline that gates eligibility, release,
+labeling, and disposition, not just Lakeshore's data.
+
+And the sharpest one: **this assessment has to be checked against Lakeshore's own incident
+history, not just against what the vendor says about itself.** You have evidence a normal security
+reviewer wouldn't think to ask for — a deviation record with an exact timestamp of the vendor doing
+the opposite of what it's about to claim in a questionnaire. That's this module's version of the
+Director-only IT-evidence check every earlier review module has used.
+
+## The rule in plain English
+
+Same instrument as every prior review: the **cold-read test** — Conclusion, Evidence, Reasoning,
+Criteria first, Decision trail, Loose ends — sorted with **gap triage**: must fix before I sign, fix
+going forward, fine as is. Neither gets re-taught here. What a vendor risk assessment specifically
+has to show, on top of that:
+
+- **The evidence answers the risk that triggered the review**, not a generic version of it. If the
+  triggering risk is change notification, the assessment has to show change notification actually
+  working — not just that the vendor exists and is well known.
+- **The tier follows the function, not the vendor's reputation.** A large installed base and a
+  long relationship tell you the vendor is unlikely to disappear. They tell you nothing about
+  whether a defect in this vendor's product could let an ineligible donor through, or a stale label
+  print.
+- **Two lenses, two owners.** The quality/supplier-qualification question and the
+  security/remote-access question are related but distinct, and each needs a signature from someone
+  positioned and authorized to answer it — not one name covering both.
+- **Residual risk accepted by a named owner with actual authority**, not stated as a fact with no
+  one attached to the decision.
+- **Follow-up items tied to the CAPA that required them**, with an owner and a date, not left to
+  drift once the assessment itself is filed.
+- **Self-attestation is the weakest evidence this document can offer.** The vendor's own word about
+  its own behavior is a starting point, never a conclusion — the same "stops at the first
+  credible-sounding source" pattern you've now caught twice, in a deviation write-up and a
+  validation package.
+- **Evidence has to be current, not just present.** A report reviewed once, months or years ago,
+  covering a period that's already passed, isn't evidence of anything happening today.
+
+**Here's the boundary, stated plainly, because pretending otherwise would be worse than naming
+it.** Everything above is the half of this review you can do today. What a SOC 2 report's fine
+print actually means — Type I versus Type II, the Trust Services Criteria it was scored against,
+which of a vendor's systems and time period it actually covers, what an exception buried on page
+40 does to your risk read — is a different skill. It rests on vendor and third-party risk
+methodology this curriculum hasn't taught you yet; that's `vendor-and-third-party-risk-management`,
+still to be built. Until it exists, here's a working answer, not a shrug: route the technical
+adequacy of a vendor's security evidence — does this SOC 2 report's fine print actually cover what
+we need — to Lakeshore's security team, or whoever owns third-party security review, and don't let
+that routing stay informal. Ask to see *that* review documented, the same way you'd ask to see any
+other approval documented. Your job today is the decision trail: does the evidence answer the risk
+that triggered the review, does the tier follow the function, and does a named owner with authority
+stand behind the risk that's being accepted. Whether the SOC 2 report itself is technically
+adequate is someone else's call for now — and the gap isn't in not knowing the answer, it's in not
+knowing you're not supposed to know it yet.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 11.10, introductory sentence | "Eleven point ten" | Persons who *use* closed systems to create, modify, maintain, or transmit electronic records must employ procedures and controls ensuring their authenticity, integrity, and confidentiality. | Reused from `reviewing-validation-packages`: the obligation sits on Lakeshore, the system's user, not on the vendor. It's why a vendor's own attestation about its own behavior can never, by itself, discharge Lakeshore's obligation to control BECS. |
+| 21 CFR 606.171(a) | "Six-oh-six point one-seven-one, paragraph a" | For a party performing a manufacturing, holding, or distribution step while the product is in your control, "that step is performed under your control," and you must have a procedure for receiving that party's deviation information. | Used only as a contrast — see below. It does not describe a software vendor, and this lesson doesn't claim it does. |
+
+## The actual text
+
+The obligation on the user, reused briefly from `reviewing-validation-packages` — quoted verbatim
+from `sources/cfr/11.10.md`:
+
+> Persons who use closed systems to create, modify, maintain, or transmit electronic records shall
+> employ procedures and controls designed to ensure the authenticity, integrity, and, when
+> appropriate, the confidentiality of electronic records...
+
+That's Lakeshore's obligation, not the vendor's. It's the regulatory floor under a point this
+module makes repeatedly: a vendor telling you it behaves a certain way is not the same thing as
+Lakeshore confirming it.
+
+Now the contrast, quoted verbatim from `sources/cfr/606.171.md` — read it carefully, because
+what it does and doesn't reach matters more here than in any earlier module:
+
+> If you arrange for another person to perform a manufacturing, holding, or distribution step,
+> while the product is in your control, that step is performed under your control. You must
+> establish, maintain, and follow a procedure for receiving information from that person on all
+> deviations, complaints, and adverse events concerning the affected product.
+
+Read what this actually says before you reach for it. It describes a party performing a
+**manufacturing, holding, or distribution step** — think a contract labeler, a courier moving
+product under Lakeshore's control, a facility storing units on Lakeshore's behalf. For a vendor
+like that, the regulation itself reaches in directly: Lakeshore must have a procedure for receiving
+that vendor's own deviation information, because that vendor's work *is* one of Lakeshore's
+regulated steps, just performed by someone else's hands.
+
+**The BECS vendor isn't described here, and this lesson isn't going to pretend it is.** A vendor
+that supplies the software Lakeshore uses to perform its own steps — donor eligibility, release,
+labeling, disposition — isn't performing a manufacturing, holding, or distribution step itself. It's
+supplying a tool. 606.171(a) doesn't name it, and stretching the clause to cover it would be exactly
+the kind of invented citation this curriculum won't do. What actually reaches a software vendor is
+two things, neither of them this clause: Lakeshore's own obligation under 11.10 to control the
+system it uses, and AABB's supplier framework, next.
+
+AABB's Quality System Essentials (QSE) framework, paraphrased only, no standard number, from
+`sources/aabb/qse-framework.md`: **Suppliers and Customers** (QSE 4) covers qualifying and managing
+suppliers — the theme behind having a documented, current risk assessment on file for a vendor like
+this one at all, reassessed when a specific failure gives you reason to. That's the actual authority
+behind this document's existence, not 606.171(a).
+
+Put the contrast in one sentence: 606.171(a) reaches a vendor whose *work* is one of Lakeshore's
+regulated steps. A software vendor reaches Lakeshore through Lakeshore's own obligation to control
+what it uses, plus AABB's supplier QSE — a narrower, but real, set of requirements.
+
+## The assessment on your desk
+
+Here it is, routed the way these actually arrive — headings filled in, one signature line, waiting
+on you:
+
+> **LAKESHORE BLOOD CENTER — VENDOR RISK ASSESSMENT**
+>
+> **Assessment ID:** VRA-0219 &nbsp;|&nbsp; **Vendor:** BECS software vendor &nbsp;|&nbsp;
+> **Triggered by:** CAPA-1147-A, preventive action 1 ("Reassess the BECS vendor, focused on change
+> notification")
+> **Prepared by:** Quality Analyst &nbsp;|&nbsp; **Date opened:** 09/22 &nbsp;|&nbsp;
+> **Date completed:** 10/06
+>
+> **Scope:** Vendor's BECS application software and the remote-support platform vendor engineers
+> use to access Lakeshore's BECS installation.
+>
+> **Qualification method:** Remote vendor risk questionnaire (BECS-VQ, current version), completed
+> by the vendor's account team. On-site audit not performed. *Method rationale: an on-site audit is
+> not required for an established SaaS vendor at this risk tier, per Lakeshore's vendor
+> risk-tiering procedure. Reviewed: Quality Analyst, 09/22.*
+>
+> **Change notification (the risk this reassessment exists to answer):** Vendor questionnaire
+> response: "Yes, we notify customers in advance of any change that may affect their systems." No
+> supporting documentation attached.
+>
+> **Security review:** SOC 2 report reviewed. Clean opinion, no exceptions noted.
+>
+> **Risk tier: Low.** Rationale: established vendor, large installed base across the blood-banking
+> industry, long-standing relationship with Lakeshore.
+>
+> **Residual risk: Accepted.** Recommend continued use of the vendor.
+>
+> **Follow-up:** Recommend contract amendment for change notification.
+>
+> **Reviewed and approved:** Quality Analyst — quality/supplier-qualification and
+> remote-access security review. **Date:** 10/06.
+
+**Before you read on: run the cold-read test yourself. You have one piece of evidence in this
+course no reviewer without your background would think to reach for — find where this document
+needs it.**
+
+## The reveal
+
+By the six questions, not by the document's own order.
+
+**Conclusion.** Clean. One conclusion, stated plainly: risk tier Low, residual risk accepted,
+continue using the vendor. No gap here — worth saying outright, because not every bucket in every
+document has a hit.
+
+**Evidence — the headline catch.** This is where the document actually fails, and it fails on the
+one question it exists to answer.
+
+The vendor's questionnaire response is: "Yes, we notify customers in advance of any change that
+may affect their systems." Stop there and check it against something you already have in your own
+files: **DEV-1147.** The BECS deployment log shows the vendor pushed the ICCBBA table update at
+01:58 a.m. on a Wednesday, outside any scheduled window, with no advance notice to Lakeshore at
+all — the exact event that opened this CAPA in the first place. The vendor's self-attestation isn't
+just unproven. It's **directly contradicted by Lakeshore's own deviation record**, sitting one
+click away in the same quality system. This is your QA's pattern at its clearest yet: stopping at
+the first credible-sounding source — a vendor's own "yes" on a form — when the source that actually
+matters is a document Lakeshore already owns. A cross-document consistency check this simple should
+have been the first thing checked, not the thing a reviewer catches after the fact.
+
+Second, connected thread: "SOC 2 report reviewed, clean opinion" states nothing about which vendor
+services or systems the report covers, what period it covers relative to today, or whether anything
+in it addresses customer change notification specifically. No SOC 2 mechanics needed to catch this
+one — the generic question applies to any evidence in any document you'll ever review: does this
+evidence cover the service we actually buy, the period we care about, and the risk that triggered
+the review? As written, you can't tell.
+
+Triage: **must fix before I sign.** The self-attestation contradiction alone would be enough — it
+means the document's central claim is false on the evidence Lakeshore already has.
+
+**The boundary, right here — a question you can't answer from this document, and shouldn't try
+to.** No on-site audit was performed, only a remote questionnaire. Was a questionnaire the right
+qualification method for this vendor, versus an on-site audit? You don't know, and this module
+hasn't equipped you to know — supplier-qualification methodology (audit versus questionnaire versus
+certification, and when each is enough) is `vendor-and-third-party-risk-management`'s job, not
+yours today. What you *can* check sits right there in the document: is the method choice written
+down, with a reason, signed by someone accountable for it? Here, yes — "an on-site audit is not
+required for an established SaaS vendor at this risk tier, per Lakeshore's vendor risk-tiering
+procedure," reviewed and dated the same day the assessment opened. A learner who flags "only a
+questionnaire, no audit" as the finding has found the wrong gap. The actual finding, if there were
+one, would be an undocumented method choice. This document doesn't have that gap. Notice it, and
+move on.
+
+**Reasoning.** The risk tier — "Low: established vendor, large installed base" — follows the
+vendor's *reputation*, not its *function*. Size and market share tell you something real: this
+vendor is unlikely to vanish overnight. They tell you nothing about what actually matters for a
+tier — what the vendor's product *does* at Lakeshore. `becs-in-the-pipeline` already established
+that BECS performs or gates four critical functions: eligibility, release, labeling, and
+disposition. A vendor whose software sits underneath every one of those decisions is not a low-risk
+relationship because it's well known; if anything, a large installed base across the industry means
+a defect in this vendor's product has a wide blast radius, not a narrow one. The tier should follow
+from what the software does at Lakeshore, not from how comfortable the name sounds on the page.
+Triage: **must fix before I sign** — a tier built on the wrong variable understates the actual risk
+this assessment exists to manage.
+
+**Criteria first.** No separate finding here. The document doesn't show a tier threshold set in
+advance and then reverse-engineered — the problem above is that the *reasoning behind* the tier
+points at the wrong thing, which is a Reasoning-bucket finding, not a Criteria-first one. Worth
+noting only because it's a reminder that not every review fills every bucket with a distinct gap.
+
+**Decision trail.** Two separate findings, and they're the two you're best positioned to catch,
+because they're both about who's accountable, not about what's true.
+
+First: one signature — "Quality Analyst" — covers both "quality/supplier-qualification" and
+"remote-access security review." Those are two different lenses asking two different questions:
+does this vendor's product perform a function that puts patient safety at risk, and separately,
+should this vendor's engineers keep the level of remote access to Lakeshore's BECS installation they
+currently have. `escalation-criteria` already established who owns the second question when it
+matters in real time — Lakeshore's privacy/security owner, functionally, regardless of the org
+chart. A security review folded into a single quality signature isn't a security review at all;
+it's a quality reviewer's opinion about security, offered without the authority or the access to
+actually evaluate it. Triage: **must fix before I sign.**
+
+Second: "Residual risk: Accepted," with no named individual attached to that acceptance beyond the
+same single signature at the bottom of the whole form. `quality-risk-management` was direct about
+this: risk acceptance has to be "a real, owned decision, not a default by inaction" — someone
+specific, with the authority to accept it, has to actually own the call that this risk is tolerable.
+A recommendation to "continue using the vendor" isn't the same thing as a named person accepting
+the risk of doing so. Triage: **must fix before I sign.**
+
+**Loose ends.** "Recommend contract amendment for change notification," with no owner, no date, and
+— worth noticing specifically — no explicit tie back to the CAPA that actually required it.
+`becs-in-the-pipeline` already told you where this belongs: put vendor change notification in the
+contract, not in good faith. A recommendation that never gets an owner, a date, or a documented link
+to CAPA-1147-A's preventive action is exactly the kind of thing that quietly outlives everyone's
+attention once this assessment is filed and the next fire starts. Triage: **fix going forward** — it
+doesn't undo the tier finding or the self-attestation contradiction above, but a "recommendation"
+with nobody driving it isn't a corrective action, it's a wish.
+
+**Sending it back.** Questions, not a rewrite — the same move every earlier review module modeled:
+
+- "The vendor's questionnaire says they notify customers in advance of changes. DEV-1147 shows they
+  didn't, for the exact change that opened this CAPA. Walk me through that."
+- "What does the SOC 2 report actually say about which systems it covers, over what period, and
+  whether change notification is addressed at all?"
+- "What does the tier look like if we start from what the vendor's software does here, not from how
+  established the vendor is?"
+- "Who at Lakeshore owns the security and remote-access side of this review, separately from the
+  quality side — has that person actually reviewed it?"
+- "Who is the named owner accepting this residual risk, with the authority to accept it?"
+- "Who owns the contract-amendment recommendation, by when, and where does it link back to
+  CAPA-1147-A?"
+
+## What an inspector or assessor would actually look for
+
+An assessor pulling this file runs the same cross-check you just did, without you there to prompt
+it. They'll pull DEV-1147 and this assessment side by side and ask why nobody caught the
+contradiction before it reached your desk — a vendor's "yes" on a questionnaire, sitting next to
+Lakeshore's own record of the vendor doing the opposite, is one of the fastest findings an assessor
+can make, because it takes no specialized vendor-risk knowledge, just reading two of Lakeshore's own
+documents together. They'll ask what the SOC 2 report actually covers, by scope and date, not
+whether one was reviewed. They'll check whether the security and quality signatures are the same
+name, and if so, ask who on the security side actually looked at remote access. And they'll ask who
+accepted the residual risk, by name — "we decided to continue" isn't an answer with an owner in it.
+A bad answer to "how do you know the vendor now notifies you of changes" sounds exactly like this
+document: "they said so on the form." A good answer points to a contract clause, or at least a
+dated, specific commitment tied to the CAPA that required it.
+
+## Common traps
+
+**Trusting a vendor's self-attestation without checking Lakeshore's own records.** This is the
+whole lesson in one sentence. A vendor's word about its own behavior is evidence about what the
+vendor wants you to believe. It's the weakest kind of evidence this document can offer, and the
+fastest way to test it is to check what Lakeshore already knows — which, this time, directly
+contradicted it.
+
+**Tiering by reputation instead of function.** "Established vendor, large installed base" describes
+how comfortable a name feels, not what the vendor's product actually does at Lakeshore. A small,
+unknown vendor supplying something low-stakes might genuinely be low risk. A large, well-known
+vendor supplying software that gates whether blood is safe to release is not automatically low
+risk just because its name is familiar.
+
+**Treating "SOC 2 reviewed" as automatically sufficient.** A SOC 2 report existing, and someone
+having glanced at its opinion page, isn't the same as knowing whether it covers the service
+Lakeshore buys, the period that matters, or the specific risk under review. You don't need to read
+SOC 2 mechanics to catch this trap — you just need to ask whether the document shows anyone checked.
+
+## What this means for your job
+
+- **Before you accept any vendor's self-attestation, check it against what Lakeshore already
+  knows.** A deviation record, a change log, an incident report — your own quality system is often
+  the fastest and most authoritative check on a vendor's claim about itself, faster than anything
+  the vendor could send you.
+- **Ask what the vendor's product actually does at Lakeshore before you accept a risk tier.**
+  Reputation and installed base are real facts. They're not the fact a tier should be built on.
+- **Keep the quality/supplier-qualification lens and the security/remote-access lens separate, with
+  separate owners.** One signature covering both is a convenience, not a review.
+- **Never let "residual risk accepted" appear without a named person who actually has the authority
+  to accept it.** An unowned acceptance isn't a decision — it's an assumption wearing a decision's
+  clothes.
+- **Tie every follow-up item back to the CAPA that required it, with an owner and a date.** A
+  recommendation with nobody driving it is how "put it in the contract" quietly never happens.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: "FDA requires a SOC 2 report from every BECS vendor." True or false?
+
+False. SOC 2 (System and Organization Controls 2) is an attestation framework maintained by the
+AICPA (American Institute of Certified Public Accountants), obtained by contract or industry
+practice — no FDA regulation in this curriculum's sources names it, requires it, or specifies its
+use for a BECS vendor. That doesn't make a SOC 2 report worthless; it means treating "FDA requires
+it" as the reason to ask for one is wrong, and it means a vendor without one isn't automatically
+out of compliance with anything FDA-specific. What Lakeshore actually needs from a vendor review
+comes from its own obligation under 11.10 to control the systems it uses, and from AABB's supplier
+QSE (Quality System Essential) — neither of which names SOC 2 by number.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A different vendor risk assessment states, "Risk tier: Medium — vendor is a newer market entrant with a smaller installed base." Same gap as VRA-0219's tier, or something else?
+
+The same gap, wearing the opposite conclusion. "Newer, smaller installed base" is still a fact
+about the vendor's reputation and market position, not about what the vendor's product does at
+Lakeshore. A brand-new vendor supplying something with no connection to a critical function could
+reasonably be lower risk than an established one gating donor eligibility — the tier still has to
+be argued from function, not from how long the vendor's been around or how many customers it has.
+Ask the same question either direction: what does this vendor's product actually do here, and does
+the tier follow from that?
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A different vendor assessment shows two separate signatures — one from the Quality Analyst for supplier qualification, one from Lakeshore's security owner for remote-access review — both dated, both present. Using gap triage, is the single-signature gap from VRA-0219 present here?
+
+No — this is exactly what VRA-0219 was missing. Two lenses, two named, qualified owners, each
+actually signing for their own question. That's fine as is on this specific point; nothing here
+needs to be sent back for it. Worth checking the rest of the document with the same rigor VRA-0219
+needed elsewhere — a fixed signature block doesn't guarantee the evidence itself holds up — but the
+decision-trail structure on this one point is correct.
+:::
+
+## Where this goes next
+
+That's three documents now — the deviation and CAPA packet, the validation impact assessment, and
+this vendor risk assessment — where the same QA, doing genuinely good work, has shown you the same
+two-part pattern: a conclusion that's usually right, with the reasoning left off the page, and a
+habit of stopping at the first credible-sounding source instead of the one that actually proves the
+claim. You've caught it three times now. The next module, `coaching-and-reporting-upward`, is where
+you stop treating each instance as its own finding and start coaching the pattern itself — and where
+you learn to report what you're seeing, upward, in a way that shows trend and improvement instead of
+just a list of things that went wrong.
