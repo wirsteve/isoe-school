@@ -1,0 +1,25 @@
+---
+title: "Resources: Document control and records"
+order: 22
+---
+
+Each link below was checked this session and loads.
+
+- **[21 CFR 606.100 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)**
+  — the SOP (standard operating procedure) regulation behind this module's "available… where the
+  procedures are performed" citation. Local verbatim copy: `sources/cfr/606.100.md`.
+
+- **[21 CFR 606.160 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.160)**
+  — the records regulation, source of this module's Good Documentation Practice citation
+  (paragraph (a)(1)) and the product-record retention clause (paragraph (d)), already taught in
+  full in `reading-a-cfr-citation`. Local verbatim copy: `sources/cfr/606.160.md`.
+
+- **[21 CFR 606.120 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.120)**
+  — the labeling-controls regulation, source of the "stocks of obsolete labels shall be
+  destroyed" clause this module reads as Part 606's own closest parallel to obsolete-document
+  removal. Local verbatim copy: `sources/cfr/606.120.md`.
+
+- **[GovInfo: Code of Federal Regulations collection](https://www.govinfo.gov/app/collection/cfr)**
+  — the U.S. Government Publishing Office's official CFR collection. Use it as a fallback primary
+  source if eCFR or Cornell is ever unreachable, or to pull an official PDF of a full CFR part for
+  the record.
