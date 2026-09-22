@@ -91,7 +91,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 |---|---|---|---|---|
 | 1 | `qa-deliverables-and-ownership` | Name what your QA produces, who writes, approves, and is only informed of each piece, and what your own signature means on each. Apply one short "cold-read test" to any of it. | Full | Published |
 | 2 | `reviewing-deviations-and-capas` | Read a deviation and CAPA write-up the way an assessor will, find the gaps that make it indefensible (missing reasoning, evidence that doesn't prove the claim, scope that stops short, an effectiveness check that can't fail), sort them by severity, and send it back in a way that produces a better second draft | Full | Published |
-| 3 | `escalation-criteria` | Sort any event into "call me now," "tell me today," or "your call, tell me at our one-on-one." Know which events go past you and which your QA must be able to take around you. Write escalation criteria keyed to "reasonably suggesting," not "confirmed," so internal escalation beats the regulatory clock. | Full | Not started |
+| 3 | `escalation-criteria` | Sort any event into "call me now," "tell me today," or "your call, tell me at our one-on-one." Know which events go past you and which your QA must be able to take around you. Write escalation criteria keyed to "reasonably suggesting," not "confirmed," so internal escalation beats the regulatory clock. | Full | Published |
 | 4 | `reviewing-validation-packages` | Review a BECS validation impact assessment and test summary for its decision trail (stated scope against the four critical functions, acceptance criteria set before execution, failures recorded rather than silently re-run, approvals before deployment), and say plainly which questions (was the testing *enough*?) you can't answer yet | Lighter (decision trail only) | Not started |
 | 5 | `reviewing-vendor-risk-assessments` | Review a vendor risk assessment your QA wrote for whether its evidence covers the service Lakeshore actually buys and the risk that triggered the review, whether the tier follows from the function, and whether the risk decision has an owner with authority, without yet reading a SOC 2 report in technical depth | Lighter (decision trail only) | Not started |
 | 6 | `coaching-and-reporting-upward` | Turn repeated review findings into coaching that changes how your QA works, widen her decision rights as her judgment proves out, and report quality, IT, and risk performance upward with measures that show trend, aging, and effectiveness, without turning any of them into a target that teaches under-reporting | Full | Not started |
@@ -982,3 +982,79 @@ AICPA SOC page only if it verifies, labeled "what a SOC 2 is, for later."
   8. **Resources.qmd:** three links, all curl-verified 200 this session — Cornell LII for
      606.171, 606.100, and 606.160.
   Next: build m3, `escalation-criteria` — the one-night, several-calls escalation drill.
+
+- **2026-09-22**: Module 3 (`escalation-criteria`) drafted — `index.qmd` (`order: 32`) and
+  `resources.qmd` (`order: 33`). Not committed/pushed yet (held for review per this session's
+  instructions). No new source fetch was needed; all three citations were already saved in
+  `sources/`: `606.171.md` (paragraph (c), the "reasonably suggesting" clock — this module's
+  first use of that specific clause, deliberately reserved for m3 per the sourcing notes),
+  `606.170.md` (paragraph (b), reused verbatim from `storage-distribution-and-hemovigilance`),
+  and `606.100.md` (paragraph (b)(19), named only — quoted the intro clause plus subclause
+  (iii)'s "notify consignees to quarantine" language, without touching 610.46/610.47 substance,
+  which aren't in `sources/`).
+  1. **The drill — final five items and answers, locked for modules 4 and 5's own brief
+     pointers back to this module:**
+     1. **Hospital reports a transfusion recipient death, possibly a Lakeshore unit.** →
+        **Now**, and past the Director to the medical director functionally. Per
+        `storage-distribution-and-hemovigilance`, the eventual 606.170(b) fatality filing would
+        very likely be Riverside's (compatibility-testing facility), not Lakeshore's — that
+        doesn't change that tonight's call needed to reach the Director and the medical
+        director immediately, because Lakeshore's product is implicated.
+     2. **BECS vendor notifies Lakeshore of a security incident on its remote-support
+        platform.** → **Now**, suspected breach, routed functionally past the Director to
+        Lakeshore's privacy/security owner (not just informing him), and flagged as a
+        candidate for the Director's own same-night escalation to the CIO (major system risk).
+        No HIPAA citation used or implied — breach stays a trigger category only, per the
+        plan's boundary.
+     3. **Late donor callback, unit quarantined the entire time** (the foundation's Deviation
+        A, reused by name and facts, not re-described beyond "quarantined the entire time,
+        nothing shipped"). → **Your call, one-on-one.** Used explicitly as the
+        over-escalation example if it had been called in at 1:15 a.m.
+     4. **Invented new fact, log for consistency:** a scheduled off-hours BECS configuration
+        change (deliberately **not** the OS patch from `becs-in-the-pipeline` — that patch's
+        own validation impact assessment is module 4's document, still unwritten in story
+        time) whose post-deployment verification check fails on the **label-printer
+        interface**. → **Now**, because labeling is one of BECS's four critical functions
+        (`becs-in-the-pipeline`'s definition), a validated-state question that stays inside
+        the Director's own lane as system owner alongside Quality — this one does **not**
+        route past him, unlike items 1, 2, and 5. If a later module needs a name for this
+        event, none was given; treat it as a distinct incident from the FriBECS OS-patch
+        thread if reused.
+     5. **A site lead asks the QA to "hold off writing up" a temperature excursion until
+        after the weekend.** → **Escalate, and not through the Director** — the independence-
+        bypass drill item. Framed as pressure from someone in the operational chain sitting
+        close to the QA's own reporting line, so her correct move is the path straight to
+        Quality leadership, not to the Director. No claim was made about who specifically
+        applied the pressure beyond "the overnight site lead" — deliberately generic, not
+        tied to any named character.
+     Owen Pruitt named exactly once, in the ITIL-bridge section, as a past example of
+     escalation done right (the 7:50 a.m. doorway conversation from `quality-system-
+     essentials`'s `deviations-and-nonconformances` module) — not reused as a fresh drill
+     item, per the plan's explicit instruction.
+  2. **Tiers used: four, not three** — "call me now" / "tell me today" / "your call, tell me
+     at our one-on-one" / "periodic report" — matching the plan's boundary section rather than
+     the shorter three-tier finish-line phrasing (which the lesson's opening and closing
+     sections still echo in prose). "Periodic report" is defined but not assigned to any drill
+     item; it's illustrated instead as where aggregate metrics (aging, recurrence rate) belong,
+     setting up module 6's KPI material.
+  3. **"Not a regulatory requirement" hook used exactly as planned:** "FDA requires internal
+     escalation to reach the Director within 24 hours" (false), paired with 606.171(c)'s 45
+     days and 606.170(b)'s "as soon as possible"/7 days as the actual external clocks. Appears
+     as Check Your Understanding Q1.
+  4. **Independence bypass grounded the same way module 1 grounded QA independence** — no
+     citation attached (211.22/210.2 not mentioned), tied instead to the routing principle
+     `qa-deliverables-and-ownership` already established about disposition authority.
+  5. **Out-of-scope items confirmed absent:** no HIPAA citation or clock, no recall
+     classification/mechanics, no BPDR filing mechanics, no inspector-on-site handling, no
+     incident-command mechanics re-taught, no 610.46/610.47 substantive content.
+  6. **Word count:** ~4,100 words including tables and headings — at the upper end of
+     TEACHING.md's 2,000–4,000 target and above this module's own 3,000–3,800 aim, trimmed
+     twice for length; the overage follows module 2's precedent (a five-item retrieval drill
+     with a full reveal carries more necessary content than a single-document review).
+  7. **Resources.qmd:** four links, all curl-verified 200 this session — Cornell LII for
+     606.171, 606.170, and 606.100, plus GovInfo's CFR collection as the dated-citation
+     fallback.
+  Next: build m4, `reviewing-validation-packages` — the Friday OS patch's validation impact
+  assessment, finally written. Remember when drafting it: drill item 4 above used a
+  *different*, unnamed BECS change for its labeling-critical-function example, specifically to
+  avoid locking any outcome for the OS patch's own assessment before m4 writes it.

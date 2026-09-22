@@ -1,0 +1,370 @@
+---
+title: "Escalation: what has to reach you, and how fast"
+order: 32
+---
+
+## The ticket
+
+Tuesday, 11:52 p.m. Your phone rings. It's your Quality Analyst (QA), and she doesn't sound
+like someone asking permission — she sounds like someone handing you information she's already
+decided you need. Riverside General Hospital just called her: a transfusion recipient has died,
+and the unit involved may be one of Lakeshore's. She hasn't determined anything yet. She isn't
+asking what to do. She's telling you it happened, now, because she already decided this isn't a
+call that waits for morning.
+
+She's right — and by the time your alarm goes off Wednesday, four more decisions exactly like
+that one will have been made that night, by her or by whoever's covering the on-call phone: is
+this an event that needs you immediately, needs you today, or can wait for your next
+one-on-one? Some of the calls that night are easy. One of them is built to test whether she has
+anywhere to go if the pressure *not* to escalate turns out to be coming from somewhere close to
+you.
+
+This module is about how she makes that call before anything is confirmed — and how you'd make
+it yourself, at 2 a.m., with nothing but a first report and five minutes to decide.
+
+## Why this matters — and the ITIL bridge
+
+You already run a version of this every day. ITIL's major-incident criteria and priority matrix
+exist so "is this bad enough to wake someone up" isn't reinvented every time something breaks —
+the criteria are agreed in advance, the matrix scores impact and urgency, and a published
+on-call runbook already names who gets called, in what order, before the incident happens. You
+also already know **functional escalation** (routing sideways, to whoever owns the function that
+needs to act) from **hierarchical escalation** (routing upward, to someone with more authority).
+And you know an escalation path written *after* the fire starts is worthless.
+
+All of that still applies tonight. Three things push past what your normal incident model was
+built for.
+
+**An external regulatory clock can already be running before anyone escalates internally, and
+it doesn't wait for your investigation.** FDA's clock on a reportable biological product
+deviation starts the moment someone acquires information *"reasonably suggesting"* a reportable
+event occurred — not the moment anyone confirms one did. Criteria built to fire on confirmation
+quietly give away days of a clock you didn't know was running.
+
+**Some escalations have to bypass the line manager on purpose.** The on-call engineer normally
+escalates up the chain they report through. Here, the person applying quality judgment sometimes
+has to escalate *around* the reporting line she sits in, because the pressure not to escalate can
+come from inside it. Your ITSM world guards against a manager overruling technical judgment with
+better information. This world has to guard against a manager suppressing quality judgment with
+neither.
+
+**The decision owner for a product isn't the incident commander.** On a product-safety
+escalation, your job stops at making sure the right person hears about it fast enough to
+decide — that's Quality or the medical director, not you, and not IT. `quality-system-essentials`
+already showed this working: the Owen Pruitt donation's 7:50 a.m. doorway conversation, a verbal
+escalation before any write-up existed, was already this in miniature. This module gives that
+instinct a name, a set of tiers, and a clock.
+
+## The rule in plain English
+
+**Escalation criteria are a written, pre-agreed artifact — not a judgment call made fresh each
+time.** Same discipline QSE taught for an effectiveness check: the criterion is set *before* the
+event, not reverse-engineered afterward to justify whatever someone already decided. A QA
+inventing the threshold at 11:52 p.m. is doing her hardest thinking under the worst conditions.
+Agree the criteria with Quality and IT leadership in daylight, and the 2 a.m. decision becomes
+"which bucket does this fall in," not "how bad does this feel right now."
+
+**Four tiers.**
+
+| Tier | What it means | Roughly |
+|---|---|---|
+| **Call me now** | Reaches you immediately, any hour, by phone. | A clock may already be running, or the situation could still get worse in real time. |
+| **Tell me today** | Reaches you the same business day, doesn't have to interrupt sleep. | Real, needs your attention soon, isn't actively unfolding. |
+| **Your call, tell me at our one-on-one** | She decides whether it needs you at all; if it does, your regular check-in is soon enough. | Low severity, already contained, or squarely inside her own decision rights. |
+| **Periodic report** | No individual routing at all — it rolls into a scheduled metric or trend. | Aggregate patterns (aging, recurrence rate) that only mean something in volume, not as single events. |
+
+**Eight trigger categories cover most of what actually needs a "now" or "today" tier:**
+
+- Possible patient harm or a fatality, confirmed or not
+- Distributed product that may affect safety
+- A consignee notification or retrieval question (21 CFR 606.100(b)(19) — Lakeshore's SOPs must
+  include procedures for notifying consignees; what actually triggers that duty is in 610.46 and
+  610.47, which this course doesn't teach — name the category, don't chase it deeper)
+- A regulatory clock that has started, or plausibly has
+- A suspected breach of donor or patient data — a category only; notification rules and clocks
+  after a confirmed breach belong to a future course (`healthcare-security-and-privacy`)
+- A BECS (Blood Establishment Computer Software) critical-function failure or a break in its
+  validated state
+- A regulator or assessor on site, or any regulatory correspondence arriving
+- Pressure on a quality decision, from any direction
+
+**Functional vs. hierarchical escalation, applied here.** Functional escalation routes to
+whoever owns the function implicated, regardless of org chart — a suspected data breach goes to
+the privacy/security owner whether or not that person reports anywhere near you. Hierarchical
+escalation routes upward for authority. Most real escalations need both at once: a fatality call
+needs the medical director functionally (clinical and regulatory judgment is theirs) *and* you
+hierarchically (you need to know, and you may need to preserve IT evidence only you control).
+
+**Who it goes past the Director to.** You are not the ceiling on any of this. Depending on the
+category, the event needs to reach someone else directly — sometimes instead of you, sometimes
+alongside you, never gated on you first if speed matters more than sequence:
+
+| Category | Goes to | Why not just you |
+|---|---|---|
+| Product, donor, or patient safety | Medical director | Disposition and reportability judgment isn't yours, and shouldn't wait on you to relay it. |
+| A quality decision under pressure | Quality leadership | The independence bypass — see below. |
+| Suspected breach of donor or patient data | Privacy/security or compliance owner | A different specialty than product quality, with its own clock. |
+| Major system or business risk | Your CIO | Yours to decide whether to escalate upward, not to sit on. |
+| Anything with legal exposure attached | Legal | A different judgment than regulatory posture, not one to conflate. |
+
+**The independence bypass is a required path, not a nice-to-have.** Every escalation scheme
+needs at least one route that doesn't pass through the Director at all — straight to Quality
+leadership — because the Director sits inside the same reporting line the pressure sometimes
+comes from. If the only way to escalate "someone's telling me not to write this up" is to tell
+the person whose chain that pressure might be coming down, the control doesn't exist. Same
+independence principle `qa-deliverables-and-ownership` made about disposition authority, now
+built into the routing itself instead of just the signature line.
+
+**"Reasonably suggesting," not "confirmed," is the threshold — and this is the load-bearing
+idea in this whole module.** 21 CFR 606.171(c) starts FDA's own reporting clock at the moment
+someone acquires information *reasonably suggesting* a reportable event occurred, not at the
+moment anyone confirms one did. If Lakeshore's internal escalation criteria are written to fire
+on "confirmed," they are, by definition, slower than the clock they're supposed to help
+Lakeshore meet. Write escalation thresholds to key on *suspected*, on *possibly*, on *may* — the
+same word doing the work in 606.171(b)'s "may affect" test you already learned in
+`risk-and-controls-vocabulary` — and confirmation becomes something that happens *after*
+escalation, during the investigation, not a precondition for it.
+
+**Internal windows have to be tighter than external clocks, or the external clock loses.** If
+FDA's outer deadline is 45 calendar days from "reasonably suggesting," and Lakeshore's own
+escalation criterion also lets most of 45 days elapse before Director or Quality even hears
+about it, there's no time left to investigate, decide, and file. A "call me now" or "tell me
+today" window exists to leave room, on Lakeshore's side of the clock, for everything that has to
+happen before a filing decision is even possible.
+
+**Escalating informs. It does not transfer the decision.** When your QA calls at 11:52 p.m., she
+isn't asking you to decide whether the event is reportable, or what happens to the product.
+Disposition and reportability stay exactly where Lakeshore's SOP puts them — the medical director
+or a delegated quality officer, the authority `qa-deliverables-and-ownership` and
+`reviewing-deviations-and-capas` already established isn't yours. The call buys time: the right
+people know sooner, evidence gets preserved sooner, and nobody waits on a write-up that doesn't
+exist yet to start acting.
+
+**Under- and over-escalation are both real failures, and they don't cancel out.**
+Under-escalation is the obvious one — a fatality call sitting in an inbox until morning.
+Over-escalation is quieter: every minor deviation and routine supplier reassessment routed as
+"call me now," until the people receiving those calls stop really listening. Alert fatigue is
+real in your world already; a QA trained to escalate everything is, in practice, one who's
+stopped escalating anything that matters.
+
+**Your own upward criteria to the CIO are part of this, not separate from it.** You're not just
+the receiving end of escalation — you're a sender too. Tell your CIO now, not at the weekly
+download, when: a BECS critical-function failure has real production exposure; a vendor security
+notice touches a system BECS depends on; a quality-blocking disagreement can't get resolved
+through Quality's own path and threatens a business deadline; or anything else crosses from "a
+system risk I'm managing" into "a business risk my CIO needs to hear from me first."
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.171(c) | "Six-oh-six point one-seventy-one, paragraph c" | The 45-day reporting clock starts on the date information is acquired "reasonably suggesting that a reportable event has occurred" — not on the date it's confirmed. | The regulatory anchor for this whole module: internal escalation has to key on the same word FDA uses, or it will always run behind the clock it's meant to help meet. |
+| 21 CFR 606.170(b) | "Six-oh-six point one-seventy, paragraph b" | A fatal complication of blood collection or transfusion must be phoned or electronically reported to FDA "as soon as possible," with a written report within 7 days — filed by the collecting facility for a donor reaction, or by the facility that performed compatibility testing for a transfusion reaction. | Already taught in `storage-distribution-and-hemovigilance`: the filing on tonight's fatality call is very likely Riverside's, not Lakeshore's — and that fact changes nothing about whether tonight's call needed to reach you immediately. |
+| 21 CFR 606.100(b)(19) | "Six-oh-six point one-hundred, paragraph b, sub-nineteen" | Written SOPs must include procedures — under §§ 610.46 and 610.47 — for notifying consignees to quarantine affected product. | Named here as the regulatory hook behind "consignee notification or retrieval" as a trigger category. The specific circumstances that activate that duty (610.46/610.47) aren't in this curriculum's sources yet and aren't taught here — this citation tells you the category exists, not how to run it. |
+
+## The actual text
+
+The clock-start language, quoted verbatim from `sources/cfr/606.171.md` — the anchor for
+everything above:
+
+> (c) *When do I report under this section?* You should report a biological product deviation as
+> soon as possible but you must report at a date not to exceed 45-calendar days from the date
+> you, your agent, or another person who performs a manufacturing, holding, or distribution step
+> under your control, acquire information reasonably suggesting that a reportable event has
+> occurred.
+
+The whole module rests on that gap. The clock doesn't wait for proof — it starts on suspicion
+that would lead a reasonable person to think a reportable event might have happened, a lower,
+earlier bar than most people's instinct for when to escalate. A policy that waits for certainty
+is, by definition, waiting past the point FDA's own clock already started running.
+
+The fatality-notification text, quoted verbatim from `sources/cfr/606.170.md`, already the
+backbone of `storage-distribution-and-hemovigilance`:
+
+> (b) When a complication of blood collection or transfusion is confirmed to be fatal, the
+> Director, Office of Compliance and Biologics Quality, CBER, must be notified by telephone,
+> facsimile, express mail, or electronically transmitted mail as soon as possible. A written
+> report of the investigation must be submitted to the Director, Office of Compliance and
+> Biologics Quality, CBER... within 7 days after the fatality by the collecting facility in the
+> event of a donor reaction, or by the facility that performed the compatibility tests in the
+> event of a transfusion reaction.
+
+Notice this clause's own trigger word is "confirmed" — narrower than 606.171(c)'s "reasonably
+suggesting." Not a contradiction; two obligations, two thresholds. 606.170(b)'s external filing
+genuinely waits for a confirmed fatality. Lakeshore's *internal* escalation shouldn't wait for
+that same confirmation — tonight's call goes out on "a hospital says this might be ours," not on
+a confirmed cause of death.
+
+And the consignee-notification hook, quoted verbatim from `sources/cfr/606.100.md` — named only,
+not developed further:
+
+> (19) Procedures under §§ 610.46 and 610.47 of this chapter: ... (iii) To notify consignees to
+> quarantine in-date blood and blood components previously donated by such a donor intended for
+> use in another person or for further manufacture into injectable products...
+
+That's as far as this module goes into that clause. What actually triggers this duty — post-
+donation testing reactive for HIV or HCV — belongs to sections not yet in this curriculum's
+sources. Treat "a consignee notification or retrieval question has come up" as its own trigger
+category on its own facts, without needing the lookback mechanics behind it yet.
+
+## The drill: one evening, five calls
+
+Here's the full night behind the call that opened this module — five events, in the order they
+actually reached the QA or the on-call supervisor. **Before you read the reveal, sort each one
+yourself: now, today, one-on-one, or periodic report — and for the ones that rate "now," decide
+who besides you it needs to reach.**
+
+1. **11:52 p.m.** Riverside General Hospital calls the QA directly: a transfusion recipient has
+   died, and the unit involved may be a Lakeshore product.
+2. **12:40 a.m.** An email arrives from the BECS vendor's security team: they've detected a
+   security incident on the remote-support platform their engineers use to service Lakeshore's
+   BECS installation.
+3. **1:15 a.m.** A voicemail from third-shift: a donor's required callback — a follow-up question
+   on a travel-history item — went out a day late. The unit stayed in quarantine the entire time;
+   nothing shipped.
+4. **2:50 a.m.** An automated alert: a scheduled off-hours BECS configuration change completed,
+   but the post-deployment verification check on the label-printer interface just failed.
+5. **6:10 a.m., shift change.** The overnight site lead pulls the QA aside before she leaves and
+   asks her to "hold off writing up" a temperature excursion from earlier in the shift — nothing
+   urgent, he says, just wait until after the weekend so it doesn't complicate the Monday
+   inventory count.
+
+### The reveal
+
+**1. The fatality call — now, and past you to the medical director.** Everything
+`storage-distribution-and-hemovigilance` taught about who *files* the eventual 606.170(b) report
+still holds: if confirmed, that's Riverside's filing, since Riverside performed the compatibility
+testing, not Lakeshore's. None of that changes tonight's call. Lakeshore's product is implicated
+in a possible death, so it reaches you immediately, and the medical director immediately too —
+functionally, because clinical and reportability judgment is theirs, not yours to relay slowly.
+"Not our filing" and "not our problem tonight" are different sentences; only the first is true.
+
+**2. The vendor security notice — now, and past you to privacy/security.** A security incident on
+the platform the BECS vendor uses to remotely access Lakeshore's system is a suspected breach, and
+that's exactly why it can't wait for confirmation. It routes functionally past you to whoever owns
+privacy and security review, not just to you as an FYI — and it's a fair candidate for your own
+upward call to the CIO before morning, since remote access into a system BECS depends on is
+squarely "major system risk," not a routine vendor hiccup.
+
+**3. The late callback — your call, one-on-one.** This is `risk-and-controls-vocabulary`'s
+Deviation A: the unit stayed quarantined the entire time by an independent control, nothing
+shipped, worst case was a delayed status update. Low severity, contained the whole time, squarely
+inside your QA's own decision rights. A 1:15 a.m. call for this one would be the over-escalation
+failure mode worth naming, not quietly rewarding.
+
+**4. The BECS verification failure — now, because a critical function is in question.** The
+deciding question is the one `becs-in-the-pipeline` already taught: does the failure touch one of
+BECS's critical functions — eligibility, release, **labeling**, or disposition? It does. A failed
+post-deployment check on the label-printer interface means Lakeshore can't yet say labeling is
+behaving the way the validated configuration expects, in real time, while units may still be
+moving through the line. That's a validated-state question, and it stays inside your lane as
+system owner alongside Quality — it needs you and Quality together, immediately, not past you.
+Had the same alert fired outside the four critical functions, "today" would be the honest answer.
+
+**5. The "hold off" request — escalate, and not through you.** A site lead asking the QA to sit on
+a temperature excursion write-up is pressure on a quality decision, a trigger category regardless
+of how casually it's phrased. What makes this one different: the request came from someone in the
+operational chain that sits close to the QA's own reporting line, exactly the situation the
+independence bypass exists for. Her correct move isn't to escalate to you and wait — it's the path
+that goes straight to Quality leadership, built to exist *before* tonight, so she never improvises
+it under pressure. If your only route for "someone's leaning on me" runs through the Director, and
+the pressure might be connected to his own chain, the control has already failed by design,
+whether or not it fails tonight.
+
+## What an inspector or assessor would actually look for
+
+An assessor doesn't ask whether Lakeshore has an escalation policy — most organizations can
+produce one. They ask for evidence it *worked*: timestamps. When did the hospital call, and when
+did the medical director's involvement start? A four-hour gap between "possible fatality
+reported" and "medical director notified" reads as a control that exists on paper only.
+
+They'll also ask to see the independence bypass exercised, not just described — a real instance
+where something got escalated around, not through, the reporting line it would otherwise have
+gone through. A policy never once used that way, in an organization where pressure to suppress a
+finding is entirely plausible, invites the question of whether it actually exists.
+
+And they'll ask the sharpest version of the "reasonably suggesting" question directly: show me an
+event where Lakeshore escalated internally *before* anyone had confirmed what happened. If every
+escalation in the file follows a completed investigation instead of preceding one, that's the
+finding — a policy structurally too slow for the clock it's supposed to serve.
+
+## Common traps
+
+**Waiting for "confirmed" before picking up the phone.** This is the trap the whole module
+exists to break. 606.171(c)'s clock doesn't wait for certainty, and an escalation criterion
+written around "once we know for sure" guarantees Lakeshore's internal response is slower than
+the deadline it's racing.
+
+**Routing every escalation through the same person, regardless of what's implicated.** A fatality
+call, a vendor breach, and a validated-state question don't belong to the same specialist.
+"Call the Director" as the universal answer either buries functional experts who should have
+heard first, or turns the Director into a bottleneck nobody built him to be.
+
+**No independence-bypass path existing at all.** If the only route for "I'm being pressured not
+to write this up" runs through the reporting line the pressure might be coming from, the control
+is decorative. Build and test it before the night it's needed, not during it.
+
+**Over-escalating everything, and quietly training people to stop listening.** A QA who calls at
+2 a.m. for a Deviation-A-level event is spending trust she'll need the next time it's a fatality
+call. Criteria that don't distinguish severity produce exactly the alert fatigue your ITSM world
+already knows to guard against.
+
+## What this means for your job
+
+- **Write the four tiers and eight trigger categories down and agree them with Quality before
+  you need them at 2 a.m.** — the same criteria-first discipline you already apply to an
+  effectiveness check, applied to the moment before any document exists.
+- **Check whether your criteria fire on "suspected" or on "confirmed."** If any of them wait for
+  confirmation, they're built to lose the race against 606.171(c)'s clock.
+- **Know, by name, who a fatality, a breach, a validated-state question, and legal exposure each
+  go past you to** — medical director, privacy/security, CIO, legal — and don't let "call me"
+  become the default answer for all four.
+- **Confirm the independence bypass actually exists and has been used** — not just written down.
+  If your QA has never once escalated around you, ask why, before an inspector asks it for you.
+- **Set your own upward criteria to the CIO as deliberately as you set hers to you** — a major
+  system or business risk shouldn't wait for your weekly download any more than a fatality call
+  should wait for morning.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: "FDA requires internal escalation to reach the Director within 24 hours." True or false?
+
+False. FDA sets *external* clocks — 606.171(c)'s 45 days from information "reasonably
+suggesting" a reportable event, 606.170(b)'s "as soon as possible" plus 7 days for a confirmed
+fatality. Neither clause names an internal window, an hour count, or the Director. Any internal
+window is Lakeshore's own policy choice — set tighter than the external clocks not because a
+regulation says so, but because there's no time left to investigate and file if the internal
+window eats most of the external one.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Your QA escalates a possible fatality to you and the medical director at the same time, before anyone has confirmed the unit was actually at fault. Has she jumped the gun?
+
+No. Escalating informs; it doesn't transfer the decision. She isn't declaring the product at
+fault or making a reportability call — those stay with the medical director and whoever
+Lakeshore's SOP names for disposition, as `qa-deliverables-and-ownership` established. She's
+making sure the people who *do* own that judgment have the information early, on the same
+"reasonably suggesting" threshold 606.171(c) uses. Waiting for confirmation before calling would
+be the actual error.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A different night: a routine supplier's annual reassessment comes back with a minor, already-corrected finding. Your QA calls you about it at 9 p.m. Good escalation discipline, or something else?
+
+Over-escalation. Nothing here fits any of the eight trigger categories — no patient-safety
+question, no distributed product, no regulatory clock, no pressure, no BECS critical function.
+A minor, already-corrected supplier finding is exactly what "your call, one-on-one," or even
+"periodic report," exists for. Calling at 9 p.m. isn't caution — it's the alert-fatigue trap:
+every unnecessary "now" call spends trust she'll need the night an event actually warrants one.
+:::
+
+## Where this goes next
+
+You now have the routing map: which events reach you immediately, which can wait for today,
+which are hers to hold until your one-on-one, and which path exists for the moment someone tries
+to keep an event from reaching anyone at all. The next module, `reviewing-validation-packages`,
+picks up a document this course has been waiting to finish: the validation impact assessment for
+the BECS patch your QA rejected outright back in `becs-in-the-pipeline`. It's scoped to the
+decision trail for now — scope, criteria set before testing, approvals in the right order — not
+to judging whether the testing itself was technically enough.
