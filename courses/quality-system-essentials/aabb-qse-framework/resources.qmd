@@ -1,0 +1,29 @@
+---
+title: "Resources: The AABB quality system at a glance"
+order: 14
+---
+
+Each link below was checked this session and loads.
+
+- **[AABB: Updated Quality Systems Essentials](https://www.aabb.org/standards-accreditation/standards/about-aabb-standards/updated-quality-systems-essentials)**
+  — AABB's own page on the QSE framework: origin (1997, Association Bulletin #97-04, 10
+  elements), the 2023 template update, and why every current AABB Standard is built on it.
+  (AABB's older URL for this same page, `.../quality/quality-systems-essentials`, now
+  redirects here.) Doesn't list the ten chapter titles itself, but it's the primary source
+  for the framework's existence and history — start here before citing anything about "the
+  QSEs" in a real document.
+
+- **[AABB: Standards & Accreditation](https://www.aabb.org/standards-accreditation/standards)**
+  — AABB's general overview of its Standards and accreditation program, useful context for
+  how the QSE-structured Standards relate to the accreditation relationship itself; already
+  linked from the `regulatory-landscape-orientation` foundation lesson.
+
+- **[21 CFR 606.100 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)**
+  — the regulation containing 606.100(d), the one place FDA's own text names AABB
+  directly. Use this as a stable, citable mirror of the same text quoted in the lesson;
+  the local verbatim copy used for this lesson lives at `sources/cfr/606.100.md`.
+
+- **[GovInfo: Code of Federal Regulations collection](https://www.govinfo.gov/app/collection/cfr)**
+  — the U.S. Government Publishing Office's official CFR collection, useful as a fallback
+  primary source if a specific eCFR page is ever unreachable, and for pulling an official
+  PDF of a full CFR part when you need one for the record.

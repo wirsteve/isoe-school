@@ -42,7 +42,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 
 | # | Slug | Finish line | Status |
 |---|---|---|---|
-| 1 | `aabb-qse-framework` | Name the parts of AABB's Quality System Essentials, place any quality activity (a deviation, a change, an audit, a document revision) in the right one, and say how the framework mirrors ISO 9001's structure and the ITIL practices you already run | Not started |
+| 1 | `aabb-qse-framework` | Name the parts of AABB's Quality System Essentials, place any quality activity (a deviation, a change, an audit, a document revision) in the right one, and say how the framework mirrors ISO 9001's structure and the ITIL practices you already run | Published |
 | 2 | `deviations-and-nonconformances` | Take an unplanned event from discovery through containment, impact assessment, product disposition, and a documented reportability decision, and decide, with written reasoning, whether it needs a CAPA | Not started |
 | 3 | `capa-root-cause-to-effectiveness` | Tell a real root cause from "human error," choose corrective and preventive actions that change the process, and set an effectiveness check with a measurable criterion that could actually fail | Not started |
 | 4 | `change-control-for-regulated-systems` | Take any change to a regulated process, document, piece of equipment, supplier, or system through request, impact and risk assessment, approval, implementation, and verification, and name the record that proves each step | Not started |
@@ -626,3 +626,59 @@ not yet quoted.
   order is probably alphabetical rather than pipeline order. Flagged for the orchestrator; not
   fixed here. Next: build module 1, `aabb-qse-framework`. Save the AABB structure note to
   `sources/aabb/` first (see "AABB QSE list" above).
+
+- **2026-09-22**: Module 1, `aabb-qse-framework`, drafted (`index.qmd` lesson +
+  `resources.qmd`, `order: 13`/`14` as assigned). **The AABB ten-QSE list was further
+  verified this session, not just hedged** — beyond the two 2021 discussion-draft PDFs
+  already in this file, this session fetched and text-extracted (via `pypdf`, after
+  installing it and fixing a broken `cffi`/`cryptography` binding in the sandbox; the
+  PDFs are FlateDecode-compressed and WebFetch's own renderer choked on the raw stream,
+  so extraction was done locally against the downloaded files) AABB's live
+  "Quality Systems Essentials" / "Updated Quality Systems Essentials" pages (confirm
+  1997 origin, 10 elements, 2023 template update, no title list posted) and, more
+  importantly, the **PROPOSED 34th edition of *Standards for Blood Banks and Transfusion
+  Services*** (comment period June–August 2023, **stated effective date April 1, 2024**
+  — a real, dated, edition-specific document, not a discussion draft). That document's
+  own intro says it "incorporated the updated quality system essentials (QSE) template"
+  and explicitly chose to "preserve chapter headings and overall structure" from the QSE
+  template; its ten numbered chapters (1 Organization through 10 Facilities and Safety)
+  match the 2021 draft's ten QSEs theme-for-theme, including QSE 7 (Deviations,
+  Nonconformances, and Adverse Events) citing 21 CFR 606.171 directly. This is
+  meaningfully stronger evidence than what this file had before — a dated document with
+  a past effective date, not just a comment-period discussion draft — though AABB still
+  has no single "current definitive list" page, chapter-title *wording* drifts slightly
+  edition to edition (documented in the new source file), and no standard *numbers*
+  should be cited from either PDF. Full structural note, with both source URLs, extraction
+  method, and an explicit "what is NOT verified" section, saved to
+  `sources/aabb/qse-framework.md` (logged in `sources/INDEX.md`); no AABB standards text
+  (no "shall" language, no glossary definitions, no objective-evidence bullets) was
+  copied into that file or the lesson — only paraphrased names and themes. The lesson
+  states the ten QSE names as verified but flags that exact current wording should be
+  re-confirmed against whatever edition is actually on the shelf before being cited
+  word-for-word in a real document.
+  ISO 9001:2015's clause 4–10 structure (Context, Leadership, Planning, Support,
+  Operation, Performance evaluation, Improvement) was corroborated via web search across
+  several independent consultancy sources (iso.org itself still returns 403 from this
+  environment) and is described generically in the lesson, without quoting ISO text and
+  without naming an edition beyond "2015" — the unverified "ISO 9001:2026" claim already
+  flagged in this file was not used.
+  Reused rather than re-fetched: `sources/cfr/606.100.md` for 606.100(d) (the AABB-naming
+  clause) — no new CFR fetch was needed. Confirmed via the earlier module's finding
+  (reused, not re-verified from scratch this session) that "AABB" appears in Part 606's
+  regulatory text exactly once, at 606.100(d).
+  resources.qmd links (AABB QSE page, AABB updated-QSE page, Cornell LII 606.100,
+  GovInfo CFR collection) all curl-verified HTTP 200 this session.
+  Scope check against this file's "Module 1" boundary section: stayed at map/orientation
+  altitude, gave three or four ITIL pairings (not the full crosswalk, which stays
+  Track 5's), didn't teach any QSE's mechanics, and didn't touch ISO 13485/QMSR or the
+  AABB assessment process.
+  **For module 2:** the QSE-naming convention is now established — "module 2 opens by
+  naming its QSE, Deviations, Nonconformances, and Adverse Events" is stated in this
+  lesson's closing section, so module 2 should open that way rather than reintroducing
+  the QSE concept from scratch. `sources/aabb/qse-framework.md` is available to reuse for
+  QSE 7's theme description without re-fetching. Nothing about the through-line scenario
+  was touched by this module (it's orientation-only, per the boundary section above);
+  module 2 still needs to lock the through-line facts as instructed. Published:
+  `courses/quality-system-essentials/aabb-qse-framework/index.qmd` and
+  `resources.qmd`, and this course's status table above updated to "Drafted." Not yet
+  pushed to the site as of this log entry — publish step still pending in this session.
