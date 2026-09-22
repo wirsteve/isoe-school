@@ -1,0 +1,272 @@
+---
+title: "Regulatory landscape orientation"
+order: 2
+---
+
+## The ticket
+
+Lakeshore Blood Center is upgrading its Blood Establishment Computer Software (BECS — the
+system that manages donor eligibility, testing results, and product release decisions) to add
+an automated interface to a new platelet bacterial detection instrument. Your Quality Analyst
+brings you the draft SOP (standard operating procedure) for sign-off. Its justification section
+reads: "This procedure, including the secondary confirmatory testing step, is required per FDA
+regulation, FDA guidance, and AABB Standards."
+
+Twenty minutes later, the implementation vendor's project manager calls. He wants to cut the
+secondary confirmatory testing step from go-live scope to hit the deadline: "That step is just
+FDA guidance. Guidance is optional — it's not a real requirement. We can add it in phase two."
+
+You have a change advisory board (CAB) meeting in twenty minutes. Both people are talking about
+the same procedure. One says it's triple-required. The other says one piece of it isn't required
+at all. You need to know, before you walk into that room, which of them is right — and you can't
+find out by reading the SOP again, because the SOP itself doesn't distinguish what it's citing.
+
+## Why this distinction exists
+
+You already sort claims like this every week, just not with these labels. When someone tells you
+"we have to do X," you instinctively ask: is that a legal/regulatory obligation, a framework
+best practice, or a contractual term we signed up for? A SOX control is binding because auditors
+and the law say so. An ITIL recommendation on change advisory board composition is guidance —
+authoritative, widely followed, but not something anyone can cite you for skipping. A vendor SLA
+is binding only because you signed a contract that makes it so, not because it's a law of nature.
+Three different sources of "you have to," three different consequences for ignoring them.
+
+Blood regulation runs the same triage, with sharper teeth on the top tier because the product is
+a human tissue, not a service ticket:
+
+- **FDA regulation** is the SOX-control tier: binding by federal law, enforced by an agency with
+  statutory authority to inspect, cite, and shut down manufacturing.
+- **FDA guidance** is the ITIL tier: FDA's own published "current thinking" on how to comply,
+  written to be followed, not written as law. You can deviate — but like deviating from an ITIL
+  best practice in a regulated shop, you'd better be able to explain why, in writing, before
+  someone asks.
+- **AABB Standards** is the contractual-certification tier: binding on Lakeshore only because
+  Lakeshore holds AABB accreditation — the same logic as an ISO 27001 certificate binding you to
+  Annex A controls only because you sought and kept that certificate. No law requires AABB
+  accreditation, but most hospitals require their blood suppliers to hold it, so in practice it's
+  not optional if Lakeshore wants customers.
+- **Statute** — a law passed by Congress, like the Federal Food, Drug, and Cosmetic Act (FD&C
+  Act) or the Public Health Service Act (PHS Act) — sits above all of it. FDA's regulations exist
+  because Congress delegated rulemaking authority to the agency through these acts. You'll rarely
+  cite a statute directly; you'll cite the regulation FDA wrote under it. It matters here mainly
+  so you recognize the name when it shows up inside a regulation's own text (you'll see one below).
+
+Confusing these four in a CAB decision, an inspection response, or a conversation with a vendor
+is exactly how Lakeshore ends up either over-committing to something it didn't have to do on a
+tight deadline, or under-committing to something an inspector will absolutely ask about.
+
+## The distinction, in plain English
+
+Four questions sort any rule into its category:
+
+1. **Was it enacted by Congress?** → Statute. Rare to cite directly; it's the legal foundation
+   underneath everything else.
+2. **Is it in the Code of Federal Regulations, written with "shall" or "must"?** → FDA
+   regulation. Binding, enforced by FDA, applies to every establishment the rule covers,
+   regardless of accreditation status.
+3. **Is it an FDA document titled "Guidance for Industry" (or similar), written with "should,"
+   explaining how to comply with a regulation?** → FDA guidance. Not legally binding — but
+   deviating from it without a documented, defensible reason is a real inspection finding
+   waiting to happen. Treat it as "mandatory unless you can justify otherwise," not "optional."
+4. **Is it published by AABB, cited by standard number and title, describing what an accredited
+   facility must do to keep its accreditation?** → AABB Standard. Binding only if Lakeshore is
+   AABB-accredited — which it is, so for Lakeshore this tier is not optional either, it's just
+   enforced by a different mechanism (accreditation assessment, not federal inspection).
+
+Notice what doesn't change across all four: something can be *practically* mandatory at
+Lakeshore without being a *federal regulation*. That's the trap both people in the scenario fell
+into, from opposite directions — the SOP over-claimed by citing all three as if interchangeable;
+the vendor under-claimed by treating "guidance" as a synonym for "skippable."
+
+## Citation decoder
+
+Each category has its own citation format — and once you can recognize the format, you can tell
+the category without reading a word of the actual text.
+
+| Category | How it's cited | Example | What it signals |
+|---|---|---|---|
+| Statute | U.S. Code title and section | Section 351 of the Public Health Service Act (42 U.S.C. § 262) | Passed by Congress; the legal basis FDA's regulations are written under. You'll rarely act on this directly. |
+| FDA regulation | Title–Part.Section(paragraph) of the CFR | 21 CFR 606.100(b)(22) | Binding federal rule. "Shall"/"must" language. Enforced by FDA inspection, citable on a Form 483. |
+| FDA guidance | Full document title, "Guidance for Industry," issuing FDA center | *Bacterial Risk Control Strategies for Blood Collection Establishments and Transfusion Services to Enhance the Safety and Availability of Platelets for Transfusion* — Guidance for Industry, FDA Center for Biologics Evaluation and Research (CBER) | FDA's current recommended method for meeting a regulation. "Should" language. Not independently enforceable, but a documented deviation is expected if you don't follow it. |
+| AABB Standard | Standard number and title, edition | AABB *Standards for Blood Banks and Transfusion Services*, Quality Program standards (cited by number and title only — never quoted verbatim; the text is copyrighted) | Binding on Lakeshore because it's AABB-accredited. Enforced by AABB assessment, cited as a nonconformance, not a 483. |
+
+Two format tells worth locking in: a *regulation* citation always has a number you can trace
+through Title–Part–Section (you already learned that anatomy in the previous foundation lesson).
+A *guidance document* citation never has that number structure — it's a plain-language title,
+because it isn't codified law. If someone hands you a citation with no CFR-style numbering and
+calls it "the regulation," that's your first clue something's mislabeled.
+
+## The actual text
+
+21 CFR 606.100(b) is the regulation actually in play in this scenario — it's the rule requiring
+written SOPs in the first place, and it names bacterial contamination control by name. Quoting
+verbatim from `sources/cfr/606.100.md`, retrieved from eCFR:
+
+> Establishments must establish, maintain, and follow written standard operating procedures for
+> all steps in the collection, processing, compatibility testing, storage, and distribution of
+> blood and blood components... The written standard operating procedures must include, but are
+> not limited to, descriptions of the following, when applicable:
+>
+> ...
+>
+> (22) Procedures to control the risks of bacterial contamination of platelets, including all
+> steps required under § 606.145.
+
+That's the whole regulatory obligation, in full: **have a written procedure that controls
+bacterial contamination risk.** Notice what's *not* in it — no specific test method, no numeric
+detection threshold, no mention of a "secondary confirmatory testing step." Those specifics live
+in FDA's guidance document on bacterial risk control strategies, which explains, in "should"
+language, what a defensible procedure looks like in practice — including confirmatory testing
+approaches FDA considers adequate. That's the guidance's actual job: it doesn't create the
+requirement to have a procedure (606.100(b)(22) already did that); it tells you what a procedure
+that will survive an inspection should contain.
+
+*A verification note on this guidance document:* this lesson describes its title, issuing
+center, and role accurately, but this session could not fetch FDA's own guidance-document page to
+confirm the current version and exact issue date, so no date is quoted here. Pull the current
+version from FDA's guidance database (linked in Resources) before citing a specific date in any
+real Lakeshore document.
+
+606.100 also answers a smaller question buried in this scenario: is AABB affiliation itself ever
+baked into federal regulation? Almost — paragraph (d) explicitly permits a facility to build its
+SOPs on AABB's manuals as a starting point, *as long as they're at least as strict as Part 606*:
+
+> In addition to the requirements of this subpart and in conformity with this section, any
+> facility may utilize current standard operating procedures such as the manuals of the
+> organizations, as long as such specific procedures are consistent with, and at least as
+> stringent as, the requirements contained in this part.
+>
+> (1) American Association of Blood Banks.
+
+That's a rare case of a regulation naming AABB directly — but read it carefully: it's permission
+to *use AABB's SOPs as a floor*, not a statement that AABB Standards themselves carry FDA's
+enforcement authority. The two obligations stay separate even where the regulation mentions AABB
+by name.
+
+And the statute reference, sitting quietly in 606.100(a), is the one you'll see cross-referenced
+constantly without ever citing directly yourself:
+
+> ...establishments not subject to licensure under section 351 of the Public Health Service Act.
+
+That's Section 351 of the PHS Act (42 U.S.C. § 262) — the statute that created FDA's biologics
+licensing authority in the first place. You don't cite it in a deviation report. You recognize it
+when a regulation cites it, and you know it's the legal bedrock everything else sits on.
+
+## What an inspector or assessor would actually look for
+
+These two oversight bodies show up differently, and knowing which one is asking changes what
+"proof" looks like.
+
+An **FDA investigator** doing a routine or for-cause inspection asks for the written SOP required
+by 606.100(b)(22) and checks that it actually addresses bacterial contamination risk — not
+word-for-word against the guidance, but in a way the investigator finds credible. If Lakeshore's
+SOP skips something the guidance recommends (like a confirmatory testing step), the investigator
+doesn't automatically write a 483 for it — guidance isn't law. But they will ask *why* it's
+missing. "We didn't get to it" is a bad answer. "We evaluated it and documented a risk-based
+rationale for our alternative approach" is a defensible one, provided that documentation actually
+exists — the rationale itself becomes the artifact an inspector expects to see, owned by
+whoever runs Quality/Regulatory Affairs.
+
+An **AABB assessor**, on a separate accreditation survey cycle, checks the same SOP against
+specific AABB Standards line items. A gap here doesn't produce a 483 — it produces a
+nonconformance in the assessment report, which Lakeshore has to close out to keep its
+accreditation. The consequence isn't a federal enforcement action; it's losing the accreditation
+that most of Lakeshore's hospital customers require as a condition of doing business.
+
+Different owner, different document, different consequence — same underlying SOP. Get the CAB
+approval wrong here and you're not managing one risk, you're managing two, on two different
+clocks.
+
+## Common traps
+
+**"If FDA published it, it's binding."** FDA's website hosts regulations and guidance documents
+side by side, often with similar formatting, and both use the word "requirement" in casual
+conversation. Only text codified in the CFR, using "shall"/"must," carries independent legal
+force. A guidance document — even one titled "requirements" in its own prose — is FDA's
+recommended path, not the law itself. Check the citation format from the decoder table above,
+not the tone of the document.
+
+**"Guidance is optional, so we can skip it without documenting anything."** This is the vendor's
+mistake in the scenario, and it's the costlier trap of the two because it looks technically
+correct. Guidance is non-binding — that part is true. But "non-binding" doesn't mean
+"consequence-free." An investigator who finds a gap between Lakeshore's practice and current FDA
+guidance, with no documented rationale for the difference, treats that as a real finding: not
+"you broke the law," but "you don't have a defensible quality decision here." Skipping a guidance
+recommendation is a legitimate business decision. Skipping it *silently*, with no risk assessment
+on file, is not.
+
+**"AABB Standards are enforceable the same way FDA regulations are, everywhere."** AABB
+Standards bind Lakeshore because Lakeshore chose accreditation, not because Congress or FDA said
+so. They don't apply to a facility that isn't AABB-accredited, and non-compliance produces a
+nonconformance and accreditation risk, not a federal citation. That said — don't undersell this
+to your CAB. For a hospital-facing blood center, losing accreditation is often a bigger practical
+business risk than a single 483 observation, because it can end customer contracts outright. Not
+federally binding is not the same as not serious.
+
+## What this means for your job
+
+- **When a document cites "per FDA regulation, guidance, and AABB Standards" as one bundle, make
+  someone split it out before it reaches your CAB.** Three different obligations, three different
+  consequences for skipping any one of them. A bundled citation usually means nobody actually
+  checked which is which.
+- **"It's just guidance" is not, by itself, a reason to cut scope.** Ask your Quality Analyst for
+  the documented rationale before you approve dropping a guidance-recommended step. If that
+  rationale doesn't exist yet, the CAB decision is "write the rationale," not "cut the step."
+- **Treat AABB Standards as fully mandatory for Lakeshore in practice, even though they're not
+  federal law.** The enforcement mechanism is different (accreditation assessment, not FDA
+  inspection), but the business consequence of losing accreditation can be worse than a 483.
+  Don't let "not a federal requirement" get translated as "lower priority" in a resourcing fight.
+- **Ask which body is asking before you decide what evidence to pull.** An FDA question wants the
+  SOP and, if you deviated from guidance, the documented rationale. An AABB assessor question
+  wants the SOP measured against a specific standard number. Same procedure, two different
+  answer keys.
+- **A regulation citation with no section number, or a guidance citation with a CFR-style number,
+  is a red flag that someone mislabeled their source.** Catch it before it goes in a written
+  response to FDA or AABB — that's not the place to discover the citation was wrong.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The vendor says the secondary confirmatory testing step is "just FDA guidance, so it's optional — we can cut it." Is that accurate?
+
+Half right. It's accurate that the step comes from FDA guidance, not from 21 CFR 606.100(b)(22)
+itself — the regulation only requires *a* procedure that controls bacterial contamination risk,
+not this specific testing step. So it's not legally mandatory in the way a CFR "shall" is. But
+"optional" oversells it. Cutting a guidance-recommended step without a documented, risk-based
+rationale is exactly the kind of gap an FDA investigator flags. The right CAB decision isn't
+"cut it" or "keep it no matter what" — it's "cut it only if Quality documents why the alternative
+approach is still defensible," which is a different, slower decision than the vendor is asking
+for on a tight deadline.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: The SOP states, "Use only Vendor X's bacterial detection cartridges, per AABB Standards." Does an AABB Standard actually require that specific vendor's product?
+
+No. AABB Standards set performance and quality expectations — they don't mandate a specific
+brand or vendor. A brand-specific requirement like this is either Lakeshore's own internal
+practice or a vendor's marketing claim, dressed up with an AABB citation it doesn't actually
+carry. This is the fourth category from this lesson in action: not regulation, not guidance, not
+even a real AABB Standard citation — just internal or industry practice mislabeled as an external
+mandate. Worth catching before it goes into a document an assessor might read literally.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A deviation report says, "Our platelet bacterial contamination limit of a specific CFU/mL threshold is set by FDA regulation." True?
+
+No. 21 CFR 606.100(b)(22) requires a *procedure* that controls bacterial contamination risk — it
+does not set a numeric threshold anywhere in its text. Specific detection thresholds and test
+methodologies come from FDA guidance (and from the specifications of the licensed test kit or
+device in use), not from the regulation itself. Citing a numeric threshold as if it were the
+regulatory text is the same mislabeling trap as Q1, just running the other direction: treating
+guidance-level detail as if it were codified law.
+:::
+
+## Where this goes next
+
+You can now sort any rule Lakeshore hands you into statute, FDA regulation, FDA guidance, or AABB
+Standard, and say which one actually binds. The next foundation lesson, `risk-and-controls-vocabulary`,
+builds on this directly: once you know *whether* something is binding, the next question is
+*how risky* it is to deviate from it — likelihood, severity, and the difference between a
+preventive, detective, and corrective control. After the foundations are done, the curriculum
+moves into Track 1, `blood-center-operations`, where you'll start placing these regulatory layers
+against the actual donor-to-hospital pipeline.

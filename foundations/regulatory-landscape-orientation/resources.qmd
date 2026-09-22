@@ -1,0 +1,32 @@
+---
+title: "Resources"
+order: 2
+---
+
+External links for this lesson. All checked to load from a plain browser request as of the date
+this page was written. (Note: eCFR's and FDA's own sites block automated/proxied traffic with a
+bot check, which is what this repo's build environment runs on, so a couple of the obvious first
+choices — the eCFR page for this section, FDA's guidance-document database — can't be verified
+from here even though a human browser reaches them fine. The regulation text quoted in this
+lesson comes straight from eCFR's public API regardless; the first link below is a
+verified-loading mirror of the same official text.)
+
+- **[Cornell LII: 21 CFR 606.100, current text](https://www.law.cornell.edu/cfr/text/21/606.100)**
+  — Cornell Law School's Legal Information Institute mirrors the current CFR, including the
+  section quoted in this lesson. Use this to check whether the SOP requirement has changed since
+  this lesson was written; the dated snapshot in this repo's `sources/` folder won't update
+  automatically. FDA's guidance-document database (search at fda.gov, under Regulatory
+  Information) is the right place to pull the current version and issue date of the bacterial
+  risk control strategies guidance referenced in this lesson before citing it in a real Lakeshore
+  document — it just isn't linked directly here since this session couldn't confirm it loads.
+
+- **[AABB: Standards & Accreditation](https://www.aabb.org/standards-accreditation/standards)**
+  — AABB's own overview of its Standards program: what it covers, how standards are developed,
+  and where accredited facilities fit in. Doesn't reproduce the (copyrighted) standards text
+  itself, but confirms what the accreditation relationship actually is.
+
+- **[CMS: Clinical Laboratory Improvement Amendments (CLIA)](https://www.cms.gov/medicare/quality/clinical-laboratory-improvement-amendments)**
+  — the federal program, run by CMS rather than FDA, that certifies laboratory testing quality.
+  Relevant to the "who owns what" question this lesson touches on: a blood center's testing
+  operations can fall under CLIA certification in addition to FDA blood regulation and AABB
+  accreditation — three different oversight bodies, three different relationships.

@@ -3,27 +3,25 @@ title: "Resources"
 order: 2
 ---
 
-External links for this lesson. All verified to load.
+External links for this lesson. All checked to load from a plain browser request as of the date
+this page was written. (Note: eCFR's own site — ecfr.gov — blocks automated/proxied traffic with
+a bot check, which is what this repo's build environment runs on, so its pages can't be
+verified from here even though a human browser reaches them fine; the regulation text quoted in
+this lesson instead comes straight from eCFR's public API, and the links below use two
+verified-loading mirrors of the same official text.)
 
-- **[eCFR homepage](https://www.ecfr.gov)** — the Electronic Code of Federal Regulations, the
-  free, continuously updated, unofficial-but-authoritative online version of the CFR. This is
-  where you look up any citation you're handed, and where the source text for this lesson came
-  from.
+- **[Cornell LII: 21 CFR 606.160, current text](https://www.law.cornell.edu/cfr/text/21/606.160)**
+  — Cornell Law School's Legal Information Institute hosts a free, continuously updated mirror
+  of the CFR. This is the live, current version of the exact section quoted in this lesson —
+  regulations get amended, so use this to check whether the text has changed since this lesson
+  was written, unlike the dated snapshot saved in this repo's `sources/` folder.
 
-- **[Understanding the eCFR](https://www.ecfr.gov/reader-aids/understanding-the-ecfr)** —
-  eCFR's own explainer on how the CFR is structured (titles, chapters, parts, sections) and how
-  the online edition relates to the official printed CFR published by the National Archives.
-  Read this once if the title/chapter/subchapter/part/section breakdown in this lesson's
-  decoder table needs reinforcing.
-
-- **[21 CFR 606.160, current text](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-F/part-606/subpart-D/section-606.160)**
-  — the live, continuously updated version of the exact section quoted in this lesson. Regulations
-  get amended; this link always shows the current text, unlike the dated snapshot saved in this
-  repo's `sources/` folder. Use this to check whether a section has changed since a lesson was
-  written.
+- **[Cornell LII: Title 21 browse index](https://www.law.cornell.edu/cfr/text/21)** — browse the
+  whole title/chapter/subchapter/part/section tree this lesson's decoder table walks through, to
+  see the numbering system in context.
 
 - **[GovInfo: Code of Federal Regulations](https://www.govinfo.gov/app/collection/cfr)** — the
   U.S. Government Publishing Office's official, legally authoritative annual CFR archive (PDF
-  and XML, by year). eCFR is the practical day-to-day tool; GovInfo is where you go if you ever
-  need the official, dated, legally citable version of a specific year's CFR text — for
-  example, to confirm exactly what a regulation said on the date of a past inspection.
+  and XML, by year). This is where you go if you ever need the official, dated, legally citable
+  version of a specific year's CFR text — for example, to confirm exactly what a regulation said
+  on the date of a past inspection.
