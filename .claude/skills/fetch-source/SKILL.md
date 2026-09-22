@@ -18,6 +18,17 @@ missing source gets added, once, before the lesson that needs it is written.
    is copyrighted and sold — never fetch, quote, or reproduce the standard's actual text; cite
    the standard number and title only, and say "per AABB Standards for Blood Banks and
    Transfusion Services" without quoting).
+
+   **Known cloud-session gotcha:** ecfr.gov's and fda.gov's own rendered pages block
+   automated/proxied traffic with a bot check (redirects to `unblock.federalregister.gov` or
+   returns 401) — this happens from Claude Code cloud sessions even though a human's own browser
+   reaches these pages fine. It does *not* affect eCFR's public **Versioner API**
+   (`https://www.ecfr.gov/api/versioner/v1/full/<date>/title-<N>.xml?part=<part>`), which is what
+   actually works for fetching verbatim regulation text — use it, not the rendered HTML page.
+   For a **resources.qmd link** a human will click, don't link the unverifiable eCFR/fda.gov
+   page; use a mirror you can actually confirm loads, e.g. Cornell LII
+   (`https://www.law.cornell.edu/cfr/text/<title>/<section>`) or GovInfo
+   (`https://www.govinfo.gov/app/collection/cfr`), both of which load fine from these sessions.
 3. Fetch the smallest reasonable unit (one CFR section, one guidance document), not an entire
    part or an entire site.
 4. Save it under `sources/` in a path that groups by source type, e.g. `sources/cfr/606.160.md`
