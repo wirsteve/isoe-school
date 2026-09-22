@@ -1,0 +1,64 @@
+---
+title: "Quality System Essentials"
+order: 12
+---
+
+## The finish line
+
+By the end of this course you can take a deviation from discovery all the way through a CAPA
+effectiveness check. You can also explain document control and change control well enough to
+defend them to an AABB assessor or an FDA investigator.
+
+This is the machinery underneath everything a blood center's Quality function does. You
+already run most of it under ITIL names: incident, problem, change, knowledge. This course
+gives you the names, records, and expectations an assessor uses, and shows where the quality
+version asks for more than the IT version you know.
+
+## Before you start
+
+This course assumes all three foundations and the first course:
+
+- [Reading a CFR citation](../../foundations/reading-a-cfr-citation/index.qmd)
+- [Regulatory landscape orientation](../../foundations/regulatory-landscape-orientation/index.qmd)
+  — regulation vs. guidance vs. AABB Standard vs. industry practice matters in every module here.
+- [Risk and controls vocabulary](../../foundations/risk-and-controls-vocabulary/index.qmd)
+  — likelihood, severity, detectability, and preventive/detective/corrective controls are
+  used here as words you already own. Module 6 builds on them; it doesn't re-teach them.
+- [Blood Center Operations](../blood-center-operations/index.qmd) — especially
+  [BECS in the pipeline](../blood-center-operations/becs-in-the-pipeline/index.qmd), which
+  set up the "one incident, two tracks" idea and the tension between change control and
+  validation that this course picks up.
+
+## The seven modules
+
+Each module is one sitting, and each has its own finish line.
+
+1. **The AABB quality system at a glance** — name the parts of AABB's Quality System
+   Essentials (QSEs), place any quality activity in the right one, and say how the framework
+   mirrors ISO 9001 and the ITIL practices you already run.
+2. **Deviations and nonconformances** — take an unplanned event from discovery through
+   containment, impact assessment, product disposition, and a documented reportability
+   decision, and say when it needs a CAPA.
+3. **CAPA: root cause to effectiveness check** — tell a real root cause from "human error,"
+   pick corrective and preventive actions that change the process, and set an effectiveness
+   check that could actually fail.
+4. **Change control for regulated systems** — take any change to a regulated process,
+   document, piece of equipment, or system through request, impact assessment, approval,
+   implementation, and verification, and name the record behind each step.
+5. **Document control and records** — follow a controlled document from draft to retirement,
+   tell a document from a record, and explain how an obsolete version ends up in use and what
+   stops it.
+6. **Quality risk management** — run a quality decision through ICH Q9's risk management
+   process with an FMEA or risk ranking and filtering, and decide how much formality the
+   decision deserves.
+7. **Internal audits and management review** — explain what internal assessments do inside
+   the quality system and what management review has to do with their results, and judge
+   whether a management-review packet shows a quality system that works.
+
+Modules 2 through 5 follow one event at Lakeshore Blood Center from the day it's found to the
+day the fix is proven. Module 6 steps back and formalizes the risk calls those modules made.
+Module 7 closes the loop: how the organization finds out whether all of it is working. It
+also hands off to `fda-and-aabb-in-practice`, the next course in this track, which covers
+designing a full audit program and facing inspectors.
+
+Modules appear in the sidebar as they're built.

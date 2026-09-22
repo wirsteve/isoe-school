@@ -1,6 +1,6 @@
 ---
 title: "Collection and testing"
-order: 2
+order: 4
 ---
 
 ## The ticket

@@ -1,6 +1,6 @@
 ---
 title: "Component processing and labeling"
-order: 2
+order: 6
 ---
 
 ## The ticket
