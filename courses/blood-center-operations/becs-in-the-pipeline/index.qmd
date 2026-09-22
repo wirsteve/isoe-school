@@ -1,0 +1,328 @@
+---
+title: "BECS in the pipeline"
+order: 2
+---
+
+## The ticket
+
+Friday, 3:40 p.m. IT Operations has a routine patch queued for Monday night: a vendor-released
+security update to the operating system on the application server running Lakeshore Blood
+Center's Blood Establishment Computer Software (BECS). Medium-severity CVE, vendor advisory two
+weeks old, the same patch already went out on eleven other Windows servers this month without
+incident. Your systems administrator built the change ticket the way he builds every other one:
+standard change, pre-approved patch window, rollback plan attached, done.
+
+Your Quality Analyst rejects it an hour before the CAB (change advisory board) meeting. Not
+"needs more testing" — rejected outright, with one line: "No BECS change deploys without a
+validation impact assessment first. Standard change process doesn't apply here."
+
+Your sysadmin is in your office five minutes later, annoyed. "It's an OS patch. We didn't touch
+a single line of BECS's own code. Every other server in the building gets this exact same patch
+without a three-week paper trail. Why does this one server get treated like we're installing a
+new application?"
+
+He's not wrong that it's the same patch. He's wrong about what server it's sitting on — and by
+Monday's CAB, you're the one who has to explain the difference to both of them, and then explain
+it again, in two sentences, to a CIO who's going to ask the same question your sysadmin just did.
+
+## Why this rule exists — and the ITSM bridge
+
+Here's the failure mode underneath your QA's rejection, stated plainly: BECS isn't a system that
+*records* what happened during blood collection, testing, labeling, and release. Across the last
+four modules, you've watched it *decide* — or gate the decision on — whether each of those steps
+is allowed to proceed. A patch that changes how the operating system handles memory, threading, or
+a shared library doesn't have to touch BECS's application code to change how BECS behaves. An OS
+patch has, in real incidents across regulated industries, quietly altered timing, rounding, or
+error-handling behavior in the software running on top of it — the kind of change nobody would
+notice on a system that just stores data, and the kind of change that matters enormously on a
+system that gates whether a unit of blood is allowed to reach a patient. Treat every change to that
+server the same way you'd treat a routine patch anywhere else, and you've quietly removed the
+review step that exists specifically to catch the case where "we didn't touch the code" turns out
+to be false.
+
+You already own the ITSM vocabulary for exactly this problem — it's just been aimed at service
+availability and security, not at the product itself, and this module is the richest place in the
+whole course to make that translation, because all three pieces of your existing fluency apply at
+once.
+
+**Change enablement under a validated state.** Your normal change model already scores risk and
+routes accordingly — standard, normal, emergency, each with a different approval bar. BECS adds a
+dimension your standard-change criteria were never built to catch: even a change with zero service
+or security risk can still be a regulatory problem, because CGMP performance (whether that unit of
+blood is safe to release) is a criterion your change advisory board doesn't normally have on its
+checklist at all. That's what your QA's rejection is actually enforcing — not "this change is
+risky" in your usual sense, but "this change touches a system that has to stay in a documented,
+proven-reliable state, and nobody has yet shown that this patch doesn't move it out of that state."
+
+**Service asset and configuration management.** BECS is a configuration item (CI) in your CMDB —
+so is every system it interfaces with: the OS it runs on, the instrument interfaces feeding it test
+results, the ICCBBA product code table module 3 already showed you being consumed as external
+reference data. A normal CI record tracks owner, environment, dependencies, lifecycle state. A
+BECS-linked CI carries one more attribute a normal CMDB entry doesn't: its *current validated
+configuration* — the specific, documented version of hardware, OS, application code, and
+interfaces that was shown to perform its critical functions reliably. Drift from that configuration
+isn't just technical debt to schedule later. It's a compliance gap the moment it happens, whether
+anyone opens a ticket for it or not.
+
+**One incident, two tracks.** If a BECS malfunction ever lets something through that shouldn't
+have — say, a defect that let a deferred donor register at a second site, or a timing bug that
+released a unit before its quarantine gate should have opened — you don't have one incident to run
+down. You have two, in parallel, with different owners and different clocks. IT incident
+management gets the system back to a known-good state and closes when service is restored. A
+separate track asks whether that malfunction is a **deviation**, potentially reportable to FDA as a
+biological product deviation under 21 CFR 606.171 — the reporting obligation the
+`risk-and-controls-vocabulary` foundation lesson already walked you through in full, including the
+"may affect," not "did affect," standard that makes this determination unavoidable even when
+nothing shipped. That track doesn't close when the ticket does. It closes when Quality has
+documented the determination — even if the documented answer turns out to be "not reportable."
+
+## The rule, in plain English — what BECS actually is
+
+**BECS (Blood Establishment Computer Software)** is software used by a blood establishment that
+performs, or materially influences, a **critical function** in blood collection, processing,
+testing, or distribution — a step where a software error, undetected, could directly affect
+whether an unsafe or mislabeled product reaches a patient. That's the full definition this course
+has been building toward one clause at a time. Here's the complete picture, in the exact language
+each earlier module used:
+
+1. **Module 1 (donor recruitment and screening):** BECS is "the system of record for donor
+   eligibility and deferrals" — it holds the deferral registry an establishment must consult before
+   ever collecting from a donor, and the record that an eligibility decision was actually made.
+2. **Module 2 (collection and testing):** BECS is the gate. In that module's words, "no product
+   carrying this donation's identifier moves past release, regardless of what's already happened to
+   it physically, until BECS says the gate has opened" — a quarantine-status check, run
+   automatically, that has to clear before any component derived from a donation can be released,
+   shipped, or used.
+3. **Module 3 (component processing and labeling):** BECS "controls whether a final label can
+   print" — the system that has to hold current, correct product code and labeling data before it
+   will let a barcode go onto a bag.
+4. **Module 4 (storage, distribution, and hemovigilance):** BECS "drives inventory, shipping, and
+   final disposition" — the system tracking where a released unit is, and what its final status
+   becomes, right up until it's handed off to a hospital's own systems (its LIS, running
+   compatibility testing and crossmatch, and its HIS, holding the clinical transfusion record) — the
+   exact point where Lakeshore's visibility, and BECS's role, ends.
+
+Put those four together and you get the real reason your QA's answer wasn't overcaution: BECS is
+the single piece of software sitting underneath every regulated decision point this entire course
+has walked through — who's allowed to donate, what's allowed to leave quarantine, what's allowed to
+print on a label, and what's allowed to ship. There is no equivalent system anywhere else in a
+typical enterprise stack, because there is no equivalent set of decisions anywhere else in the
+business with this direct a line to patient safety.
+
+That's *why* FDA treats software performing these functions differently from ordinary IT
+infrastructure — and it happens on two overlapping legal footings, not one:
+
+**First, CGMP applies to the function, not just to the person or machine performing it.** 21 CFR
+606.100(b) requires written procedures "for all steps in the collection, processing, compatibility
+testing, storage, and distribution of blood and blood components" — donor eligibility criteria,
+donor-to-unit identity linking, labeling procedures, final disposition. When BECS performs or gates
+one of those steps instead of a person doing it on paper, the software inherits the same CGMP
+expectation the regulation has always applied to the step itself: it has to work reliably, and
+Lakeshore has to be able to prove it, on demand, the same way it has to prove a phlebotomist
+followed the DHQ (donor history questionnaire) correctly.
+
+**Second, for software whose function goes further — actually making or controlling the release
+decision, not just recording one a person made — FDA's authority reaches beyond CGMP procedure and
+into medical device law.** Software that performs functions like this can meet the FD&C Act's
+definition of a medical device in its own right, which for many BECS products means the vendor had
+to clear it through FDA's premarket device review process (a 510(k) submission) before it could
+even be sold into the U.S. market — the same regulatory gate a physical diagnostic instrument goes
+through, applied to software making a release decision instead of a physical test result. You don't
+need device-classification law to run Lakeshore's IT function; you need to know that this second
+footing exists, because it's the reason your BECS vendor isn't just another SaaS vendor — they're a
+regulated manufacturer of the software itself, subject to their own FDA obligations for defects and
+design changes, quite apart from anything Lakeshore does on its end.
+
+FDA has also published guidance specifically on this topic — a document commonly referenced in the
+industry as **"Blood Establishment Computer System Validation in the User's Facility,"** issued by
+FDA's Center for Biologics Evaluation and Research (CBER). *A verification note, in the same spirit
+as the `regulatory-landscape-orientation` foundation lesson's handling of an unreachable guidance
+page: this session could not fetch FDA's own guidance-document page to confirm the current version
+and exact issue date, so none is quoted here — confirm the current version from FDA's guidance
+database before citing a specific date in a real Lakeshore document.* What that guidance covers —
+the actual validation methodology, IQ/OQ/PQ (installation, operational, and performance
+qualification), and the GAMP 5 (Good Automated Manufacturing Practice) risk-based framework the
+industry commonly uses to structure it — is deliberately **not** this module's job. That's the
+entire subject of Track 3, `csv-and-becs`, later in the curriculum. This module's job stops at
+*why* that heavier process exists; it doesn't teach *how* to run it.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.100(b) | "Six-oh-six point one-hundred, paragraph b" | Written SOPs required for all CGMP steps in collection, processing, testing, storage, and distribution. | The regulatory floor BECS inherits the moment it performs one of these steps instead of a person — the reason "we didn't touch the application code" doesn't end the analysis for an OS patch. |
+| 21 CFR 11.10(a) | "Eleven point ten, paragraph a" | Part 11 (electronic records and signatures) requires "validation of systems to ensure accuracy, reliability, consistent intended performance." | Named here for the concept only — this is where "maintaining a validated state" traces to in the regulation itself. Part 11's full electronic-records framework (audit trails, ALCOA+) gets its complete treatment in Track 3. |
+| 21 CFR 606.171(b)(1)(ii) | "Six-oh-six point one-seven-one, paragraph b, sub-one, clause ii" | An "unexpected or unforeseeable event" that "may affect" the safety, purity, or potency of a distributed product is reportable as a biological product deviation. | The test that turns a BECS software defect into a potential BPDR (biological product deviation report), not just a closed incident ticket — already covered in full in `risk-and-controls-vocabulary`. |
+
+## The actual text
+
+The SOP requirement, quoted verbatim from `sources/cfr/606.100.md` — the same regulation two
+earlier foundation lessons already grounded, now applied to software performing the step instead of
+a person:
+
+> Establishments must establish, maintain, and follow written standard operating procedures for all
+> steps in the collection, processing, compatibility testing, storage, and distribution of blood and
+> blood components for allogeneic transfusion, autologous transfusion, and further manufacturing
+> purposes...
+
+Nothing in that sentence carves out an exception for "the step is performed by software instead of a
+person." A donor-eligibility determination, a quarantine release, a label-printing control, a
+disposition decision — each one is a CGMP step named directly in 606.100(b)'s own subparagraphs
+across the four modules you've just recapped, and each one is a step BECS performs or gates.
+
+The validated-state concept itself, quoted verbatim from `sources/cfr/11.10.md`:
+
+> (a) Validation of systems to ensure accuracy, reliability, consistent intended performance, and
+> the ability to discern invalid or altered records.
+
+Read that sentence the way your QA reads it: BECS doesn't get a one-time validation and then a free
+pass forever. It has to keep demonstrating "consistent intended performance" — which is exactly what
+an unreviewed OS patch puts at risk, whether or not the patch itself is dangerous. This single clause
+is as deep as this module goes into Part 11; the full electronic-records framework built on top of
+it is Track 3's job.
+
+And the reportability standard, quoted verbatim from `sources/cfr/606.171.md` — already the full
+subject of the `risk-and-controls-vocabulary` foundation lesson, worth one more read with BECS
+specifically in mind:
+
+> (b)(1)(ii) Represents an unexpected or unforeseeable event that may affect the safety, purity, or
+> potency of that product...
+
+A mislabeled bag and a software defect that mis-executes a labeling decision "may affect" a product
+the same way, on the same regulatory test. The medium is different; the reportability test isn't.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB assessor reviewing Lakeshore's change history for the BECS application
+server doesn't ask whether the patch was applied successfully. They ask for three specific
+artifacts, and a gap in any one of them is a finding on its own, regardless of whether the patch
+itself ever caused a problem.
+
+**The validation impact assessment for this specific change** — a documented determination, made
+*before* deployment, of whether this patch could plausibly affect BECS's critical functions, signed
+by someone with the authority to make that call. "We patch these servers every month with no
+issues" is a track record, not an assessment. The assessment has to exist for *this* patch, on *this*
+system, every time — even when the eventual conclusion is "no meaningful risk, proceed."
+
+**The change control record showing Quality's sign-off**, not just IT's. For a normal enterprise
+system, IT approval closes a standard change. For BECS, the record an inspector expects to see
+includes Quality as a required approver in the workflow itself, not a courtesy notification after
+the fact — the same distinction between "informed" and "owns a sign-off" that separates a real
+control from a documentation gap.
+
+**Vendor qualification and change-notification records** — proof that Lakeshore's BECS vendor is
+contractually obligated to notify Lakeshore of updates *before* they're pushed, and evidence that
+Lakeshore actually reviews and tests vendor-initiated changes rather than absorbing them silently.
+You've already seen what happens without this control: module 3's ICCBBA product-code-table
+push — a vendor update Lakeshore's own BECS applied mid-shift, with no advance review, that put
+roughly forty units' printed barcodes one revision behind before anyone caught it. That wasn't a
+labeling failure at its root. It was a vendor-change-governance failure that happened to surface as
+a labeling problem, and it's the single clearest argument in this course for why vendor
+qualification records matter as much for BECS as validation records do.
+
+## Common traps
+
+**"It's just a patch, not a new feature, so it doesn't need review."** This is your sysadmin's
+position, and it's the single most common gap FDA investigators find in BECS change records. The
+regulation doesn't distinguish "feature work" from "maintenance work" — 11.10(a)'s "consistent
+intended performance" standard applies to any change that could plausibly affect it, and an
+underlying OS patch is exactly the kind of change that can shift behavior without anyone intending
+it to. Size and intent of the change aren't the test; effect on validated behavior is.
+
+**"BECS is IT's system — Quality doesn't need to be in the change control loop for it."** Backwards.
+BECS is the one system in the building where Quality's sign-off is *more* load-bearing than IT's,
+not less, precisely because the thing at risk from a bad change isn't service availability — it's
+whether a critical CGMP function keeps working correctly. Routing a BECS change through IT's normal
+approval chain alone, with Quality as an afterthought, is the exact gap your QA's rejection in this
+scenario was built to close.
+
+**"A security patch and a validated-state change are two different categories of risk."** They're
+not — they're two different *lenses* on the same underlying question: did anything change about how
+this system behaves? A security patch that changes memory handling, library versions, or timing
+behavior can affect BECS's critical-function performance just as much as a change explicitly labeled
+"functional update," even though it was never intended to touch application logic. Treating "it's a
+security fix" as automatically lower-risk than "it's a feature change" ignores that validated-state
+risk and security risk are assessed on completely different criteria — a change can be low-risk on
+one and genuinely uncertain on the other.
+
+## What this means for your job
+
+- **Build a BECS-specific change category into your change model, separate from "standard" and
+  "emergency."** Every change to BECS itself, or to the OS and infrastructure it runs on, routes
+  through a validation impact assessment and requires Quality's sign-off as a blocking approval —
+  not a notification, an approval — before it deploys, regardless of how routine it looks.
+- **Ask your Quality Analyst, before any BECS change goes to CAB, whether the impact assessment is
+  written down, not just discussed.** "We talked it through and it seemed fine" is not the artifact
+  an inspector expects to find; a documented assessment, even a short one, is.
+- **Put vendor change notification in the contract, not in good faith.** Ask your BECS vendor
+  directly: what's their obligation to tell Lakeshore *before* pushing an update, and what's
+  Lakeshore's window to review and test it first? If the answer is vague, that's a vendor-management
+  gap worth escalating before the next ICCBBA-table-style surprise, not after.
+- **Treat a BECS incident as opening two tickets, not one, every time.** The IT incident closes when
+  service is restored. The quality determination — was this potentially a 606.171 event — closes
+  only when Quality documents an answer, and your job is making sure that second ticket never quietly
+  gets forgotten because the first one closed cleanly.
+- **When you brief your CIO on why BECS can't move at ordinary IT speed, lead with the function, not
+  the paperwork.** "It's regulated" undersells it and invites pushback. "This software decides
+  whether a unit of blood is safe to release — the same decision a person used to make by hand under
+  the same CGMP rule — so a change to it gets the same scrutiny a change to that decision would" is
+  the two-sentence version that actually lands.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your Quality Analyst tells the vendor that "FDA regulation requires BECS validation to follow the GAMP 5 framework with IQ, OQ, and PQ phases." Accurate?
+
+Not quite, and this is worth catching before it goes in a vendor contract. FDA regulation (21 CFR
+11.10(a), and 606.100(b) for the underlying CGMP steps) requires that systems performing these
+functions be validated — "accuracy, reliability, consistent intended performance" — but it doesn't
+name a specific methodology in the regulatory text. GAMP 5 (Good Automated Manufacturing Practice,
+published by ISPE) and the IQ/OQ/PQ (installation/operational/performance qualification) structure
+are industry-practice tier: the near-universal, defensible way the industry demonstrates it met the
+regulatory standard, not language lifted from the CFR itself. This is the same regulation-versus-
+guidance-versus-industry-practice mistake the `regulatory-landscape-orientation` foundation lesson
+opened the whole curriculum with, showing up again at the end of it. Track 3 (`csv-and-becs`) is
+where you'll learn what GAMP 5 and IQ/OQ/PQ actually require in practice.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Your sysadmin argues the OS patch "doesn't need Quality's sign-off because we're not changing any BECS application code, only the operating system underneath it." Correct?
+
+No. 11.10(a)'s "consistent intended performance" standard is about BECS's actual behavior, not about
+which layer of the stack a change touches. An OS-level patch can alter timing, memory handling, or
+error behavior in ways that change how the application running on top of it performs, even with zero
+lines of BECS's own code modified. The validation impact assessment exists precisely to make that
+determination *before* deployment — "we didn't touch the application" is an input to that assessment,
+not a substitute for it.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A BECS defect briefly lets a unit's quarantine status show "released" one screen refresh before all test results are actually in. Someone notices within the hour; nothing ships. Does this need a 606.171 reportability determination?
+
+Yes, the determination itself is required — same "may affect," not "did affect," standard from the
+`risk-and-controls-vocabulary` foundation lesson, now applied to software instead of a label. On
+these facts, since nothing was distributed, 606.171(b)(3)'s distributed-product trigger likely isn't
+met, so the likely conclusion is "not reportable." But that conclusion has to be reached, documented,
+and filed by Quality — not assumed because the defect was caught quickly and nothing shipped. An
+undocumented "no harm done" is the same gap here that it was for the label mix-up in that earlier
+lesson, just wearing a software defect instead of a physical one.
+:::
+
+## Where this goes next
+
+That's `blood-center-operations` — the whole course, done. Five modules walked one unit of blood
+from a donor's eligibility interview through collection, testing, quarantine, component
+processing, labeling, storage, shipping, and a hospital transfusion service, naming the regulated
+step at every stage and, in this module, gathering every place BECS touched that path into one
+picture: eligibility, release, labeling, and disposition, plus where its visibility stops at the
+hospital's own LIS and HIS.
+
+Two places pick up threads this module deliberately left open. **Track 3, `csv-and-becs`**, is
+where the validation methodology this module only named — GAMP 5, IQ/OQ/PQ, the V-model, and what a
+real validation impact assessment actually contains — gets taught in full; that's the natural next
+stop for anyone who wants to turn this module's "why" into a working "how." **Track 2,
+`quality-system-essentials`**, is where change control and deviation management — the CAPA process,
+the mechanics of a BPDR filing, and how a quality council actually runs — get their own complete
+treatment, beyond what this course's foundation lesson and this module's incident-track framing
+covered. Neither is the immediate next build; both are where the threads this course opened are
+waiting when you're ready to pull on them.

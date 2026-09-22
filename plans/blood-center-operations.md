@@ -27,7 +27,7 @@ Build in order. One module per session (lesson `index.qmd` + `resources.qmd`).
 | 2 | `collection-and-testing` | Follow a donation from venipuncture through the required infectious-disease and blood-typing panel, and explain why nothing leaves quarantine until every result is in | Published |
 | 3 | `component-processing-and-labeling` | Explain how one donation becomes several products with different shelf lives, and read an ISBT 128 label well enough to say what each part of it guarantees | Published |
 | 4 | `storage-distribution-and-hemovigilance` | Track a released unit through storage, shipping, and the hospital transfusion service to the patient, and say what has to happen, and be reported, when something goes wrong | Published |
-| 5 | `becs-in-the-pipeline` | Point at every place BECS touches the pipeline, and say in two sentences to a CIO why it isn't governed like a normal enterprise application | Not started |
+| 5 | `becs-in-the-pipeline` | Point at every place BECS touches the pipeline, and say in two sentences to a CIO why it isn't governed like a normal enterprise application | Published |
 
 Pages live at `courses/blood-center-operations/<slug>/index.qmd` and `.../resources.qmd`.
 The sidebar picks them up automatically via the `courses/**` glob in `_quarto.yml` — nothing
@@ -370,3 +370,67 @@ flag it in the progress log below.
   software) and this course's hand-off to Track 3's validation/CSV coursework. Likely needs FDA
   guidance on blood establishment computer software fetched and verified (guidance-tier, not
   regulation — label it as such).
+- **2026-09-22** — Module 5, `becs-in-the-pipeline`, drafted (lesson `index.qmd` + `resources.qmd`),
+  not yet published (written for review per this session's instructions). **This completes
+  `blood-center-operations`: all five modules are now drafted.** Fetched one new source via the
+  eCFR Versioner API: `sources/cfr/11.10.md` (21 CFR 11.10, Controls for closed systems — Part 11,
+  Subpart B — used for exactly one clause, (a): "Validation of systems to ensure accuracy,
+  reliability, consistent intended performance, and the ability to discern invalid or altered
+  records," the regulatory anchor for the "validated state" concept this module names but does not
+  teach). Appended to `sources/INDEX.md`. Reused `sources/cfr/606.100.md` (paragraph (b) intro, the
+  CGMP-steps-need-written-procedures requirement, applied to BECS performing those steps instead of
+  a person) and `sources/cfr/606.171.md` (paragraph (b)(1)(ii), the "may affect" reportability
+  trigger, applied to a software defect instead of a physical labeling error — the same clause
+  already taught in full by the `risk-and-controls-vocabulary` foundation lesson, cited here with
+  fresh framing, not re-taught). Did not fetch or cite a device-classification regulation (e.g., a
+  specific Part 864 or similar 510(k)/classification citation) — none was found and verified this
+  session, and the module's "software as a device" framing is deliberately general and
+  unsourced-to-a-specific-CFR-number, per the task's conservative-framing instruction, rather than
+  risk an invented or unverified classification citation.
+  **Flag for a later session:** this module names an FDA guidance document by topic — commonly
+  referenced in the industry as *"Blood Establishment Computer System Validation in the User's
+  Facility,"* issued by CBER — without a confirmed version or issue date, because fda.gov's
+  guidance-document pages returned 401 all session (same known gotcha as every earlier module). The
+  title is named from general industry knowledge, not fetch-verified; if a later session (very
+  likely Track 3, `csv-and-becs`, when it opens) can reach fda.gov's guidance database directly,
+  confirm the exact current title and version before quoting a date anywhere.
+  All four running BECS clauses were recapped and quoted precisely from their source modules,
+  gathered into one full definition: (1) module 1 — "the system of record for donor eligibility and
+  deferrals"; (2) module 2 — quoted narratively as the quarantine-release gate ("no product carrying
+  this donation's identifier moves past release... until BECS says the gate has opened"); (3)
+  module 3 — "it controls whether a final label can print"; (4) module 4 — "it drives inventory,
+  shipping, and final disposition," plus module 4's LIS/HIS hospital-handoff boundary referenced as
+  where BECS's own visibility ends. Scenario: Friday-afternoon routine OS security patch queued for
+  the BECS application server, rejected by the Director's own Quality Analyst direct report pending
+  a validation impact assessment, with the Director caught between IT (annoyed at the delay) and
+  Quality (holding the regulatory floor) — used to teach change enablement under a validated state
+  without teaching validation mechanics themselves. Directly referenced back to module 3's ICCBBA
+  product-code-table vendor push as the course's own live example of a vendor-change-governance
+  failure, per the task's instruction to reuse it rather than invent a new vendor incident. ITSM
+  bridge covered all three angles the plan called out: change enablement under a validated state,
+  service asset/configuration management (BECS and its interfaced systems as CIs with a
+  regulatory-configuration dimension a normal CMDB entry lacks), and the one-incident-two-tracks
+  framing (IT incident management running in parallel with a 606.171 deviation/BPDR determination,
+  explicitly pointing back to `risk-and-controls-vocabulary` rather than re-teaching reportability
+  mechanics). Check-understanding Q1 is the deliberate "NOT a regulatory requirement" question
+  (GAMP 5 and IQ/OQ/PQ are industry-practice tier, not named in the CFR text itself). Explicit
+  hand-off at the end names both Track 3 (`csv-and-becs` — validation methodology, GAMP 5, IQ/OQ/PQ,
+  the V-model, none of which this module taught) and Track 2 (`quality-system-essentials` — change
+  control and deviation/CAPA mechanics in full), each flagged as "where this goes next," not an
+  immediate next build.
+  Resources.qmd links (Cornell LII 606.100, Cornell LII 11.10, Cornell LII 606.171, GovInfo CFR
+  collection) all verified via curl to return HTTP 200 before listing. ICCBBA's homepage (used in
+  module 3) was re-verified reachable (HTTP 200) but not linked again here, since this module's own
+  citations don't touch ISBT 128 directly. fda.gov guidance pages remain unreachable (HTTP 401) —
+  consistent with every prior module's finding, not a new gap.
+  **For whoever builds Track 3 (`csv-and-becs`) or Track 5/6 later:** this module's BECS
+  definition — software performing or materially influencing a "critical function" (eligibility,
+  release, labeling, disposition) — and its two-footing explanation of FDA's authority (CGMP applies
+  to the function regardless of who/what performs it, per 606.100(b); certain BECS products
+  separately meet the device definition and may need 510(k) clearance, described generally without
+  a specific classification citation) is the definitive framing this course committed to. Track 3
+  should build on it rather than redefine BECS from scratch, and can safely assume the learner
+  already has: the "validated state" concept (named, not taught), vendor change notification as a
+  live pain point (the ICCBBA scenario), and the one-incident-two-tracks quality/IT framing.
+  `blood-center-operations` is now fully drafted end to end; next action for this course is
+  publishing all five modules (or whichever remain unpublished), not further drafting.
