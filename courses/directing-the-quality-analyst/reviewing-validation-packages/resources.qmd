@@ -1,0 +1,29 @@
+---
+title: "Resources: Reviewing a validation package"
+order: 35
+---
+
+Each link below was checked this session and loads.
+
+- **[21 CFR 11.10 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.10)**
+  — the full "Controls for closed systems" section this module draws three clauses from: the
+  introductory sentence (the obligation sits on "persons who use" a system, not its vendor),
+  paragraph (a) (validation for "accuracy, reliability, consistent intended performance"), and
+  paragraph (k)(2) (time-sequenced systems documentation, named as a concept only). Local
+  verbatim copy: `sources/cfr/11.10.md`.
+
+- **[GovInfo: Code of Federal Regulations](https://www.govinfo.gov/app/collection/cfr)**
+  — the government's own dated, authenticated CFR collection. Use this when you need a citation
+  tied to a specific published edition, not just the current rolling text Cornell's LII shows.
+
+- **[AABB Quality Systems Framework (2021, public discussion draft PDF)](https://www.aabb.org/docs/default-source/default-document-library/standards/aabb-quality-systems-framework-2021.pdf?sfvrsn=a11081d1_2)**
+  — AABB's own public description of the ten Quality System Essentials, including QSE 3
+  (Equipment, which explicitly covers IT systems and their qualification) and QSE 5 (Process
+  Control, which covers validation). Use it to see the theme and scope of each QSE in AABB's own
+  words; don't cite a standard number from it — see `sources/aabb/qse-framework.md` for why.
+
+- **[AABB: Updated Quality Systems Essentials](https://www.aabb.org/standards-accreditation/standards/about-aabb-standards/updated-quality-systems-essentials)**
+  — AABB's current landing page on the QSE structure. Use it as a starting point for confirming
+  which edition's chapter titles and numbering are currently in force before citing one precisely
+  in a real Lakeshore document; see `sources/aabb/qse-framework.md`'s verification notes for what's
+  still unconfirmed.

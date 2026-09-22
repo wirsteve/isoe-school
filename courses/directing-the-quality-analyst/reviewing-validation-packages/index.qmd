@@ -1,0 +1,372 @@
+---
+title: "Reviewing a validation package: the decision trail"
+order: 34
+---
+
+## The ticket
+
+Six weeks after your sysadmin stood in your office asking why one server gets a three-week
+paper trail for the same patch running everywhere else (`becs-in-the-pipeline`), your Quality
+Analyst (QA) — the one who rejected that patch outright, an hour before CAB (change advisory
+board) — routes you two documents together: the validation impact assessment she said had to
+exist before this patch could ever deploy, and a short test summary behind it. Routed to
+Quality for its sign-off, and to you "for approval," in the box `qa-deliverables-and-ownership`
+already told you is real: system-owner co-approver, not a courtesy notification.
+
+You open it expecting to relitigate the fight your sysadmin already lost. Instead you get a
+document that reads clean on first pass — headings filled in, a test summary attached, two
+signature lines waiting for dates. Twelve targeted tests, one clear conclusion, nothing that
+looks obviously wrong. Which is exactly the moment `reviewing-deviations-and-capas` already
+taught you to slow down, not speed up: a document that looks this finished is the one worth
+reading more carefully, not less.
+
+## Why this matters — and the ITIL bridge
+
+You already review a version of this document every time a system goes live: a go-live
+readiness pack — UAT (user acceptance testing) sign-off, test evidence, a go/no-go record —
+before it reaches CAB. You know how to read one. Did testing happen against a defined scope?
+Did it pass? Is there a record someone can point to later? None of that instinct is wrong here.
+
+Four things push past what a normal go-live pack demands of you:
+
+**Acceptance criteria have to be fixed before testing runs, not written up afterward to match
+whatever happened.** Your own change process probably tolerates a test plan that firms up as
+testing proceeds. This world doesn't — `quality-system-essentials` already taught you why:
+criteria decided after you know the result isn't a criterion, it's a story.
+
+**A failure gets documented and explained, not quietly re-run until it's green.** Your UAT
+process probably treats "failed, re-ran, passed" as routine — flaky test, environment hiccup,
+move on. Here, an unexplained pass-on-retry is a decision-trail gap on its own, whether or not
+the underlying system was ever actually at risk.
+
+**Quality's approval is a blocking sign-off, not a stakeholder review.** Your CAB approval means
+the change is safe to deploy from a service-risk read. Quality's signature here means something
+closer to a second required lock on the door — `becs-in-the-pipeline` already put it plainly:
+both required, neither sufficient alone.
+
+**"Validated state" is a standing obligation, not a one-time badge earned at go-live.** A system
+you shipped last year and haven't touched since can still be non-compliant today, the moment a
+patch to the layer underneath it changes its behavior without anyone checking. And the
+obligation to check sits with **the user of the system** — Lakeshore — not with the vendor who
+wrote the patch notes. That last point is where this module's sharpest teeth are.
+
+## The rule in plain English
+
+A validation impact assessment and its test summary have a decision trail, the same way a
+deviation and CAPA packet does, and you check it with the same instrument: the **cold-read
+test** — Conclusion, Evidence, Reasoning, Criteria first, Decision trail, Loose ends — sorted
+with **gap triage**: must fix before I sign, fix going forward, fine as is. Neither instrument
+gets re-taught here. What changes is what you're pointing them at.
+
+Five things this document has to show, specifically:
+
+- **Scope against BECS's four critical functions** — eligibility, release, labeling,
+  disposition — and the interfaces that carry them: instrument interfaces feeding results in,
+  label printers pushing output out. Not "no impact anticipated." A statement, for each one,
+  that it was actually looked at.
+- **Acceptance criteria set before execution.** The protocol — what counts as pass, what counts
+  as fail — approved before the tests ran, not after.
+- **Failures recorded honestly.** A failed step gets a discrepancy note: what failed, why,
+  what changed before the re-run. Silence isn't a pass.
+- **Approval before deployment, in that order.** The dates have to show assessment, then
+  approval, then implementation — not a patch already live in production while an approval
+  signature is still pending.
+- **A vendor's word as an input, never a substitute.** A compatibility statement or release
+  notes are evidence Lakeshore can weigh. They are not, on their own, Lakeshore's own
+  determination.
+
+**Here's the boundary, stated plainly, because pretending otherwise would be worse than
+naming it.** Everything above is the half of this review you can actually do today. Whether
+twelve targeted tests were technically the *right* twelve — whether the test design covered
+the real risk, whether targeted testing was the correct call instead of a fuller revalidation —
+is a different review. It rests on validation methodology (risk-based test design, what GAMP 5
+[Good Automated Manufacturing Practice] and IQ/OQ/PQ actually require) this curriculum hasn't
+taught you yet; that's `csv-and-becs`, still to be built. Until it exists, when that question
+genuinely matters, here's a working answer, not a shrug: route it to **Quality's validation
+lead** — or whoever at Lakeshore is actually qualified to judge test adequacy — and don't let
+that routing be informal. Ask to see *that* review documented, the same way you'd ask to see
+any other approval documented. Your job today is the decision trail: what was decided, on what
+evidence, against what criteria, by whom, in what order. Whether the testing itself was enough
+is someone else's call for now, and the gap here isn't in not knowing the answer — it's in not
+knowing you're not supposed to know it yet.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 11.10, introductory sentence | "Eleven point ten" | Persons who *use* closed systems to create, modify, maintain, or transmit electronic records must employ procedures and controls ensuring their authenticity, integrity, and confidentiality. | The obligation sits on Lakeshore, the system's user — not on the vendor who wrote the patch or the release notes. A vendor's compatibility statement can't discharge a duty the regulation places on you. |
+| 21 CFR 11.10(a) | "...paragraph a" | Validation of systems to ensure "accuracy, reliability, consistent intended performance, and the ability to discern invalid or altered records." | Already quoted in `becs-in-the-pipeline`: BECS doesn't earn a validated state once and keep it forever. This assessment is exactly the kind of check that standing obligation requires, every time something underneath BECS changes. |
+| 21 CFR 11.10(k)(2) | "...paragraph k, sub-two" | Revision and change control procedures maintaining an audit trail that documents "time-sequenced development and modification of systems documentation." | Named as a concept only, one row, no more: sequence matters in the record itself, not just in what actually happened — the same idea behind checking whether approval dates precede deployment dates. Part 11's full audit-trail framework is Track 3's (`data-integrity-and-records`, `csv-and-becs`) job, not this module's. |
+
+## The actual text
+
+The obligation on the user, quoted verbatim from `sources/cfr/11.10.md` — the introductory
+sentence of 11.10, never quoted earlier in this curriculum:
+
+> Persons who use closed systems to create, modify, maintain, or transmit electronic records
+> shall employ procedures and controls designed to ensure the authenticity, integrity, and, when
+> appropriate, the confidentiality of electronic records, and to ensure that the signer cannot
+> readily repudiate the signed record as not genuine.
+
+Read "persons who use" as narrowly as it's written: that's Lakeshore, operating BECS, not the
+company that sold Lakeshore the operating system patch. The vendor has its own obligations as a
+software manufacturer, named in `becs-in-the-pipeline`. They don't transfer to Lakeshore, and
+they don't run the other direction either — Lakeshore's obligation to control its own system
+doesn't get satisfied by reading someone else's paperwork about their own.
+
+The validated-state standard, quoted verbatim from `sources/cfr/11.10.md`, reused from
+`becs-in-the-pipeline`:
+
+> (a) Validation of systems to ensure accuracy, reliability, consistent intended performance,
+> and the ability to discern invalid or altered records.
+
+And the sequence-matters hook, quoted verbatim from `sources/cfr/11.10.md`, named once as a
+concept and left there:
+
+> (k)(2) Revision and change control procedures to maintain an audit trail that documents
+> time-sequenced development and modification of systems documentation.
+
+AABB's Quality System Essentials (QSE) framework sits on top of both, paraphrased only from
+`sources/aabb/qse-framework.md`, no standard number: **Equipment** (QSE 3) covers qualification
+of equipment, explicitly including IT systems — the theme behind treating a patch to BECS's
+server the same way you'd treat requalifying a piece of lab equipment. **Process Control**
+(QSE 5) covers validation as part of controlling a regulated process — the theme this whole
+document exists to satisfy.
+
+## The package on your desk
+
+Here it is, exactly as routed — two signature lines, one still blank, waiting on you:
+
+> **LAKESHORE BLOOD CENTER — VALIDATION IMPACT ASSESSMENT**
+>
+> **VIA ID:** VIA-0842 &nbsp;|&nbsp; **System:** BECS (Blood Establishment Computer Software),
+> application server &nbsp;|&nbsp; **Change:** Vendor-released OS security patch (medium-severity
+> CVE, per vendor advisory); no BECS application code modified.
+> **Requested by:** IT Operations &nbsp;|&nbsp; **Prepared by:** Quality Analyst &nbsp;|&nbsp;
+> **Date opened:** Fri 11/06
+>
+> **Critical functions reviewed:** Eligibility, release, labeling, disposition. No impact
+> identified.
+>
+> **Impact determination:** No impact to BECS's validated state. Vendor release notes state the
+> patch addresses OS-level memory handling only, with no application-layer changes. Vendor's
+> compatibility statement confirms support for the current BECS application version.
+> **Conclusion: approved for production deployment.**
+>
+> **Test summary (BECS-TS-0842):** 12 targeted test cases executed, covering donor-eligibility
+> lookups, quarantine/release transactions, and label-print jobs at the primary print station.
+> Test scope selected in place of full revalidation, on the basis that the vendor characterizes
+> this patch as OS-level only. *Scope and rationale reviewed: Quality Validation Lead, 11/06.*
+>
+> **Execution:** Mon 11/09 – Tue 11/10. 11 of 12 steps passed on first execution. Step 7
+> (label-print job timing, primary print station) failed on first run; re-run same day, passed.
+>
+> **Protocol approval (acceptance criteria):** Wed 11/11.
+>
+> **Approvals:**
+> Quality (blocking approver): Quality Analyst — **Date:** 11/12
+> System owner: Director, IT Service Operations — **Date:** __________
+>
+> **Production deployment (per BECS change record):** Wed 11/11, 10:15 p.m.
+>
+> **Open items:** BECS-to-hospital interface regression testing to follow.
+
+**Before you read on: run the cold-read test yourself. Find the gaps — and separately, notice
+which question in this document you genuinely can't answer yet, no matter how carefully you
+read it.**
+
+## The reveal
+
+By the six questions, not by the document's own order.
+
+**Conclusion.** Clean. One conclusion, stated plainly: no impact to the validated state, approved
+for production. No gap here, worth saying outright — not every bucket has a hit, and pretending
+otherwise trains defensive writing on the next draft.
+
+**Evidence.** This is where the document is thinnest, in two connected ways.
+
+First: "no impact to BECS's validated state" rests on the vendor's release notes and
+compatibility statement. That's your QA's pattern again, in a new document — stopping at the
+first credible-sounding source. A vendor's release notes are a real input; they're the vendor's
+own characterization of its own product, not Lakeshore's independent determination. The
+regulation is specific about whose obligation this is: "persons who use" the system, not the
+company that patched it. Nothing here shows Lakeshore actually confirmed the vendor's claim
+against BECS's own behavior — it shows Lakeshore read the claim and agreed with it.
+
+Second: "critical functions reviewed: eligibility, release, labeling, disposition — no impact
+identified" names the four functions without showing any of them were individually checked.
+Compare that to the test summary right below it: eligibility lookups and release transactions
+get a line each. Labeling gets one, indirectly, through the print-job test. **Nothing tests an
+instrument interface at all** — the channel carrying results in, not just labels out — despite
+the assessment's own header listing "critical functions reviewed" as if it had. A document can
+name a scope without demonstrating it covered that scope, and this one does exactly that.
+
+Triage: **must fix before I sign.** The conclusion may well be right. Nothing on the page proves
+it yet.
+
+**The boundary, right here — a question you can't answer from this document, and shouldn't try
+to.** Twelve targeted tests, not a full revalidation. Was that enough? You don't know, and this
+module hasn't equipped you to know — that's `csv-and-becs`'s job, not yours today. What you
+*can* check is narrower and sits right there in the document: is the reason twelve was chosen
+written down, and did someone qualified to make that call sign it? Here, yes — "scope and
+rationale reviewed: Quality Validation Lead, 11/06." That's not nothing. A learner who flags
+"only twelve tests" as the finding has found the wrong gap; the actual finding, if there were
+one, would be an undocumented scope decision, not a small number by itself. This document
+doesn't have that gap. Notice it, and move on.
+
+**Reasoning.** Step 7's failure — the label-print job timing test — failed on first run,
+re-ran the same day, passed, with no discrepancy note anywhere in the summary: no stated cause,
+no explanation of what, if anything, changed before the re-run. This isn't a citation-grade
+finding — Part 606's good-documentation-practice clauses are scoped to collection, processing,
+testing, storage, and distribution steps on units, not to validation test scripts, and stretching
+them here would be exactly the kind of overreach `reviewing-deviations-and-capas` warned against.
+Treat it instead as an industry-practice and decision-trail concern, in plain terms: a test that
+fails and then passes without explanation hasn't shown you it's fixed. It's shown you it's
+inconsistent, and inconsistent is its own kind of risk on a label printer specifically — the
+device that puts a barcode on a bag. Triage: **fix going forward.** It doesn't undo the
+conclusion by itself. It's exactly the kind of gap that becomes a real problem the next time
+this pattern repeats and nobody's looking as closely.
+
+**Criteria first.** The protocol — the document defining what counts as pass or fail — was
+approved Wednesday 11/11. Testing ran Monday through Tuesday, 11/09–11/10. The bar was set
+*after* the results were already known. This is the exact QSE gap `capa-root-cause-to-
+effectiveness` and `change-control-for-regulated-systems` already taught you to catch: a
+criterion decided once you already know the outcome isn't a criterion, it's a rationalization
+with a signature on it. Triage: **must fix before I sign** — this isn't a formatting slip, it
+undermines the document's basic claim to have tested against a standard instead of toward a
+conclusion.
+
+**Decision trail — the one only you're positioned to catch.** The production deployment
+timestamp, from BECS's own change record, is Wednesday 11/11, 10:15 p.m. Quality's approval
+signature is dated Thursday 11/12. **The patch went live before Quality approved it.** A
+Quality reviewer without your access to IT's own change and server logs has no reason to go
+looking for this — she'd read two dates on two different documents and have no way to know they
+contradict each other unless she happened to cross-check a system log she doesn't normally
+touch. You do. This is the sharpest version of the Director-only IT-evidence check this course
+keeps coming back to: the gap isn't hiding in the narrative, it's hiding in the gap *between*
+two records that live in different systems. Triage: **must fix before I sign.** Deployed-before-
+approved isn't a paperwork lag. It's the sequence this whole review exists to verify, run
+backwards.
+
+**Loose ends.** "BECS-to-hospital interface regression testing to follow," on a package already
+approved for production, with no owner and no date. An open item attached to a closed,
+production-deployed change is exactly the kind of thing that quietly never happens once
+everyone's attention has moved on. Triage: **fix going forward** — it doesn't undo this
+conclusion, but it can't stay ownerless on a document that's already shipped.
+
+**Sending it back.** Questions, not a rewrite — the same move `reviewing-deviations-and-capas`
+already modeled:
+
+- "What did Lakeshore itself check, beyond the vendor's release notes, to confirm no impact to
+  each of the four critical functions — including the instrument interfaces, not just labeling
+  and release?"
+- "What happened on step 7's first run, and what, if anything, changed before the re-run?"
+- "Why was the protocol approved after execution instead of before it — and can we re-run this
+  with criteria signed first?"
+- "The change record shows production deployment at 10:15 p.m. Wednesday. Quality's approval is
+  dated Thursday. Walk me through that sequence."
+- "Who owns the BECS-to-hospital interface regression follow-up, and by when?"
+
+## What an inspector or assessor would actually look for
+
+An assessor pulling this file asks for the same things you just went looking for, without you
+in the room to prompt them. They'll ask whether the impact assessment shows Lakeshore's own
+determination or just repeats the vendor's — a file that leans entirely on a vendor statement
+reads as an assessment Lakeshore never actually performed. They'll pull the protocol's approval
+date and the execution dates side by side, the same way you did, because a criterion set after
+results is one of the fastest findings to spot once you know to look for it. They'll ask for the
+discrepancy record behind any failed-then-passed step — silence there reads as a test that
+wasn't actually resolved, just repeated until it stopped failing. And they'll cross-reference the
+change record's deployment timestamp against the approval signatures, because "approved after
+deployed" is a sequence violation regardless of whether the patch itself ever caused a problem.
+A bad answer to "why did this deploy before Quality signed" sounds like "the window was already
+scheduled." A good answer is a corrected change record showing approval actually came first.
+
+## Common traps
+
+**"The vendor said the patch was compatible with BECS, so we're covered."** This is the trap
+this module was built to name directly. No. 21 CFR 11.10's introductory sentence puts the
+procedures-and-controls obligation on "persons who use" the system — Lakeshore, not the vendor
+who wrote the compatibility statement. A vendor's word is real evidence you can weigh. It is
+never, on its own, Lakeshore's own determination, and treating it as one is exactly how a
+validation impact assessment becomes a rubber stamp on someone else's paperwork.
+
+**"It failed once, but it passed on the re-run, so it's fine now."** Passing eventually isn't
+the same as understanding why it failed first. An unexplained pass-on-retry is a decision-trail
+gap whether or not the system was ever actually at risk — and on a device that prints labels
+onto blood bags, "we're not sure why it worked the second time" is not a sentence you want to be
+saying for the first time to an inspector.
+
+**Judging the twelve tests instead of judging what you can actually judge.** The instinct to ask
+"is twelve enough?" is a good instinct pointed at the wrong target today. You're not yet equipped
+to answer that question, and guessing at it is worse than naming the boundary out loud. What you
+can judge — and what this document actually needs from you — is whether the decision to run
+twelve instead of a full revalidation is written down and signed by someone qualified to make
+that call. Ask that question. Leave the other one to `csv-and-becs`, and to Quality's validation
+lead in the meantime.
+
+## What this means for your job
+
+- **Before you sign, ask what Lakeshore itself checked — not what the vendor said.** A
+  compatibility statement is an input. Your signature means Lakeshore verified it, not that
+  Lakeshore read it and agreed.
+- **Check whether the four critical functions and their interfaces are each individually
+  addressed, not just named in a header.** "No impact identified" next to a list of four
+  functions isn't the same as evidence for each one.
+- **Treat any failed-then-passed step with no discrepancy note as a real finding**, especially
+  on anything touching labeling. Ask what changed before the re-run — every time, not just when
+  something feels off.
+- **Compare approval dates to execution dates, and approval dates to your own deployment
+  records, every time.** This is the one check in the whole package that's genuinely yours —
+  Quality can't run it without your access, and IT can't run it without your judgment about why
+  it matters.
+- **When the real question is technical sufficiency, route it — don't guess at it, and don't
+  skip it.** Send it to Quality's validation lead, and confirm that review gets documented, not
+  just discussed. Until `csv-and-becs` exists, that routing *is* your answer to "was this
+  enough."
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: "The vendor's compatibility statement says the patch works fine with BECS, so we're covered." True or false?
+
+False, and this one's worth being able to cite. 21 CFR 11.10's introductory sentence places the
+obligation to employ procedures and controls on "persons who use" a closed system — Lakeshore,
+operating BECS — not on the vendor who wrote the patch or the compatibility statement about it.
+The vendor's word is a real input to Lakeshore's own assessment. It doesn't discharge Lakeshore's
+obligation to make that determination itself, any more than a contractor's word that a building
+is up to code would excuse the building owner from an inspection.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A different validation package leaves the "expected results" field blank on the test protocol, filled in only after the tests ran, with a note: "results matched what was observed." Gap triage: must fix before you sign, fix going forward, or fine as is?
+
+Must fix before you sign. This is the same criteria-set-after-results pattern you just found in
+VIA-0842's protocol-approval date, in a more obvious costume: if "expected" is written to match
+what was "observed," no criterion existed before the test ran at all — the test can't fail by
+definition, which means it never actually tested anything. `capa-root-cause-to-effectiveness`
+taught you this exact test for an effectiveness check: could this have failed? A criterion
+written after the fact never could.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A different BECS change used 6 targeted tests instead of 12, with no note anywhere in the file about why 6 was chosen or who approved that scope. Is "only 6 tests" the gap you'd flag?
+
+No — and this is the distinction this module exists to teach. You still can't judge whether 6
+was technically enough; that's the same out-of-scope question VIA-0842's 12 tests raised, and
+the answer is still "not yet, not by you." What *is* a gap here, and a real one: unlike
+VIA-0842, this file has no documented rationale for the scope decision at all, and no qualified
+reviewer's signature on it. Flag that — "who decided 6 was enough, and where's that written
+down" — not the number itself. The number was never yours to judge. The missing signature is.
+:::
+
+## Where this goes next
+
+You now have the decision-trail half of reviewing a validation package: scope against the four
+critical functions, criteria before execution, failures recorded honestly, approvals before
+deployment, and a vendor's word treated as an input, not a verdict — plus a clear line for
+where your judgment stops and someone else's has to start. The next module,
+`reviewing-vendor-risk-assessments`, picks up the other document your QA's CAPA from
+`reviewing-deviations-and-capas` promised: her reassessment of the BECS vendor itself, focused
+on change notification. It's scoped the same way this one was — the decision trail you can
+review today, with its own boundary named plainly where technical depth isn't yet taught.
