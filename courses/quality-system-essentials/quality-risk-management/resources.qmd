@@ -1,0 +1,26 @@
+---
+title: "Resources"
+order: 24
+---
+
+Three links, each checked this session and confirmed to load.
+
+- **[ICH Q9(R1), Quality Risk Management](https://database.ich.org/sites/default/files/ICH_Q9%28R1%29_Guideline_Step4_2023_0126_0.pdf)**
+  (PDF, ICH, final version adopted 18 January 2023). The actual guideline this module is built
+  on: Section 4 gives the Risk Assessment → Risk Control → Risk Communication → Risk Review
+  lifecycle in full, Section 5 covers formality, risk-based decision-making, and managing
+  subjectivity (the R1-specific additions), and Annex I describes FMEA, Risk Ranking and
+  Filtering, and the other named tools. Read this when you want the source itself, not this
+  lesson's paraphrase of it.
+
+- **[21 CFR 606.100, Standard operating procedures — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)**
+  Free, reliably reachable mirror of the regulatory floor this module reuses — paragraph (c)'s
+  "thorough investigation... conclusions and followup" requirement, which underlies any
+  risk-based investigation depth regardless of how formal the process. Use this when you need
+  the regulation's own wording quickly, without going through eCFR's blocked rendered pages.
+
+- **[Title 21 — Code of Federal Regulations — GovInfo](https://www.govinfo.gov/app/collection/cfr/2024/title21)**
+  The U.S. Government Publishing Office's official CFR collection, one level up from a single
+  section. Use this as a fallback source, or to browse Part 606 and its neighboring parts
+  directly, when you need to confirm a citation against the government's own publication rather
+  than a secondary mirror.
