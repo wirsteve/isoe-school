@@ -13,52 +13,81 @@ lives in the repo at `plans/curriculum.md` — this is the reader-friendly versi
 A Director of IT Service Operations & Excellence at a multi-state blood services organization
 needs to be credible in four directions at once: with FDA, with AABB, with the CIO, and with
 the Quality Analyst who reports to him. That takes more than one course. It takes enough of the
-blood-banking, regulatory, and quality-systems world to ask the right question and catch a
-wrong answer — without trying to become the Quality Analyst's job.
+blood-banking, regulatory, quality-systems, and risk-management world to ask the right question
+and catch a wrong answer — without trying to become the Quality Analyst's job.
 
-## Six things this curriculum builds
+## Where the depth comes from
+
+Several tracks below borrow their structure — not exam prep, structure — from professional
+bodies of knowledge that have already solved "what does a competent person in this space need
+to know" for an adjacent role:
+
+- **NIST's Risk Management Framework** (the backbone of ISC2's CGRC certification) shapes the
+  GRC track: categorize, select, implement, assess, authorize, monitor.
+- **ISC2's HCISPP** body of knowledge (healthcare-specific security and privacy) shapes the
+  healthcare security & privacy course.
+- **SOC 2** (AICPA Trust Services Criteria) and **ISO/IEC 27001** shape the vendor and
+  third-party risk course — reading vendor audit reports for what they actually cover.
+- **ISO 13485 / FDA's Quality Management System Regulation** shapes how BECS gets framed:
+  device-grade software, not ordinary enterprise IT.
+- **ICH Q9 quality risk management** and **ASQ's Certified Quality Auditor** body of knowledge
+  shape the deeper audit and risk content inside the quality-systems track.
+- **AABB Quality System Essentials** remains the spine everything else has to map onto, since
+  that's the accreditation the organization actually answers to.
+
+## Seven things this curriculum builds
 
 1. **How a blood center actually works** — donor to hospital, and where IT sits in that
    pipeline.
-2. **How to read the regulatory landscape** — telling an FDA regulation, FDA guidance, AABB
-   standard, and industry practice apart, and knowing which one is binding.
-3. **Quality systems** — deviations, CAPA, change control, document control, audits: the AABB
-   Quality System Essentials, in practice.
-4. **Validation and BECS** — reading a validation package, Part 11, and data integrity (ALCOA+)
-   for electronic records.
-5. **Security, privacy, and vendor oversight** — where HIPAA and FDA expectations overlap, and
-   what a BECS vendor's change notice obligates you to do.
-6. **The ITSM bridge and directing the Quality Analyst** — translating ITIL practice into
-   AABB/FDA language for the CIO, and reviewing a direct report's work well enough to catch what
-   an inspector would catch.
+2. **How to read the regulatory landscape** — and speak one consistent risk vocabulary
+   (likelihood, severity, inherent vs. residual risk) across every framework below.
+3. **Quality systems** — deviations, CAPA, change control, document control, and a real
+   internal audit program: the AABB Quality System Essentials, in practice.
+4. **Validation, BECS, and device-grade quality systems** — reading a validation package, Part
+   11 (including its messier hybrid-system and legacy-system corners), ALCOA+ data integrity,
+   and where ISO 13485/QMSR fits.
+5. **Governance, risk, and compliance** — running a system or vendor through a full
+   categorize-to-monitor risk cycle, the same motion whether the framework is NIST RMF, ISO
+   31000, or a validation release decision.
+6. **Healthcare security, privacy, and vendor oversight** — HIPAA next to Part 11, reading a
+   SOC 2 report and an ISO 27001 certificate, and handling a breach that triggers two
+   regulators at once.
+7. **The ITSM bridge and directing the Quality Analyst** — translating ITIL practice into
+   AABB/NIST/ISO language for the CIO, and reviewing a direct report's work well enough to catch
+   what an inspector would catch.
 
 ## Tracks
 
 | Track | Courses |
 |---|---|
-| Foundations | Reading a CFR citation · The regulatory landscape |
+| Foundations | Reading a CFR citation · The regulatory landscape · Risk & controls vocabulary |
 | 1. Blood Center Operations | Blood center operations, donor to hospital |
-| 2. Quality Systems & Compliance | Quality system essentials · FDA & AABB in practice |
-| 3. Validation, BECS & Data Integrity | CSV & BECS · Data integrity & records |
-| 4. Security, Privacy & Vendors | Security, privacy & vendor oversight |
+| 2. Quality Systems & Compliance | Quality system essentials · FDA & AABB in practice (incl. internal audit program design) |
+| 3. Validation, BECS & Data Integrity | CSV & BECS (incl. ISO 13485/QMSR) · Data integrity & records (incl. Part 11 predicate rules) |
+| 4. Governance, Risk & Compliance | GRC frameworks & risk management · Healthcare security & privacy · Vendor & third-party risk (SOC 2, ISO 27001) |
 | 5. ITSM Bridge | ITSM for regulated blood services *(capstone)* |
 | 6. Directing the Quality Analyst | Directing the Quality Analyst |
 
-## Recommended order — first six months
+## Recommended order
 
-Sequenced for what matters most, first: understand the business, then run the quality systems
-and direct the Quality Analyst, then go deep on validation and BECS, then round out security,
-vendors, and the capstone that ties it back to the CIO.
+**First six months** — the day-to-day job: understand the business, run the quality systems,
+and direct the Quality Analyst.
 
-1. Foundations (regulatory landscape orientation)
+1. Foundations (regulatory landscape, risk vocabulary)
 2. Blood center operations
 3. Quality system essentials
 4. Directing the Quality Analyst
 5. CSV & BECS
 6. Data integrity & records
-7. FDA & AABB in practice (inspection readiness)
-8. Security, privacy & vendor oversight
-9. ITSM for regulated blood services *(capstone)*
+7. FDA & AABB in practice (audit program design, inspection readiness)
+
+**Months seven through roughly fourteen** — the deeper governance, security, and vendor layer,
+finishing with the capstone.
+
+8. GRC frameworks & risk management
+9. Healthcare security & privacy
+10. Vendor & third-party risk management
+11. ITSM for regulated blood services *(capstone)*
 
 ## How courses appear here
 
