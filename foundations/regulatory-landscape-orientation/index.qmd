@@ -1,6 +1,6 @@
 ---
 title: "Regulatory landscape orientation"
-order: 2
+order: 3
 ---
 
 ## The ticket

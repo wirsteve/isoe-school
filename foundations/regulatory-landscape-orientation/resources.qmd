@@ -1,6 +1,6 @@
 ---
 title: "Resources"
-order: 2
+order: 4
 ---
 
 External links for this lesson. All checked to load from a plain browser request as of the date

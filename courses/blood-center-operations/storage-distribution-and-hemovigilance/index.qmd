@@ -1,6 +1,6 @@
 ---
 title: "Storage, distribution, and hemovigilance"
-order: 2
+order: 8
 ---
 
 ## The ticket
