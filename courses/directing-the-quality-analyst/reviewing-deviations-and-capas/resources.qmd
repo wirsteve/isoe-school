@@ -1,0 +1,20 @@
+---
+title: "Resources: Reviewing deviation and CAPA write-ups"
+order: 31
+---
+
+Each link below was checked this session and loads.
+
+- **[21 CFR 606.171 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.171)**
+  — the reportability test this module's packet applies (and fails to show its reasoning on):
+  the two-prong test in paragraph (b), and the 45-day reporting clock in paragraph (c). Local
+  verbatim copy: `sources/cfr/606.171.md`.
+
+- **[21 CFR 606.100 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)**
+  — paragraph (b)(16)'s labeling-safeguards requirement (new to this course) and paragraph (c)'s
+  "conclusions and followup" investigation standard, both central to this module's reveal. Local
+  verbatim copy: `sources/cfr/606.100.md`.
+
+- **[21 CFR 606.160 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.160)**
+  — paragraph (b)(7)(iii), the general-records requirement behind the deviation record itself.
+  Local verbatim copy: `sources/cfr/606.160.md`.
