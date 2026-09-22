@@ -265,7 +265,7 @@ has no `plans/<slug>.md` file until its first session.
 | `reading-a-cfr-citation` | 1 / 1 | Done |
 | `regulatory-landscape-orientation` | 1 / 1 | Done |
 | `risk-and-controls-vocabulary` | 1 / 1 | Done |
-| `blood-center-operations` | 0 / 5 | Scoped |
+| `blood-center-operations` | 1 / 5 | In progress |
 | `quality-system-essentials` | 0 / 7 | Not started |
 | `directing-the-quality-analyst` | 0 / 6 | Not started |
 | `csv-and-becs` | 0 / 7 | Not started |
@@ -276,6 +276,5 @@ has no `plans/<slug>.md` file until its first session.
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `blood-center-operations` (Track 1), module 1: `donor-recruitment-and-screening`.
-Course is scoped; see `plans/blood-center-operations.md` for the full module list and scoping
-decisions.
+**Next up:** `blood-center-operations` (Track 1), module 2: `collection-and-testing`. See
+`plans/blood-center-operations.md` for the full module list and scoping decisions.

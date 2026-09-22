@@ -1,0 +1,293 @@
+---
+title: "Donor recruitment and screening"
+order: 2
+---
+
+## The ticket
+
+Marcus Webb shows up at a Lakeshore Blood Center mobile drive parked outside a downtown
+office tower on a Monday. He registers, answers the Donor History Questionnaire (DHQ — the
+standardized medical history interview every donor completes before donating), and moves to
+vitals. His hemoglobin comes back under the cutoff. The phlebotomist defers him on the spot:
+temporary deferral, come back once his levels are back in range, no needle today.
+
+Thursday, three days later, Marcus shows up at a different Lakeshore drive — a grocery store
+parking lot across town — and registers again. Same person, same eligibility problem, but a
+different site, different staff, and (he hopes) a clean slate.
+
+This is the moment donor recruitment and screening exists to catch. Not "will this donor lie" —
+most don't. It's "does Lakeshore's system actually know, at *this* site, on *this* day, that
+this donor was turned away three days ago at a site forty minutes away?" If the answer is no,
+everything downstream — the draw, the testing, the label, the transfusion — inherits a decision
+that was never actually made correctly. That's the gap this module closes: recruitment, drive
+logistics, registration, the DHQ, the eligibility criteria, the deferral decision, and the
+record that has to prove all of it happened before anyone reaches for a needle.
+
+## Why this rule exists — and the ITSM bridge
+
+The failure mode is blunt: if a donor who shouldn't donate — because of a health risk to
+themselves, or a risk their blood poses to a recipient — donates anyway, that unit exists and
+has to be tracked down and stopped before it reaches a patient. Everything after collection
+(testing, quarantine, component separation, labeling, release) is built on the assumption that
+the donor was actually eligible on the day of the draw. Get eligibility wrong and every later
+control is compensating for a mistake that should never have entered the pipeline.
+
+You already run a version of this problem, just with a different noun. Think of donor
+eligibility screening as **an intake gate with a documented decision** — the same shape as a
+service request that can't proceed to fulfillment until intake criteria are checked and the
+decision is logged, not waved through because the requester seems trustworthy. Nobody skips
+the intake gate because "the requester probably qualifies."
+
+The sharper bridge is what actually failed in the Marcus Webb scenario, or nearly did: **donor
+identity and the deferral registry are authoritative master data, and this data has to be a
+single source of truth consulted before service is delivered.** You know exactly what happens
+when a CMDB has two records for the same configuration item because a hostname got entered two
+different ways — nobody notices until the two records disagree about something that matters,
+usually during an incident. A donor record works the same way, except the "incident" is a
+donor with a documented health risk being drawn anyway because the system didn't recognize him
+as the same person it deferred on Monday. A stale or unmerged donor record isn't a housekeeping
+annoyance here — it's a data-quality defect with a patient-safety consequence, and it's exactly
+as preventable as a duplicate CI record, for the same reason: consistent identity capture at the
+point of intake.
+
+## The rule, in plain English
+
+Before Lakeshore can collect a single unit of blood from anyone, on any given day, four things
+have to happen, in this order:
+
+1. **Check the deferral registry first.** Before anything else, the donor's identity has to be
+   checked against the record of everyone currently deferred or ineligible — not asked, checked.
+2. **Confirm identity and the donation interval.** Who is this person, provably, and has enough
+   time passed since their last donation.
+3. **Take the medical history.** The DHQ interview, covering specific risk factors the
+   regulation names — not a generic "do you feel healthy" conversation.
+4. **Perform the physical assessment.** Temperature, blood pressure, hemoglobin/hematocrit,
+   pulse, weight, a skin check — objective vitals against fixed numeric limits, not judgment
+   calls.
+
+If any of the four turns up a problem, the donor is deferred, not drawn — and Lakeshore has a
+separate, time-bound obligation to tell the donor why. Marcus's hemoglobin failure on Monday
+should have produced two things: a deferral entered into the registry that Thursday's site can
+actually see, and a notification to Marcus about what happened and why. The scenario only works
+as a near-miss if the first of those two things is where the process is thin.
+
+The system that holds all of this — the deferral registry, the day's eligibility
+determinations, the record that a decision was made — is Lakeshore's Blood Establishment
+Computer Software (BECS): the system of record for donor eligibility and deferrals. That's all
+you need to know about BECS for this module; what makes it different from an ordinary
+enterprise application is the whole subject of module 5, later in this course.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 630.10(d)(1) | "Six-thirty point one-oh, paragraph d, sub-one" | Before collection, the establishment must consult the records of deferred donors maintained under 606.160(e). | The exact check that Thursday's drive site has to run on Marcus before he reaches vitals — not after. |
+| 21 CFR 630.10(e) | "Six-thirty point one-oh, paragraph e" | The medical history interview (the DHQ) must assess named risk-factor categories before collection. | The Monday interview that first surfaced whatever put Marcus's eligibility in question that day. |
+| 21 CFR 630.10(f)(3) | "Six-thirty point one-oh, paragraph f, sub-three" | Hemoglobin or hematocrit must meet fixed numeric minimums; below them, the donor doesn't donate. | The specific, numeric reason Monday's phlebotomist deferred Marcus — not a judgment call. |
+| 21 CFR 630.10(g)(1) | "Six-thirty point one-oh, paragraph g, sub-one" | The establishment must obtain proof of identity from the donor, not just a name. | What Thursday's registration clerk needs to actually match Marcus against Monday's deferral — a self-reported name isn't enough. |
+| 21 CFR 630.10(h) | "Six-thirty point one-oh, paragraph h" | An establishment must not collect from a donor found ineligible, must defer them, and must notify them under 630.40. | The rule Thursday's site would violate if Marcus were drawn anyway. |
+| 21 CFR 630.40(a) and (c) | "Six-thirty point four-oh, paragraphs a and c" | Deferred or ineligible donors must be notified of the deferral and its reason, with reasonable attempts made within 8 weeks, documented either way. | Lakeshore's separate obligation to Marcus, running in parallel to the registry check, regardless of whether Thursday catches him. |
+
+## The actual text
+
+Start with the check that has to happen before anything else, quoted verbatim from
+`sources/cfr/630.10.md` (retrieved from eCFR):
+
+> (d) *How must you determine the eligibility of a donor?* You must determine the donor's
+> eligibility before collection of blood or blood components, by the following procedures:
+>
+> (1) You must consult the records of deferred donors maintained under § 606.160(e)(1) and (2)
+> of this chapter. Exception: If pre-collection review of the record described in
+> § 606.160(e)(2) of this chapter is not feasible because you cannot consult the cumulative
+> record at the collection site, you must consult the cumulative record prior to release of any
+> blood or blood component prepared from the collection.
+
+Read that exception carefully — it doesn't excuse skipping the check, it moves the deadline.
+If a mobile drive site genuinely cannot reach the cumulative record live (a real operational
+constraint for a site with intermittent connectivity), Lakeshore still has to consult it before
+the unit is *released*, not before the draw. That's a narrower safety net than it sounds: the
+donor already got drawn by the time this exception applies. It is not a license to skip the
+check at intake.
+
+The medical history requirement that produced Marcus's deferral candidate list in the first
+place:
+
+> (e) *How do you assess the donor's medical history?* Before collection you must conduct a
+> medical history interview as described in this section to determine if the donor is in good
+> health; to identify risk factors closely associated with exposure to, or clinical evidence of
+> a relevant transfusion-transmitted infection; and to determine if there are other conditions
+> that may adversely affect the health of the donor or the safety, purity, or potency of the
+> blood or blood components or any product manufactured from the blood or blood components.
+
+And the specific, numeric criterion that actually deferred him — not a subjective judgment,
+a hard number:
+
+> (3) *Hemoglobin or hematocrit determination.* You must determine the donor's hemoglobin level
+> or hematocrit value by using a sample of blood obtained by fingerstick, venipuncture, or by a
+> method that provides equivalent results. Blood obtained from the earlobe is not acceptable.
+
+(The section goes on to set the actual thresholds — 12.5 g/dL or 38% hematocrit minimum for
+female allogeneic donors, 13.0 g/dL or 39% for male allogeneic donors, with a narrower
+alternative standard available for female donors under a specific FDA-accepted procedure. The
+number matters less here than the shape of the rule: it's fixed, it's measured, and it isn't
+negotiable at the point of vitals.)
+
+The identity requirement that Thursday's registration clerk actually needs to lean on:
+
+> (g) *Are there additional requirements for determining the eligibility of the donor?* You must
+> obtain the following from the donor on the day of donation:
+>
+> (1) *Proof of identity and postal address.* You must obtain proof of identity of the donor and
+> a postal address where the donor may be contacted for 8 weeks after donation.
+
+And the consequence, if any of the above turns up a problem:
+
+> (h) *What must you do when a donor is not eligible?* You must not collect blood or blood
+> components from a donor found to be ineligible prior to collection based on criteria in
+> §§ 630.10 or 630.15, or deferred under § 610.41 of this chapter or § 630.30(b)(2), unless this
+> subchapter provides an exception. You must defer donors found to be ineligible and you must
+> notify the donor of their deferral under § 630.40.
+
+That last sentence hands off to a separate regulation — 630.40 — which is worth its own look,
+because it's a "must," not a "should," and it runs on its own clock, quoted verbatim from
+`sources/cfr/630.40.md`:
+
+> (a) *Notification of donors.* You, an establishment that collects blood or blood components,
+> must make reasonable attempts to notify any donor... who has been determined not to be
+> eligible as a donor based on eligibility criteria under §§ 630.10 and 630.15.
+>
+> (c) *Time period for notification.* You must make reasonable attempts to notify the donor
+> within 8 weeks after determining that the donor is deferred or determined not to be eligible
+> for donation as described in paragraph (a) of this section. You must document that you have
+> successfully notified the donor or when you are unsuccessful that you have made reasonable
+> attempts to notify the donor.
+
+Notice what 630.40 doesn't say: it doesn't say "notify the donor so they don't come back." It
+requires notification and documentation of the attempt, full stop — a separate obligation to
+Marcus that exists whether or not Thursday's site catches him. Both things have to work: the
+registry check that stops the second draw, and the notification that Lakeshore owed Marcus
+regardless.
+
+## What an inspector would actually look for
+
+An FDA investigator reconstructing this scenario doesn't ask Lakeshore to describe its process.
+They ask for three specific artifacts, and a gap in any one is a finding on its own:
+
+**The donor record from Monday**, showing the DHQ responses, the vitals, the specific
+hemoglobin value that triggered the deferral, and who made the determination. This is what
+630.10(e) and (f) require to exist — not "the donor was deferred," but the actual basis for the
+decision, in enough detail to reconstruct it.
+
+**The cumulative deferred-donor record** — the registry itself — showing Marcus entered on
+Monday's date, with a timestamp that predates Thursday's registration attempt. This is what
+630.10(d)(1) requires be consulted, maintained under 606.160(e), which already sits in
+`sources/cfr/606.160.md`: "Establishments must maintain at each location a record of all donors
+found to be ineligible or deferred at that location so that blood and blood components from an
+ineligible donor are not collected and/or released while the donor is ineligible or deferred."
+In practice at Lakeshore, this registry lives inside BECS — that's the whole reason BECS is
+named in this module: it's the system an inspector expects to see actually queried, with a
+timestamp, at Thursday's site.
+
+**The notification record** — proof that Lakeshore attempted to tell Marcus about the Monday
+deferral within 8 weeks, per 630.40(c), and documented either the successful contact or the
+failed attempts. Ownership here typically sits with donor services or the Quality Analyst who
+audits deferral notification compliance, not with the phlebotomist who ran Monday's interview.
+
+A bad answer to "how do you know a deferred donor can't donate at a different site" sounds like
+"our staff would recognize a repeat donor" or "he'd have to lie on the DHQ to get through." Both
+describe a hope, not a control. The control an inspector is looking for is a system query against
+a shared registry, timestamped, at the point of registration — before vitals, before the DHQ,
+before anyone reaches for a needle.
+
+## Common traps
+
+**"The DHQ is just paperwork the donor fills out before the real screening starts."** It isn't
+paperwork adjacent to the eligibility determination — under 630.10(e), it *is* the eligibility
+determination, or at least the largest part of it. A DHQ response entered wrong, skipped, or
+rushed through isn't a data-entry inconvenience; it's the regulatory basis for the day's
+decision failing to get made. Treat a sloppy DHQ process with the same seriousness you'd treat a
+change record approved without anyone actually reading the change.
+
+**"A donor's ID card, or the name they give at registration, is close enough to check the
+registry."** This is exactly where the Marcus Webb scenario nearly breaks. 630.10(g)(1) requires
+*proof* of identity — not a self-reported name, not a donor's own assurance that they weren't
+deferred. If Thursday's site matches Marcus against the deferral registry using only the name he
+gives verbally, and he goes by a middle name, or the Monday site logged an address typo, the
+match can silently fail — not because anyone lied, but because the identity data wasn't captured
+consistently enough to resolve as the same person. That's the master-data problem from the ITSM
+bridge above, showing up as a live control gap, not a hypothetical one.
+
+## What this means for your job
+
+- **Don't accept "the donor would have been recognized" as an answer to how the deferral
+  registry works.** Ask specifically what identity fields the registration process captures, and
+  whether those fields are enough to resolve two records as the same person across sites — a
+  name-only match is not a control, it's a coincidence that usually works.
+- **Ask your Quality Analyst how BECS timestamps a deferral versus when a different site's
+  registration can actually see it.** A deferral entered Monday afternoon that isn't visible
+  system-wide until an overnight batch job is a gap with a specific, closeable window — find out
+  if that window exists before an inspector does.
+- **Distinguish temporary from permanent deferrals when you review any exception request.** A
+  hemoglobin deferral under 630.10(f)(3) is temporary — Marcus can be retested and cleared later.
+  A deferral tied to evidence of a relevant transfusion-transmitted infection under 630.10(e)(1)
+  is a different category entirely, often indefinite. If someone proposes a system workaround
+  ("just let him try again next week"), the first question is which kind of deferral you're
+  looking at.
+- **Treat every eligibility determination as a decision that has to be traceable to a person and
+  a basis, not a step that was completed.** "Cleared" isn't enough in a donor record; who
+  determined it, and on what specific criteria, has to be reconstructable the way 630.10(d)
+  through (g) require.
+- **When a registration or BECS change is proposed, ask how it validates identity against the
+  deferral registry before it touches anything else.** That single check is the control this
+  entire module is built around — everything else in the pipeline assumes it already ran
+  correctly.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Thursday's registration clerk says, "I don't need to check the deferral registry — he told me he wasn't deferred anywhere." Is a donor's own statement enough under 630.10?
+
+No. 630.10(d)(1) requires the establishment to *consult the records of deferred donors* before
+collection — an affirmative check, not a question the donor answers. 630.10(g)(1) separately
+requires proof of identity, not a self-reported name. Both requirements exist specifically
+because donor self-report isn't a substitute for either: a donor might not remember, might not
+realize a hemoglobin deferral counts, or — rarely — might not be telling the truth. The registry
+check has to run regardless of what the donor says.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is the specific wording of the Donor History Questionnaire — the actual list of questions asked — itself set word-for-word by 21 CFR 630.10?
+
+Not quite. 630.10(e) requires the establishment to *assess* a defined list of risk-factor
+categories (behaviors and exposures associated with transfusion-transmitted infection, recent
+illness, certain medications, travel, pregnancy, and others named in the section) — but the
+regulation doesn't script the exact questions a donor answers. The standardized questionnaire
+donors actually fill out across most U.S. blood centers is an industry-developed instrument,
+built to satisfy 630.10(e)'s required categories, not text codified in the CFR itself. That
+distinction matters the way it did in the regulatory-landscape foundation lesson: the
+*requirement to assess* is regulation; the *specific script* used to do it is industry practice
+built on top of the regulation, not the regulation's own verbatim text.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Marcus's hemoglobin deferral on Monday — does that mean he's permanently barred from donating at Lakeshore?
+
+No. A hemoglobin or hematocrit deferral under 630.10(f)(3) is a temporary, retestable condition
+— Marcus can come back once his levels are in range and go through eligibility screening again
+like any other donor. That's different from a deferral tied to a relevant
+transfusion-transmitted infection risk factor under 630.10(e)(1), which can be indefinite or
+permanent depending on the specific factor involved. 630.40(b)(2) reflects this directly: part
+of what Lakeshore's notification to a deferred donor must cover is, "where appropriate, the
+types of donation... that the donor should not donate in the future" — meaning the notification
+itself is expected to say whether this is temporary or something more permanent. Treating every
+deferral as identical is a mistake in both directions: it either turns a same-week retest into a
+lifetime ban, or it treats a serious, indefinite deferral as a minor speed bump.
+:::
+
+## Where this goes next
+
+Marcus has either been correctly stopped or correctly cleared — either way, the eligibility
+decision has been made and documented, and a donor who's eligible has consented to donate. That's
+where this module ends. Module 2, `collection-and-testing`, picks up at the needle: the donation
+event itself, the donor-to-unit identity link, and the infectious-disease and blood-typing panel
+that has to clear before any of this ever becomes a product a hospital can use.

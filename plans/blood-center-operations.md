@@ -23,7 +23,7 @@ Build in order. One module per session (lesson `index.qmd` + `resources.qmd`).
 
 | # | Slug | Finish line | Status |
 |---|---|---|---|
-| 1 | `donor-recruitment-and-screening` | Walk a donor from recruitment through registration, health history, and the eligibility decision, and name the record that proves that decision was made correctly | Not started |
+| 1 | `donor-recruitment-and-screening` | Walk a donor from recruitment through registration, health history, and the eligibility decision, and name the record that proves that decision was made correctly | Published |
 | 2 | `collection-and-testing` | Follow a donation from venipuncture through the required infectious-disease and blood-typing panel, and explain why nothing leaves quarantine until every result is in | Not started |
 | 3 | `component-processing-and-labeling` | Explain how one donation becomes several products with different shelf lives, and read an ISBT 128 label well enough to say what each part of it guarantees | Not started |
 | 4 | `storage-distribution-and-hemovigilance` | Track a released unit through storage, shipping, and the hospital transfusion service to the patient, and say what has to happen, and be reported, when something goes wrong | Not started |
@@ -171,3 +171,24 @@ flag it in the progress log below.
   module 5 and only named before then. Next: build module 1,
   `donor-recruitment-and-screening` — it will need at least one donor-eligibility source
   fetched into `sources/` first.
+- **2026-09-22** — Module 1, `donor-recruitment-and-screening`, drafted (lesson `index.qmd` +
+  `resources.qmd`), not yet published. Fetched two new sources via the eCFR Versioner API:
+  `sources/cfr/630.10.md` (general donor eligibility requirements — the main citation, covering
+  paragraphs (a) and (d) through (h): consulting the deferred-donor record, the DHQ medical
+  history assessment, physical assessment/vitals including the hemoglobin/hematocrit cutoffs,
+  proof-of-identity, and the must-not-collect-if-ineligible consequence) and
+  `sources/cfr/630.40.md` (deferred-donor notification requirements — the 8-week notification
+  clock and required content). Both appended to `sources/INDEX.md`. Lesson scenario: a donor
+  deferred for a low hemoglobin reading at one Lakeshore drive site attempts to donate again
+  three days later at a different site, testing whether the deferral registry (maintained under
+  606.160(e), consulted per 630.10(d)(1)) actually resolves him as the same person — used to
+  teach the ITSM bridge (donor identity/deferral registry as authoritative master data; a stale
+  or unmerged donor record as a data-quality defect with a patient-safety consequence) and the
+  intake-gate framing for eligibility screening. BECS named exactly once, defined in one clause
+  as "the system of record for donor eligibility and deferrals," per the module-5 hand-off rule.
+  Module ends at consent, before venipuncture — collection itself was not covered.
+  Resources.qmd links (Cornell LII 630.10, Cornell LII 630.40, Cornell LII Part 630 browse
+  index, GovInfo CFR collection) all verified via curl to return real content before listing.
+  Nothing flagged as uncertain. Next: module 2, `collection-and-testing` — will need Part 606
+  (quarantine/testing sections), Part 610, and Part 640 sources fetched; can reuse 606.160
+  already on hand for the records angle.

@@ -1,0 +1,30 @@
+---
+title: "Resources"
+order: 2
+---
+
+External links for this lesson. All checked to load from a plain request as of the date this
+page was written. (Note: eCFR's own site — ecfr.gov — blocks automated/proxied traffic with a
+bot check in this repo's build environment, even though a human browser reaches it fine; the
+regulation text quoted in this lesson comes from eCFR's public Versioner API instead, and the
+links below use verified-loading mirrors of the same official text.)
+
+- **[Cornell LII: 21 CFR 630.10, current text](https://www.law.cornell.edu/cfr/text/21/630.10)**
+  — Cornell Law School's Legal Information Institute mirror of the general donor eligibility
+  requirements quoted throughout this lesson. Use this to check the current text, since
+  regulations get amended and the copy in this repo's `sources/` folder is a dated snapshot.
+
+- **[Cornell LII: 21 CFR 630.40, current text](https://www.law.cornell.edu/cfr/text/21/630.40)**
+  — the deferred-donor notification requirements this lesson quotes for the 8-week notification
+  clock. Same use case: check for amendments against the dated snapshot in `sources/`.
+
+- **[Cornell LII: Title 21, Part 630 browse index](https://www.law.cornell.edu/cfr/text/21/part-630)**
+  — the full donor-eligibility part this lesson's two sections sit inside, including the
+  definitions in 630.3 (donor, eligibility, suitability) and the requirements specific to
+  apheresis and Source Plasma donors in 630.15, which this director-level lesson doesn't cover
+  but which your Quality Analyst will cite directly.
+
+- **[GovInfo: Code of Federal Regulations](https://www.govinfo.gov/app/collection/cfr)** — the
+  U.S. Government Publishing Office's official, legally authoritative annual CFR archive. Use
+  this for the official, dated, legally citable version of a specific year's text — for example,
+  to confirm exactly what 630.10 said on the date of a past inspection or donor complaint.
