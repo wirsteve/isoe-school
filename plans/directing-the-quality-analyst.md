@@ -92,7 +92,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 | 1 | `qa-deliverables-and-ownership` | Name what your QA produces, who writes, approves, and is only informed of each piece, and what your own signature means on each. Apply one short "cold-read test" to any of it. | Full | Published |
 | 2 | `reviewing-deviations-and-capas` | Read a deviation and CAPA write-up the way an assessor will, find the gaps that make it indefensible (missing reasoning, evidence that doesn't prove the claim, scope that stops short, an effectiveness check that can't fail), sort them by severity, and send it back in a way that produces a better second draft | Full | Published |
 | 3 | `escalation-criteria` | Sort any event into "call me now," "tell me today," or "your call, tell me at our one-on-one." Know which events go past you and which your QA must be able to take around you. Write escalation criteria keyed to "reasonably suggesting," not "confirmed," so internal escalation beats the regulatory clock. | Full | Published |
-| 4 | `reviewing-validation-packages` | Review a BECS validation impact assessment and test summary for its decision trail (stated scope against the four critical functions, acceptance criteria set before execution, failures recorded rather than silently re-run, approvals before deployment), and say plainly which questions (was the testing *enough*?) you can't answer yet | Lighter (decision trail only) | Not started |
+| 4 | `reviewing-validation-packages` | Review a BECS validation impact assessment and test summary for its decision trail (stated scope against the four critical functions, acceptance criteria set before execution, failures recorded rather than silently re-run, approvals before deployment), and say plainly which questions (was the testing *enough*?) you can't answer yet | Lighter (decision trail only) | Published |
 | 5 | `reviewing-vendor-risk-assessments` | Review a vendor risk assessment your QA wrote for whether its evidence covers the service Lakeshore actually buys and the risk that triggered the review, whether the tier follows from the function, and whether the risk decision has an owner with authority, without yet reading a SOC 2 report in technical depth | Lighter (decision trail only) | Not started |
 | 6 | `coaching-and-reporting-upward` | Turn repeated review findings into coaching that changes how your QA works, widen her decision rights as her judgment proves out, and report quality, IT, and risk performance upward with measures that show trend, aging, and effectiveness, without turning any of them into a target that teaches under-reporting | Full | Not started |
 
@@ -1058,3 +1058,121 @@ AICPA SOC page only if it verifies, labeled "what a SOC 2 is, for later."
   assessment, finally written. Remember when drafting it: drill item 4 above used a
   *different*, unnamed BECS change for its labeling-critical-function example, specifically to
   avoid locking any outcome for the OS patch's own assessment before m4 writes it.
+
+- **2026-09-22**: Module 4 (`reviewing-validation-packages`) drafted — `index.qmd` (`order: 34`)
+  and `resources.qmd` (`order: 35`). Not committed/pushed yet (held for review per this session's
+  instructions). No new source fetch was needed; quoted only from `sources/cfr/11.10.md`, already
+  saved (11.10's introductory sentence, new to this course; 11.10(a), reused verbatim from
+  `becs-in-the-pipeline`; 11.10(k)(2), new, one row, concept only). Part 11 budget check: module 1
+  used only 11.10(j); this module used the intro sentence, (a), and (k)(2) — no clause reused
+  across modules 1 and 4, per the sourcing notes' caution against spreading Part 11 too thin. AABB
+  QSE 3 (Equipment, explicitly including IT systems) and QSE 5 (Process Control) paraphrased only
+  from `sources/aabb/qse-framework.md`, no standard numbers.
+  1. **The Friday OS patch's validation impact assessment — facts locked, exact wording, in case
+     a future deepening pass (per the "Deliberately deferred" table, once `csv-and-becs` exists)
+     or module 5 needs consistency:**
+     - **VIA ID: VIA-0842.** System: BECS application server. Change: the same vendor-released OS
+       security patch from `becs-in-the-pipeline` (medium-severity CVE per vendor advisory, no
+       BECS application code modified) — this module finally writes its outcome; module 3's drill
+       item 4 deliberately used a *different*, unnamed BECS change instead, so no contradiction
+       exists.
+     - **Test count: 12 targeted test cases**, covering donor-eligibility lookups, quarantine/
+       release transactions, and label-print jobs at the primary print station. **No instrument-
+       interface test included** — the planted evidence/scope gap.
+     - **What failed and was re-run:** Step 7 (label-print job timing, primary print station)
+       failed on first execution, re-ran the same day, passed — **no discrepancy note recorded**.
+       Labeled industry-practice/decision-trail concern in the lesson, deliberately **not** cited
+       to 606.100(c) or 606.160(a)(1), per the plan's explicit caution.
+     - **Timeline (the planted criteria-first and decision-trail gaps):** execution Mon 11/09–Tue
+       11/10; protocol (acceptance criteria) approved **Wed 11/11 — after execution**; production
+       deployment (per BECS change record) **Wed 11/11, 10:15 p.m.**; Quality's approval signature
+       dated **Thu 11/12** — i.e., **deployed before Quality approved**, the Director-only
+       IT-evidence catch (cross-referencing the change record against the approval date, the same
+       device module 2 used for the table-push timestamp).
+     - **Loose end:** "BECS-to-hospital interface regression testing to follow," no owner, no
+       date, on a package already approved for production.
+     - **New minor role invented, not a named character:** "Quality Validation Lead" — signs off
+       on the test-scope rationale (12 tests instead of full revalidation) on 11/06, dated well
+       before the protocol-approval gap. No personal name attached, consistent with this course's
+       practice of not naming Quality-side authorities beyond role (compare "the medical director
+       or a delegated quality officer"). This is also the boundary statement's named routing
+       target for technical-sufficiency questions ("Quality's validation lead, or whoever at
+       Lakeshore is qualified to judge test adequacy") — if module 5 needs an equivalent routing
+       role for SOC 2/security depth, it should be a different, security-side role, not this one.
+     - **Quality's blocking approval on this document type is signed by "Quality Analyst"**
+       (your QA herself) — distinct from the narrower test-scope-rationale sign-off by the
+       Validation Lead role above. Consistent with `becs-in-the-pipeline`'s framing of Quality as
+       a required blocking approver on BECS changes; this module doesn't invent a higher Quality
+       authority for that specific signature line.
+  2. **Six planted gaps plus the required non-gap, mapped to the cold-read test's six buckets:**
+     - Conclusion: clean, deliberately, matching module 2's precedent that not every bucket has a
+       hit.
+     - Evidence (must fix before sign, two threads): (a) "no impact to the validated state"
+       rests on the vendor's release notes and compatibility statement — the QA's "stops at the
+       first credible source" pattern instance, one document type over from module 2's vendor-
+       questionnaire-shaped gap; (b) "critical functions reviewed: eligibility, release,
+       labeling, disposition — no impact identified" names the four functions without showing
+       each was individually checked, and no instrument interface is tested at all despite the
+       header's claim.
+     - **The planted non-gap, placed immediately after Evidence in the reveal:** 12 targeted
+       tests instead of full revalidation. The lesson states plainly the Director can't judge
+       sufficiency (out of scope, `csv-and-becs`'s job) but *can* check whether the rationale is
+       written and signed by someone qualified — and here it is, dated 11/06, by the Quality
+       Validation Lead. The reveal explicitly corrects a learner who flags "only twelve tests" as
+       the gap.
+     - Reasoning (fix going forward): Step 7's failed-then-passed label-printer test with no
+       discrepancy note — labeled industry practice/decision-trail concern, explicitly not
+       cited to any Part 606 GDP clause, per the plan's sourcing caution.
+     - Criteria first (must fix before sign): protocol approval (11/11) dated after execution
+       (11/09–11/10) — the exact QSE m3/m4 violation, reused by name ("a criterion decided once
+       you already know the outcome isn't a criterion").
+     - Decision trail (must fix before sign), **the Director-only IT-evidence catch**: production
+       deployment (11/11, 10:15 p.m., from the BECS change record) precedes Quality's approval
+       signature (11/12) — deployed before approved.
+     - Loose ends (fix going forward): the BECS-to-hospital interface regression follow-up, no
+       owner or date, on an approved release.
+  3. **The QA's two-part pattern, both instances present** (for module 6 to name across m2, m4,
+     m5): (a) stops at the first credible source — the vendor's release notes/compatibility
+     statement standing in for Lakeshore's own check; (b) not fully present this module in its
+     usual "right conclusion, reasoning off the page" shape — the conclusion here is thin on
+     evidence rather than thin on stated reasoning, which is a variant of the same pattern
+     (asserting scope was covered without showing the check), noted in the lesson's Evidence
+     reveal rather than as a separate Reasoning-bucket instance.
+  4. **The explicit boundary statement — exact language used, so module 5 can echo the same
+     pattern for its own boundary statement:** placed directly after "The rule in plain English"'s
+     five decision-trail bullets, opening with "Here's the boundary, stated plainly, because
+     pretending otherwise would be worse than naming it," naming `csv-and-becs` as the course that
+     will teach test-design sufficiency, and closing with the required working-answer clause:
+     route technical-adequacy questions to "Quality's validation lead — or whoever at Lakeshore is
+     actually qualified to judge test adequacy" and "ask to see *that* review documented, the same
+     way you'd ask to see any other approval documented." The same boundary framing is repeated,
+     compressed, at the non-gap moment in the reveal and again in the traps and takeaways
+     sections, so it isn't a one-time disclaimer the learner can skim past.
+  5. **Boundary with module 3 kept to a naming pointer only:** "Where this goes next" and the
+     opening both reference `qa-deliverables-and-ownership` and `becs-in-the-pipeline` by name;
+     module 3's escalation tiers are not re-taught here, consistent with its own "what in this
+     document type escalates" pointer being module 3's job, not module 4's, per the "Where each
+     module stops" boundary section.
+  6. **"Yes, cite the rule" hook used exactly as planned:** "The vendor said the patch was
+     compatible, so we're covered" → False, 11.10's introductory sentence puts the obligation on
+     "persons who use" the system (Lakeshore), not the vendor. Appears in the traps section and as
+     Check Your Understanding Q1.
+  7. **Deliberately excluded, confirmed absent:** GAMP 5 categories, IQ/OQ/PQ structure, URS/FRS,
+     V-model, traceability-matrix construction, risk-based test design methodology, FDA's BECS
+     validation guidance content, and any SOC 2 material (out of scope for m5, not this module).
+     606.100(c) and 606.160(a)(1) not cited anywhere for the step-7 re-run gap.
+  8. **Word count:** ~3,900 words including tables, headings, and the full document block quote —
+     at the upper edge of this module's own narrower framing but inside TEACHING.md's 2,000–4,000
+     range, and below module 2's ~4,100, consistent with this module reading narrower in technical
+     scope per its lighter framing.
+  9. **Resources.qmd:** four links, all curl-verified this session — Cornell LII for the full
+     11.10 section (200), GovInfo's CFR collection (200), and two AABB pages: the 2021 Quality
+     Systems Framework PDF (200) and AABB's current QSE landing page (301, redirect target
+     verified 200 with `curl -L`).
+  Next: build m5, `reviewing-vendor-risk-assessments` — the BECS vendor reassessment CAPA-1147-A's
+  preventive action 1 requires. It should echo this module's boundary-statement pattern (see point
+  4 above) for its own technical-adequacy carve-out (SOC 2 detail, routed to Lakeshore's security
+  team or whoever owns third-party security review), and its own planted non-gap (remote
+  questionnaire vs. on-site audit — not judgeable yet, per the plan's "Depth and altitude"
+  section). Cross-check VIA-0842's facts above stay untouched by module 5's drafting; nothing in
+  module 5's candidate gap list depends on rewriting this module's timeline.
