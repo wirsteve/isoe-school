@@ -46,7 +46,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 | 2 | `deviations-and-nonconformances` | Take an unplanned event from discovery through containment, impact assessment, product disposition, and a documented reportability decision, and decide, with written reasoning, whether it needs a CAPA | Published |
 | 3 | `capa-root-cause-to-effectiveness` | Tell a real root cause from "human error," choose corrective and preventive actions that change the process, and set an effectiveness check with a measurable criterion that could actually fail | Published |
 | 4 | `change-control-for-regulated-systems` | Take any change to a regulated process, document, piece of equipment, supplier, or system through request, impact and risk assessment, approval, implementation, and verification, and name the record that proves each step | Published |
-| 5 | `document-control-and-records` | Follow a controlled document from draft through approval, issue, revision, and retirement, tell a document from a record, and explain how an obsolete version ends up in use and what control stops it | Not started |
+| 5 | `document-control-and-records` | Follow a controlled document from draft through approval, issue, revision, and retirement, tell a document from a record, and explain how an obsolete version ends up in use and what control stops it | Published |
 | 6 | `quality-risk-management` | Run a real quality decision through ICH Q9(R1)'s process (risk assessment, control, communication, review) using an FMEA or risk ranking and filtering, and choose how much formality the decision deserves | Not started |
 | 7 | `internal-audits-and-management-review` | Explain what internal assessments do inside the quality system and what management review must do with their outputs, and judge whether a management-review packet shows a quality system that is actually working | Not started |
 
@@ -951,3 +951,87 @@ not yet quoted.
   copies. No automated review-date trigger exists yet in the through-line (module 3's "or" was
   resolved toward tracked distribution instead) — if module 5 wants one, it should introduce and
   log it as a new element, not assume it already exists.
+
+- **2026-09-22**: Module 5, `document-control-and-records`, drafted (`index.qmd` lesson +
+  `resources.qmd`, `order: 21`/`22` as assigned; not yet published/pushed as of this entry —
+  publish is a separate step). **One new source fetched and saved**: `sources/cfr/606.120.md`
+  (21 CFR 606.120, Labeling, general requirements), found by running a full-Part-606-text search
+  (via the eCFR Versioner API, `curl --compressed`, saved locally as `/tmp/part606.xml` for the
+  search only — not itself saved to `sources/`) for "document control," "obsolete," and "periodic
+  review" before drafting, per this file's Step 1 instruction to check for a genuine new gap
+  rather than assume the CAPA/change-control pattern holds without checking. Result: "document
+  control" and "periodic review" do not appear anywhere in Part 606's text (consistent with the
+  established pattern — the lesson states this plainly, the same way modules 3 and 4 did for
+  "corrective/preventive/root cause" and "change control"). "Obsolete" appears exactly once, in
+  606.120(b)(2): "stocks of obsolete labels shall be destroyed." That's a genuine, on-point,
+  previously-unused citation — Part 606's own closest analog to this module's central teaching
+  point (obsolete versions must be physically removed, not just outranked by a current version
+  existing centrally), scoped to container labels rather than procedures. The lesson quotes it
+  verbatim and uses it explicitly as a contrast/parallel: Part 606 has this instinct for labels
+  and never extends it to SOPs; AABB's Documents and Records QSE is what supplies that extension
+  for Lakeshore. Logged in `sources/INDEX.md`. All other citations (606.100(b)'s "available…
+  where the procedures are performed" sentence, 606.160(a)(1) Good Documentation Practices,
+  606.160(d) retention referenced in one line only, not re-derived) were reused verbatim from
+  `sources/cfr/606.100.md` and `sources/cfr/606.160.md`, already in `sources/` from earlier
+  modules/foundations. `sources/aabb/qse-framework.md` was reused (not re-verified) for QSE 6's
+  name ("Documents and Records") and theme; no AABB standards text was quoted.
+
+  **How the through-line story closed — modules 6 and 7 should treat this as the confirmed final
+  state:**
+  - **Effectiveness check outcome, shown landing (not just described as planned):** the module's
+    opening scenario is Lakeshore's scheduled six-month document-control audit — the one module 3
+    wrote as the CAPA's effectiveness check — actually running, with a clean result: zero sites
+    (Brookfield included) found holding a superseded downtime-SOP revision or a stale
+    deferred-donor list. Per module 3's own pre-agreed closure rule, this means **the CAPA is
+    now closed**, on real audit data, not on "the fix was implemented." Check-your-understanding
+    Q3 states this closure explicitly and names the reasoning (effectiveness check passed against
+    its own pre-agreed criterion).
+  - **A second, smaller event was added as a deliberate teaching choice, not part of the original
+    through-line facts**, to show the mechanism catching a *different* failure mode of the same
+    shape: two weeks before the module's present-day scene, a routine SOP revision's tracked
+    distribution flagged a satellite site's acknowledgment as overdue after 72 hours (the site
+    lead had left; an interim lead hadn't been told they owned the binder). Quality followed up
+    and got a signed acknowledgment before the new revision's effective date — no deviation, no
+    CAPA, just the control working as designed. This is new scenario material invented for this
+    module (no specific site name given, deliberately generic — "one satellite site"), logged here
+    per this file's instruction that a drafter departing from or adding to the locked scenario
+    must record the choice. If module 6 or 7 wants to reuse this near-miss (e.g., as risk-ranking
+    or audit-program material), it's available; if not, it doesn't need to be referenced again.
+  - **Lakeshore's document-control process, final state for modules 6–7 to assume:** tracked
+    distribution list, required signed/dated acknowledgment of receipt from every satellite site
+    lead on every controlled-document revision, verified at issuance (module 4) and re-checked on
+    a standing audit schedule (this module). No automated review-date trigger was added — module
+    3's "or" stayed resolved toward tracked distribution alone, as module 4 already fixed; this
+    module didn't introduce one either.
+  - Document lifecycle (draft → review/approval → issue with effective date → periodic review →
+    revision → retirement/obsolescence) and document-vs-record were taught as this file's Module 5
+    boundary section specified, using the Owen Pruitt story as the running example throughout:
+    the downtime SOP as the document, the site lead's signed acknowledgment as the record proving
+    it reached them. Retention was referenced in one line only, pointing back to
+    `reading-a-cfr-citation`'s 606.160(d) treatment, and explicitly flagged that document/record
+    retention schedules can differ from that product-record clock, without deriving what those
+    schedules are (left to `data-integrity-and-records`, per this file's Module 5 boundary).
+
+  Scope check against this file's "Module 5" boundary section: taught document vs. record,
+  the full document lifecycle, controlled-vs-uncontrolled copies, and external documents in one
+  sentence; did **not** teach ALCOA+ (attributable, legible, contemporaneous, original, accurate,
+  plus complete/consistent/enduring/available), audit trails, Part 11 e-signatures, hybrid-system
+  depth, or a full retention treatment — all pointed to `data-integrity-and-records` by name, no
+  link, per instructions. Did **not** re-teach change control's own approval step (picked up
+  cleanly from module 4's "approved, implemented, verified" outcome). Opened by naming QSE 6
+  (Documents and Records) per module 1's established convention. Check-your-understanding
+  includes the required "this is NOT a regulatory requirement" question (Q1: Part 606 doesn't
+  name document control or an obsolete-removal process for SOPs, though it does for labels).
+
+  resources.qmd: 4 links (Cornell LII 606.100, Cornell LII 606.160, Cornell LII 606.120, GovInfo
+  CFR collection), all curl-verified HTTP 200 this session.
+
+  **For module 6:** this closes the four-module through-line (modules 2–5). Lakeshore's
+  document-control gap is fixed and independently re-tested; the CAPA is closed on real
+  effectiveness data. Module 6's own "Where this goes next" hook is already written into this
+  module's closing section: it should look back at the risk calls modules 2–5 made *informally*
+  (extent-of-condition severity, the change's impact/risk assessment, this module's own read on
+  how likely a distribution miss is) and formalize one of them through ICH Q9(R1)'s process, per
+  this file's existing Module 6 scoping. No new through-line facts were locked that module 6 must
+  preserve beyond what's summarized above; the new near-miss scenario in this module is optional
+  material, not a required fact for module 6 to carry forward.

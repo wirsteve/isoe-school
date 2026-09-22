@@ -1,0 +1,337 @@
+---
+title: "Document control and records"
+order: 21
+---
+
+## The ticket
+
+Six months later. Lakeshore's scheduled document-control audit — the one your Quality Analyst
+built specifically to be the Owen Pruitt CAPA's (corrective and preventive action)
+effectiveness check — is running across every collection site this week. She walks into your
+office with the site-by-site findings, and for once she's not holding a problem.
+
+"Every site: current downtime SOP (standard operating procedure) physically in the binder, dated
+acknowledgment of receipt on file from the site lead, deferred-donor list refresh cadence matches
+the current revision. Zero exceptions. Brookfield included."
+
+Then she puts a second, smaller item on your desk. Two weeks ago, Lakeshore revised the same
+downtime SOP again — a minor clarification, nothing safety-critical. The new tracked-distribution
+process caught something on its own, without anyone chasing it down: one satellite site's lead
+had left the organization, and the acknowledgment never came back. The system flagged it as
+overdue after 72 hours. Quality followed up, found an interim lead hadn't been told they now owned
+that binder, fixed it, and got a signed acknowledgment before the new revision's effective date.
+
+"That's the tracked-distribution process actually working," she says. "Not a document existing
+somewhere. A document *landing*, and someone checking that it did."
+
+You sit with that for a second, because it's the cleanest possible closing argument for
+everything this whole story has been about. Six months ago, a superseded procedure sat in a
+binder at a satellite site because nothing verified it had ever been replaced. Today, a *different*
+kind of gap — a departed site lead — tried to create the exact same failure mode, and a control
+built specifically to catch it did. Same shape of risk. Different outcome, because the control
+this course has been building toward finally exists.
+
+## Why this matters — and the ITIL bridge
+
+This module lives in **QSE 6** of AABB's Quality System Essentials (QSE) framework —
+**Documents and Records** — the drawer module 1 told you holds the document lifecycle and record
+retention. Everything else in this course's through-line story has been building toward this
+drawer without naming it: the SOP that failed at Brookfield, the acknowledgment module 4 just
+built, the binder itself. This module gives that machinery its name and its rules.
+
+Start with the failure mode this QSE exists to prevent, because it's the one this whole story
+already showed you in full: **a document can be perfectly correct, approved, and current — and
+still fail completely — if the wrong version is what's physically present where the work actually
+happens.** Brookfield's binder wasn't missing a procedure. It had one. It was the *wrong* one, and
+nothing in Lakeshore's process, as it existed six months ago, would have caught that until
+something went wrong downstream. Document control exists to make "the current version is the
+only version anyone can actually use" true in practice, not just true in theory.
+
+You already run something structurally identical: **knowledge management**, the ITIL practice of
+keeping the information your teams rely on accurate, current, and findable. You've lived the
+failure mode too — a knowledge-base article that's technically still in the system, still
+findable by search, but describes a process three versions out of date, and someone follows it
+anyway because nothing told them not to. That's Brookfield's binder in IT clothing. The bridge
+holds all the way through, with one addition the quality world insists on that a knowledge base
+usually doesn't: **findable isn't good enough. The current version has to be the *only* version
+physically present at the point of use, and every superseded version has to be actively removed
+or unmistakably marked obsolete — not just outranked by a newer one sitting in a central system
+somewhere.** "It's on SharePoint, so everyone has the latest" is exactly the same shape of false
+confidence as "the current SOP revision is filed centrally, so Brookfield has it" — six months
+ago, it didn't. A knowledge base with version history is a good start. Document control demands
+proof the old version is actually gone from where people work, not just superseded on paper.
+
+One more bridge, in one paragraph: document control is also **configuration management**. A
+controlled document is a versioned configuration item (CI) with a defined baseline (the approved,
+effective revision). The master document list Quality maintains is functionally Lakeshore's CMDB
+(configuration management database) for procedures. But a CMDB that's accurate centrally while a
+stale configuration is still deployed in production isn't in control of anything — the same gap
+tracked distribution and acknowledgment now closes for Lakeshore's satellite-site binders.
+
+## Document control in plain English
+
+Start with the distinction this whole module rests on, because the Owen Pruitt story is the
+clearest possible way to teach it: **a document tells you what to do. A record proves what you
+actually did.**
+
+- A **document** — an SOP, a policy, a work instruction, a form template before it's filled in —
+  is instructional. It exists before the work happens and guides it. Brookfield's downtime SOP,
+  whichever revision was in the binder, is a document.
+- A **record** is evidentiary. It's created *by* doing the work, and it proves the work happened,
+  when, and by whom. A completed downtime paper transaction log, a signed temperature chart, and
+  — the one this course built directly — **the site lead's signed, dated acknowledgment that the
+  current SOP revision actually arrived and was put in the binder** are all records. That
+  acknowledgment isn't a nice-to-have paperwork step. It's the specific piece of evidence that
+  proves the document reached the point of use, as opposed to merely having been sent.
+
+Notice the sentence you'd actually say to an assessor: *the document is the current downtime SOP;
+the record is the acknowledgment proving Brookfield's copy of it is the current one.* Two
+different objects, two different jobs, and confusing them is exactly the trap below.
+
+Now the lifecycle every controlled document moves through, in order, and each stage has to leave
+its own evidence:
+
+**1. Draft.** Someone writes or revises the procedure. No controlling authority yet — it's not
+usable for real work.
+
+**2. Review and approval.** Someone with the authority to approve — for a downtime SOP, that's
+Quality, the same function that approved the change-control record in the last module — reviews
+the content and signs off, with a dated signature. This is the same approval discipline
+`change-control-for-regulated-systems` already walked you through for the *change*; document
+control is where that approval turns into the document's own formal record.
+
+**3. Issue, with an effective date.** The approved document becomes controlled: it gets a version
+number, an effective date, and gets distributed to every location where the work it governs
+actually happens. This is where module 4's fix lives — the tracked distribution list with
+required signed, dated acknowledgment of receipt from every site lead. Issue isn't complete when
+the document is sent. It's complete when every site that needs it has confirmed, in writing, that
+they have it.
+
+**4. Periodic review.** On a defined interval, someone re-reads the document to confirm it's still
+accurate and still reflects how the work is actually done — not waiting for something to break
+before checking.
+
+**5. Revision.** When something changes — a regulatory update, a process improvement, a CAPA's
+fix — the document goes back to draft, gets re-approved, and gets re-issued as a new version, with
+a new effective date. This is exactly what happened two weeks ago with the downtime SOP's minor
+clarification.
+
+**6. Retirement and obsolescence.** The superseded version stops being valid. This is the stage
+that actually failed six months ago, and it's the one this module spends the most time on below,
+because "retired" has to mean something concrete, not just "a newer version now exists somewhere."
+
+One more piece worth naming, briefly: **controlled versus uncontrolled copies.** A controlled copy
+is tracked — Quality knows exactly where it is and can guarantee it gets updated. An uncontrolled
+copy (a printout someone made for convenience, a PDF saved to a personal drive) isn't tracked, and
+nobody can guarantee it ever gets the next revision. Brookfield's binder was *supposed* to be a
+controlled copy; the gap module 3 found was that Lakeshore's process couldn't actually prove it
+was being controlled — controlled in name, uncontrolled in practice. The same logic covers
+**external documents** — a vendor's equipment manual, the AABB Standards themselves — which also
+need a current-version control, in one sentence, not built out further here.
+
+Last thing, in one sentence, because it matters and this module doesn't own it: Friday night's
+paper downtime transactions, once filled in, are records — later transcribed into BECS (Blood
+Establishment Computer Software) during Monday's reconciliation, which is exactly the hybrid
+paper-to-electronic handoff that caught Owen Pruitt's deferral in the first place. A later course,
+`data-integrity-and-records`, covers what makes that transcription itself trustworthy (ALCOA+,
+audit trails, Part 11) — this module just needed you to see where the paper record's story
+continues.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.100(b), "must be available…" sentence | "Six-oh-six point one-hundred, paragraph b" | Written procedures "must be available to the personnel for use in the areas where the procedures are performed." | Already the regulatory floor in the last two modules. Here it's the exact clause the tracked-distribution-and-acknowledgment process exists to satisfy — proof the current revision is physically present where the work happens, not just approved somewhere centrally. |
+| 21 CFR 606.160(a)(1) | "Six-oh-six point one-sixty, paragraph a, sub-one" | Records must be maintained *concurrently* with the work, legible, indelible, identifying who did the work, dated, and complete enough to trace every step. | The baseline for **Good Documentation Practices**: this is why a signed, dated acknowledgment — not a verbal "yes, we got it" — is the record that actually satisfies document control. |
+| 21 CFR 606.120(b)(2) | "Six-oh-six point one-twenty, paragraph b, sub-two" | Obsolete labels must be *destroyed* — not just outranked by a current label existing somewhere. | Part 606's own closest analog to this module's central point, just applied to container labels instead of procedures. Worth reading carefully — see below. |
+| 21 CFR 606.160(d) | "Six-oh-six point one-sixty, paragraph d" | Sets the retention clock for individual product records — at least 10 years after processing is completed, or 6 months past the product's latest expiration date, whichever is later. Already taught in `reading-a-cfr-citation`. | Referenced here only as a pointer: document and record retention schedules can run on different clocks than this donor/product-record retention rule, and Lakeshore's document-control SOP has to say which schedule governs which kind of record. Not re-derived here. |
+
+## The actual text
+
+606.100(b)'s availability clause, quoted verbatim from `sources/cfr/606.100.md` — the same
+sentence the last two modules already built toward, worth its own full weight here because this
+module is where it finally gets satisfied end to end:
+
+> Such procedures must be available to the personnel for use in the areas where the procedures
+> are performed.
+
+Read "available" and "for use" as doing real work, together. A document existing in a binder
+somewhere isn't "available for use" if it's the wrong revision — availability means the *current*
+procedure is what's actually there.
+
+606.160(a)(1)'s Good Documentation Practice standard, quoted verbatim from `sources/cfr/606.160.md`:
+
+> Records shall be maintained concurrently with the performance of each significant step in the
+> collection, processing, compatibility testing, storage and distribution of each unit of blood
+> and blood components so that all steps can be clearly traced. All records shall be legible and
+> indelible, and shall identify the person performing the work, include dates of the various
+> entries, show test results as well as the interpretation of the results, show the expiration
+> date assigned to specific products, and be as detailed as necessary to provide a complete
+> history of the work performed.
+
+That's written for product records, but the discipline it demands — concurrent, legible,
+attributable, dated, complete — is exactly what a real document-control record has to be too. A
+site lead's acknowledgment scrawled from memory two weeks after the fact, undated, isn't a record
+in this sense. Signed and dated at the moment the document actually arrived is.
+
+Now the genuinely interesting one, quoted verbatim from `sources/cfr/606.120.md`, a section not
+quoted by any earlier lesson in this curriculum:
+
+> Each type of label representing different products shall be stored and maintained in a manner
+> to prevent mixups, and stocks of obsolete labels shall be destroyed.
+
+Sit with that sentence next to this whole module's central point. Part 606 *does* require obsolete
+material to be physically removed — for container labels. It doesn't say "keep a current version
+on file and trust staff to reach for the right one." It says **destroy the obsolete stock.** That's
+the same instinct this module teaches for documents: an obsolete version has to stop being
+physically available, not just stop being the authoritative one. Part 606 simply never extends
+that instinct from labels to procedures. Here's the tiering worth stating plainly, the same way
+modules 3 and 4 already did for CAPA and change control: **the phrase "document control" does not
+appear anywhere in 21 CFR Part 606, and nothing in Part 606's text requires a periodic review
+interval or a formal obsolete-document-removal process for SOPs.** The regulatory floor is
+606.100(b): procedures must exist, be maintained, and be available where used. The *mechanics*
+that get you there reliably — draft, approval, effective dates, periodic review, controlled
+distribution with acknowledgment, retirement — are AABB's Quality Systems Framework, under the
+Documents and Records QSE, binding on Lakeshore through accreditation, not through Part 606's own
+words.
+
+Retention, in one line and not re-derived: 606.160(d), already fully taught in
+`reading-a-cfr-citation`, sets the clock for *individual product records* — at least 10 years
+past processing, or 6 months past the product's latest expiration date, whichever is later. A
+document-control SOP itself, and records like distribution acknowledgments, can sit on a
+different retention schedule than that product-record clock; Lakeshore's document-control
+procedure has to say what that schedule is for each record type, a level of detail this module
+doesn't build out further.
+
+## What an inspector or assessor would actually look for
+
+An assessor reviewing Lakeshore's document control wouldn't stop at "does a current version of
+this SOP exist." They'd ask for proof of exactly the thing that failed at Brookfield and exactly
+the thing that just worked two weeks ago.
+
+**Positive evidence that obsolete versions were physically removed or clearly marked obsolete —
+at the point of use, site by site.** Not "the master list shows revision 4 is current." A dated
+record, from each site, that the *old* copy is gone and the new one is in its place. This is
+precisely what the six-month audit your QA just ran produced, and precisely what didn't exist six
+months before that.
+
+**Document versus record, correctly distinguished in the quality manual.** An assessor who asks
+"what's your document, and what's your record proving it was followed" and gets a blank look, or
+gets the same object named as both, has found a real gap — not a technicality. Lakeshore's answer
+now: the downtime SOP is the document; the site lead's signed, dated acknowledgment is the record.
+
+**Retention schedules actually being followed**, for both documents (how long superseded
+revisions are archived before permanent disposal, and in what form) and records (how long
+acknowledgments, training records, and audit findings themselves are kept) — checked against
+whatever Lakeshore's own document-control SOP specifies those intervals to be, not assumed to
+match the 606.160(d) product-record clock by default.
+
+**A functioning distribution mechanism with a real failure-detection path** — exactly the thing
+the departed-site-lead catch just demonstrated. An assessor doesn't just want to see that
+distribution happened; they want to see what happens when it *doesn't*, on schedule, the first
+time.
+
+## Common traps
+
+**"The current version exists in our system, so we're in control."** This is Brookfield's exact
+failure, restated as a policy. A master document list with the correct current revision proves
+Quality knows what the current version *should* be everywhere. It proves nothing about what's
+actually sitting in a binder at a site nobody's checked recently. Document control isn't
+satisfied by a correct central record — it's satisfied by proof that the correct version, and
+only the correct version, is what a person reaches for at the point of use.
+
+**Confusing a document with a record.** Calling the downtime SOP itself "the record" — or treating
+a blank, unsigned acknowledgment form as if having the form on file were the same as having proof
+someone signed it — collapses two different pieces of evidence into one. An assessor asking "show
+me the record that proves this document reached the site" wants the signed acknowledgment, not
+another copy of the SOP.
+
+**Treating a training record as ongoing proof of compliance.** A training sign-off from eighteen
+months ago proves a person once learned a procedure that existed at that time. It doesn't prove
+they're following the *current* revision today, and it definitely doesn't prove the current
+revision is what's physically in front of them. This is a genuinely common substitution — "they
+were trained on it" standing in for "they have it and are using it" — and it's the same trap as
+mistaking implementation evidence for verification evidence, which `change-control-for-regulated-
+systems` already flagged for a different step of this same story.
+
+## What this means for your job
+
+- **When your QA reports a document as "current," ask what proves the old version is physically
+  gone from every site that had it** — not what proves the new version exists somewhere central.
+  "Current" and "controlled" aren't the same claim.
+- **Ask for the document and the record as two separate artifacts, every time.** If a review
+  produces only one object doing both jobs, something's missing — usually the record proving the
+  document actually landed.
+- **Watch for a distribution mechanism that has no failure path.** A process that assumes every
+  site lead will respond, with nothing flagging the one who doesn't, is the same unverified "mail
+  it and hope" gap module 4 already caught once. The departed-site-lead catch worked because the
+  system flagged silence as a problem, not because everyone happened to respond.
+- **Don't accept a training record as proof of current compliance.** Ask what confirms the person
+  has, and is using, today's revision — not what confirms they once sat through a session.
+- **Push for periodic review dates on your own calendar, not just Quality's.** A document that's
+  never revisited until something breaks is running on the same "we'll notice if it's wrong"
+  assumption that let Brookfield's binder go unchecked for who knows how long before Owen Pruitt's
+  donation surfaced it.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA says, "21 CFR Part 606 requires us to remove obsolete SOP revisions from active use and destroy them." True or false?
+
+False, as worded — and worth getting right, because the honest answer is more interesting than a
+flat yes. Part 606 never uses the phrase "document control," names no periodic-review interval,
+and sets no obsolete-document-removal requirement for procedures. It *does* require obsolete
+container labels to be destroyed (606.120(b)(2)) — the same underlying instinct this module
+teaches, just scoped to labels, not SOPs. The regulatory floor for procedures is narrower:
+606.100(b) requires that written procedures be established, maintained, and available where
+performed — which an obsolete version sitting in an active binder plainly violates in effect, but
+the text never spells out "remove and destroy" as the mechanism. That structured lifecycle —
+issue, periodic review, retirement, controlled removal — is AABB's Quality Systems Framework,
+under the Documents and Records QSE. Tell your CIO: the law requires the right procedure to
+actually be there; AABB's Standards supply the disciplined process that proves the wrong one
+isn't.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A site lead's training record shows they completed downtime-procedure training eight months ago. Does that prove Brookfield is currently compliant?
+
+No. A training record proves a point-in-time event: this person sat through training on whatever
+revision existed eight months ago. It says nothing about whether the SOP has since been revised,
+whether the current revision actually reached the site, or whether anyone confirmed it's what's
+physically in the binder today. That's precisely the substitution this module's traps section
+warns against — training completion standing in for document currency. The record that actually
+proves current compliance is the signed, dated acknowledgment tied to the *current* revision's
+distribution, not a training record from any point before it.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Six months ago, Brookfield's superseded downtime SOP caused a reportable deviation. Today, the six-month document-control audit found zero sites out of compliance, and a separate distribution miss (the departed site lead) was caught and corrected before its effective date. Is the CAPA from `capa-root-cause-to-effectiveness` now closed?
+
+Yes — this is the effectiveness check that module 3 wrote before anyone knew how it would turn
+out, and it passed clean against the exact pre-agreed criterion: zero sites holding a superseded
+revision or a stale deferred-donor list at the scheduled audit. The departed-site-lead catch is
+worth noticing separately, though — it's not part of the CAPA's own effectiveness criterion, but
+it's strong independent evidence that the underlying mechanism (not just the specific binder swap)
+is doing its job: it caught a *different* failure mode with the same shape, before it became a
+new deviation. That's what closing a CAPA on real data, rather than on "we implemented the fix,"
+is supposed to feel like.
+:::
+
+## Where this goes next
+
+Here's what actually changed at Lakeshore because of one Friday night at Brookfield: a
+document-control process that used to run on an honor system — send the new revision, assume it
+arrived — now runs on tracked distribution with required, dated acknowledgment, verified at
+issuance and re-checked on a standing audit schedule. The CAPA that gap produced is closed, on
+real effectiveness data, not on the say-so that the fix had shipped. That's modules 2 through 5,
+one event, start to finish: discovery and reportability, root cause and a provable fix, a formally
+controlled change, and a document-control system that now actually keeps the wrong version out of
+the building.
+
+Every one of those four modules made risk calls along the way — how severe an extent-of-condition
+gap was, how likely a distribution miss might be, how much scrutiny a given change deserved — using
+the likelihood/severity/detectability vocabulary you already had going in. None of that was run
+through a formal, documented risk process; it was reasoned through informally, the way most real
+decisions actually get made. `quality-risk-management`, the next module, steps back and gives that
+informal reasoning a real structure: ICH Q9(R1)'s risk-management process, applied to a decision
+this course's own story has already been quietly making all along.
