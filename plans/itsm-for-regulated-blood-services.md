@@ -61,10 +61,11 @@ ticketing platform — describe generically.
 | 3 | `itil-to-grc-crosswalk` | Map service asset/config management onto RMF's Categorize/Select, continual improvement onto Monitor, and security management onto ISO 27001's Annex A domains. | 119/120 | Published |
 | 4 | `building-an-inspection-ready-service-catalog-and-cmdb` | Apply all three crosswalks to build one real service-catalog/CMDB entry for the eQMS that survives an FDA inspection, an AABB assessment, and a security assessment at once. | 121/122 | Published |
 | 5 | `translating-itsm-and-risk-metrics-for-executives` | Present the same underlying fact (an incident, a residual risk, a control gap) in CIO language and exec-quality-council language without changing what it means. | 123/124 | Published |
-| 6 | `presenting-it-service-and-risk-performance` | The capstone exercise and the curriculum's closing module: present the Brookfield incident's full, four-lens history to both audiences at once, and close the entire curriculum. | 125/126 | Not started |
+| 6 | `presenting-it-service-and-risk-performance` | The capstone exercise and the curriculum's closing module: present the Brookfield incident's full, four-lens history to both audiences at once, and close the entire curriculum. | 125/126 | Published |
 
 This is the curriculum's final course. No further course continues after it — if a future session
-ever adds one, it would start at **127**.
+ever adds one, it would start at **127**. **This course is now 6/6, COMPLETE. The entire
+curriculum is COMPLETE.**
 
 ## Module-by-module guardrails and sourcing
 
@@ -566,3 +567,64 @@ verified file:
   four-lens history to the CIO and the exec quality council at once, using every crosswalk this
   course built, and close both this course's own five-module arc and the entire curriculum. Do
   not reopen, alter, or re-resolve anything any prior course locked about that incident.
+
+- **2026-10-09**: Module 6, `presenting-it-service-and-risk-performance` (`order: 125/126`),
+  drafted and published — **the capstone module of this course AND the final module of the
+  entire curriculum.** Pure synthesis, no new citation introduced — the module reuses exactly two
+  already-locked verbatim fragments (45 CFR 164.402(2)(iii), "whether the protected health
+  information was actually acquired or viewed," and 164.314(a)(2)(i)(C), the vendor's
+  incident-reporting duty), both independently re-verified character-for-character against
+  `sources/cfr/45-164-breach-notification-excerpt.md` and `sources/cfr/45-164-business-associate-
+  excerpt.md` before publishing, and references every other fact by name only.
+
+  **Scenario:** a single joint meeting — CIO and exec-quality-council chair on the same invite for
+  the first time — framed explicitly as the harder version of module 5's two-separate-meetings
+  exercise, because a framing drift is caught live instead of on a delay. Built as a "sandwich":
+  a shared spine of six locked, non-negotiable facts spoken first to the whole room, then two
+  audience-addressed halves (CIO; exec quality council) spoken openly in front of both audiences
+  rather than privately, then back to the spine to close.
+
+  **All six spine facts reproduced exactly as locked, none altered:** the device/incident facts;
+  the FINAL 164.402 breach determination (presumption not rebutted, factor 3 pivotal), 164.404's
+  60-day clock, 164.406 not triggered, 164.408(c) under-500 pathway, no BPDR; the encryption status
+  as PERMANENTLY, HONESTLY UNRESOLVED (restated at identical weight in both audience halves,
+  explicitly refusing to let a live question soften it); the root-cause ranking exactly as
+  `investigating-a-healthcare-data-incident` left it (physical-handling gap → deployment-
+  sequencing gap → minimum-necessary gap); the vendor's High tier, SOC 2 Type II/ISO 27001
+  findings ("plausibly reduces... does not guarantee"), the plausible-not-certain BAA and full
+  (e)(2)(ii)(A)-(J) checklist; and the change-notification clause as a genuine, still-undecided
+  forward improvement, explicitly not a retroactive fix. Every crosswalk this course built
+  (change/problem; CMDB/continual improvement; GRC/Annex A; the inspection-ready three-reviewer
+  pattern; module 5's dual-audience translation model, extended from sequential to simultaneous)
+  is applied concretely to this material, not just name-dropped. One new, presentation-layer-only
+  observation was introduced and flagged as such: the Director recommending the deployment-
+  sequencing fix be formally opened as a CAPA this week (it had been sitting as a closed-
+  investigation recommendation, not yet a tracked CAPA) — this does not alter the incident's
+  determination, root cause ranking, or any other locked fact, since no prior course ever stated
+  whether that fix had already been logged as a CAPA.
+
+  **Independently re-verified by the orchestrating session** (not just the drafting subagent):
+  word count (~4,782 words of body text — exceeds TEACHING.md's 4,000-word target, consistent
+  with and expected for a capstone synthesizing four courses' worth of findings, same exception
+  this curriculum has granted before); grep for every locked `csv-and-becs`/`data-integrity-and-
+  records` identifier (VAL-1203, VIA-0842, DEV-1147, CAPA-1147-A, VRA-0219, DI-0301, DED-0458,
+  LAB-07) — clean, no match; no calendar year appears anywhere in the Lakeshore narrative; all
+  twelve internal links in `resources.qmd` resolve to real files; both reused CFR fragments
+  verified character-for-character against their source files. No locked fact from any prior
+  course was reopened, altered, or re-resolved.
+
+  **Required two-layer closing, both present and confirmed:** Layer 1 names this course's own
+  five-module arc (change/problem → CMDB/continual improvement → GRC → inspection-ready artifact →
+  metrics translation) closing into this capstone. Layer 2 — the significant one — names the
+  entire curriculum's arc by slug (foundations → Track 1 `blood-center-operations` → Track 2
+  `quality-system-essentials`/`fda-and-aabb-in-practice` → Track 3 `csv-and-becs`/`data-integrity-
+  and-records` → Track 4 `grc-frameworks-and-risk-management`/`healthcare-security-and-privacy`/
+  `vendor-and-third-party-risk-management` → Track 6 `directing-the-quality-analyst` → this
+  capstone) and states plainly, in bold: "the curriculum is now complete. There is no next
+  course." The closing explicitly tells the Director their job from here is applying what's been
+  built, not waiting for a next module. `quarto` is unavailable in this cloud session (per
+  CLAUDE.md rule 6) — not rendered locally; the GitHub Action renders on push. Published via the
+  `publish` skill to branch `claude/confident-brahmagupta-b499un`.
+
+  **THIS COURSE IS NOW 6/6 COMPLETE. THE ENTIRE ISOE SCHOOL CURRICULUM IS NOW COMPLETE.** No
+  further module, course, or track remains unbuilt anywhere in `plans/curriculum.md`.

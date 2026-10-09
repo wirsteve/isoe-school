@@ -1,0 +1,67 @@
+---
+title: "Resources"
+order: 126
+---
+
+This module introduces no new regulation, standard, or framework, and no new source was fetched for
+it. It is pure synthesis: one joint presentation, built from everything this course and two prior
+courses already locked about the Brookfield incident and the device-management platform vendor. The
+links below are the direct inputs this module draws on; read any of them for the actual mechanics,
+citations, and reasoning this lesson references by name but doesn't redevelop.
+
+- **[ITIL-to-QSE crosswalk: change and
+  problem](../itil-to-qse-crosswalk-change-and-problem/index.qmd)** (this course's module 1) —
+  where change enablement was mapped onto change control, and problem management onto CAPA,
+  including the exact distinction (a known-error record can sit indefinitely; a CAPA can't) this
+  module reuses when flagging the deployment-sequencing fix as not yet an open CAPA.
+
+- **[ITIL-to-QSE crosswalk: CMDB and continual
+  improvement](../itil-to-qse-crosswalk-cmdb-and-continual-improvement/index.qmd)** (this course's
+  module 2) — where a CMDB's qualification/validation-status field was first built out for the
+  eQMS (electronic quality-management system), the same discipline this module's CIO half gestures
+  toward for the device fleet.
+
+- **[ITIL-to-GRC crosswalk](../itil-to-grc-crosswalk/index.qmd)** (this course's module 3) — the
+  source of the one clean ISO 27001 Annex A match (access control) and the two domains with no
+  counterpart (supplier relationships, business continuity) this module's "three lenses, live"
+  section reuses as the same honest boundary, now applied to the vendor relationship instead of the
+  eQMS.
+
+- **[Building an inspection-ready service catalog and
+  CMDB](../building-an-inspection-ready-service-catalog-and-cmdb/index.qmd)** (this course's module
+  4) — where the "satisfies two reviewers fully, one honestly partial" shape was first proven for
+  the eQMS. This module's own three-lens check is the identical pattern, found again.
+
+- **[Translating ITSM and risk metrics for
+  executives](../translating-itsm-and-risk-metrics-for-executives/index.qmd)** (this course's
+  module 5) — the dual-audience translation model (fixed facts: finding, owner, date, closure rule;
+  variable: framing and emphasis) this module reuses structurally, extended from two separate
+  meetings to one joint room.
+
+- **[Investigating a healthcare data
+  incident](../../healthcare-security-and-privacy/investigating-a-healthcare-data-incident/index.qmd)**
+  (`healthcare-security-and-privacy`) — the Brookfield incident's own closed investigation: the
+  final 164.402 breach determination, the permanently unresolved encryption status, and the ranked
+  root cause (deployment-sequencing gap, physical-handling gap, minimum-necessary gap). Every fact
+  in this module's shared spine traces back to this lesson, unaltered.
+
+- **[Supplier qualification and risk
+  tiering](../../vendor-and-third-party-risk-management/supplier-qualification-and-risk-tiering/index.qmd)**,
+  **[reading a SOC 2
+  report](../../vendor-and-third-party-risk-management/reading-a-soc-2-report/index.qmd)**,
+  **[reading an ISO 27001
+  certificate](../../vendor-and-third-party-risk-management/reading-an-iso-27001-certificate/index.qmd)**,
+  **[business associate
+  agreements](../../vendor-and-third-party-risk-management/business-associate-agreements/index.qmd)**,
+  and **[vendor change notifications and your own change
+  control](../../vendor-and-third-party-risk-management/vendor-change-notifications-and-your-own-change-control/index.qmd)**
+  (`vendor-and-third-party-risk-management`) — the device-management platform vendor's full file:
+  its High tier, its SOC 2 and ISO 27001 findings, its plausible BAA requirement and the full
+  (e)(2)(ii)(A)–(J) checklist, and the still-undecided change-notification clause. This module
+  states every one of these findings exactly as that course left them.
+
+- **[Coaching your QA and reporting
+  upward](../../directing-the-quality-analyst/coaching-and-reporting-upward/index.qmd)**
+  (`directing-the-quality-analyst`) — the review discipline this module's closing "what this means
+  for your job" section points back to when it asks you to review your QA's and systems
+  administrator's prep work for defensibility, not just polish.

@@ -1,0 +1,407 @@
+---
+title: "Presenting IT Service and Risk Performance"
+order: 125
+---
+
+## One invitation, not two
+
+The calendar invite lands with both names on the "required" line for the first time: your CIO
+(chief information officer), and the chair of the exec quality council. Below them: Quality
+leadership, the Medical Director, Compliance — and, new this time, your Quality Analyst (QA) and
+the systems administrator, invited to sit in, not just prep the deck. Subject line: "Brookfield
+incident — full review." One hour. One room.
+
+You've presented serious incidents upward before, just never like this. Every other time, it meant
+two meetings: a tight operational briefing for the CIO, a slower, more careful walkthrough for the
+quality council, each built to its own audience, each happening far enough apart that nobody but
+you ever compared them side by side in real time. Module 5 taught you how to build two decks that
+would survive a comparison days later. This invite is asking for something harder: say it once, in
+front of both audiences at the same time, and have it survive the comparison happening live, while
+you're still talking.
+
+Your QA reads the invite over your shoulder and says what you're both thinking: "We've never
+actually had to do this in the same room before." She's right — and she's also naming, without
+quite meaning to, why this meeting exists now and not earlier. The Brookfield incident has finally
+finished moving through every course that was ever going to touch it. The investigation closed with
+a final determination. The vendor got tiered, read, and checked against a full contract checklist.
+The forward-looking contract gap got named. There is nothing left to resolve. What's left is to say
+all of it, once, correctly, to everyone who needs to hear it — a genuinely different skill than
+anything this course has asked of you yet.
+
+## Why one room is harder than two — and the ITSM bridge
+
+Name the failure this format risks, because it isn't the one two separate meetings risk. In two
+meetings, a drift between the CIO's version and the quality council's version might take days or
+weeks to surface — an assistant comparing notes, an assessor pulling two records that don't quite
+agree. That's bad, but it's bad on a delay. In one room, the delay disappears. If your framing for
+the CIO ever contradicts your framing for the quality council, the contradiction doesn't wait for
+someone to compare documents later. It happens out loud, in real time, in front of both people it
+would damage. There is no interval in which to quietly fix it.
+
+You already have the ITSM (IT service management) concept for exactly this shape of event, and it's
+one you've run for actual incidents, not just reports about them: a **major incident review**,
+briefed once, to everyone with a stake in it, in the same room — operations, the service owner,
+whoever's accountable upward — instead of a private debrief for leadership and a separate, softer
+version for everyone else. You don't run two incident reviews for the same outage because you don't
+trust both audiences to hear the same account. You run one, because a single account that survives
+every question anyone in the room can ask is the only version worth having. This meeting is that
+same practice, aimed at four courses' worth of findings instead of one outage.
+
+That raises the real question this module answers, and it's different from module 5's. Module 5
+taught you to **translate** one fact into two framings, built separately, checked against each
+other after the fact. This module teaches you to **present** one fact to two audiences **at once**,
+where there's no "after the fact" — every sentence either survives being heard by both rooms
+simultaneously, or it doesn't belong in the room at all.
+
+## The rule in plain English
+
+A single joint presentation has one structural requirement two separate meetings don't:
+**everything said has to be something both audiences can hear without objection**, which means the
+only safe way to build it is a sandwich, not two decks stapled together. Open with the facts that
+never move, no matter who's listening — the shared spine. Then speak to each audience's own
+question directly, by name, in the room — not as a private aside, but as an open acknowledgment
+that different people in this room need different things from the same story, said in front of
+everyone. Close by returning to the shared spine, so the meeting ends where it's anchored, not
+wherever the last audience-specific thread happened to trail off.
+
+This works only if the spine itself is airtight: every fact in it final, locked, and stated
+identically regardless of who's listening. Anything still open, still being decided, or still
+honestly unresolved has to be named as exactly that, to everyone, at the same volume. The
+temptation this format creates — one that two separate meetings never quite create the same way —
+is to let a live question from one side of the room talk you into resolving something on the spot
+that was never actually resolved, because resolving it would make a tidier answer for whoever just
+asked. That trap gets its own section below, because it's the single most dangerous thing that can
+happen in this specific room.
+
+## Every citation this presentation stands on
+
+This module introduces no new citation, standard, or control number — the discipline every module
+since this course's first has held. Every row below is reused exactly as the course or module in
+the right-hand column already built it; nothing here is re-derived or restated with new wording.
+
+| Citation / framework | What it anchors in this presentation | Locked in |
+|---|---|---|
+| 45 CFR 164.402(2), incl. 164.402(2)(iii) | The presumption-of-breach test and its pivotal, still-unrebutted factor 3 | `healthcare-security-and-privacy` |
+| 45 CFR 164.404 | The 60-day individual-notification clock, already running on schedule | `healthcare-security-and-privacy` |
+| 45 CFR 164.406 | Media notification — confirmed not triggered | `healthcare-security-and-privacy` |
+| 45 CFR 164.408(c) | The under-500 HHS annual-log pathway — confirmed as the applicable one | `healthcare-security-and-privacy` |
+| 45 CFR 164.414(b) | The burden of proof this file was built to satisfy — a demonstrated answer, not an assumed one | `healthcare-security-and-privacy` |
+| 45 CFR 164.308(a)(1)(ii)(D) | The "regularly review system activity" standard the deployment-sequencing fix is meant to finally make routine | `healthcare-security-and-privacy` |
+| 45 CFR 164.314(a)(2)(i)(C) / 164.504(e)(2)(ii)(C) | The vendor's reactive incident-reporting duty — real, and distinct from the (still undecided) proactive change-notification question | `vendor-and-third-party-risk-management` |
+| 45 CFR 164.504(e)(2)(ii)(A)–(J) | The full BAA contract-terms checklist, walked against this vendor | `vendor-and-third-party-risk-management` |
+| SOC 2 (AICPA, paraphrase-only) | The vendor's Type II report, its plausible CUEC (Complementary User Entity Control) naming encryption verification as Lakeshore's own job | `vendor-and-third-party-risk-management` |
+| ISO/IEC 27001 (paraphrase-only) | The vendor's certificate and Statement of Applicability — change management, supplier relationships, asset management domains | `vendor-and-third-party-risk-management` |
+| AABB QSE 4, "Supplier and Customer Issues" (named/themed only) | The vendor-tiering discipline this course's own supplier module already satisfied | `vendor-and-third-party-risk-management` |
+| This course's own modules 1–5 | Every crosswalk this presentation applies | `itsm-for-regulated-blood-services` |
+
+Twelve rows, three prior courses, one presentation. Every fact in this table is final. None of it is
+up for renegotiation in the room, no matter which audience asks about it.
+
+## The one fragment worth hearing again
+
+Two sentences are worth repeating verbatim, not because they're new, but because the shared spine
+below rests on them and they're easy to blur in a live, mixed-audience room.
+
+> **164.402(2)(iii):** Whether the protected health information was actually acquired or
+> viewed[.]
+
+That's factor 3 — the one factor the whole Brookfield investigation was built to resolve, and the
+one that stayed unresolved.
+
+> **164.314(a)(2)(i)(C):** Report to the covered entity any security incident of which it becomes
+> aware, including breaches of unsecured protected health information as required by § 164.410.
+
+That's the vendor's real, reactive obligation — and, by its own plain wording, not a promise of
+advance notice before a planned change.
+
+Both quotes are reproduced exactly as `investigating-a-healthcare-data-incident` and
+`business-associate-agreements` already quoted them, from `sources/cfr/45-164-security-rule-
+excerpt.md` and `sources/cfr/45-164-business-associate-excerpt.md`. Nothing here is fetched or
+reasoned fresh.
+
+## The shared spine — spoken once, identically, to the whole room
+
+Here is every fact that does not move, regardless of who in the room is listening. Read this list
+the way you'd read module 5's eight-row POA&M (plan of action and milestones) table: if a sentence
+anywhere in this presentation can't trace back to one of these lines, it doesn't belong in the room.
+
+- **The device.** A Brookfield staff member's work laptop, lost in a shared ride, carrying a
+  six-field, roughly 212-donor BECS (Blood Establishment Computer Software) extract.
+- **The breach determination — final.** 164.402's presumption of breach was not rebutted, pivoting
+  on factor 3 (was the PHI actually acquired or viewed). Individual notification proceeds on
+  164.404's 60-day clock. 164.406 media notification is not triggered. 164.408(c)'s under-500 HHS
+  annual-log pathway applies. No BPDR (Biological Product Deviation Report) was independently
+  triggered.
+- **The encryption status — permanently unresolved.** Four separate investigative leads each closed
+  on a real, structural dead end. The device's actual encryption status at the moment it went
+  missing is not known and will not become known. This is not a loose end waiting on a future
+  answer. It is the documented limit of what a real investigation could recover, and it stays
+  exactly that in every telling, in every room, forever.
+- **The root cause — ranked, not merely listed.** A physical-handling gap (the proximate cause of
+  the loss itself) sits behind a deployment-sequencing gap (the structural cause most likely to
+  recur, with a named concrete fix: no newly enrolled device leaves for field or travel use before
+  its first compliance attestation completes), which sits ahead of a minimum-necessary gap (a
+  severity multiplier, not a cause — three of the extract's six fields never needed to travel at
+  all).
+- **The vendor — tiered High, read, and checked.** The device-management platform vendor is tiered
+  High-risk. Its SOC 2 Type II report and ISO 27001 certificate and Statement of Applicability (SoA)
+  have been read and reasoned through — plausibly reducing, but never guaranteeing against, this
+  class of incident. A BAA (Business Associate Agreement) is plausibly, not certainly, required; the
+  full ten-item checklist has been walked against this relationship.
+- **The contract gap — named, not yet decided.** A change-notification clause, distinct from the
+  vendor's existing reactive incident-reporting duty, is a genuine forward improvement worth
+  pursuing at the next renewal. Whether it actually gets added is a real, open decision — not
+  resolved here, not resolved by this presentation, and not a retroactive fix for anything already
+  closed.
+
+Six bullets. Every word in both halves of this room's conversation has to trace back to one of
+them.
+
+## Opening the room: saying the spine out loud
+
+Here's what you actually say first, to everyone, before either audience's own question gets a word:
+
+> "Before I speak to anything specific either of you needs from this, here's the full shape of
+> what happened, final, as of today." [Walk all six bullets above, in order, without
+> editorializing.] "Nothing in what follows changes any of that. What follows is what each of you
+> needs to act on it."
+
+That's deliberate, and worth noticing: you say the hardest, most final facts — including the one
+that stays permanently unknown — before anyone has had the chance to ask a question that might
+tempt you to soften one of them for whoever's listening. Get the spine on the record first,
+unconditionally, and the rest of the meeting has nowhere to drift to.
+
+## Half one: what the CIO needs, said to the whole room
+
+Now you turn, explicitly, to one side of the table — not privately, just by name, the same way a
+status meeting names whose turn it is to speak.
+
+> "For the operational and vendor-risk side of this: the fix we've identified — gating newly
+> enrolled devices behind a completed compliance attestation before they leave for field use — isn't
+> a budget ask. It uses the device-management platform we already have; it's a process change, not
+> a new tool. I want to flag something I don't think we've formally done yet, though: that fix is
+> sitting in a closed investigation file as a recommendation. It isn't yet an open CAPA (corrective
+> and preventive action) with an owner and an effectiveness-check date. ITIL would let a fix like
+> this live indefinitely as a known-error record — document the workaround, move on. CAPA holds us
+> to a higher bar: it doesn't get to just sit there being a good idea. I want it opened formally,
+> this week, with the systems administrator as owner.
+>
+> On the vendor itself: we've now actually read what they are and aren't promising. Their SOC 2
+> report and ISO 27001 certificate plausibly reduce the odds of this exact failure class recurring —
+> they do not guarantee against it, and I'm not going to tell this room otherwise. The one concrete
+> forward step available is a change-notification clause at next renewal, so we'd hear about their
+> next infrastructure migration before it happens instead of after. That's not decided yet. It's a
+> real option I want on record as something we're pursuing, not something we've already won."
+
+One more crosswalk worth naming by name, because it's this course's own module 2 at work: every
+enrolled device is a configuration item in exactly the sense a CMDB (configuration management
+database) already tracks for the eQMS. Module 2 built a qualification/validation-status field onto
+the eQMS's own CMDB entry because a CI (configuration item) record without one is just an inventory
+list, not evidence of control. The device fleet never got that same field. The gating rule you just
+named to the CIO is, in CMDB terms, exactly that missing field, finally added — not just a travel
+policy, but the device-management equivalent of the qualification pointer module 4 wrote into the
+eQMS's own CI record. And the still-open change-notification question belongs on a continual-
+improvement register, the same register module 2 built for the eQMS's own backlog: not a CAPA
+(nothing's deviated), not urgent, but owned, dated for review at the next vendor renewal, and
+visible — not quietly forgotten the way an un-logged idea usually is.
+
+Notice what this half leads with: **a gap in the follow-through, named out loud**, not buried — the
+fix exists on paper but hasn't been formally opened as a CAPA yet, and you're saying so to the room
+that controls the budget and staffing to actually do something about it. It leads with **cost and
+schedule reality** (none, for the device-gating fix). It names the **vendor assurance findings
+honestly**, with their real limit stated plainly. And it keeps the **contract clause undecided**,
+exactly where it belongs.
+
+## Half two: what the quality council needs, said to the same room
+
+Same room, same breath, turning the other way:
+
+> "For Quality and Compliance specifically: this incident's own four-factor assessment is closed,
+> final, under 164.402 — not provisional, not pending anything further. The root-cause ranking
+> matters to how you'll see this reflected in our CAPA log going forward: the deployment-sequencing
+> gap is the one I've just asked to be opened formally as a CAPA, with an effectiveness check, not
+> left as a closed-investigation footnote. That's a deliberate correction on my part, and I'm naming
+> it in front of both of you rather than fixing it quietly after this meeting.
+>
+> On the vendor: this is a High-tier relationship, qualified per QSE 4, with a documented SOC 2 and
+> ISO 27001 read on file — not a sales deck taken on faith. If an AABB assessor or an FDA
+> investigator ever asks how Lakeshore handled this vendor relationship, there's now an actual,
+> dated file to show, the same standard `building-an-inspection-ready-service-catalog-and-cmdb`
+> already proved an eQMS record needs to meet. And one thing I want stated with exactly as much
+> weight here as I gave it a moment ago: the laptop's encryption status is not known and will not
+> become known. I'm not going to let that line get softer in this room than it was a minute ago."
+
+This half leads with **AABB/FDA framing and audit-trail defensibility** — the same emphasis module
+5 taught, now applied to a four-course history instead of one POA&M line. It restates the encryption
+finding **at identical weight**, on purpose, because this is the single easiest place for a mixed
+room to quietly let the story round itself off into something tidier than the facts support.
+
+## Closing the room: back to the spine
+
+You end where you started, not wherever the last thread trailed off:
+
+> "That's the full file. One determination, final. One ranked root cause, with a real fix now
+> going into the CAPA log this week instead of sitting as a sentence. One vendor relationship,
+> actually read and tiered, with one honest, still-open question about its contract. And one fact
+> that stays exactly where it's always been: we don't know, and we're not going to find out,
+> whether that laptop was encrypted the day it was lost. Any question either of you has from here,
+> ask it in front of both of us — that's the whole point of this room."
+
+## What the room would actually check — three lenses, live
+
+Nobody convenes this meeting expecting an FDA investigator or an AABB assessor to walk in. But the
+file this presentation rests on has to survive exactly those questions anyway, because the people
+actually in the room — your CIO, the Medical Director, Compliance — will ask versions of them
+whether or not they use the vocabulary. `building-an-inspection-ready-service-catalog-and-cmdb`
+already proved this pattern once, for the eQMS's own CMDB (configuration management database)
+entry, and it repeats here at a different altitude. **An FDA investigator** would be satisfied —
+`investigating-a-healthcare-data-incident`'s own "what an inspector would actually look for" section
+already built the exact file (enrollment logs, check-in history, vendor case number, network
+findings, a dated staff interview) that answers "did you actually investigate, or did you assume."
+**An AABB assessor** would be satisfied for the same reason that module satisfied one — a
+self-identified, honestly-documented unknown reads as control, not as a gap found cold. **A
+security assessor** would get the same honest, partial answer `reading-a-soc-2-report` and
+`reading-an-iso-27001-certificate` already gave: the vendor's own assurance evidence plausibly
+reduces the odds of this class of incident; it was never going to, and didn't, guarantee against it.
+The shape repeats exactly: two lenses fully satisfied, one lens honestly partial — the same boundary
+`itil-to-grc-crosswalk` and this course's own module 4 already found for the eQMS, now found again
+for the vendor relationship behind Brookfield. That's not a coincidence. It's the same discipline,
+applied twice, landing on the same honest answer both times.
+
+## Common traps
+
+**"Someone in the room asks for a bottom-line answer on encryption, so give them one."** This is the
+single most dangerous moment this specific format creates, and it deserves its own warning separate
+from every other trap this course has named. A live room, with both audiences watching, creates real
+pressure to produce a tidier answer than the facts support — "probably fine," "likely encrypted,
+given the policy," anything that sounds like closure. Don't. The honest answer — permanently
+unresolved, for documented structural reasons — is the only answer this presentation is allowed to
+give, and it's the same answer in front of the CIO as in front of the quality council, said at the
+same volume, every single time this question comes up.
+
+**"The change-notification clause is basically decided — present it like a done deal to reassure
+the room."** No. `vendor-change-notifications-and-your-own-change-control` left this as a genuine,
+open decision — a forward-looking fix worth pursuing, not a signed amendment. Presenting it as
+settled, to make the vendor-risk story sound more finished than it is, is exactly the kind of
+invented confidence this curriculum has refused to manufacture anywhere else. Don't start now because
+the room is bigger.
+
+**"This is really just two meetings happening back to back — present the CIO half, then the quality
+half, and keep them separate."** Treating the format as two stapled decks defeats the entire reason
+a joint meeting was called. The spine has to open the room and close it, with both halves genuinely
+addressed to the whole room in between — not partitioned off as if the quality council should tune
+out during the CIO's section, or vice versa. The value of one room is that everyone hears
+everything; building two silent decks and reading them back to back throws that value away while
+keeping the harder logistics.
+
+## What this means for your job
+
+- **Write the shared spine before you write either half.** If you start from the CIO's concerns or
+  the quality council's concerns and work backward to the facts, you'll end up justifying a framing
+  instead of stating one. Six bullets, final, first — everything else gets built on top of them.
+- **Name any follow-through gap out loud, to both audiences, even if it's uncomfortable.** The
+  deployment-sequencing fix sitting as a sentence in a closed file instead of an open CAPA is exactly
+  the kind of thing easier to let slide quietly than to flag in front of your CIO and your quality
+  council at once. Flag it anyway — a self-identified gap in your own follow-through is still better
+  received than one someone else catches later.
+- **Treat any live request for closure on an unresolved fact as the test this whole module is built
+  around.** If you ever hear yourself start a sentence with "well, it's probably..." about something
+  this curriculum already closed out as unknown, stop and restate the actual finding instead.
+- **Expect the room to ask harder, faster follow-up questions than either audience would ask alone.**
+  A quality council member hearing the CIO's operational framing might ask the regulatory question
+  themselves, and vice versa. That's not a problem to manage around — it's the room doing exactly
+  what convening it together was supposed to make possible.
+- **Treat your QA's and systems administrator's prep work for this meeting as real review work, not
+  transcription.** They built the investigation file, the vendor file, and the fix recommendation
+  this presentation stands on. Review their draft spine the way `directing-the-quality-analyst`
+  taught you to review any of their other deliverables — for defensibility, not just for polish.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Midway through the meeting, your CIO asks, "Realistically, did anything bad actually happen with that laptop?" What do you say?
+
+Exactly what the shared spine says, no more and no less: the PHI's acquisition or viewing (factor 3)
+is permanently unresolved, for documented structural reasons — not "probably not," not "likely fine,
+given the policy was sound." The honest answer sounds less satisfying than a guess would, and it has
+to be given anyway, in exactly the same words you'd use if the quality council had asked instead.
+Inventing a reassuring answer because the question came from the CIO specifically would be the exact
+failure mode this module exists to prevent.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Does any regulation, AABB standard, or NIST framework require Lakeshore to brief an incident like this one to the CIO and the exec quality council in a single joint meeting, rather than two separate ones?
+
+No. Nothing in HIPAA, AABB's QSE framework, or NIST's RMF specifies how Lakeshore structures its own
+internal incident briefings, or requires a joint format at all — module 5 already established that
+two separately worded briefings are Lakeshore's own choice, and the same holds here: a single joint
+meeting is a harder, more rigorous version of that same choice, not a regulatory requirement either.
+Lakeshore could, in principle, keep running two separate meetings indefinitely and never fall short
+of anything a regulator or assessor actually demands.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Your systems administrator suggests that since the vendor's SOC 2 and ISO 27001 materials "plausibly reduce the risk" of this incident class, it's fair to tell the room the vendor relationship is now low-risk. Is that a fair summary?
+
+No. "Plausibly reduces the likelihood" and "guarantees against" are different claims, and
+`reading-a-soc-2-report` and `reading-an-iso-27001-certificate` were both explicit that this vendor's
+assurance evidence does the first, not the second. The vendor stays tiered High — nothing in either
+course's findings, or in this presentation, lowers that tier. Telling the room the relationship is
+now "low-risk" would overstate what was actually found, in exactly the direction this curriculum has
+consistently refused to round things off.
+:::
+
+## This course's own arc, closing here
+
+Five modules built toward exactly this moment, and it's worth naming the whole arc once, in order,
+the way every closing module in this curriculum has. Module 1 proved change enablement and problem
+management were never separate vocabularies from change control and CAPA — the same gate, the same
+discipline, described in two dialects. Module 2 built the eQMS's own CMDB entry and service-catalog
+entry, and found the real gaps those crosswalks expose when applied honestly instead of asserted
+loosely. Module 3 showed those same gaps' answers were often already sitting in a different file
+under a different name — RMF's Categorize and Select, Monitor, and ISO 27001's Annex A, crosswalked
+against service asset management, continual improvement, and security management. Module 4 assembled
+all of it into one real, reconciled artifact and tested it against three reviewers, honestly naming
+the one place it still fell short. Module 5 took a single fact and proved it could survive two
+honest translations without becoming two stories. This module just did the harder version of that
+proof, live, in one room, against a four-lens history instead of a single POA&M line — and it held.
+
+## The entire curriculum's arc, closing for good
+
+Say this part plainly, because it matters more than anything else in this lesson: **the curriculum
+is now complete. There is no next course.**
+
+You came into this as a Director fluent in ITSM and generic IT compliance, and unable to place a
+single CFR citation, AABB standard, or validation requirement specific to a blood establishment. The
+foundations — `reading-a-cfr-citation`, `regulatory-landscape-orientation`, `risk-and-controls-
+vocabulary` — gave you the vocabulary to read a rule correctly and know what kind of authority was
+behind it before you ever walked a donor's path through a single system. Track 1, `blood-center-
+operations`, gave you that path: donor to hospital, with every regulated step and every touching
+system named. Track 2 — `quality-system-essentials` and `fda-and-aabb-in-practice` — gave you the
+quality-system backbone this entire job runs on: deviations, CAPA, change control, document control,
+audits, and what an actual inspection or assessment looks like from the inside. Track 3 —
+`csv-and-becs` and `data-integrity-and-records` — gave you the validation and data-integrity depth
+that makes BECS a different animal from ordinary enterprise software, and ALCOA+ a standard you can
+actually apply to a real record instead of recite. Track 4 — `grc-frameworks-and-risk-management`,
+`healthcare-security-and-privacy`, and `vendor-and-third-party-risk-management` — gave you one risk
+language instead of three, a closed and honestly unresolved incident that taught you what a real
+investigation actually produces, and a vendor file built from evidence instead of a sales deck.
+Track 6, `directing-the-quality-analyst`, gave you the specific skill of reviewing someone else's
+deviation, CAPA, or vendor assessment well enough to catch what an inspector would catch, before it
+ever reaches one. And this capstone, Track 5's `itsm-for-regulated-blood-services`, took every one
+of those vocabularies and proved, concretely, five separate times and now a sixth, that they were
+never actually separate languages. They were ITSM the whole time, spoken by different rooms.
+
+That's the whole curriculum, named once, start to finish. Nothing about it was exam prep, and
+nothing about it borrowed a credential you'll ever need to hold. Every body of knowledge this
+curriculum raided — NIST's RMF, ISC2's HCISPP material, ISO 27001, SOC 2, ICH Q9, ASQ's auditor body
+of knowledge, AABB's own QSE structure — was structure borrowed for the job, never a certificate
+aimed at. What you have now, instead, is a single shared vocabulary that survives a conversation with
+your CIO, your exec quality council, your Quality Analyst, an FDA investigator, and an AABB assessor,
+in whatever order they show up, without you ever having to translate yourself twice and hope the
+translations agree.
+
+There is nothing waiting in a plan file for your next session. The Director's job from here isn't to
+wait for a seventh module — it's to run the meeting this lesson just walked you through, for real,
+the next time an incident, a vendor, or a system actually needs presenting to both rooms at once.
+Everything this curriculum built is already in your hands. The only thing left is to use it.
