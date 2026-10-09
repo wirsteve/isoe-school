@@ -1,0 +1,28 @@
+---
+title: "Resources"
+order: 42
+---
+
+Four places to go deeper than this lesson, or to check a citation yourself before it goes in a
+real Lakeshore document. All four were checked and loading at the time this page was written.
+
+- **[21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)**
+  — the regulatory text quoted in this lesson, in Cornell's free, citable, plain-text CFR mirror.
+  Use this when you need to hand someone the regulation itself without an eCFR login or PDF.
+
+- **[21 CFR 210.2, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/210.2)**
+  — the supplementation clause that lets a drug-manufacturing section like 211.68 reach a blood
+  establishment's computer systems. Read it alongside 211.68 any time someone asks "why does a
+  drug regulation apply to us at all."
+
+- **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)**
+  — FDA's own guidance-database listing for the document this course quotes throughout (final,
+  April 2013, CBER). Use this page to confirm you're citing the current, final version, and to
+  download the PDF directly from FDA rather than a mirror.
+
+- **[ISPE: GAMP 5 (Second Edition)](https://ispe.org/publications/guidance-documents/gamp-5-guide-2nd-edition)**
+  — ISPE's own page for the industry-practice framework behind "Category 4," "Category 5," and
+  the V-model vocabulary this lesson uses. GAMP 5 is a paid publication (ISPE membership pricing
+  applies), not a free regulatory document — this page is where to learn what it is and how to
+  purchase or read it, not a substitute for owning a copy if your role ever requires citing it
+  directly.

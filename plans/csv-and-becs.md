@@ -199,7 +199,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 
 | # | Slug | Finish line | Status |
 |---|---|---|---|
-| 1 | `gamp5-and-the-v-model` | Sort any BECS or BECS-adjacent component into its GAMP 5 software category and say what that implies; walk the V-model from user, functional, and design specifications (URS, FS/FRS, DS) to the tests that answer each; and explain why a documented risk assessment, not the category alone, sets test depth. Say what 21 CFR 211.68(a) and FDA's BECS guidance actually require and what GAMP 5 only supplies as practice. | Not started |
+| 1 | `gamp5-and-the-v-model` | Sort any BECS or BECS-adjacent component into its GAMP 5 software category and say what that implies; walk the V-model from user, functional, and design specifications (URS, FS/FRS, DS) to the tests that answer each; and explain why a documented risk assessment, not the category alone, sets test depth. Say what 21 CFR 211.68(a) and FDA's BECS guidance actually require and what GAMP 5 only supplies as practice. | Published |
 | 2 | `iq-oq-pq-and-traceability` | Read an executed validation package (IQ, OQ, and PQ evidence, the traceability matrix, and the summary report) and judge whether every high-risk requirement was tested in a way that could fail, under the conditions it will really run in, with every failure dispositioned. Say whether the package is defensible, using the cold-read test plus the new adequacy check. | Not started |
 | 3 | `becs-as-a-regulated-device` | Explain what makes BECS a regulated medical device (21 CFR 864.9165, Class II with special controls, cleared through 510(k) premarket notification), what a clearance does and doesn't tell you about the version and configuration you run, and how cleared, custom-built, and legacy or unsupported systems differ. Say what FDA's BECS user-facility guidance expects Lakeshore's own validation to add, including at every site and when vendor test scripts are used. | Not started |
 | 4 | `qmsr-iso-13485-and-the-vendor` | Place BECS correctly under FDA's device-grade quality system: Part 820 (the QMSR, incorporating ISO 13485:2016, effective February 2, 2026) binds the BECS manufacturer, and 820.1(a)(3) excludes blood manufacturers, so Lakeshore answers to blood CGMP. Say what the vendor's design controls and 864.9165 special-control deliverables (unresolved anomalies, revision history, traceability matrix) give you as validation *inputs*, and when Lakeshore's own development could raise the manufacturer question. | Not started |
@@ -946,3 +946,27 @@ fallback.
      course uses 40–54, and the next course starts at 55 (SKILL.md updated).
   Next: build m1, `gamp5-and-the-v-model`, locking the upgrade-scenario facts listed under
   "Facts m1 must lock and log."
+- **2026-10-09**: Module 1, `gamp5-and-the-v-model`, drafted (via subagent), audited, and
+  published (`courses/csv-and-becs/gamp5-and-the-v-model/index.qmd` and `resources.qmd`,
+  `order: 41`/`42`). Citations verified verbatim against `sources/cfr/211.68.md`,
+  `sources/cfr/210.2.md`, and `sources/fda-guidance/becs-validation-users-facility-2013.md`;
+  all four `resources.qmd` links curl-verified 200. Lesson runs ~4,390 words (slightly over the
+  2,000–4,000 target, in line with sibling modules of similar density; not trimmed further).
+  **Locked scenario facts (later modules must not contradict):**
+  - Validation package ID **VAL-1203** (upgrade to the BECS vendor's next major release,
+    "Release B," after end-of-support on the current release).
+  - Scope: the central BECS application server, plus BECS clients at both Brookfield and
+    Fairview.
+  - The in-house Category 5 component is a **Lakeshore-IT-built-and-maintained translation
+    script that converts result messages from the testing lab's LIS into BECS's expected input
+    format** — no vendor involvement. This is the thing m4 (manufacturer question) and m7
+    (interface validation) return to.
+  - Authored by the Quality Validation Lead with IT and the vendor's implementation consultant;
+    Quality blocking, Director system-owner co-approver.
+  - Draft URS rows used: REQ-014 ("shall be user-friendly," untestable), REQ-022 (the
+    quarantine/release-gate requirement, testable wording but blank risk ranking), and no row at
+    all for the in-house script.
+  - 11.10(a) named in one line only, deferred to m5. No calendar year used in the fictional
+    narrative.
+  Next: build m2, `iq-oq-pq-and-traceability`, the course's main planted-document teaching
+  device (VAL-1203's executed package).
