@@ -1,0 +1,25 @@
+---
+title: "Resources"
+order: 67
+---
+
+A few primary sources to keep handy, each checked to load before being listed here.
+
+- **Cornell Legal Information Institute (LII): 21 CFR § 606.160** —
+  <https://www.law.cornell.edu/cfr/text/21/606.160>. The full records section this module quotes
+  from twice: paragraph (c), the donor-number requirement, and paragraph (e), the per-location and
+  cumulative deferred-donor records this module develops in depth for the first time in this
+  curriculum. Already used in `reading-a-cfr-citation` and `retention-across-record-types` for its
+  other paragraphs — reused here for a third.
+
+- **Cornell Legal Information Institute (LII): 21 CFR § 610.41** —
+  <https://www.law.cornell.edu/cfr/text/21/610.41>. This module names 610.41 only, as 606.160(e)
+  itself cites it, without quoting its text (not independently saved in `sources/` for this
+  curriculum). Use this link if you want to read the actual deferral-and-requalification rule
+  606.160(e)'s recordkeeping duty sits on top of.
+
+- **Cornell Legal Information Institute (LII): 21 CFR § 610.40** —
+  <https://www.law.cornell.edu/cfr/text/21/610.40>. Same treatment: named only, as the test
+  requirement 606.160(e)(2) and (e)(3) cite for the reactive results that trigger a 610.41 deferral.
+  Useful background reading on what "tested reactive" actually refers to, not required to complete
+  this module.

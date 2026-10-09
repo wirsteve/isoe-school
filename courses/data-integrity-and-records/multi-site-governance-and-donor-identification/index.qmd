@@ -1,0 +1,398 @@
+---
+title: "Multi-Site Governance and Donor Identification"
+order: 66
+---
+
+## DI-0301 reaches its last system: one donor, three locations
+
+Your Quality Analyst (QA) is back with the capstone piece of **DI-0301**, her data-integrity
+self-assessment. DED-0458 is settled except for "accurate," left open on purpose. Fairview's paper
+donor file is settled as its own record of record. LAB-07 has a genuine, fixable gap on documented
+fitness-for-use evidence. Today she's not looking at one record or one instrument — she's looking
+at whether Lakeshore's three locations agree about the same donor.
+
+Here's the system she's testing. Lakeshore runs a central site plus two satellite collection sites,
+Brookfield and Fairview. A donor can walk into any of the three. Each location needs to know, before
+it ever draws blood, whether that specific donor is currently eligible to donate anywhere in the
+system — not just at the location they happen to be standing in. If a donor was turned away at
+Fairview last week, Brookfield has to know that too, or the whole point of turning them away at
+Fairview evaporates.
+
+She builds a timeline to test it, not a hypothetical. Picture a donor who gives at Fairview on an
+ordinary collection day. Routine post-donation testing on that unit comes back reactive for one of
+the transfusion-transmitted infections Lakeshore screens every donation for — a result generic
+enough that it doesn't need a specific diagnosis named here, just the fact that it's the kind of
+reactive result that triggers a donor deferral under Lakeshore's standard procedures. Fairview's own
+staff do exactly what you'd expect: they flag that donor, locally, the same day the result comes
+back. If that same donor tried to walk back into Fairview next week, Fairview's own front-desk check
+would catch it immediately.
+
+Here's her actual question, the one this whole module exists to answer: if that same donor instead
+drove to Brookfield, or showed up at the central site, the week after being deferred at Fairview —
+would *they* catch it too? And if the honest answer is "not necessarily, not right away" — how long
+is "not right away," really? No citations yet. Just a donor, three locations, and a question your QA
+thinks nobody at Lakeshore has actually sat down and answered out loud.
+
+## Why this rule exists — and the ITSM bridge
+
+Here's the failure this module exists to head off. A deferral that works perfectly at the location
+where it happened, and means nothing anywhere else in the system, isn't really a deferral at all —
+it's a local note. The entire point of deferring a donor is that the donor, not just the paperwork
+at one address, is the thing being restricted. If Lakeshore's locations don't actually share that
+restriction promptly, a donor can be simultaneously "deferred" at Fairview and "eligible" at
+Brookfield, which is a contradiction a computer system can hold without complaint and a patient
+cannot survive without risk.
+
+You already own the ITSM (IT service management) concept this needs, even if you've never had to
+treat it as a patient-safety question before. Every organization running a **CMDB** (configuration
+management database) across multiple regional offices has faced the same design problem: when a
+central system and several remote sites each hold their own copy of the same data, there's always a
+window where they can briefly disagree before replication catches up. The term of art for that is
+**eventual consistency** — a concept from distributed systems. It doesn't promise zero delay between
+one site updating a fact and every other site seeing it. It promises the system *eventually*
+converges on the same answer everywhere, and the real engineering question is never "can we make the
+delay zero" (usually impossible, or absurdly expensive to get close to) — it's "is our actual delay
+small enough for what's riding on it."
+
+Here's where the regulated world demands more. For an ordinary CMDB, a brief window where one
+regional office sees an asset's old owner or an outdated patch level is an inconvenience — mildly
+annoying, rarely urgent, because nothing catastrophic happens in that window. For a cumulative
+deferred-donor record, that same kind of window is a direct patient-safety exposure. A donor who
+shouldn't be accepted anywhere in the system can, for a real stretch of time, still show up as
+eligible somewhere in it — and "briefly," here, can mean something much longer than it ever would
+for a spreadsheet.
+
+## The rule in plain English
+
+Two different regulatory ideas are doing the work in this module, and they build on each other.
+
+**First: every unit of blood has to trace back to one donor, provably, forever.** That's the job of
+a donor number — a unique identifier assigned to each accepted donor that links the unit collected,
+the donor's own medical record, every component or product made from that unit, and every record
+describing what ultimately happened to those products. Without that link, "this donor is deferred"
+and "this unit came from that donor" are two facts with no reliable way to connect them. The donor
+number is the thread that makes everything else in this module possible.
+
+**Second: keeping one donor's eligibility consistent across Lakeshore's locations is two separate
+obligations, not one.** The first obligation is purely local: each location — Fairview, Brookfield,
+the central site — has to maintain its own record of every donor found ineligible or deferred *at
+that location*, specifically so that location never collects from, or releases blood from, a donor
+who's currently deferred there. That part is immediate, by design — it's what let Fairview's own
+staff catch the same donor on the spot if they walked back in next week.
+
+The second obligation is system-wide: Lakeshore has to maintain, across every location operating
+under the same license or common management, a **cumulative** record of donors deferred specifically
+because a donation tested reactive for one of a named set of transfusion-transmitted infections.
+That cumulative record is what Brookfield and the central site would actually consult to catch a
+donor deferred somewhere else. And the regulation sets a specific floor for how often that cumulative
+record has to be refreshed: **at least monthly.**
+
+Sit with that phrase for a second, because it's the sharpest point in this whole module. "At least
+monthly" is a regulatory floor — the minimum frequency the rule requires. Meeting it exactly, updating
+no more than once a month, no faster, is **fully compliant with the regulation's letter.** It can
+also, at the very same time, leave open a real window — up to just under a month, in the worst case,
+if a deferral happens right after a monthly update cycle runs — during which a donor deferred at one
+site could, in principle, still be accepted at a different one. Compliant and risky aren't opposites
+here. They can both be true of the exact same practice, and the regulation itself doesn't resolve
+which is more important to you. That's Lakeshore's own risk tolerance to decide, not something
+606.160(e) decides for you — the kind of judgment this curriculum's `risk-and-controls-vocabulary`
+foundation and `quality-risk-management` gave you the vocabulary for already, applied here to a
+donor-safety question instead of a deviation or a change.
+
+There's one more piece, easy to forget: the cumulative record isn't supposed to only ever grow. A
+donor who was deferred can, under the right circumstances, later be requalified — found eligible to
+donate again. When that happens, the cumulative record has to be revised to remove them, or Lakeshore
+ends up turning away donors it has no current reason to turn away. Keeping the list accurate means
+keeping it current in both directions, not just adding to it.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.160(c) | "Six-oh-six point one-sixty, paragraph c" | Regulation. A donor number must link the unit collected to the donor, the donor's medical record, any component or product from that unit, and all records of history and disposition. | The identity thread that has to hold across BECS (Blood Establishment Computer Software), Fairview's paper file, and every other Lakeshore system, so "this donor" means the same donor everywhere. |
+| 21 CFR 606.160(e)(1) | "Six-oh-six point one-sixty, paragraph e, sub-one" | Regulation. Each location must maintain its own record of donors found ineligible or deferred at that location, to prevent collecting from or releasing blood from a currently deferred donor there. | What Fairview already does, immediately, the day its own reactive result comes back. |
+| 21 CFR 606.160(e)(2) | "Six-oh-six point one-sixty, paragraph e, sub-two" | Regulation. All locations under the same license or common management must maintain a cumulative record of donors deferred under § 610.41 for a reactive test under § 610.40(a)(1) (HIV — human immunodeficiency virus; HBV — hepatitis B virus; HCV — hepatitis C virus) or, outside Source Plasma establishments, § 610.40(a)(2) (HTLV — human T-lymphotropic virus; Chagas disease). | The system-wide list Brookfield and the central site would actually consult to catch a donor deferred at Fairview. |
+| 21 CFR 606.160(e)(3) | "Six-oh-six point one-sixty, paragraph e, sub-three" | Regulation. The cumulative record must be updated **at least monthly** to add newly deferred donors. | The regulatory floor DI-0301 tests against the worked timeline below — the sharpest finding in this module. |
+| 21 CFR 606.160(e)(4) | "Six-oh-six point one-sixty, paragraph e, sub-four" | Regulation. The cumulative record must be revised to remove donors requalified under § 610.41(b). | Keeps the system-wide list honest in both directions — not a one-way ratchet. |
+| 21 CFR 610.41 (named only, not quoted — not independently saved in `sources/`) | "six-ten point forty-one" | Regulation, governing donor deferral itself. 606.160(e) cites it as the authority under which a donor is actually deferred. | The rule that makes a reactive test result into an actual deferral decision, one step before 606.160(e)'s recordkeeping duty applies. |
+| 21 CFR 610.40 (named only, not quoted — not independently saved in `sources/`) | "six-ten point forty" | Regulation, governing test requirements. 606.160(e) cites its paragraphs (a)(1) and (a)(2) as the specific reactive results that trigger a § 610.41 deferral landing on the cumulative record. | What makes the Fairview donor's result the kind of reactive finding 606.160(e)(2) actually tracks. |
+
+## The actual text
+
+Start with the donor-number requirement, quoted in full, verbatim, from `sources/cfr/606.160.md`:
+
+> (c) A donor number shall be assigned to each accepted donor, which relates the unit of blood
+> collected to that donor, to his medical record, to any component or blood product from that
+> donor's unit of blood, and to all records describing the history and ultimate disposition of these
+> products.
+
+Read that sentence as a chain, link by link: donor number → unit → medical record → every component
+or product made from that unit → every record of what happened to those products afterward. Module 3
+already settled that Fairview's paper file, not its BECS re-entry, is the documented record of record
+for Fairview's own donor-eligibility determination. That decision doesn't touch this one. Whichever
+format is authoritative, the donor number still has to be the thread tying the paper file, the BECS
+entry, and every downstream product record back to one specific person — not a name that might be
+spelled two different ways, not a date of birth someone mistypes once. One number, one donor, every
+record, everywhere.
+
+Now the full text of paragraph (e), "Records of deferred donors," verbatim from the same source —
+this course's first full treatment of this paragraph, and its central regulatory floor:
+
+> (e) *Records of deferred donors.* (1) Establishments must maintain at each location a record of all
+> donors found to be ineligible or deferred at that location so that blood and blood components from
+> an ineligible donor are not collected and/or released while the donor is ineligible or deferred;
+> and
+>
+> (2) Establishments must maintain at all locations operating under the same license or under common
+> management a cumulative record of donors deferred from donation under § 610.41 of this chapter
+> because their donation tested reactive under § 610.40(a)(1) of this chapter for evidence of
+> infection due to HIV, HBV, or HCV. In addition, establishments other than Source Plasma
+> establishments must include in this cumulative record donors deferred from donation under § 610.41
+> of this chapter because their donation tested reactive under § 610.40(a)(2) of this chapter for
+> evidence of infection due to HTLV or Chagas disease.
+>
+> (3) The cumulative record described in paragraph (e)(2) of this section must be updated at least
+> monthly to add donors newly deferred under § 610.41 of this chapter due to reactive tests for
+> evidence of infection due to HIV, HBV, or HCV, and, if applicable, HTLV or Chagas disease.
+>
+> (4) Establishments must revise the cumulative record described in paragraph (e)(2) of this section
+> to remove donors who have been requalified under § 610.41(b) of this chapter.
+
+Four numbered paragraphs, four distinct duties. (e)(1) is purely local — Fairview's own problem to
+solve, on its own, the day it happens. (e)(2) defines the cumulative record and exactly which
+deferrals have to be on it: ones driven by a reactive test under 610.40(a)(1) — HIV, HBV
+(hepatitis B virus), or HCV (hepatitis C virus) — for every establishment, plus, for establishments
+that aren't Source Plasma collection facilities like Lakeshore, reactive tests under 610.40(a)(2) for
+HTLV (human T-lymphotropic virus) or Chagas disease. (e)(3) sets the clock: at least monthly. (e)(4)
+is the one easiest to forget — the cumulative record has to come back down, not just go up, when a
+donor is requalified.
+
+HIV, HBV, HCV, HTLV, and Chagas disease are named here exactly as 606.160(e) itself names them — this
+module isn't diagnosing anyone or inventing clinical detail beyond what the regulation's own text
+already states. 610.41 and 610.40 aren't independently saved in `sources/` for this curriculum, so
+this module names them, exactly as 606.160(e) cites them, and doesn't quote their own content: 610.41
+is the regulation that actually governs donor deferral and requalification; 610.40 is the regulation
+that sets the test requirements whose reactive results are what trigger a 610.41 deferral in the
+first place. 606.160(e) is the recordkeeping duty sitting on top of both — it assumes a 610.41
+deferral has already happened and tells Lakeshore how to record and share it.
+
+### Walking the Fairview timeline through the text
+
+Here's DI-0301's worked scenario, this time with the citations attached.
+
+**The day of the reactive result.** Fairview's donor gives blood. Routine testing on that unit comes
+back reactive under 610.40(a)(1) or (a)(2) — again, generically, the kind of result 606.160(e)(2)
+names, not a specific diagnosis invented for this lesson. Under 610.41, that result drives a
+deferral. The moment that happens, 606.160(e)(1) is the rule in motion: Fairview has to maintain its
+own local record of that deferral, specifically so Fairview itself doesn't collect from or release
+blood from that donor again while the deferral stands. In practice, that's immediate — the same day,
+built into Fairview's own front-desk check. If this exact donor walked back into Fairview next week,
+Fairview would catch it, full stop. That part of the system works exactly as designed, and it's worth
+noticing precisely why: it's local, so nothing has to travel anywhere for it to work.
+
+**The gap.** Now ask what has to happen for Brookfield, or the central site, to catch the same
+donor. Neither one has its own first-hand record of a deferral that happened at Fairview. The only
+way either of them finds out is through the cumulative record 606.160(e)(2) requires across all of
+Lakeshore's locations — and that record, per (e)(3), only has to be updated **at least monthly.**
+
+Here's the honest, bounded way to state the exposure, without inventing a false-precise number: if
+Fairview's deferral happens the day *after* a monthly update cycle has just run, that donor's
+deferral sits unreflected in the cumulative record until the next cycle comes around — up to just
+under a month later, in the worst case. During that entire window, if the donor drove to Brookfield
+or to the central site and tried to donate again, nothing in the cumulative record they'd check would
+stop them. Lakeshore would be meeting 606.160(e)(3) to the letter the entire time. Nothing described
+here is a violation. It's a real, bounded gap sitting inside full compliance — which is exactly why
+it's worth taking seriously rather than dismissing because "the regulation doesn't require anything
+faster."
+
+This is the same shape of question `csv-and-becs` module 7 raised once, in a different register: how
+fast a status change at one Lakeshore location actually reaches another over the BECS-to-satellite
+interface, the quarantine-propagation-latency question that module built for a unit's quarantine
+status. This module's subject — a donor's deferral status propagating across sites — is a close
+cousin, but the stakes and the lens are different: that was an interface-validation question about
+proving data arrives complete, correct, on time. This is a data-governance and patient-safety question
+about whether the regulatory floor itself is fast enough. One sentence of callback is all that
+deserves — the two questions rhyme, they aren't the same question.
+
+### DI-0301's recommendation to you
+
+Here's where your QA brings DI-0301's capstone finding to you directly, instead of leaving it as an
+open question for someone else to pick up. Her finding, stated plainly: Lakeshore's cumulative
+deferred-donor record is fully compliant, meeting 606.160(e)(3)'s "at least monthly" floor every
+cycle, with the dated log to prove it. And the worst-case gap her timeline exposes — up to just under
+a month between a deferral at one site and the cumulative record catching up everywhere else — is
+real, not hypothetical, and not something the regulation itself asks Lakeshore to close.
+
+Her recommendation: consider updating the cumulative record more frequently than the monthly floor
+requires. Not because 606.160(e) demands it — it doesn't, and she's careful to say so in her own
+write-up, the same way this course has flagged every other "this is not a regulatory requirement"
+moment. This is a risk-based, industry-practice judgment, squarely in the territory
+`risk-and-controls-vocabulary` and `quality-risk-management` already gave you the tools for: weigh a
+real exposure against a real cost, and decide deliberately, rather than defaulting to the floor
+because nobody asked the question.
+
+And she states the cost honestly, instead of making faster updates sound free. A more frequent
+cumulative-record refresh means more load on whatever system reconciles the three locations' records,
+more staff time actually running and verifying each cycle, and more coordination overhead keeping
+Brookfield, Fairview, and the central site synchronized on a tighter schedule than the regulation
+requires. None of that is free, and pretending it is would make this recommendation dishonest in the
+other direction. What she's not doing is naming a specific number — not "update weekly," not "update
+daily" — as the obviously correct answer. That number is yours to set, weighing the cost against how
+much of that worst-case window you're willing to tolerate. Her job was to surface the tradeoff
+clearly enough that you can actually make that call. That's exactly what a good self-assessment
+recommendation looks like: a real finding, an honest cost, and a decision left where it belongs.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB (Association for the Advancement of Blood & Biotherapies) assessor
+wouldn't ask whether Lakeshore has a multi-site governance policy. They'd ask for specific, dated
+proof, at each of the four duties above.
+
+**For 606.160(e)(1):** evidence that Fairview, Brookfield, and the central site each maintain their
+own local deferred-donor record, and that each location's own check actually runs before collection
+— not an assumption that "the system would catch it." A bad answer sounds like "we'd know." A good
+answer shows the local record and the specific check step that consults it.
+
+**For 606.160(e)(2) and (e)(3):** a dated log of cumulative-record updates, showing the actual
+interval between them — genuinely monthly or faster, not "roughly" monthly with gaps that stretch
+longer some cycles. A bad answer sounds like "we update it regularly." A good answer produces the
+update history and lets the inspector do the arithmetic.
+
+**For 606.160(e)(4):** evidence that requalified donors are actually being removed from the
+cumulative record, not just added to in one direction indefinitely. A list that only ever grows is
+itself a finding.
+
+**For the risk question this module's whole scenario turns on:** whether Lakeshore has ever actually
+asked, and documented an answer to, whether monthly is fast enough for its own risk tolerance — not
+whether the regulation requires anything faster, because it doesn't. An inspector reading a self-
+assessment like DI-0301's would likely see an honest answer to that question as a sign of a
+functioning quality system, not a confession of a violation.
+
+## Common traps
+
+**"The local record at each site is enough — the cumulative record is just a backstop."** Backwards.
+606.160(e)(1)'s local record is what stops a donor from being re-collected at the *same* site where
+they were deferred. It does nothing for any other site. The cumulative record under (e)(2) is the
+only mechanism that lets Brookfield or the central site learn about a deferral that happened at
+Fairview at all. Treating the cumulative record as a lesser, secondary control gets the architecture
+backwards: it's the only piece doing cross-site work, and it's the piece bound by the slower,
+monthly-floor update cycle.
+
+**"Lakeshore updates the cumulative record every month, so the multi-site system is as safe as it
+needs to be."** Not necessarily — and this is **not something 606.160(e) itself resolves.** Updating
+at least monthly satisfies the regulation's letter completely. Whether monthly is fast enough that a
+deferred donor's window of apparent eligibility elsewhere in the system is an acceptable risk is a
+separate question, and it's Lakeshore's own risk-based judgment to make, not a box the regulation
+checks for you. Confusing "compliant" with "as safe as it should be" is exactly the gap this module
+exists to name.
+
+## What this means for your job
+
+- **Ask to see the dated update history for the cumulative deferred-donor record, not a policy
+  statement that it's updated monthly.** A policy that says "monthly" and a log that shows it
+  happening are different kinds of evidence, the same distinction this course has drawn before for
+  audit trails and password revision.
+- **Ask whether anyone has ever calculated, honestly, the worst-case gap between a deferral at one
+  site and the cumulative record reaching the others** — and treat "we've never actually worked that
+  out" as the finding, not a reason to assume it's fine.
+- **Push for a documented answer on update cadence, one way or the other.** Either Lakeshore
+  consciously accepts the monthly floor as sufficient for this specific risk, or it decides to go
+  faster. What's not acceptable is never having asked the question at all — the same "nobody decided"
+  pattern this course has flagged before, now applied to a patient-safety-adjacent cadence instead of
+  an audit-trail review schedule.
+- **Confirm the donor-number link (606.160(c)) actually survives across formats** — Fairview's paper
+  file, its BECS reporting copy, and the central cumulative record all have to resolve to the same
+  donor, by the same number, every time. A donor-number mismatch between formats is a worse version
+  of the same ambiguity module 3 found at Fairview, now with cross-site consequences.
+- **If you do decide to recommend a faster cadence, cost it honestly** — more frequent updates mean
+  more system load, more staff time reconciling records, more coordination between three locations,
+  not just a settings change. A risk-based decision made without naming its own cost isn't really a
+  decision; it's a hope.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: A donor is deferred at Fairview this morning. Does Fairview have to wait for the next monthly cumulative-record update before it can refuse that same donor if they try to donate at Fairview again next week?
+
+No. 21 CFR 606.160(e)(1) requires each location to maintain its own local record of donors found
+ineligible or deferred *at that location*, specifically so blood isn't collected from or released
+from an ineligible donor there. That obligation is immediate and purely local — it doesn't depend on
+the cumulative record at all. The monthly update cadence in (e)(3) governs the separate, system-wide
+cumulative record under (e)(2), which is what Brookfield or the central site would need to catch the
+same donor. Fairview itself should never need to wait for that cycle to protect its own collections.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Lakeshore updates its cumulative deferred-donor record exactly once a month, on schedule, every time. Is that fully compliant with 606.160(e)(3)? And does that mean the multi-site system is as safe as it needs to be?
+
+Compliant, yes — "at least monthly" is the regulation's own floor, and meeting it exactly, with a
+real, verifiable monthly cadence, satisfies 606.160(e)(3)'s letter completely. Safe enough is a
+different question, and **this is not something 606.160(e) answers for you** — it's a genuine
+industry-practice, risk-based judgment call. A donor deferred right after a monthly update cycle runs
+could, in the worst case, go unreflected in the cumulative record for up to just under a month, during
+which a different Lakeshore location could accept them. Whether that window is an acceptable risk, or
+one worth closing with a faster update cadence, is Lakeshore's own risk tolerance to set — the
+regulation sets the floor; choosing to go faster is a risk-based decision, not a regulatory mandate,
+and the two questions ("are we compliant" and "are we safe enough") can have different honest answers
+at the exact same time.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Module 3 settled Fairview's paper donor file as its own record of record, with its BECS entry as a documented reporting copy only. Given that, does 606.160(c)'s donor-number requirement still apply to Fairview's donor records?
+
+Yes, and this is worth getting exactly right — which format is the record of record and whether the
+donor-number link has to hold are two separate questions. 606.160(c) requires a donor number linking
+the unit, the donor, their medical record, any component or product from that unit, and every record
+of its history and disposition — and that requirement doesn't care which artifact Lakeshore has
+designated as authoritative. Fairview's paper file being the record of record (module 3's finding)
+means the paper file is what Fairview relies on and protects as the real record. It doesn't exempt
+Fairview from making sure the same donor number appears, correctly, on the paper file, on its BECS
+reporting copy, and on any product record derived from that donor's unit. A donor-number mismatch
+between the paper file and its own reporting copy would be its own, separate finding — not resolved
+by, and not excused by, module 3's record-of-record decision.
+:::
+
+## Where this goes next
+
+This closes `data-integrity-and-records`, and DI-0301 reaches the end of its first full pass across
+Lakeshore's systems. It's worth looking back at the shape of the whole course, because none of its six
+modules stood alone. Module 1 gave you ALCOA (attributable, legible, contemporaneously recorded,
+original or a true copy, accurate) as something you test letter by letter, not read off a record's
+surface — and drew the line between that, FDA's own term, and "ALCOA+," industry practice layered on
+top of it. Module 2 gave audit trails and e-signatures their first real depth in this curriculum: who
+has to review an audit trail, how often, and the five specific controls — 11.50, 11.70, 11.100,
+11.200, 11.300 — an e-signature actually has to clear to stand in for ink. Module 3 finally defined
+*predicate rule*, the term this curriculum had named but never explained, and used it to decide which
+format of a record — paper or electronic — Lakeshore actually relies on, for DED-0458 and for
+Fairview both. Module 4 applied FDA's own four-part legacy-system test to LAB-07, a real instrument
+with a real, fixable gap. Module 5 went past 606.160(d)'s product-record clock to the records that
+don't share its schedule, and caught a disaster-recovery snapshot being called something it isn't.
+And this module closed the loop across Lakeshore's locations: one donor number, meant to mean the
+same thing everywhere, and a monthly floor that's fully compliant and still worth a second look.
+
+Some things this course deliberately leaves open, and that's not a loose end — it's an honest
+self-assessment doing its job. DED-0458's "accurate" ALCOA letter is still unresolved, exactly as
+module 1 left it. LAB-07's documented-fitness-for-use gap is still a real, standing finding, not
+quietly closed here for the sake of a tidy ending. The donor-record retention-clock question module 5
+raised is still routed to document control, not answered by assumption. A self-assessment's job is to
+surface findings accurately, not to manufacture a clean résumé by the time the project wraps — DI-0301
+did its job precisely by leaving these open rather than papering over them.
+
+And two things stay out of this course entirely, on purpose, because they belong to courses this
+curriculum hasn't built yet. Every system in DI-0301's path — BECS, the satellite sites' own
+infrastructure, whatever eventually replaces LAB-07 — sits on vendor relationships this course never
+evaluated as vendor relationships: the GRC (governance, risk, and compliance) and vendor-risk
+questions a cloud or hosted record-keeping vendor actually raises belong to
+`vendor-and-third-party-risk-management`, a future course. And every donor and patient record this
+course has handled as a *data-integrity* object also carries its own privacy obligations — HIPAA
+(Health Insurance Portability and Accountability Act) specifically — that this course never touched,
+by design. That's `healthcare-security-and-privacy`'s subject, also still ahead.
+
+You came into this course able to name Part 11 and ALCOA+ in passing, the way `csv-and-becs` left
+them — real terms, pointed at, not yet yours. You leave it able to pull a record apart letter by
+letter, defend or challenge an e-signature setup clause by clause, decide which format of a record
+actually counts as the original, run FDA's own legacy-system test against a piece of equipment nobody
+had questioned in years, catch a backup that isn't a backup, and ask the one question that ties all
+six modules together: when this system tells you something about a donor, a record, or a unit, how do
+you actually know it's telling the same site-to-site, format-to-format, person-to-person? That's the
+finish line this course set out to reach — and it's yours now, not just DI-0301's.

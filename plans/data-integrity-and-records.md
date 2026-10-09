@@ -85,7 +85,7 @@ curriculum's standing convention.
 | 3 | `predicate-rules-and-hybrid-systems` | Explain what a predicate rule is and how it decides whether a given record is a "Part 11 record" at all, and judge whether a system mixing paper and electronic records is handling that mix defensibly. | 60/61 | Published |
 | 4 | `legacy-systems-and-part-11-gaps` | Apply FDA's own four-part legacy-system test to a system older than Part 11, and say what has to stay true for its enforcement-discretion status to hold. | 62/63 | Published |
 | 5 | `retention-across-record-types` | Go beyond 606.160(d)'s product-record clock to the records that don't share its schedule, and say what "retain the record" requires for a dynamic electronic record versus a static printout. | 64/65 | Published |
-| 6 | `multi-site-governance-and-donor-identification` | Explain how Lakeshore keeps one donor's identity and eligibility history consistent across a central system and every satellite site, using 606.160(e)'s cumulative deferred-donor record, and say what breaks if two sites' records disagree. | 66/67 | Not started |
+| 6 | `multi-site-governance-and-donor-identification` | Explain how Lakeshore keeps one donor's identity and eligibility history consistent across a central system and every satellite site, using 606.160(e)'s cumulative deferred-donor record, and say what breaks if two sites' records disagree. | 66/67 | Published |
 
 The next course after this one continues at **68**. Update `create-course`'s SKILL.md when this
 course's numbering is final (it won't be until module 6 is drafted and `order:` values are
@@ -401,3 +401,22 @@ confirmed by grep with no duplicates, same discipline as every prior course).
   routed to document control to resolve, consistent with `document-control-and-records`'s own
   deferral). No `csv-and-becs` or earlier-module locked fact altered.
   Next: build m6, `multi-site-governance-and-donor-identification` — this course's final module.
+- **2026-10-09**: Module 6, `multi-site-governance-and-donor-identification`, drafted (via
+  subagent), audited, and published (`courses/data-integrity-and-records/multi-site-governance-
+  and-donor-identification/index.qmd` and `resources.qmd`, `order: 66`/`67`, ~5,010 words — this
+  course's longest module, earned by quoting all four paragraphs of 606.160(e) in full for the
+  first time in this curriculum plus a genuine closing passage, not padding). 606.160(c) and all
+  four paragraphs of (e) verified verbatim against `sources/cfr/606.160.md`. All three
+  `resources.qmd` links curl-verified 200. **Central finding, stated with real precision:**
+  606.160(e)(3)'s "at least monthly" cumulative-record update floor is fully compliant with the
+  regulation's letter and can simultaneously leave a real, bounded gap (up to just under a month,
+  worst case, never a false-precise number) during which a donor deferred at one site could still
+  be accepted at another — framed explicitly as "compliant" and "safe enough" being different
+  questions, with the recommendation to update faster framed as Lakeshore's own risk-based choice,
+  not a regulatory mandate. **This is the course's final module** — closes with a genuine
+  course-ending passage summarizing all six modules' arc, explicitly naming what's left
+  deliberately open (DED-0458's "accurate," LAB-07's fitness-for-use gap, the donor-retention-
+  clock question) rather than falsely resolving them, and forward-pointing to
+  `vendor-and-third-party-risk-management` and `healthcare-security-and-privacy`. No `csv-and-becs`
+  or earlier-module locked fact altered.
+  **`data-integrity-and-records` is now 6/6 published. Course complete.**

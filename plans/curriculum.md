@@ -269,18 +269,23 @@ has no `plans/<slug>.md` file until its first session.
 | `quality-system-essentials` | 7 / 7 | Done |
 | `directing-the-quality-analyst` | 6 / 6 | Done |
 | `csv-and-becs` | 7 / 7 | Done |
-| `data-integrity-and-records` | 5 / 6 | In progress |
+| `data-integrity-and-records` | 6 / 6 | Done |
 | `fda-and-aabb-in-practice` | 0 / 6 | Not started |
 | `grc-frameworks-and-risk-management` | 0 / 5 | Not started |
 | `healthcare-security-and-privacy` | 0 / 5 | Not started |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `data-integrity-and-records` module 6, `multi-site-governance-and-donor-
-identification` (Track 3) — this course's final module. Modules 1-5 are published — see
-`plans/data-integrity-and-records.md`'s progress log for the locked scenario facts, including the
-nightly-snapshot-is-not-a-211.68(b)-backup finding and the still-open donor-record retention
-question, that module 6 builds on.
+**Next up:** `fda-and-aabb-in-practice` (Track 2's second course). `data-integrity-and-records` is
+fully built and published (6/6 modules) — see `plans/data-integrity-and-records.md` for the
+complete course, including module 6's "compliant isn't automatically safe enough" finding on the
+monthly deferred-donor-record update floor. Scope `fda-and-aabb-in-practice` (Phase 1/2 of
+`create-course`), then build its first module. Its modules: FDA inspection authority (routine vs.
+for-cause), Form 483/Warning Letters/recalls (Class I/II/III), Biological Product Deviation
+Reports (BPDRs), the AABB assessment process, designing an internal audit program, and mock
+inspections. `csv-and-becs` (7/7) and `data-integrity-and-records` (6/6) are both complete —
+once `vendor-and-third-party-risk-management` also exists, `directing-the-quality-analyst`
+modules 4 and 5 should be revisited per that course's own "Deliberately deferred" table.
 `csv-and-becs` is fully built and published (7/7 modules) — see `plans/csv-and-becs.md` for the
 complete course, including module 6's VIA-0842 verdict and module 7's closing of its last two
 open interface items. Once `data-integrity-and-records` and
