@@ -1,0 +1,27 @@
+---
+title: "Resources"
+order: 70
+---
+
+Three places to go deeper than this lesson, or to check a citation yourself before it goes
+into a real Lakeshore document. All three were checked and loading at the time this page was
+written.
+
+- **[21 U.S.C. 374, Cornell Legal Information Institute](https://www.law.cornell.edu/uscode/text/21/374)**
+  — the full statutory section this lesson excerpted from. This lesson only quotes (a)(1),
+  (b)(1), (c), and (h)(1)'s opening clause; the full section is long and heavily amended, and
+  worth skimming once to see how much of it this lesson deliberately left out (infant-formula
+  and clinical-study-inspection provisions, among others).
+
+- **[FDA, Inspection Observations](https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/inspection-references/inspection-observations)**
+  — FDA's own public page describing Form FDA 483, including where FDA publishes
+  spreadsheets summarizing what gets cited on 483s by fiscal year. Useful for seeing what
+  kinds of observations are common across FDA's regulated industries generally.
+
+- **[FDA, "CDER GCP Inspections and Outcomes" (PDF)](https://www.fda.gov/media/164382/download)**
+  — the source for this lesson's NAI/VAI/OAI classification quotes. **Read this one with the
+  scope caveat in mind**: it's a presentation specifically about Good Clinical Practice (GCP)
+  inspections of clinical drug trials, not about CGMP inspections of a manufacturing or
+  blood-collection facility. Only its general three-outcome classification scheme (NAI, VAI,
+  OAI) applies beyond that context — its clinical-trial-specific examples and statistics do
+  not.
