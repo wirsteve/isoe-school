@@ -1,0 +1,417 @@
+---
+title: "IQ, OQ, PQ, and the Traceability Matrix"
+order: 43
+---
+
+## VAL-1203 comes back executed
+
+Last module, VAL-1203's draft validation plan went back for revision: an untestable URS (user
+requirements specification — what the system has to do, in plain business language) row, a
+blank risk ranking on the release-gate requirement, and no row at all for the in-house
+LIS-to-BECS (laboratory information system to Blood Establishment Computer Software) translation
+script. Weeks later, the executed package is back on your desk: IQ, OQ, and PQ evidence
+(installation, operational, and performance qualification — industry's own names for three test
+stages, defined properly below), a traceability matrix, and a validation summary report.
+
+Your Quality Analyst (QA) reviewed it first, same as always. She caught one gap herself before
+it reached you — worth saying plainly, because it's true: she's gotten sharper at this since the
+work you did together last course, and this package proves it. But she also flagged, honestly,
+that she couldn't fully judge whether the testing was *enough* — that's still the Quality
+Validation Lead's call to own, and increasingly yours to review.
+
+Here's the excerpt that reached both of you. It was written by the Validation Lead and the
+vendor's implementation consultant. Before you read anything else in this lesson, read it the
+way you'd read any package cold, and try to find what's wrong with it yourself.
+
+> **VAL-1203 — Executed Validation Package (excerpt)**
+>
+> *Traceability matrix (partial)*
+>
+> | Req ID | Requirement (risk) | Test ID(s) | Result |
+> |---|---|---|---|
+> | REQ-022 | System shall not permit release of a blood component until all required test results for that donation are recorded as complete. (Risk: High) | OQ-114 | Pass |
+> | REQ-031 | System shall classify an infectious-disease marker result as nonreactive, reactive, or invalid based on the assay's signal-to-cutoff (S/CO) ratio. (Risk: High) | OQ-128 | Pass |
+> | REQ-045 | LIS-to-BECS translation script shall correctly map each incoming result field to BECS's expected input format. (Risk: High) | — | — |
+>
+> *Selected OQ/PQ results*
+>
+> **OQ-114** — Input: donation with all three required infectious-disease markers resulted and
+> recorded. Expected: component release permitted. Actual: release permitted. Pass.
+>
+> **OQ-128** — Input: S/CO 0.40 (clearly nonreactive). Expected: system classifies
+> "Nonreactive." Actual: "Nonreactive." Pass.
+>
+> **OQ-142** — Quarantine hold enforcement. Input: donation with one marker still pending.
+> Expected: release blocked. Actual (first run): release permitted — **FAIL**. Logged as
+> Validation Deviation VD-003; root cause: a configuration timeout released the hold before the
+> pending-result flag posted. Fixed; re-tested two days later. Actual (re-run): release blocked.
+> Pass. VD-003 referenced in Section 6 of this report.
+>
+> **PQ-07** — Peak concurrent load / intended-use performance. Performed in the vendor's staging
+> environment, by the vendor's implementation staff, using the vendor's standard test dataset,
+> business hours only. Expected and actual system response times within spec. Pass.
+>
+> **IQ-02** — Installed application server: Release B, build 4.2.118. Database engine version
+> 14.3.
+>
+> *Validation Summary Report, Section 7 — Conclusion*: "Testing demonstrates BECS Release B
+> meets its requirements. One deviation (VD-007, Fairview label-print timing, root cause under
+> investigation) remains open. The system is validated and ready for routine production use."
+> Approvals: Quality Validation Lead (signed, dated). Director, IT Service Operations
+> (signature line present, no date).
+
+One more thing is sitting on your second monitor, not in the package at all: the BECS change
+record from cutover weekend, pulled from the CMDB (configuration management database — the
+system of record for what's actually deployed). It lists the database engine promoted to
+production as version **14.4.2**. IQ-02 above tested version 14.3.
+
+Go find what's wrong before you read on. You should be able to name at least four or five
+distinct problems, one thing that looks wrong but isn't, and one thing nobody without your
+background would catch at all.
+
+## Why this matters, and the ITSM bridge
+
+The failure this package is supposed to prevent isn't "the testing didn't happen." It's
+quieter: testing happened, it looks thorough, everyone signed it, and it still didn't prove the
+system does what it needs to do under the conditions it will actually face. A package that looks
+finished and a package that proves something are not the same document, and the gap between them
+is where a defect reaches a patient without anyone noticing until an inspector — or a
+transfusion reaction — finds it first.
+
+You already run this discipline under different names. **Test management and release
+acceptance** is the ITSM (IT service management) practice of defining test plans, entry and exit
+criteria, triaging defects, and tracking requirements traceability inside an ALM (application
+lifecycle management — the tooling that tracks requirements, builds, and test cases together)
+tool. This course's own loose mapping, not an official one anywhere: IQ sits roughly where
+**build and deployment verification against a configuration baseline** sits — did the thing
+that's supposed to be running actually get installed as specified. OQ sits roughly where
+**functional and system testing** sits — does each function work. PQ sits roughly where
+**operational acceptance and performance testing under real conditions** sits — does it hold up
+under load, with real users.
+
+Where the regulated world demands more: in ordinary release management, exit criteria sometimes
+flex once you see how testing went — a team under schedule pressure adjusts "done" to match
+what got finished. In validation, criteria are fixed *before* execution and never adjusted
+afterward to fit the results. Every failure gets dispositioned in writing, not quietly re-run and
+forgotten. And the evidence has to be something an outsider — an inspector, a new hire, you in a
+year — can read cold and still follow, without the author in the room.
+
+## The rule in plain English
+
+**IQ, OQ, and PQ are industry vocabulary, not FDA regulation or FDA guidance language.** FDA's
+BECS guidance (*Blood Establishment Computer System Validation in the User's Facility*, CBER,
+April 2013 — the same guidance module 1 used, tier: **guidance**, not binding) never uses the
+terms "IQ," "OQ," or "PQ." Industry built this three-way packaging as a clean way to organize
+what the guidance actually recommends. Here's this course's own labeled mapping onto the
+guidance's own sections — label it that way whenever you use it, because nobody outside industry
+practice is required to organize a package this way:
+
+- **IQ (installation qualification)** — does the installed, configured system match what was
+  specified? This lines up with what the guidance's system-documentation section (III.B)
+  recommends you maintain: operating system and version number, the list of interfaces, the list
+  of environments (test, training, production), hardware specifications, and more.
+- **OQ (operational qualification)** — does each function actually work, under the full range of
+  conditions a function should be tested against? This lines up with the guidance's validation
+  activities section (III.G): normal, abnormal, boundary, and "absurd" inputs, plus security-role
+  testing.
+- **PQ (performance qualification)** — does the system meet its intended use, running at
+  Lakeshore's own location, under Lakeshore's own conditions? This lines up with the guidance's
+  scope-of-validation section (III.D): your own SOPs (standard operating procedures), your own
+  personnel, your own hardware, at peak concurrent load, with your report outputs verified.
+
+Two of the guidance's own definitions are worth having exactly, because they're the closest
+thing it offers to OQ and PQ in its own words (tier: **guidance**, quoted from
+`sources/fda-guidance/becs-validation-users-facility-2013.md`):
+
+> Qualification operational means establishing confidence that process equipment and sub-systems
+> are capable of consistently operating within established limits and tolerances (Ref. 3).
+
+> User validation means testing new equipment or a new process in the environment where it will
+> be used to ensure that it will reliably produce a product that meets pre-determined
+> qualifications and quality standards (Ref. 4).
+
+Read those against the mapping above: "operating within established limits and tolerances" is
+OQ's job. "In the environment where it will be used" is PQ's job, almost word for word.
+
+### A second layer of review: the adequacy check
+
+`directing-the-quality-analyst` gave you the **cold-read test** (name only, not re-taught here):
+would this document survive an inspector reading it cold, a year from now, with its author not
+in the room — checked against conclusion, evidence, reasoning, criteria set first, decision
+trail, and loose ends. That test tells you whether the package's *story* holds together. It
+doesn't tell you whether the *testing itself* was any good.
+
+This course adds a second instrument for that: the **adequacy check**. Four questions, each
+drawn from FDA's BECS guidance (tier: guidance, cited by section below). You'll use all four
+across this course; this module applies the first three to VAL-1203's excerpt. The fourth,
+Regression, is module 6's full subject — named here so you know it exists, not applied yet.
+
+1. **Coverage.** Does every requirement touching a critical function trace to at least one test,
+   with the highest-risk functions tested most thoroughly? (Guidance III.E.)
+2. **Design.** Could each test actually fail? Expected results fixed in advance, plus normal,
+   abnormal, boundary, and "absurd" inputs, and worst-case load. (Guidance III.D and III.G.)
+3. **Fidelity.** Was it tested where and how it will really run — Lakeshore's own location,
+   configuration, software, hardware, SOPs, and personnel, at peak load? (Guidance III.D and
+   III.G.)
+4. **Regression.** For a change: is there a documented analysis of the change's impact on the
+   *whole* system, with regression testing that follows from that analysis? (Guidance III.I —
+   name only here. Module 6 is where you apply it.)
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| Guidance III.B | "Section three, part B" | Recommends a documentation list: OS and version, interfaces, environments, hardware specs, and more. | Maps to what VAL-1203's IQ record should have captured — and where the version mismatch hides. |
+| Guidance III.D | "Section three, part D" | Recommends validating at your own location with your own software, hardware, SOPs, and personnel, including worst-case load. | The Fidelity question — and PQ-07's exact failure. |
+| Guidance III.E | "Section three, part E" | Recommends testing the highest-risk functions most comprehensively. | The Coverage question — and REQ-022's single normal-case test. |
+| Guidance III.F | "Section three, part F" | Recommends validation SOPs, including one for "Handling validation deviations." | The standard VD-003 and VD-007 are judged against. |
+| Guidance III.G | "Section three, part G" | Recommends test-case anatomy, normal/abnormal/boundary/absurd inputs, record retention, screen-print linkage, promoting the validated configuration to production. | The Design question — and OQ-128's missing boundary case. |
+| Guidance III.H | "Section three, part H" | Requires documenting validation activities (21 CFR 211.68, 211.100(b), 606.160(b)(5)); recommends the report include variances, amendments, and dated management approvals. | VAL-1203's conclusion and its undated approval line. |
+| 21 CFR 211.68(a), cited by the guidance | "Two-eleven point sixty-eight, paragraph a" | A written program must require validation prior to routine use — not deployment first, sign-off after. | Why VAL-1203 can't go to production with Section 7's open deviation. |
+
+## The actual text
+
+On what the IQ record should cover, FDA's guidance (tier: **guidance**) recommends, among other
+things, that you document:
+
+> Operating system and version number... List of interfaces; and List of environments on system,
+> e.g., test, training, production, etc.
+
+That's the IQ side of VAL-1203's gap: a version record exists, it's just not the version that
+ended up in production.
+
+On risk-scaling test depth — the Coverage question's own words:
+
+> The highest risk functions of the system should be tested more comprehensively. For example,
+> because of the potentially fatal consequences of a transfusion based on an improper crossmatch
+> between donor and recipient, the validation of the electronic or computer crossmatch would
+> require more extensive testing.
+
+On what makes a test able to fail — the Design question's own words, including its own
+boundary-testing example:
+
+> Boundary testing is testing at the boundary of a specification, in other words, at the limit,
+> just below the limit, and just over the limit. Boundary values are "off-by-one errors." An
+> example of boundary testing is testing for a hematocrit of 37%, 38% and 39% if the cutoff (or
+> boundary value) for hematocrit is 38%.
+
+And on absurd values:
+
+> Examples of absurd or unexpected values might be an alpha result in a numeric field, a
+> hematocrit of 110% or a blank (or leading blank) in a result field.
+
+Every executed test case, per the guidance, carries a fixed anatomy, with screen prints linked
+back to the case that produced them:
+
+> Each executed test case in your pre-defined written test plan should include the input,
+> expected output, actual output, acceptance criteria, whether the test passed or failed, the
+> name or initials of the person performing the test, and the date the test was performed.
+
+> For traceability purposes and to facilitate quality assurance review and follow-up, we
+> recommend that any supporting documentation, such as screen-prints, where appropriate, be
+> identified to link them to the specific test case.
+
+On where PQ has to happen, and at what load — the Fidelity question's own words:
+
+> You should validate your system at your location using the same software, hardware, SOPs, and
+> personnel who will use the system after it is formally implemented.
+
+> The test cases should include those that represent "worst case scenarios," e.g., maximum
+> numbers of users working simultaneously, all possible activities occurring simultaneously, etc.
+
+"Handling validation deviations" is named directly in the guidance's own list of recommended
+validation-SOP topics (III.F), alongside "Writing test cases," "Amending test cases," and
+"Validating after a change." And on the report itself:
+
+> Your validation report should include a summary of the test results, including any variances
+> or failed tests, any amendments made to the test cases or the validation plan, an evaluation of
+> the outcome of your testing, and approvals or sign-offs by management, including dates.
+
+On when a validated system is actually allowed to go live — this sentence is citing regulation
+(21 CFR 211.68(a)) inside a guidance document, the "must" the guidance flags everywhere versus
+its own "should":
+
+> A written plan is not "designed to assure proper performance" unless it requires user
+> validation prior to routine use, on a routine basis, and any time a change is made that has the
+> potential to affect the functions of the system.
+
+On retention — named here as what the guidance says you must keep, not re-quoted from the
+underlying CFR text itself (that got its own treatment earlier in this curriculum):
+
+> You must retain validation records (21 CFR 211.68(b), 211.100(b), 606.160(b)(5)(ii)). Your
+> records should include documented evidence of all test cases, test input data and test
+> results. Test results should include screen prints.
+
+And on moving a validated configuration into production — the sentence behind the Director-only
+catch:
+
+> We recommend that you perform validation in the "test environment" or "test partition" of your
+> system. After successful validation, you or your software manufacturer should copy or move the
+> file configuration on which you performed your validation into the production environment.
+
+AABB's Quality System Essentials (QSE) framework, paraphrased only, no standard number: this
+kind of qualification work sits under **QSE 3, Equipment** — explicitly including IT systems, not
+just physical lab equipment — alongside **QSE 5, Process Control**, the same theme module 1
+named for validation generally.
+
+## Reading VAL-1203 cold
+
+Here's what the excerpt actually shows, organized the way you should organize any review: the
+cold-read test first, then the adequacy check's three applied questions.
+
+**Decision trail (cold-read).** The conclusion says "validated and ready for routine production
+use" while VD-007 sits open, root cause "under investigation," with no disposition. A conclusion
+that outruns its own evidence is exactly what the cold-read test catches. The Director's approval
+line also has no date — the guidance's report section asks for "approvals or sign-offs by
+management, including dates" (III.H) so a signature can prove *when* it happened: before or
+after that open deviation, before or after deployment. Both are gaps to flag before signing.
+
+**Coverage.** REQ-022, the release-gate requirement — correctly risk-ranked this time, unlike
+module 1's draft — traces to exactly one test, OQ-114, a normal-case test: every result present
+and complete, release permitted. Nothing tests the boundary (one result still pending) or a
+failure condition. A high-risk requirement with only a happy-path test behind it hasn't been
+proven to do its one job: refuse release when it should.
+
+**Design.** REQ-031 governs a field with a real clinical cutoff — an S/CO (signal-to-cutoff)
+ratio, the kind of result an infectious-disease marker assay reports, where a ratio at or above
+the assay's threshold reads "reactive" and below it reads "nonreactive." OQ-128 tested exactly
+one value, 0.40, comfortably nonreactive. Nothing tests at the boundary, nothing tests an absurd
+value (non-numeric, out-of-range), and nothing tests an "invalid" result. A test that can only
+ever pass, because it was never aimed near where the logic could break, isn't proof. It's a
+formality wearing a test case's row number.
+
+**Fidelity.** PQ-07, the peak-load and intended-use test, ran in the vendor's own staging
+environment, with the vendor's own staff, using the vendor's own dataset, during business hours.
+III.D's whole point is to validate "at your location using the same software, hardware, SOPs, and
+personnel who will use the system after it is formally implemented" — and at worst-case load, not
+a quiet weekday. This test proves the vendor's environment behaves. It doesn't prove
+Lakeshore's does.
+
+**Traceability (orphan).** REQ-045 — the in-house LIS-to-BECS translation script, finally given
+its own URS row after module 1 flagged its absence entirely — has no test ID at all. The row
+exists now; nothing traces to it. The one component with the least outside scrutiny behind it is
+still the one component nobody has actually tested.
+
+**Director-only catch.** IQ-02 records the database engine tested as version 14.3. The BECS
+change record from cutover weekend — in the CMDB, not the validation package — shows version
+14.4.2 as what was actually promoted to production. The guidance's own instruction is to validate
+in test and then "copy or move the file configuration on which you performed your validation into
+the production environment" (III.G). What ran in test and what's running now have to be provably
+the same thing; here they aren't. Nobody outside IT would think to pull the change record and
+cross-check it against the IQ sheet — but you would, because the CMDB is where "what's actually
+running" lives, and the package is only where "what we claim we tested" lives.
+
+**The non-gap.** OQ-142 failed on its first run. That's not, by itself, a problem — if you
+flagged it as one, reread it. It was logged as Validation Deviation VD-003, root-caused (a
+configuration timeout releasing the hold before the pending-result flag posted), fixed, and
+re-tested, with VD-003 referenced in the report. That's the guidance's deviation-SOP expectation
+(III.F) working as intended — the mirror image of VIA-0842's step 7 earlier in this curriculum, a
+test that failed and was silently re-run to green with no discrepancy note. Here the same kind of
+failure got the documentation treatment VIA-0842's didn't. Done this way, it's not a
+decision-trail concern. It's the system working.
+
+Five gaps, one non-gap, one catch only your background would make — a package that looks
+finished in several places and proves something in only some of them.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB assessor reading VAL-1203's file wouldn't stop at "there's a
+traceability matrix, there's test evidence, there are signatures." They'd pull three threads:
+does every high-risk requirement's test actually exercise the failure mode the requirement exists
+to prevent (not "is there a test," but "could this specific test have failed if the software were
+broken" — REQ-022's single normal-case trace fails that even though the row, the test, and the
+"Pass" all exist); does the IQ record match what's actually deployed in production right now
+(the cheapest check in the file, and the one most reviewers skip, because it means pulling a
+second document — a version mismatch here means the whole package hasn't been shown to describe
+the system actually running); and is every deviation dispositioned before the report declares
+success ("validated and ready for production use" next to an open, un-root-caused deviation is
+the kind of sentence an inspector reads once and writes down).
+
+A bad answer to "why does the report say validated with an open deviation" sounds like "that one
+was minor, we were confident it'd resolve fine." A good answer is: there is no good answer. It
+gets fixed before the report is final, not explained away after.
+
+## Common traps
+
+**"IQ, OQ, and PQ are each their own separate regulatory requirement, so the package is
+noncompliant without three distinct documents."** No FDA regulation or guidance sentence uses
+those three terms — the text quoted above talks about a validation plan, test-case anatomy,
+records, and a report. IQ/OQ/PQ packaging is industry's own way of organizing that content into
+a teachable structure. A package that proves installation matches spec, every function was
+tested under real conditions, and the system performs as intended at Lakeshore has satisfied the
+substance, whatever headings it uses. What genuinely *is* required: retaining the records
+themselves, and the guidance says so by citing actual regulation — 211.68(b), 211.100(b), and
+606.160(b)(5)(ii) — not by recommending it.
+
+**"The test passed, so the requirement is proven."** A pass only means something if the test
+could have failed. OQ-128's single nonreactive value and OQ-114's single complete-donation case
+both "passed," and both prove almost nothing — neither input was ever going to produce a fail
+result. A pass against a test never aimed at the failure mode isn't evidence. It's a box checked
+next to a row number.
+
+## What this means for your job
+
+- **Read the traceability matrix in both directions.** Forward: does every requirement touching
+  a critical function have at least one test? Backward: does every test actually tie back to a
+  real requirement, or is some of it effort spent proving nothing anyone asked for? An orphan in
+  either direction is a gap, not a formatting issue.
+- **For every "Pass," ask what result would have produced a "Fail."** If you can't answer that in
+  one sentence, the test wasn't designed to fail, and the pass tells you nothing.
+- **Cross-check the IQ record against the CMDB and the change record, every time.** This is the
+  one check a non-technical reviewer will reliably skip, and it's cheap: does the version tested
+  match the version actually promoted to production? If they don't match, nothing else in the
+  package can be trusted until that's reconciled.
+- **Never let a report's conclusion outrun its open items.** "Validated" and an undispositioned
+  deviation can't coexist in the same sentence. Send it back before co-signing, not after.
+- **When a test failed and was fixed, check that it's documented that way — not treat every
+  failure as automatically suspicious.** A logged deviation, a root cause, a fix, and a re-test
+  that references the deviation is the system working as designed. Learn to recognize that
+  pattern so you spend your scrutiny on the gaps that actually matter.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Someone on the upgrade project says, "FDA requires separate IQ, OQ, and PQ documents, so if VAL-1203 doesn't have three distinct, separately labeled packages, it's out of compliance." Accurate?
+
+No. Go back to the guidance text quoted in this lesson: it asks for a validation plan, defined
+test-case contents, retained records, and a report — it never names "IQ," "OQ," or "PQ." That
+three-way packaging is industry practice, used here because it's a clear, teachable structure,
+not because any regulation or FDA guidance mandates it by name. What *is* actually required,
+named exactly as such: retaining the validation records themselves. The guidance cites regulation
+for that — 21 CFR 211.68(b), 211.100(b), and 606.160(b)(5)(ii) — not a recommendation. So the
+headings are optional. Keeping the records isn't.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Of the gaps in VAL-1203's excerpt, one item — OQ-142 — isn't actually a defect. What makes it different from the others?
+
+OQ-142 failed on its first run, same as a real defect would. The difference is everything that
+happened next: logged as a validation deviation (VD-003), root-caused to a configuration
+timeout, fixed, re-tested, with the deviation referenced in the final report — the guidance's
+own expectation for handling validation deviations (III.F), done correctly. Compare it to
+VIA-0842's step 7 earlier in this curriculum, where a failed test was silently re-run to green
+with no discrepancy note — same surface event, opposite handling. Flagging OQ-142 would mean
+punishing the behavior you want more of. The real gaps are the ones that look clean on the
+surface, like REQ-022's single passing test, not the one honest about having failed once.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: IQ-02 says the database engine tested was version 14.3. Nothing in the matrix or the report flags that line. Why is it a gap anyway?
+
+A second record — the BECS change record in the CMDB, outside the validation package entirely —
+shows version 14.4.2 as what actually got promoted to production during cutover. The guidance's
+own instruction is to validate in a test environment and then move that exact configuration into
+production (III.G). If the version tested isn't provably the version running now, the package's
+"Pass" results don't tell you anything about the system Lakeshore actually operates. Nothing
+inside the validation document would surface this — it only shows up when you cross-check it
+against a second system of record, exactly the kind of check a non-technical reviewer has no
+reason to make, and you do.
+:::
+
+## Where this goes next
+
+You can now read executed evidence, not just a plan: tell a test that could fail from one that
+never really tried, read a traceability matrix in both directions, and catch a version mismatch
+a non-technical reviewer would miss entirely. What you haven't asked yet is a different question:
+what *is* BECS, legally, and what does a vendor's clearance for Release B actually tell you about
+the exact build running at Lakeshore? That's `becs-as-a-regulated-device`, next.
