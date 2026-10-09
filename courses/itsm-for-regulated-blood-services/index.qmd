@@ -1,0 +1,81 @@
+---
+title: "ITSM for Regulated Blood Services"
+order: 114
+---
+
+## The finish line
+
+By the end of this course you can crosswalk any ITIL (Information Technology Infrastructure
+Library) practice to its AABB Quality System Essential, NIST Risk Management Framework, and ISO
+27001 equivalent — and present IT service and risk performance to your CIO and the exec quality
+council in language that survives both audiences in the same meeting.
+
+This is the capstone, and it's built differently from every course before it. It introduces no new
+regulation, no new standard, no new framework. Everything it needs — AABB's QSEs, NIST's RMF, ISO
+27001's structure, BECS (Blood Establishment Computer Software) and its validation history, the
+eQMS (electronic quality-management system) and its own RMF-run authorization, the Brookfield
+laptop incident now read through three separate lenses — this curriculum has already built, taught,
+and locked. This course's entire job is synthesis: taking the vocabulary you already speak fluently
+in ITSM (IT service management) and proving, concretely, that it was never a fourth language. It was
+the same motion the whole time, in a dialect your CIO already understands.
+
+## Before you start
+
+This course assumes essentially everything else in the curriculum — it is deliberately built last,
+after every other track:
+
+- All three foundations, and [Quality System Essentials](../quality-system-essentials/index.qmd)
+  (change control, CAPA, document control, internal audits — all crosswalk targets this course
+  reuses, never re-teaches).
+- [CSV & BECS](../csv-and-becs/index.qmd) and
+  [Data Integrity & Records](../data-integrity-and-records/index.qmd), for BECS's own validated-
+  state lifecycle.
+- [GRC Frameworks & Risk Management](../grc-frameworks-and-risk-management/index.qmd), for the
+  eQMS's own categorize→select→implement→assess→authorize→monitor cycle and its POA&M-next-to-CAPA
+  crosswalk — already built once; this course generalizes it.
+- [Healthcare Security & Privacy](../healthcare-security-and-privacy/index.qmd) and
+  [Vendor & Third-Party Risk Management](../vendor-and-third-party-risk-management/index.qmd), for
+  the Brookfield incident and the device-management platform vendor, now crosswalked a fourth way.
+- [Directing the Quality Analyst](../directing-the-quality-analyst/index.qmd), for the audience-
+  translation instinct this course's final module builds all the way out.
+
+## The six modules
+
+Each module is one sitting, and each has its own finish line.
+
+1. **ITIL-to-QSE crosswalk: change and problem.** Map ITIL's change enablement practice onto
+   Lakeshore's own change control, and ITIL's problem management onto CAPA — proving they're the
+   same underlying discipline, not two practices that happen to rhyme.
+2. **ITIL-to-QSE crosswalk: CMDB and continual improvement.** Map a CMDB (configuration management
+   database) onto an equipment and validated-system inventory, a service catalog onto Lakeshore's
+   own quality-system scope, and continual improvement onto process improvement.
+3. **ITIL-to-GRC crosswalk.** Map service asset and configuration management onto RMF's Categorize
+   and Select steps, continual improvement onto Monitor, and security management onto ISO 27001's
+   Annex A control domains.
+4. **Building an inspection-ready service catalog and CMDB.** Apply all three crosswalks to build
+   one real artifact — a service catalog and CMDB entry for the eQMS — that would survive an FDA
+   inspection, an AABB assessment, *and* a security assessment without three different documents.
+5. **Translating ITSM and risk metrics for executive audiences.** Take the same underlying number
+   (an incident, a residual risk, a control gap) and present it in CIO language and exec-quality-
+   council language without changing what it actually means.
+6. **Presenting IT service and risk performance — the capstone exercise.** Put everything this
+   course and this curriculum built in front of both audiences at once, using the Brookfield
+   incident — read, by now, through four separate lenses — as the worked example, and close the
+   entire curriculum with a genuine final passage.
+
+## A note on sources
+
+This course introduces no new regulation, standard, or framework. Every citation it uses was
+already fetched, verified, and locked earlier in this curriculum:
+
+- **AABB's Quality System Essentials** (named/themed only, never Standards text) — reused from
+  `quality-system-essentials` and `fda-and-aabb-in-practice`.
+- **NIST SP 800-37 Rev. 2** (public domain, quoted verbatim where needed) — reused from
+  `grc-frameworks-and-risk-management`.
+- **ISO/IEC 27001** (paid standard, paraphrase-only) — reused from
+  `vendor-and-third-party-risk-management`.
+- **ITIL** itself is never treated as a cited regulatory source in this curriculum — it's the
+  learner's own professional vocabulary, used throughout every course as a bridge, not a standard
+  requiring verbatim sourcing.
+
+Modules appear in the sidebar as they're built.

@@ -79,14 +79,16 @@ originally shipped with all five modules at `order: 2`, so the sidebar fell back
 order instead of the intended sequence — since fixed). Each course's own plan file records the
 exact `order:` value for each of its files (course map, Phase 2, sets these); the next course
 picks up numbering exactly where the previous one left off. Current running total, updated after
-every course is scoped: **next unused value is 114** (`blood-center-operations` used 1–11;
+every course is scoped: **next unused value is 127** (`blood-center-operations` used 1–11;
 `quality-system-essentials` used 12–26; `directing-the-quality-analyst` used 27–39; `csv-and-becs`
 used 40–54, course complete, 7/7 modules published; `data-integrity-and-records` used 55–67,
 course complete, 6/6 modules published; `fda-and-aabb-in-practice` used 68–80, course complete,
 6/6 modules published; `grc-frameworks-and-risk-management` used 81–91, course complete, 5/5
 modules published; `healthcare-security-and-privacy` used 92–102, course complete, 5/5 modules
-published; `vendor-and-third-party-risk-management` used 103–113, course map scoped 2026-10-09,
-syllabus plus 5 modules, verified by grep with no duplicates before assigning).
+published; `vendor-and-third-party-risk-management` used 103–113, course complete, 5/5 modules
+published; `itsm-for-regulated-blood-services` used 114–126, course map scoped 2026-10-09,
+syllabus plus 6 modules, verified by grep with no duplicates before assigning — **this is the
+curriculum's final course; no further course is expected to continue after it**).
 Whoever runs Phase 2 for the next course: check this
 number, use it as that course's own `order:`, continue sequentially for its modules (two values
 per module — index.qmd and resources.qmd each get their own), and update this number here before

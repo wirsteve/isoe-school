@@ -1,0 +1,220 @@
+# `itsm-for-regulated-blood-services` — course plan
+
+Read this whole file before drafting any module. Update the module table and append a progress
+log entry after every module, same discipline as every other course in this curriculum. **This is
+the capstone — the curriculum's final course.**
+
+## Finish line
+
+Crosswalk any ITIL practice to its AABB QSE, NIST RMF, and ISO 27001 equivalents, and present IT
+service and risk performance to the CIO and the exec quality council in language that survives
+every audience.
+
+## Why this course exists, and what it must not re-teach
+
+This course is pure synthesis. It introduces **no new regulation, standard, or framework** — every
+citation it needs was already fetched, verified, and locked earlier in this curriculum. Its entire
+job is building the crosswalk between ITIL vocabulary (the learner's own professional background,
+used as a bridge throughout this curriculum, never itself treated as a cited standard) and four
+already-built vocabularies:
+
+- **AABB's Quality System Essentials** — named/themed only, `sources/aabb/qse-framework.md`,
+  reused from `quality-system-essentials` and `fda-and-aabb-in-practice`. Never quote Standards
+  text or invent a standard number — same discipline every prior course held to.
+- **NIST SP 800-37 Rev. 2** — `sources/nist/sp-800-37r2-excerpt.md`, U.S. government work, public
+  domain, safe to quote verbatim, reused from `grc-frameworks-and-risk-management`.
+- **ISO/IEC 27001** — paid standard, paraphrase-only, reused from
+  `vendor-and-third-party-risk-management`. Never quote ISO's own text or invent an Annex A
+  control number.
+- **Lakeshore's own already-built mechanics**: change control, CAPA, document control, internal
+  audits (`quality-system-essentials`); the eQMS's full categorize→select→implement→assess→
+  authorize→monitor cycle and its POA&M (`grc-frameworks-and-risk-management`); BECS's validation
+  lifecycle (`csv-and-becs`, `data-integrity-and-records`); the Brookfield incident, now already
+  crosswalked through `healthcare-security-and-privacy`'s own HIPAA-lensed investigation and
+  `vendor-and-third-party-risk-management`'s vendor-risk lens.
+
+**Through-line characters, reused, not re-established:** the Director (learner, second person
+"you"), the Quality Analyst ("she," competent, improving), the unnamed systems administrator
+("he"). Locations: Lakeshore's central site, Brookfield, Fairview.
+
+## This course's own scenario — locked once, here, for every module to share
+
+This course's running artifact is **the eQMS's own service catalog and CMDB entry** — built fresh
+in this course, using the eQMS (`grc-frameworks-and-risk-management`'s own running example,
+already fully categorized/selected/implemented/assessed/authorized/monitored in that course) as the
+system every crosswalk module applies its mapping to. The Brookfield incident and the device-
+management platform vendor relationship are reused as the course's own worked example for modules
+5-6 specifically (translating metrics, and the final capstone presentation), since that incident
+has now been built out in enough depth, across three prior courses, to make a genuinely rich
+closing exercise — **do not reopen or alter anything any prior course locked about it.**
+
+No calendar years in the Lakeshore narrative. Never name a real ITSM tool, CMDB product, or
+ticketing platform — describe generically.
+
+## Modules
+
+| # | Slug | Finish line | `order:` | Status |
+|---|---|---|---|---|
+| — | (syllabus) | — | 114 | Published |
+| 1 | `itil-to-qse-crosswalk-change-and-problem` | Map ITIL's change enablement onto Lakeshore's change control, and problem management onto CAPA. | 115/116 | Not started |
+| 2 | `itil-to-qse-crosswalk-cmdb-and-continual-improvement` | Map a CMDB onto an equipment/validated-system inventory, a service catalog onto quality-system scope, and continual improvement onto process improvement. | 117/118 | Not started |
+| 3 | `itil-to-grc-crosswalk` | Map service asset/config management onto RMF's Categorize/Select, continual improvement onto Monitor, and security management onto ISO 27001's Annex A domains. | 119/120 | Not started |
+| 4 | `building-an-inspection-ready-service-catalog-and-cmdb` | Apply all three crosswalks to build one real service-catalog/CMDB entry for the eQMS that survives an FDA inspection, an AABB assessment, and a security assessment at once. | 121/122 | Not started |
+| 5 | `translating-itsm-and-risk-metrics-for-executives` | Present the same underlying fact (an incident, a residual risk, a control gap) in CIO language and exec-quality-council language without changing what it means. | 123/124 | Not started |
+| 6 | `presenting-it-service-and-risk-performance` | The capstone exercise and the curriculum's closing module: present the Brookfield incident's full, four-lens history to both audiences at once, and close the entire curriculum. | 125/126 | Not started |
+
+This is the curriculum's final course. No further course continues after it — if a future session
+ever adds one, it would start at **127**.
+
+## Module-by-module guardrails and sourcing
+
+**m1 `itil-to-qse-crosswalk-change-and-problem`.**
+- Owns: two crosswalks, built concretely, not just asserted as analogous.
+  - **Change enablement ↔ change control.** ITIL's change enablement practice (assess a proposed
+    change's risk and impact, get it authorized by the right body, schedule and implement it,
+    review the outcome) mapped directly onto `quality-system-essentials`'s own change-control
+    module (request → impact/risk assessment → approval → implementation → verification,
+    reference only, don't redevelop). Name the real difference honestly: ITIL's change authority
+    is usually a CAB (change advisory board); Lakeshore's is Quality, specifically, as a required
+    approver — a narrower, regulation-shaped version of the same gate.
+  - **Problem management ↔ CAPA.** ITIL's problem management (root-cause analysis behind a
+    recurring incident, a known-error record, a permanent fix) mapped onto CAPA's own root-cause-
+    through-effectiveness-check structure (reference `quality-system-essentials`'s CAPA module,
+    don't redevelop). Name the real difference: a known-error record in ITIL can simply document a
+    workaround indefinitely; CAPA expects an actual effectiveness check with a stated criterion and
+    closure — a stricter standard of "done."
+- Does **not** own: CMDB/service-catalog mapping (m2); GRC crosswalk (m3).
+- Scenario: apply both crosswalks to a concrete, freshly-invented (not locked-fact) change and a
+  freshly-invented recurring incident at Lakeshore — drafter's choice of specifics, generic and
+  plausible, consistent with house rules.
+
+**m2 `itil-to-qse-crosswalk-cmdb-and-continual-improvement`.**
+- Owns: three crosswalks.
+  - **CMDB ↔ equipment/validated-system inventory.** A CMDB's configuration items (CIs) and their
+    relationships mapped onto AABB's own equipment-qualification and validated-system inventory
+    concept (QSE 3, Equipment — named/themed only, reused from `fda-and-aabb-in-practice`,
+    confirmed real in `sources/aabb/qse-framework.md`) and onto BECS's own validation lifecycle
+    (`csv-and-becs`, reference only).
+  - **Service catalog ↔ quality-system scope.** A service catalog's own listing of what IT actually
+    offers, to whom, at what service level, mapped onto a quality system's own defined scope of
+    activities (which processes Lakeshore actually runs, and what quality commitments attach to
+    each).
+  - **Continual improvement ↔ process improvement.** ITIL's continual improvement register mapped
+    onto AABB's own QSE 9 (Process Improvement Through Corrective and Preventive Action, named only,
+    reused from `sources/aabb/qse-framework.md`).
+- Does **not** own: change/problem crosswalk (m1, already built); GRC crosswalk (m3).
+- Scenario: build a real, if partial, CMDB entry and service-catalog entry for the eQMS specifically
+  — this is the first appearance of this course's own running artifact, picked up again in m4.
+
+**m3 `itil-to-grc-crosswalk`.**
+- Owns: three crosswalks against `grc-frameworks-and-risk-management`'s own already-built content
+  (reference only, don't redevelop the RMF cycle itself).
+  - **Service asset and configuration management ↔ Categorize/Select.** Knowing what you have and
+    what it's worth (ITIL) mapped onto RMF's own Categorize step (determining adverse impact to
+    confidentiality/integrity/availability) and Select step (sizing controls to that impact) —
+    both already built in depth for the eQMS in `categorize-and-select-controls`.
+  - **Continual improvement ↔ Monitor.** ITIL's standing commitment to keep checking mapped onto
+    RMF's own Monitor step (already quoted in full in `risk-frameworks-side-by-side` and applied in
+    `authorize-and-monitor`).
+  - **Security management ↔ ISO 27001 Annex A.** ITIL's security management practice mapped onto
+    ISO 27001's own Annex A control domains (paraphrase-only, reused from
+    `reading-an-iso-27001-certificate` — change management, access control, supplier relationships,
+    incident management, business continuity, asset management; no new control number invented).
+- Does **not** own: QSE crosswalks (m1/m2); the actual service-catalog/CMDB build (m4).
+- Scenario: apply all three mappings to the eQMS's own already-authorized state
+  (`grc-frameworks-and-risk-management`'s own locked facts: moderate-impact categorization, the
+  three control families, the POA&M'd access-review deficiency) — show that the eQMS's own RMF
+  history already *is* this crosswalk's proof of concept, not a new exercise.
+
+**m4 `building-an-inspection-ready-service-catalog-and-cmdb`.**
+- Owns: synthesis only, no new citation. Build one real, concrete artifact — the eQMS's own service-
+  catalog entry and CMDB entry, assembled from every crosswalk m1-m3 built — and show it actually
+  survives three different reviewers reading it: an FDA investigator (would it support a 483
+  response — reference `fda-and-aabb-in-practice`, don't redevelop), an AABB assessor (would it
+  support a QSE-based assessment — reference `the-aabb-assessment-process`, don't redevelop), and a
+  security assessor (would it support an ISO 27001 or SOC 2 review — reference
+  `vendor-and-third-party-risk-management`, don't redevelop). The real teaching point: one
+  well-built artifact, not three separate documents maintained in parallel for three audiences.
+- Does **not** own: the metrics-translation layer (m5); the final capstone presentation (m6).
+
+**m5 `translating-itsm-and-risk-metrics-for-executives`.**
+- Owns: synthesis only, no new citation. Take a single underlying fact — reuse the eQMS's own
+  locked POA&M entry (`grc-frameworks-and-risk-management`'s own locked finding: the quarterly
+  access-review control, implemented and documented, not yet exercised on its first cycle, accepted
+  as a named residual risk with a 30-day remediation commitment) — and present it two ways: in CIO
+  language (risk-accepted, remediation-dated, tied to business impact) and in exec-quality-council
+  language (a documented, time-bound nonconformance with an owner and a closure date, tied to
+  AABB/FDA expectations) — showing both presentations describe the *same* underlying fact, worded
+  for what each audience actually needs to act on it.
+- Does **not** own: the service-catalog/CMDB artifact (m4, already built); the full capstone
+  presentation (m6, which goes further and uses the Brookfield incident instead of the eQMS POA&M).
+
+**m6 `presenting-it-service-and-risk-performance`.**
+- This is the capstone module AND the curriculum's final module — write a genuine closing passage
+  for this course AND for the entire curriculum.
+- Owns: synthesis only, no new citation. The capstone exercise: present the Brookfield incident's
+  full history — now built across three prior courses (`healthcare-security-and-privacy`'s own
+  closed investigation; `vendor-and-third-party-risk-management`'s tiering/SOC 2/ISO 27001/BAA/
+  change-notification treatment of the same vendor) — to the CIO and the exec quality council at
+  once, in one presentation, using every crosswalk this course built (change/problem, CMDB/service
+  catalog/continual improvement, GRC, the inspection-ready artifact, the dual-audience metrics
+  translation). Do not reopen, alter, or re-resolve anything any prior course locked about that
+  incident — the final breach determination stays final, the encryption status stays permanently
+  unresolved, the root cause stays ranked exactly as `investigating-a-healthcare-data-incident` left
+  it. This module's job is presentation and synthesis, not new resolution.
+- Close with a genuine two-layer closing passage: first, this course's own five-module arc (change/
+  problem → CMDB/continual improvement → GRC → the inspection-ready artifact → metrics translation
+  → this capstone); second, and more significantly, **the entire curriculum's own arc**, named
+  plainly — foundations, Track 1 (blood center operations), Track 2 (quality systems and FDA/AABB
+  practice), Track 3 (CSV/BECS and data integrity), Track 4 (GRC, healthcare security/privacy,
+  vendor risk), Track 6 (directing the quality analyst), and this capstone tying all of it into one
+  shared vocabulary. State plainly that the curriculum is now complete — there is no next course —
+  and that the Director's own job, from here, is applying what's been built, not waiting for the
+  next module.
+
+## Sourcing notes
+
+**No new source needed for this entire course.** Every citation reuses an already-saved, already-
+verified file:
+- `sources/aabb/qse-framework.md` (QSE 3, QSE 4, QSE 9 — named/themed only).
+- `sources/nist/sp-800-37r2-excerpt.md` (the seven RMF steps, already quoted in full elsewhere —
+  reference, don't re-quote at length unless a specific module's own teaching point genuinely needs
+  a short, already-verified fragment restated, the same discipline `poams-and-capas` and
+  `vendor-change-notifications-and-your-own-change-control` already modeled for reusing a prior
+  quote without re-deriving it).
+- ISO/IEC 27001 — paraphrase-only, no new fetch, no new control number.
+- Every Lakeshore-internal mechanic (change control, CAPA, document control, the eQMS's own RMF
+  history, BECS's validation lifecycle, the Brookfield incident across three lenses) — reference
+  only, never redeveloped from scratch.
+
+**Still NOT verified anywhere in this curriculum. Don't assert:**
+- Any specific ITIL 4 practice's own official, copyrighted definition text — ITIL's general
+  vocabulary (change enablement, problem management, CMDB, service catalog, continual improvement,
+  service asset and configuration management, security management) is used throughout this
+  curriculum as the learner's own professional background knowledge, described in this curriculum's
+  own words, never cited to a specific AXELOS/PeopleCert publication or page number.
+- Any specific ISO 27001 Annex A control number (never verified anywhere in this curriculum).
+- Any specific AABB Standard number (never verified for QSE 3/4/9 anywhere in this curriculum).
+
+## Progress log
+
+- **2026-10-09**: Course scoped (Phase 1/2) by the orchestrating session itself (per
+  `create-course`'s instruction to run Phase 2 without delegating). Syllabus page
+  (`courses/itsm-for-regulated-blood-services/index.qmd`, `order: 114`) and this plan written. No
+  new source fetched — this course is pure synthesis across everything the curriculum already
+  built and locked. Key decisions: `curriculum.md`'s own module list named four broad topics (ITIL-
+  to-QSE crosswalk, ITIL-to-GRC crosswalk, an inspection-ready service catalog/CMDB, and executive
+  metrics translation) against a 6-module budget in the Recommended Sequence table; split the
+  ITIL-to-QSE crosswalk topic across two modules (m1: change/problem; m2: CMDB/service-catalog/
+  continual-improvement) to fit the slot count without thinning any single crosswalk, and added a
+  genuine capstone module (m6) as this curriculum's own final, closing module, distinct from m5's
+  narrower metrics-translation exercise. The eQMS (from `grc-frameworks-and-risk-management`) is
+  this course's own running artifact for its first five modules; the Brookfield incident (from
+  `healthcare-security-and-privacy` and `vendor-and-third-party-risk-management`) is reserved for
+  the capstone module specifically, where its now-three-lens history makes the richest possible
+  closing exercise. No locked fact from any prior course is to be reopened or altered anywhere in
+  this course — every module's guardrails say so explicitly. `.claude/skills/create-course/
+  SKILL.md`'s running order-counter updated to 127 (this course used 114-126, verified by grep with
+  no duplicates before assigning) — noted as the curriculum's final course; no further course is
+  expected to continue after it.
+  Next: build m1, `itil-to-qse-crosswalk-change-and-problem`.
