@@ -1,0 +1,325 @@
+---
+title: "Supplier Qualification and Risk Tiering"
+order: 104
+---
+
+## "Who actually qualified this vendor?"
+
+Your Quality Analyst (QA) asks it the way she asks every question that's about to be
+uncomfortable — calmly, in a planning meeting, with a folder already open on the table.
+"The device-management platform. The one from the Brookfield investigation. I pulled the
+vendor file to close out the loop on that module, and there isn't one. No qualification
+record, no risk assessment, no file at all. We buy devices from them, we run our
+enrollment policy through their console, and as far as I can tell we never actually
+decided what kind of vendor they are."
+
+You already know exactly why this question is landing now. Two courses ago, the
+Brookfield laptop went missing mid-migration, and the encryption question it raised is
+never going to close — not because anyone did anything wrong, but because a freshly
+imaged device went into travel service before its first compliance check ever finished,
+and the platform's own migration cut off the only window that check had to run in. That
+investigation was thorough. It named a root cause, ranked it against two others, and
+closed with an honest, permanent unknown. What it also did, without quite saying so out
+loud, was expose a second gap sitting one level up from the first one: Lakeshore has
+never formally tiered this vendor's risk, read what the vendor actually promises about
+its own security, or checked what the contract requires if something like this happens
+again.
+
+"So," your QA says, "before we go read their SOC 2 report or their ISO certificate —
+assuming they even have ones worth reading — shouldn't we first decide *how much* scrutiny
+this vendor actually deserves? And compared to what? We buy reagents and office supplies
+too. Nobody's asking for a security assessment on the toner contract."
+
+She's right, and she's also just described, without the vocabulary for it yet, exactly
+what this module is going to build: a tiering scheme. Not a security audit of one vendor.
+A reasoned, reusable way to decide, for *any* vendor, how much qualification it actually
+earns — so that the device-management platform's file isn't just filled in after the
+fact, but filled in because it genuinely belongs in the highest tier Lakeshore has, for
+reasons you can defend to an assessor.
+
+## Why this gap matters, and the ITSM bridge
+
+Name the failure mode first, because it's not "a vendor turned out to be insecure." It's
+simpler and more common than that: an organization lets its vendor relationships grow
+informally — procurement signs a contract, IT turns the service on, everyone moves on —
+with nobody ever asking "how much does it matter if this specific vendor's own security
+or availability fails?" That question doesn't need an incident to be worth asking. It
+needs to be asked *before* a vendor's migration leaves a device-level question nobody can
+ever answer. Lakeshore asked it two courses late. This module is where that stops being
+true.
+
+You already run a version of this discipline, under a name you know well: **supplier
+management**, one of ITIL's own practices. ITIL doesn't treat every supplier the same way
+either — a vendor backing a Tier 1 service gets a different contract review, a different
+SLA (service-level agreement) depth, and a different escalation path than a vendor
+supplying something the business barely notices if it's late. The mechanism is identical
+here. The only thing that changes is what "matters" means. In a generic ITSM shop,
+"matters" usually means uptime and cost. At a blood establishment, it means something
+sharper: does this vendor's own failure put e-PHI (electronic protected health
+information) at risk, touch a validated system FDA would ask about, or put a patient-
+facing process in jeopardy — with an AABB (Association for the Advancement of Blood &
+Biotherapies) assessor, not just an account manager, asking the follow-up questions.
+
+One more callback worth naming once, because it's the same reasoning wearing different
+clothes: `categorize-and-select-controls` asked whether an *internal* system's loss of
+confidentiality, integrity, or availability would be a limited problem or a serious one,
+and used that answer to size the eQMS's (electronic quality-management system's) own
+control set. This module asks the identical question about a *vendor* instead of a
+system Lakeshore runs itself. Same three-part lens, aimed outward.
+
+## The rule in plain English
+
+AABB's quality system expects a blood establishment to qualify and manage its suppliers
+and its customer agreements as a real, documented part of running a quality system — not
+as a purchasing decision made once and never revisited. That's not a throwaway
+expectation buried in a procurement policy. It sits inside AABB's own Quality System
+Essentials (QSEs), the ten-part structure this curriculum has already used to organize
+deviations, document control, change control, and internal audit. The supplier-and-
+customer element is **QSE 4**.
+
+Applied to your QA's question: Lakeshore doesn't need — and shouldn't try to build — one
+uniform qualification process applied identically to every vendor it has. What QSE 4
+actually expects is a *decision*, made on purpose and recorded, about which vendors need
+deep qualification and ongoing management, and which don't. The device-management
+platform vendor should have had that decision made the day Lakeshore started enrolling
+devices through its console. It didn't. Today you're making it, late, and applying it
+retroactively.
+
+## Citation decoder
+
+There's one entry in this table, and it works differently from every CFR citation this
+curriculum has decoded before it — read the last two columns carefully, because the
+difference is the lesson.
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| AABB QSE 4, "Supplier and Customer Issues" | "Quality System Essential four" — not a numbered standard, a named element of AABB's ten-part quality-system framework | **Thematic, not textual.** AABB's own framework names this element as the place suppliers get qualified and managed, and customer agreements get handled — but no specific numbered AABB Standard for it has been independently verified for this curriculum, and the element's own title has shifted slightly between editions (see below). Treat it as "this is the drawer this work goes in," not "here is the shall-statement to cite verbatim." | The decision Lakeshore never made about the device-management platform vendor, and the one you're making today for every vendor you tier. |
+
+## The actual text — and why there isn't any to quote
+
+Be precise about what AABB material backs this module, because overclaiming here is
+exactly the mistake this curriculum exists to avoid. `sources/aabb/qse-framework.md` is a
+structural note — it records the *names and themes* of AABB's ten QSEs, cross-verified
+against AABB's own public pages and two proposed, comment-period framework documents. It
+deliberately reproduces no "shall" requirement sentence, no glossary definition, and no
+standard number, because AABB Standards text is copyrighted and this curriculum has never
+independently verified a current, adopted edition's exact wording for this element.
+
+What the source file *does* establish, confidently: a supplier-and-customer element has
+existed in AABB's quality-system structure since the original 1997 QSE framework, and
+persists through the most recent proposed edition reviewed for this curriculum — under
+slightly different titles. The 2021 proposed framework called it "Supplier and Customer
+Agreements." The proposed 34th edition of AABB's *Standards for Blood Banks and
+Transfusion Services* called it "Suppliers and Customers." Both describe the same theme:
+qualifying and managing suppliers, and managing customer agreements. That title drift,
+small as it looks, is itself worth sitting with for a second: even AABB's own comment-
+period drafts don't agree on the exact wording from one edition to the next, which is
+exactly why this module names the element and its theme, and stops there, rather than
+inventing a precise sentence to attribute to AABB.
+
+So here's the honest version of this section, the one TEACHING.md's spine calls for even
+when the honest answer is "there's no verbatim text to give you": **AABB expects supplier
+qualification and management as a named part of its quality system. It does not, in any
+source this curriculum has verified, hand you a numbered standard or exact "shall"
+sentence to cite to an inspector.** What Lakeshore gets to build — and what the rest of
+this module builds — is its own reasoned tiering scheme that satisfies that expectation,
+not a checklist copied out of AABB's text, because no such checklist has been verified to
+exist in citable form.
+
+## Building Lakeshore's own tiering scheme
+
+Here's the actual work: a small number of tiers, built from factors that are true of a
+vendor regardless of what you've read about it yet, reasoned out loud rather than handed
+down.
+
+Four questions decide a vendor's tier. Ask all four, in order, for any vendor Lakeshore
+has:
+
+1. **Data touch.** Does this vendor touch PHI (protected health information) or e-PHI —
+   directly, or indirectly through data that's adjacent to a regulated record — at all?
+2. **System criticality.** Does this vendor support a validated system (anything
+   BECS-adjacent — Blood Establishment Computer Software) or Lakeshore's eQMS, the
+   system of record an assessor would actually pull evidence from?
+3. **Access level.** What can this vendor actually reach — logical or data access into
+   Lakeshore's own environment, or nothing more than physical delivery of equipment or
+   consumables with no system access at all?
+4. **Blast radius.** If this vendor's own security or availability fails, how far does the
+   damage spread — one shipment delayed, one lot affected, or every site at once?
+
+Three tiers, reasoned from those four answers rather than from a fixed point count,
+because a rigid scoring formula invites exactly the kind of box-checking this module is
+trying to avoid:
+
+- **High** — any meaningful "yes" on data touch *or* system criticality, paired with
+  logical/data access (not just physical access), where a failure's blast radius reaches
+  across sites or touches data confidentiality directly. This tier gets a full
+  qualification file: a documented decision, the vendor's own assurance evidence (SOC 2,
+  ISO 27001 — the next two modules), and contract terms reviewed specifically for this
+  vendor's risk, not boilerplate.
+- **Medium** — no data access and no direct touch on a validated system or the eQMS, but
+  the vendor's product or service still bears on a regulated process or product quality —
+  a failure here could plausibly produce a deviation, a CAPA, or a question from an
+  assessor, even with zero data exposure. This tier gets a lighter qualification record:
+  confirmation of what the vendor supplies, a basic quality agreement where relevant, and
+  periodic review — not the full assurance-report review High tier gets.
+- **Low** — no data access, no validated-system touch, and no plausible path from this
+  vendor's failure to a quality or compliance consequence. A failure here is an
+  operational inconvenience: a delay, a cost, nothing an assessor would ever ask about.
+  This tier gets a basic vendor record and nothing more.
+
+Notice what this scheme deliberately does *not* do: it doesn't tier a vendor by contract
+size, by how long Lakeshore has used them, or by how technical the product sounds.
+Those are exactly the instincts that let a vendor like the device-management platform
+slip through for years without a file — "we've used them forever" and "it's just device
+management" both sound like reasons to tier low, and both are wrong, for reasons the
+next section makes concrete.
+
+## Applying the tiers: four vendors, one honest comparison
+
+**The device-management platform vendor — High.** Walk all four questions straight
+through. Data touch: yes, and not hypothetically — `healthcare-security-and-privacy`
+already established that the devices this platform manages carry e-PHI-adjacent extracts
+off-site, which is the exact data the Brookfield laptop was carrying when it went
+missing. System criticality: the platform itself isn't BECS, but it manages the devices
+that carry BECS-adjacent extracts, which is adjacency with real teeth, not a stretch.
+Access level: logical and data access, not merely physical — enrollment records,
+check-in telemetry, remote lock-and-wipe commands, and the account data that moved
+through the platform's own migration. Blast radius: every enrolled device, at every site,
+at once — confidentiality exposure if the data an enrolled device carries is mishandled,
+and availability exposure if the platform itself goes down or a migration goes wrong
+again. Every one of the four questions lands on the high side. This vendor was never a
+borderline case. It was always High tier — the file just never got written.
+
+**A reagent and consumables supplier (invented, generic) — Medium.** This one earns its
+own paragraph because it's the instructive middle case, not the easy contrast. Data
+touch: none — this vendor never sees a donor record, a test result, or anything
+resembling PHI. System criticality: also no direct touch — it doesn't run a BECS-adjacent
+system or the eQMS. But stop there and you'd tier it Low, and that's the honest trap:
+reagent quality bears directly on testing accuracy, which bears directly on a regulated,
+GMP (good manufacturing practice)-governed process. A bad lot doesn't expose data; it can
+produce an invalid test run, a deviation, and a CAPA with a vendor-caused root cause.
+Blast radius: real, but bounded to a lot or a site, not multi-site and not a
+confidentiality event. No data access, no system touch, but a genuine quality-process
+stake — exactly the combination that earns Medium instead of either extreme.
+
+**A facilities and janitorial services vendor (invented, generic) — Low, with a named
+condition.** Data touch: none. System criticality: none. Access level: physical presence
+in the building, but — as currently contracted — limited to common areas, not server
+rooms, testing areas, or anywhere BECS or eQMS infrastructure actually sits. Blast
+radius: a missed cleaning cycle, a scheduling delay — genuinely operational, nothing an
+assessor would ask about. Low tier is the right call *as long as that physical-access
+boundary holds*. The honest condition worth recording in the vendor file itself: if this
+vendor's contract ever expands to include access to a restricted equipment or server
+area, that's a trigger to re-run all four questions, not an assumption that Low stays Low
+forever.
+
+**An office-supplies vendor (invented, generic) — Low.** Data touch: none. System
+criticality: none. Access level: a delivery dock, nothing further. Blast radius: a
+delayed shipment of paper and toner. This is the case your QA already had the right
+instinct about — nobody needs a security assessment on the toner contract, and this
+scheme says so explicitly instead of leaving it to common sense alone.
+
+Lay all four side by side and the pattern is the whole point: tier tracks *data touch,
+system criticality, access level, and blast radius* — not contract size, not how long
+Lakeshore has used the vendor, and not how "technical" the vendor's product sounds. A
+reagent supplier that never logs into anything still outranks a facilities vendor who
+walks the building every day, because the question isn't who's physically closer — it's
+what actually breaks, and how far the break reaches.
+
+## What an assessor would actually look for
+
+An AABB assessor asking about QSE 4 wouldn't accept "we have contracts with our vendors"
+as an answer, and wouldn't expect to see identical scrutiny applied to all of them
+either. What they'd actually want to see is a **tier decision for every vendor, dated and
+reasoned**, plus evidence the tier was actually acted on — a High-tier vendor with an
+actual qualification file (not just a purchase order), a Medium-tier vendor with the
+lighter record the scheme calls for, and a Low-tier vendor with at least a basic record
+showing someone made the call on purpose. The weak answer sounds like "we've used this
+vendor for years, they're fine." The credible answer sounds like the four-question
+walkthrough above, written down, with the device-management platform vendor's own file
+now showing exactly why it landed High — and a dated note on when that decision was
+actually made, since "we tiered it after an incident exposed the gap" is a materially
+different, and still defensible, story than pretending the file always existed.
+
+## Common traps
+
+**"If a vendor doesn't touch data directly, it's automatically Low."** The reagent
+supplier above is the direct refutation. A vendor with zero data access can still land in
+Medium, or even High in a different scenario, if its product or service bears directly on
+a validated or regulated process. Data touch is one of four questions, not the only one.
+
+**"We've used this vendor forever without a problem, so they must be low-risk."** This is
+precisely the reasoning that left the device-management platform vendor untiered for as
+long as it was. Tenure and track record aren't inputs to this scheme at all — a vendor
+earns its tier from what it can touch and how far its failure reaches, not from how
+familiar it's become. A vendor can be perfectly reliable and still be High tier, because
+tier describes exposure, not trust.
+
+## What this means for your job
+
+- **Ask your QA for a tier on every vendor Lakeshore actually has, not just the ones that
+  feel risky.** The device-management platform vendor felt routine for years. That's
+  exactly the profile of a vendor worth tiering formally instead of trusting instinct.
+- **Treat "we've always used them" as a non-answer when someone asks why a vendor is
+  tiered the way it is.** The only acceptable answer traces back to the four questions:
+  data touch, system criticality, access level, blast radius.
+- **Watch for scope creep on a Low or Medium vendor's access**, the way the facilities
+  vendor's contract could quietly expand into a restricted area. A tier isn't permanent —
+  it's a snapshot that needs re-checking whenever what the vendor can actually reach
+  changes.
+- **Expect High tier to come with real homework, not a label.** The next three modules —
+  reading a SOC 2 report, reading an ISO 27001 certificate, and confirming whether a
+  Business Associate Agreement (BAA) is actually in place — are what a High-tier vendor
+  owes Lakeshore. A tier with no follow-through behind it is just a word in a spreadsheet.
+- **Don't wait for an incident to build the file.** This module exists because Brookfield
+  forced the question. The entire point of a tiering scheme is that the next vendor like
+  this one gets tiered *before* its migration leaves an unresolved question on your desk,
+  not after.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA asks, "Can I cite a specific AABB Standard number for QSE 4 the next time an assessor asks why we tiered this vendor High?" What do you tell her?
+
+No — and say so plainly rather than inventing one to sound more prepared. This
+curriculum has verified AABB's QSE 4 as a named, themed element of its quality-system
+framework — "Supplier and Customer Issues" (titled slightly differently across proposed
+editions) — but has not independently verified a current, adopted Standard number or
+exact "shall" text for it. What you cite to an assessor is Lakeshore's own reasoned
+tiering decision, which is exactly what QSE 4 expects to exist; the specific standard
+number, if one is ever needed for a formal citation, has to be confirmed against whatever
+edition is actually on the shelf before anyone states it as fact.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: The reagent supplier never accesses any Lakeshore system and never touches a donor or patient record. Why isn't it Low tier, the same as the office-supplies vendor?
+
+Because tier doesn't track data access alone — it tracks blast radius too, and this
+vendor's blast radius runs through product quality, not data. A defective reagent lot can
+produce an invalid test result, a deviation, and a CAPA with a vendor-caused root cause,
+even though no data ever moved. The office-supplies vendor's worst failure is a delayed
+shipment with no bearing on any regulated process at all. Same "no data access" answer,
+genuinely different blast radius — which is exactly why the scheme asks about blast
+radius as its own, separate question instead of treating "no data access" as the whole
+answer.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Does tiering the device-management platform vendor as High, today, retroactively change anything about the Brookfield incident's own final determination?
+
+No, and don't let anyone imply otherwise. `healthcare-security-and-privacy` closed that
+incident with a final breach determination, a ranked root cause, and an honestly
+unresolved encryption question — none of that is reopened, revisited, or changed by
+tiering this vendor now. What today's work does is forward-looking: it makes sure the
+*next* vendor like this one gets a documented risk decision before an incident forces the
+question, and it sets up the next three modules to actually read what this vendor's own
+contract and assurance reports say. The past incident stays exactly where that course
+left it.
+:::
+
+## Where this goes next
+
+The tier is set; the homework a High-tier vendor owes Lakeshore isn't done yet. The next
+module, `reading-a-soc-2-report`, is where you actually open the device-management
+platform vendor's own SOC 2 report for the first time — and find out whether what it says
+about its own controls lines up with what this tier just demanded of it.

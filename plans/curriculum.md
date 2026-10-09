@@ -273,11 +273,26 @@ has no `plans/<slug>.md` file until its first session.
 | `fda-and-aabb-in-practice` | 6 / 6 | Done |
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
 | `healthcare-security-and-privacy` | 5 / 5 | Done |
-| `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
+| `vendor-and-third-party-risk-management` | 1 / 5 | In progress |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `vendor-and-third-party-risk-management` (Track 4, Phase 9) — build its first
-module. `healthcare-security-and-privacy` is now **5/5 and complete** — see
+**Next up:** `vendor-and-third-party-risk-management` module 2, `reading-a-soc-2-report`
+(Track 4, Phase 9). Module 1, `supplier-qualification-and-risk-tiering`, is published — see
+`plans/vendor-and-third-party-risk-management.md`'s progress log for the full detail, but in
+short: AABB's QSE 4 ("Supplier and Customer Issues," named/themed only, no Standards text or
+standard number) grounded a reasoned, three-tier vendor risk scheme — **High / Medium / Low**,
+decided by four questions (data touch; system criticality — BECS-adjacent or eQMS; access level
+— logical/data vs. physical-only; blast radius). **Locked vendor placements module 2 picks up
+directly:** the device-management platform vendor is **High** tier (data touch: yes, manages
+devices carrying e-PHI-adjacent extracts off-site, per `healthcare-security-and-privacy`'s own
+locked Brookfield facts, not reopened here; system criticality: BECS-adjacent; access level:
+logical/data access — enrollment, telemetry, remote lock/wipe, migration; blast radius:
+multi-site, confidentiality and availability). Three invented, generic contrast vendors were
+also tiered: a reagent/consumables supplier (**Medium** — no data access, but bears on a
+GMP-governed testing process), a facilities/janitorial vendor (**Low**, conditioned on its
+physical access staying out of restricted/server areas), and an office-supplies vendor
+(**Low**). Module 2 now opens this High-tier vendor's own SOC 2 report for the first time.
+`healthcare-security-and-privacy` is now **5/5 and complete** — see
 `plans/healthcare-security-and-privacy.md`'s progress log for the full course, including module
 5's final state: Lakeshore's one running incident (a Brookfield staff member's work laptop, lost
 in a shared ride, carrying a six-field, ~212-donor BECS extract) is now fully closed out. Module

@@ -1,0 +1,32 @@
+---
+title: "Resources"
+order: 105
+---
+
+This module cites no AABB Standards text — QSE (Quality System Essential) 4 is named and
+themed only, the same handling this curriculum gives every AABB Standard. The links below
+are AABB's own public pages describing the framework this module's tiering scheme sits
+under, plus the internal-course link back to the incident this module's running example
+reuses. All were checked and loading at the time this page was written.
+
+- **[AABB: Updated Quality Systems Essentials](https://www.aabb.org/standards-accreditation/standards/about-aabb-standards/updated-quality-systems-essentials)**
+  — AABB's own public page confirming the ten-element Quality System Essentials structure
+  (QSE 4 is "Supplier and Customer Issues," the element this module applies) and that all
+  current AABB Standards are built on this template. Read it for the structure, not a
+  specific standard number — this page doesn't enumerate the ten element titles itself.
+
+- **[AABB: Proposed 34th Edition of *Standards for Blood Banks and Transfusion
+  Services*](https://www.aabb.org/docs/default-source/default-document-library/standards/proposed-34th-edition-of-standards-for-blood-banks-and-transfusion-services.pdf?sfvrsn=8d0d4f7b_0)**
+  (PDF) — a proposed, comment-period edition, not confirmed as currently adopted text, but
+  the clearest publicly available document naming all ten QSE-aligned chapters, including
+  "Suppliers and Customers." Useful if you want to see the supplier-and-customer element
+  named inside an actual (proposed) Standards document, rather than taking this lesson's
+  paraphrase on faith. Do not cite a chapter or standard number from this PDF as current,
+  adopted AABB text — it's a comment-period draft.
+
+- **[Investigating a Healthcare Data Incident](../../healthcare-security-and-privacy/investigating-a-healthcare-data-incident/index.qmd)**
+  — the final module of `healthcare-security-and-privacy`, where the device-management
+  platform vendor, the Brookfield laptop, and the permanently unresolved encryption
+  question were all first established. Read it (or re-read it) before module 2 — this
+  course's SOC 2 and ISO 27001 modules assume you remember exactly what that investigation
+  did and didn't resolve.
