@@ -1,0 +1,295 @@
+---
+title: "Translating ITSM and Risk Metrics for Executives"
+order: 123
+---
+
+## Two meetings, one Tuesday
+
+Your calendar for Tuesday has two blocks that used to make you nervous in different ways. At
+10:00, your CIO (chief information officer) wants fifteen minutes on "where things stand" with
+the eQMS (electronic quality-management system) before he signs off on this quarter's risk
+register. At 2:00, you're presenting the same system's status to the exec quality council —
+Quality leadership, the Medical Director, Compliance — as part of their own standing review.
+
+Same system. Same week. Two audiences who have never sat in the same room for this conversation
+and, this quarter, don't need to — except that the thing you tell them has to be the *same thing*,
+or you have a problem far worse than either meeting going badly.
+
+Here's what you're actually walking into both rooms with: one open item. The eQMS's quarterly
+access-review control — the check that catches a stale account or a mismatched permission before
+it sits unnoticed — is built, documented, and sitting on the record as `grc-frameworks-and-
+risk-management` left it: implemented, not yet exercised on its first scheduled cycle, accepted by
+you as a named, time-bound residual risk with a 30-day remediation window. Nothing about that fact
+has changed since the day you authorized it. What changes, room to room, is what each audience
+needs to *do* with it.
+
+Your Quality Analyst (QA) catches you reviewing both decks the night before. "These don't read
+anything alike," she says, flipping between them. You brace for a problem — until she finishes the
+sentence. "Good. They shouldn't. They just can't disagree."
+
+That's the whole job of this module: tell the same fact twice, correctly, to two rooms that care
+about different things — without ever letting "different things" slide into "different stories."
+
+## Why this matters — and the ITSM bridge
+
+Name the failure this module exists to prevent, because it's not the one people usually picture.
+The failure isn't telling the CIO bad news. It's telling the CIO and the quality council
+*inconsistent* news — the same underlying fact, described with a different owner, a different
+date, or a different severity, because each deck got written to sound good to its particular
+audience instead of translated from one shared set of facts. The moment anyone — an auditor, an
+assistant who sits in both meetings, your own QA cross-checking two decks the night before —
+compares the two tellings and finds them sitting even slightly apart, every number in both decks
+becomes suspect. Not just this one. All of them, going forward. That's not a bad meeting. That's a
+credibility problem that outlives the meeting by years.
+
+You already own two ITSM (IT service management) concepts that, read together, are exactly this
+discipline. `coaching-and-reporting-upward` already taught you to spot a **"watermelon" report** —
+green on the summary tile, red the moment you open the ticket underneath — and to separate
+**system measures from personal performance measures**, because the instant a system number
+becomes someone's personal target, people stop reporting it honestly. This module is the same
+instinct, aimed sideways instead of upward: not *which* numbers you report, but *how the same
+number sounds* in two rooms that measure success differently. Think of it as **audience
+segmentation**, a concept you already run constantly in IT communications — the same outage gets a
+two-line banner for end users, a detailed timeline for the service desk, and a full post-incident
+review for the CAB (change advisory board). Nobody calls that spin. It's spin only the moment the
+*facts* differ between audiences, not just the framing.
+
+One more piece of vocabulary worth being precise about, because this module will lean on it hard:
+a **nonconformance**, in AABB's (Association for the Advancement of Blood & Biotherapies) Quality
+System Essentials (QSE) vocabulary, is a finding that something didn't meet a defined requirement —
+graded by severity, tracked to closure. This item isn't quite that, and getting the distinction
+right matters for both rooms: nothing has gone wrong yet. The access review hasn't failed; it
+simply hasn't run its first cycle. That's a genuine difference from a CAPA (corrective and
+preventive action), which `poams-and-capas` already drew precisely — and it's a difference you'll
+need to hold onto in both meetings, not soften in one and sharpen in the other.
+
+## The rule in plain English
+
+One fact. Two translations. Zero daylight between them on anything that actually matters: what the
+finding is, who owns it, what the date is, and what happens if the date passes.
+
+Translating for an audience means choosing what to **emphasize** and what to **leave in the
+appendix** — a CIO doesn't need AABB's vocabulary explained to him line by line; a quality council
+doesn't need a primer on NIST's (National Institute of Standards and Technology) RMF (Risk
+Management Framework) task numbering. Translating never means choosing what to **change**. The
+finding, the owner, the date, and the current status are not translatable content — they're the
+fixed point both versions orbit. Everything else — which details lead, which get a sentence versus
+a paragraph, which framework's vocabulary carries the explanation — is where the actual
+translation work happens.
+
+## A note on citations: none new, one fact reused exactly
+
+This module introduces no new regulatory source, standard, or framework — the same discipline this
+entire course has held since module 1. It draws on exactly one piece of already-locked content:
+`poams-and-capas`'s own finished POA&M (plan of action and milestones) entry for the eQMS, built in
+`grc-frameworks-and-risk-management` from NIST SP 800-37 Rev. 2's Task A-6 and never altered since.
+Nothing below reopens that entry, adds a field to it, or restates it differently than the source
+module built it. Read `poams-and-capas` for the verbatim NIST text and the full reasoning behind
+every field; this module only translates the finished table, field for field.
+
+## The one fact, read verbatim from the record
+
+Before either translation, here's the actual source both of them have to match — quoted exactly as
+`poams-and-capas` built it, not paraphrased, not re-decided:
+
+| Field | Locked entry |
+|---|---|
+| **Finding / deficiency** | The quarterly eQMS access-review control (account and identity management) is implemented and documented, but has not yet been exercised on its first scheduled cycle. |
+| **Planned action** | Run the first quarterly access review against the eQMS's current account list, across all three sites, and report the results. |
+| **Resources required** | The systems administrator's own time; the review mechanism already exists from Implement — no new tool, budget, or staffing. |
+| **Recommendation for completion** | After authorization — the Director authorized the eQMS for production now, with this action scheduled to follow, not a precondition to go-live. |
+| **Owner** | The systems administrator. |
+| **Milestone / scheduled completion date** | Within 30 days of the Director's authorization decision. |
+| **Reviewed and accepted by** | The Director, as Lakeshore's own authorizing official. |
+| **Status / closure rule** | A clean result closes the acceptance. A finding becomes a new, immediate finding on its own record. If the 30-day date passes with no review run, the authorization itself is reopened. |
+
+Every word in both briefings below has to trace back to one of these eight rows. If a sentence in
+either deck can't point to a row in this table, it doesn't belong in the deck — it's invented, and
+invented content is exactly what turns a translation into two different stories.
+
+## Translation one: briefing the CIO
+
+Your CIO is smart, cares about risk and cost, and doesn't know AABB or FDA (Food and Drug
+Administration) specifics — he needs the fact converted into business risk, operational exposure,
+a dated commitment, and a trigger that tells him when this becomes his problem before it already
+is one.
+
+Here's what you actually say, in the room, in under a minute:
+
+> "One open item on the eQMS risk register this quarter. The quarterly access review that's
+> supposed to catch a stale account or a mismatched permission across our three sites is built and
+> ready, but it hasn't run its first cycle yet. I accepted that as a time-bound risk, not an open
+> one — the systems administrator runs the review within 30 days of go-live, using the tool we
+> already built, so there's no new budget ask and no new timeline risk to anything else we're
+> running. If it comes back clean, this item closes. If it finds something — one stale account,
+> one wrong permission — that becomes its own tracked item on its own timeline, not something we
+> pretend we already caught. The only thing that puts this back on your desk unscheduled: if the
+> 30 days pass and the review hasn't run. That reopens my own authorization decision for the whole
+> system, and you'd hear about it the same day."
+
+Notice what this version leads with and what it skips. It leads with **operational exposure in
+plain terms** (a stale account sitting undetected on a system that holds CAPA records and audit
+logs across three sites), **the dollar and schedule impact** (none — no new spend, no new
+timeline), **the date**, and **the specific trigger that would escalate to him**. It skips AABB's
+vocabulary entirely and never says the word "nonconformance" — not because the finding is being
+softened, but because that word doesn't help a CIO act on this; "reopens the authorization" does.
+
+A risk-register line reads the same way, compressed to the format he actually reviews:
+
+| Risk register field | Entry |
+|---|---|
+| **Item** | Unreviewed access control, eQMS, all three sites |
+| **Status** | Accepted, time-bound (not open/unmitigated) |
+| **Owner** | Systems administrator |
+| **Target date** | 30 days from authorization |
+| **Cost/schedule impact** | None — existing mechanism, no new resourcing |
+| **Escalation trigger** | Date missed → system authorization reopened → Director notifies CIO same day |
+| **Decision needed from CIO today** | None — informational only, unless the trigger fires |
+
+## Translation two: briefing the exec quality council
+
+The same room, the same week, needs the same fact dressed in a completely different vocabulary —
+and needs to hear, explicitly, that it isn't a CAPA, because this council will reach for that word
+the instant you say "gap."
+
+> "One item to flag on the eQMS, tracked as a time-bound control gap against account and identity
+> management, not a nonconformance and not a CAPA — nothing has deviated; the access-review control
+> simply hasn't completed its first scheduled cycle yet. It's tracked the same way NIST's own
+> framework tracks an item like this: a POA&M, sitting right next to our CAPA log in rigor,
+> though it isn't identical in structure — it doesn't carry CAPA's own required root-cause analysis
+> or formal effectiveness check, because nothing has happened yet that would need either one. Owner
+> is the systems administrator. Closure date is 30 days from my own authorization sign-off, which is
+> already on record. If the review comes back clean, the item closes on that record. If it finds
+> something — a stale account, a wrong permission — that becomes a new, separately tracked finding,
+> not folded quietly into this one. If an AABB assessor or FDA investigator ever asks about the
+> eQMS's own control state between now and then, this entry is the answer: a self-identified,
+> actively tracked item, not something we'd be catching cold."
+
+This version leads with **AABB/FDA framing** (is this a nonconformance? no — and here's precisely
+why not), **the audit-trail implication** (this is the artifact that answers an assessor's
+question, the same point `building-an-inspection-ready-service-catalog-and-cmdb` already proved
+about a self-identified gap grading better than one found cold), and **the same owner and date**,
+stated with equal weight, not buried. It skips cost and schedule impact almost entirely — the
+council doesn't evaluate this item on budget; it evaluates whether Lakeshore's own control
+discipline would survive a reviewer's question.
+
+## Side by side: same facts, different emphasis
+
+| | CIO needs to hear | Quality council needs to hear |
+|---|---|---|
+| **The finding itself** | Unreviewed access control, 3 sites — identical wording either way | Identical wording — a control gap, not yet a nonconformance |
+| **Owner** | Systems administrator | Systems administrator — same name, same sentence |
+| **Closure date** | 30 days from authorization | 30 days from authorization — same date, same number |
+| **What closes it** | A clean review result | A clean review result — identical closure rule |
+| **What a miss produces** | A new tracked item, its own timeline | A new finding, tracked on its own record |
+| **Escalation trigger** | Missed date reopens the authorization → reaches the CIO that day | Missed date reopens the authorization → would be the exact thing an assessor asks about if found unreported |
+| **Primary framing** | Business/operational risk, cost, schedule | AABB/FDA vocabulary, audit-trail defensibility |
+| **What's emphasized** | No new budget, no new timeline risk | Not a CAPA, not a nonconformance — a self-identified, time-bound item |
+| **What's de-emphasized (but never hidden)** | NIST vocabulary, POA&M-versus-CAPA structure | Dollar cost, schedule impact |
+
+Read the middle three rows again, because they're the whole point: **owner, date, and closure
+rule never move.** Everything above and below those rows is a legitimate difference in what each
+audience needs emphasized. Those three rows are not a place to exercise judgment about framing —
+they're the fixed facts that make both tellings the same story.
+
+## What an assessor or your CIO would actually look for
+
+Here's the check that actually catches a bad translation, and it's simpler than it sounds: **put
+both decks next to each other and read only the owner, the date, and the closure rule.** An AABB
+assessor pulling your management-review minutes alongside your IT risk register would do exactly
+this — not because she suspects dishonesty, but because cross-checking two records that describe
+the same system is a completely ordinary part of how a thorough assessment works. If the systems
+administrator's name, the 30-day date, or the closure criterion differ by even a detail between
+the two documents, that mismatch itself becomes the finding — not the underlying access-review gap,
+which was always a defensible, well-managed item, but the fact that Lakeshore's own records about
+it don't agree. A bad answer, in that moment, sounds like "oh, that's just how we phrased it for
+that audience." A reviewer hears that sentence as evidence that framing and facts aren't being kept
+separate anywhere else in your records either.
+
+Your CIO would make the identical check, for a different reason: if he ever compares notes with
+the Medical Director or Compliance and hears a different severity, a different date, or a different
+owner than the one you gave him, the damage isn't to this one risk item. It's to every number you
+bring him afterward.
+
+## Common traps
+
+**"Translating for the audience means softening it for whichever room is less technical."** No —
+and this is the trap this entire module exists to name. Softening changes the *severity*; framing
+changes the *vocabulary*. The CIO version above doesn't downplay the finding — it states plainly
+that a miss reopens the system's own authorization. The quality-council version doesn't inflate it
+into a nonconformance it isn't. Both versions carry the identical weight of the identical fact.
+If you ever catch yourself making one version sound more serious or less serious than the other to
+manage a room's reaction, you've stopped translating and started spinning — and the two decks will
+eventually meet each other.
+
+**"Since the CIO doesn't know AABB vocabulary, I can simplify by changing the date or the owner to
+make the explanation cleaner."** Also no. Simplify the *explanation* — skip RMF's task numbering,
+skip CAPA's effectiveness-check structure where it isn't needed. Never simplify the *facts*. A
+date, an owner, and a closure rule are not complicated enough to need rounding off, and rounding
+them off is exactly the kind of small inconsistency a careful reviewer catches first.
+
+## What this means for your job
+
+- **Before any briefing leaves your hands, write the fixed row first — finding, owner, date, status
+  — and check every other sentence in the deck against it.** If a sentence can't trace back to that
+  row, it's invented, not translated.
+- **Lead each version with what that audience needs to act on, not with a watered-down version of
+  the whole record.** A CIO acts on cost, schedule, and escalation triggers. A quality council acts
+  on AABB/FDA framing and audit-trail defensibility. Neither needs the other's lead paragraph, but
+  both need the same facts underneath it.
+- **Say explicitly, in the quality-council version, what this is not** — not a CAPA, not yet a
+  nonconformance — the same precision `poams-and-capas` built the distinction with. A vague "this
+  is sort of like a deviation" invites exactly the kind of confusion a sharp council member will
+  catch and ask about.
+- **Before you walk into either room, imagine the other room's deck sitting open next to it.** If
+  anything you're about to say would read as a different story next to the other version, fix it
+  before the meeting, not after someone notices.
+- **Treat a self-identified, consistently-described item as the asset it actually is.** The same
+  finding, told the same way twice, is evidence of a functioning control environment. Told two
+  different ways, it becomes evidence of the opposite — regardless of how well-managed the
+  underlying item actually is.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA asks whether the exec-quality-council briefing should call this item a "nonconformance" to make sure Quality leadership takes it seriously. Should it?
+
+No — and this is worth being precise about, not just cautious. Nothing has deviated: the access-
+review control is implemented and documented; it simply hasn't completed its first scheduled cycle
+yet. Calling it a nonconformance would overstate the fact to make the room react more strongly,
+which is exactly the kind of "translation" that's actually spin. The honest version — a time-bound
+control gap, tracked with the same rigor a nonconformance would require (named owner, closure date,
+defined closure rule) but not itself one — takes the finding seriously without inventing a severity
+that isn't there.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Does NIST, AABB, or FDA require Lakeshore to brief this item to the CIO and the exec quality council in two separately worded versions?
+
+No. Nothing in NIST's RMF, AABB's QSE framework, or FDA regulation specifies how Lakeshore
+communicates an accepted residual risk to its own internal audiences, or requires two versions at
+all — Lakeshore could, in principle, read the exact same POA&M table aloud in both rooms. Building
+two translated versions is Lakeshore's own choice, made because each audience acts faster and more
+confidently on a version that speaks its own vocabulary — not because any regulator or standard
+demands a dual-audience briefing format.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A colleague suggests that since the CIO's version never uses the word "nonconformance," it must be describing a less serious issue than the quality council's version. Is that colleague right?
+
+No. The word choice reflects vocabulary, not severity. Both versions describe the identical
+finding, owned by the identical person, closing on the identical date, under the identical closure
+rule. The CIO's version is phrased in cost/schedule/escalation terms because that's what he acts
+on; the quality council's version is phrased in AABB/FDA terms because that's what it acts on. If
+the actual severity differed between the two tellings — a faster date in one, a softer owner in the
+other — that would be the real problem this module is built to catch, not a matter of which words
+got used.
+:::
+
+## Where this goes next
+
+You've now taken one fact and proven it survives two translations without becoming two stories.
+The next module is the harder version of the same exercise: the Brookfield incident's full,
+four-lens history, presented to the CIO and the exec quality council at once, in one room, using
+every crosswalk this course has built — and it's this course's capstone, and this curriculum's
+final module.
