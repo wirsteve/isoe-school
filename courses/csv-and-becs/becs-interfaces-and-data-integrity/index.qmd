@@ -1,0 +1,409 @@
+---
+title: "BECS Interfaces and Data Integrity"
+order: 53
+---
+
+## Six boundaries, one last review
+
+VAL-1203 — Lakeshore's upgrade of BECS (Blood Establishment Computer Software) to the vendor's
+next major release, Release B — has been live for a full quarter now. The periodic review closed
+last module with a real finding: VIA-0842's twelve tests were never shown adequate, because nobody
+ever wrote the regression analysis that should have scoped them. Remediation is already running —
+a regression-analysis requirement for every future OS-patch VIA (validation impact assessment,
+the term this course has used since module 1 for the document that decides whether a change needs
+new testing), plus targeted supplemental testing aimed at the three places that analysis would
+have reached: instrument interfaces, the hospital interface, and label-print timing under peak
+load.
+
+That supplemental testing is this module's subject. Your Quality Validation Lead brings you one
+more document before calling VAL-1203 fully closed out: a short section of the validation report,
+written specifically about BECS's interfaces — every boundary where data crosses from one system
+into BECS, or out of BECS into something else. Six of them, as Release B's cutover actually
+exercised them:
+
+| # | Boundary | What crosses it |
+|---|---|---|
+| 1 | Instruments and the testing lab's LIS (laboratory information system) | Test results and quarantine status, inbound |
+| 2 | BECS to label printers | Label data, outbound |
+| 3 | ICCBBA (International Council for Commonality in Blood Banking Automation) reference tables into BECS | Product-code reference data, inbound |
+| 4 | BECS to Riverside General Hospital | Electronic shipment data, outbound |
+| 5 | Central BECS to Brookfield and Fairview | Donor, unit, and quarantine data, both directions |
+| 6 | Legacy data conversion (Release A to Release B) | Donor and deferral history, one-time |
+
+Your job today isn't to re-run any of this testing. It's to read what's in front of you,
+boundary by boundary, and ask the same question six times: does this evidence actually prove a
+record lands complete, correct, on time, and on the right donor or unit — or does it just prove
+the connection works? Two of these six boundaries carry extra weight. One of them is where
+VIA-0842 — the deviation this whole course was built around — left an open note nobody ever
+assigned to anyone: "BECS-to-hospital interface regression testing to follow." Another is a test
+type VIA-0842's twelve cases never included at all. By the end of this module both are closed, for
+real, not just reported closed.
+
+## Why this matters, and the ITSM bridge
+
+Here's the failure this module exists to catch: every individual interface can "work" — connect,
+send, receive, log no errors — while the thing that actually matters, a specific record reaching
+a specific destination intact and on time, still fails. A connection test and a data-integrity
+test are not the same test, and a package that only ran the first one has proven far less than it
+looks like it has.
+
+You already own the ITSM (IT service management) vocabulary for this. **Integration and
+middleware monitoring** — watching the pipes between systems, not just the systems themselves —
+is a practice you run constantly, and every mature integration has a **dead-letter queue**: the
+place a message lands when it can't be processed, so it doesn't just vanish. FDA's BECS guidance
+has its own name for exactly that idea, written years before anyone called it a dead-letter queue:
+an **interface error file**. Same concept, same reason it exists — something came across the wire
+the receiving system couldn't handle, and it has to land somewhere visible instead of silently
+disappearing. **Reconciliation jobs** are the other half: periodically checking that what left one
+system actually arrived, intact, at the other.
+
+Here's where the regulated world asks more of you than an ordinary ITSM practice does. In
+ordinary IT operations, a message that lands in a dead-letter queue is a data-quality issue or an
+integration bug — annoying, triaged, fixed on a normal backlog. On BECS, a message that lands on
+the *wrong* record isn't an outage to fix and move on from. It's a potential product-safety event:
+a unit released under the wrong donor's eligibility status, a quarantine that didn't propagate
+before a unit shipped. Same technical failure, very different seriousness, because of what's on
+the other end of the wire.
+
+## The rule in plain English
+
+**First, and worth saying plainly: Lakeshore is a blood center, not a hospital, and its interface
+inventory looks nothing like the one FDA's own guidance uses as its example.** FDA's BECS
+guidance talks about validating interfaces to a **HIS** (Hospital Information System — things
+like ADT, admissions/discharges/transfers) and an **LIS** (Laboratory Information System — things
+like OE/RR, order entry/results return). That language makes sense for the guidance's own
+illustrative setting: a hospital transfusion service running BECS, sitting inside the same
+building as the HIS that admits patients and the LIS that orders their labs. Lakeshore doesn't
+have an HIS. Lakeshore doesn't admit patients. A learner who copied that sentence onto Lakeshore's
+own validation plan — "validate our HIS/ADT interface" — would be describing an interface
+Lakeshore doesn't have, while missing every interface it actually does. The six boundaries in the
+table above are Lakeshore's real inventory, and they earn that status the same way the guidance's
+own examples do: each one is a place where a record crosses from one system's control into
+another's, and has to arrive intact on the far side.
+
+**Second: the standard every one of these six boundaries has to meet is the same four-part test,
+every time.** Does the record that crosses this boundary land *complete* (nothing missing), is it
+*correct* (nothing corrupted or mistranslated on the way), does it arrive *on time* (not sitting
+in a queue past the point it needed to act), and does it land on the *right donor or unit* (not
+silently attached to the wrong record)? A connectivity test answers none of those four questions
+by itself. An interface validated well enough to trust has to answer all four.
+
+**Third: quarantine-status propagation latency is its own question, and a thorough interface
+validation has to ask it everywhere, not just test each interface in isolation.** When a unit's
+status changes — a late-arriving positive test result triggers a quarantine — how fast does that
+new status actually reach every system that needs to know: the label printer, the hospital-
+shipment interface, each satellite site's BECS client? If the answer is "eventually," that's a real
+gap even if every interface, tested on its own, passes cleanly. A unit can be correctly flagged
+inside BECS and still ship, print, or release somewhere downstream before the flag catches up.
+
+**Fourth: who validates what, across an organizational boundary, follows control — it isn't a
+rule anyone writes down.** Lakeshore validates what it sends and what it receives, at its own side
+of each boundary. Riverside General Hospital — the fictional 340-bed hospital Lakeshore ships
+components to, your established consignee — validates its own systems, under its own obligations.
+Nobody assigns that split by regulation; it's the practical, sensible allocation: you validate what
+you control, and stop at the point you no longer control it. Where the two sides' expectations of
+each other actually get written down is the supplier/customer relationship itself — the kind of
+territory AABB's (Association for the Advancement of Blood & Biotherapies) **QSE 4, Suppliers and
+Customers** theme, named earlier in this course, covers. No standard number here, just the theme.
+
+**Fifth, briefly: one more acronym belongs in this lesson, named and pointed forward, not
+developed.** Complete, correct, on time, right donor or unit is this module's own vocabulary for
+data integrity at an interface. The data-integrity field has a more formal name for the fuller set
+of properties a record has to hold: **ALCOA+** — attributable, legible, contemporaneous, original,
+accurate, plus complete, consistent, enduring, and available. `data-integrity-and-records`, a
+future course, is where that framework gets its real depth, including audit-trail review in
+practice. Here, know the name exists.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| Guidance III.G (interfaces) | "Section three, part G" | Recommends validating all interfaces, including HIS/ADT, LIS/OE-RR, and instrument interfaces, and continuing to monitor interface error files after implementation. | The guidance's own hospital-shaped list — and the reason Lakeshore has to translate it, not copy it. |
+| Guidance III.G (legacy conversion) | "Section three, part G" | Recommends validating the data conversion from a legacy system to a new one, to avoid duplicate donor records and deferral codes. | VAL-1203's own Release A to Release B cutover, boundary six. |
+| Guidance III.J | "Section three, part J" | Recommends determining what functions or files an integrated LIS/HIS and BECS share, by discussing it with the BECS manufacturer, before assuming a change to one doesn't touch the other. | Lakeshore's version: the testing-lab's LIS, and the vendor's own suite of modules. |
+| 21 CFR 211.68(b) | "Two-eleven point sixty-eight, paragraph b" | Input to and output from a computer system must be checked for accuracy, with the degree and frequency of that verification scaled to the system's complexity and reliability. | The regulatory floor under every one of these six boundaries — each is an input/output point this paragraph already governs. |
+| 21 CFR 11.10(h) | "Eleven point ten, paragraph h" | Device checks: determining, as appropriate, the validity of the source of data input or an operational instruction. | Does BECS actually verify a result came from the instrument it claims to, rather than accepting whatever arrives on that channel? |
+| 21 CFR 606.165(b)/(c) | "Six-oh-six point one sixty-five, paragraphs b and c" | Distribution records must identify the consignee, delivery date and quantity, lot number, and expiration or collection date; receipt records mirror that same information. | Applied here to the *electronic* shipment-data interface to Riverside, not the paper record this course already covered. |
+
+## The actual text, boundary by boundary
+
+**Boundary 1 — instruments and the testing-lab LIS.** This is where the in-house Category 5
+translation script lives — the one this course has carried since module 1, still sitting on its own
+unresolved question (is building it enough to make Lakeshore a "manufacturer"? still routed to
+regulatory affairs, still not this module's to answer). The guidance's interface recommendation,
+quoted verbatim from `sources/fda-guidance/becs-validation-users-facility-2013.md`, section III.G:
+
+> We recommend that you qualify equipment, validate all interfaces, including those to a Hospital
+> Information System (HIS) (e.g., admissions, discharges and transfers (ADT)); a Laboratory
+> Information System (LIS) (e.g., order entry/results return (OE/RR)); and all instrument
+> interfaces, as applicable. Monitoring of interface error files should continue subsequent to
+> implementation as unforeseen transaction types or data elements may cause disastrous results
+> (for instance, orders not being received, results posting to the incorrect donor/patient record,
+> etc.).
+
+Read "LIS (OE/RR)" for what it actually maps to here: not a hospital's lab ordering results back
+to a clinician, but Lakeshore's own testing lab feeding infectious-disease marker results and
+quarantine status into BECS, through the in-house script. "Instrument interfaces" is the same
+boundary from one step further back — the analyzers themselves. And "results posting to the
+incorrect donor/patient record" is the guidance's own example of exactly the failure this boundary
+has to prove it doesn't make.
+
+**Boundary 2 — BECS to label printers.** This is the same boundary VIA-0842's own step 7 tested —
+label-print job timing at the primary print station — except this course now has the vocabulary
+to see it correctly: not a one-off test case, an *interface*, with its own complete/correct/on-time
+standard. A label that prints the wrong product code, or prints before a late status change lands,
+is this boundary's version of the same failure.
+
+**Boundary 3 — ICCBBA reference tables into BECS.** ICCBBA maintains the product-code reference
+tables BECS uses to print and read labels correctly. This is the inbound boundary behind DEV-1147, already established
+in this curriculum: an ICCBBA table push that reached BECS at 01:58 a.m. on a Wednesday, with
+roughly forty units printed one revision behind before the Processing Supervisor caught it — a
+deviation this module doesn't re-litigate, and leaves exactly as written. What matters here is the
+shape: an inbound interface carrying reference data, not test results, no less capable of causing a
+labeling failure than one carrying donor-specific information.
+
+**Boundary 4 — BECS to Riverside General Hospital.** Riverside is Lakeshore's established
+consignee, already governed at the paper-and-process level by 21 CFR 606.165, distribution and
+receipt records. Here, quoted verbatim from `sources/cfr/606.165.md`, is the same text applied to
+the *electronic* version of that same obligation:
+
+> (b) Distribution records shall contain information to readily facilitate the identification of
+> the name and address of the consignee, the date and quantity delivered, the lot number of the
+> unit(s), the date of expiration or the date of collection, whichever is applicable, or for
+> crossmatched blood and blood components, the name of the recipient.
+>
+> (c) Receipt records shall contain the name and address of the collecting facility, date
+> received, donor or lot number assigned by the collecting facility and the date of expiration or
+> the date of collection, whichever is applicable.
+
+Nothing in that text cares whether the record travels on a packing slip or an electronic
+shipment-data feed. The same fields — consignee, date, quantity, lot number, expiration or
+collection date — have to be provably accurate either way. An electronic interface just moves
+where the proof has to come from: a test showing the feed reproduces those fields correctly, not a
+paper form filed afterward.
+
+**Boundary 5 — central BECS to Brookfield and Fairview.** Module 3 already asked whether each
+satellite site has its own validation plan — a question about *scope*. This is a different
+question, about the *data* moving across that same link: when a unit's status changes centrally,
+how fast does Brookfield's or Fairview's own BECS client see it? A satellite site running on
+stale data isn't a scope gap. It's this boundary's version of the complete/correct/on-time
+standard failing in a specific, local way.
+
+**Boundary 6 — legacy data conversion.** VAL-1203's own Release A to Release B cutover carried old
+data into the new system — exactly the situation the guidance's last validation-activities bullet
+addresses, quoted verbatim:
+
+> Although not a function of your system, we recommend that you validate the data conversion from
+> your legacy system to your new system to avoid problems such as duplicate donor records and
+> deferral codes.
+
+Read "duplicate donor records" and "deferral codes" as the two sharpest ways a conversion can fail
+silently: the same donor ending up as two records nobody links, or a deferral that existed in the
+old system not carrying forward into the new one. Either failure is invisible until someone goes
+looking for it specifically — which is exactly why the guidance calls it out as its own validation
+activity, separate from testing the system's ordinary functions.
+
+**One more piece, cutting across all six: is BECS an integrated package, or a stand-alone
+system?** The guidance's own framing, quoted in full from section III.J:
+
+> If your system or BECS is part of an integrated package on a Laboratory Information System (LIS)
+> or Hospital Information System (HIS) rather than a stand-alone system, you should also consider
+> how changes made to functionality shared by the LIS or HIS and BECS (such as ADT, orders, etc.)
+> might affect your system or BECS. You should determine what functions or files your LIS or HIS
+> and your BECS share by discussing this with your BECS manufacturer.
+
+Translate that honestly for Lakeshore: the question was never "is BECS integrated with a
+hospital's LIS or HIS," because Lakeshore has neither. The real question is "is BECS integrated
+with the testing lab's own LIS, or with the vendor's own suite of modules, closely enough that a
+change to one could silently move the other?" The principle survives the translation untouched:
+know what's shared, and know, in writing, whose job it is to validate the shared piece when either
+side changes it.
+
+**Underneath every one of these, the regulatory floor is the same paragraph, quoted verbatim from
+`sources/cfr/211.68.md`:**
+
+> (b) Appropriate controls shall be exercised over computer or related systems to assure that
+> changes in master production and control records or other records are instituted only by
+> authorized personnel. Input to and output from the computer or related system of formulas or
+> other records or data shall be checked for accuracy. The degree and frequency of input/output
+> verification shall be based on the complexity and reliability of the computer or related system.
+
+Read that against the six-boundary table: every one of them is an input/output point this
+paragraph already reaches. 211.68(a), this course's first citation, is the floor behind validating
+a system at all. (b) is the floor behind validating what crosses its edges — and "degree and
+frequency... based on the complexity and reliability" is 211.68's own permission to scale scrutiny:
+a reference-table feed and a hospital-shipment feed don't need identical rigor, but neither gets a
+free pass.
+
+**And one control worth a brief requote, already quoted in full back in module 5, which
+deliberately deferred its depth to here:** 21 CFR 11.10(h), from `sources/cfr/11.10.md`:
+
+> (h) Use of device (e.g., terminal) checks to determine, as appropriate, the validity of the
+> source of data input or operational instruction.
+
+Apply it concretely, at every one of the six boundaries: does BECS actually verify that a result
+claiming to come from a specific instrument, a specific satellite site, or a specific reference-
+table push really did come from there — or does it just accept whatever arrives on that channel,
+trusting the label the message carries about its own origin? A system that can be fed a convincing
+but false message, and can't tell the difference, hasn't satisfied (h), no matter how fast or
+reliable the channel otherwise is.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB assessor reading this section of VAL-1203's file wouldn't stop at "an
+interface exists and a connection test passed." They'd ask, boundary by boundary, for a test that
+actually tried to break the four-part standard — a malformed or duplicate result message sent on
+purpose, not just a clean one; a reconciliation record showing what left one system matches what
+arrived at the other; a dated check of how long a quarantine status took to reach every downstream
+system, not an assumption that it's instant. They'd also ask where the interface error file —
+Lakeshore's dead-letter queue, in the guidance's own words — actually is, who reviews it, and how
+often, since the guidance's own sentence says monitoring "should continue subsequent to
+implementation," not stop once go-live testing passed.
+
+A bad answer to "how do you know a result always lands on the right donor" sounds like "the
+interface has never thrown an error." A good answer points to a test that sent a message with the
+wrong identifier on purpose, and a record showing BECS caught it.
+
+## Common traps
+
+**"The interface connects and logs no errors, so it's validated."** This is the connectivity-test
+trap, and it's the direct cousin of module 6's "it installed without errors, so it's validated."
+A clean connection proves the pipe works. It proves nothing about whether a specific message
+landed complete, correct, on time, and on the right donor or unit — the four things 211.68(b) and
+the guidance's interface recommendation actually require evidence of. Only a test that tried a
+malformed, duplicate, or out-of-order message, and checked where it landed, can answer that.
+
+**"Riverside's LIS is part of our validation, since our shipment data feeds it."** No. Riverside
+General Hospital's own information systems are Riverside's to validate, under its own obligations
+— Lakeshore validates what it sends and receives, at its own side of the boundary. Responsibility
+follows control, not the fact that data crosses an organizational line. The two parties'
+agreement, the kind of territory AABB's Suppliers and Customers theme covers, is where each side's
+expectations of the other actually get written down — not a shared validation obligation that
+doesn't exist.
+
+## What this means for your job
+
+- **Ask for a test that tried to break each interface, not one that confirmed it connects.** A
+  malformed message, a duplicate, an out-of-order arrival, a wrong identifier on purpose — if none
+  of those were ever tried, the interface has been connected, not validated.
+- **Ask who reviews the interface error file, and how often.** The guidance's own words are
+  "should continue subsequent to implementation" — a dead-letter queue nobody has opened since
+  go-live is a gap you'll find before an inspector does, if you ask now.
+- **Ask the quarantine-propagation-latency question at every boundary, not just one.** A status
+  change that reaches BECS instantly but takes minutes to reach a satellite client or a label
+  printer is a real patient-safety gap, even though every interface, tested alone, passed.
+- **Keep Lakeshore's validation scoped to Lakeshore's side of every external boundary**, and treat
+  a message landing on the wrong record as a product-safety event from the first minute, not an
+  integration bug on a normal backlog — the one habit an ordinary ITSM incident process won't
+  supply on its own.
+
+## Closing VIA-0842's last two open items
+
+This course opened with VIA-0842's twelve tests and a question nobody could answer yet. Module 6
+answered the methodological half: the number twelve was never the defect, the missing regression
+analysis was. That finding prescribed targeted supplemental testing, not a full revalidation —
+aimed specifically at instrument interfaces, the hospital interface, and label timing under peak
+load. Here is that testing, finally carried out, closing the two pieces of VIA-0842's own record
+that were left open on purpose.
+
+**First: VIA-0842's twelve tests never included an instrument-interface test at all.** That gap
+sat unaddressed through this entire course, because closing it required exactly the method this
+course exists to teach: a documented regression analysis, not a guess, saying where to look. That
+analysis — module 6's own positive-contrast patch VIA already modeled it correctly — named
+instrument interfaces as one of the three places an OS-level memory-handling change plausibly
+reaches. The supplemental test that followed did what VIA-0842 never did: sent a result message
+with a deliberately malformed field, a duplicate donation identifier, and an out-of-order arrival
+through the instrument-to-BECS path, and checked not just that BECS logged an error, but that
+nothing landed silently on the wrong donor's record. It passed — but passing only means something
+because the test could have failed, the same lesson module 2 built this course's whole approach to
+test-case anatomy around.
+
+**Second: VIA-0842's own unresolved note — "BECS-to-hospital interface regression testing to
+follow" — never had an owner or a date.** It has one now. The Quality Validation Lead took it as
+the owner, with a dated target inside this same supplemental-testing cycle, and the test that
+closed it is the Riverside shipment-data interface specifically: a test shipment record, sent
+through the electronic interface exactly as a real one would be, checked field by field against
+606.165(b)'s and (c)'s own list — consignee name and address, date and quantity, lot number,
+expiration or collection date — to confirm the electronic version carries every one of those
+fields correctly, not just that the file transmitted.
+
+**Neither of these rewrites VIA-0842's own record.** Its twelve tests, its step 7, its Wednesday
+10:15 p.m. deployment, its unassigned open note — all of that stays exactly as this course has
+always described it. What's different is that the work that note promised finally happened, with
+an owner, a date, and evidence behind it, as part of the supplemental testing module 6 prescribed.
+That's the whole difference between a deviation record and the system it describes: the record is
+closed history. The system kept being validated after it.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: A colleague says, "Riverside's LIS is part of our validation, since our shipment data feeds it." Accurate?
+
+No. Riverside General Hospital's own information systems are Riverside's to validate, under its
+own obligations — not Lakeshore's. Lakeshore validates what it sends and what it receives, at its
+own side of the BECS-to-Riverside boundary: does the shipment-data feed accurately carry the
+606.165(b)/(c) fields (consignee, date and quantity, lot number, expiration or collection date)
+when it leaves Lakeshore's systems. What Riverside does with that data once it lands on its own
+systems is Riverside's validation to perform. This is responsibility following control, not a rule
+either party's regulation states outright — and the agreement between the two organizations, the
+kind of territory AABB's Suppliers and Customers theme covers, is where each side's expectations of
+the other actually get spelled out.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: VAL-1203's interface section shows every one of the six boundaries connected successfully during cutover, with zero connection errors logged. Does that mean the interfaces are validated?
+
+No, and this is the connectivity-test trap this module is built to catch. A clean connection with
+zero logged errors proves the pipe works. It says nothing about whether a specific record crossing
+that boundary lands complete, correct, on time, and on the right donor or unit — the actual
+standard 211.68(b) and the guidance's interface recommendation require evidence of. Only a test
+that deliberately tried a malformed message, a duplicate, an out-of-order arrival, or a wrong
+identifier, and confirmed where it landed, proves that. "It connects without errors" is this
+module's version of module 6's "it installed without errors" — implementation evidence, not
+validation evidence.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: FDA's BECS guidance names HIS/ADT and LIS/OE/RR interfaces as examples to validate. Should Lakeshore's validation plan list those two interfaces by name?
+
+No — and getting this wrong is the sharpest trap this module names. HIS (Hospital Information
+System, things like admissions/discharges/transfers) and LIS (Laboratory Information System,
+order entry/results return) are the guidance's own illustrative examples, written for a hospital
+transfusion service running BECS. Lakeshore is a blood center, not a hospital: it has no HIS, and
+its own testing lab's LIS feeds results into BECS through the in-house translation script, not
+through an ADT-style hospital feed. A validation plan that copies "HIS/ADT interface" onto
+Lakeshore's own documentation would be describing an interface Lakeshore doesn't have, while
+leaving its actual six boundaries — instruments and the testing lab, label printers, ICCBBA
+tables, the hospital shipment-data feed, the satellite sites, and legacy-data conversion —
+unaddressed. The guidance's principle (validate every interface, monitor error files afterward)
+transfers. Its specific example list does not.
+:::
+
+## Where this goes next
+
+This course opened by naming VIA-0842's twelve tests and a question nobody could answer. It built
+the answer in pieces: GAMP 5 (Good Automated Manufacturing Practice) and the V-model gave you the
+vocabulary to sort software and size a risk assessment instead of trusting a category label. IQ,
+OQ, PQ, and the traceability matrix taught you to read executed evidence and tell a test that could
+fail from one that never really tried. BECS as a regulated device, and the vendor's own QMSR
+(Quality Management System Regulation) and ISO 13485 world, placed Lakeshore correctly under blood
+CGMP (current good manufacturing practice) while the device-grade rules bind the vendor instead.
+Part 11 named the specific electronic-records controls a validation has to prove the system
+enforces, not just document. Staying validated gave VIA-0842 its real verdict: not a number that
+was wrong, but an analysis that was never written. And this module closed what that verdict left
+open — the instrument-interface test VIA-0842 never ran, and the hospital-interface regression
+testing its own record promised and never assigned.
+
+Both of VIA-0842's open interface items are closed now, for real, with evidence behind them. That's
+the course's finish line, reached in full.
+
+Two things stay open on purpose, and they were always meant to. The in-house script's "is
+Lakeshore a manufacturer" question is still sitting with regulatory affairs — not this course's
+call, and not resolved here either. And everything this module touched only lightly — ALCOA+ in
+full depth, audit-trail review in practice, the predicate-rule doctrine Part 11 rests on, unique
+donor identification across systems — belongs to `data-integrity-and-records`, a future course,
+where it finally gets the treatment this one only pointed toward.
+
+You came into this course able to route a validation question to someone else. You leave it able
+to read the package yourself, ask the question an inspector would ask, and know exactly what's
+still missing. That's the finish line this course set out to reach.

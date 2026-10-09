@@ -205,7 +205,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 | 4 | `qmsr-iso-13485-and-the-vendor` | Place BECS correctly under FDA's device-grade quality system: Part 820 (the QMSR, incorporating ISO 13485:2016, effective February 2, 2026) binds the BECS manufacturer, and 820.1(a)(3) excludes blood manufacturers, so Lakeshore answers to blood CGMP. Say what the vendor's design controls and 864.9165 special-control deliverables (unresolved anomalies, revision history, traceability matrix) give you as validation *inputs*, and when Lakeshore's own development could raise the manufacturer question. | Published |
 | 5 | `part-11-for-validated-systems` | Name the Part 11 closed-system controls a BECS validation must prove the system actually enforces (access limits, operational sequencing checks, authority checks; device checks named, taught in m7), explain why FDA's 2003 Part 11 guidance points validation enforcement to predicate rules rather than 11.10(a), and decide whether a vendor-supported or vendor-hosted BECS is still a "closed system." Hand ALCOA+, audit-trail review, and e-signatures to `data-integrity-and-records`. | Published |
 | 6 | `validated-state-lifecycle-and-patching` | Keep a validated BECS validated: require a documented regression analysis and risk-scaled regression testing for every change, including OS, infrastructure, vendor patches, and reference-table updates; manage patching and end-of-support without breaking the validated state; run a periodic review that would catch drift; and give VIA-0842's "were twelve targeted tests enough?" a real methodological answer. | Published |
-| 7 | `becs-interfaces-and-data-integrity` | Trace data across every BECS boundary (instrument and testing-lab LIS results in, labels out, reference tables in, shipment data out to hospital customers, satellite sites, legacy-data conversion) and judge whether interface validation and ongoing monitoring prove each record arrives complete, correct, on time, and on the right donor or unit. Close VIA-0842's open interface items. | Not started |
+| 7 | `becs-interfaces-and-data-integrity` | Trace data across every BECS boundary (instrument and testing-lab LIS results in, labels out, reference tables in, shipment data out to hospital customers, satellite sites, legacy-data conversion) and judge whether interface validation and ongoing monitoring prove each record arrives complete, correct, on time, and on the right donor or unit. Close VIA-0842's open interface items. | Published |
 
 Status values: Not started / Drafted / Published.
 
@@ -1081,3 +1081,25 @@ fallback.
   Next: build m7, `becs-interfaces-and-data-integrity` — the course's final module, closing
   VIA-0842's remaining open item ("BECS-to-hospital interface regression testing to follow") and
   its missing instrument-interface test.
+- **2026-10-09**: Module 7, `becs-interfaces-and-data-integrity`, drafted (via subagent),
+  audited, and published (`courses/csv-and-becs/becs-interfaces-and-data-integrity/index.qmd`
+  and `resources.qmd`, `order: 53`/`54`, ~4,730 words). **This is the course's final module.**
+  Walks Lakeshore's actual six-boundary interface inventory (instruments/testing-lab LIS, label
+  printers, ICCBBA reference tables, BECS-to-Riverside shipment data, central-to-satellite,
+  legacy-data conversion), explicitly correcting the guidance's own hospital-shaped HIS/ADT/LIS
+  example language against Lakeshore's real boundaries. **Closes both of VIA-0842's open
+  interface items**, as module 6's prescribed supplemental testing now carried out: an
+  instrument-interface test VIA-0842's twelve cases never included (run, with a deliberately
+  malformed/duplicate/out-of-order message, checked for silent misrouting); and VIA-0842's
+  unassigned "BECS-to-hospital interface regression testing to follow" note, now given an owner
+  (Quality Validation Lead) and a date, closed via a Riverside shipment-data interface test
+  checked against 606.165(b)/(c). No VIA-0842 fact altered — its record stays exactly as
+  written; only the promised follow-up work was finally done. Citations (guidance III.G
+  interfaces/legacy-conversion bullets, III.J, 211.68(b) — first use in this course, 11.10(h)
+  briefly requoted, 606.165(b)/(c)) verified verbatim against source files; all four
+  `resources.qmd` links curl-verified 200. Module 4's manufacturer question and modules 3/5's
+  other open items were named only, not reopened or resolved — left for future courses
+  (regulatory affairs; `data-integrity-and-records` for ALCOA+, audit-trail practice, and
+  predicate-rule doctrine in full). Closes with a genuine course-ending passage summarizing the
+  whole arc.
+  **`csv-and-becs` is now 7/7 published. Course complete.**

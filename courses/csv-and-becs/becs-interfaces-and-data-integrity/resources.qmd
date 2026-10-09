@@ -1,0 +1,25 @@
+---
+title: "Resources"
+order: 54
+---
+
+- [FDA guidance: *Blood Establishment Computer System Validation in the User's Facility*](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)
+  — the guidance page for the document this course has quoted from every module, including this
+  one's III.G interface and legacy-conversion bullets and III.J. Use it to confirm you're reading
+  the current, final version (CBER, April 2013) and to pull the full PDF if you want more context
+  around any quote in this lesson.
+
+- [21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)
+  — the input/output-accuracy paragraph, (b), this module quotes for the first time in this
+  course. Use it to read (a) and (b) together: the requirement to validate the system at all, and
+  the requirement to validate what crosses its edges.
+
+- [21 CFR 606.165, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.165)
+  — distribution and receipt records, applied here to the electronic shipment-data interface to
+  Riverside General Hospital. Use it when you need the exact (b)/(c) field list this module tested
+  the interface against.
+
+- [21 CFR 11.10, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.10)
+  — the full closed-system controls list, including (h), device checks, requoted briefly here
+  after module 5 deferred its depth to this lesson. Use it to see (h) next to (d), (f), and (g),
+  the controls module 5 built out in full.
