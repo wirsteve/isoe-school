@@ -1,0 +1,384 @@
+---
+title: "QMSR, ISO 13485, and the Vendor"
+order: 47
+---
+
+## Three threads on the same desk
+
+VAL-1203 keeps generating paperwork. This week it's the vendor's formal release package for
+Release B: release notes, a revision history, hardware and peripheral specifications, and a list
+the vendor calls "unresolved anomalies" — known defects in the current build, each with a short
+note on what it does and how bad it is. One entry on that list describes a label-reprint edge
+case: if a unit's quarantine status changes in the same second a label reprint is requested at a
+satellite site, the reprint can occasionally carry the prior status text for a few seconds before
+refreshing. Low frequency, the vendor says, and already scheduled for a future patch. Lakeshore
+uses label reprints at Brookfield and Fairview routinely. Nobody on the validation team has
+mentioned this entry since it arrived. It's sitting in a folder.
+
+A second thread is older, and nobody's resolved it either. The in-house LIS-to-BECS (laboratory
+information system to Blood Establishment Computer Software) translation script — Lakeshore IT's
+own Category 5 component, carried in this course since module 1 — reformats result messages
+before BECS ever sees them. It isn't sold. Nobody outside Lakeshore has ever looked at a line of
+it. Your systems administrator asked, half-joking, in a planning meeting: "If we're writing code
+that feeds BECS, are we basically building a medical device at this point?" Nobody answered him.
+
+Then, in the same meeting, your CIO (chief information officer) says something with total
+confidence: "Since February 2026, Lakeshore has to comply with the QMSR (Quality Management
+System Regulation) and ISO 13485, same as any other device-adjacent company. We should budget
+for it next cycle." Heads nod. You don't nod. You've learned, across three modules now, to check
+a confident regulatory claim before it becomes a line item.
+
+All three threads point at the same question this module exists to answer: which quality rules
+actually bind BECS's manufacturer, which bind Lakeshore, and what do you do with a vendor's
+quality-system paperwork once it lands on your desk — read it, file it, or act on it?
+
+## Why this distinction exists, and the ITSM bridge
+
+The failure this module heads off isn't dramatic. It's a vendor's anomaly list arriving, looking
+official, and going straight into a folder nobody reopens before sign-off — while a risk
+assessment and test plan get written as if the list never existed. The anomaly is real,
+documented, even annotated with a safety/effectiveness judgment. And it never touches the one
+place it could do some good: VAL-1203's own risk assessment and test design.
+
+You already run the fix for this failure mode under a different name. **ITIL's known error
+database (KEDB)** is exactly this idea: a team's own running record of known, not-yet-fixed
+defects, each with its workaround and assessed impact, kept so the next person troubleshooting a
+symptom doesn't rediscover it from scratch. The vendor's **unresolved-anomalies list** is the same
+instrument, built for the same reason, by a different team: a record of what's broken in the build
+you're about to install, what it affects, and how bad it is. **Release notes versus revision
+history** is the same pairing again — a log of what changed and when, read by whoever has to
+reason about what might break next.
+
+Here's where the regulated world asks more of you than an ordinary vendor relationship does. In
+routine IT operations, a vendor's KEDB is a courtesy — useful, sometimes incomplete, never
+something you'd build your own change plan around without double-checking it yourself. For BECS,
+it's different for a specific reason: the vendor's own quality system, the one that produced that
+anomaly list, is itself federally regulated. That doesn't make the list more trustworthy on
+faith. It makes it a legitimate validation **input** Lakeshore is entitled to ask for and use —
+while Lakeshore's own validation obligation, and Lakeshore's own determination of whether the
+system is fit to run, stays exactly where it's always been: with Lakeshore.
+
+## The rule in plain English
+
+**First: the QMSR is Part 820, amended — not a new, separate rule.** "QMSR" stands for Quality
+Management System Regulation, and it is the current name of 21 CFR Part 820, the device-quality
+regulation this curriculum has pointed to since module 3 without quoting its substance. FDA
+finalized a rule retitling and restructuring Part 820 — "Medical Devices; Quality System
+Regulation Amendments," published February 2, 2024, effective February 2, 2026 — and that
+effective date has now arrived in this course's own calendar. Part 820's section header, in the
+current text, literally reads "QUALITY MANAGEMENT SYSTEM REGULATION." There is no separate QMSR
+statute sitting next to Part 820. It's the same regulation, under its current name.
+
+**Second: Part 820 incorporates ISO 13485:2016 by reference, rather than restating its content.**
+ISO (International Organization for Standardization) 13485 is an international standard for
+medical-device quality management systems. FDA doesn't copy ISO 13485's text into the CFR
+(Code of Federal Regulations); it names the standard and makes compliance with it the top-line
+requirement. That's why this course has described ISO 13485 all along as "named, not quoted" —
+it's copyrighted, and the CFR itself only references it by clause number and title, never
+reproduces what a clause says.
+
+**Third: 820.10(a)'s top-line requirement is to document a quality management system that
+complies with ISO 13485.** Everything else in 820.10 is detail hung off that one sentence,
+including a class-specific requirement that matters directly here: manufacturers of Class II
+devices — and BECS is Class II, established back in module 3 — must comply with ISO 13485's
+Design and Development clause and its subclauses. BECS's manufacturer doesn't get to treat design
+controls as optional.
+
+**Fourth: 820.3 defines "manufacturer" and "finished device" in terms of what something does, not
+who sells it or what it's called.** A manufacturer is defined by activity — designing,
+manufacturing, fabricating, assembling, processing a finished device — not by having a storefront
+or a sales contract. And a "finished device" explicitly includes "any device **or accessory to
+any device**" that's suitable for use, whether or not it's packaged or labeled. That "accessory"
+language is the same word 864.9165(a) used in module 3 to describe a "BECS accessory" — something
+that augments BECS's performance or expands what it's cleared to do. Keep that word in mind; it's
+the hinge the in-house-script question turns on, below.
+
+**Fifth, and the central legal fact of this whole course: 820.1(a)(3) excludes blood and blood
+component manufacturers from Part 820 entirely.** Lakeshore, as a manufacturer of blood and blood
+components for transfusion, isn't a "manufacturer" Part 820/QMSR reaches at all — it answers
+instead to Subchapter F, the blood-specific regulations this course has cited from the start
+(Part 606, and Part 211 as it supplements, per module 1's 210.2(a)). Part 820, including the QMSR
+and the ISO 13485 it incorporates, binds **BECS's manufacturer** — the vendor, as the entity that
+designs and builds the device. It was never going to bind Lakeshore, no matter what the calendar
+says.
+
+**Sixth: those same definitions make the in-house-script question genuinely hard, not easy.** Your
+sysadmin's half-joking question — "if we're writing code that feeds BECS, are we basically
+building a medical device?" — deserves a straight answer, and the straight answer is that this
+course doesn't have one, and neither does anyone without more to go on than what's locally
+verified. 820.3's "finished device" reaches "any device or accessory to any device." 864.9165(a)
+— quoted in full back in module 3 — defines a "BECS accessory" as a device intended for use with
+BECS "to augment the performance of the BECS or to expand or modify its indications for use."
+Does reformatting LIS result messages into BECS's expected input format "augment the performance
+of BECS," the way the accessory language means it? Or is it simply plumbing between two other
+systems, never touching BECS's own indications for use? Arguments exist on both sides, and none
+resolve cleanly from text this course has verified. The script isn't sold, which cuts against a
+classic "manufacturer" picture built around commerce — but 820.3's definition is built on
+activity, not a sale, so "nobody's paying for it" isn't a clean exit either. It isn't BECS's own
+code, and the vendor had no hand in it — but an "accessory" under 864.9165(a) is explicitly a
+*separate* device from BECS itself, so being separate doesn't settle the question in Lakeshore's
+favor on its own terms. Whether this script crosses the line FDA means by "accessory" is a
+judgment call resting on facts and interpretation this course has no verified source to make for
+you — which is exactly why it's routed, not resolved, below.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 820.1(a)(3) | "Eight-twenty point one, paragraph a, subparagraph three" | Excludes manufacturers of blood and blood components from Part 820/QMSR; they answer to Subchapter F instead. | Refutes the CIO's claim directly. Lakeshore is excluded by name. |
+| 21 CFR 820.7(b) | "Eight-twenty point seven, paragraph b" | Incorporates ISO 13485:2016 by reference into Part 820, approved for §§ 820.1, 820.3, 820.10, 820.35, and 820.45. | The mechanism by which an international standard becomes binding on a device manufacturer without the CFR restating its text. |
+| 21 CFR 820.3 | "Eight-twenty point three" | Defines "manufacturer" by activity, and "finished device" to include accessories. | The definitions the in-house-script question has to be tested against — unresolved here, routed below. |
+| 21 CFR 820.10(a) | "Eight-twenty point ten, paragraph a" | Top-line requirement: document a QMS complying with ISO 13485. | What Release B's manufacturer has to have, full stop, as a Class II device maker. |
+| 21 CFR 820.10(c) | "Eight-twenty point ten, paragraph c" | Class II and III manufacturers must comply with ISO 13485's Design and Development clause and subclauses. | BECS is Class II (module 3). This binds the vendor's design process for Release B. |
+| 21 CFR 820.10(b)(3)/(4) | "Eight-twenty point ten, paragraph b, subparagraphs three and four" | Complaints meeting reporting criteria go to FDA under Part 803; advisory notices follow Part 806. | Named here because the section itself is saved; Parts 803/806's own text is out of scope for this lesson. |
+| 21 CFR 864.9165(b)(1)-(5) | "Eight sixty-four point ninety-one sixty-five, paragraph b, subparagraphs one through five" | The five special controls for BECS as a Class II device: software specs, V&V testing, labeling (including the anomaly list and revision history), the traceability matrix, performance testing. | The vendor deliverables sitting in VAL-1203's folder right now — the anomaly list and traceability matrix by name. |
+
+## The actual text
+
+Start with the fact that settles the CIO's claim, quoted verbatim from `sources/cfr/820.1.md`:
+
+> (3) Blood and blood components. The provisions of this part do not apply to manufacturers of
+> blood and blood components used for transfusion or for further manufacturing. Such manufacturers
+> are subject to subchapter F of this chapter.
+
+Lakeshore manufactures blood and blood components. This paragraph names that activity by name and
+excludes it. Not "exempt under certain conditions." Excluded, full stop, from this part.
+
+The incorporation mechanism, quoted verbatim from `sources/cfr/820.7.md`:
+
+> (b) ISO 13485:2016(E) ("ISO 13485"), Medical devices—Quality management systems—Requirements for
+> regulatory purposes, Third edition, March 1, 2016; IBR approved for §§ 820.1, 820.3, 820.10,
+> 820.35, and 820.45.
+
+IBR means "incorporated by reference" — a standard FDA has adopted into the regulation's text
+without reprinting it. That's why ISO 13485 appears throughout 820's sections as clause numbers
+and titles, never as quoted content.
+
+The top-line requirement, quoted verbatim from `sources/cfr/820.10.md`:
+
+> (a) Document. Document a quality management system that complies with the applicable
+> requirements of ISO 13485 (incorporated by reference, see § 820.7) and other applicable
+> requirements of this part; and
+
+The class-specific design requirement, same section:
+
+> (c) Design and development. Manufacturers of class II, class III, and those class I devices
+> listed in paragraph (c)(1) of this section and table 1 to paragraph (c)(2) of this section must
+> comply with the requirements in Design and Development, Clause 7.3 and its Subclauses in ISO
+> 13485.
+
+BECS is Class II. This paragraph reaches Release B's manufacturer directly, by classification,
+with no ambiguity.
+
+Named here because the section itself is a saved source, even though Parts 803 and 806 aren't
+(go no further than this text says):
+
+> (3) For Clause 8.2.3 in ISO 13485, Reporting to regulatory authorities, the manufacturer must
+> notify FDA of complaints that meet the reporting criteria of part 803 of this chapter.
+>
+> (4) For Clauses 7.2.3, 8.2.3, and 8.3.3, advisory notices shall be handled in accordance with the
+> requirements of part 806 of this chapter.
+
+The definitions the in-house-script question will turn on, quoted verbatim from
+`sources/cfr/820.3.md`:
+
+> Manufacturer means any person who designs, manufactures, fabricates, assembles, or processes a
+> finished device. Manufacturer includes, but is not limited to, those who perform the functions
+> of contract sterilization, installation, relabeling, remanufacturing, repacking, or
+> specification development, and initial distributors of foreign entities performing these
+> functions.
+
+> Finished device means any device or accessory to any device that is suitable for use or capable
+> of functioning, whether or not it is packaged, labeled, or sterilized.
+
+And the five special controls binding Release B's manufacturer as a Class II device, quoted
+verbatim and in full from `sources/cfr/864.9165.md` — module 3 quoted only the classification
+line; this is the text that follows it:
+
+> (1) Software performance and functional requirements including detailed design specifications
+> (e.g., algorithms or control characteristics, alarms, device limitations, and safety
+> requirements).
+>
+> (2) Verification and validation testing and hazard analysis must be performed.
+>
+> (3) Labeling must include:
+>
+> (i) Software limitations;
+>
+> (ii) Unresolved anomalies, annotated with an explanation of the impact on safety or
+> effectiveness;
+>
+> (iii) Revision history; and
+>
+> (iv) Hardware and peripheral specifications.
+>
+> (4) Traceability matrix must be performed.
+>
+> (5) Performance testing to ensure the safety and effectiveness of the system must be performed,
+> including when adding new functional requirements (e.g., electrical safety, electromagnetic
+> compatibility, or wireless coexistence).
+
+Read (3)(ii) and (4) against the folder on your desk. The anomaly list and its explanation of
+safety/effectiveness impact is a *regulatory requirement on the vendor's labeling* — not a courtesy
+document. So is the traceability matrix the vendor ships with its own V&V evidence. These are
+**vendor deliverables**: things Release B's manufacturer is required to produce, as part of its
+own, separately regulated quality system. FDA's BECS guidance has told you since module 1 that
+you're "ultimately responsible" for your own validation. These deliverables don't change that.
+They give that validation better raw material to work with.
+
+That's where GAMP 5's (the ISPE's industry-practice framework this course has used since module 1)
+own emphasis matters, paraphrased only: the current edition leans on leveraging supplier
+documentation as a normal, expected part of a well-run validation — not a shortcut around doing
+your own, but a recognition that a vendor's own tested output is a real input your risk
+assessment and test plan should actually use. The label-reprint anomaly sitting in a folder,
+unread, is the opposite of that practice. Fed into VAL-1203's risk assessment, it's a specific,
+named failure mode Lakeshore now knows to test for at the exact boundary condition the vendor
+described — precisely the Coverage question module 2 taught you to ask of any high-risk function.
+
+Now the "software as a medical device" framing, and where it comes from. FDA's own term for
+software that itself meets the device definition is **"device software functions"** — quoted
+directly from `sources/fda-guidance/csa-production-qms-software-2026-excerpt.md`:
+
+> This guidance does not provide recommendations for the design and development verification or
+> validation requirements for device software functions, which are software functions that meet
+> the definition of a device under section 201(h) of the Federal Food, Drug, and Cosmetic Act
+> (FD&C Act).
+
+BECS is a device software function. **SaMD** (Software as a Medical Device) is the international
+umbrella term for this same idea, coined by **IMDRF** (International Medical Device Regulators
+Forum) — name it as the field's shorthand and nothing more. No IMDRF definition is quoted or
+asserted here; none has been verified against a saved source, so none is claimed.
+
+The sentence above comes from a guidance worth naming precisely, because it's easy to misapply:
+**Computer Software Assurance for Production and Quality Management System Software** (the CSA
+guidance, CDRH/CBER, final, issue date 02/03/2026). Its own scope excludes device software
+functions by name — it's written for software a device *manufacturer* uses in its own production
+and quality-management systems, not for the device software itself. It also discusses ISO 13485's
+Subclauses 4.1.6, 7.5.6, and 7.6 — named here only as bare numbers appearing inside FDA's own
+guidance text, not described further; ISO 13485's actual content stays off-limits. A separate,
+older guidance, *General Principles of Software Validation* (2002, CDRH/CBER), is the one FDA's
+own BECS guidance points a device manufacturer to for validating its *own* device software — named
+here only, already sourced in earlier modules.
+
+One AABB (Association for the Advancement of Blood & Biotherapies) mention, paraphrase only, no
+standard number: this whole terrain — what you can reasonably expect from a supplier, and how that
+relationship gets managed — sits under **QSE 4, Suppliers and Customers**, in AABB's Quality
+System Essentials framework.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB assessor reading VAL-1203's file wouldn't ask whether Lakeshore holds
+an ISO 13485 certificate — it's the wrong question. They'd ask three things instead.
+
+**Evidence the vendor's anomaly list and traceability matrix were actually used, not just filed.**
+A dated note in the risk assessment referencing the specific anomaly, a test case added to address
+the boundary condition it describes, or a documented decision that the risk is acceptable as-is —
+any of these shows the deliverable did its job. A folder with an unopened PDF in it doesn't.
+
+**A written record of the in-house-script question, routed somewhere real.** Not a hallway
+conversation, not a line in a meeting's minutes that nobody followed up on. A document: here's the
+question, here's who it went to, here's what regulatory affairs said or when they're expected to
+say it.
+
+**Nobody in the file asserting that Lakeshore itself is QMSR-bound.** If VAL-1203's background
+section ever picked up a sentence like the CIO's — "Lakeshore complies with the QMSR" — that's a
+mischaracterization of Lakeshore's own regulatory status, in a document meant to survive an
+inspector's cold read.
+
+A bad answer to "what did you do with the vendor's anomaly list" sounds like "we have it on file."
+A good answer points to the specific line in the risk assessment it fed.
+
+## Common traps
+
+**"Since the QMSR took effect, Lakeshore has to comply with it and ISO 13485, like any other
+device-adjacent company."** This is the CIO's exact claim, and 820.1(a)(3) answers it directly:
+Lakeshore manufactures blood and blood components, and the provision excludes exactly that
+activity from Part 820, in favor of Subchapter F. "Device-adjacent" isn't a status Part 820
+recognizes. You either manufacture a finished device (or an accessory to one) or you don't, and
+blood manufacturers are named out by paragraph, not left to argue the point.
+
+**"The vendor's special-control deliverables are the vendor's business, not ours to read
+closely."** Also wrong, in the other direction. 864.9165(b)(3)(ii) and (b)(4) exist because FDA
+requires them of the manufacturer — but nothing stops Lakeshore from using them, and FDA's own
+"ultimately responsible" framing (named in module 3) means Lakeshore's validation is stronger, not
+weaker, for actually reading them. Treating a vendor deliverable as none of Lakeshore's concern
+wastes a regulatory requirement someone else already paid to satisfy.
+
+## What this means for your job
+
+- **Ask the vendor for its unresolved-anomalies list, revision history, and traceability matrix as
+  a matter of course on every upgrade — not just because they might hand them over, but because
+  864.9165(b) requires the vendor to produce them.** Then prove you read them: a dated line in the
+  risk assessment, not a filed PDF.
+- **When an anomaly touches a function Lakeshore actually uses, treat it as a named test case, not
+  background noise.** The label-reprint entry belongs in VAL-1203's test plan at the exact boundary
+  condition the vendor described — that's Coverage, from module 2, applied to a vendor's own
+  documented failure mode instead of one Lakeshore discovered independently.
+- **Correct a "we're QMSR-bound now" claim the moment you hear it, with the citation in hand.**
+  820.1(a)(3) is a short paragraph. Keep it ready — this is exactly the kind of confident,
+  plausible-sounding claim that gets into a budget line or a validation plan's background section
+  before anyone checks it.
+- **Never let a vendor's own compliance with Part 820/ISO 13485 substitute for Lakeshore's
+  validation.** The same shared-responsibility logic module 3 applied to 510(k) clearance applies
+  here, one layer up: a compliant vendor quality system is real, and it's an input. It was never a
+  stand-in for VAL-1203's own evidence.
+- **If anyone — IT, a consultant, even you — raises whether an in-house-built component makes
+  Lakeshore a "manufacturer," write the question down precisely and send it to regulatory
+  affairs, rather than guessing.** Name what the script does, what data it touches, that it's
+  built and maintained entirely in-house, and the exact regulatory language in tension (820.3's
+  "manufacturer" and "finished device," 864.9165(a)'s "BECS accessory"). That's not the Director's
+  call to make, or the Quality Validation Lead's either, however confident either of you might
+  feel after this module — it's a question a regulatory affairs professional is positioned to
+  research properly, potentially with FDA itself, and it's better asked precisely in writing now
+  than guessed at by whoever's in the room when it comes up.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your CIO says, "Since February 2026, Lakeshore has to comply with the QMSR and ISO 13485, same as any other device-adjacent company." Accurate?
+
+No. 21 CFR 820.1(a)(3) is explicit: "The provisions of this part do not apply to manufacturers of
+blood and blood components used for transfusion or for further manufacturing. Such manufacturers
+are subject to subchapter F of this chapter." Lakeshore manufactures blood and blood components,
+so it's named out of Part 820/QMSR entirely, not left in some in-between "device-adjacent"
+category. Lakeshore answers to blood CGMP (21 CFR Part 606, with Part 211 as it supplements, per
+module 1) and FDA's BECS user-facility guidance instead. The QMSR and ISO 13485 bind BECS's
+*manufacturer* — the vendor — not Lakeshore.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Does Lakeshore become a "manufacturer" under 820.3 by building and maintaining the LIS-to-BECS translation script in-house?
+
+This course can't answer that, and says so honestly. 820.3 defines "finished device" to include
+"any device or accessory to any device," and 864.9165(a) defines a "BECS accessory" as something
+that augments BECS's performance or expands its indications for use. Whether a script that
+reformats data flowing into BECS — not sold, not BECS's own code, built entirely in-house — meets
+that definition is a real interpretive question, and nothing in this curriculum's verified sources
+settles it either way. The correct move is to write the question down precisely (what the script
+does, what it touches, the exact regulatory language in tension) and route it to Lakeshore's
+regulatory affairs function. Not something the Director or the Validation Lead should guess at.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The vendor's unresolved-anomalies list has one entry touching a function Lakeshore actually uses. What should happen to it?
+
+It should feed VAL-1203's risk assessment and test plan directly — not sit in a folder as proof the
+vendor disclosed something. 864.9165(b)(3)(ii) requires the vendor to label unresolved anomalies
+"annotated with an explanation of the impact on safety or effectiveness," which means the vendor
+has already done real analysis on this defect. Module 2's Coverage question (does every requirement
+touching a critical function trace to a real test?) applies here with a vendor-supplied failure
+mode instead of one Lakeshore found on its own: the anomaly's exact boundary condition belongs in
+the test plan as a named case. Using it this way is industry practice (GAMP 5's own emphasis on
+leveraging supplier documentation), not a regulatory mandate on Lakeshore — but ignoring a
+documented, vendor-identified failure mode that touches your own operations is the kind of gap an
+inspector finds fast.
+:::
+
+## Where this goes next
+
+You now know exactly where the line sits: Part 820/QMSR and ISO 13485 bind Release B's
+manufacturer, 820.1(a)(3) keeps Lakeshore out of that part entirely, and the vendor's special-
+control deliverables are real validation inputs, never substitutes. What you haven't pinned down
+yet is what Part 11 (electronic records and signatures) actually requires *your* validation to
+prove the system enforces, and whether a vendor-supported, remotely-accessed BECS still counts as
+a "closed system" under FDA's rules. That's `part-11-for-validated-systems`, next.

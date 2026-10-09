@@ -1,0 +1,35 @@
+---
+title: "Resources"
+order: 48
+---
+
+Four places to go deeper than this lesson, or to check a citation yourself before it goes in a
+real Lakeshore document. All four were checked and loading at the time this page was written.
+
+- **[21 CFR 820.1, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/820.1)**
+  — the scope section of the QMSR (Quality Management System Regulation), including 820.1(a)(3),
+  the paragraph that excludes manufacturers of blood and blood components from Part 820 entirely.
+  Read it in full to see the exclusion sitting next to the parallel exclusion for components and
+  parts, and the separate inclusion for HCT/Ps (human cells, tissues, and cellular and
+  tissue-based products) — three different carve-outs, easy to blur together if you only remember
+  one.
+
+- **[21 CFR 820.10, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/820.10)**
+  — the quality-system requirements this lesson quotes from: the top-line "document a QMS
+  complying with ISO 13485" requirement, the Class II/III design-and-development requirement, and
+  the Part 803/806 complaint and advisory-notice cross-references. Use it to check any ISO 13485
+  clause-number citation against the actual CFR text before you repeat it anywhere.
+
+- **[21 CFR 864.9165, eCFR](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-H/part-864/subpart-J/section-864.9165)**
+  — the regulation defining BECS (Blood Establishment Computer Software) and its five special
+  controls, including the labeling requirements for unresolved anomalies, revision history, and
+  the traceability matrix this lesson treats as vendor deliverables. Module 3 linked Cornell's
+  mirror for this same section; eCFR's version is the government's own current, authoritative
+  copy, worth bookmarking alongside it.
+
+- **[Federal Register: Medical Devices; Quality System Regulation Amendments](https://www.federalregister.gov/documents/2024/02/02/2024-01709/medical-devices-quality-system-regulation-amendments)**
+  — the final rule that renamed and restructured Part 820 into the QMSR, published February 2,
+  2024, effective February 2, 2026 (document 2024-01709). Use this page to confirm the rule's
+  exact title, publication date, and effective date yourself, rather than taking this lesson's
+  word for them — and to see the rule's own preamble if you ever need more context than a bare
+  citation gives you.
