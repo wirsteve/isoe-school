@@ -1,0 +1,54 @@
+---
+title: "Resources"
+order: 120
+---
+
+This module introduces no new regulation, standard, or framework, and no new source was fetched
+for it. It crosswalks ITIL (Information Technology Infrastructure Library) vocabulary — described
+in this curriculum's own words, never cited to a specific AXELOS/PeopleCert publication — onto two
+already-built vocabularies: NIST's (National Institute of Standards and Technology) Risk Management
+Framework, already applied to the eQMS (electronic quality-management system) in
+`grc-frameworks-and-risk-management`, and ISO/IEC 27001's own Annex A control-domain structure,
+already opened for a vendor's certificate in `vendor-and-third-party-risk-management`. The links
+below are the direct inputs this module reasons against, by name, without redeveloping any of
+them.
+
+- **[Risk Management Frameworks Side by
+  Side](../../grc-frameworks-and-risk-management/risk-frameworks-side-by-side/index.qmd)** — the
+  module that first laid RMF, ISO 31000, and ICH Q9 (International Council for Harmonisation
+  Quality Risk Management guideline) side by side and quoted the Categorize and Monitor purpose
+  statements in full. Read it for the complete, unabridged text this module restates only one short
+  fragment of, and for the honest caveat — repeated again here — that RMF is a voluntary structure
+  Lakeshore borrowed, not a federal requirement.
+
+- **[Categorize and Select
+  Controls](../../grc-frameworks-and-risk-management/categorize-and-select-controls/index.qmd)** —
+  the module this lesson's first crosswalk draws its facts from directly: the eQMS's own reasoned
+  moderate-impact categorization and the three control families (account and identity management,
+  audit/logging, physical and environmental protection) selected and tailored to it. Read it for
+  the full reasoning this module references but doesn't re-derive.
+
+- **[Authorize and
+  Monitor](../../grc-frameworks-and-risk-management/authorize-and-monitor/index.qmd)** — the
+  module this lesson's second crosswalk is built entirely from: the Director's authorization
+  decision accepting the quarterly access-review gap as a named, 30-day residual risk, and the
+  full five-part ongoing monitoring plan this module re-expressed as a continual improvement
+  register. Read it for the actual decision, word for word, including why authorizing with one
+  open item was the defensible call.
+
+- **[Reading an ISO 27001
+  Certificate](../../vendor-and-third-party-risk-management/reading-an-iso-27001-certificate/index.qmd)**
+  — the module this lesson's third crosswalk reuses its six general ISO 27001 Annex A domain
+  names from (access control, supplier relationships, change management, incident management,
+  business continuity, asset management), paraphrase-only, no control number invented in either
+  module. Read it for the fuller explanation of what an ISMS (Information Security Management
+  System) certification actually certifies, the Stage 1/Stage 2 audit structure, and why a
+  certificate's stated scope is the first thing any reader should check — all background this
+  module's own "what if" conversation assumes without re-teaching.
+
+- **[ITIL-to-QSE Crosswalk: CMDB and Continual
+  Improvement](../itil-to-qse-crosswalk-cmdb-and-continual-improvement/index.qmd)** — this course's
+  own module 2, for the exact eQMS CMDB entry (including its honest blank qualification-status row)
+  this module's first crosswalk builds directly on, and for the same honest-mapping method ("close
+  enough to be worth mapping, different enough to name the gap") this module continues rather than
+  reinvents.

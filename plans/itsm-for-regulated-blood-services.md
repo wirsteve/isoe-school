@@ -58,7 +58,7 @@ ticketing platform — describe generically.
 | — | (syllabus) | — | 114 | Published |
 | 1 | `itil-to-qse-crosswalk-change-and-problem` | Map ITIL's change enablement onto Lakeshore's change control, and problem management onto CAPA. | 115/116 | Published |
 | 2 | `itil-to-qse-crosswalk-cmdb-and-continual-improvement` | Map a CMDB onto an equipment/validated-system inventory, a service catalog onto quality-system scope, and continual improvement onto process improvement. | 117/118 | Published |
-| 3 | `itil-to-grc-crosswalk` | Map service asset/config management onto RMF's Categorize/Select, continual improvement onto Monitor, and security management onto ISO 27001's Annex A domains. | 119/120 | Not started |
+| 3 | `itil-to-grc-crosswalk` | Map service asset/config management onto RMF's Categorize/Select, continual improvement onto Monitor, and security management onto ISO 27001's Annex A domains. | 119/120 | Published |
 | 4 | `building-an-inspection-ready-service-catalog-and-cmdb` | Apply all three crosswalks to build one real service-catalog/CMDB entry for the eQMS that survives an FDA inspection, an AABB assessment, and a security assessment at once. | 121/122 | Not started |
 | 5 | `translating-itsm-and-risk-metrics-for-executives` | Present the same underlying fact (an incident, a residual risk, a control gap) in CIO language and exec-quality-council language without changing what it means. | 123/124 | Not started |
 | 6 | `presenting-it-service-and-risk-performance` | The capstone exercise and the curriculum's closing module: present the Brookfield incident's full, four-lens history to both audiences at once, and close the entire curriculum. | 125/126 | Not started |
@@ -338,3 +338,64 @@ verified file:
   Next: build m3, `itil-to-grc-crosswalk` (`order: 119/120`) — service asset/config management ↔
   RMF Categorize/Select, continual improvement ↔ Monitor, security management ↔ ISO 27001 Annex
   A — applied to the eQMS's own already-authorized RMF history, reference only, no new citation.
+
+- **2026-10-09**: Module 3, `itil-to-grc-crosswalk` (`order: 119/120`), drafted and published. No
+  new citation introduced — the module restates exactly ONE short, already-quoted-elsewhere
+  fragment (the Categorize purpose statement, from `risk-frameworks-side-by-side` and
+  `categorize-and-select-controls`), clearly marked as reused, and references Monitor's one-line
+  action without re-quoting it a third time (it already appears in full in those same two
+  modules). ISO/IEC 27001's Annex A domains are paraphrase-only, reusing the exact six general
+  category names `reading-an-iso-27001-certificate` already established (access control, supplier
+  relationships, change management, incident management, business continuity, asset management) —
+  no new control number invented. Built all three crosswalks this module owns. **(1) Service
+  asset/config management ↔ Categorize/Select** — framed as recognition, not new work: the eQMS's
+  own CMDB entry from module 2 (blank "qualification/validation status" row, flagged there as "not
+  a standard CMDB field") already has its answer sitting in a different document under a different
+  name — `categorize-and-select-controls`'s own moderate-impact categorization and three-family
+  control selection (account and identity management, audit/logging, physical and environmental
+  protection), referenced accurately, not re-decided. **(2) Continual improvement ↔ Monitor** —
+  also framed as recognition: `authorize-and-monitor`'s own five-part ongoing monitoring plan (the
+  30-day remediation check, the standing quarterly cycle, periodic audit-log spot-checks, a fresh
+  look on material change, the standing trigger to reopen the authorization) re-expressed field for
+  field as a continual improvement register (idea/finding, owner, status, review cadence), in the
+  same table shape module 2 used for its own CI register entry — with the honest distinction that
+  every row here carries a named owner and a real consequence (an authorization reopening) if
+  ignored, unlike an ordinary no-stakes backlog item. **(3) Security management ↔ ISO 27001 Annex
+  A** — the one genuinely new crosswalk, explicitly framed as the Director's own hypothetical
+  ("what if Lakeshore ever pursued ISO 27001 certification for the eQMS") and explicitly stated
+  that Lakeshore has NOT decided to pursue this. Reasoned, domain by domain, against the eQMS's
+  three RMF-selected control families: **account and identity management ↔ access control** named
+  as a clean match; **audit/logging** named as *not* mapping cleanly to any single domain — treated
+  honestly as a capability that feeds multiple domains (auditable access, incident detection)
+  rather than forced into one; **physical and environmental protection** named as a partial fit at
+  best against **asset management** (the closest of the six established domains, not a clean
+  match, since this curriculum never established a domain literally named "physical and
+  environmental security"); and **supplier relationships** and **business continuity** named
+  plainly as domains with NO counterpart at all in the eQMS's existing RMF-selected controls,
+  because Select was tailored narrowly to three specific CIA (confidentiality/integrity/
+  availability) failure modes, not built as a comprehensive ISMS covering every domain a real
+  certification would expect. Locked conclusion: real, genuine overlap on one domain, partial
+  overlap on two, no coverage at all on two — RMF's narrower, impact-sized selection and ISO
+  27001's broader ISMS scope are not interchangeable, and this module says so explicitly rather
+  than overclaiming "basically already compliant."
+
+  **No `grc-frameworks-and-risk-management` locked eQMS fact was touched or contradicted**: the
+  moderate-impact categorization, the three control families, the quarterly-access-review
+  deficiency (implemented/documented, not yet exercised on its first cycle), and the
+  authorize/monitor outcome (accepted as a named, 30-day time-bound residual risk, with the
+  five-part ongoing monitoring plan) are all referenced by name, exactly as `categorize-and-
+  select-controls` and `authorize-and-monitor` built them, never re-decided or altered. No
+  `reading-an-iso-27001-certificate` locked fact (the ISMS/Stage 1/Stage 2/surveillance-audit
+  structure, the six general domain names, or the device-management vendor's own reasoned
+  findings) was touched, reopened, or contradicted — only the six domain names were reused, applied
+  for the first time to the eQMS itself rather than to that vendor. No new ITIL publication or page
+  number was cited anywhere in the module. Lesson page is ~3,780 words of prose (TEACHING.md's
+  2,000–4,000-word target, body text only). `quarto` is unavailable in this cloud session (per
+  CLAUDE.md rule 6) — not rendered locally; the GitHub Action renders on push. Published via the
+  `publish` skill to branch `claude/confident-brahmagupta-b499un`.
+  Next: build m4, `building-an-inspection-ready-service-catalog-and-cmdb` (`order: 121/122`) —
+  synthesis only, no new citation: assemble one real eQMS service-catalog entry and CMDB entry from
+  every crosswalk m1-m3 built (including explicitly filling the CMDB's own blank qualification-
+  status row this module pointed to, and reconciling the service-catalog/quality-scope Fairview
+  mismatch module 2 left deliberately unresolved), and test it against an FDA investigator's, an
+  AABB assessor's, and a security assessor's three different questions at once.

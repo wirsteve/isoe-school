@@ -1,0 +1,331 @@
+---
+title: "ITIL-to-GRC Crosswalk"
+order: 119
+---
+
+## The blank field that already has an answer
+
+Pull up two documents side by side. The first is the eQMS's (electronic quality-management
+system's) CMDB (configuration management database) entry, the one your systems administrator
+and your Quality Analyst (QA) built together two modules ago: name, type, version, dependencies,
+owner — every field filled in cleanly, except the last one. **Qualification/validation status:**
+blank. Not a standard CMDB field, you noted at the time, and left it there on purpose, as the
+honest gap that module was built to name.
+
+The second document is the eQMS's own RMF (Risk Management Framework) file from
+`grc-frameworks-and-risk-management` — the one your QA built across four sessions, categorizing
+the eQMS as a **moderate-impact** system, selecting three control families sized to that
+(**account and identity management, audit/logging, and physical and environmental protection**),
+confirming two of them fully implemented and operating as intended, and naming the third — the
+quarterly access-review control — as implemented and documented but not yet exercised on its
+first scheduled cycle. You accepted that gap as a named, time-bound residual risk, gave it a
+30-day remediation window, and built a standing monitoring plan to keep checking it.
+
+Your QA is the one who notices it first. "Wait," she says, flipping back to the CMDB entry. "This
+blank row — 'is it fit to run the job it's doing' — we didn't leave that unanswered. We answered
+it. It's just sitting in a different document, under a different name."
+
+She's right, and that's this entire module's subject. Nothing here is a new exercise. It's
+recognizing that work Lakeshore already did, carefully, under one framework's name, is also doing
+exactly what two other vocabularies — one you've known for years, one you're still building — ask
+for.
+
+## Why this matters — and the ITSM bridge
+
+Here's the failure worth naming before any framework enters the room, and it's quieter than a
+missing control: **a system ends up with three separate, un-reconciled answers to "do we actually
+know what this thing is, what it's worth, and whether we're still watching it" — one in the CMDB,
+one in the RMF file, maybe someday a third in a security assessment — and nobody ever lines them
+up to notice they're the same question, asked three times, at three different levels of rigor.**
+That's not a crisis by itself. It's a slow tax: duplicate effort maintaining records that should
+cross-reference each other, and a real risk that someday one of the three quietly drifts out of
+sync with the other two, the same drift module 2 already caught between the service catalog and
+the quality-system scope statement.
+
+You already own two of the three ITSM (IT service management) concepts this module needs, from
+different angles than last time. **Service asset and configuration management** — the broader
+ITIL practice the CMDB work in the last module was one slice of — exists for one underlying
+reason: know what you have, and what it's worth, before you make any decision about it. That's not
+a new idea to you; it's the same discipline behind asset tagging, license management, and
+dependency mapping you've run for years. **Continual improvement** you've already re-met once in
+this course, mapped onto AABB's (Association for the Advancement of Blood & Biotherapies) own
+process-improvement discipline — a standing commitment to keep checking and improving, not a
+one-time project that ends the day it ships.
+
+The third concept is the one genuinely new ground in this module: **security management** — ITIL's
+own practice for taking a systematic approach to protecting information assets, rather than
+leaving security to whoever happens to think of it. Lakeshore has never built a Lakeshore-specific
+vocabulary for that practice the way it has for the other two. ISO/IEC 27001 — the international
+standard behind an ISMS (Information Security Management System) certification, already opened in
+`vendor-and-third-party-risk-management` for a vendor's own certificate — is the closest
+ready-built vocabulary for it. This module's third crosswalk is the first time that standard's own
+structure gets pointed at the eQMS itself, not a vendor.
+
+## A note on citations: still none new here
+
+This module introduces no new regulatory source, the same discipline this course has held since
+its first module. `sources/nist/sp-800-37r2-excerpt.md` is reused, not re-fetched; one short
+fragment already quoted in full in `risk-frameworks-side-by-side` and `categorize-and-select-controls`
+gets restated below, clearly marked, because this module's own teaching point genuinely needs it
+in view. Monitor's own one-line action is referenced, not re-quoted — it already appears in full
+in `risk-frameworks-side-by-side` and gets applied concretely in `authorize-and-monitor`, and
+re-quoting it a third time would add nothing this module needs. ISO/IEC 27001's Annex A control
+domains are paraphrased only, reused from `reading-an-iso-27001-certificate`'s own general category
+names — **access control, supplier relationships, change management, incident management, business
+continuity, and asset management** — with no new control number invented anywhere below. ITIL's
+own vocabulary — service asset and configuration management, continual improvement, security
+management — is, as always in this curriculum, described in this course's own words, never cited
+to a specific AXELOS/PeopleCert publication or page number.
+
+## Crosswalk 1: service asset and configuration management ↔ Categorize/Select
+
+Service asset and configuration management's whole job, in ITIL's own practical terms, is
+answering two questions before anything else gets decided: what do we actually have, and what is
+it worth? A CMDB answers the first question well — identity, version, dependencies. It was never
+built, by default, to answer the second one with any rigor, which is exactly the gap your QA
+caught in module 2.
+
+RMF's Categorize step, already quoted in full elsewhere in this curriculum, is the rigorous version
+of "what is it worth" — restated here as the one short fragment this module needs in view, reused,
+not re-derived:
+
+> The purpose of the Categorize step is to inform organizational risk management processes and
+> tasks by determining the adverse impact to organizational operations and assets, individuals,
+> other organizations, and the Nation with respect to the loss of confidentiality, integrity, and
+> availability of organizational systems and the information processed, stored, and transmitted by
+> those systems.
+
+Read that next to the blank row in the eQMS's CMDB entry. "Is this system fit to run the job it's
+doing" and "what's the adverse impact if this system's confidentiality, integrity, or availability
+fails" are the same question, asked at two different depths. The CMDB entry asked it informally
+and came up with nothing to write down. `categorize-and-select-controls` asked it formally — walked
+through all three failure modes specifically for the eQMS's CAPA (corrective and preventive
+action) records, document control, and audit logs across all three sites — and reasoned its way to
+**moderate-impact**, not as a number handed down by a standard, but as Lakeshore's own documented
+judgment, with the reasoning attached.
+
+Select's own job, reference only here, not redeveloped: size a control set to that answer, then
+tailor it. That's exactly what happened next — three control families, each tracing back to one of
+the three named failure modes: **account and identity management** (the confidentiality answer),
+**audit/logging** (the integrity answer), and **physical and environmental protection** (the
+availability answer).
+
+Here's the actual teaching point, stated plainly rather than treated as a new exercise: **the
+eQMS's blank CMDB field already has an answer. It's not a missing piece of work — it's a piece of
+work that happened in a different document, under a different name, with more rigor than a bare
+CMDB template would ever have demanded.** Service asset and configuration management's own goal —
+know what you have and what it's worth — is not a new standard Lakeshore needs to meet. It's a
+description of what Categorize and Select already did, for this exact system, months ago.
+
+| What service asset management asks | What the eQMS's RMF file already answered |
+|---|---|
+| What do we have? | An Application CI, as named in the CMDB entry — now also the subject of a formal categorization file |
+| What's it worth, if it fails? | Moderate-impact, reasoned through three specific failure modes (CAPA-record alteration, cross-site exposure, audit-log unavailability during an assessment) |
+| What controls does that worth justify? | Three tailored control families: account and identity management, audit/logging, physical and environmental protection |
+
+Nothing here reopens or re-decides any of those three facts. This crosswalk's whole job is
+recognition, not re-categorization: the eQMS's own already-done RMF work *is* what rigorous
+service-asset-and-configuration-management looks like, dressed in a different vocabulary.
+
+## Crosswalk 2: continual improvement ↔ Monitor
+
+The same recognition applies here, and you've already built half of this crosswalk once before,
+in module 2, mapping ITIL's continual improvement register onto AABB's own process-improvement
+discipline. This time the register you're recognizing isn't a backlog item about a clunky
+CAPA-entry field — it's the eQMS's own standing monitoring plan, built in `authorize-and-monitor`
+and never reopened here.
+
+Monitor's own one-line action already appears in full, twice, elsewhere in this curriculum — in
+`risk-frameworks-side-by-side` and applied concretely in `authorize-and-monitor` — and doesn't need
+a third quotation to do its job here. What it asks for, in short: keep checking that controls still
+work, write down what changes, keep reassessing risk, and report the system's posture to someone.
+
+Lay the eQMS's own monitoring plan out as a continual improvement register, field for field, the
+same shape module 2 used for the lot/batch auto-fill idea:
+
+| Register entry | Owner | Status | Review cadence / trigger |
+|---|---|---|---|
+| First quarterly access review (the accepted residual risk) | Systems administrator | Scheduled, within the 30-day window named at authorization | Reports back to the Director by name, not folded silently into routine business |
+| Standing quarterly access-review cycle | Systems administrator | Ongoing, ordinary cadence once the first cycle clears | Every quarter |
+| Audit-log spot-checks | Systems administrator | Standing, periodic | Not just a one-time Assess verdict — checked again on a recurring basis |
+| Fresh categorization look on material change | Director, with QA and systems administrator | Standing trigger, not yet exercised | New site added, new integration, a vendor patch applied, a new category of record stored |
+| Reopening the authorization itself | Director | Standing trigger, not yet exercised | The 30-day window passing with no review run; a cleared control later found not operating; the overdue review turning up a real finding |
+
+That table is not a new artifact this module invented. It's the exact monitoring plan
+`authorize-and-monitor` already built, written in continual-improvement-register language instead
+of RMF language. The honest point, stated the same way module 2 stated its own version of this:
+**a continual improvement register with no compliance stakes at all can sit untouched for a
+quarter without anyone's job depending on it. This register can't — every row above has a named
+owner, a stated trigger, and a real consequence (an authorization reopening) if the row gets
+ignored.** That's not a difference in vocabulary; it's the honest reason RMF's Monitor step earns
+more institutional weight than an ordinary backlog entry, even though both are, structurally, the
+same kind of standing list.
+
+## Crosswalk 3: security management ↔ ISO 27001 Annex A — a genuine "what if"
+
+Here's where this module stops recognizing already-done work and starts reasoning through
+something new. In the same planning conversation, you find yourself wondering out loud: "We've
+read this vendor's ISO 27001 certificate and Statement of Applicability (SoA) twice now, in
+`vendor-and-third-party-risk-management`. What would it even look like if Lakeshore ever pursued
+that certification for the eQMS itself?"
+
+Say plainly what this is and isn't. **Lakeshore has not decided to pursue ISO 27001 certification
+for the eQMS.** Nothing below is a recommendation, a project, or a locked plan — it's the Director
+thinking out loud about whether the eQMS's own already-built RMF work would travel cleanly onto
+that structure, the way you'd sketch a hypothetical before ever proposing it to your CIO (chief
+information officer).
+
+`reading-an-iso-27001-certificate` already established, in paraphrase only, that an ISMS
+certification isn't a certification of every individual technical control — it's a certification
+of the *process* an organization runs for deciding what controls it needs, implementing them, and
+checking on them, built around a reference set of control domains, some of which an organization's
+own Statement of Applicability implements and some of which it formally excludes with a reason.
+That same module named six of those domains in general terms, reused here with no new one
+invented: **access control, supplier relationships, change management, incident management,
+business continuity, and asset management.**
+
+Walk the eQMS's own three RMF-selected control families against those six, honestly, one at a
+time.
+
+**Account and identity management ↔ access control.** This is the one clean match. Who gets eQMS
+access, at what level, reviewed on what schedule, across all three sites — that's close to a
+word-for-word description of what an access-control domain governs. If Lakeshore ever built a real
+SoA for the eQMS, this domain would very plausibly show "implemented," with the eQMS's own
+account-and-identity-management family as the evidence.
+
+**Audit/logging** doesn't map onto one single domain as cleanly, and that's worth saying honestly
+rather than forcing a fit. Logging evidence supports more than one domain at once — it's part of
+what makes access control auditable (who actually did what, not just who's authorized), and it's
+part of what a mature incident management process would draw on to detect that something went
+wrong in the first place. Treat it as a capability that feeds multiple domains rather than a domain
+unto itself; RMF's own control-family taxonomy and ISO's Annex A domain structure were built by two
+different bodies, for two different purposes, and a clean one-to-one dictionary between the two
+was never a safe assumption anywhere in this curriculum.
+
+**Physical and environmental protection** is the honest edge case, and it's worth sitting with
+rather than smoothing over. The six domain names this curriculum has established don't include one
+named "physical and environmental security" — a real category in the actual standard, almost
+certainly, but not one this curriculum independently verified, so it isn't asserted here. The
+closest honest fit among the six already-named domains is **asset management**, since physical and
+environmental protection is, at bottom, about controlling the state and location of the
+infrastructure asset the eQMS runs on — but it's a partial fit, not the clean match access control
+got.
+
+Now the part that actually answers the Director's hypothetical. **Supplier relationships** and
+**business continuity** — two of the six established domains — have no counterpart at all among
+the eQMS's three RMF-selected families. Nothing in the eQMS's own RMF file ever reached outward to
+the vendors whose infrastructure the eQMS might depend on, because Select's job was tailoring
+controls to the three specific failure modes Categorize named for this one system — not building a
+comprehensive management process covering every domain a certification body would expect an ISMS
+to address. Business continuity — a tested plan for what happens if the eQMS's production
+environment is unavailable for an extended period, not just the physical-protection controls
+guarding where it normally runs — was never part of Select's scope either, because Categorize's
+own availability finding was about an audit log being briefly unreachable during an assessment, not
+about surviving a prolonged outage.
+
+That's the honest, genuinely new conclusion this module reaches, not asserted lightly: **RMF's
+Categorize-and-Select work and ISO 27001's Annex A structure overlap real ground, but they aren't
+interchangeable.** RMF, as Lakeshore ran it, produced a lean, risk-sized control set tailored to
+three specific failure modes for one system. An ISO 27001 ISMS, if Lakeshore ever pursued one for
+the eQMS, would need to reach further — a documented approach to the vendors behind the eQMS's own
+infrastructure, and a tested continuity plan — neither of which the eQMS's existing RMF work was
+ever asked to cover. The overlap is real and worth recognizing. The gap is just as real, and
+pretending otherwise would be the same kind of overstatement `risk-frameworks-side-by-side` already
+warned against when it said borrowing a framework's structure isn't the same as being bound by it.
+
+## What a reviewer would actually look for
+
+No outside body is checking whether Lakeshore's CMDB entry, RMF file, and ISO 27001 reasoning agree
+with each other — this is an internal discipline, not an external audit requirement. What a
+competent reviewer — your CIO, or you yourself revisiting this in six months — would actually want
+to find is one traceable story instead of three disconnected documents: a CMDB entry whose blank
+qualification field points to the RMF file that actually answers it; an RMF monitoring plan that
+reads, to anyone fluent in either vocabulary, as a continual improvement register with named
+owners and real stakes; and, if the ISO 27001 question ever gets raised seriously, an honest
+accounting of which domains the eQMS's current work already covers and which it doesn't — not a
+confident "we're basically already compliant" that nobody has actually reasoned through.
+
+## Common traps
+
+**"We already did the RMF work, so a CMDB entry doesn't need to say anything about qualification
+status."** Backwards. The CMDB entry's blank field is still honest — a CMDB, by ITIL's own
+default practice, was never going to carry that field. The fix isn't leaving it blank and pointing
+elsewhere; it's exactly what module 2 already flagged as module 4's job: building the connection
+explicitly, so a reader of the CMDB entry alone isn't left guessing that a separate file somewhere
+else answers the question.
+
+**"Since the eQMS's RMF work covers access control and asset management reasonably well, Lakeshore
+is most of the way to ISO 27001 certification already."** This is the trap this module's third
+crosswalk was built to puncture. One clean match and two partial ones out of six established
+domains is real, genuine overlap — not "most of the way." Supplier relationships and business
+continuity aren't minor gaps; they're entire domains of process Lakeshore's RMF work for the eQMS
+never touched, because Select was never asked to cover them.
+
+## What this means for your job
+
+- **Before treating any gap in one system record as unsolved, ask whether a different document
+  already answered it under a different name.** The eQMS's blank CMDB field is the concrete example
+  this module built around, but the habit generalizes: a security question, a quality question, and
+  an IT-operations question about the same system are often the same question in three dialects.
+- **Read your own monitoring plans for named owners and real stakes, the way this module's register
+  table did.** A continual improvement entry with no consequence if it's ignored is decoration. The
+  eQMS's monitoring plan earns its weight specifically because every row has one.
+- **If an ISO 27001 question for the eQMS ever becomes a real conversation, not a hypothetical,
+  bring the honest gap list from this module, not just the clean match.** Access control is real
+  evidence. Supplier relationships and business continuity are real, unaddressed work, not a
+  rounding error — say so plainly before anyone commits budget or a certification timeline to it.
+- **Don't let "we borrowed RMF's structure" and "we're basically ISO 27001 compliant" blur
+  together.** They're different claims, built for different purposes, and conflating them is the
+  exact kind of overstatement that costs credibility with a CIO or an assessor who actually reads
+  the domain list.
+- **When you brief your CIO on the eQMS's security posture, lead with what this module actually
+  found: real, rigorous risk-sizing work already done, honestly scoped, with named gaps if anyone
+  ever wants to extend it further** — not a vaguer "we're covered" that doesn't survive a specific
+  follow-up question.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your systems administrator says, "Since the eQMS's CMDB entry still has that blank qualification field, we never actually answered whether it's fit to run the job it's doing." Is that accurate?
+
+Not anymore, and this module's whole point is showing why. The CMDB entry's blank field is honest
+about what a CMDB was never built to track — but the answer exists, in full, in the eQMS's own RMF
+file: categorized moderate-impact, with three control families sized to that categorization,
+two independently confirmed and one accepted as a named, time-bound residual risk. The field is
+still blank in the CMDB specifically, which is a real, worthwhile fix for module 4 to make
+explicit — but "unanswered" and "answered somewhere else" are different claims, and this module's
+job was showing it's the second one.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Does AABB, FDA, or any regulation require Lakeshore to pursue ISO 27001 certification for the eQMS?
+
+No — and nothing built anywhere in this curriculum suggests otherwise. The ISO 27001 question in
+this module is a genuine hypothetical the Director raised out loud, not a decision Lakeshore has
+made or a requirement any regulator or standard imposes. If Lakeshore ever pursues it, that would
+be the same kind of voluntary choice `risk-frameworks-side-by-side` already named for adopting
+RMF's own structure in the first place — borrowed because it's useful, never because anyone
+outranks Lakeshore into it.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Your QA asks why "audit/logging" doesn't get its own clean row in the ISO 27001 domain-mapping table the way "account and identity management" does. Is that an oversight?
+
+No — it's the honest result of reasoning through the mapping rather than forcing every RMF control
+family into exactly one ISO domain. Audit/logging is a capability that supports more than one
+domain at once (making access auditable, feeding incident detection) rather than a domain by
+itself, and RMF's own control-family taxonomy and ISO's Annex A structure were built independently,
+by different bodies, for different purposes. Forcing a clean one-to-one match everywhere would
+have been a less honest answer than naming the one place a tidy match genuinely doesn't exist.
+:::
+
+## Where this goes next
+
+This module recognized two already-done pieces of work through a new lens — the eQMS's CMDB entry
+and its RMF categorization are the same "what do we have and what's it worth" question, and its
+RMF monitoring plan is already a continual improvement register with real stakes — and reasoned
+honestly through one genuinely new question: where the eQMS's existing work would and wouldn't
+carry over to an ISO 27001 ISMS, if Lakeshore ever pursued one. The next module stops crosswalking
+in the abstract and builds the actual artifact: one real service-catalog entry and CMDB entry for
+the eQMS, assembled from every crosswalk this course has built so far, tested against an FDA
+investigator's, an AABB assessor's, and a security assessor's three different questions at once.
