@@ -272,12 +272,24 @@ has no `plans/<slug>.md` file until its first session.
 | `data-integrity-and-records` | 6 / 6 | Done |
 | `fda-and-aabb-in-practice` | 6 / 6 | Done |
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
-| `healthcare-security-and-privacy` | 0 / 5 | Not started |
+| `healthcare-security-and-privacy` | 1 / 5 | In progress |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `healthcare-security-and-privacy` (Track 4), the next course in the recommended
-sequence (Phase 8). `grc-frameworks-and-risk-management` is now 5/5 and complete — see
+**Next up:** `healthcare-security-and-privacy` module 2, `the-hipaa-privacy-rule` (Track 4,
+Phase 8). Module 1, `information-governance-in-a-covered-entity`, is published — see
+`plans/healthcare-security-and-privacy.md`'s progress log for the full module, including its
+locked facts for modules 2-5: Lakeshore is now this course's adopted working premise as a HIPAA
+covered entity (reasoned from 45 CFR 160.103's "covered entity" clause (3) and "health care
+provider" catch-all, not asserted); the course's running incident is locked as a Brookfield
+staff member's work laptop, left in a shared ride after presenting a deferral-coding consistency
+review, carrying a six-field, ~212-donor BECS extract (donor ID, name, date of birth,
+determination + date, deferral reason code, lifetime donation count) of which only three fields
+were actually needed for the review; the laptop's full-disk-encryption status is genuinely
+unresolved (enrolled under policy, but a device-management migration left its encryption-status
+field unreported) and must stay open through modules 3-4; and the donor population has no
+connection to any other open quality event. No `csv-and-becs`/`data-integrity-and-records`
+locked identifier was touched. `grc-frameworks-and-risk-management` is now 5/5 and complete — see
 `plans/grc-frameworks-and-risk-management.md`'s progress log for the full course, including
 module 5's final, locked state: a built POA&M (plan of action and milestones) entry for the
 eQMS's one open deficiency (the quarterly access-review control for account and identity
