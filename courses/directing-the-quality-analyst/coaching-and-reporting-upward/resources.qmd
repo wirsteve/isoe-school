@@ -1,0 +1,23 @@
+---
+title: "Resources: Coaching your QA and reporting upward"
+order: 39
+---
+
+Each link below was checked this session and loads.
+
+- **[21 CFR 606.20 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.20)**
+  — the Personnel section behind this module's "documented competence" point, paragraph (b)'s
+  "thorough understanding of the procedures or control operations they perform" standard, reused
+  from `qa-deliverables-and-ownership`. Local verbatim copy: `sources/cfr/606.20.md`.
+
+- **[AABB: Updated Quality Systems Essentials](https://www.aabb.org/standards-accreditation/standards/about-aabb-standards/updated-quality-systems-essentials)**
+  — AABB's current landing page on the QSE (Quality System Essentials) structure, including
+  Organization (QSE 1), the theme behind management review's own existence, and Resources (QSE 2),
+  the theme behind tracking competence as a formal record. See
+  `sources/aabb/qse-framework.md` for what's confirmed and what still needs re-checking before
+  citing a specific edition.
+
+- **[GovInfo: Code of Federal Regulations](https://www.govinfo.gov/app/collection/cfr)**
+  — the government's own dated, authenticated CFR collection. Use this when a citation needs to
+  be tied to a specific published edition rather than the current rolling text Cornell's LII
+  shows.

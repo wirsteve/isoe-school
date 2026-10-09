@@ -267,7 +267,7 @@ has no `plans/<slug>.md` file until its first session.
 | `risk-and-controls-vocabulary` | 1 / 1 | Done |
 | `blood-center-operations` | 5 / 5 | Done |
 | `quality-system-essentials` | 7 / 7 | Done |
-| `directing-the-quality-analyst` | 5 / 6 | In progress |
+| `directing-the-quality-analyst` | 6 / 6 | Done |
 | `csv-and-becs` | 0 / 7 | Not started |
 | `data-integrity-and-records` | 0 / 6 | Not started |
 | `fda-and-aabb-in-practice` | 0 / 6 | Not started |
@@ -276,9 +276,8 @@ has no `plans/<slug>.md` file until its first session.
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `directing-the-quality-analyst` (Track 6), module 6 (final): `coaching-and-
-reporting-upward`. See `plans/directing-the-quality-analyst.md` for the full module list,
-scoping decisions, and exact `order:` values. Note: modules 4-5 were deliberately scoped to
-decision-trail-only depth since `csv-and-becs` and `vendor-and-third-party-risk-management`
-aren't built yet — the plan file's "Deliberately deferred" table should be revisited once those
-courses exist.
+**Next up:** `csv-and-becs` (Track 3). `directing-the-quality-analyst` (Track 6) is fully built
+and published (6/6 modules) — see `plans/directing-the-quality-analyst.md`'s "Deliberately
+deferred" table for which of its modules (4 and 5) should be revisited once `csv-and-becs` and
+`vendor-and-third-party-risk-management` exist. Scope `csv-and-becs` (Phase 1/2), then build its
+first module.
