@@ -57,7 +57,7 @@ platform, OS, or cloud-platform brand.
 | — | (syllabus) | — | 103 | Published |
 | 1 | `supplier-qualification-and-risk-tiering` | Apply AABB's QSE 4 (Supplier and Customer Issues) to a real vendor decision: which vendors need deep qualification and which don't, and why that's risk-tiering, not a one-size-fits-all checklist. | 104/105 | Published |
 | 2 | `reading-a-soc-2-report` | Tell a Type I report from a Type II, name the five Trust Services Criteria, and read a report's complementary-user-entity-controls section and bridge letter for what they mean for Lakeshore. | 106/107 | Published |
-| 3 | `reading-an-iso-27001-certificate` | Know what a certificate actually certifies, and read a Statement of Applicability to see which Annex A control domains a vendor claims and which it excludes, with a stated reason. | 108/109 | Not started |
+| 3 | `reading-an-iso-27001-certificate` | Know what a certificate actually certifies, and read a Statement of Applicability to see which Annex A control domains a vendor claims and which it excludes, with a stated reason. | 108/109 | Published |
 | 4 | `business-associate-agreements` | Walk the actual HIPAA text requiring a BAA's contract terms — what it obligates a vendor to do, report, and return or destroy. | 110/111 | Not started |
 | 5 | `vendor-change-notifications-and-your-own-change-control` | Place a vendor's change-notification/incident-reporting duties against Lakeshore's own change control, and close the course by returning to the Brookfield incident with this course's own new lens. | 112/113 | Not started |
 
@@ -367,3 +367,90 @@ as every prior course) — already done as part of Phase 2 scoping below.
   Next: build m3, `reading-an-iso-27001-certificate`. Whoever drafts it still needs to
   independently find and curl-verify ISO's own public catalogue page for ISO/IEC 27001:2022 before
   publishing a link — not resolved this session either; see m3's own guardrails above.
+
+- **2026-10-09**: Module 3, `reading-an-iso-27001-certificate` (`order: 108/109`), drafted and
+  published. ISO/IEC 27001 handled strictly as a paid/proprietary international standard — no ISO
+  text independently fetched or quoted, no specific Annex A control number asserted anywhere, same
+  tier as ISO 31000/19011/GAMP 5/SOC 2 elsewhere in this curriculum; the citation-decoder row names
+  it "industry practice / proprietary framework — described in this curriculum's own words, not a
+  cited standard," matching module 2's own SOC 2 row exactly. Taught, in the lesson's own words
+  only: a certificate attests to an ISMS (Information Security Management System) — the vendor's
+  *process* for selecting, implementing, and reviewing controls, not a certification of zero
+  incidents or of every individual technical control directly; the two-stage initial audit (Stage
+  1 documentation review, Stage 2 implementation audit) followed by periodic surveillance audits
+  (commonly annual) and a longer recertification cycle (commonly three years); a certificate's
+  stated **scope** (which org unit/location/system it actually covers — the single most commonly
+  overlooked thing when reading one); and the **Statement of Applicability (SoA)** — every control
+  domain, implemented vs. formally excluded with a stated reason, an exclusion not automatically a
+  red flag unless unexplained or implausible. Only general, widely known control-domain categories
+  were named (access control, supplier relationships, change management, incident management,
+  business continuity, asset management) — no specific control numbering scheme asserted, per the
+  module's own guardrail.
+
+  **Scope-verification finding applied to the device-management platform vendor (reasoned, not
+  asserted as fact about a real document — locked for modules 4-5 to build on, not contradict):**
+  the module's central teaching move is that a real, currently valid ISO 27001 certificate can
+  still fail to cover the specific device-management product Lakeshore actually uses, if that
+  product sits in a different business unit, a different data-center footprint, or was simply never
+  brought inside the certified boundary — so the first, non-skippable step in reading this vendor's
+  certificate is confirming its own stated scope names the actual product and environment Lakeshore
+  relies on, not just the vendor's corporate name. The lesson does not assert a specific real-world
+  outcome (i.e., it doesn't claim the vendor's actual scope does or doesn't cover the product) —
+  it teaches the scope-verification *method* and flags that skipping this check is the most common
+  reader error, consistent with the module's own guardrails.
+
+  **SoA control-domain findings for the device-management platform vendor (reasoned):** three
+  domains were identified as most relevant to the Brookfield incident and walked through
+  individually — **change management** (most directly relevant: a mature, properly implemented
+  change-management domain would plausibly include validating that compliance-relevant fields, like
+  a device's encryption-attestation status, survive a migration or get re-verified afterward,
+  directly on point for the deployment-sequencing gap `investigating-a-healthcare-data-incident`
+  already ranked as the incident's most structural root cause); **supplier relationships** (relevant
+  because the vendor's own migrations likely involve its own downstream providers, and a vendor
+  that manages its own supplier risk is doing to its suppliers what this course is now doing to it);
+  and **asset management** (relevant because the entire failure class here is, at bottom, a tracked
+  asset — one enrolled device — whose state wasn't reliably carried through a transition).
+
+  **Honest reasoning on prevention (matches module 2's own honest conclusion and
+  `investigating-a-healthcare-data-incident`'s locked findings, does not contradict either):** the
+  module states plainly that ISO 27001 certification would **not** have definitely prevented the
+  Brookfield migration-era defect. A certified ISMS with change management genuinely implemented
+  *plausibly reduces the likelihood* of this class of gap — it does **not** guarantee zero defects,
+  because the standard certifies a management process, checked at a point in time and on an ongoing
+  surveillance cycle, not perfection on every migration for every customer. This is explicitly tied,
+  without altering any locked fact, to `investigating-a-healthcare-data-incident`'s own finding that
+  the vendor's migration defect was a known, disclosed issue class, not a concealed failure —
+  reasoned in the lesson as consistent with a vendor that has *some* functioning change-management
+  discipline, just not one airtight enough to catch this one device's attestation gap. The lesson's
+  own "check your understanding" Q3 states this explicitly as a locked teaching point: reading the
+  certificate and SoA earlier would have been a real, useful signal to act on, not a guarantee the
+  incident could never have happened.
+
+  **How the ISO link issue was resolved:** tried, in order — (1) direct `curl` against ISO's own
+  site: `iso.org/standard/27001`, `iso.org/search.html?q=27001`, `iso.org/isoiec-27001-information-
+  security.html`, and the bare root `iso.org`/`iso.org/home.html` all returned HTTP 403 (ISO's own
+  bot-protection block, consistent with this curriculum's prior experience with ISO 31000/19011,
+  just wider here — even the root domain was blocked, not only a specific standard page); (2) the
+  Internet Archive's Wayback Machine availability API (`archive.org/wayback/available`), tried
+  multiple times across this session with pauses in between in case the rate limit cleared, returned
+  HTTP 429 every single time; its CDX API alternative (`web.archive.org/cdx/search/cdx`) was blocked
+  outright by this environment's own egress policy, not by archive.org itself; (3) a specific ANSI
+  webstore URL guess (`webstore.ansi.org/standards/iso/isoiec270012022`) returned 403; (4) a guessed
+  BSI product-page URL (`bsigroup.com/.../ISO-IEC-27001-Information-Security-Management/`)
+  301-redirected to a generic "explore standards by category" landing page, not content specifically
+  about ISO 27001, so it was **not** used. Per the module's own explicit instruction not to guess or
+  fabricate a catalogue number, **no ISO.org link was published.** In its place, two independent,
+  directly curl-verified pages from accredited ISO 27001 certification bodies were found and used
+  instead — `bsigroup.com/en-GB/iso-27001-information-security/` (HTTP 200, title confirmed "ISO
+  27001 - Information Security Management | BSI UK") and `nqa.com/en-us/certification/standards/
+  iso-27001` (HTTP 200, title confirmed "ISO 27001 for Information Security | Get Certified") — both
+  disclosed explicitly in `resources.qmd` as certification-body pages, not ISO's own site, with the
+  full attempt history stated honestly so a future session can retry ISO's own catalogue page once
+  this environment's block may have lifted.
+
+  Files written: `courses/vendor-and-third-party-risk-management/reading-an-iso-27001-certificate/
+  index.qmd` (lesson, ~3,400 words including front matter/markup) and `.../resources.qmd`. No new
+  regulatory/standard source saved to `sources/`; no change to `sources/INDEX.md` needed (no new
+  verbatim source was fetched — ISO/IEC 27001 remains, deliberately, never independently fetched
+  anywhere in this curriculum).
+  Next: build m4, `business-associate-agreements`.

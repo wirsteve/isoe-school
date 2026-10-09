@@ -273,16 +273,16 @@ has no `plans/<slug>.md` file until its first session.
 | `fda-and-aabb-in-practice` | 6 / 6 | Done |
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
 | `healthcare-security-and-privacy` | 5 / 5 | Done |
-| `vendor-and-third-party-risk-management` | 2 / 5 | In progress |
+| `vendor-and-third-party-risk-management` | 3 / 5 | In progress |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `vendor-and-third-party-risk-management` module 3, `reading-an-iso-27001-certificate`
-(Track 4, Phase 9). Modules 1 and 2 are published — see
+**Next up:** `vendor-and-third-party-risk-management` module 4, `business-associate-agreements`
+(Track 4, Phase 9). Modules 1-3 are published — see
 `plans/vendor-and-third-party-risk-management.md`'s progress log for the full detail, but in
 short: AABB's QSE 4 ("Supplier and Customer Issues," named/themed only, no Standards text or
 standard number) grounded a reasoned, three-tier vendor risk scheme — **High / Medium / Low**,
 decided by four questions (data touch; system criticality — BECS-adjacent or eQMS; access level
-— logical/data vs. physical-only; blast radius). **Locked vendor placements module 3 picks up
+— logical/data vs. physical-only; blast radius). **Locked vendor placements modules 4-5 pick up
 directly:** the device-management platform vendor is **High** tier (data touch: yes, manages
 devices carrying e-PHI-adjacent extracts off-site, per `healthcare-security-and-privacy`'s own
 locked Brookfield facts, not reopened here; system criticality: BECS-adjacent; access level:
@@ -291,23 +291,52 @@ multi-site, confidentiality and availability). Three invented, generic contrast 
 also tiered: a reagent/consumables supplier (**Medium** — no data access, but bears on a
 GMP-governed testing process), a facilities/janitorial vendor (**Low**, conditioned on its
 physical access staying out of restricted/server areas), and an office-supplies vendor
-(**Low**). **Module 2, `reading-a-soc-2-report`, is now also published** — it opened this
-High-tier vendor's own SOC 2 report for the first time (handled strictly as a paid/proprietary
-framework, no AICPA text fetched or quoted, same tier as ISO 31000/19011/GAMP 5 elsewhere) and
-reasoned through, without asserting as fact: Trust Services Criteria selected — Security
-(certain) and Availability (strong, reasoned guess) certainly, Confidentiality plausibly given
-the e-PHI-adjacent device data this vendor's devices carry, Processing Integrity and Privacy
-less likely; **Type II**, not Type I (the stronger, more plausible case for a vendor at this
-scale and tier, and the only type that could speak to whether controls held up through a
-migration event); a plausible **CUEC (Complementary User Entity Control)** requiring Lakeshore
-itself to confirm each device's encryption status before field/travel use — tied honestly to
+(**Low**). **Module 2, `reading-a-soc-2-report`, is published** — it opened this High-tier
+vendor's own SOC 2 report for the first time (handled strictly as a paid/proprietary framework,
+no AICPA text fetched or quoted, same tier as ISO 31000/19011/GAMP 5 elsewhere) and reasoned
+through, without asserting as fact: Trust Services Criteria selected — Security (certain) and
+Availability (strong, reasoned guess) certainly, Confidentiality plausibly given the
+e-PHI-adjacent device data this vendor's devices carry, Processing Integrity and Privacy less
+likely; **Type II**, not Type I (the stronger, more plausible case for a vendor at this scale
+and tier, and the only type that could speak to whether controls held up through a migration
+event); a plausible **CUEC (Complementary User Entity Control)** requiring Lakeshore itself to
+confirm each device's encryption status before field/travel use — tied honestly to
 `investigating-a-healthcare-data-incident`'s own root-cause ranking (the deployment-sequencing
 gap) without altering any locked fact, since that course already found the vendor's migration
 defect was a known, disclosed issue class, not a hidden vendor failure, and Lakeshore's own
 verification was the actual gap; and a **bridge letter** reasoned as needed, given the near-
 certain gap between the report's past period-end date and the date Lakeshore is reading it for
-the first time. Module 3 now opens this same vendor's ISO 27001 certificate and Statement of
-Applicability.
+the first time. **Module 3, `reading-an-iso-27001-certificate`, is now also published** — it
+opened this same vendor's ISO 27001 certificate and Statement of Applicability (SoA), handled
+strictly as a paid/proprietary international standard, no ISO text fetched or quoted, no Annex A
+control number invented, same tier as ISO 31000/19011/GAMP 5/SOC 2 elsewhere. Taught: a
+certificate attests to an ISMS (Information Security Management System) — the vendor's own
+*process* for selecting, implementing, and reviewing controls, not every individual technical
+control and not zero incidents; the Stage 1 (documentation)/Stage 2 (implementation) initial
+audit, periodic surveillance audits, and a longer recertification cycle; a certificate's stated
+**scope**, confirmed against the actual product/environment Lakeshore uses, not just the
+vendor's name — the single most commonly overlooked check; and the SoA's implemented-vs.-
+excluded control domains, named only in general terms (access control, supplier relationships,
+change management, incident management, business continuity, asset management), no specific
+numbering asserted. **Reasoned, locked findings for this vendor:** the scope-verification
+*method* was taught (confirm the certificate's stated scope actually names the product Lakeshore
+uses, not just the vendor's corporate name) without asserting a specific real-world scope
+outcome; three SoA control domains were walked through as most relevant to Brookfield — change
+management (most directly on point: a mature, properly implemented domain would plausibly
+validate that compliance-relevant fields like encryption-attestation status survive a migration),
+supplier relationships, and asset management; and the module's honest conclusion, consistent with
+module 2 and with `investigating-a-healthcare-data-incident`'s locked findings, is that
+certification **plausibly reduces the likelihood** of this class of gap but does **not** guarantee
+it — the standard certifies a management process, not perfection, so ISO 27001 certification would
+not have definitely prevented the Brookfield incident. ISO's own catalogue page for ISO/IEC
+27001:2022 could not be verified reachable this session either (direct `iso.org` checks returned
+403 on every page tried, including the root domain; the Wayback Machine's availability API
+returned 429 on every retry; its CDX API was blocked by this environment's own egress policy) —
+resolved by publishing two independent, curl-verified accredited-certification-body pages (BSI and
+NQA) instead of guessing a catalogue number, with the full attempt history disclosed in the
+module's own `resources.qmd` for a future session to retry. Module 4 now opens Lakeshore's actual
+contract with this vendor: is it a Business Associate Agreement, and what does HIPAA require one
+to say?
 `healthcare-security-and-privacy` is now **5/5 and complete** — see
 `plans/healthcare-security-and-privacy.md`'s progress log for the full course, including module
 5's final state: Lakeshore's one running incident (a Brookfield staff member's work laptop, lost
