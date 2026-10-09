@@ -1,0 +1,25 @@
+---
+title: "Resources"
+order: 52
+---
+
+Three places to go deeper than this lesson, or to check a citation yourself before it goes in a
+real Lakeshore document. All three were checked and loading at the time this page was written.
+
+- **[21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)**
+  — the regulatory floor this lesson's patch VIAs and periodic reviews both answer to, in Cornell's
+  free, citable, plain-text CFR mirror. The same section module 1 quoted in full; useful here as a
+  quick reference without pulling up the whole lesson again.
+
+- **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)**
+  — the same guidance this course has quoted since module 1, the source for this lesson's section
+  III.I ("Validation after a Change"), III.C, and III.G quotes. Worth reading section III.I in full
+  once: this lesson quotes nearly all of it, but the surrounding paragraphs on vendor contracts and
+  manufacturer notification are real context this lesson only names in passing.
+
+- **[NIST SP 800-40 Revision 4, Guide to Enterprise Patch Management Planning](https://csrc.nist.gov/pubs/sp/800/40/r4/final)**
+  — a free, public NIST (National Institute of Standards and Technology) publication on patch
+  management as an enterprise IT discipline: classifying patches, prioritizing them, and testing
+  before deployment. It isn't written for FDA-regulated systems and doesn't mention validation or
+  regression analysis — read it as the general ITSM backdrop this lesson's "patch classes with
+  pre-analyzed regression plans" idea sits on top of, not as a source for anything BECS-specific.

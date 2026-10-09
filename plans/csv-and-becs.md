@@ -204,7 +204,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 | 3 | `becs-as-a-regulated-device` | Explain what makes BECS a regulated medical device (21 CFR 864.9165, Class II with special controls, cleared through 510(k) premarket notification), what a clearance does and doesn't tell you about the version and configuration you run, and how cleared, custom-built, and legacy or unsupported systems differ. Say what FDA's BECS user-facility guidance expects Lakeshore's own validation to add, including at every site and when vendor test scripts are used. | Published |
 | 4 | `qmsr-iso-13485-and-the-vendor` | Place BECS correctly under FDA's device-grade quality system: Part 820 (the QMSR, incorporating ISO 13485:2016, effective February 2, 2026) binds the BECS manufacturer, and 820.1(a)(3) excludes blood manufacturers, so Lakeshore answers to blood CGMP. Say what the vendor's design controls and 864.9165 special-control deliverables (unresolved anomalies, revision history, traceability matrix) give you as validation *inputs*, and when Lakeshore's own development could raise the manufacturer question. | Published |
 | 5 | `part-11-for-validated-systems` | Name the Part 11 closed-system controls a BECS validation must prove the system actually enforces (access limits, operational sequencing checks, authority checks; device checks named, taught in m7), explain why FDA's 2003 Part 11 guidance points validation enforcement to predicate rules rather than 11.10(a), and decide whether a vendor-supported or vendor-hosted BECS is still a "closed system." Hand ALCOA+, audit-trail review, and e-signatures to `data-integrity-and-records`. | Published |
-| 6 | `validated-state-lifecycle-and-patching` | Keep a validated BECS validated: require a documented regression analysis and risk-scaled regression testing for every change, including OS, infrastructure, vendor patches, and reference-table updates; manage patching and end-of-support without breaking the validated state; run a periodic review that would catch drift; and give VIA-0842's "were twelve targeted tests enough?" a real methodological answer. | Not started |
+| 6 | `validated-state-lifecycle-and-patching` | Keep a validated BECS validated: require a documented regression analysis and risk-scaled regression testing for every change, including OS, infrastructure, vendor patches, and reference-table updates; manage patching and end-of-support without breaking the validated state; run a periodic review that would catch drift; and give VIA-0842's "were twelve targeted tests enough?" a real methodological answer. | Published |
 | 7 | `becs-interfaces-and-data-integrity` | Trace data across every BECS boundary (instrument and testing-lab LIS results in, labels out, reference tables in, shipment data out to hospital customers, satellite sites, legacy-data conversion) and judge whether interface validation and ongoing monitoring prove each record arrives complete, correct, on time, and on the right donor or unit. Close VIA-0842's open interface items. | Not started |
 
 Status values: Not started / Drafted / Published.
@@ -1052,3 +1052,32 @@ fallback.
   manufacturer question and module 3's 510(k)/multi-site open questions were not mentioned,
   reopened, or resolved. No locked facts altered.
   Next: build m6, `validated-state-lifecycle-and-patching`.
+- **2026-10-09**: Module 6, `validated-state-lifecycle-and-patching`, drafted (via subagent),
+  audited, and published (`courses/csv-and-becs/validated-state-lifecycle-and-patching/index.qmd`
+  and `resources.qmd`, `order: 51`/`52`, ~4,600 words). This is the course's payoff module:
+  **delivers the VIA-0842 verdict** this course opened with in module 1. Verdict, verified
+  against every locked fact with nothing altered: the twelve-test scope was never the defect;
+  the defect is that it was never derived from a documented regression analysis of the patch's
+  impact on the whole system (guidance III.I), resting instead on the vendor's "OS-level only"
+  characterization (an input, not Lakeshore's own analysis); Step 7's first-run timing failure
+  was itself evidence the patch touched timing-sensitive behavior and should have widened scope,
+  not been re-run to green with no discrepancy note; the two-layer finding stated explicitly —
+  DQA m4's cold-read decision-trail finding stands unchanged (a non-gap at that layer), while the
+  adequacy check's **Regression** question (applied in full for the first time in this course)
+  finds the testing was never shown adequate; the deployed-before-protocol-approved sequence tied
+  to guidance III.C as more than a paperwork lag. Right-sized remediation delivered: a documented
+  regression analysis for the OS-patch class going forward (shown already working correctly on
+  this quarter's new patch, as positive contrast) plus targeted supplemental testing now
+  (instrument interfaces, hospital interface, label timing under peak load) — explicitly NOT a
+  full revalidation and NOT a retroactive rewrite of VIA-0842's record; VIA-0842 was not made a
+  newly reportable deviation. Optional systemic outcome offered: a CAPA on the VIA template
+  itself, not on VIA-0842. Also develops periodic review in depth (cumulative change history,
+  deviations/incidents, vendor anomaly list, configuration drift against the validated
+  baseline as the Director-only check, access reviews) and patch-class templating as the
+  practical fix. Citations (III.I in full, III.C, III.G's post-implementation-monitoring
+  sentence) verified verbatim against `sources/fda-guidance/becs-validation-users-facility-
+  2013.md`; all three `resources.qmd` links curl-verified 200. Module 4's manufacturer question
+  and modules 3/5's other open items were not reopened or resolved. No locked facts altered.
+  Next: build m7, `becs-interfaces-and-data-integrity` — the course's final module, closing
+  VIA-0842's remaining open item ("BECS-to-hospital interface regression testing to follow") and
+  its missing instrument-interface test.
