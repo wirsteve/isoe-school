@@ -1,0 +1,316 @@
+---
+title: "Reading a SOC 2 Report"
+order: 106
+---
+
+## "They sent it. Now what?"
+
+Your Quality Analyst (QA) forwards the email without comment beyond the subject line: "Attached
+per your request." Attached is a PDF, 80-odd pages, watermarked, with a cover letter from an
+accounting firm you've never heard of and a title that reads, in full, something like
+*"Independent Service Auditor's Report on [Vendor]'s Description of Its System and the Suitability
+of the Design and Operating Effectiveness of Controls."* This is the device-management platform
+vendor's SOC 2 (System and Organization Controls 2) report — the first time anyone at Lakeshore
+has ever actually asked for it, let alone read it.
+
+You asked for it because last module finally did the thing nobody had done before: it tiered this
+vendor High. High tier, per the scheme you just built, means a real qualification file — and a
+real qualification file means the vendor's own assurance evidence stops being a line item
+("yes, they have one") and starts being something you and your QA actually read.
+
+She's already flipping through it, and she asks the two questions everyone asks the first time
+they open one of these: "Is this good? And does it tell us anything about what happened with the
+Brookfield laptop?" Both are fair questions. Neither has a one-word answer, and getting to the
+real answer is this module's entire job.
+
+## Why this matters, and the ITSM bridge
+
+Name the failure mode this report exists to prevent, because it's not "vendors sometimes have bad
+security." It's narrower and more common: an organization takes a vendor's own word for its
+security posture — a sales deck, a checkbox on a procurement form, a line in a contract that says
+"vendor maintains industry-standard safeguards" — and never independently checks whether any of
+that is actually tested by anyone who isn't the vendor itself. A SOC 2 report exists specifically
+to break that cycle: it's produced by an independent accounting firm, not the vendor's own
+marketing team, and it says, in writing, exactly what was tested, over what period, and what the
+auditor actually found — including what it didn't find, or couldn't verify.
+
+You already know this shape of control from the generic IT-compliance world: a SOX (Sarbanes-Oxley)
+-style vendor attestation, or a third-party risk questionnaire that asks a vendor to produce its
+own independent audit evidence instead of a self-reported security survey. SOC 2 is the
+general-purpose, cross-industry version of exactly that idea, run by the accounting profession
+rather than any blood-industry body. The reason it matters *here*, specifically, is the same
+reason module 1 built a tiering scheme in the first place: a High-tier vendor is one whose own
+failure could put e-PHI (electronic protected health information) at risk or disrupt a process an
+AABB (Association for the Advancement of Blood & Biotherapies) assessor would ask about. For a
+vendor at that tier, "they say their security is fine" isn't evidence. An independently tested
+report is the closest thing to evidence Lakeshore is going to get without auditing the vendor
+itself — which Lakeshore has neither the standing nor the resources to do.
+
+One honest note before you go further, because it sets up everything else in this module: **SOC 2
+is not a government regulation, not an AABB Standard, and not something FDA inspects Lakeshore
+against directly.** It's a paid, proprietary framework published by the AICPA (American Institute
+of Certified Public Accountants) — the accounting profession's own standard-setting body, not a
+healthcare or blood-industry regulator. Nothing in this lesson quotes AICPA's own text, because
+this curriculum has never purchased or independently read it, the same honest limitation this
+curriculum has already applied to ISO 31000, ISO 19011, and GAMP 5 (Good Automated Manufacturing
+Practice) elsewhere. What follows is the real, publicly well-known *structure* of a SOC 2 report —
+described in this course's own words, not cited to a section or paragraph number, because no such
+citation exists in verified form for this curriculum to give you.
+
+## The rule in plain English
+
+Strip away the jargon and a SOC 2 report answers four questions, every time, in roughly this
+order:
+
+1. **Point in time, or over time?** Did an auditor check that the vendor's controls are *designed*
+   reasonably (Type I), or did the auditor actually watch those controls *operate* for months and
+   confirm they worked the whole time (Type II)? These are very different claims, and conflating
+   them is the single most common mistake a reader makes.
+2. **Which categories of control did the vendor choose to be tested on?** A SOC 2 report is scoped
+   — the vendor picks which Trust Services Criteria (TSC) its own report covers, and a report that
+   covers only one category says nothing at all about the others.
+3. **What does the report say is the customer's own job?** Buried, usually near the back, is a
+   section listing the controls the report assumes *Lakeshore* — not the vendor — is responsible
+   for implementing. Skip this section and you've only read half the report.
+4. **How current is it, right now?** A Type II report covers a past window of months. If Lakeshore
+   is reading it well after that window closed, the report is, strictly, already out of date for
+   anything that's happened since.
+
+Apply that to your QA's two questions. "Is this good?" depends entirely on how the vendor answered
+questions 1 and 2 — a Type II report covering the right categories is strong evidence; a Type I
+report covering only one category is a much thinner claim, even if it's the exact same vendor.
+"Does it tell us anything about Brookfield?" depends on questions 3 and 4 — and, as this module
+gets to honestly, the real answer is more interesting than either a flat yes or no.
+
+## Citation decoder
+
+There's one entry in this table, and — same as this curriculum's handling of ISO 31000, ISO 19011,
+and GAMP 5 — it names a framework, not a citable passage.
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| SOC 2 (AICPA, Trust Services Criteria) | "S-O-C two" — not a numbered regulation or Standard | **Industry practice / proprietary framework — described in this curriculum's own words, not a cited standard.** AICPA's own report format and criteria language are paid, proprietary material never independently fetched or quoted here. What's described below are the framework's real, publicly well-known structural features (report types, criteria categories, CUECs, bridge letters) — never a verbatim sentence, section number, or paragraph attributed to AICPA. | The device-management platform vendor's own report, read for its structure, not quoted for its wording. |
+
+## The actual text — and why there isn't any to quote
+
+Be precise about what backs this module, the same discipline the last module applied to AABB's QSE
+4. AICPA's own report language, its exact Trust Services Criteria wording, and the detailed
+"points of focus" under each criterion are copyrighted, paid material. This curriculum has never
+purchased, fetched, or quoted any of it, and nothing below should be read as a paraphrase close
+enough to stand in for the real text.
+
+What *can* be stated confidently, because it's real, publicly well-known, and independent of
+AICPA's own copyrighted wording:
+
+- **Type I** reports assess whether a vendor's controls are *suitably designed* as of a single
+  point in time — a snapshot of the blueprint, not evidence the blueprint was followed.
+- **Type II** reports assess whether those same controls *actually operated effectively* over a
+  review period, typically six to twelve months — materially stronger assurance, because it's
+  evidence of sustained operation, not just a design that looked good on paper the day it was
+  drawn up.
+- There are **five Trust Services Criteria**: **Security** (the only one every SOC 2 report must
+  include — sometimes called the "common criteria," since every other category builds on top of
+  it), **Availability**, **Processing Integrity**, **Confidentiality**, and **Privacy**. A vendor
+  selects which of the latter four apply to its own report's scope, based on what it wants
+  assessed. A report scoped to Security alone says literally nothing, one way or the other, about
+  that same vendor's Availability or Confidentiality controls — scope silence isn't evidence of
+  absence, but it isn't evidence of presence either.
+- A real SOC 2 report includes a section on **Complementary User Entity Controls (CUECs)** —
+  controls the report explicitly states the *customer* is expected to have in place for the
+  vendor's own controls to work as described. This section is real, frequently present, and
+  frequently skipped by readers who stop at the auditor's opinion letter and never reach it.
+- A **bridge letter** is the vendor's own interim attestation — not a new audit — covering the gap
+  between a Type II report's period-end date and whatever later date a customer is actually relying
+  on the report for. Because a Type II report is inherently backward-looking, a customer reading it
+  months after the period closed has no independent evidence that nothing material changed in the
+  meantime, unless the vendor provides one.
+
+None of that is AICPA's exact language. It's this curriculum's own description of features any
+competent reader would recognize in a real report, held deliberately at arm's length from anything
+resembling a citation.
+
+## Reading the device-management platform vendor's report
+
+Here's the actual exercise: walk the same four questions from "the rule in plain English," applied
+to a specific, high-stakes vendor, and reason through each answer instead of asserting it.
+
+**Which Trust Services Criteria did it plausibly select?** Security, almost certainly — no SOC 2
+report exists without it, and a vendor managing enrollment, policy push, and remote lock-and-wipe
+across every device at every site Lakeshore operates is squarely a security-relevant service by
+any definition. Availability is the next strong, reasoned guess, not a coin flip: this platform's
+entire value proposition depends on being reachable — enrollment has to work, policy pushes have
+to land, and a remote wipe command (the one module 1's `investigating-a-healthcare-data-incident`
+confirmed was *issued* but never confirmed *delivered*, because the Brookfield laptop never came
+back online) only matters if the platform itself is up when it's needed. A vendor selling exactly
+that kind of always-on management service has every commercial reason to have its Availability
+controls tested and to say so. Confidentiality is the closer call, and worth reasoning through
+rather than assuming: this platform handles enrollment records, telemetry, and account data for
+devices that — per this course's own locked facts — carry e-PHI-adjacent extracts off-site. A
+vendor serving healthcare and blood-industry customers at this scale has a real business reason to
+have Confidentiality tested too, even though its core function is device management, not data
+processing in the way a transaction system would be. Processing Integrity (accuracy and
+completeness of data processing) is the least likely of the remaining three — this platform isn't
+performing calculations or transformations on data the way a billing or lab-results system would —
+and Privacy (handling of personal information as the vendor's own data-collection activity) is also
+a less obvious fit for a device-management function specifically, though not impossible. The
+honest, defensible read: **Security and Availability almost certainly in scope, Confidentiality
+plausibly in scope given the data this platform's devices carry, Processing Integrity and Privacy
+less likely** — and the only way to know for certain is to read the report's own stated scope
+section, not guess from the vendor's product category.
+
+**Type I or Type II?** Lean Type II, and say why instead of just asserting it. A vendor mature
+enough to serve multiple regulated healthcare and blood-industry customers, at the scale this one
+operates, most plausibly maintains an annual Type II report as its standard offering — enterprise
+customers in regulated industries routinely require operating-effectiveness evidence, not just a
+design snapshot, before relying on a vendor this deeply embedded in device-level security. More to
+the point for Lakeshore specifically: a Type I report would tell you the vendor's controls were
+*designed* to look reasonable on one date. It would tell you nothing about whether those controls
+*actually held up* through something like a platform migration — which is exactly the kind of event
+sitting at the center of the unresolved Brookfield question. A Type II report, covering six to
+twelve months of actual operation, is the only version of this document that could plausibly speak
+to how the vendor's own controls performed across a period that included a migration event. For a
+High-tier vendor, read the Type I/Type II line on the cover page first, every time — it changes
+what everything after it is actually worth.
+
+**What would the CUEC section plausibly say?** This is where the report earns its place in the
+vendor file, and where this module's honesty matters most. A device-management platform's CUEC
+section would plausibly include something close to: *the customer is responsible for configuring
+and enforcing its own device-enrollment and encryption policies, and for confirming encryption
+status on each device before it is placed into field or travel use.* Read that next to what
+`investigating-a-healthcare-data-incident` already found, carefully and without rewriting any of
+it: that course's own final root-cause ranking named a deployment-sequencing gap — a newly
+enrolled device leaving the building before its first encryption attestation had completed — as
+the most structural, most likely-to-recur gap behind the Brookfield incident, ahead of the
+physical-handling gap and the minimum-necessary gap. That same course was equally clear that the
+device-management platform vendor did not fail to secure the device; the vendor's own migration
+defect was a known, disclosed issue class the vendor confirmed when asked, not a hidden failure,
+and Lakeshore's own *verification* of this one device's encryption status — not the vendor's
+control over it — was the actual compliance gap. A CUEC section stating that encryption-status
+confirmation is the customer's job is not a surprising footnote. It's exactly the sentence that
+would have told Lakeshore, in writing, before any incident, that "confirm the device is actually
+encrypted before it travels" was never the vendor's responsibility to guarantee. Reading this
+report today doesn't change anything `investigating-a-healthcare-data-incident` already locked. It
+does show, honestly, where that same finding would have been sitting in plain sight if anyone had
+read this document a year earlier.
+
+**Does Lakeshore need a bridge letter?** Reason through the dates rather than assuming either way.
+A Type II report's period end is, by definition, in the past by the time the report is issued and
+delivered — commonly a matter of weeks after the period closes — and the report is then typically
+relied on for up to a year, until the next one is issued. Lakeshore is reading this report for the
+first time, well after the vendor's own review period closed, as part of building a File that
+didn't exist until this course started. That gap — between "what this report actually tested" and
+"today" — is precisely what a bridge letter exists to cover. The honest answer here isn't "yes" or
+"no" in the abstract; it's: **check the report's stated period-end date against today's date, and
+if there's a meaningful gap (which, given how this file came together, there almost certainly is),
+request a bridge letter now, and build a standing request for one into the annual review of this
+vendor's file going forward** — not just once, but every time Lakeshore leans on a report that's
+aging past its own tested window, especially after any event (a platform migration, for instance)
+that could plausibly have changed something the original report never saw.
+
+**What this report would and would not have told Lakeshore about Brookfield.** Say this plainly,
+because it's the honest center of the whole exercise. A SOC 2 report — even a strong, Type II,
+properly scoped one — was never going to tell Lakeshore the actual encryption status of one
+specific laptop on one specific day. That's a level of device-by-device granularity no
+organization-wide assurance report is built to provide; `investigating-a-healthcare-data-incident`
+already established that question is, and will likely remain, permanently unresolved, and nothing
+in this module reopens that. What a SOC 2 report's CUEC section plausibly *would* have told
+Lakeshore, read before the incident instead of after it, is that confirming a device's encryption
+status before it leaves controlled use was never the vendor's job to do for Lakeshore — it was
+Lakeshore's own control to run. That's not a smaller finding than "the report would have prevented
+the incident." It's a different, more useful one: a genuine teaching moment about reading a vendor's
+own assurance report *before* an incident forces the question, not instead of fixing the actual
+process gap the investigation already found.
+
+## What an auditor — or your own internal reviewer — would actually look for
+
+Nobody from AICPA inspects Lakeshore's vendor file. The people who will actually ask about this
+report are an AABB assessor reviewing the High-tier vendor file module 1 just justified, or your
+own CIO asking what "we read their SOC 2" actually means in practice. What they'd want to see,
+concretely: the report itself, dated; a note of which Type (I or II) it is and the period it
+covers; a short, written record of which Trust Services Criteria it includes — not just "we
+checked, it's fine"; a note confirming someone actually read the CUEC section and can name what it
+requires of Lakeshore; and, if the report's period-end date is more than a few months behind
+today, either a bridge letter on file or a documented decision to request one. A weak answer sounds
+like "yes, they sent us a SOC 2 report, it's in the folder." A credible answer sounds like
+everything this module just walked through, written down, with a name and a date attached.
+
+## Common traps
+
+**"They have a SOC 2 report, so their security is covered."** Covered for *what*, exactly? A report
+scoped to Security alone says nothing about Availability, Confidentiality, Processing Integrity, or
+Privacy — "they have a SOC 2" is not a complete sentence until you've named which criteria the
+report actually includes. A vendor can hold a perfectly real SOC 2 report and still have never been
+tested on the exact category a reader assumed it covered.
+
+**"Type I and Type II are basically the same thing, just a formality."** They are not even close to
+the same claim. Type I is a design snapshot on one date; Type II is evidence of sustained operation
+across months. A vendor whose controls look good on paper but have never been tested in operation
+is exactly the gap Type II exists to close — treating the two as interchangeable is one of the
+fastest ways to overstate how much assurance a report actually gives.
+
+## What this means for your job
+
+- **Never accept "they have a SOC 2" without asking which type and which criteria.** Those two
+  facts, sitting on the report's own cover page and scope section, change what the document is
+  actually worth — ask for them by name, every time, for every High-tier vendor.
+- **Read the CUEC section yourself, or have your QA do it and report back specifically.** It's the
+  section most readers skip, and it's the one most likely to tell you what Lakeshore's own job is —
+  which is exactly the kind of finding a deployment-sequencing gap like Brookfield's hides inside.
+- **Check the report's period-end date against today, every time you rely on it.** A Type II
+  report doesn't stay current forever; if there's a real gap, that's a bridge letter request, not
+  something to let slide because the report "still looks recent enough."
+- **Don't let a vendor's assurance report quietly expand to cover questions it was never asked.** A
+  Security-and-Availability report doesn't tell you anything about Confidentiality just because the
+  vendor feels trustworthy — if a specific concern matters to Lakeshore, confirm it's actually in
+  the report's own scope, not assumed into it.
+- **Treat "we read their SOC 2 report" as a dated, attributable action, not a box on a checklist.**
+  The same discipline this course applied to tiering decisions applies here: a credible vendor file
+  shows who read it, when, and what they found — not just that a PDF exists somewhere.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA asks, "The vendor's SOC 2 report covers Security and Availability. Does that mean we can also tell our CIO their Confidentiality controls are solid?"
+
+No — and this is worth being precise about rather than letting the good news about Security and
+Availability bleed into a category the report never actually tested. A report scoped to Security
+and Availability says nothing, one way or the other, about Confidentiality. If Confidentiality
+matters for this vendor relationship (and given the e-PHI-adjacent data its managed devices carry,
+it plausibly does), the honest answer is "unknown — ask the vendor whether a Confidentiality-scoped
+report exists, or will exist at the next renewal," not an assumption borrowed from an adjacent
+category that happened to test well.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Does the SOC 2 report's own text establish, in a way this curriculum could cite to an assessor, the exact Trust Services Criteria wording or a specific AICPA section number?
+
+No, and this is deliberate. SOC 2's actual report language and the detailed Trust Services Criteria
+"points of focus" are AICPA's own paid, proprietary material, never independently purchased or
+read for this curriculum. What's taught here — Type I/Type II, the five criteria's names, CUECs,
+bridge letters — is this course's own description of the framework's real, publicly well-known
+structure, the same tier of handling this curriculum already gives ISO 31000, ISO 19011, and GAMP
+5. If a specific sentence or section number is ever needed for a real audit, it has to come from
+someone who has actually read the current AICPA guidance — not from this lesson.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: If the device-management platform vendor's SOC 2 report had existed and been read a year before the Brookfield incident, would it have told Lakeshore the laptop's encryption status that day?
+
+No — and don't let anyone claim otherwise. `investigating-a-healthcare-data-incident` already
+established that this specific device's encryption status is a permanent unknown, for structural
+reasons (no attestation ever completed, on either platform, before the device was lost) that no
+organization-wide assurance report could have reached into. What an earlier reading of this report
+plausibly *would* have surfaced is the CUEC section's statement that confirming a device's
+encryption status before travel use is Lakeshore's own job, not the vendor's guarantee — reinforcing
+a process gap the investigation found on its own, not resolving the one unresolved fact at the
+center of it.
+:::
+
+## Where this goes next
+
+The device-management platform vendor's SOC 2 report just told you what it tells you about its
+*operations* — tested, independently, over time. It says nothing at all about the *management
+system* governing how the vendor chooses and reviews its controls in the first place, or whether
+its certification actually covers the specific product Lakeshore uses. That's a different
+document, from a different body, with its own structure worth reading just as carefully: next
+module opens the vendor's ISO 27001 certificate and Statement of Applicability.

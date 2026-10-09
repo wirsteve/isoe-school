@@ -273,16 +273,16 @@ has no `plans/<slug>.md` file until its first session.
 | `fda-and-aabb-in-practice` | 6 / 6 | Done |
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
 | `healthcare-security-and-privacy` | 5 / 5 | Done |
-| `vendor-and-third-party-risk-management` | 1 / 5 | In progress |
+| `vendor-and-third-party-risk-management` | 2 / 5 | In progress |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `vendor-and-third-party-risk-management` module 2, `reading-a-soc-2-report`
-(Track 4, Phase 9). Module 1, `supplier-qualification-and-risk-tiering`, is published — see
+**Next up:** `vendor-and-third-party-risk-management` module 3, `reading-an-iso-27001-certificate`
+(Track 4, Phase 9). Modules 1 and 2 are published — see
 `plans/vendor-and-third-party-risk-management.md`'s progress log for the full detail, but in
 short: AABB's QSE 4 ("Supplier and Customer Issues," named/themed only, no Standards text or
 standard number) grounded a reasoned, three-tier vendor risk scheme — **High / Medium / Low**,
 decided by four questions (data touch; system criticality — BECS-adjacent or eQMS; access level
-— logical/data vs. physical-only; blast radius). **Locked vendor placements module 2 picks up
+— logical/data vs. physical-only; blast radius). **Locked vendor placements module 3 picks up
 directly:** the device-management platform vendor is **High** tier (data touch: yes, manages
 devices carrying e-PHI-adjacent extracts off-site, per `healthcare-security-and-privacy`'s own
 locked Brookfield facts, not reopened here; system criticality: BECS-adjacent; access level:
@@ -291,7 +291,23 @@ multi-site, confidentiality and availability). Three invented, generic contrast 
 also tiered: a reagent/consumables supplier (**Medium** — no data access, but bears on a
 GMP-governed testing process), a facilities/janitorial vendor (**Low**, conditioned on its
 physical access staying out of restricted/server areas), and an office-supplies vendor
-(**Low**). Module 2 now opens this High-tier vendor's own SOC 2 report for the first time.
+(**Low**). **Module 2, `reading-a-soc-2-report`, is now also published** — it opened this
+High-tier vendor's own SOC 2 report for the first time (handled strictly as a paid/proprietary
+framework, no AICPA text fetched or quoted, same tier as ISO 31000/19011/GAMP 5 elsewhere) and
+reasoned through, without asserting as fact: Trust Services Criteria selected — Security
+(certain) and Availability (strong, reasoned guess) certainly, Confidentiality plausibly given
+the e-PHI-adjacent device data this vendor's devices carry, Processing Integrity and Privacy
+less likely; **Type II**, not Type I (the stronger, more plausible case for a vendor at this
+scale and tier, and the only type that could speak to whether controls held up through a
+migration event); a plausible **CUEC (Complementary User Entity Control)** requiring Lakeshore
+itself to confirm each device's encryption status before field/travel use — tied honestly to
+`investigating-a-healthcare-data-incident`'s own root-cause ranking (the deployment-sequencing
+gap) without altering any locked fact, since that course already found the vendor's migration
+defect was a known, disclosed issue class, not a hidden vendor failure, and Lakeshore's own
+verification was the actual gap; and a **bridge letter** reasoned as needed, given the near-
+certain gap between the report's past period-end date and the date Lakeshore is reading it for
+the first time. Module 3 now opens this same vendor's ISO 27001 certificate and Statement of
+Applicability.
 `healthcare-security-and-privacy` is now **5/5 and complete** — see
 `plans/healthcare-security-and-privacy.md`'s progress log for the full course, including module
 5's final state: Lakeshore's one running incident (a Brookfield staff member's work laptop, lost

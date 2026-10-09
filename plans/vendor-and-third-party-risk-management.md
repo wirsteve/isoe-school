@@ -56,7 +56,7 @@ platform, OS, or cloud-platform brand.
 |---|---|---|---|---|
 | — | (syllabus) | — | 103 | Published |
 | 1 | `supplier-qualification-and-risk-tiering` | Apply AABB's QSE 4 (Supplier and Customer Issues) to a real vendor decision: which vendors need deep qualification and which don't, and why that's risk-tiering, not a one-size-fits-all checklist. | 104/105 | Published |
-| 2 | `reading-a-soc-2-report` | Tell a Type I report from a Type II, name the five Trust Services Criteria, and read a report's complementary-user-entity-controls section and bridge letter for what they mean for Lakeshore. | 106/107 | Not started |
+| 2 | `reading-a-soc-2-report` | Tell a Type I report from a Type II, name the five Trust Services Criteria, and read a report's complementary-user-entity-controls section and bridge letter for what they mean for Lakeshore. | 106/107 | Published |
 | 3 | `reading-an-iso-27001-certificate` | Know what a certificate actually certifies, and read a Statement of Applicability to see which Annex A control domains a vendor claims and which it excludes, with a stated reason. | 108/109 | Not started |
 | 4 | `business-associate-agreements` | Walk the actual HIPAA text requiring a BAA's contract terms — what it obligates a vendor to do, report, and return or destroy. | 110/111 | Not started |
 | 5 | `vendor-change-notifications-and-your-own-change-control` | Place a vendor's change-notification/incident-reporting duties against Lakeshore's own change control, and close the course by returning to the Brookfield incident with this course's own new lens. | 112/113 | Not started |
@@ -294,3 +294,76 @@ as every prior course) — already done as part of Phase 2 scoping below.
   incident this module reuses. No new regulatory source fetched — QSE 4 reused entirely from the
   already-saved `sources/aabb/qse-framework.md`; no change to `sources/INDEX.md` needed.
   Next: build m2, `reading-a-soc-2-report`.
+
+- **2026-10-09**: Module 2, `reading-a-soc-2-report` (`order: 106/107`), drafted and published.
+  SOC 2 handled strictly as a paid/proprietary framework — no AICPA text independently fetched or
+  quoted, same tier as ISO 31000/19011/GAMP 5 elsewhere in this curriculum; the citation-decoder
+  row names it "industry practice / proprietary framework — described in this curriculum's own
+  words, not a cited standard," matching `risk-frameworks-side-by-side`'s handling of ISO 31000.
+  Taught, in the lesson's own words only: Type I (design, point in time) vs. Type II (operating
+  effectiveness, typically a 6-12 month period — materially stronger assurance); the five Trust
+  Services Criteria by name (Security — the only mandatory one, sometimes called the "common
+  criteria" — Availability, Processing Integrity, Confidentiality, Privacy), with the vendor
+  selecting which of the last four apply to its own report's scope; Complementary User Entity
+  Controls (CUECs) as the customer-side-responsibility section a reader often skips; and bridge
+  letters as the vendor's own interim attestation covering the gap between a Type II report's
+  period-end date and whenever the customer actually relies on it.
+
+  **Reasoned findings applied to the device-management platform vendor — locked for modules 3-5 to
+  build on, not contradict:**
+  - **Trust Services Criteria selected (reasoned, not asserted):** Security almost certainly (the
+    only mandatory criterion, and squarely applicable to a platform managing enrollment, policy
+    push, and remote lock/wipe across every device at every site). Availability as the next
+    strong, reasoned guess — the platform's core value is being reachable (enrollment, policy
+    pushes, and a remote-wipe command only matter if the platform is up when needed, directly
+    tying back to `investigating-a-healthcare-data-incident`'s confirmed-issued/never-confirmed-
+    delivered wipe command). Confidentiality included as a plausible, reasoned third criterion
+    given the e-PHI-adjacent device data this platform's enrolled devices carry off-site (drafter's
+    choice, made and justified, not left unaddressed). Processing Integrity and Privacy reasoned
+    as less likely selections — this is a device-management function, not a data-transformation
+    or primary personal-data-collection function — but not asserted as definitely excluded; the
+    module is explicit that only the report's own stated scope section can confirm this.
+  - **Type I vs. Type II:** Reasoned toward **Type II** as the stronger, more plausible case for a
+    vendor at this scale and this tier — a Type I report would only attest to control *design* on
+    one date and could never speak to whether controls held up through an event like a platform
+    migration, which is exactly the kind of event sitting at the center of the still-unresolved
+    Brookfield question. Framed explicitly as the drafter's reasoned choice, not an asserted fact
+    about a real report nobody has read.
+  - **CUEC content (concrete, plausible example built for this module):** a clause to the effect
+    that the customer is responsible for configuring and enforcing its own device-enrollment and
+    encryption policies, and for confirming encryption status on each device before it is placed
+    into field or travel use. Explicitly tied back, honestly and without altering any locked fact,
+    to `investigating-a-healthcare-data-incident`'s own root-cause ranking (the deployment-
+    sequencing gap, ranked ahead of the physical-handling gap and the minimum-necessary gap) and
+    that course's own finding that the vendor's migration defect was a known, disclosed issue
+    class, not a hidden vendor failure, while Lakeshore's own *verification* of this one device's
+    encryption status — not the vendor's control over the device — was the actual gap. The module
+    states plainly that a SOC 2 report was never going to reveal one laptop's actual encryption
+    status on one day (that remains the permanent unknown `investigating-a-healthcare-data-
+    incident` already closed), but that an earlier reading of this exact CUEC section would have
+    told Lakeshore, in writing, that this verification was always Lakeshore's own job.
+  - **Bridge letter determination:** reasoned, not asserted as a fixed fact — a meaningful gap
+    almost certainly exists between a Type II report's past period-end date and the date Lakeshore
+    is reading it for the first time (this file didn't exist until this course started), so the
+    module's conclusion is to check that gap against today's date, request a bridge letter now,
+    and build a standing annual request for one into this vendor's ongoing file review — not a
+    one-time check.
+
+  Files written: `courses/vendor-and-third-party-risk-management/reading-a-soc-2-report/
+  index.qmd` (lesson, ~3,820 words including front matter/markup) and `.../resources.qmd`.
+  Resources link two AICPA public pages about SOC 2 (`https://www.aicpa-cima.com/resources/
+  landing/soc-2` and `https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-
+  greater-than-soc-2-greater-than-soc-for-service-organizations`), both curl-verified 200 this
+  session directly against the live AICPA domain. Note for whoever next edits these links:
+  AICPA's site is a client-rendered React application — curl confirms the pages are live and
+  served from aicpa-cima.com (200, real HTML shell), but page-specific `<title>`/meta content
+  isn't present in the server-rendered markup to grep for, so reachability was verified by status
+  code and URL/domain, the same depth of verification module 1 applied to its AABB links, not by
+  reading rendered page text. No AICPA text was fetched or quoted anywhere in the lesson itself.
+  Resources also link back to module 1 (`supplier-qualification-and-risk-tiering`) rather than
+  re-linking `healthcare-security-and-privacy` directly, since module 1 already carries that link
+  and this module assumes module 1 was read first. No new regulatory/standard source saved to
+  `sources/`; no change to `sources/INDEX.md` needed.
+  Next: build m3, `reading-an-iso-27001-certificate`. Whoever drafts it still needs to
+  independently find and curl-verify ISO's own public catalogue page for ISO/IEC 27001:2022 before
+  publishing a link — not resolved this session either; see m3's own guardrails above.
