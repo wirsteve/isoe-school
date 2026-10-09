@@ -271,21 +271,25 @@ has no `plans/<slug>.md` file until its first session.
 | `csv-and-becs` | 7 / 7 | Done |
 | `data-integrity-and-records` | 6 / 6 | Done |
 | `fda-and-aabb-in-practice` | 6 / 6 | Done |
-| `grc-frameworks-and-risk-management` | 0 / 5 | Not started |
+| `grc-frameworks-and-risk-management` | 1 / 5 | In progress |
 | `healthcare-security-and-privacy` | 0 / 5 | Not started |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `grc-frameworks-and-risk-management` (Track 4) — `fda-and-aabb-in-practice` is now
-6/6 and complete. See `plans/fda-and-aabb-in-practice.md`'s progress log for module 6's locked
-outcomes: DED-0458's "accurate" ALCOA letter is now CLOSED (an independent, dated verification
-confirmed BECS's stored donor-eligibility determination against the donor's own original
-screening responses), the deferred-donor-record cadence question is now DECIDED (Lakeshore
-moves from 606.160(e)(3)'s "at least monthly" regulatory floor to a weekly cadence, by its own
-documented, risk-based choice, explicitly not a new regulatory requirement), and LAB-07's AABB
-nonconformance stays exactly as closed as module 4 left it. Still honestly open, not this
-course's to resolve: `data-integrity-and-records`'s donor-record retention-clock question and
-its undecided BECS audit-trail review frequency. `csv-and-becs` (7/7), `data-integrity-and-records`
+**Next up:** `grc-frameworks-and-risk-management` module 2, `categorize-and-select-controls`
+(Track 4). Module 1 is published — see `plans/grc-frameworks-and-risk-management.md`'s progress
+log for the locked scenario facts (the eQMS, Lakeshore's new three-site electronic
+quality-management system, now being run through NIST RMF's structure voluntarily; the decision
+not to reopen BECS/`csv-and-becs`/`data-integrity-and-records` locked facts) that module 2 builds
+on. `fda-and-aabb-in-practice` is now 6/6 and complete. See `plans/fda-and-aabb-in-practice.md`'s
+progress log for module 6's locked outcomes: DED-0458's "accurate" ALCOA letter is now CLOSED (an
+independent, dated verification confirmed BECS's stored donor-eligibility determination against
+the donor's own original screening responses), the deferred-donor-record cadence question is now
+DECIDED (Lakeshore moves from 606.160(e)(3)'s "at least monthly" regulatory floor to a weekly
+cadence, by its own documented, risk-based choice, explicitly not a new regulatory requirement),
+and LAB-07's AABB nonconformance stays exactly as closed as module 4 left it. Still honestly open,
+not that course's to resolve: `data-integrity-and-records`'s donor-record retention-clock question
+and its undecided BECS audit-trail review frequency. `csv-and-becs` (7/7), `data-integrity-and-records`
 (6/6), and `fda-and-aabb-in-practice` (6/6) are all complete — once
 `vendor-and-third-party-risk-management` also exists, `directing-the-quality-analyst` modules 4
 and 5 should be revisited per that course's own "Deliberately deferred" table.
