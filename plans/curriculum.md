@@ -270,19 +270,20 @@ has no `plans/<slug>.md` file until its first session.
 | `directing-the-quality-analyst` | 6 / 6 | Done |
 | `csv-and-becs` | 7 / 7 | Done |
 | `data-integrity-and-records` | 6 / 6 | Done |
-| `fda-and-aabb-in-practice` | 1 / 6 | In progress |
+| `fda-and-aabb-in-practice` | 2 / 6 | In progress |
 | `grc-frameworks-and-risk-management` | 0 / 5 | Not started |
 | `healthcare-security-and-privacy` | 0 / 5 | Not started |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `fda-and-aabb-in-practice` module 2, `warning-letters-and-recalls` (Track 2). Module 1
-is published — see `plans/fda-and-aabb-in-practice.md`'s progress log for the locked scenario
-facts (Lakeshore's Form 483 with two observations, the Director's open "probably VAI" judgment,
-and the still-undecided deferred-donor-record cadence question) that module 2 builds on. `csv-and-
-becs` (7/7) and `data-integrity-and-records` (6/6) are both complete — once `vendor-and-third-
-party-risk-management` also exists, `directing-the-quality-analyst` modules 4 and 5 should be
-revisited per that course's own "Deliberately deferred" table.
+**Next up:** `fda-and-aabb-in-practice` module 3, `filing-a-biological-product-deviation-report`
+(Track 2). Modules 1-2 are published — see `plans/fda-and-aabb-in-practice.md`'s progress log for
+the locked scenario facts (the 483's "probably VAI" judgment, the plasma-labeling event now
+classified as a Class II recall recommendation, and the still-undecided deferred-donor-record
+cadence question) that module 3 builds on. `csv-and-becs` (7/7) and `data-integrity-and-records`
+(6/6) are both complete — once `vendor-and-third-party-risk-management` also exists,
+`directing-the-quality-analyst` modules 4 and 5 should be revisited per that course's own
+"Deliberately deferred" table.
 `csv-and-becs` is fully built and published (7/7 modules) — see `plans/csv-and-becs.md` for the
 complete course, including module 6's VIA-0842 verdict and module 7's closing of its last two
 open interface items. Once `data-integrity-and-records` and

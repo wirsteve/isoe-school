@@ -70,7 +70,7 @@ brand — all already-established conventions this course continues.
 |---|---|---|---|---|
 | — | (syllabus) | — | 68 | Published |
 | 1 | `fda-inspection-authority-and-outcomes` | Name what FDA's inspection authority actually lets an investigator do and ask for, explain Form FDA 483's real purpose and legal weight, and name the three possible outcomes an inspection can end in. | 69/70 | Published |
-| 2 | `warning-letters-and-recalls` | Explain when a 483 escalates into a Warning Letter, and sort any product problem into the right recall classification (Class I, II, or III) using FDA's own health-hazard test. | 71/72 | Not started |
+| 2 | `warning-letters-and-recalls` | Explain when a 483 escalates into a Warning Letter, and sort any product problem into the right recall classification (Class I, II, or III) using FDA's own health-hazard test. | 71/72 | Published |
 | 3 | `filing-a-biological-product-deviation-report` | Pick up exactly where `deviations-and-nonconformances` left off (the reportability determination) and finish the job: file the report on the right form, to the right office, in the right window. | 73/74 | Not started |
 | 4 | `the-aabb-assessment-process` | Walk Lakeshore through both phases of an AABB reassessment (self-assessment and on-site) and say precisely what an assessor expects that an FDA investigator doesn't. | 75/76 | Not started |
 | 5 | `designing-an-internal-audit-program` | Build the program an internal audit needs to actually hold up: auditor independence/competency, risk-based scheduling, real evidence sampling, and a nonconformance grading scale with teeth. | 77/78 | Not started |
@@ -330,3 +330,20 @@ as every prior course).
   module in this course (module 6 at the latest) still needs to pick a direction and log it.
   No `csv-and-becs` or `data-integrity-and-records` locked fact altered.
   Next: build m2, `warning-letters-and-recalls`.
+- **2026-10-09**: Module 2, `warning-letters-and-recalls`, drafted (via subagent), audited, and
+  published (`courses/fda-and-aabb-in-practice/warning-letters-and-recalls/index.qmd` and
+  `resources.qmd`, `order: 71`/`72`, ~4,020 words). Quotes (the Warning Letter slide, 7.3's
+  recall/market-withdrawal/stock-recovery definitions and Class I/II/III text, 7.40, 7.41's six
+  factors, 7.46's nine-item list and classification sentence) all verified verbatim. GCP-source
+  scope caveat restated honestly. All four `resources.qmd` links curl-verified 200. **New locked
+  fact:** a plasma-labeling event — a BECS reference-table error printed one production lot's
+  containers with the wrong plasma subtype (FFP vs. PF24), caught before any unit was issued,
+  after the lot left Fairview's control. Classified via the six-factor walkthrough as a
+  **recall** (not market withdrawal/stock recovery), with Lakeshore QA's own reasoned
+  recommendation of **Class II**, explicitly framed as input to FDA's actual classification
+  decision, not a final determination. Does not reuse or alter `csv-and-becs`'s DEV-1147 (an
+  entirely new, separate event, not given a tracking ID). Module 1's "probably VAI" judgment was
+  not contradicted, used as the reason a Warning Letter isn't the expected next step here while
+  still teaching the escalation mechanism. The deferred-donor-record cadence question was not
+  mentioned and remains exactly "under internal review."
+  Next: build m3, `filing-a-biological-product-deviation-report`.

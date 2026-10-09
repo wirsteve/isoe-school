@@ -1,0 +1,32 @@
+---
+title: "Resources"
+order: 72
+---
+
+Four places to go deeper than this lesson, or to check a citation yourself before it goes
+into a real Lakeshore document. All four were checked and loading at the time this page was
+written.
+
+- **[21 CFR Part 7, Subpart A, Section 7.3, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/7.3)**
+  — the full definitions section this lesson quotes from: recall, market withdrawal, stock
+  recovery, and the Class I/II/III recall classification, all in one place. Worth reading in
+  full once to see how tightly FDA defines each term.
+
+- **[21 CFR Part 7, Subpart C, Section 7.41, eCFR](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-7/subpart-C/section-7.41)**
+  — the six-factor health hazard evaluation this lesson walks against Lakeshore's plasma lot.
+  eCFR's "current as of" banner is useful for confirming you're reading the in-force version,
+  not an amended-out one.
+
+- **[FDA, "CDER GCP Inspections and Outcomes" (PDF)](https://www.fda.gov/media/164382/download)**
+  — the same presentation module 1 used for the NAI/VAI/OAI slide, reused here for its
+  Warning Letter slide (17). **Read it with the same scope caveat**: this is a presentation
+  about Good Clinical Practice (GCP) inspections of clinical drug trials, not about CGMP
+  inspections of a manufacturing or blood-collection facility. Only the Warning Letter's
+  general character — public, redacted, informal and advisory — transfers; the clinical-trial
+  content around it does not.
+
+- **[FDA, Recalls, Market Withdrawals, & Safety Alerts](https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts)**
+  — FDA's own public landing page for actual, real recall notices across every product type
+  it regulates. Useful for seeing what a real recall classification and public notice actually
+  look like in practice, without treating any single listed recall as a stand-in for
+  Lakeshore's fictional scenario.
