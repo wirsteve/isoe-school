@@ -71,7 +71,7 @@ vendor.
 | — | (syllabus) | — | 92 | Published |
 | 1 | `information-governance-in-a-covered-entity` | Answer whether Lakeshore is a HIPAA covered entity, reasoned from HIPAA's own definitions, and introduce the incident this course's remaining four modules carry forward. | 93/94 | Published |
 | 2 | `the-hipaa-privacy-rule` | Apply the actual rules governing when a donor's PHI can be used or disclosed without authorization, when it can't, and the specific exception covering an FDA-regulated recall/BPDR disclosure. | 95/96 | Published |
-| 3 | `security-rule-safeguards-and-part-11` | Map HIPAA's administrative/physical/technical safeguards against Part 11's own controls — genuine overlaps and one genuine structural difference (required vs. addressable). | 97/98 | Not started |
+| 3 | `security-rule-safeguards-and-part-11` | Map HIPAA's administrative/physical/technical safeguards against Part 11's own controls — genuine overlaps and one genuine structural difference (required vs. addressable). | 97/98 | Published |
 | 4 | `breach-notification-and-dual-reporting` | Run the incident through HIPAA's breach test and 60-day clock side by side with FDA's 45-day BPDR clock, and say honestly when one incident triggers both. | 99/100 | Not started |
 | 5 | `investigating-a-healthcare-data-incident` | Walk the investigation a HIPAA breach demands — scope, root cause, the four-factor compromise assessment — to the closing decision. | 101/102 | Not started |
 
@@ -350,3 +350,81 @@ as every prior course) — already done as part of Phase 2 scoping below.
   status was a Required or an Addressable implementation specification under 164.312(a)(2)(iv)
   (Addressable, per the saved text) — independent of, and without resolving, the breach
   determination itself (m4's job) or re-litigating this module's minimum-necessary finding.
+
+- **2026-10-09**: Module 3, `security-rule-safeguards-and-part-11`, drafted and published
+  (`courses/healthcare-security-and-privacy/security-rule-safeguards-and-part-11/index.qmd`,
+  `order: 97`, ~6,000 words — longer than this curriculum's usual 2,000-4,000-word target because
+  this module's job required quoting all four Security Rule sections (164.306, 164.308, 164.310,
+  164.312) **in full**, not excerpted clauses as in modules 1-2; the verbatim CFR text alone runs
+  ~2,200 words of that total; `resources.qmd`, `order: 98`). All quotes verbatim from
+  `sources/cfr/45-164-security-rule-excerpt.md` — no other source used, no citation or clause
+  number invented. 164.314 and 164.316 were named only as existing (organizational and
+  documentation requirements), never quoted, per this plan's own sourcing notes.
+
+  **What was built and decided:**
+  - **164.306(a)/(d) taught in full:** the overall confidentiality/integrity/availability mandate,
+    and the Required-vs-Addressable mechanism — an Addressable implementation specification is not
+    optional; 164.306(d)(3) requires the covered entity to (i) assess whether it's reasonable and
+    appropriate, then (ii) either implement it, or document why not and implement an equivalent
+    alternative if reasonable. Bridged to `grc-frameworks-and-risk-management`'s already-taught
+    NIST RMF control-tailoring/compensating-control vocabulary (categorize→select→implement→
+    assess→authorize→monitor, POA&M tracking) as the closest existing analog, reused rather than
+    re-derived, per this plan's own instruction.
+  - **164.308 (administrative), 164.310 (physical), 164.312 (technical) all quoted in full**, with
+    164.308(a)(1)(ii)(D) (information system activity review, Required) and 164.310(d) (device and
+    media controls) flagged as the specific provisions bearing on the laptop incident.
+  - **Honest Part 11 comparison table built**, reference-only (no Part 11 section re-quoted at
+    length; all already fully taught in `data-integrity-and-records`'s `audit-trails-and-
+    esignatures`): 164.312(a)(2)(i) unique user ID ≈ 11.100 uniqueness; 164.312(b) audit controls ≈
+    11.10(e) audit trail; 164.312(d) person/entity authentication ≈ 11.200 two-component execution.
+    **The one genuine structural difference named explicitly and held to:** Part 11 has no
+    Required/Addressable concept anywhere in its text — every Part 11 control simply applies in
+    full or doesn't; HIPAA's Security Rule built the assess-or-substitute process into roughly half
+    its own implementation specifications. Explicitly refused to flatten the two rules into
+    "basically the same" — named their different regulated interests (Part 11: record/signature
+    integrity for FDA-regulated records; HIPAA Security Rule: general e-PHI confidentiality/
+    integrity/availability) that happen to overlap on access control and audit logging.
+  - **The locked Security Rule compliance gap finding — module 4 and 5 depend on this exact
+    wording, do not broaden or contradict it:** 164.312(a)(2)(iv) (encryption/decryption of e-PHI)
+    is Addressable, not Required. Lakeshore's policy response was reasoned to be sound under
+    164.306(d)(3) — it assessed full-disk encryption as reasonable and appropriate for laptops
+    holding e-PHI, and implemented that assessment as a standing policy, auto-enforced at
+    enrollment. **That policy soundness does not, by itself, satisfy 164.306(a)'s ongoing
+    confidentiality/integrity/availability mandate for this specific device**, because nobody can
+    currently confirm encryption was actually active on the Brookfield laptop when it went
+    missing — the device-management platform migration left its encryption-status field "not
+    reported" for the relevant window. This is reasoned as a **verification/monitoring gap tied to
+    164.308(a)(1)(ii)(D)'s Required information-system-activity-review specification**, not a
+    policy-design failure — explicitly the same "documented but not verified/enforced" pattern
+    `data-integrity-and-records`'s `audit-trails-and-esignatures` module already used for its
+    password-revision finding (policy written correctly, enforcement never confirmed). **This
+    finding is explicitly scoped to Security Rule compliance only — it does not determine, and the
+    module states outright that it does not determine, whether a reportable breach occurred.**
+    164.402's four-factor test (was unsecured PHI actually acquired/viewed, by whom, what was the
+    nature and extent of the PHI, was the risk mitigated) is named as a separate question,
+    deliberately left to module 4, which inherits this finding as one input among several, not a
+    predetermined breach verdict.
+  - No `csv-and-becs`/`data-integrity-and-records` locked identifier was touched by name or ID;
+    Part 11 sections (11.10, 11.50, 11.70, 11.100, 11.200, 11.300) referenced generically by
+    section number only, per this course's house rules. No real device/OS/vendor name or calendar
+    year used in the Lakeshore narrative. No calendar year appears in the narrative; the plan's own
+    dated progress-log entries are the only dates, as established by this curriculum's convention.
+
+  Sources: no new source fetched — `sources/cfr/45-164-security-rule-excerpt.md` (already saved,
+  fully quoted this session) was the only CFR source used. `resources.qmd` links the eCFR pages for
+  164.306, 164.308, 164.310, and 164.312 — all four curl-verified
+  (`curl -s -o /dev/null -w "%{http_code}" -L <url>`, each returned `200`) before publishing — plus
+  one internal link back to `data-integrity-and-records`'s `audit-trails-and-esignatures` module
+  for the full Part 11 text this module only references.
+
+  Next: build m4, `breach-notification-and-dual-reporting` — quote 164.402's breach definition and
+  four-factor test, 164.404 (60-day individual-notification clock), 164.406/164.408 (media/HHS
+  notification, 500-person threshold), and 164.414 (burden of proof), all verbatim from
+  `sources/cfr/45-164-breach-notification-excerpt.md`; run the Brookfield laptop incident through
+  the actual four-factor test, carrying forward as locked inputs: module 2's minimum-necessary
+  finding (three of six extract fields weren't needed), and this module's Security Rule finding
+  (the encryption policy was sound by 164.306(d)(3), but there is a real, unresolved
+  verification/monitoring gap — nobody can confirm encryption was actually active on this specific
+  device at the relevant time). Compare HIPAA's 60-day clock against 606.171's 45-day BPDR clock
+  (reference only, already taught in `fda-and-aabb-in-practice`) and say honestly when one
+  incident could trigger both.
