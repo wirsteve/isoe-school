@@ -1,0 +1,280 @@
+---
+title: "Categorize and Select Controls"
+order: 84
+---
+
+## The CAPA record nobody can find
+
+Three weeks after the planning meeting that closed out the last module, you're sitting in a
+follow-up with your Quality Analyst and your systems administrator, and she asks a question that
+stops the conversation cold: "If someone altered a CAPA (corrective and preventive action) record
+in the eQMS (electronic quality-management system) after it was closed — changed the stated root
+cause, say, or the effectiveness-check date — would we actually know?"
+
+Nobody answers right away. Your systems administrator finally says, "Probably not, unless someone
+happened to notice." Your QA follows with a worse one: "And if Brookfield's site lead can see
+Fairview's open CAPA records before they're ready to share — is that a problem?" Then the one that
+really lands: "What if an AABB assessor shows up the week the eQMS is down for a migration and
+asks for the audit log on a specific deviation? What do we hand them?"
+
+Three questions, three different ways the eQMS could fail, and none of them is "the system
+crashes." That's exactly the gap you went looking for a framework to close. You decided, in the
+last module, to run the eQMS through RMF's (Risk Management Framework's) structure, start to
+finish, as Lakeshore's own voluntary methodology. This is the session where that decision stops
+being theoretical. Categorize comes first — and categorize is just a formal name for the three
+questions your QA and your administrator just asked, asked on purpose instead of by accident.
+
+## Why this step exists — and the ITSM bridge
+
+Here's the failure Categorize is built to prevent: a team picks controls for a system before
+anyone has agreed on what the system is actually worth protecting, which means the controls end
+up sized to whoever argued loudest in the room, not to the system's actual stakes. Skip
+straight to "what controls should we put on the eQMS" without Categorize, and you get one of two
+bad outcomes — either the systems administrator's instinct to lock everything down as tightly as
+possible (expensive, slow, and probably still wrong in some other direction), or his instinct from
+the last module to "keep an eye on it" (cheap, fast, and wrong in the direction that actually
+matters). Categorize forces the sizing question to happen first, out loud, on the record.
+
+You already know this motion from ITSM (IT service management): it's the same discipline behind
+**service classification** in a service catalog — deciding a service is Tier 1 versus Tier 3 before
+you decide its incident-response SLA (service-level agreement), its change-approval rigor, or its
+monitoring depth. Nobody writes a four-hour-restore SLA for every service in the catalog
+regardless of what it does; the tiering decision comes first, and it drives everything after it.
+Categorize is that tiering decision, asked three specific ways — confidentiality, integrity,
+availability — instead of one generic "how important is this."
+
+One callback before you go further, because it matters every time this course touches RMF: nothing
+here is a federal requirement. RMF is written for U.S. federal information systems; Lakeshore is
+borrowing its structure voluntarily, the same way it borrowed AABB's accreditation structure and
+ICH Q9's. The eQMS will never receive an actual federal "authorization to operate." What follows is
+Lakeshore's own disciplined use of a well-built framework, not compliance with anything that binds
+a private blood establishment.
+
+## The rule in plain English
+
+Categorize asks one question, three ways, about a system before you touch a single control:
+**if this system's data loses confidentiality, integrity, or availability, how bad does that
+actually get for the organization?** Not "is the eQMS important" — everything feels important in
+the room where you're deciding its budget. The question is sharper: name the three specific ways
+it could fail, and reason out loud about how bad each one is, separately, before picking a single
+control.
+
+Applied to your QA's three questions from the opening scene:
+
+- **Integrity** — a CAPA record altered after closure, undetected. The root-cause finding and
+  effectiveness-check date are exactly the fields an AABB assessor or an FDA investigator would
+  rely on to judge whether Lakeshore actually fixed what it said it fixed. An undetected change
+  doesn't just corrupt a record — it corrupts the evidence Lakeshore would use to defend a closed
+  CAPA at the next reassessment.
+- **Confidentiality** — an open CAPA record visible to someone at another site before it's ready
+  to share. CAPA records routinely discuss an employee's error, a near-miss, or a vendor problem
+  before root cause is confirmed. Premature or unrestricted visibility across three sites isn't
+  just an awkward conversation; it's exactly the kind of access-control gap your systems
+  administrator was worried about from day one, just named specifically now instead of generally.
+- **Availability** — the eQMS down, or a specific audit log unreachable, the week an assessor asks
+  for it. "We'll pull that up once the system's back" is not an answer an assessor accepts on the
+  spot, and a document-control or audit-log system that can't produce a record on demand is close
+  to useless for the exact purpose it exists for.
+
+## Citation decoder
+
+Same citation shape as last module — a document number and revision, then a chapter and section
+number, read the way you'd read any numbered technical document.
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| NIST SP 800-37 Rev. 2, §3.2 (Categorize's purpose) | "Special Publication eight-hundred-thirty-seven, Revision two, section three point two" | U.S. government work, public domain, safe to quote verbatim. States that Categorize exists to determine adverse impact from loss of confidentiality, integrity, and availability. | The exact three-part question you just asked about CAPA records, access across sites, and audit-log availability during an assessment. |
+| NIST SP 800-37 Rev. 2, Ch. 2 (Figure 2 framing — Select) | "...Chapter Two" | Same tier. States that Select means choosing an initial control set and tailoring it to reduce risk to an acceptable level, based on an assessment of risk. | What you'll use to size the eQMS's control set to whatever Categorize decides, instead of copying a generic checklist. |
+
+## The actual text
+
+The Categorize step's own purpose statement — already named once in the last module, applied here
+for the first time — quoted verbatim from `sources/nist/sp-800-37r2-excerpt.md`:
+
+> The purpose of the Categorize step is to inform organizational risk management processes and
+> tasks by determining the adverse impact to organizational operations and assets, individuals,
+> other organizations, and the Nation with respect to the loss of confidentiality, integrity, and
+> availability of organizational systems and the information processed, stored, and transmitted by
+> those systems.
+
+Strip "organizational operations and assets... other organizations, and the Nation" down to
+Lakeshore's own scale — a private blood establishment has no "Nation" to answer to — and what's
+left maps cleanly: adverse impact to Lakeshore's operations (a site that can't produce a record
+during an assessment), its assets (the audit trail itself, which is the asset here), and
+individuals (a donor, a patient, or an employee named in a CAPA record whose confidentiality
+matters). That's the full weight of "loss of confidentiality, integrity, and availability" sized to
+Lakeshore's actual world instead of a federal agency's.
+
+Select's one-line action, quoted verbatim from the same excerpt (part of Figure 2's framing,
+already quoted in full in the last module — this is the one line this module actually acts on):
+
+> Select an initial set of controls for the system and tailor the controls as needed to reduce
+> risk to an acceptable level based on an assessment of risk.
+
+Two words in that sentence are doing real work and are easy to skim past. **"Initial"** means you
+don't start from nothing and you don't start from a maximum-security template either — you start
+from a baseline sized to the categorization you just made. **"Tailor"** means that baseline isn't
+the final answer; you add, remove, or adjust controls based on what's actually true about the
+eQMS, not what a generic checklist assumes.
+
+## Reasoning to a categorization — not asserting one
+
+Here's the actual decision, reasoned out instead of just stated. The eQMS holds CAPA records,
+document control, and internal-audit logs across all three sites — records that don't just
+document Lakeshore's quality system, they *are* the evidence an AABB assessor or FDA investigator
+uses to judge whether Lakeshore's quality system is working. Walk the impact question through all
+three again, this time asking "how bad, specifically":
+
+- **Integrity failure** — an undetected alteration to a closed CAPA record isn't a local
+  inconvenience. It's Lakeshore presenting evidence to a regulator or assessor that may no longer
+  be true, without knowing it. That's a finding waiting to happen, and worse, a finding Lakeshore
+  can't see coming because nothing caught the change.
+- **Confidentiality failure** — exposure of an open CAPA record across sites, or to someone
+  without a reason to see it, risks real harm to the people named in it and risks Lakeshore's own
+  credibility if word gets out that its new centralizing system made records *less* protected than
+  the patchwork it replaced.
+- **Availability failure** — an audit log or document-control record unreachable during an active
+  assessment isn't a technical hiccup. It reads, in the room, exactly like a missing record reads
+  to an inspector: as if the record might not exist at all.
+
+None of these three is "a inconvenience, recoverable with an apology." Each one plausibly produces
+a real regulatory or AABB-facing consequence across all three sites at once, because the eQMS is
+the single shared system of record for all of them. That's the actual reasoning, not a reflex,
+for categorizing the eQMS as a **moderate-impact** system — not the lowest tier (a low-impact
+system is one where loss of confidentiality, integrity, or availability would have only limited
+consequence, which doesn't describe data an assessor relies on to judge a closed-loop quality
+process) and arguably a candidate for high-impact in a security-first shop, but moderate is the
+defensible call here specifically because the eQMS's worst plausible failure is serious regulatory
+and reputational exposure, not loss of life or an organization-ending event the way a true
+high-impact clinical or product-release system would carry. The honest caveat: this is Lakeshore's
+own reasoned judgment, not a number handed down by a standard — a different, equally careful
+reviewer could reasonably argue for high-impact instead, given how central the eQMS now is to all
+three sites' regulatory story. What would actually change that answer is a scope decision you
+haven't made yet, not a fact you're missing: if the eQMS later becomes the sole system of record
+with no other place a given CAPA or audit entry exists, that single-point-of-failure shift would
+be real grounds to revisit the categorization upward.
+
+## Selecting and tailoring a control set sized to that
+
+Moderate-impact earns the eQMS a more substantial starting baseline than a low-impact system would
+get, but tailoring — not maximalism — is still the job. This is where your systems administrator's
+opening-scene instinct ("I'll make sure the usual people have the usual access") gets replaced with
+something that would actually survive an assessor's question six months from now.
+
+NIST SP 800-37 Rev. 2 itself, in the discussion of common controls the saved excerpt captures,
+names **control families** as the organizing concept — groupings of related controls defined in
+the separate control catalog, SP 800-53 (not independently fetched by this curriculum, so no
+specific numbered control gets invented here — only the family names the saved excerpt itself
+names). Three families map directly onto the three failure modes you just reasoned through:
+
+- **Account and identity management** — who gets eQMS access, at what level, reviewed on what
+  schedule, across all three sites. This is the direct answer to your systems administrator's
+  original worry and to the confidentiality question: a named process for granting, reviewing, and
+  revoking access, replacing "the usual people" with a documented list and a documented review
+  date.
+- **Audit** (logging) — a record of who changed what CAPA, document-control, or audit-log entry,
+  and when. This is the direct answer to the integrity question: not preventing every possible
+  alteration, but making sure an alteration can't happen *undetected*, which is the actual phrase
+  in Categorize's purpose statement.
+- **Physical and environmental protection** — controls over wherever the eQMS's underlying
+  infrastructure actually sits, whatever that turns out to be for Lakeshore. This is the
+  availability-side family worth naming explicitly, because the opening scenario's third question
+  — the system down during an active assessment — is as much about where and how reliably the
+  eQMS runs as it is about access.
+
+Tailoring means Lakeshore doesn't adopt every control in all three families at maximum strength
+just because the categorization came back moderate. It means the Director and the QA (and the
+systems administrator, since account and identity management is squarely his domain) look at each
+family and ask: given what moderate-impact actually means for *this* system, which controls in
+this family earn their cost, and which would be theater? That tailoring conversation — not a
+checklist copied from a lower-stakes system, and not a maximum-security build the eQMS doesn't
+need — is Select's real output.
+
+## What a reviewer would actually look for
+
+No external body audits Lakeshore against RMF, the same honest note the last module made. What a
+competent reviewer — your CIO, an AABB assessor who happens to ask, or you yourself revisiting
+this later — would actually want to find is a short, dated record answering four questions: what
+did Lakeshore decide the eQMS's impact level was, who decided it, what reasoning supported that
+decision (not just the number), and which control families were selected and tailored because of
+it. A bad answer sounds like "we figured moderate was about right" with no reasoning attached. A
+good answer sounds like the walkthrough above — three named failure modes, a stated reason for
+landing on moderate rather than low or high, and controls that trace back to specific failure
+modes instead of a generic list.
+
+## Common traps
+
+**"Categorize is about how technically complex the system is."** No — it's about *impact if it
+fails*, not complexity. A simple system holding records that drive major regulatory decisions can
+categorize higher than a complicated system holding nothing anyone outside IT cares about.
+Complexity is an implementation concern for the next module; impact is the only question
+Categorize asks.
+
+**"Once we picked moderate, the control list is fixed."** The Select step's own verb is "tailor,"
+not "apply." A moderate-impact starting baseline is exactly that — a starting point. The real work
+is the conversation about which controls in each family the eQMS actually needs, not treating a
+baseline as a checkbox exercise.
+
+## What this means for your job
+
+- **Ask "which of the three — confidentiality, integrity, availability — are we actually worried
+  about" whenever someone proposes a new control for the eQMS.** A control that doesn't trace back
+  to a named impact is a control nobody has actually justified yet.
+- **Expect your systems administrator's account-and-identity-management work to now have a
+  written review schedule, not an informal one.** That's the direct, traceable fix for his
+  opening-scene "I'll keep an eye on it" from the last module — ask to see the schedule, not just
+  hear that one exists.
+- **Push your QA and your administrator to agree on the categorization together, not separately.**
+  Confidentiality and availability concerns tend to surface from IT-operations instincts;
+  integrity concerns tend to surface from quality instincts. The eQMS needs both in the room for
+  Categorize to actually work.
+- **Watch for the two failure modes in either direction.** A categorization that's quietly lower
+  than the evidence supports (because nobody wants to justify more controls) is as much a finding
+  as a maximal control list nobody can explain the cost of.
+- **Keep saying this is Lakeshore's own methodology, not a requirement, every time you make this
+  decision out loud** — it's an easy thing for a new team member to start repeating as "the rule"
+  rather than "our choice," and the distinction matters the next time someone asks why Lakeshore
+  did this at all.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your systems administrator asks, "Does categorizing the eQMS as moderate-impact mean NIST or some federal body is now reviewing how we run it?" What do you tell him?
+
+No. Categorize is a step inside RMF, a structure Lakeshore adopted voluntarily as its own internal
+methodology — no federal body reviews, approves, or has any legal standing over how a private
+blood establishment categorizes or runs an internal system. The "moderate-impact" label is
+Lakeshore's own reasoned judgment, recorded for Lakeshore's own later reference, not a
+classification submitted to or reviewed by anyone outside the organization.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Your Quality Analyst asks why the eQMS wasn't categorized as low-impact, since "nothing about a document-control system sounds dangerous." How do you answer?
+
+Low-impact would mean loss of confidentiality, integrity, or availability has only limited
+consequence — and that's not true here. An undetected alteration to a closed CAPA record, exposure
+of an in-progress CAPA across sites, or an unreachable audit log during an active AABB assessment
+each plausibly produces a real regulatory or reputational consequence, because the eQMS is the
+shared system of record feeding decisions at all three sites. "Sounds dangerous" isn't the test —
+"how bad is the realistic worst case" is, and the realistic worst case here is serious, even though
+nobody's safety is directly at stake the way it would be for a true high-impact clinical system.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A peer mentions their organization picked specific NIST SP 800-53 control numbers for their own system, like a numbered access-control requirement. Should Lakeshore do the same for the eQMS?
+
+Not based on anything built in this course. SP 800-53 is the actual control catalog with specific
+numbered controls, and this curriculum has never independently fetched or verified that document
+— only named "control families" as a concept, drawn from what SP 800-37 itself references. Citing
+a specific control number Lakeshore never actually looked up would be inventing a citation, exactly
+the mistake this curriculum's sourcing discipline exists to prevent. Naming the family (account and
+identity management, audit, physical and environmental protection) and reasoning about it in
+Lakeshore's own terms is the honest, defensible version of this work without that source.
+:::
+
+## Where this goes next
+
+Categorize named the impact level; Select named and tailored the control families that answer it.
+Neither step asked whether those controls actually get built correctly or whether anyone
+independent checked that they work — that's `implement-and-assess-controls`, picking up exactly
+where the tailoring conversation above leaves off.

@@ -1,0 +1,25 @@
+---
+title: "Resources"
+order: 85
+---
+
+This module applies the same saved NIST excerpt the last module introduced — no new source was
+independently fetched, since the new content here is application (categorizing and selecting
+controls for the eQMS), not new citation. The link below was checked at the time this page was
+written.
+
+- **[NIST SP 800-37 Rev. 2, "Risk Management Framework for Information Systems and
+  Organizations"](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf)**
+  (PDF, final, December 2018) — the document behind both quotes in this lesson (Categorize's
+  purpose statement and Select's one-line action), via the same saved excerpt in `sources/nist/`
+  used last module. Curl-checked directly from this session: returns HTTP 200.
+
+- **[Risk management frameworks side by side](../risk-frameworks-side-by-side/index.qmd)** — this
+  course's first module: the comparison that justified borrowing RMF's structure for the eQMS in
+  the first place, and where the Categorize and Select steps were first named (without being
+  applied). Read it for the full three-framework comparison this module assumes.
+
+- **NIST SP 800-53** — the separate publication that actually defines control families and
+  numbered controls. Not independently fetched or quoted anywhere in this curriculum; mentioned
+  here only so you know where the real catalog lives if Lakeshore ever needs more than the family
+  names this module uses.
