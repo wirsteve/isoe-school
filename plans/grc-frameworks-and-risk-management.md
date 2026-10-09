@@ -62,7 +62,7 @@ or cloud-platform brand for the eQMS — describe it generically.
 | — | (syllabus) | — | 81 | Published |
 | 1 | `risk-frameworks-side-by-side` | Put NIST RMF, ISO 31000, and ICH Q9 next to each other and show they're the same underlying motion in three different vocabularies, issued by three very different kinds of body. | 82/83 | Published |
 | 2 | `categorize-and-select-controls` | Apply RMF's Categorize and Select steps to the eQMS: determine its impact level, then select and tailor a control set sized to that, not a one-size-fits-all checklist. | 84/85 | Published |
-| 3 | `implement-and-assess-controls` | Build the selected controls, then run an independent assessment of whether they actually work. | 86/87 | Not started |
+| 3 | `implement-and-assess-controls` | Build the selected controls, then run an independent assessment of whether they actually work. | 86/87 | Published |
 | 4 | `authorize-and-monitor` | Make and document the authorization decision (accepting a named residual risk), and build the ongoing monitoring plan — say in one sentence why this is the same decision as a validation release and periodic review. | 88/89 | Not started |
 | 5 | `poams-and-capas` | Track every control gap to closure on a POA&M, then place it next to a CAPA and show they do the identical job in two vocabularies. | 90/91 | Not started |
 
@@ -277,3 +277,46 @@ as every prior course) — already done as part of Phase 2 scoping below.
   saved excerpt). Word count: ~3,100 words for the lesson page (markdown word count including front
   matter and headings).
   Next: build m3, `implement-and-assess-controls`.
+
+- **2026-10-09**: Module 3, `implement-and-assess-controls` (`order: 86/87`), built and published.
+  Scenario: six weeks after Select, the systems administrator reports all three control families
+  built and hands over a one-page summary; the Director notices the access-review schedule's first
+  review date already passed with no review run, which becomes the scene that motivates the
+  Assess step. Quoted verbatim from `sources/nist/sp-800-37r2-excerpt.md`: Implement's one-line
+  action ("Implement the controls and describe how the controls are employed within the system
+  and its environment of operation") and Assess's one-line action ("Assess the controls to
+  determine if the controls are implemented correctly, operating as intended, and producing the
+  desired outcomes with respect to satisfying the security and privacy requirements") — both
+  reused as single lines from the Figure 2 passage already quoted in full in module 1, per the
+  plan's instruction not to requote the whole passage. **What actually got built** (concrete, not
+  just named): account and identity management — every eQMS account across all three sites tied to
+  a named individual and role (no shared logins), a documented request/approval step for new
+  access, and a quarterly access-review cycle owned by the systems administrator; audit/logging —
+  the eQMS's built-in audit-logging feature turned on across all three sites, capturing who/what/
+  when for every CAPA, document-control, and audit-log-entry change, retained at least as long as
+  the underlying records; physical and environmental protection — written, dated confirmation
+  obtained from the (unnamed, generic) hosting facility that it provides backup power, fire
+  suppression, and controlled physical access to the server room. Implement's own documentation
+  requirement applied explicitly: each of the three families now has a written "how it operates"
+  description (owner, trigger, evidence produced), not just a verbal understanding. **Independent
+  assessment**: handed to the Quality Analyst specifically because she didn't build any of the
+  three families, applying (one-line callback, not redeveloped) `designing-an-internal-audit-
+  program`'s auditor-independence rule that the person checking the work can't be the person who
+  did it. Audit/logging and physical/environmental protection both assessed as implemented
+  correctly, operating as intended, and producing the desired outcomes. Account and identity
+  management assessed as implemented correctly and documented, but **NOT yet verified as
+  operating as intended** — its first scheduled quarterly access review never actually ran; the
+  due date had already passed by the time the QA assessed it.
+  **LOCKED DEFICIENCY FOR MODULES 4-5 (verbatim as stated in the lesson):** "the quarterly eQMS
+  access-review control is implemented and documented, but has not yet been exercised on its first
+  scheduled cycle." This is the one open item m4's authorization decision must address (accept as
+  a named, time-bound residual risk, or hold go-live until it closes — drafter's choice when m4 is
+  built) and the one open item m5's POA&M entry is built around. No new deficiency should be
+  invented in m4 or m5 — this is the only one. No `csv-and-becs`/`data-integrity-and-records`
+  locked facts touched. Does not own the authorization decision (m4) or POA&M mechanics (m5) —
+  neither was drafted here; the assessment stops at naming the deficiency, nobody "accepts" it in
+  this module. Sourcing verified this session: NIST PDF curl-checked directly, returns HTTP 200
+  (same URL as m1/m2, re-verified, not re-fetched as a new source — no new independent source was
+  needed since all new content applies the already-saved excerpt). Word count: ~2,655 words for
+  the lesson page (markdown word count including front matter and headings).
+  Next: build m4, `authorize-and-monitor`.
