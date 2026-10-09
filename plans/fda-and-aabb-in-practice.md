@@ -74,7 +74,7 @@ brand — all already-established conventions this course continues.
 | 3 | `filing-a-biological-product-deviation-report` | Pick up exactly where `deviations-and-nonconformances` left off (the reportability determination) and finish the job: file the report on the right form, to the right office, in the right window. | 73/74 | Published |
 | 4 | `the-aabb-assessment-process` | Walk Lakeshore through both phases of an AABB reassessment (self-assessment and on-site) and say precisely what an assessor expects that an FDA investigator doesn't. | 75/76 | Published |
 | 5 | `designing-an-internal-audit-program` | Build the program an internal audit needs to actually hold up: auditor independence/competency, risk-based scheduling, real evidence sampling, and a nonconformance grading scale with teeth. | 77/78 | Published |
-| 6 | `mock-inspections-and-presenting-it-becs-evidence` | Put everything this course (and `csv-and-becs`/`data-integrity-and-records`) taught in front of a reviewer who's actually in the room, and resolve, out loud, what's still open from `data-integrity-and-records`. | 79/80 | Not started |
+| 6 | `mock-inspections-and-presenting-it-becs-evidence` | Put everything this course (and `csv-and-becs`/`data-integrity-and-records`) taught in front of a reviewer who's actually in the room, and resolve, out loud, what's still open from `data-integrity-and-records`. | 79/80 | Published |
 
 The next course after this one continues at **81**. Update `create-course`'s SKILL.md when this
 course's numbering is final (verify by grep with no duplicates before assigning, same discipline
@@ -414,3 +414,46 @@ as every prior course).
   as module 4 left it.
   Next: build m6, `mock-inspections-and-presenting-it-becs-evidence` — this course's final
   module.
+- **2026-10-09**: Module 6, `mock-inspections-and-presenting-it-becs-evidence`, drafted (via
+  subagent), audited, and published (`courses/fda-and-aabb-in-practice/mock-inspections-and-
+  presenting-it-becs-evidence/index.qmd` and `resources.qmd`, `order: 79`/`80`, ~4,125 words —
+  this course's final module, earned by a genuine closing passage, not padding). No new
+  regulation, guidance, or standard introduced; only light re-references to citations this
+  course and `data-integrity-and-records` already fully quoted (21 U.S.C. 374(a)(1)/(b)(1),
+  AABB's "PPPs... followed as written" sentence, 606.171(d)/(e), 606.160(e)(2)/(e)(3), ALCOA's
+  "accurate" element). All three `resources.qmd` links curl-verified 200, reusing the exact
+  already-verified URLs from `fda-inspection-authority-and-outcomes`, `the-aabb-assessment-
+  process`, and `data-integrity-and-records` module 6 rather than sourcing new ones.
+  **Scenario:** a contracted quality consultant runs a one-day mock inspection/mock assessment
+  at Lakeshore — an FDA-style session in the morning, an AABB-style session in the afternoon —
+  presenting the same BECS/IT evidence trail (the 483 response, BPD-0512's filing record,
+  LAB-07's closed AABB nonconformance, the new Critical/Major/Minor audit log) to both lenses
+  in turn. **Both of `data-integrity-and-records`'s threads this course was explicitly tasked
+  with resolving are now decided, out loud, in the scenario, and logged as new facts for any
+  later module or course:**
+  1. **DED-0458's "accurate" ALCOA letter is CLOSED, resolved positively (not left open).** The
+     QA performed and dated an independent manual re-derivation of the donor-eligibility
+     determination from the donor's own original screening responses (not from BECS's stored
+     output), confirmed it matches BECS's stored "accept" determination, and filed that
+     verification as DED-0458's own accuracy record. All five ALCOA letters are now settled for
+     DED-0458. A named contingency (quarantine + same-day escalation + a cross-record
+     investigation) is on record for what would have happened on a mismatch, so the resolution
+     models a real check, not a rubber stamp.
+  2. **The deferred-donor-record cadence question is DECIDED, not left under review.**
+     Lakeshore moves the cumulative deferred-donor record from 606.160(e)(3)'s "at least
+     monthly" regulatory floor to a weekly update cadence, by the Director's own dated,
+     costed, risk-based decision — explicitly NOT a new regulatory requirement (606.160(e)
+     still only requires monthly). Daily/near-real-time was considered and declined for now, on
+     a stated cost-versus-marginal-risk-reduction basis, framed as revisable, not permanent.
+  **LAB-07 stays closed exactly as module 4 left it** — run back through the new audit scale
+  only as a hypothetical, non-reopening worked example, with a *different*, real Minor finding
+  from Fairview's own paper-file sampling cited as the new program's actual live catch.
+  Course-ending passage summarizes all six modules' arc; explicitly states what's resolved
+  (both threads above, LAB-07 staying closed) and what still stays open by honest design and is
+  NOT this course's to resolve (the donor-record retention-clock question and the undecided
+  BECS audit-trail review frequency, both left exactly where `data-integrity-and-records` left
+  them); forward-points to `grc-frameworks-and-risk-management`, `healthcare-security-and-
+  privacy`, `vendor-and-third-party-risk-management`, and the Track 5 capstone
+  `itsm-for-regulated-blood-services`. No `csv-and-becs` or `data-integrity-and-records` locked
+  fact altered beyond the two threads this course was explicitly tasked with resolving.
+  **`fda-and-aabb-in-practice` is now 6/6 published. Course complete.**

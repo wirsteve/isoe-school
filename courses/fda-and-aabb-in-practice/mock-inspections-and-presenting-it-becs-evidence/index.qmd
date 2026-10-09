@@ -1,0 +1,369 @@
+---
+title: "Mock Inspections and Presenting IT/BECS Evidence"
+order: 79
+---
+
+## One room, two reviewers, one day
+
+The real FDA inspection is closed out. The real AABB (Association for the Advancement of
+Blood & Biotherapies) reassessment is closed out too — accreditation continued for another
+two-year cycle. Both of this course's live regulatory events are, as of this morning,
+history rather than open risk. Your Quality Analyst (QA) still books a full day on your
+calendar anyway, and titles it, with no irony at all, "Mock Inspection / Mock Assessment."
+
+"We got through both of the real ones," she says. "That's not the same as knowing we're
+*built* to get through the next ones. I want someone who isn't us, sitting in a chair,
+asking the same kinds of questions an investigator or an assessor would ask, before the
+real version of either shows up again." She's already arranged it: a contracted quality
+consultant, someone who has sat on both sides of this exact kind of table — real FDA
+(Food and Drug Administration) inspections, real AABB on-site assessments — spends the day
+at Lakeshore, playing both roles in turn. Morning session: an FDA investigator's lens.
+Afternoon session: an AABB assessor's lens. Same evidence, same BECS (Blood Establishment
+Computer Software) screens, same binders, two different sets of questions.
+
+She has one more reason for picking today specifically, and she says it to you directly
+before the consultant arrives. Two things have sat unresolved, referenced but never
+settled, across this entire course: DED-0458's "accurate" ALCOA (Attributable, Legible,
+Contemporaneously recorded, Original or a true copy, Accurate) letter, open since
+`data-integrity-and-records` first ran that record through all five letters, and the
+cumulative deferred-donor record's update cadence — compliant with its regulatory floor
+every cycle, and still "under internal review" every time this course has mentioned it
+since. "I don't want to walk into a mock session with either one still marked 'still
+deciding,'" she tells you. "If we can't finish deciding something with nobody real in the
+room, we're not ready for the day somebody real is." No new citations today. Just
+everything this course has already built, laid out on a table, in front of someone whose
+job for the day is to find the gap in it.
+
+## Why this exercise matters — and the ITSM bridge
+
+A mock inspection isn't a compliance checklist run a second time for luck. It's a different
+kind of test entirely, and the difference is worth naming precisely. Checking that every
+required document *exists* is easy — anyone can run that check with a spreadsheet. What a
+mock inspection actually tests is whether Lakeshore's own account of itself holds together
+under questioning: whether the 483 response, the BPDR (Biological Product Deviation Report)
+filing, the AABB nonconformance closure, and the internal audit log all tell the *same*
+story when a skeptical outsider pulls on each thread, or whether they quietly contradict
+each other the moment someone actually compares them side by side.
+
+You already run this exact discipline, under a different name. A **game day** or
+**disaster-recovery tabletop exercise** doesn't wait for a real outage to find out whether
+your runbook actually works — it stages a realistic failure on purpose, with real people
+walking through real steps, specifically so the gaps surface on a Tuesday afternoon instead
+of during an actual 2 a.m. incident. The value isn't the document the tabletop produces
+afterward. It's what breaks, in the room, that the document never would have shown you on
+its own. A mock inspection is that same exercise, aimed at a regulatory review instead of a
+system outage — and it's worth running precisely *because* both real events already went
+well. A program that's never been pressure-tested by someone trying to find its gaps is a
+program that's never actually been tested at all; it's only ever been confirmed by people
+who already knew where to look.
+
+## The rule in plain English
+
+**What "presenting evidence" actually means, said plainly.** It isn't handing over a stack
+of documents and waiting. It's walking a reviewer through a connected story: here is the
+finding, here is when it was discovered, here is who decided what, here is the record that
+proves the decision was made and followed through, and here is how you'd know if it hadn't
+been. Every piece of IT/BECS evidence this course has built — the 483 response, BPD-0512's
+filing record, LAB-07's closed AABB nonconformance, the new Critical/Major/Minor audit
+log — has to connect to the others the same way, or a reviewer will find the seam.
+
+**What the two reviewers are actually checking, and why it's not the same check.** This
+course drew this line once already, in `the-aabb-assessment-process`, and it's worth
+restating here in one sentence rather than rebuilding it: an FDA-style review checks
+Lakeshore's practice against binding federal regulation, using the authority
+21 U.S.C. 374(a)(1) actually grants an investigator; an AABB-style review checks Lakeshore's
+own policies, processes, and procedures (PPPs) against AABB's Standards, and specifically
+against AABB's own stated expectation that PPPs are "followed as written," not just written.
+Presenting the *same* evidence package to both lenses in one day is the fastest way to find
+out whether that evidence actually supports both kinds of scrutiny, or only happens to
+satisfy whichever one Lakeshore has gotten more practice with recently.
+
+**What a "mock" review is for, specifically.** Nobody's accreditation or registration is at
+stake today. That's the entire point: today is the day to actually find a weak answer, not
+the day to discover one in front of a reviewer whose findings carry real consequences. A
+mock session that produces zero findings isn't obviously good news — it may just mean the
+exercise wasn't run hard enough to find anything.
+
+## Citation decoder
+
+Every row below is a light re-reference to ground this course (or `data-integrity-and-
+records`) already built in depth. Nothing here is re-derived, and nothing new is quoted.
+
+| Citation / source | Already built in | What it still does here |
+|---|---|---|
+| 21 U.S.C. 374(a)(1), (b)(1) | `fda-inspection-authority-and-outcomes` | Frames what the morning, FDA-style session can actually demand to see, and what Form 483 means if it finds something. |
+| AABB, "Accreditation Process" page — "PPPs... followed as written" | `the-aabb-assessment-process` | Frames the afternoon, AABB-style session's two-part test: a written policy, and dated proof it's actually practiced. |
+| 21 CFR 606.171(d), (e) | `filing-a-biological-product-deviation-report` | BPD-0512's filing record is presented as evidence today, not re-filed or re-argued. |
+| 21 CFR 606.160(e)(2), (e)(3) | `data-integrity-and-records`, module 6 | The cumulative deferred-donor record's "at least monthly" regulatory floor — the number Lakeshore's own cadence decision, below, is measured against. |
+| FDA 2018 Data Integrity Q&A — ALCOA's "accurate" element | `data-integrity-and-records`, module 1 | The exact test DED-0458's long-open fifth letter is finally run against today. |
+| Industry practice — auditor independence, risk-based scheduling, nonconformance grading | `designing-an-internal-audit-program` | Lakeshore's own Critical/Major/Minor log is the audit-trail evidence both reviewers spend the most time on. |
+
+## The actual text — reused, not re-derived
+
+Two short phrases, already fully quoted and verified earlier in this course, carry the
+weight of today's two sessions. From AABB's own "Accreditation Process" page, already
+quoted in full in `the-aabb-assessment-process`:
+
+> The expectations of an AABB assessment are that all standards are addressed in policies,
+> processes and procedures (PPPs), and that PPPs are followed as written.
+
+And FDA's own description of a written inspection report, from 21 U.S.C. 374(b)(1), already
+quoted in full in `fda-inspection-authority-and-outcomes`: a report "setting forth any
+conditions or practices observed by him which, in his judgment, indicate" a violation. Both
+reviewers today are, in effect, rehearsing exactly those two judgments — one against federal
+regulation, one against Lakeshore's own written word — against the same evidence.
+
+## Resolving DED-0458, in front of the reviewer
+
+The morning session is well under way when the consultant, playing the FDA role, asks your
+QA to pull up a donor-eligibility determination at random and walk through how Lakeshore
+knows it's trustworthy. She pulls DED-0458 — not a safer, cleaner record chosen for the
+occasion, but the exact record this curriculum has been tracking since `data-integrity-and-
+records` first opened it. "Four of its five ALCOA letters settled a while ago," she tells
+the consultant, without hedging. "The fifth — accurate — has been open. I closed it this
+week, and I want to show you exactly how."
+
+Here's what she actually did, and it's worth sitting with, because it's the difference
+between a real resolution and a convenient one. "Accurate" was never a question of whether
+DED-0458 *looked* right — it looked complete from the day it was created. It was a question
+of whether the record's stored determination actually matches what the donor's own
+screening responses required, independently checked, not assumed because nothing had
+visibly broken. So she went back to the source: the donor's actual, original screening
+interview responses, the raw answers behind the determination, not the summary BECS
+displays on screen. She worked through Lakeshore's own eligibility criteria against those
+exact answers herself, by hand, deliberately not touching BECS's own calculation while she
+did it — an independent parallel check, not a second look at the same output. Her manual
+result and BECS's stored determination matched: accept. She dated and signed that
+verification as its own record, now sitting alongside DED-0458 as the proof "accurate"
+asked for all along.
+
+The consultant's next question is the right one, and it's worth repeating here because it's
+the whole lesson: "What would you have done if your manual check hadn't matched the
+system's?" Your QA has an answer ready, because she thought it through before today, not in
+the room. A mismatch would have meant quarantining that determination immediately,
+escalating to you the same day, and opening a real investigation into whether the same
+calculation logic affected any other donor's record — not quietly re-running the check until
+it came out clean. The point isn't that today's answer was reassuring. It's that she had a
+real plan for the version of today where it wasn't.
+
+DED-0458 now passes all five ALCOA letters, each one with its own provable record, not a
+single surface impression: attributable to a specific login, legible as structured BECS
+data, contemporaneous once the workstation clock synchronization was verified, original as
+the live BECS row rather than any printout, and now accurate, confirmed by an independent
+check rather than assumed. That's the record of how a genuinely open finding gets closed —
+not by deciding it was probably fine all along, but by doing the one specific thing "still
+checking" was always waiting on.
+
+## Deciding the deferred-donor cadence, out loud
+
+The afternoon session, playing the AABB role, asks a different kind of question: what does
+Lakeshore's own policy say about updating the cumulative deferred-donor record, and does
+practice actually match it? This is the question `the-aabb-assessment-process` already
+flagged as "discussed but deliberately left under internal review." Today, it stops being
+deliberately left anywhere.
+
+You bring the decision yourself, because it's yours to make, not your QA's. Here it is,
+stated plainly, the way it needs to be logged: **Lakeshore is moving the cumulative
+deferred-donor record's update cadence from the regulatory floor — at least monthly, per
+606.160(e)(3) — to a fixed weekly refresh, effective immediately.** You say the next part to
+the consultant exactly as directly as you need to say it to a real reviewer someday: this is
+not a regulatory requirement. 606.160(e)(3) sets a floor, not a target, and Lakeshore would
+be fully compliant staying at monthly. Weekly is Lakeshore's own risk-based business
+decision, made because the worst-case exposure a monthly cadence leaves — a donor deferred
+at one location still showing as eligible somewhere else in the system for up to just under
+a month — is a real patient-safety window this organization isn't willing to carry any
+longer than it has to, once the actual cost of closing most of it turned out to be
+reasonable.
+
+And you cost it honestly, the same way `data-integrity-and-records` modeled this exact
+judgment call before you ever had to make it for real. Weekly means more reconciliation
+runs across Brookfield, Fairview, and the central site, more staff time verifying each cycle
+actually completed, and a tighter coordination window than Lakeshore's three locations have
+ever run on before — real, ongoing cost, not a free settings change. You considered daily,
+or a closer-to-real-time feed, and decided against it for now: the jump from weekly to daily
+narrows an already-small residual window further, but at a steeper, less proportionate
+increase in coordination load across three sites than the jump from monthly to weekly did.
+That's not a permanent ceiling — it's today's documented balance point, open to revisiting
+if Lakeshore's risk tolerance or its systems change. What makes this a real decision, and not
+just a nicer-sounding number, is that it's dated, reasoned, and signed — by you — rather than
+left as a sentiment everyone agreed with in a meeting and nobody wrote down.
+
+The consultant's question back to you, playing the assessor role honestly, is the one worth
+carrying forward: "Show me the record of this decision, not just today's conversation about
+it." That's exactly right. A verbal commitment in a mock session is worth nothing to a real
+reviewer six months from now. What goes in Lakeshore's own files today is a short, dated
+decision memo: the floor (monthly), the chosen cadence (weekly), the reasoning (a bounded,
+honestly-costed risk tradeoff), and the date it took effect — the same discipline this
+course has used for every other judgment call that wasn't a citation.
+
+## What both sessions actually probed
+
+The rest of the day, stripped of the two headline resolutions, looks like this.
+
+**The FDA-style session** pulls the 483 response file from `fda-inspection-authority-and-
+outcomes` and asks whether Lakeshore's written response to both observations actually
+closed them with documented corrective action, not just a promise — exactly the standard
+`warning-letters-and-recalls` named as the real difference between a de-escalating response
+and one that invites a Warning Letter. It pulls BPD-0512's filing record and asks for the
+discovery date, the filing date, and the gap between them — confirming, without re-arguing
+reportability, that the clock genuinely closed well inside 45 days. It never asks for
+anything touching financial, pricing, or personnel data; your QA doesn't have to invoke the
+statutory boundary today because nothing requested comes near it, the same clean outcome
+module 1 modeled.
+
+**The AABB-style session** pulls LAB-07's closed nonconformance file and asks for the dated
+qualification review that closed it — present, signed, exactly where `the-aabb-assessment-
+process` left it. It then pulls Lakeshore's new internal audit log and runs its own version
+of the exercise `designing-an-internal-audit-program` already walked through once: LAB-07's
+old gap, scored against the new Critical/Major/Minor scale, as a hypothetical Major. The
+consultant doesn't treat that hypothetical as a second finding against LAB-07 — it's closed,
+and stays closed — but asks a sharper question instead: "Show me a *different* finding your
+new audit program actually caught, on its own, since the scale went live." Your QA has one
+ready: a Minor finding from Fairview's own paper-file sampling, caught inside the new
+sampling discipline's first real cycle, logged, and resolved inside its 90-day clock — proof
+the program is finding things now, not just re-grading history.
+
+## Common traps
+
+**"A mock session that finds nothing means the program is solid."** Not necessarily, and
+it's worth being honest about which conclusion a clean mock session actually supports. It
+could mean the program really is solid. It could also mean the exercise wasn't pushed hard
+enough, or the reviewer was handed only the evidence that was already easy to defend. A mock
+inspection earns its value from how hard it tried to find something, not from the headline
+number of findings it produced.
+
+**"Closing an open finding right before a mock review looks convenient, so it's better left
+open."** Wrong, and worth refuting directly, because the instinct behind it is almost
+right. What actually matters isn't *when* a finding closes relative to a review — it's
+whether the closure has its own dated, independent record that would hold up regardless of
+when someone asked about it. DED-0458's accuracy check and the cadence decision memo both
+carry their own dates and their own reasoning. A reviewer checking for a convenient,
+last-minute rubber stamp finds a provable, worked verification instead. Timing a genuine
+resolution to land before a scheduled review isn't suspicious; manufacturing the *appearance*
+of resolution without the underlying work would be, and that's a different thing entirely.
+
+## What this means for your job
+
+- **Treat a mock inspection as a pressure test, not a compliance re-check.** Its whole value
+  is in asking a reviewer to try to break the story your evidence tells, not in confirming
+  every document still exists.
+- **Never let "we passed the real one" substitute for "we've been pressure-tested since."**
+  Both real events in this course went well. That's a reason to confirm the program still
+  holds up under new scrutiny, not a reason to assume it automatically will next time.
+- **Close an open finding only with its own dated, independent proof — never with a
+  reassurance.** DED-0458's resolution is defensible because the verification record exists
+  and is dated; a verbal "we checked, it's fine" would not have been.
+- **When you make a risk-based decision above a regulatory floor, write down the floor, the
+  choice, the reasoning, and the date — every time, not just when it's convenient.** The
+  deferred-donor cadence decision is only real evidence of a mature program because it's now
+  a document, not a remembered conversation.
+- **Ask your QA, after any mock or real review, what the reviewer's hardest follow-up
+  question was — and whether you'd want a different answer ready next time.** The consultant's
+  question about what happens if DED-0458's manual check hadn't matched is exactly the kind of
+  follow-up a real investigator or assessor would ask too.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA says, "Lakeshore has to update the cumulative deferred-donor record weekly now — that's the new regulatory requirement." Is she right?
+
+No, and this is worth correcting precisely. 606.160(e)(3) still sets exactly the same floor
+it always has: at least monthly. Nothing in this module changes that regulation, and nothing
+could — it's federal text, not Lakeshore's to rewrite. What changed is Lakeshore's own
+internal, risk-based decision to operate *above* that floor, at a weekly cadence, because the
+Director weighed the residual risk of the monthly floor against the real cost of moving
+faster and chose weekly. That's an internal policy choice, documented and revisable. It is
+**not** a new regulatory requirement, and the two should never be described the same way to
+an inspector, an assessor, or your own CIO.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: The mock reviewer asks what would have happened if the QA's independent manual check of DED-0458 hadn't matched BECS's stored determination. What's the right kind of answer?
+
+A plan that existed *before* the check was run, not one improvised afterward: quarantine
+that specific determination immediately, escalate to the Director the same day, and open an
+investigation into whether the same calculation logic could have affected any other donor
+record — not quietly re-running the check until it produced a cleaner result. The value of
+an independent verification comes from being willing to act on a bad result, not just from
+running the check in the first place.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Lakeshore's mock session produces zero new findings across both the FDA-style and AABB-style reviews. Does that prove the quality system is fully sound?
+
+Not by itself. A clean result is consistent with a genuinely strong program, but it's also
+consistent with a mock exercise that wasn't pushed hard enough, or one handed only the
+evidence that was already easiest to defend. The honest question to ask afterward isn't "did
+we pass" — it's "did we actually try to find something, and if we didn't, why not." A mock
+inspection's value comes from the rigor of the attempt, not the number printed at the end of
+it.
+:::
+
+## Where this course ends, and what's still ahead
+
+Six modules ago, this course opened with a knock on Lakeshore's door and a question about
+what an FDA investigator could and couldn't demand to see. It closes today with a contracted
+consultant sitting in the same building, asking harder questions than either real reviewer
+did, because nothing was actually at stake in the asking.
+
+Here's the arc, named once, start to finish. Module 1 drew the line between FDA's real,
+statutory inspection authority and the administrative vocabulary — "routine," "for-cause" —
+that surrounds it, and closed with a 483 and an honest, uncertain "probably VAI" (Voluntary
+Action Indicated). Module 2 sorted a real event into its right legal category — a recall, not
+a market withdrawal or stock recovery — and walked FDA's own six-factor test to a reasoned
+Class II recommendation, never mistaking Lakeshore's own judgment for FDA's actual
+determination. Module 3 filed BPD-0512 on the one form the regulation names, to the one
+office it names, well inside its 45-day clock. Module 4 put a second, entirely different
+reviewer in the building — AABB's own on-site assessor — and taught the sharpest line in this
+course: voluntary versus mandatory, PPP-versus-practice versus facility-versus-federal-law,
+with LAB-07's own closed nonconformance as the concrete proof. Module 5 built the internal
+audit program Lakeshore's debrief found missing: independence, competency, risk-based
+scheduling, real sampling, and a Critical/Major/Minor grading scale with an actual clock
+behind each tier. And this module put all of it in front of someone whose entire job for a
+day was to find the seams — and used the occasion to finally close the two threads this
+course had carried, referenced but unresolved, since its very first module.
+
+State plainly what's resolved now, because a later course or a later session shouldn't have
+to guess. **DED-0458's "accurate" ALCOA letter is closed**, by an independent, dated
+verification that the stored determination matches the donor's actual screening responses —
+not by assumption. **The deferred-donor-record cadence question is decided**: Lakeshore moves
+from the regulatory floor (at least monthly) to a weekly cadence, by its own documented,
+costed, risk-based choice, explicitly not a new regulatory requirement. **LAB-07's own
+fitness-for-use gap stays exactly where module 4 left it** — closed, resolved, not reopened
+by today's hypothetical re-grading exercise, which only ever existed to test the *new*
+program, never to relitigate an old, settled finding.
+
+And say plainly what stays open, because this curriculum's whole honesty convention depends
+on not quietly closing things this course was never asked to touch. `data-integrity-and-
+records` left two other threads unresolved on its own closing day, and neither one belonged
+to this course's job: the donor-record retention-clock question (how long a *donor's*
+cumulative record, spanning years of donations, actually has to be kept, distinct from
+606.160(d)'s single-unit clock) is still routed to document control, not answered here. And
+whether Lakeshore has ever actually set a review frequency for BECS's own audit trail — left
+undecided, not wrongly defaulted, back in that course's second module — is still undecided
+today. Leaving both exactly where they were left isn't an oversight. It's this curriculum
+doing, on purpose, the same thing DI-0301 modeled all along: resolve what you can resolve
+honestly, and say plainly what you haven't gotten to yet, rather than pretending a tidy
+ending requires every thread tied off at once.
+
+`fda-and-aabb-in-practice` is done — six modules, both of this curriculum's live reviewers
+walked through in depth, and the last of `data-integrity-and-records`'s open threads that
+belonged here finally closed. Three tracks remain ahead. `grc-frameworks-and-risk-management`
+picks up a single risk framework — NIST's Risk Management Framework, run
+categorize-through-monitor — and shows you it's the same motion as a validation release or an
+internal audit cycle, spoken in one more vocabulary you'll need to be fluent in.
+`healthcare-security-and-privacy` takes every donor and patient record this curriculum has
+treated as a data-integrity object and finally asks its privacy question: what HIPAA (Health
+Insurance Portability and Accountability Act) requires, and what a breach's dual FDA-and-HIPAA
+reporting duty actually looks like. `vendor-and-third-party-risk-management` turns the same
+scrutiny you've just run on Lakeshore's own evidence outward, onto every vendor — BECS's own
+maker included — whose systems sit underneath everything this course has covered. And
+`itsm-for-regulated-blood-services`, Track 5's capstone, is where all of it — ITIL, AABB's
+QSEs (Quality System Essentials), NIST's RMF, ISO 27001 — finally gets crosswalked into one
+language you can speak to your CIO and your exec quality council in the same sentence,
+without translating twice.
+
+You started this course able to describe an FDA inspection and an AABB assessment as, more or
+less, the same kind of visit. You end it able to sit in a room with both reviewers in one day,
+hand each one a different piece of the same evidence trail, and know — because you just
+proved it, not assumed it — that the story holds up either way.

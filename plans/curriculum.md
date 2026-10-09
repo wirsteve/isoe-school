@@ -270,23 +270,25 @@ has no `plans/<slug>.md` file until its first session.
 | `directing-the-quality-analyst` | 6 / 6 | Done |
 | `csv-and-becs` | 7 / 7 | Done |
 | `data-integrity-and-records` | 6 / 6 | Done |
-| `fda-and-aabb-in-practice` | 5 / 6 | In progress |
+| `fda-and-aabb-in-practice` | 6 / 6 | Done |
 | `grc-frameworks-and-risk-management` | 0 / 5 | Not started |
 | `healthcare-security-and-privacy` | 0 / 5 | Not started |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `fda-and-aabb-in-practice` module 6, `mock-inspections-and-presenting-it-becs-evidence`
-(Track 2, this course's final module). Modules 1-5 are published — see
-`plans/fda-and-aabb-in-practice.md`'s progress log for the locked scenario facts (the 483's
-"probably VAI" judgment, BPD-0512 filed with CBER and its parallel recall, LAB-07's AABB
-nonconformance resolved via a submitted qualification review, Lakeshore's new three-tier
-Critical/Major/Minor internal audit nonconformance scale, and the still-undecided
-deferred-donor-record cadence question) that module 6 must resolve or honestly leave open, and
-close the course with a genuine six-module ending passage. `csv-and-becs` (7/7) and `data-integrity-and-records`
-(6/6) are both complete — once `vendor-and-third-party-risk-management` also exists,
-`directing-the-quality-analyst` modules 4 and 5 should be revisited per that course's own
-"Deliberately deferred" table.
+**Next up:** `grc-frameworks-and-risk-management` (Track 4) — `fda-and-aabb-in-practice` is now
+6/6 and complete. See `plans/fda-and-aabb-in-practice.md`'s progress log for module 6's locked
+outcomes: DED-0458's "accurate" ALCOA letter is now CLOSED (an independent, dated verification
+confirmed BECS's stored donor-eligibility determination against the donor's own original
+screening responses), the deferred-donor-record cadence question is now DECIDED (Lakeshore
+moves from 606.160(e)(3)'s "at least monthly" regulatory floor to a weekly cadence, by its own
+documented, risk-based choice, explicitly not a new regulatory requirement), and LAB-07's AABB
+nonconformance stays exactly as closed as module 4 left it. Still honestly open, not this
+course's to resolve: `data-integrity-and-records`'s donor-record retention-clock question and
+its undecided BECS audit-trail review frequency. `csv-and-becs` (7/7), `data-integrity-and-records`
+(6/6), and `fda-and-aabb-in-practice` (6/6) are all complete — once
+`vendor-and-third-party-risk-management` also exists, `directing-the-quality-analyst` modules 4
+and 5 should be revisited per that course's own "Deliberately deferred" table.
 `csv-and-becs` is fully built and published (7/7 modules) — see `plans/csv-and-becs.md` for the
 complete course, including module 6's VIA-0842 verdict and module 7's closing of its last two
 open interface items. Once `data-integrity-and-records` and
