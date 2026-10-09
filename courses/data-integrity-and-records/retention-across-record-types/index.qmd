@@ -1,0 +1,326 @@
+---
+title: "Retention Across Record Types"
+order: 64
+---
+
+## DI-0301 asks IT a question nobody expected to be hard
+
+Your Quality Analyst (QA) is closing in on the end of **DI-0301**, her data-integrity
+self-assessment. DED-0458 — module 1's BECS (Blood Establishment Computer Software)
+donor-eligibility record — is settled on every ALCOA (attributable, legible, contemporaneously
+recorded, original or a true copy, accurate) letter except "accurate," still open. Fairview's
+paper donor file is settled as its own record of record. LAB-07 has a documented, fixable gap on
+its fitness-for-use evidence. Today she's asking a question that sounds almost too basic to be a
+real finding: "If BECS went down tomorrow, could we actually get DED-0458 back?"
+
+The systems administrator's answer is quick and confident: "Of course. We back it up every
+night." She asks him to actually show her. What he shows her is a nightly automated snapshot job
+— a routine that copies BECS's database state every night so IT can recover quickly if the server
+crashes or someone accidentally overwrites something. It works well, and it's been reliable. Then
+she asks the follow-up question that actually matters: how long does a given night's snapshot
+stick around before something newer replaces it? The answer: 30 days, on a rolling basis. After
+that, it's gone, automatically, by design.
+
+She sits with that for a second, because something doesn't add up. DED-0458 is a donor-eligibility
+determination — a BECS record this course has already established lives on a multi-year retention
+clock, not a 30-day one. If the only "backup" of that record disappears after a month, what
+happens to the retention requirement the other 11 years and 11 months?
+
+**Second thread, smaller but just as real.** While she's in records territory, she pulls the full
+list of donor records 606.160(b)(1) (21 CFR 606.160, paragraph (b)(1)) requires Lakeshore to keep
+— selection, deferrals, adverse reactions, the donor's full donation history. A donor who's given
+many times over many years has one donor record tracking all of it. She asks: when does *that*
+record's retention clock run out? Nobody has a clean answer. No citations yet — just a snapshot
+job that deletes itself on a schedule, and a donor file with an ambiguous expiration date.
+
+## Why this rule exists — and the ITSM bridge
+
+Here's the failure both threads are circling. A record that can't survive to the end of its own
+required retention period doesn't just have a documentation gap — it has a hole where the proof
+used to be. If DED-0458 needs to be producible for years, and the only backup copy of it quietly
+expires after 30 days, then from roughly day 31 onward, if BECS's own live database were ever lost
+or corrupted, that record simply wouldn't exist anymore. Not "hard to find." Gone. An inspector
+asking for a five-year-old donor-eligibility record doesn't care that IT had excellent uptime in
+the meantime — they care whether the record can be produced today.
+
+You already run the discipline this needs, under names you use constantly in disaster-recovery
+(DR) planning: **RPO (recovery point objective)** — how much data you can afford to lose, measured
+in time, if something fails right now — and **RTO (recovery time objective)** — how fast you have
+to be back up and running. A 30-day rotating snapshot is a perfectly sound RPO/RTO choice for
+ordinary DR. It answers "if the server dies tonight, how much work do we lose, and how fast can we
+restore it?" — and for that question, 30 days of rolling snapshots, cheap to store and fast to
+restore from, is a reasonable, defensible engineering decision. Nothing about it is wrong *as DR*.
+
+Here's where the regulated world demands more, and it's worth being precise about exactly what
+changes. Ordinary DR backup answers "can we recover from an outage quickly." A CGMP (current good
+manufacturing practice) backup under 21 CFR 211.68(b) answers a completely different question:
+"can we reconstruct this record's full, exact, complete state at any point across its entire
+multi-year retention period?" A system can be excellent at the first question and come nowhere
+close to answering the second — and that's exactly the trap here, because both things get called
+"backup," in the same sentence, by people who mean two different things by the word.
+
+## The rule in plain English
+
+Three separate ideas, and DI-0301's two threads map cleanly onto them.
+
+**First: 606.160(d)'s own retention clock is a fact this curriculum already has, not new ground.**
+It was taught in full in `reading-a-cfr-citation` — individual product records retained at least
+10 years after processing or 6 months past the product's latest expiration date, whichever is
+later, indefinitely if there's no expiration date at all. That's the floor DED-0458 sits on. This
+module doesn't re-derive that math. It asks what has to be true for a record to actually *survive*
+to the end of whatever clock applies to it.
+
+**Second: "backup" is a specific regulatory term under 211.68(b), not a synonym for "we copy our
+data somewhere."** FDA's 2018 guidance — **guidance tier**, FDA's current thinking, "should"
+language, the same source this course has used since module 1 — defines exactly what 211.68(b)'s
+"backup" means, and draws the line DI-0301's first thread just ran into: a true, secure copy
+maintained *throughout the record's retention period*, versus a temporary recovery copy meant to
+survive a crash for a little while. Only the first one satisfies 211.68(b). A 30-day rotating
+snapshot, by its own design, is the second — useful, real, and not what the regulation is asking
+for.
+
+**Third: retention for a dynamic record means keeping it dynamic, not just keeping a value.**
+Module 3 already built the static/dynamic distinction — static is fixed data, like a printout;
+dynamic is a format that lets someone interact with the record, reprocess it, view it a different
+way. Module 3 and module 4 already settled that DED-0458's live BECS record is dynamic, and that
+LAB-07's dormant export mode would be too, if anyone ever used it. Retention for a dynamic record
+isn't "export the current value and keep that number for 10 years." It's keeping the record's full
+metadata and its interactive, queryable nature intact — and the reader or access tools needed to
+use it — for the whole retention period. A flat value, however accurate, is a different, lesser
+thing than the record it came from.
+
+**Fourth, the open one: donor records don't obviously share 606.160(d)'s clock at all.**
+606.160(d)'s own text ties its interval to "the blood or blood component" — a specific unit's own
+processing date and expiration date. A donor record isn't about one unit. 606.160(b)(1) requires
+Lakeshore to keep a donor's selection history, deferrals, adverse reactions, and — specifically —
+"records to relate the donor with the unit number of each previous donation from that donor." A
+donor who's given many times over many years has one cumulative record spanning units with
+different processing dates and different expiration dates, stretched across years. Which one
+starts the clock for the donor's own record — the first donation, the most recent, or does the
+donor record have to outlive every single unit's own clock, one at a time? 606.160(d)'s text,
+read carefully, doesn't actually answer that. That's not a gap in this lesson. It's a gap in the
+regulation's own plain text, applied to a record type it wasn't obviously written with in mind —
+and it's exactly why a retention policy has to be worked out and documented record-type by
+record-type, not assumed from memorizing one number.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 211.68(b) | "Two-eleven point sixty-eight, paragraph b" | Regulation tier. Requires a backup file of data, exact and complete, secure from alteration, erasure, or loss. | What Lakeshore's nightly snapshot has to satisfy — and, as currently built, doesn't. |
+| FDA 2018 Data Integrity Q&A, Question 1e | "Question one, part e" | Guidance tier. Defines "backup" under 211.68(b) as a true copy maintained securely throughout the retention period; says a temporary crash-recovery copy doesn't satisfy that requirement. | The exact distinction between IT's DR snapshot and a real regulatory backup. |
+| FDA 2018 Data Integrity Q&A, Question 9 | "Question nine" | Guidance tier. Electronic copies can serve as true copies only if they preserve metadata and the static-or-dynamic nature of the original. | What retaining DED-0458 actually requires, beyond keeping its surface value. |
+| 21 CFR 606.160(b)(1) | "Six-oh-six point one-sixty, paragraph b, sub-one" | Regulation tier. Lists the donor records Lakeshore must maintain, including the record relating a donor to every one of their past donations. | The records whose retention clock DI-0301's second thread can't cleanly resolve. |
+| 21 CFR 606.160(d) (one line, not re-quoted) | "Six-oh-six point one-sixty, paragraph d" | Regulation tier. Already fully taught in `reading-a-cfr-citation` — individual product records, 10 years past processing or 6 months past expiration, whichever is later. | The product-record clock this module builds past, not around. |
+
+## The actual text
+
+Start with 211.68(b) itself, quoted in full from `sources/cfr/211.68.md` — the regulation this
+course has cited before for a different reason (module 7's interface context in `csv-and-becs`),
+and now the load-bearing text for retention and backup specifically:
+
+> Appropriate controls shall be exercised over computer or related systems to assure that changes
+> in master production and control records or other records are instituted only by authorized
+> personnel. Input to and output from the computer or related system of formulas or other records
+> or data shall be checked for accuracy. The degree and frequency of input/output verification
+> shall be based on the complexity and reliability of the computer or related system. A backup
+> file of data entered into the computer or related system shall be maintained except where
+> certain data, such as calculations performed in connection with laboratory analysis, are
+> eliminated by computerization or other automated processes. In such instances a written record
+> of the program shall be maintained along with appropriate validation data. Hard copy or
+> alternative systems, such as duplicates, tapes, or microfilm, designed to assure that backup data
+> are exact and complete and that it is secure from alteration, inadvertent erasures, or loss shall
+> be maintained.
+
+Read "shall be maintained" as doing real work twice in that passage: a backup file shall exist,
+and it shall be designed to stay exact, complete, and secure from alteration or loss. It doesn't
+say for how long, in so many words — that's where FDA's guidance fills in the practical meaning,
+quoted verbatim from `sources/fda-guidance/data-integrity-cgmp-qa-2018.md`, Question 1e:
+
+> FDA uses the term backup in § 211.68(b) to refer to a true copy of the original record that is
+> maintained securely throughout the record retention period (e.g., § 211.180). Backup data must
+> be exact, complete, and secure from alteration, inadvertent erasures, or loss (§ 211.68(b)). The
+> backup file should contain the data (which includes associated metadata) and should be in the
+> original format or in a format compatible with the original format.
+
+"Throughout the record retention period" is the phrase DI-0301's finding turns on. For DED-0458,
+that period is 606.160(d)'s own years-long clock — not 30 days. The same answer then draws the
+line this module's whole scenario sits on top of:
+
+> Temporary backup copies (e.g., in case of a computer crash or other interruption) would not
+> satisfy the requirement in § 211.68(b) to maintain a backup file of data.
+
+That sentence names Lakeshore's nightly snapshot job almost exactly — "in case of a computer
+crash" is precisely what the systems administrator described it for. FDA isn't saying that kind of
+snapshot is worthless. It's saying it's a different thing from what 211.68(b) actually requires,
+and calling it "the backup" in a validation or quality document would be a real misstatement, not
+a harmless shorthand.
+
+Now the electronic-copies answer, quoted in full from the same guidance, Question 9 — this is what
+retention actually has to preserve, not just a value:
+
+> Electronic copies can be used as true copies of paper or electronic records, provided the copies
+> preserve the content and meaning of the original record, which includes all metadata required to
+> reconstruct the CGMP activity and the static or dynamic nature of the original records.
+>
+> True copies of dynamic electronic records may be made and maintained in the format of the
+> original records or in a format that allows for the content and meaning of the original records
+> to be preserved if a suitable reader and copying equipment (e.g., software and hardware,
+> including media readers) are readily available (§§ 211.180(d) and 212.110).
+
+Two requirements stacked in that passage: the copy has to preserve metadata, and it has to
+preserve whether the original was static or dynamic. A dynamic record copied as a flat value loses
+the second requirement even if every number in it is correct — the same lesson module 4 applied to
+LAB-07's dormant export mode, now stated as the general rule it always was.
+
+Last, the donor-records list, quoted verbatim from `sources/cfr/606.160.md`, 606.160(b)(1):
+
+> (b) Records shall be maintained that include, but are not limited to, the following when
+> applicable:
+>
+> (1) Donor records:
+>
+> (i) Donor selection, including medical interview and examination and where applicable, informed
+> consent.
+>
+> (ii) Permanent and temporary deferrals for health reasons including reason(s) for deferral.
+>
+> (iii) Donor adverse reaction complaints and reports, including results of all investigations and
+> followup.
+>
+> (iv) Therapeutic bleedings, including signed requests from attending physicians, the donor's
+> disease and disposition of units.
+>
+> (v) Immunization, including informed consent, identification of the antigen, dosage and route of
+> administration.
+>
+> (vi) Blood collection, including identification of the phlebotomist.
+>
+> (vii) Records to relate the donor with the unit number of each previous donation from that
+> donor.
+
+Clause (vii) is the one DI-0301's second thread actually turns on. It requires a record that ties
+one donor to *every* previous donation, by unit number — which means the record itself is
+cumulative by design, growing across a donor's entire donating history, not scoped to any single
+unit's own processing and expiration dates. 606.160(d)'s retention clock, remember — one line only,
+already fully taught elsewhere — ties its interval to "the blood or blood component." A cumulative
+donor record isn't one blood component. It's the record of many, collected over years. The text
+doesn't say which of those many expiration dates it should attach to.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB (Association for the Advancement of Blood & Biotherapies) assessor
+wouldn't ask whether Lakeshore has a backup policy. They'd ask for proof the specific record they
+want, from whenever in its retention period they ask for it, can actually be produced.
+
+**For BECS records like DED-0458:** can Lakeshore produce this exact record from three years ago,
+right now, in a form that preserves its metadata and its dynamic, queryable nature — not just a
+value someone remembers was correct. A bad answer sounds like "we back up BECS every night." A
+good answer names the actual retention mechanism — distinct from the DR snapshot — that's designed
+to survive the full retention period, and shows it working.
+
+**For the nightly snapshot specifically:** what does it actually promise, in writing? A bad answer
+calls it "the backup" without qualification. A good answer names it for what it is — a 30-day
+disaster-recovery mechanism — and points to a separate, documented control that satisfies
+211.68(b)'s actual retention-period requirement.
+
+**For donor records:** evidence that Lakeshore has actually decided, and written down, how long a
+cumulative donor record is retained and why — not a shrug, and not an invented precise number
+presented as if it were self-evidently correct. A good answer can show the documented reasoning,
+even if the reasoning is conservative (e.g., retaining the whole donor record as long as any
+donation it covers could still be within its own clock). A bad answer either has no policy at all,
+or states a number with no citation behind it.
+
+## Common traps
+
+**"We have backups, so we're covered."** This is the trap DI-0301's whole first thread exists to
+refute. "Backup" is being used to mean two different things at once: IT's 30-day disaster-recovery
+snapshot, and the 211.68(b) backup FDA's guidance actually requires — a true copy maintained
+securely throughout the entire retention period. Having the first doesn't mean Lakeshore has the
+second. They can both be true, and they usually need to be — a good DR snapshot and a real
+long-retention backup solve different problems and can coexist, but only one of them is what
+211.68(b) is asking for, and calling the wrong one "the backup" in a quality document is the exact
+misstatement an inspector is trained to catch.
+
+**"606.160(d) tells you how long to keep every blood-center record."** Not quite. 606.160(d) sets
+the clock for individual product records tied to a specific unit's own processing and expiration
+dates. It doesn't, on its own text, resolve a cumulative donor record's retention the same clean
+way — the donor record covers many units, collected over years, and 606.160(d)'s language was
+written with one unit's clock in mind. Treating "606.160(d)" as a universal answer for every
+record type is exactly the shortcut this module exists to stop you from taking.
+
+## What this means for your job
+
+- **Ask, by name, what Lakeshore's actual 211.68(b) backup mechanism is — separate from whatever
+  disaster-recovery snapshot IT runs.** If the honest answer is "they're the same thing," that's
+  the finding, not a reassurance.
+- **Push back the moment someone calls a 30-day (or any short-window) rotating snapshot "the
+  backup" in a validation or quality document.** Ask them to name what it's actually for (crash
+  recovery) and what satisfies 211.68(b)'s own, much longer requirement instead.
+- **For any dynamic BECS record, ask whether the retention mechanism keeps it queryable and
+  reader-accessible, or only exports a flat value.** A correct number isn't the same thing as a
+  preserved record, by FDA's own Question 9 standard.
+- **Treat the donor-record retention-clock question as a real policy gap to close, not a crisis to
+  panic over.** The fix isn't guessing a number — it's documenting, in Lakeshore's own
+  document-control procedure, a reasoned retention interval for cumulative donor records, the same
+  record-type-by-record-type discipline `document-control-and-records` already recommended and
+  left for this course to fill in.
+- **When RPO/RTO numbers come up in a DR conversation, ask the follow-up question DI-0301 asked:
+  "does this also satisfy our regulatory retention requirement, or only our uptime goal?"** The two
+  questions sound similar and have completely different right answers.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The systems administrator says, "BECS is backed up every night, so we satisfy 211.68(b)." Is a nightly snapshot that gets deleted after 30 days enough?
+
+No. FDA's 2018 guidance (Question 1e) is direct on this point: a backup under 211.68(b) is a true
+copy "maintained securely throughout the record retention period," and "temporary backup copies
+(e.g., in case of a computer crash or other interruption) would not satisfy the requirement in §
+211.68(b) to maintain a backup file of data." A 30-day rotating snapshot is a sound disaster-
+recovery (DR) control — it answers "can we recover quickly from a crash," a reasonable RPO
+(recovery point objective)/RTO (recovery time objective) choice. It does not answer the separate
+question 211.68(b) actually asks: can this record be reconstructed, exact and complete, at any
+point across its entire multi-year retention period. Lakeshore needs a distinct, longer-lived
+mechanism to satisfy that — the 30-day job can keep doing its own job alongside it.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A donor has given blood at Lakeshore many times over several years. 606.160(b)(1)(vii) requires a record relating that donor to every one of their past donations. Exactly how long must that cumulative donor record be retained?
+
+This is a genuinely open question, and the honest answer is "it's not fully settled by the text of
+606.160(d) alone — document the policy, don't guess a precise number." 606.160(d)'s own retention
+interval is tied to "the blood or blood component" — a specific unit's own processing and
+expiration dates. A cumulative donor record isn't about one unit; it covers many, collected over
+years, so it isn't obvious which unit's clock the donor record's own retention should attach to:
+the donor's first donation, their most recent one, or every one of them in turn. **This is not a
+regulatory requirement with one clean, citable number** — it's exactly the kind of gap a
+self-assessment should surface and route to Lakeshore's own document-control procedure to resolve
+and write down, the same way `document-control-and-records` already flagged that working out
+record-type-specific retention schedules was a level of detail it wasn't building out. DI-0301's
+job here is to flag the question precisely, not invent a false-precise answer.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: DED-0458 is settled as a dynamic, Part 11 record (module 3). Does retaining it for 606.160(d)'s full interval just mean keeping its data values intact for that whole period?
+
+Not quite — and this is the central practical point of this module. FDA's 2018 guidance (Question
+9) requires that a true copy of a record preserve "the static or dynamic nature of the original
+records," along with "all metadata required to reconstruct the CGMP activity." For DED-0458, that
+means retention has to keep the record's full metadata (who touched it, when, what changed) and
+its interactive, queryable nature intact for the whole retention period — with a suitable reader or
+access tool still available to use it — not just a flat exported value that happens to match what
+the record said on the day it was created. A correct number, with no metadata and no way to
+interact with it, is a different and lesser thing than the record 211.68(b) and Question 9 actually
+require Lakeshore to retain.
+:::
+
+## Where this goes next
+
+DI-0301 now has a real, worked finding on both threads: Lakeshore's nightly snapshot does genuine,
+useful disaster-recovery work but isn't the 211.68(b) backup it's been informally called, and the
+donor-record retention clock is a real, open policy question flagged for document control to
+resolve rather than guessed at here. Next, `multi-site-governance-and-donor-identification` — this
+course's final module — picks up 606.160(e)'s cumulative deferred-donor record directly, and asks
+what happens when Fairview, Brookfield, and Lakeshore's central system all need to agree, in close
+to real time, about the same donor's eligibility.
