@@ -1,0 +1,31 @@
+---
+title: "Resources"
+order: 50
+---
+
+Four places to go deeper than this lesson, or to check a citation yourself before it goes in a
+real Lakeshore document. All four were checked and loading at the time this page was written.
+
+- **[21 CFR 11.10, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.10)**
+  — the full closed-system controls section this lesson quotes from: (d) access limits, (f)
+  operational sequencing checks, (g) authority checks, (h) device checks, plus (a), (e), (i), (j),
+  and (k) named but not re-taught here. Read it in full to see all eleven controls sitting together,
+  not just the four this module spends its depth on.
+
+- **[21 CFR 11.3, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.3)**
+  — Part 11's definitions section, including closed system (b)(4) and open system (b)(9), the
+  distinction this lesson's vendor-remote-access question turns on. Read the surrounding
+  definitions too — "electronic record" and "electronic signature" are worth having exact before
+  `data-integrity-and-records` builds further on them.
+
+- **[FDA guidance page: Part 11, Electronic Records; Electronic Signatures — Scope and Application](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/part-11-electronic-records-electronic-signatures-scope-and-application)**
+  — the 2003 guidance this lesson quotes for FDA's enforcement-discretion posture and its "we
+  intend to enforce" list. Worth reading in full once: it's short, it's still the current guidance
+  on this topic, and it explains its own reasoning for narrowing Part 11's scope, not just the
+  bullet list this lesson pulled from it.
+
+- **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)**
+  — the same BECS guidance this course has used since module 1, the source for this lesson's
+  training sentence (III.G) and remote-access-log recommendation (III.B). Worth rereading section
+  III.B in full for the rest of its system-documentation list, which module 3 covered and this
+  lesson only used the tail end of.

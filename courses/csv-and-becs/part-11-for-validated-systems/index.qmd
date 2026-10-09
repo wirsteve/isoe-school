@@ -1,0 +1,416 @@
+---
+title: "Part 11 for Validated Systems"
+order: 49
+---
+
+## The remote-access line in VAL-1203's statement of work
+
+The vendor's implementation consultant has a new ask for VAL-1203. Buried in a statement-of-work
+addendum: once Release B goes live, the consultant wants **persistent remote access** to the
+central BECS (Blood Establishment Computer Software) application server — not just during
+cutover, but afterward, "to reduce mean time to resolution on any post-go-live issue." Standing
+credentials, no stated expiration.
+
+You've seen this movie before, and so has Quality. Earlier in your tenure, this same vendor's
+remote-support platform was the subject of a security incident — nothing BECS-specific was
+compromised, but it's the reason anyone here flinches at "the vendor wants a standing connection."
+And a formal vendor risk assessment on this vendor, VRA-0219, found something uncomfortable: the
+vendor's own confident claim — "yes, we notify customers in advance of any change" — didn't survive
+a check against the deviation log, which showed a change that arrived with no advance notice at
+all. The consultant, reasonably, doesn't expect you to bring either one up. You're going to anyway.
+
+Here's the question sitting on your desk, and it isn't a simple yes/no: if the vendor gets standing
+remote access to BECS, is BECS still what FDA's electronic-records regulation calls a **"closed
+system"** — or has it become something else, with a heavier set of obligations attached?
+
+A second thread, quieter but just as real, is sitting in VAL-1203's URS (user requirements
+specification), revised once already after module 1 sent it back for an untestable row and a
+missing risk ranking. What it still doesn't have is any row that says, in testable language, "BECS
+refuses to release a component before all required results are recorded" or "BECS refuses a
+release attempted by a role not authorized to perform it." Those behaviors are almost certainly
+true of the software. Nobody has written a test that tries to make BECS fail at either one. No
+citations yet — just notice both gaps are shaped the same way: a real capability nobody has
+required the system to prove it has.
+
+## Why this distinction exists, and the ITSM bridge
+
+Here's the failure this module exists to head off: a validated system that quietly stops being the
+system Lakeshore validated, because control over who can touch it drifted to someone outside
+Lakeshore's own accountability chain — without anyone treating that drift as a change worth a
+second look. A vendor with standing, unlogged, unrevokable access to a production BECS server
+isn't a security nicety to tighten later. It's a fact about who actually controls the electronic
+records on that system, and "who controls the records" turns out to be the exact question Part 11
+asks.
+
+You already run the ITSM (IT service management) vocabulary for this shape of problem. **IAM
+(identity and access management) and RBAC (role-based access control)** are what you already use
+to decide who gets what level of access to any system, and why. **PAM (privileged access
+management)** is the tighter discipline you already apply to admin-level accounts specifically:
+time-bound checkouts, logged sessions, no standing credentials sitting around waiting to be
+misused. **Workflow enforcement inside an ITSM tool** — a change ticket that literally cannot be
+closed before the required approval step has actually happened, because the tool enforces the
+sequence, not because a policy document says it should — is a pattern you rely on constantly. The
+closed-vs-open-system question bridges to something every IT leader already asks about any **SaaS
+(software as a service)** or vendor-hosted arrangement: **who holds admin control of the tenant?**
+A vendor with standing admin rights you can't see, log, or revoke on your own terms is a real
+governance gap in ordinary enterprise IT too.
+
+Here's where the regulated world demands more. In ordinary IT governance, "the vendor has
+excessive access" is a security finding — serious, but a security conversation. For a validated
+BECS, the same fact is also a **records-control** question with its own regulation attached, and —
+this module's sharpest point — **a validation has to prove certain behaviors with an actual
+test**, not just document a policy that says the system should behave that way. "We have a policy
+requiring sequencing" and "we ran a test that tried to make BECS skip a step, and it refused" are
+not the same evidence, and only one of them is what an inspector asks for.
+
+## The rule in plain English
+
+Three separate things are tangled into VAL-1203's open questions, and this module pulls them
+apart.
+
+**First: Part 11 (21 CFR Part 11, Electronic Records; Electronic Signatures) only reaches records
+that some other regulation already requires you to keep.** Part 11 never stands alone. It sets the
+conditions under which an *electronic* version of a record is as trustworthy as paper would have
+been, for a record some other regulation already made you keep. That underlying regulation —
+606.160 for a blood-establishment quality-control record, 211.68 for the validation requirement
+module 1 built this whole course on — is called a **predicate rule**: the rule whose records a Part
+11 control exists to protect. Part 11 by itself never creates a new recordkeeping duty; it rides on
+top of one that already exists. That's as far as this module takes predicate-rule doctrine. Full
+treatment — how that scoping decision actually gets made and documented, and what it means for
+ALCOA+ (attributable, legible, contemporaneous, original, accurate, plus the "+" additions) and
+audit-trail review in practice — is `data-integrity-and-records`'s subject, a future course. Here,
+know the term and move on.
+
+**Second: closed and open systems are about who controls access and who's responsible for the
+records — not simply about whether an outsider can reach the system at all.** A **closed system**
+is one where Lakeshore's own people — the ones responsible for the content of the records on BECS
+— control who gets in. An **open system** is one where that control has slipped outside the hands
+of the people responsible for the records. The dividing line isn't "can anyone from outside ever
+connect in." It's who's actually in charge of granting, logging, time-limiting, and revoking that
+access, and whether the people responsible for the records are still the ones making that call.
+
+Walk the vendor's remote-access request through that lens, both ways. If Lakeshore grants the
+consultant's access for a defined window, logs the session, and can revoke it unilaterally — and
+Lakeshore's own personnel remain accountable for what's in BECS's records — the system is still
+closed, even though a vendor employee is sitting at the keyboard. If the arrangement is the one
+actually proposed — standing credentials, no stated expiration, no mention of logging or
+revocation — that's not an automatic "now it's open" verdict either, but it's exactly the
+arrangement that drifts toward it, and toward 11.30's heavier open-system obligations. The honest
+answer to "is BECS still closed" is: **it depends on exactly how this access gets built, not on
+the fact that a vendor connects in at all.**
+
+**Third: FDA doesn't enforce every word of Part 11 equally, and where its enforcement actually
+lands changes what a BECS validation has to prove.** A 2003 FDA guidance (guidance tier, not
+regulation) says FDA intends to exercise **enforcement discretion** on Part 11's validation
+requirement and on audit trails, while naming, in the same breath, a specific list of 11.10
+controls it fully intends to enforce: limiting system access, operational sequencing checks,
+authority checks, device checks, training, accountability policies, systems-documentation
+controls, and the open-system controls that mirror them. Those enforced controls map onto specific
+11.10 paragraphs, and that mapping is this module's spine: the set of behaviors a BECS validation
+actually has to *prove the system enforces*, with a test case, not a policy statement.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 11.1(a) | "Eleven point one, paragraph a" | Sets the criteria under which FDA considers electronic records and signatures trustworthy and equivalent to paper. | Why Part 11 exists at all — the baseline this whole module explains. |
+| 21 CFR 11.1(b) | "Eleven point one, paragraph b" | Part 11 applies to electronic records kept under agency recordkeeping requirements, and to records submitted to FDA — not to paper records merely transmitted electronically. | Scopes Part 11 to records a predicate rule already requires, not every digital file BECS touches. |
+| 21 CFR 11.3(b)(4) | "Eleven point three, paragraph b, subparagraph four" | Defines "closed system": access controlled by the people responsible for the records' content. | The exact test the vendor's remote-access proposal has to pass. |
+| 21 CFR 11.3(b)(9) | "Eleven point three, paragraph b, subparagraph nine" | Defines "open system": access *not* controlled by the people responsible for the records' content. | What BECS drifts toward if the access arrangement is loose enough. |
+| 21 CFR 11.30 | "Eleven point thirty" | Open systems need everything 11.10 requires, plus encryption and digital-signature measures "as necessary under the circumstances." | The heavier obligation set that follows if BECS is judged open. |
+| 21 CFR 11.10(d) | "Eleven point ten, paragraph d" | Limiting system access to authorized individuals. | Base access control — for Lakeshore staff and for the vendor's remote connection alike. |
+| 21 CFR 11.10(f) | "Eleven point ten, paragraph f" | Operational system checks enforcing permitted sequencing of steps and events. | The quarantine-release gate: has anyone tested that BECS actually refuses an out-of-sequence release? |
+| 21 CFR 11.10(g) | "Eleven point ten, paragraph g" | Authority checks ensuring only authorized individuals can use the system, sign a record, alter a record, or perform the operation at hand. | Has anyone tested that a role without release authority actually gets refused? |
+| 21 CFR 11.10(h) | "Eleven point ten, paragraph h" | Device checks on the validity of the source of data input or operational instruction. | Named here, built out in `becs-interfaces-and-data-integrity`, module 7. |
+| 21 CFR 11.10(i) | "Eleven point ten, paragraph i" | Training determination for anyone who develops, maintains, or uses the system. | Ties directly to the BECS guidance's own training sentence, below. |
+| 2003 guidance, enforcement list | "the 2003 Part 11 scope-and-application guidance" | Names which 11.10 controls FDA still intends to enforce despite discretion elsewhere. | The reason (d), (f), (g), (h) get a validation's real attention. |
+| Guidance III.G, training sentence | "Section three, part G" | You must train personnel in system procedures (citing 211.25(a), 600.10(b), 606.20(b)). | A second, independent route to the same requirement as 11.10(i). |
+| Guidance III.B, remote-access note | "Section three, part B" | Recommends logging remote access with date, time, reason, and the name of the person connecting. | The concrete answer to the vendor's remote-access request. |
+
+## The actual text
+
+Start with Part 11's own scope, quoted verbatim from `sources/cfr/11.1.md`:
+
+> (a) The regulations in this part set forth the criteria under which the agency considers
+> electronic records, electronic signatures, and handwritten signatures executed to electronic
+> records to be trustworthy, reliable, and generally equivalent to paper records and handwritten
+> signatures executed on paper.
+
+> (b) This part applies to records in electronic form that are created, modified, maintained,
+> archived, retrieved, or transmitted, under any records requirements set forth in agency
+> regulations. This part also applies to electronic records submitted to the agency under
+> requirements of the Federal Food, Drug, and Cosmetic Act and the Public Health Service Act, even
+> if such records are not specifically identified in agency regulations. However, this part does
+> not apply to paper records that are, or have been, transmitted by electronic means.
+
+Read (b) carefully: Part 11 attaches to records "under any records requirements set forth in
+agency regulations" — that is, under a **predicate rule**. 606.160 and 211.68 (module 1's own
+validation hook) are both predicate rules. Part 11 never names its own independent record; it's a
+layer of trustworthiness requirements on top of a record some other regulation already made
+Lakeshore keep. Full predicate-rule doctrine — how that scoping gets worked out case by case — is
+`data-integrity-and-records`'s subject. Here, the term is named once, correctly, and set down.
+
+Now the closed/open distinction, quoted verbatim from `sources/cfr/11.3.md`:
+
+> (4) Closed system means an environment in which system access is controlled by persons who are
+> responsible for the content of electronic records that are on the system.
+
+> (9) Open system means an environment in which system access is not controlled by persons who are
+> responsible for the content of electronic records that are on the system.
+
+Neither definition says a word about where the people connecting are located, or whether they work
+for Lakeshore. Both turn entirely on one question: **who controls access, and are those people the
+ones responsible for the records?** A vendor employee connecting in doesn't, by itself, make the
+environment "not controlled" by Lakeshore. A vendor connecting in *on terms Lakeshore can't see,
+limit, or revoke* is a much closer fit for (9)'s wording.
+
+If a system is open rather than closed, 11.30 is what follows, quoted in full from
+`sources/cfr/11.30.md`:
+
+> Persons who use open systems to create, modify, maintain, or transmit electronic records shall
+> employ procedures and controls designed to ensure the authenticity, integrity, and, as
+> appropriate, the confidentiality of electronic records from the point of their creation to the
+> point of their receipt. Such procedures and controls shall include those identified in § 11.10,
+> as appropriate, and additional measures such as document encryption and use of appropriate
+> digital signature standards to ensure, as necessary under the circumstances, record authenticity,
+> integrity, and confidentiality.
+
+Read that as 11.10's controls, plus more — encryption and digital-signature measures, scaled "as
+necessary under the circumstances." It's the heavier obligation set a tightly-governed access
+arrangement lets Lakeshore stay out of.
+
+Now the 2003 guidance's enforcement posture, quoted verbatim from
+`sources/fda-guidance/part-11-scope-and-application-2003.md`:
+
+> we intend to exercise enforcement discretion with respect to certain part 11 requirements. That
+> is, we do not intend to take enforcement action to enforce compliance with the validation, audit
+> trail, record retention, and record copying requirements of part 11 as explained in this
+> guidance. However, records must still be maintained or submitted in accordance with the
+> underlying predicate rules, and the Agency can take regulatory action for noncompliance with such
+> predicate rules.
+
+And, in the same breath, the list of what FDA says it still fully intends to enforce:
+
+> We intend to enforce all other provisions of part 11 including, but not limited to, certain
+> controls for closed systems in § 11.10. For example, we intend to enforce provisions related to
+> the following controls and requirements:
+>
+> • limiting system access to authorized individuals
+> • use of operational system checks
+> • use of authority checks
+> • use of device checks
+> • determination that persons who develop, maintain, or use electronic systems have the
+> education, training, and experience to perform their assigned tasks
+> • establishment of and adherence to written policies that hold individuals accountable for
+> actions initiated under their electronic signatures
+> • appropriate controls over systems documentation
+> • controls for open systems corresponding to controls for closed systems bulleted above (§ 11.30)
+
+That bulleted list maps, item for item, onto specific 11.10 paragraphs — the same ones this
+module's validation lens actually sits on. Quoted in full from `sources/cfr/11.10.md`:
+
+> (d) Limiting system access to authorized individuals.
+
+> (f) Use of operational system checks to enforce permitted sequencing of steps and events, as
+> appropriate.
+
+> (g) Use of authority checks to ensure that only authorized individuals can use the system,
+> electronically sign a record, access the operation or computer system input or output device,
+> alter a record, or perform the operation at hand.
+
+(f) is the quarantine gate in software form: can BECS actually be made to release a component
+before all required results are recorded, or does it refuse? (g) is the release-authority
+question: can a role without release authority actually force a release, or does BECS refuse that
+too? Neither is answered by a policy document saying "only authorized staff release components."
+It's answered by a test case that tries to make the system do the wrong thing and records that it
+couldn't.
+
+One more enforced control, named here because module 7 builds its real depth there, quoted
+verbatim:
+
+> (h) Use of device (e.g., terminal) checks to determine, as appropriate, the validity of the
+> source of data input or operational instruction.
+
+(h) asks whether BECS can tell where an input actually came from — is this result really arriving
+from the instrument interface it claims to be from? That belongs to interface validation,
+`becs-interfaces-and-data-integrity`'s subject next module. Here, know it's one of the controls
+FDA's list says it enforces, and a validation eventually has to show it's proven, not just named.
+
+11.10(e) — audit trails — is on the *enforcement-discretion* side of the same 2003 list:
+
+> The Agency intends to exercise enforcement discretion regarding specific part 11 requirements
+> related to computer-generated, time-stamped audit trails (§ 11.10 (e), (k)(2) and any
+> corresponding requirement in §11.30).
+
+This module's validation lens only needs to confirm BECS's audit trail exists and is turned on, as
+a functional fact a test case can check. What it has to capture, and reviewing one in practice, is
+`data-integrity-and-records`'s subject, not this module's.
+
+11.10(i), training, is short enough to quote directly:
+
+> (i) Determination that persons who develop, maintain, or use electronic record/electronic
+> signature systems have the education, training, and experience to perform their assigned tasks.
+
+FDA's BECS guidance reaches the same requirement from a separate direction, quoted verbatim from
+`sources/fda-guidance/becs-validation-users-facility-2013.md`, section III.G:
+
+> You must train personnel in the use of the system procedures (21 CFR 211.25(a), 600.10(b),
+> 606.20(b)). Training should include assessing an individual's ability to understand and
+> correctly use the system.
+
+11.10(i) and this sentence are two routes converging on one requirement: personnel have to be
+shown, with evidence — training records, a documented competency assessment, not a memory of
+attending a session — to be competent to operate a validated system. A package that proves BECS
+works but has no training evidence behind the people operating it hasn't proven the system
+performs as validated in real use.
+
+And the guidance's remote-access recommendation, quoted verbatim from section III.B, sitting
+directly after its system-administrator documentation list:
+
+> Note: Although a remote access log is not part of validation records, you may consider keeping a
+> log of remote access to any part of your system, such as the BECS or laboratory instruments. We
+> recommend this log include the date, time, reason for the access and the name of the person
+> connecting to your system.
+
+That's the practical answer to the vendor's remote-access request. It's guidance-tier — "you may
+consider," "we recommend," not "you must" — but it's exactly the evidence that would let Lakeshore
+show an inspector who controlled the vendor's access and when, which is precisely what
+11.3(b)(4)'s "controlled by persons who are responsible for the content" asks someone to be able
+to demonstrate.
+
+### Reconciling this against what the curriculum already used
+
+Two earlier lessons already cited pieces of 11.10, without this module's depth. `becs-in-the-
+pipeline` named 11.10(a) — "validation... to ensure accuracy, reliability, consistent intended
+performance" — as the hook for BECS's "validated state." `directing-the-quality-analyst` used
+11.10(j) (written accountability policies) as a concept. Both stay accurate exactly as written;
+this module doesn't re-teach either one. What it adds is the enforcement posture layered on top:
+11.10(a) is real regulatory text, but FDA's 2003 guidance exercises enforcement discretion on it
+and leans on predicate rules — 211.68, 606 — to carry BECS's actual validation obligation instead,
+exactly why module 1 grounded VAL-1203's validation requirement in 211.68(a), not 11.10(a). 11.10(j)
+and (k)(2) sit on the guidance's discretion list alongside audit trails and stay named-only here
+too. This module spends its depth on the part of 11.10 earlier lessons left alone — (d), (f), (g),
+and (h) — plus naming 11.1, 11.3, and 11.30. Put together: the earlier text was always accurate;
+this module says, for the first time, which pieces FDA actually enforces and which a BECS
+validation has to put an actual test case against.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB (Association for the Advancement of Blood & Biotherapies) assessor
+reading VAL-1203's file wouldn't ask whether Lakeshore has a Part 11 policy. They'd ask for three
+specific things.
+
+**A test case that actually tries to break the sequencing and authority rules, not a sentence
+saying the rules exist.** For 11.10(f): did anyone attempt a release with a result still pending,
+and does the record show BECS refused it? For 11.10(g): did anyone attempt a release-level action
+from a role that shouldn't have that authority, and does the record show BECS refused it too? A
+URS row that says "the system shall enforce proper sequencing" with no test ID behind it is a
+promise, not proof — the same lesson module 1 taught about untestable requirements, applied here
+to two specific regulatory behaviors.
+
+**Evidence of who controls the vendor's remote access, and when it happened.** A standing
+credential with no log is the kind of fact an inspector finds the moment they ask "show me who
+connected to this server last quarter, and why." A dated access log — the guidance's III.B
+recommendation, actually implemented — turns "we control the vendor's access" from a claim into
+something demonstrable.
+
+**Training records behind the people actually operating the system**, not a generic statement that
+"staff are trained." 11.10(i) and the guidance's III.G sentence both ask for the same evidence:
+dated, individual, tied to the procedures the person actually performs on BECS.
+
+A bad answer to "how do you know this vendor can't do more than you've authorized" sounds like "we
+trust them, they're a good partner." A good answer points to a specific access-control
+configuration, a log, and a revocation mechanism Lakeshore itself controls.
+
+## Common traps
+
+**"11.10(a) is FDA's main enforcement hook for BECS validation."** Not quite. 11.10(a) —
+validation — is real regulatory text, already named in this curriculum. But the 2003 guidance puts
+11.10(a) on its enforcement-discretion list and leans on predicate rules instead. For BECS, FDA's
+own guidance names 211.68 and Part 606 — not 11.10(a) — as the actual regulatory basis requiring
+Lakeshore's validation. Both routes point at the same outcome, a validated system, but the
+enforcement mechanism FDA actually leans on is the predicate rule, not Part 11's own clause.
+
+**"A vendor connecting in remotely automatically makes BECS an open system."** Also not quite. Go
+back to 11.3(b)(4) and (9): the test is who *controls* access and who's *responsible* for the
+records, not whether an outside party can reach the system at all. A tightly governed vendor
+connection — Lakeshore grants it, logs it, time-limits it, and can revoke it — can stay closed.
+What's actually proposed for VAL-1203 — standing credentials, no stated logging or revocation path
+— is the arrangement that drifts toward open, or at minimum leaves a control gap worth flagging
+before go-live. The flip answer ("remote access means it's open") and the complacent one ("the
+vendor always needs access, it's fine") are both wrong for the same reason: neither looks at who
+actually controls it.
+
+## What this means for your job
+
+- **Before signing off on the vendor's remote-access request, ask who grants it, who logs it, and
+  who can revoke it.** If the answer to any of those three is "the vendor decides," that's the
+  open-system drift happening in real time, not a hypothetical.
+- **Require a remote-access log for this vendor specifically, given VRA-0219's history.** The
+  guidance's III.B recommendation — date, time, reason, and the name of the person connecting — is
+  the record that would let Lakeshore show an inspector who controlled this access and when, if
+  the question ever came up the way it did for the earlier incident.
+- **Send VAL-1203's test plan back until it has an actual test case for 11.10(f) and (g), not just
+  a policy statement.** A requirement that BECS "shall not permit release before all results are
+  recorded" needs a test that attempts exactly that release and records the refusal. Same for a
+  release attempt by an unauthorized role — flag this in the URS now, before test design locks in.
+- **Keep 11.10(a) and the predicate rule straight before anyone else's confusion reaches a
+  validation plan.** If a consultant cites "Part 11 compliance" as the reason BECS is validated,
+  the correction is that 211.68 and Part 606 actually require it — Part 11 adds trustworthiness
+  criteria on top, once a predicate rule already made the record a requirement.
+- **Confirm training evidence exists for the specific people operating Release B**, not a general
+  statement that staff received training. 11.10(i) and the guidance's III.G sentence both expect
+  it, and it's a control area FDA's 2003 guidance says it still enforces.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Someone on the upgrade project says, "11.10(a) is FDA's main enforcement hook for BECS validation." Accurate?
+
+Not quite. 11.10(a) is real regulatory text — "validation of systems to ensure accuracy,
+reliability, consistent intended performance" — and it's the paragraph this curriculum named back
+in `becs-in-the-pipeline`. But FDA's 2003 Part 11 guidance explicitly lists 11.10(a) under its
+enforcement-discretion policy: FDA doesn't intend to bring an enforcement action to enforce that
+specific paragraph, and relies on predicate rules instead. For BECS specifically, FDA's own BECS
+guidance names 21 CFR 211.68 and Part 606 as the regulatory basis that actually requires Lakeshore's
+validation. 11.10(a) and the predicate-rule-based obligation point toward the same outcome — a
+validated system — but the enforcement mechanism FDA actually leans on is the predicate rule, not
+Part 11's own validation clause.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: The vendor's consultant wants standing, unlogged remote access to the production BECS server after go-live. Does that automatically make BECS an "open system" under 11.3(b)(9)?
+
+Not automatically, but it's the arrangement most likely to turn into one. 11.3(b)(4) and (b)(9) turn
+on who *controls* access and who's *responsible* for the records — not simply on whether an outside
+party can connect at all. If Lakeshore grants the access for a defined purpose, logs it, can
+time-limit it, and can revoke it, with Lakeshore's own personnel remaining accountable for what's
+in BECS's records, the system can stay closed even with a vendor connecting in. What's actually
+proposed here — no stated expiration, nothing said about logging or revocation — is the version of
+this arrangement that drifts toward 11.30's open-system obligations, or at minimum represents a
+real control gap. The fix isn't to refuse the vendor access outright; it's to require the access be
+granted, logged, and revocable on Lakeshore's own terms — starting with the guidance's recommended
+remote-access log.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: VAL-1203's URS still has no testable requirement for "BECS refuses an out-of-sequence release" or "BECS refuses a release by an unauthorized role." Is that a real gap, or is documenting the policy enough?
+
+It's a real gap, and a policy statement doesn't close it. 11.10(f) (operational system checks
+enforcing permitted sequencing) and 11.10(g) (authority checks restricting who can perform an
+operation) are both on the 2003 guidance's list of controls FDA actually intends to enforce. That
+means a BECS validation has to prove, with a test case that could actually fail, that the system
+refuses an out-of-sequence release and refuses a release attempted by an unauthorized role — not
+just document that Lakeshore's procedures say releases should happen in the right order by the
+right people. This is exactly the kind of requirement that belongs in the URS before test design
+locks in, flagged now for VAL-1203's test plan.
+:::
+
+## Where this goes next
+
+You now have the map: which Part 11 controls a BECS validation actually has to prove the system
+enforces, why FDA's enforcement leans on predicate rules instead of 11.10(a) itself, and how to
+reason through a closed-versus-open-system question instead of answering it on reflex. Next,
+`validated-state-lifecycle-and-patching` takes the upgraded, newly-live BECS through its first
+periodic review and its first post-upgrade OS patch — and finally gives VIA-0842's open question,
+the one this course opened with, a real answer: were those twelve targeted tests actually enough?
