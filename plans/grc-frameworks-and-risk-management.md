@@ -60,7 +60,7 @@ or cloud-platform brand for the eQMS — describe it generically.
 | # | Slug | Finish line | `order:` | Status |
 |---|---|---|---|---|
 | — | (syllabus) | — | 81 | Published |
-| 1 | `risk-frameworks-side-by-side` | Put NIST RMF, ISO 31000, and ICH Q9 next to each other and show they're the same underlying motion in three different vocabularies, issued by three very different kinds of body. | 82/83 | Not started |
+| 1 | `risk-frameworks-side-by-side` | Put NIST RMF, ISO 31000, and ICH Q9 next to each other and show they're the same underlying motion in three different vocabularies, issued by three very different kinds of body. | 82/83 | Published |
 | 2 | `categorize-and-select-controls` | Apply RMF's Categorize and Select steps to the eQMS: determine its impact level, then select and tailor a control set sized to that, not a one-size-fits-all checklist. | 84/85 | Not started |
 | 3 | `implement-and-assess-controls` | Build the selected controls, then run an independent assessment of whether they actually work. | 86/87 | Not started |
 | 4 | `authorize-and-monitor` | Make and document the authorization decision (accepting a named residual risk), and build the ongoing monitoring plan — say in one sentence why this is the same decision as a validation release and periodic review. | 88/89 | Not started |
@@ -221,3 +221,28 @@ as every prior course) — already done as part of Phase 2 scoping below.
   order-counter updated to 92 (this course used 81-91, verified by grep with no duplicates before
   assigning).
   Next: build m1, `risk-frameworks-side-by-side`.
+
+- **2026-10-09**: Module 1, `risk-frameworks-side-by-side` (`order: 82/83`), built and published.
+  Scenario: the eQMS planning meeting surfaces two disconnected risk conversations (QA's fluent ICH
+  Q9 reasoning on the CAPA-record migration; the systems administrator's informal, undocumented
+  access-control judgment) — the gap that motivates borrowing RMF's structure for the eQMS, end to
+  end, voluntarily. Quoted verbatim from `sources/nist/sp-800-37r2-excerpt.md`: the Figure 2
+  five-step framing (Select/Implement/Assess/Authorize/Monitor), the nonsequential-ordering note,
+  and both the Prepare and Categorize purpose statements (Prepare named honestly as Rev 2's own
+  addition; Categorize's purpose statement reused lightly here and left for m2 to actually apply).
+  ISO 31000 named and described only in this course's own words (establishing context, risk
+  assessment, risk treatment, monitoring and review, recording and reporting), explicitly hedged as
+  not a confident exact enumeration since the standard itself was never read. ICH Q9(R1) named only
+  as the third comparison point, one paragraph, pointing back to `quality-risk-management`. Built a
+  genuine "same motion, three vocabularies" mapping table showing where the three frameworks
+  diverge, not just differ in vocabulary (RMF's single named Authorize decision point; ISO 31000's
+  lack of one, being general-purpose; ICH Q9's pharma/biologics scope). One check-your-understanding
+  question lands on "this is NOT a legal requirement" (RMF/ATO has no legal force over Lakeshore).
+  Sourcing verified this session: NIST PDF curl-checked directly, returns HTTP 200
+  (`https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf`). ISO 31000's
+  listing page re-confirmed HTTP 403 direct (ISO's own bot protection) and reachable via the
+  Wayback Machine's availability API (live snapshot, HTTP 200, captured 2026-10-01) — disclosed in
+  `resources.qmd` the same way `designing-an-internal-audit-program` handled ISO 19011. No
+  `csv-and-becs`/`data-integrity-and-records` locked facts touched; Fairview's paper practice
+  referenced only in passing, not resolved. Word count: ~4,100 words for the lesson page.
+  Next: build m2, `categorize-and-select-controls`.

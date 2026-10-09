@@ -1,0 +1,34 @@
+---
+title: "Resources"
+order: 83
+---
+
+This module cites one new verbatim source (NIST SP 800-37 Rev. 2, public domain) and one standard
+named but never quoted (ISO 31000, a paid publication) — the same paraphrase-only handling this
+curriculum already gives AABB Standards, GAMP 5, and ISO 19011. All links below were checked at
+the time this page was written.
+
+- **[NIST SP 800-37 Rev. 2, "Risk Management Framework for Information Systems and
+  Organizations"](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf)**
+  (PDF, final, December 2018) — the actual document this lesson quotes from (via a saved,
+  scoped excerpt in `sources/nist/`, never from memory). Curl-checked directly from this session:
+  returns HTTP 200. Read it if you want RMF's full task-by-task detail — this lesson and the three
+  that follow it quote only the subset saved in the excerpt.
+
+- **[ISO 31000, "Risk management — Guidelines"](https://www.iso.org/standard/65694.html)** — ISO's
+  own public listing page for the standard: scope and purchase information, not the standard's
+  text itself, which is a paid publication never independently fetched or quoted anywhere in this
+  curriculum. A direct check from this session returned HTTP 403 — ISO's own bot protection
+  blocking this environment's proxy, the identical issue `designing-an-internal-audit-program`
+  hit with ISO 19011's listing page, not a dead or incorrect link. Confirmed reachable instead
+  through the Internet Archive's Wayback Machine: its availability API reports a live snapshot,
+  HTTP 200, captured 2026-10-01, at
+  [web.archive.org/web/20261001045002/https://www.iso.org/standard/65694.html](https://web.archive.org/web/20261001045002/https://www.iso.org/standard/65694.html).
+  Worth a direct check yourself before relying on it. Useful for confirming ISO 31000 is real,
+  current, and generally scoped — nothing on this page is blood-establishment-specific, and
+  nothing from it is quoted in this lesson.
+
+- **[Quality risk management](../../quality-system-essentials/quality-risk-management/index.qmd)**
+  — this curriculum's own module on ICH Q9(R1), the third framework this lesson compares RMF and
+  ISO 31000 against. Read it for the actual four-stage process and FMEA walkthrough, which this
+  lesson deliberately doesn't re-teach.
