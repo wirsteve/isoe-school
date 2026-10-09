@@ -122,7 +122,7 @@ the evidence it's supposed to protect.
 actually sits — a question the last module left open and this one answers by confirming, not
 assuming — your systems administrator obtained written confirmation that the hosting facility
 has the basics: backup power, fire suppression, and controlled physical access to the server
-room itself. That confirmation is now a dated document Lakeshore holds, not a assumption nobody
+room itself. That confirmation is now a dated document Lakeshore holds, not an assumption nobody
 ever checked.
 
 All three of those are real, specific builds — not a restatement of the family names from last
