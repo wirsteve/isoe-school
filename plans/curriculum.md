@@ -270,16 +270,17 @@ has no `plans/<slug>.md` file until its first session.
 | `directing-the-quality-analyst` | 6 / 6 | Done |
 | `csv-and-becs` | 7 / 7 | Done |
 | `data-integrity-and-records` | 6 / 6 | Done |
-| `fda-and-aabb-in-practice` | 3 / 6 | In progress |
+| `fda-and-aabb-in-practice` | 4 / 6 | In progress |
 | `grc-frameworks-and-risk-management` | 0 / 5 | Not started |
 | `healthcare-security-and-privacy` | 0 / 5 | Not started |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `fda-and-aabb-in-practice` module 4, `the-aabb-assessment-process` (Track 2). Modules
-1-3 are published — see `plans/fda-and-aabb-in-practice.md`'s progress log for the locked
-scenario facts (the 483's "probably VAI" judgment, BPD-0512 now filed with CBER and its parallel
-recall, and the still-undecided deferred-donor-record cadence question) that module 4 builds on. `csv-and-becs` (7/7) and `data-integrity-and-records`
+**Next up:** `fda-and-aabb-in-practice` module 5, `designing-an-internal-audit-program` (Track 2).
+Modules 1-4 are published — see `plans/fda-and-aabb-in-practice.md`'s progress log for the locked
+scenario facts (the 483's "probably VAI" judgment, BPD-0512 filed with CBER and its parallel
+recall, LAB-07's AABB nonconformance now resolved via a submitted qualification review, and the
+still-undecided deferred-donor-record cadence question) that module 5 builds on. `csv-and-becs` (7/7) and `data-integrity-and-records`
 (6/6) are both complete — once `vendor-and-third-party-risk-management` also exists,
 `directing-the-quality-analyst` modules 4 and 5 should be revisited per that course's own
 "Deliberately deferred" table.

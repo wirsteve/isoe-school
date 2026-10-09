@@ -72,7 +72,7 @@ brand — all already-established conventions this course continues.
 | 1 | `fda-inspection-authority-and-outcomes` | Name what FDA's inspection authority actually lets an investigator do and ask for, explain Form FDA 483's real purpose and legal weight, and name the three possible outcomes an inspection can end in. | 69/70 | Published |
 | 2 | `warning-letters-and-recalls` | Explain when a 483 escalates into a Warning Letter, and sort any product problem into the right recall classification (Class I, II, or III) using FDA's own health-hazard test. | 71/72 | Published |
 | 3 | `filing-a-biological-product-deviation-report` | Pick up exactly where `deviations-and-nonconformances` left off (the reportability determination) and finish the job: file the report on the right form, to the right office, in the right window. | 73/74 | Published |
-| 4 | `the-aabb-assessment-process` | Walk Lakeshore through both phases of an AABB reassessment (self-assessment and on-site) and say precisely what an assessor expects that an FDA investigator doesn't. | 75/76 | Not started |
+| 4 | `the-aabb-assessment-process` | Walk Lakeshore through both phases of an AABB reassessment (self-assessment and on-site) and say precisely what an assessor expects that an FDA investigator doesn't. | 75/76 | Published |
 | 5 | `designing-an-internal-audit-program` | Build the program an internal audit needs to actually hold up: auditor independence/competency, risk-based scheduling, real evidence sampling, and a nonconformance grading scale with teeth. | 77/78 | Not started |
 | 6 | `mock-inspections-and-presenting-it-becs-evidence` | Put everything this course (and `csv-and-becs`/`data-integrity-and-records`) taught in front of a reviewer who's actually in the room, and resolve, out loud, what's still open from `data-integrity-and-records`. | 79/80 | Not started |
 
@@ -364,3 +364,24 @@ as every prior course).
   treats both channels as equal). The deferred-donor-record cadence question was not mentioned
   and remains exactly "under internal review." No `csv-and-becs` locked fact altered.
   Next: build m4, `the-aabb-assessment-process`.
+- **2026-10-09**: Module 4, `the-aabb-assessment-process`, drafted (via subagent), audited, and
+  published (`courses/fda-and-aabb-in-practice/the-aabb-assessment-process/index.qmd` and
+  `resources.qmd`, `order: 75`/`76`, ~3,570 words). All five quotes from AABB's own
+  "Accreditation Process" page (the two-phase structure, the PPPs-addressed-and-followed-
+  as-written expectation, the two-year reassessment cycle, the six-month minimum operating
+  history, and the "achieve AABB accreditation upon successful completion..." sentence)
+  verified verbatim against `sources/aabb/accreditation-process.md`. All three `resources.qmd`
+  links curl-verified 200. QSE 8 ("Assessments: Internal and External") and QSE 3 (Equipment)
+  named only, no Standards text, re-confirmed against `sources/aabb/qse-framework.md`.
+  **Scenario:** Lakeshore's AABB reassessment cycle opens; APEX self-assessment independently
+  rediscovers LAB-07's fitness-for-use gap (already known from `data-integrity-and-records`'s
+  DI-0301) — framed as a strength (internal self-assessment working), not a new liability. FDA
+  inspection vs. AABB assessment contrasted explicitly (voluntary/mandatory, checked-against-what,
+  what-failing-means, legal character). On-site assessment finds **one minor nonconformance**
+  (LAB-07's still-missing criterion-4 fitness-for-use documentation); Lakeshore submits a dated
+  qualification review during the resolution window and the nonconformance closes; accreditation
+  continues for another two-year cycle. **The deferred-donor-record cadence question was
+  discussed but deliberately left "under internal review," not resolved** — module 5 or 6 is
+  still where that gets decided. No `csv-and-becs` or `data-integrity-and-records` locked fact
+  altered.
+  Next: build m5, `designing-an-internal-audit-program`.
