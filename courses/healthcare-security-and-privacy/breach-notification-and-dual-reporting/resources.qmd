@@ -1,0 +1,21 @@
+---
+title: "Resources"
+order: 100
+---
+
+- [45 CFR 164.402 — Definitions (eCFR)](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-D/section-164.402) —
+  the breach definition, its three exclusions, the presumption-of-breach standard, the
+  four-factor risk assessment, and "unsecured protected health information." Start here before
+  running the test against any real incident.
+- [45 CFR 164.404 — Notification to individuals (eCFR)](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-D/section-164.404) —
+  the 60-calendar-day clock from discovery and the five required content elements. Use this to
+  check a draft notification letter against the actual regulatory checklist.
+- [45 CFR 164.406 — Notification to the media (eCFR)](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-D/section-164.406) —
+  the 500-resident threshold that triggers media notification. Use this to confirm whether a
+  given breach's size actually clears the bar before assuming it does.
+- [45 CFR 164.408 — Notification to the Secretary (eCFR)](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-D/section-164.408) —
+  the two HHS notification tracks: contemporaneous for 500+ individuals, annual log for fewer.
+  Use this to pick the right track before a filing goes out.
+- [Filing a Biological Product Deviation Report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd) —
+  this course's internal link back to 606.171's own 45-day BPDR clock and filing mechanics, for
+  comparing the two reporting pathways side by side.

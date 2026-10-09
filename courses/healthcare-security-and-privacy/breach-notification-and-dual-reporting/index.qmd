@@ -1,0 +1,491 @@
+---
+title: "Breach Notification and Dual Reporting"
+order: 99
+---
+
+## "So — is it a breach?"
+
+Your Quality Analyst (QA) is in your office with the systems administrator, and for once
+neither of them opens with a finding. They open with the question everyone's been circling
+for three modules: "Is it a breach, or isn't it?"
+
+You can tell them exactly what's settled and exactly what isn't. `the-hipaa-privacy-rule`
+settled that pulling the Brookfield extract was a permitted health care operations use, no
+authorization needed — but that the extract carried three fields (donor name, date of birth,
+lifetime donation count) it didn't need, a minimum-necessary gap, logged and separate.
+`security-rule-safeguards-and-part-11` settled that encryption of e-PHI (protected health
+information in electronic form) is an Addressable specification, that Lakeshore's
+full-disk-encryption policy was a sound response to that specification — and that none of
+that matters for this one device, because a device-management migration left its
+encryption-status field reading "not reported," and nobody can confirm encryption was
+actually running on it when it went missing.
+
+None of that answers today's question. Whether pulling the extract was permitted is a
+Privacy Rule question. Whether the encryption policy was sound is a Security Rule question.
+Whether this is a reportable **breach** is a third, completely different question, governed
+by its own subpart with its own definitions, and it has exactly one test: 164.402's
+four-factor risk assessment. That's today's job — run the actual test, against the actual
+facts, and see where it lands. Not where you'd like it to land. Where it actually lands.
+
+## Why this rule exists, and the ITSM bridge
+
+Every other module in this course has been about prevention and permission — who's allowed to
+see PHI, what has to stand between it and an attacker. This module is about what happens after
+prevention has already failed, or might have. The failure mode the Breach Notification Rule
+exists to prevent isn't the loss itself — that's already happened by the time this rule
+engages. It's the second failure: an organization that knows its data may be compromised and
+says nothing, leaving every affected person unable to watch their own accounts, freeze their
+own credit, or ask their own questions, because they never found out there was anything to
+watch for.
+
+You already run the ITSM (IT Service Management) version of this discipline, and you've
+probably run it under pressure. A major incident doesn't end when the system is restored — it
+triggers a separate obligation: a post-incident review, a customer notification if an SLA
+(service level agreement) or a data-handling commitment was breached, a root-cause record for
+the next change advisory board. The breach-notification rule is that same obligation, except
+the "customer" is 212 donors who never signed an SLA, the "post-incident review" is a
+federally defined four-factor test with a specific legal standard, and the notification clock
+runs in calendar days with no extension for a busy quarter. The underlying logic is identical
+to major incident management: contain, assess impact, notify the people affected, notify the
+authority that tracks the pattern across the industry. What's different is that HIPAA (Health
+Insurance Portability and Accountability Act) writes the assessment test and the clock into
+regulation instead of leaving them to your own incident-management policy.
+
+## The rule in plain English
+
+Start with the question that decides everything else: did an impermissible use, access,
+acquisition, or disclosure of PHI happen at all, and if so, is it something more than a
+near-miss the rule itself excuses? 164.402 answers both halves. First, it defines "breach" —
+broadly, as an impermissible acquisition, access, use, or disclosure that compromises
+security or privacy — and then carves out three narrow exclusions for honest, contained
+internal mistakes that never actually implicate security (a workforce member's good-faith,
+in-scope slip; an inadvertent disclosure between two people both already authorized to see
+PHI at the same organization; a disclosure to someone who, in good faith, almost certainly
+couldn't have retained what they briefly saw).
+
+Second — and this is the part that decides the laptop's fate — 164.402(2) sets a
+**presumption**. An impermissible use or disclosure that doesn't fall into one of those three
+exclusions is **presumed to be a breach**, full stop, unless the covered entity affirmatively
+demonstrates a low probability that the PHI was compromised. That's not a neutral coin flip.
+The organization carries the burden, and it carries it by running a specific four-factor risk
+assessment: (1) the nature and extent of the PHI involved, including re-identification
+likelihood; (2) who the unauthorized person was, or who the disclosure went to; (3) whether
+the PHI was actually acquired or viewed; and (4) the extent to which the risk has been
+mitigated. Rebut the presumption on all four factors credibly, and you may conclude no breach
+occurred. Fail to rebut it, and the incident is a breach, with everything 164.404, 164.406,
+and 164.408 demand.
+
+One more definition matters before any of this engages at all: 164.402 only reaches
+**unsecured** PHI — PHI not rendered unusable, unreadable, or indecipherable to an
+unauthorized person through an HHS (Department of Health and Human Services)-specified
+technology or method. If the extract had been confirmed encrypted to that standard, the
+analysis would likely stop here: properly secured PHI generally isn't "unsecured protected
+health information" in the first place, and the whole four-factor test might never need to
+run. That's exactly why module 3's unresolved encryption-verification gap matters so much to
+this module — it's the fact that would have let this incident exit at the front door instead
+of going through all four factors.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 45 CFR 164.402 | "One-sixty-four point four-oh-two" | **Regulation.** Defines "breach," its three narrow exclusions, the presumption-of-breach-unless-rebutted standard, the four-factor risk assessment, and "unsecured protected health information." | The entire test this module runs against the Brookfield laptop. |
+| 45 CFR 164.404 | "Four-oh-four" | **Regulation.** Notification to individuals: the 60-calendar-day clock from discovery, and the five required content elements. | What Lakeshore owes the ~212 donors if the breach presumption isn't rebutted. |
+| 45 CFR 164.406 | "Four-oh-six" | **Regulation.** Media notification — triggered only when a breach affects more than 500 residents of a State or jurisdiction. | Not triggered here — the extract covers roughly 212 donors, well under the threshold. |
+| 45 CFR 164.408 | "Four-oh-eight" | **Regulation.** Notification to the HHS Secretary — a different clock and format for breaches of 500+ individuals versus fewer than 500. | The under-500 annual-log pathway, 164.408(c), is this incident's applicable track if the presumption holds. |
+| 45 CFR 164.414 | "Four-fourteen" | **Regulation.** Burden of proof: the covered entity must demonstrate either that all required notifications were made, or that the event didn't meet 164.402's breach definition at all. | Lakeshore, not any regulator, has to prove the negative here — and right now it can't. |
+
+## The actual text
+
+All quotes below come verbatim from `sources/cfr/45-164-breach-notification-excerpt.md`.
+
+### 164.402 — Definitions
+
+> As used in this subpart, the following terms have the following meanings:
+> Breach means the acquisition, access, use, or disclosure of protected health information in a
+> manner not permitted under subpart E of this part which compromises the security or privacy of
+> the protected health information.
+> (1) Breach excludes: (i) Any unintentional acquisition, access, or use of protected health
+> information by a workforce member or person acting under the authority of a covered entity or a
+> business associate, if such acquisition, access, or use was made in good faith and within the
+> scope of authority and does not result in further use or disclosure in a manner not permitted
+> under subpart E of this part. (ii) Any inadvertent disclosure by a person who is authorized to
+> access protected health information at a covered entity or business associate to another person
+> authorized to access protected health information at the same covered entity or business
+> associate, or organized health care arrangement in which the covered entity participates, and
+> the information received as a result of such disclosure is not further used or disclosed in a
+> manner not permitted under subpart E of this part. (iii) A disclosure of protected health
+> information where a covered entity or business associate has a good faith belief that an
+> unauthorized person to whom the disclosure was made would not reasonably have been able to
+> retain such information.
+> (2) Except as provided in paragraph (1) of this definition, an acquisition, access, use, or
+> disclosure of protected health information in a manner not permitted under subpart E is presumed
+> to be a breach unless the covered entity or business associate, as applicable, demonstrates that
+> there is a low probability that the protected health information has been compromised based on
+> a risk assessment of at least the following factors: (i) The nature and extent of the protected
+> health information involved, including the types of identifiers and the likelihood of
+> re-identification; (ii) The unauthorized person who used the protected health information or to
+> whom the disclosure was made; (iii) Whether the protected health information was actually
+> acquired or viewed; and (iv) The extent to which the risk to the protected health information has
+> been mitigated.
+> Unsecured protected health information means protected health information that is not rendered
+> unusable, unreadable, or indecipherable to unauthorized persons through the use of a technology
+> or methodology specified by the Secretary in the guidance issued under section 13402(h)(2) of
+> Public Law 111-5.
+
+The exclusions in (1) read like a checklist for ruling this incident out quickly — and none of
+them fit. (i) requires the PHI to have stayed inside Lakeshore's workforce, with no further
+exposure; a laptop in a stranger's shared ride is the opposite of that. (ii) requires the
+disclosure to land on another person already authorized to see PHI at Lakeshore; nobody knows
+who, if anyone, has the laptop. (iii) requires a good-faith belief the recipient couldn't have
+retained the information; there's no recipient to have a good-faith belief about, because the
+device is simply missing. None of the three narrow doors out apply. That pushes this straight
+into 164.402(2)'s presumption — and the four-factor test is the only way out of it.
+
+### 164.404 — Notification to individuals
+
+> (a) Standard—(1) General rule. A covered entity shall, following the discovery of a breach of
+> unsecured protected health information, notify each individual whose unsecured protected health
+> information has been, or is reasonably believed by the covered entity to have been, accessed,
+> acquired, used, or disclosed as a result of such breach.
+> (2) Breaches treated as discovered. For purposes of paragraph (a)(1) of this section, §§
+> 164.406(a), and 164.408(a), a breach shall be treated as discovered by a covered entity as of the
+> first day on which such breach is known to the covered entity, or, by exercising reasonable
+> diligence would have been known to the covered entity. A covered entity shall be deemed to have
+> knowledge of a breach if such breach is known, or by exercising reasonable diligence would have
+> been known, to any person, other than the person committing the breach, who is a workforce
+> member or agent of the covered entity (determined in accordance with the federal common law of
+> agency).
+> (b) Implementation specification: Timeliness of notification. Except as provided in § 164.412, a
+> covered entity shall provide the notification required by paragraph (a) of this section without
+> unreasonable delay and in no case later than 60 calendar days after discovery of a breach.
+> (c) Implementation specifications: Content of notification—(1) Elements. The notification
+> required by paragraph (a) of this section shall include, to the extent possible: (A) A brief
+> description of what happened, including the date of the breach and the date of the discovery of
+> the breach, if known; (B) A description of the types of unsecured protected health information
+> that were involved in the breach (such as whether full name, social security number, date of
+> birth, home address, account number, diagnosis, disability code, or other types of information
+> were involved); (C) Any steps individuals should take to protect themselves from potential harm
+> resulting from the breach; (D) A brief description of what the covered entity involved is doing
+> to investigate the breach, to mitigate harm to individuals, and to protect against any further
+> breaches; and (E) Contact procedures for individuals to ask questions or learn additional
+> information, which shall include a toll-free telephone number, an e-mail address, Web site, or
+> postal address.
+> (2) Plain language requirement. The notification required by paragraph (a) of this section shall
+> be written in plain language.
+
+Notice (a)(2): the 60-day clock doesn't wait for your own internal investigation to finish or
+for a formal breach determination to be signed. It starts the day the incident is known or
+reasonably should have been known to any workforce member or agent — which, for this incident,
+is the day the laptop was reported missing, not the day this module's four-factor analysis
+concludes. 164.412 (law-enforcement delay) is referenced as the sole named exception to that
+60-day clock; this course names that the exception exists without describing its mechanics,
+since that section hasn't been independently sourced.
+
+### 164.406 — Notification to the media
+
+> (a) Standard. For a breach of unsecured protected health information involving more than 500
+> residents of a State or jurisdiction, a covered entity shall, following the discovery of the
+> breach as provided in § 164.404(a)(2), notify prominent media outlets serving the State or
+> jurisdiction.
+> (b) Implementation specification: Timeliness of notification. Except as provided in § 164.412, a
+> covered entity shall provide the notification required by paragraph (a) of this section without
+> unreasonable delay and in no case later than 60 calendar days after discovery of a breach.
+
+### 164.408 — Notification to the Secretary
+
+> (a) Standard. A covered entity shall, following the discovery of a breach of unsecured protected
+> health information as provided in § 164.404(a)(2), notify the Secretary.
+> (b) Implementation specifications: Breaches involving 500 or more individuals. For breaches of
+> unsecured protected health information involving 500 or more individuals, a covered entity
+> shall, except as provided in § 164.412, provide the notification required by paragraph (a) of
+> this section contemporaneously with the notice required by § 164.404(a) and in the manner
+> specified on the HHS Web site.
+> (c) Implementation specifications: Breaches involving less than 500 individuals. For breaches of
+> unsecured protected health information involving less than 500 individuals, a covered entity
+> shall maintain a log or other documentation of such breaches and, not later than 60 days after
+> the end of each calendar year, provide the notification required by paragraph (a) of this
+> section for breaches discovered during the preceding calendar year, in the manner specified on
+> the HHS web site.
+
+### 164.414 — Administrative requirements and burden of proof
+
+> (a) Administrative requirements. A covered entity is required to comply with the administrative
+> requirements of § 164.530(b), (d), (e), (g), (h), (i), and (j) with respect to the requirements
+> of this subpart.
+> (b) Burden of proof. In the event of a use or disclosure in violation of subpart E, the covered
+> entity or business associate, as applicable, shall have the burden of demonstrating that all
+> notifications were made as required by this subpart or that the use or disclosure did not
+> constitute a breach, as defined at § 164.402.
+
+164.414(b) is worth reading twice, because it's the provision that makes "we're still not sure"
+an untenable final answer. The burden sits on Lakeshore, not on OCR (the HHS Office for Civil
+Rights) or on any donor, to demonstrate one of exactly two things: that it made every
+notification this subpart requires, or that the event never met 164.402's breach definition in
+the first place. Silence, or an unresolved "maybe," satisfies neither branch.
+
+## Running the four-factor test — honestly, against the real facts
+
+This is the module's actual job. Not citing the test — running it, on the facts this course
+has locked, and following the reasoning wherever it leads, even if that's an uncomfortable
+answer.
+
+**Factor 1 — nature and extent of the PHI, including re-identification likelihood.** The
+extract module 1 locked holds six fields across roughly 212 donors: BECS-internal donor
+identifier, donor name, date of birth, each eligibility determination with its date, deferral
+reason codes, and lifetime donation count. Name plus date of birth is itself a classic
+re-identification pair; paired with an eligibility determination and a deferral code, it's not
+abstract health information — it's "this named person, born this date, was deferred from
+donating, for this specific reason." That's about as re-identifiable and as sensitive as a
+donor-eligibility record gets. This factor does not favor Lakeshore. It weighs toward a
+meaningful compromise risk, not a trivial one.
+
+**Factor 2 — who the unauthorized person was, or who the disclosure went to.** Here's the
+honest answer: nobody knows. The laptop is lost, not confirmed stolen by an identified actor.
+It may be sitting unopened in a rideshare's lost-and-found. It may be in the hands of someone
+who has no idea what's on it. It may be in the hands of someone who does. 164.402(2)(ii) asks
+specifically who received the disclosure — and this incident simply doesn't have that
+fact. An unknown recipient isn't a factor that favors low probability of compromise; at best,
+it's neutral, and in practice an unidentified, unaccountable recipient is exactly the scenario
+this factor exists to flag as higher-risk, not lower.
+
+**Factor 3 — whether the PHI was actually acquired or viewed. This is where module 3's
+encryption gap becomes this module's problem.** If Lakeshore could confirm, device-level, that
+full-disk encryption was active on this laptop when it went missing, this factor would do
+enormous work toward rebutting the presumption: encrypted data, rendered unreadable to anyone
+without the key, is not meaningfully "acquired or viewed" in any sense that matters to a person
+whose eligibility record it is. It might also mean the data was never "unsecured protected
+health information" under 164.402's own definition at all — potentially closing the question
+before the four factors even need weighing.
+
+But that confirmation doesn't exist. Module 3 locked this precisely: the systems administrator
+can confirm the device was enrolled under Lakeshore's encryption policy; he cannot confirm
+encryption was actually running on it at the moment it went missing, because a
+device-management platform migration left this one unit's encryption-status field reading "not
+reported" for the exact window that matters. That is not the same as "encryption failed," and
+it is not the same as "encryption was confirmed active." It is a genuine, unresolved unknown.
+
+Carry that unknown into this factor honestly: Lakeshore cannot say the PHI was likely not
+acquired or viewed, because it cannot say the one thing that would support that conclusion —
+that the data was unreadable to begin with. A factor that depends entirely on an unconfirmed
+premise cannot be scored in Lakeshore's favor. It has to be scored as unresolved, which, under
+a presumption-of-breach standard, functions the same as scored against Lakeshore: an
+unrebutted factor doesn't help rebut anything.
+
+**Factor 4 — extent of mitigation.** Some mitigation is real and already in motion: the loss
+was reported promptly (164.404(a)(2)'s discovery clock is already running from that report),
+Lakeshore's device-management platform is the same central system that enforces the encryption
+policy at enrollment, and a platform with that level of fleet control plausibly supports a
+remote lock or remote wipe command issued the moment the device was reported missing — a
+reasonable mitigation step for a Director to confirm was actually issued, not assume happened
+automatically. Against that: the device itself has not been recovered, there is no confirmation
+a remote command actually reached it (a lost device that's powered off or offline never
+receives a pending remote wipe), and — the same gap running through every factor — encryption
+status still cannot be confirmed. Some mitigation steps exist. The one mitigation step that
+would matter most here, confirmed encryption, isn't among them.
+
+**The determination, stated precisely, the way this curriculum states every honest finding:**
+Factor 1 weighs against Lakeshore (meaningful re-identification risk, sensitive fields).
+Factor 2 is unknown, which does not favor low probability of compromise. Factor 3 — the
+pivotal factor, because it's the one factor an encryption confirmation could have resolved
+decisively in Lakeshore's favor — is genuinely unresolved, not merely unfavorable: Lakeshore
+cannot demonstrate the PHI was likely not acquired or viewed, because it cannot demonstrate the
+data was rendered unreadable in the first place. Factor 4 shows some real mitigation and one
+significant gap. Four factors, and not one of them clearly rebuts the presumption.
+
+164.402(2) does not ask whether Lakeshore *might* be able to show low probability of
+compromise eventually. It asks whether Lakeshore can demonstrate that today. **As of right now,
+it cannot.** That means this incident must be treated **as a reportable breach**, under
+164.402's presumption, **unless and until further investigation changes this picture** — which
+is explicitly not this module's job. `investigating-a-healthcare-data-incident` picks up
+exactly this open thread: if the systems administrator's investigation later confirms
+encryption was active, factor 3 flips, and the determination may reverse. Until that happens,
+the presumption stands, and Lakeshore has to act like it stands — not quietly wait for better
+facts while the 60-day clock keeps running regardless of where the analysis sits.
+
+## What follows from treating this as a breach, provisionally
+
+Nothing here waits for certainty to finish forming. 164.404(a)(2) started the clock the day the
+loss was reported, and 164.414(b) puts the burden of proving otherwise on Lakeshore, not on
+anyone else. Here's what a provisional breach determination maps onto right now:
+
+- **Individual notification (164.404).** All roughly 212 affected donors get notified, in plain
+  language, within 60 calendar days of discovery — not 60 days from today, 60 days from the day
+  the laptop was first reported missing. The notice needs all five content elements: what
+  happened and when, what types of PHI were involved (name, date of birth, eligibility
+  determination, deferral code — the fields actually in the extract), what the individual can
+  do to protect themselves, what Lakeshore is doing to investigate and mitigate, and contact
+  procedures. If module 5's investigation later rebuts the presumption, that doesn't un-send a
+  notification already required on the facts known when the clock was running — the honest
+  path is to notify now, on the current facts, and revise if warranted, not to wait on an
+  investigation with no fixed end date while a hard 60-day deadline keeps moving.
+- **Media notification (164.406) — not triggered.** The threshold is more than 500 residents of
+  a State or jurisdiction. This extract covers roughly 212 donors. Well under the line. No
+  media notification is owed here, and it would be a mistake to treat this provision as
+  engaged just because a breach presumption stands — the two questions (is it a breach, is it
+  big enough to trigger media notice) are genuinely separate, and this incident clears the
+  first bar without coming close to the second.
+- **HHS notification (164.408) — the under-500 pathway, not the 500-plus pathway.** 164.408(b)
+  requires breaches of 500 or more individuals to notify the Secretary *contemporaneously* with
+  individual notification. That's not this incident. 164.408(c) is the applicable track: for
+  breaches under 500 individuals, Lakeshore maintains a log or other documentation of the
+  breach and reports it to the Secretary not later than 60 days after the end of the calendar
+  year in which it was discovered — an annual batch filing, not an immediate one. Get this
+  distinction right before anyone reflexively files on the 500-plus timeline: filing
+  contemporaneously isn't wrong, exactly, but it's not what 164.408(c) requires, and conflating
+  the two tracks is its own kind of sloppy compliance.
+
+## The dual-reporting comparison — honestly, not forced
+
+`filing-a-biological-product-deviation-report` already taught 606.171's own reporting
+mechanics in full: a two-prong reportability test (a deviation that may affect a distributed
+product's safety, purity, or potency) and a 45-calendar-day clock, filed on Form FDA-3486 to
+CBER (the FDA's Center for Biologics Evaluation and Research). None of that gets re-derived
+here. What's worth putting side by side is the shape of the comparison itself:
+
+| | HIPAA Breach Notification Rule | 606.171 BPDR (Biological Product Deviation Report) |
+|---|---|---|
+| Triggering test | An impermissible use/disclosure/access/acquisition of PHI, not excluded, with the presumption of breach unrebutted by the four factors | A deviation that may affect the safety, purity, or potency of a *distributed* blood product |
+| Clock | 60 calendar days from discovery (164.404(b)) | 45 calendar days from discovery (606.171(c)) |
+| Owed to | HHS/OCR, plus affected individuals (and media/HHS-contemporaneous above 500) | FDA/CBER, on Form FDA-3486 |
+| What it protects | Confidentiality and privacy of PHI | Product safety, purity, and potency for a patient who may receive the product |
+
+The two clocks are genuinely different lengths, triggered by genuinely different tests, and
+owed to different regulators for different reasons. They can both apply to the same real-world
+event — but only when that event actually clears both tests independently. **This incident
+doesn't.** Per module 1's own locked fact, the ~212 donors in the extract are a clean
+population: no connection to any open deviation, CAPA (corrective and preventive action), or
+other quality event at Lakeshore. There is no distributed blood product whose safety, purity,
+or potency this laptop loss could plausibly affect — it's a privacy-and-security-scoped
+incident about a data extract, not a product-quality event about a unit of blood or plasma.
+Running 606.171(b)'s own two-prong test against these facts the same honest way module 4 ran
+164.402's four factors: there's no deviation here that touches a distributed product at all,
+so the test doesn't engage, and **this incident does not independently trigger a BPDR
+filing.**
+
+That's the real teaching moment, and it only lands if the lesson doesn't fudge it: a single
+incident *could* trigger both clocks at once — for example, if the same lost device had also
+carried data tied to a product already under recall, or if the deferral-coding data it held
+turned out to reflect an error that also misclassified a *distributed* unit's eligibility
+status, raising an independent safety/purity/potency question. Neither of those is true here.
+Forcing a BPDR onto an incident that doesn't meet 606.171(b)'s own test, just because this
+course is about "dual reporting," would be the opposite of what this curriculum has built its
+credibility on. The honest answer is simpler and more useful: know both tests well enough to
+run each one on its own facts, recognize when only one applies, and don't file something FDA
+never asked for just to look thorough.
+
+## What an inspector or reviewer would actually look for
+
+An OCR investigator reviewing this incident wouldn't start by asking whether Lakeshore
+concluded "breach" or "no breach." They'd ask to see the four-factor risk assessment itself —
+dated, reasoned, signed, showing the actual analysis, not just a conclusion. A weak answer
+sounds like "we didn't think it rose to the level of a breach" with nothing behind it. A
+credible answer produces this exact document: factor by factor, what was known, what wasn't,
+and why the presumption did or didn't get rebutted. 164.414(b) puts the burden of proof on
+Lakeshore — an investigator who asks "prove it wasn't a breach" and gets silence, or a shrug,
+has just found the citation. The device-management migration's own status log, showing
+"not reported" for this unit, needs to be part of that same record — it's the single piece of
+evidence that explains why factor 3 couldn't be resolved in Lakeshore's favor, and an
+investigator will want to see that Lakeshore *looked* for that evidence, not that it simply
+assumed the policy held.
+
+## Common traps
+
+**"We have a reasonable encryption policy, so this isn't a breach."** This is the trap module
+3 built directly into this module's foundation, and it's worth refuting explicitly one more
+time: a sound Addressable-specification policy decision under 164.306(d)(3) answers a Security
+Rule question. It does not, by itself, answer 164.402's question, which turns on what actually
+happened to *this device's* data, not on how reasonable the policy was in general. A policy
+can be perfect and a specific device's status can still be unconfirmed — and an unconfirmed
+status cannot rebut a presumption.
+
+**"We don't know for sure it's a breach, so we'll wait until we do before notifying anyone."**
+This is the trap 164.414(b)'s burden-of-proof standard exists to close. The rule doesn't give a
+covered entity a third option of "undetermined, pending further review, clock paused." It gives
+two: demonstrate the notifications were made, or demonstrate the event wasn't a breach at all.
+"We're still investigating" satisfies neither branch, and the 60-day clock in 164.404(b) keeps
+running regardless of how long the internal investigation takes. The honest posture, given a
+genuinely unresolved factor 3, is to treat this as a breach now, on the facts in hand, and
+revise only if a later investigation produces the confirmation that would actually change the
+answer — not to sit on the determination hoping for an answer that makes notification
+unnecessary.
+
+## What this means for your job
+
+- **Treat "the presumption wasn't rebutted" as its own clear answer, not a placeholder for
+  "we're still deciding."** Under 164.402(2), an unrebutted presumption *is* the determination:
+  breach, provisionally, until new facts change it. Don't let your team treat "unresolved" as a
+  reason to delay notification — the clock doesn't care that the analysis feels unfinished.
+- **Ask which specific factor is actually in question, not just "is this a breach."** This
+  incident's whole determination turns on one factor — whether the data was actually readable —
+  tied directly to one unresolved fact from a prior module. Knowing that lets you ask your QA
+  and your systems administrator the one question that would actually move the needle: can we
+  confirm encryption status, yes or no, and how fast can we know.
+- **Know which HHS track applies before anyone drafts a filing.** Under 500 individuals means
+  the annual-log pathway (164.408(c)), not the contemporaneous one (164.408(b)). Filing on the
+  wrong track isn't a compliance win for being "extra careful" — it signals the team doesn't
+  actually know which rule applies.
+- **Don't let "dual reporting" become "report everything to everyone."** A HIPAA breach and a
+  BPDR-reportable deviation are two separate tests on two separate sets of facts. Make your QA
+  show you that a distributed-product safety/purity/potency question actually exists before a
+  BPDR gets filed alongside a HIPAA notification — filing one because the other is happening is
+  itself a finding waiting to happen.
+- **Keep the provisional nature of this determination visible to everyone who needs to act on
+  it.** Counsel, compliance, and your CIO (Chief Information Officer) all need to hear the same
+  sentence: this is being treated as a breach on the facts known today, because the presumption
+  hasn't been rebutted — not that it's a closed, final determination.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your systems administrator says, "We can't confirm encryption either way, so let's call this a 50/50 and wait for more facts before deciding anything." Is that how 164.402 works?
+
+No. 164.402(2) doesn't set up a neutral default or a waiting period. It sets a **presumption of
+breach** that only goes away if Lakeshore affirmatively demonstrates low probability of
+compromise across the four factors. An unresolved factor — here, whether the data was actually
+readable — doesn't average out to "undecided." It fails to rebut the presumption, which means
+the presumption stands: treat this as a breach, provisionally, on the facts known now. Waiting
+indefinitely for more facts isn't a safe middle path; 164.414(b) puts the burden on Lakeshore to
+prove otherwise, and the 60-day notification clock in 164.404(b) keeps running the entire time
+the team waits.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Does this incident require filing a Biological Product Deviation Report (BPDR) under 606.171, since Lakeshore is already running a HIPAA breach analysis on it?
+
+No — and this is the honest answer, not a convenient one. 606.171(b)'s reportability test asks
+whether a deviation may affect the safety, purity, or potency of a *distributed* blood product.
+Per module 1's own locked fact, the ~212 donors in this extract are a clean population with no
+connection to any open deviation or quality event — there's no distributed product and no
+safety/purity/potency question anywhere in this incident's facts. Running HIPAA's breach test
+and 606.171's BPDR test are two separate analyses on two separate questions; this incident
+clears the first test's presumption-of-breach bar without coming anywhere near the second
+test's own trigger. Filing a BPDR here, just because the course is about dual reporting, would
+be reporting something FDA never asked for.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: If this breach presumption stands, which HHS notification track applies — the 500-or-more pathway or the under-500 pathway?
+
+The under-500 pathway, 164.408(c). The extract covers roughly 212 donors — well under the
+500-individual threshold that triggers 164.408(b)'s *contemporaneous* HHS notification (and
+164.406's media notification, which also isn't triggered here). Under 164.408(c), Lakeshore
+instead maintains a log or other documentation of the breach and reports it to the Secretary no
+later than 60 days after the end of the calendar year in which it was discovered — an annual
+batch filing, not an immediate one. Individual notification under 164.404 still runs on its own
+60-day-from-discovery clock regardless of which HHS track applies; the two clocks are
+independent of each other.
+:::
+
+## Where this goes next
+
+The determination this module reaches is deliberately provisional, and it's locked exactly as
+stated: as of right now, Lakeshore cannot demonstrate a low probability of compromise, so this
+incident is being treated as a reportable breach, with individual notification owed on the
+164.404 60-day clock and HHS notification owed on the 164.408(c) under-500 annual-log track —
+not because the facts are certain, but because an unrebutted presumption is itself the answer
+until new facts arrive. `investigating-a-healthcare-data-incident` is where those new facts get
+sought: scoping exactly what was on the device, resolving or honestly leaving open the
+encryption-status question module 3 raised and this module couldn't close, re-running this
+four-factor assessment if the facts change, and reaching this course's final, closing decision
+on an incident that has now touched every HIPAA subpart this curriculum built.
