@@ -81,7 +81,7 @@ curriculum's standing convention.
 |---|---|---|---|---|
 | — | (syllabus) | — | 55 | Published |
 | 1 | `alcoa-and-data-integrity` | Define data integrity the way FDA's own guidance does (ALCOA, verified, five letters), distinguish it from "ALCOA+" (industry/international term, used carefully), and apply both to a real Lakeshore electronic record. | 56/57 | Published |
-| 2 | `audit-trails-and-esignatures` | Review an audit trail the way an inspector would (who reviews it, how often, what a real review looks like versus a rubber stamp) and name the specific controls (11.50, 11.70, 11.100, 11.200, 11.300) an e-signature has to satisfy to stand in for a handwritten one. | 58/59 | Not started |
+| 2 | `audit-trails-and-esignatures` | Review an audit trail the way an inspector would (who reviews it, how often, what a real review looks like versus a rubber stamp) and name the specific controls (11.50, 11.70, 11.100, 11.200, 11.300) an e-signature has to satisfy to stand in for a handwritten one. | 58/59 | Published |
 | 3 | `predicate-rules-and-hybrid-systems` | Explain what a predicate rule is and how it decides whether a given record is a "Part 11 record" at all, and judge whether a system mixing paper and electronic records is handling that mix defensibly. | 60/61 | Not started |
 | 4 | `legacy-systems-and-part-11-gaps` | Apply FDA's own four-part legacy-system test to a system older than Part 11, and say what has to stay true for its enforcement-discretion status to hold. | 62/63 | Not started |
 | 5 | `retention-across-record-types` | Go beyond 606.160(d)'s product-record clock to the records that don't share its schedule, and say what "retain the record" requires for a dynamic electronic record versus a static printout. | 64/65 | Not started |
@@ -335,3 +335,19 @@ confirmed by grep with no duplicates, same discipline as every prior course).
   No `csv-and-becs` locked fact (VAL-1203, VIA-0842, DEV-1147, CAPA-1147-A, VRA-0219) referenced
   or altered.
   Next: build m2, `audit-trails-and-esignatures`.
+- **2026-10-09**: Module 2, `audit-trails-and-esignatures`, drafted (via subagent), audited, and
+  published (`courses/data-integrity-and-records/audit-trails-and-esignatures/index.qmd` and
+  `resources.qmd`, `order: 58`/`59`, ~4,830 words). Quotes (the audit-trail definition and HPLC
+  example, the who/how-often review questions, 11.50/11.70/11.100/11.200/11.300 in full, and the
+  e-signatures-can-replace-handwritten answer citing 11.2(a)) all verified verbatim against
+  `sources/fda-guidance/data-integrity-cgmp-qa-2018.md` and the five `sources/cfr/11.*.md` files.
+  Reconciles 11.10(e)'s enforcement-discretion status with a real predicate-rule review duty,
+  the same pattern `csv-and-becs` modules 5-6 taught for validation. All four `resources.qmd`
+  links curl-verified 200. **Scenario outcomes:** Lakeshore never explicitly decided an
+  audit-trail review frequency for BECS (an undecided gap, not a wrong default); DI-0301's
+  e-signature test of the BECS Quality sign-off found 11.100 (uniqueness) and 11.200
+  (two-component, two-person-collaboration) hold up cleanly, while 11.300(b) (periodic password
+  revision) is a real documented-but-unenforced gap. DED-0458's module-1 ALCOA findings were
+  referenced, not altered ("accurate" stays open). No `csv-and-becs` locked fact was referenced
+  or altered.
+  Next: build m3, `predicate-rules-and-hybrid-systems`.

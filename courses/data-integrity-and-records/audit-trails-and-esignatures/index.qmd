@@ -1,0 +1,441 @@
+---
+title: "Audit Trails and E-Signatures in Practice"
+order: 58
+---
+
+## DI-0301 continues: two threads, one system
+
+Your Quality Analyst (QA) is back with the next piece of **DI-0301**, her data-integrity
+self-assessment. Module 1 left her with an honest, mixed finding on **DED-0458** — the BECS
+(Blood Establishment Computer Software) donor-eligibility determination she used as her first test
+case. Two letters of ALCOA passed cleanly, one hid a trap, one passed with a nuance, and one —
+"accurate" — is still an open question. She hasn't closed any of that. She's opened two new ones.
+
+**Thread one.** She pulls BECS's own audit trail for DED-0458 — the underlying log of who touched
+that record and when. It exists. It's switched on. And she asks the question this module exists to
+teach: has anyone actually *reviewed* this audit trail, as part of reviewing the record itself — or
+has everyone simply confirmed BECS "has an audit trail," nodded, and moved on? She checks the
+obvious next question too: how often is this audit trail supposed to be reviewed? She can't find an
+answer. Not a wrong answer — no answer. Nobody ever decided.
+
+**Thread two**, separate system, same assessment. BECS requires a Quality sign-off before certain
+actions go through — the kind of approval step this curriculum has mentioned since `csv-and-becs`,
+always described loosely as "Quality approves it." Your QA has never looked at that sign-off
+through the lens of what makes an electronic signature *actually* count as a signature, legally.
+She wants to test it like an inspector would: is every signature genuinely tied to one person, used
+only by that person, and administered so that no single person could forge or misuse someone
+else's? No citations yet — just the question, stated plainly, the way she'll ask it of the systems
+administrator next.
+
+## Why this rule exists — and the ITSM bridge
+
+Here's the failure both threads are circling. An audit trail that exists but is never reviewed is
+functionally the same, from a patient-safety standpoint, as having no audit trail at all — the
+evidence of tampering or error sits right there, unread, until an inspector finds it first. An
+electronic signature that isn't genuinely tied to one accountable person is functionally the same
+as an unsigned record — it *claims* someone reviewed or approved it, and that claim can't be
+trusted. Both failures share a shape: the system *looks* like it has the control. Nobody has
+confirmed the control actually does anything.
+
+You already run the ITSM (IT service management) disciplines this needs, under different names.
+**IAM (identity and access management)** is knowing exactly who can do what in a system, tied to
+one accountable identity, never a shared login. **PAM (privileged access management)** is the
+tighter version you already apply to sensitive accounts: credentials that can't be shared, guessed,
+or reused, with a reviewable trail of who approved what and when — a change ticket's own approval
+log, which you already treat as evidence, not decoration. **MFA (multi-factor authentication)** is
+the closest everyday parallel to this module's other half: a password alone usually isn't enough
+for anything sensitive, so you require a second, independent factor. The regulation below asks for
+exactly that logic, applied to a signature instead of a login.
+
+Here's where the regulated world demands more. In ordinary IT governance, "the approval box got
+checked" is usually treated as sufficient proof an approval happened. For a CGMP (current good
+manufacturing practice) record, that's not enough. The signature itself has to be legally
+equivalent to ink on paper — provably tied to one specific person, at one specific time, meaning one
+specific thing (review, approval, authorship), in a way that survives being challenged in an
+inspection or in court. And the audit trail behind the record isn't an IT artifact nobody in Quality
+needs to look at — it's evidence a reviewer is expected to actually read, the way they'd notice a
+cross-out on a paper record.
+
+## The rule in plain English
+
+Three things are tangled into DI-0301's two threads, and this module pulls them apart one at a
+time.
+
+**First: an audit trail is a specific thing, not a vague synonym for "logging."** FDA (Food and
+Drug Administration) defines it precisely, in the same 2018 guidance module 1 used: a secure,
+computer-generated, time-stamped record that lets you reconstruct who created, changed, or deleted
+an electronic record, and when. A good audit trail doesn't just say "something changed." It captures
+enough — a user name, a timestamp, what the operation actually did — that you could rebuild the
+whole story of a record's history from it alone.
+
+**Second: reviewing that audit trail isn't a separate job handed off to someone outside Quality —
+it's part of the same person's job as reviewing the record itself.** FDA's own guidance (this is
+**guidance tier** — FDA's current thinking, "should" language) says the person responsible for
+reviewing a record under CGMP should review the audit trail behind it at the same time, the same
+way they'd notice a correction on a paper form. And how often? If a regulation already specifies a
+review frequency for the underlying data, use that same frequency for the audit trail. If it
+doesn't, use risk assessment — how critical is the data, how strong are the other controls around
+it, how much would an error or a cover-up actually affect product quality. "Nobody decided" is not a
+valid answer to either question, and that's exactly DI-0301's first finding here.
+
+**Third: an electronic signature doesn't automatically count as a real signature just because it
+exists in a database.** Part 11 (21 CFR Part 11, Electronic Records; Electronic Signatures) sets
+five specific controls — **11.50, 11.70, 11.100, 11.200, 11.300** — and all five are **regulation
+tier**: binding CFR (Code of Federal Regulations) text, not guidance. Together they require that a
+signature clearly show who signed, when, and what the signature means; that it's technically welded
+to its record so it can't be moved to a different one; that it's unique to one person and never
+recycled; that it takes at least two distinct components to execute, not one; and that the
+credentials behind it are managed so that no single person acting alone could misuse someone else's.
+Meet all five, and FDA's own guidance says the electronic signature can stand in for a handwritten
+one on any CGMP record. Miss one, and it can't — no matter how official the system looks.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| FDA 2018 Data Integrity Q&A, Section III.1.c | "Section three, question one, part c" | Guidance tier. Defines "audit trail," with the HPLC example and the cross-outs comparison. | What DED-0458's audit trail actually has to capture to count as one. |
+| FDA 2018 Data Integrity Q&A, Question 7 | "Question seven" | Guidance tier. Names who should review an audit trail — the same person reviewing the record. | Tests whether anyone at Lakeshore has actually been doing this. |
+| FDA 2018 Data Integrity Q&A, Question 8 | "Question eight" | Guidance tier. Sets how often — the data's own CGMP frequency if one exists, risk assessment if not. | Exposes that Lakeshore never decided BECS's audit-trail review cadence. |
+| 21 CFR 11.10(e) (named, not re-quoted in full here) | "Eleven point ten, paragraph e" | Regulation. Requires a secure, computer-generated, time-stamped audit trail as a system control. | On the 2003 guidance's own enforcement-discretion list for Part 11 itself — reconciled below against the predicate rule. |
+| 21 CFR 11.50 | "Eleven point fifty" | Regulation. A signed record must show the signer's printed name, date/time, and the signature's meaning. | What has to appear on screen or in print for the BECS Quality sign-off to count. |
+| 21 CFR 11.70 | "Eleven point seventy" | Regulation. A signature must be linked to its record so it can't be moved to falsify a different one. | Rules out a signature that's just a separate log entry pointing at a record by ID. |
+| 21 CFR 11.100 | "Eleven point one hundred" | Regulation. Each signature unique to one person, identity verified first, organization certifies to FDA it's binding. | Tests whether BECS logins used for sign-off are ever shared or reassigned. |
+| 21 CFR 11.200 | "Eleven point two hundred" | Regulation. Non-biometric signatures need two distinct components; misuse requires two people colluding. | The direct test DI-0301 runs against Lakeshore's current e-signature setup. |
+| 21 CFR 11.300 | "Eleven point three hundred" | Regulation. Controls for ID codes/passwords: uniqueness, periodic revision, loss management, transaction safeguards, device testing. | Where DI-0301 finds its e-signature gap. |
+| FDA 2018 Data Integrity Q&A, Question 11, citing 21 CFR 11.2(a) | "Question eleven, citing eleven point two, paragraph a" | Guidance tier (the Q&A) naming a regulation-tier mechanism (11.2(a)). Confirms e-signatures with appropriate controls can replace handwritten ones. | What "appropriate controls" actually means: all five sections above, not a checkbox. |
+
+## The actual text
+
+Start with FDA's own definition of an audit trail, quoted verbatim from
+`sources/fda-guidance/data-integrity-cgmp-qa-2018.md` (Section III, Question 1c):
+
+> For purposes of this guidance, audit trail means a secure, computer-generated, time-stamped
+> electronic record that allows for reconstruction of the course of events relating to the
+> creation, modification, or deletion of an electronic record.
+
+The same answer gives a concrete illustration of what a good one actually captures:
+
+> For example, the audit trail for a high performance liquid chromatography (HPLC) run should
+> include the user name, date/time of the run, the integration parameters used, and details of a
+> reprocessing, if any. Documentation should include change justification for the reprocessing.
+
+HPLC (high performance liquid chromatography) is a lab technique Lakeshore doesn't run, but the
+pattern transfers directly: a good audit trail for DED-0458 would show which BECS login touched the
+record, exactly when, and — if anything about the eligibility determination was ever reprocessed or
+corrected — what changed and why, with a justification attached. Not just "a change happened."
+
+Now the reviewer question, Question 7, quoted in full — and this is the line that does the real
+work in this module:
+
+> Audit trail review is similar to assessing cross-outs on paper when reviewing data. Personnel
+> responsible for record review under CGMP should review the audit trails that capture changes to
+> data associated with the record as they review the rest of the record.
+
+Read that twice. It doesn't say "have IT review the audit trail separately." It says the *same*
+person who reviews the record — the reviewer who'd already be checking DED-0458's content — should
+be checking its audit trail too, at the same time, the way they'd notice a correction scratched out
+on a paper form. Audit-trail review isn't a parallel IT task. It's folded into the record review
+that was already supposed to be happening.
+
+And the frequency question, Question 8, quoted in full:
+
+> If the review frequency for the data is specified in CGMP regulations, adhere to that frequency
+> for the audit trail review... In these cases, you would apply the same review frequency for the
+> audit trail.
+>
+> If the review frequency for the data is not specified in CGMP regulations, you should determine
+> the review frequency for the audit trail using knowledge of your processes and risk assessment
+> tools. The risk assessment should include evaluation of data criticality, control mechanisms, and
+> impact on product quality.
+
+Apply that directly to DI-0301's finding: Lakeshore never explicitly decided how often BECS's audit
+trail gets reviewed. That's not automatically a violation — it's a gap in the decision itself. Maybe
+a CGMP regulation already sets a review frequency for donor-eligibility records that should simply
+carry over. Maybe none does, and a documented risk assessment needs to set one. Either path is fine.
+What isn't fine is what actually happened: nobody asked the question, so the review frequency
+defaulted to "whenever someone happens to look" — which is not a frequency at all.
+
+### Reconciling 11.10(e) with this module's own depth
+
+Here's a nuance worth getting exactly right, because `csv-and-becs` already planted half of it.
+FDA's 2003 Part 11 guidance (*Scope and Application*) puts audit trails — 21 CFR 11.10(e) — on its
+own enforcement-discretion list: FDA doesn't intend to specifically enforce Part 11's own
+audit-trail clause. `csv-and-becs` named that and stopped there. It doesn't follow that nobody has
+to review BECS's audit trail. The predicate rule — the CGMP regulation that already requires
+Lakeshore's own records to be reviewed, the same kind of rule `csv-and-becs` modules 5 and 6 already
+showed carrying the real weight behind BECS's validation requirement instead of 11.10(a) itself — is
+what actually reaches the audit trail here too. FDA's 2018 guidance's Questions 7 and 8, above, are
+that predicate-rule obligation made concrete: the record-review requirement that already applies to
+DED-0458 is what requires someone to review its audit trail, whether or not Part 11's own clause
+gets specifically enforced. Both facts are true at once — enforcement discretion on 11.10(e)
+itself, and a real, binding review duty carried by the predicate rule underneath it. Full
+predicate-rule doctrine — what decides which regulation reaches a given record at all — is
+`predicate-rules-and-hybrid-systems`'s subject, next module. Here, just notice the pattern
+repeating.
+
+### The e-signature components, one at a time
+
+Now the second thread. Quoted verbatim from `sources/cfr/11.50.md`:
+
+> (a) Signed electronic records shall contain information associated with the signing that clearly
+> indicates all of the following:
+>
+> (1) The printed name of the signer;
+>
+> (2) The date and time when the signature was executed; and
+>
+> (3) The meaning (such as review, approval, responsibility, or authorship) associated with the
+> signature.
+>
+> (b) The items identified in paragraphs (a)(1), (a)(2), and (a)(3) of this section shall be
+> subject to the same controls as for electronic records and shall be included as part of any human
+> readable form of the electronic record (such as electronic display or printout).
+
+In practice: if a Quality reviewer pulls up DED-0458's approval on screen, or prints it, those three
+facts — who, when, what the signature means — have to actually be visible there, not sitting in a
+database column only a systems administrator could query. If an inspector can't see the signer's
+name, the timestamp, and whether the signature means "I reviewed this" or "I approved this" just by
+looking at the record, 11.50 isn't satisfied, no matter what the underlying data contains.
+
+Next, `sources/cfr/11.70.md`, quoted in full:
+
+> Electronic signatures and handwritten signatures executed to electronic records shall be linked to
+> their respective electronic records to ensure that the signatures cannot be excised, copied, or
+> otherwise transferred to falsify an electronic record by ordinary means.
+
+This rules out a tempting shortcut: a signature that's really just a separate log entry saying
+"User X approved record #458" — technically true, but with nothing stopping that same logged entry
+from being pointed at record #459 instead, later, by anyone with access to the log. 11.70 requires
+the link itself to be tamper-resistant, not just the signature's existence. A signature sitting in
+its own table, referencing a record only by ID number with no technical barrier to re-pointing it,
+fails this test even if every individual signature was genuine when made.
+
+Now `sources/cfr/11.100.md`, the general requirements, quoted in full:
+
+> (a) Each electronic signature shall be unique to one individual and shall not be reused by, or
+> reassigned to, anyone else.
+>
+> (b) Before an organization establishes, assigns, certifies, or otherwise sanctions an individual's
+> electronic signature, or any element of such electronic signature, the organization shall verify
+> the identity of the individual.
+>
+> (c) Persons using electronic signatures shall, prior to or at the time of such use, certify to the
+> agency that the electronic signatures in their system, used on or after August 20, 1997, are
+> intended to be the legally binding equivalent of traditional handwritten signatures.
+
+Three separate obligations: a signature can never be handed down to a replacement employee the way
+a role-based login sometimes is; identity has to be verified *before* a signature is ever assigned,
+not assumed; and the organization itself has to go on record with FDA, in writing, with an actual
+handwritten signature, that its electronic signatures are meant to carry the same legal weight as
+ink. That third piece is an organizational commitment, made once, not a per-record check — but it's
+what makes every signature under it mean something legally in the first place.
+
+Now `sources/cfr/11.200.md`, components and controls, quoted in full:
+
+> (a) Electronic signatures that are not based upon biometrics shall:
+>
+> (1) Employ at least two distinct identification components such as an identification code and
+> password.
+>
+> (i) When an individual executes a series of signings during a single, continuous period of
+> controlled system access, the first signing shall be executed using all electronic signature
+> components; subsequent signings shall be executed using at least one electronic signature
+> component that is only executable by, and designed to be used only by, the individual.
+>
+> (ii) When an individual executes one or more signings not performed during a single, continuous
+> period of controlled system access, each signing shall be executed using all of the electronic
+> signature components.
+>
+> (2) Be used only by their genuine owners; and
+>
+> (3) Be administered and executed to ensure that attempted use of an individual's electronic
+> signature by anyone other than its genuine owner requires collaboration of two or more
+> individuals.
+
+This is the MFA (multi-factor authentication) logic made regulatory: two distinct components for a
+non-biometric signature — typically an ID code plus a password — with the first signing in a
+session requiring both, and later signings in that same unbroken session allowed to use just the
+one component that's uniquely tied to that person. And (a)(3) is the sharpest line in this whole
+module: misuse of someone's signature has to require *two or more people acting together*. If one
+person, acting entirely alone, could forge or misuse a colleague's signature, 11.200 isn't met —
+full stop, regardless of how many components exist on paper.
+
+Last, `sources/cfr/11.300.md`, controls for ID codes and passwords, quoted in full:
+
+> Persons who use electronic signatures based upon use of identification codes in combination with
+> passwords shall employ controls to ensure their security and integrity. Such controls shall
+> include:
+>
+> (a) Maintaining the uniqueness of each combined identification code and password, such that no two
+> individuals have the same combination of identification code and password.
+>
+> (b) Ensuring that identification code and password issuances are periodically checked, recalled,
+> or revised (e.g., to cover such events as password aging).
+>
+> (c) Following loss management procedures to electronically deauthorize lost, stolen, missing, or
+> otherwise potentially compromised tokens, cards, and other devices that bear or generate
+> identification code or password information, and to issue temporary or permanent replacements
+> using suitable, rigorous controls.
+>
+> (d) Use of transaction safeguards to prevent unauthorized use of passwords and/or identification
+> codes, and to detect and report in an immediate and urgent manner any attempts at their
+> unauthorized use to the system security unit, and, as appropriate, to organizational management.
+>
+> (e) Initial and periodic testing of devices, such as tokens or cards, that bear or generate
+> identification code or password information to ensure that they function properly and have not
+> been altered in an unauthorized manner.
+
+Five separate controls, and five separate things an inspector could ask to see evidence of:
+uniqueness, periodic revision (password aging named explicitly), a documented loss-management
+procedure, active monitoring for unauthorized attempts, and periodic testing of any physical token.
+A written policy that mentions password aging isn't the same as proof the aging actually happens —
+and that gap is exactly where DI-0301's e-signature thread lands.
+
+### Running the test against Lakeshore's BECS sign-off
+
+Your QA walks the current setup through 11.100, 11.200, and 11.300 as a real test, not a formality.
+
+**11.200's two-component requirement — holds up.** Every BECS approval genuinely requires an ID
+code plus a password to execute the first signing in a session, exactly as (a)(1) requires. This is
+a clean pass, and it's worth naming as one: not every finding in a self-assessment has to be a gap.
+
+**11.100's uniqueness requirement — holds up, so far as she can verify.** Each signature traces to
+one individual login, never shared, never reassigned when someone leaves — the identity-management
+discipline this curriculum has already pressed on elsewhere, here applied to signatures
+specifically.
+
+**11.300(b)'s periodic revision — this is the gap.** Lakeshore's written password policy says
+passwords must be changed on a set schedule. When your QA asks the systems administrator for
+evidence this actually happens — a log of forced password changes, a configuration enforcing the
+interval — he can't produce one. The policy was written. It was never technically enforced. Nobody
+circled back to confirm the system was doing what the document said it would. That's a real,
+documented-but-not-implemented gap: the kind an inspector finds fastest, by asking for evidence, not
+a policy.
+
+One holds up cleanly. One doesn't, despite being written down correctly. That's an honest finding,
+not an overclaimed violation and not a false "it's fine."
+
+Last, the question FDA's own 2018 guidance answers directly — Question 11, quoted verbatim:
+
+> Yes, electronic signatures with the appropriate controls can be used instead of handwritten
+> signatures or initials in any CGMP required record.
+
+And its cited mechanism, from the same answer:
+
+> ...an electronic signature with the appropriate controls to securely link the signature with the
+> associated record fulfills this requirement (21 CFR 11.2(a)).
+
+"Appropriate controls" isn't a vague phrase. It means satisfying 11.50, 11.70, 11.100, 11.200, and
+11.300 — not clicking an "I agree" button or typing a name into a text field. DED-0458's BECS
+sign-off can only stand in for a handwritten signature to the extent it actually clears all five.
+Right now, by DI-0301's own test, it clears four and has one documented gap.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB (Association for the Advancement of Blood & Biotherapies) assessor
+wouldn't ask whether Lakeshore has an audit-trail policy or an e-signature policy. They'd ask for
+specific evidence, record in hand.
+
+**For audit-trail review:** evidence the person reviewing DED-0458 also looked at its audit trail —
+a review checklist that names it, a signed-off note referencing a specific change — not a general
+statement that "BECS has an audit trail." A bad answer sounds like "the system logs everything
+automatically." A good answer names a specific reviewer and a specific date the audit trail was
+actually read.
+
+**For review frequency:** a documented decision — either "this follows the same frequency as
+§211.188(b)'s review" or "this was risk-assessed, and here's the assessment" — not silence. "We've
+just always looked at it when something seemed off" is the answer DI-0301 is flagging, and it's the
+one an inspector would flag too.
+
+**For the e-signature setup:** a demonstration, not a description. Can the system show a signed
+record with the signer's name, timestamp, and meaning on screen (11.50)? Can someone explain why a
+signature can't be re-pointed at a different record (11.70)? Can the systems administrator produce
+actual evidence — not a policy document — that passwords are periodically revised (11.300(b))? A bad
+answer sounds like "our policy requires password changes every 90 days." A good answer produces the
+log showing it happened.
+
+## Common traps
+
+**"Part 11's audit-trail requirement is on FDA's enforcement-discretion list, so nobody actually
+has to review BECS's audit trail."** This is the trap this module exists to refute. FDA's 2003 Part
+11 guidance does put 11.10(e) on its enforcement-discretion list — FDA doesn't intend to bring an
+enforcement action specifically over Part 11's own audit-trail clause. But the predicate rule — the
+CGMP record-review requirement that already reaches DED-0458 — carries the actual obligation to
+review the audit trail behind that record. FDA's 2018 guidance's Questions 7 and 8, above, are that
+obligation made concrete. Enforcement discretion on one clause doesn't erase a review duty sitting
+underneath it on a different, binding rule.
+
+**"We have an e-signature system, so our signatures are legally equivalent to handwritten ones."**
+Not automatically. FDA's 2018 guidance says yes, an electronic signature *can* replace a handwritten
+one — but only "with the appropriate controls," and that phrase has five specific regulatory
+addresses: 11.50, 11.70, 11.100, 11.200, 11.300. Lakeshore's BECS sign-off meets four of them
+cleanly and has a real, documented gap in the fifth. "We have e-signatures" and "our e-signatures
+satisfy Part 11's controls" are different claims, and only the second is what an inspector actually
+asks about.
+
+## What this means for your job
+
+- **Ask your QA who reviewed BECS's audit trail for DED-0458, and when.** "BECS logs everything" is
+  not an answer. A name and a date are.
+- **Ask whether Lakeshore ever explicitly decided an audit-trail review frequency for BECS — and if
+  the honest answer is no, treat that as the finding, not a crisis.** It's fixable with either a
+  matched CGMP frequency or a documented risk assessment, not an automatic violation.
+- **When someone tells you "Quality signs off on that in BECS," ask what makes that signature count
+  as a signature** — can you see the signer's name, timestamp, and meaning on screen? Is it
+  technically impossible to point that signature at a different record later?
+- **Treat a written password-aging policy with no enforcement evidence as exactly the gap it is** —
+  not a minor lapse. 11.300(b) asks for revision that actually happens, and "it's in the policy"
+  isn't proof it does.
+- **When a vendor says "our system is Part 11 compliant for e-signatures," ask which of the five
+  sections they mean** — 11.50, 11.70, 11.100, 11.200, or 11.300. A vague claim covering all five at
+  once is usually covering none of them in enough depth to survive a real question.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Since FDA's 2003 Part 11 guidance puts audit trails on its enforcement-discretion list, does that mean nobody actually has to review BECS's audit trail?
+
+No. FDA's 2003 guidance does say it doesn't intend to specifically enforce Part 11's own
+audit-trail clause, 11.10(e). But the predicate rule — the underlying CGMP record-review
+requirement that already reaches a record like DED-0458 — is what actually carries the obligation
+to review the audit trail supporting it. FDA's 2018 guidance makes that obligation concrete:
+personnel responsible for reviewing a record under CGMP should review its audit trail as they
+review the rest of the record, at a frequency either matched to the data's own CGMP review
+frequency or set by risk assessment. This is exactly the pattern `csv-and-becs` already taught for
+validation: FDA's enforcement discretion applies to Part 11's own clause specifically, not to the
+underlying predicate-rule duty, which still fully applies.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: DI-0301 finds that Lakeshore's written policy requires periodic password revision for BECS sign-off accounts, but nobody can produce evidence it actually happens. Is a written policy enough to satisfy 11.300(b)?
+
+No — and this is worth stating plainly, because it's **not a regulatory requirement met by
+documentation alone**. 21 CFR 11.300(b) requires that identification code and password issuances
+actually be "periodically checked, recalled, or revised," with password aging named as the example.
+A policy document saying this should happen is not evidence that it does. DI-0301's finding here —
+the policy exists, the enforcement doesn't — is a real, specific gap under 11.300(b), not a
+technicality, and it's exactly the kind of "documented but not implemented" finding a self-assessment
+is supposed to surface before an inspector does.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Could one person at Lakeshore, acting entirely alone, forge or misuse a colleague's BECS e-signature?
+
+By 21 CFR 11.200(a)(3)'s own standard, they shouldn't be able to — that section requires electronic
+signatures to be "administered and executed to ensure that attempted use of an individual's
+electronic signature by anyone other than its genuine owner requires collaboration of two or more
+individuals." DI-0301's test of Lakeshore's current setup found this control genuinely holds: BECS's
+two-component requirement (11.200(a)(1)) and its per-individual access controls mean misuse would
+require more than one person's cooperation. This is one of the places this module's scenario found
+a clean pass, not a gap — worth noticing precisely because not every finding needs to be a problem.
+:::
+
+## Where this goes next
+
+DI-0301's second module closes with two honest findings: an audit-trail review frequency that was
+never actually decided, and an e-signature setup that passes its two-component and misuse-resistance
+tests cleanly but has a real, documented-but-unenforced gap in password revision. Next,
+`predicate-rules-and-hybrid-systems` finally gives full depth to the term this module used once and
+pointed past — **predicate rule**, the underlying regulation a Part 11 control protects — and asks
+a harder question still open from module 1: when Lakeshore keeps both a paper and an electronic
+version of a record, which one is actually the record of record?
