@@ -1,0 +1,31 @@
+---
+title: "Resources"
+order: 107
+---
+
+This module cites no AICPA text — SOC 2's structure (Type I/Type II, the five Trust Services
+Criteria, CUECs, bridge letters) is named and described only, the same handling this curriculum
+gives every paid, proprietary framework (ISO 31000, ISO 19011, GAMP 5). The links below are
+AICPA's own public overview pages about the SOC 2 suite, plus the internal-course link back to
+module 1. All were checked with `curl` and returned a live page at the time this page was written;
+AICPA's site is a JavaScript-rendered application, so these links are verified as reachable, live
+AICPA pages about SOC 2 — not as a source of quotable text, which this curriculum has never
+fetched or read.
+
+- **[AICPA & CIMA: SOC 2](https://www.aicpa-cima.com/resources/landing/soc-2)** — AICPA's own
+  public landing page for the SOC 2 service. Use it as the starting point for understanding what
+  SOC 2 is and who produces it (an accounting profession, not a healthcare or blood-industry
+  regulator) — not as a source for exact Trust Services Criteria wording, which sits behind the
+  paid guidance this curriculum has never purchased.
+
+- **[AICPA & CIMA: SOC for Service Organizations](https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2-greater-than-soc-for-service-organizations)**
+  — AICPA's own topic page situating SOC 2 inside the broader SOC (System and Organization
+  Controls) family of reports. Useful for seeing, from the source body itself, that SOC 2 is one
+  report type among several AICPA offers, each scoped to a different audience and purpose.
+
+- **[Supplier Qualification and Risk Tiering](../supplier-qualification-and-risk-tiering/index.qmd)**
+  — module 1 of this course, where the device-management platform vendor was locked into the
+  High tier this module's whole exercise assumes, using the four-question scheme (data touch,
+  system criticality, access level, blast radius) this module builds directly on. Read it first
+  if you haven't, or re-read it to recall exactly why this vendor earned the scrutiny a SOC 2
+  report review represents.
