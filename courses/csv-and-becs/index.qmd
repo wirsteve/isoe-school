@@ -1,0 +1,113 @@
+---
+title: "Computerized System Validation & BECS"
+order: 40
+---
+
+## The finish line
+
+By the end of this course you can pick up a validation package for BECS (Blood Establishment
+Computer Software) or a system that touches it, and judge whether it would hold up. That means
+the requirements (URS and FRS: user and functional requirements specifications), the
+installation, operational, and performance qualification evidence (IQ, OQ, PQ), and the
+traceability matrix that ties them together. You'll also be able to say where BECS sits under
+FDA's medical-device quality system rules. Spoiler: those device rules bind your vendor, not
+you (unless you start building BECS software yourself), and knowing why changes what you ask
+that vendor for.
+
+You've already been told twice that this course was coming. In
+[BECS in the pipeline](../blood-center-operations/becs-in-the-pipeline/index.qmd) you learned
+*why* a routine OS patch on the BECS server needed a validation impact assessment. In
+[Reviewing a validation package](../directing-the-quality-analyst/reviewing-validation-packages/index.qmd)
+you reviewed that assessment, VIA-0842, for its decision trail. One question was left open on
+purpose: were twelve targeted tests actually enough? This course gives you the method to answer
+it, and then answers it.
+
+## Before you start
+
+This course assumes the three foundations and the first course:
+
+- [Reading a CFR citation](../../foundations/reading-a-cfr-citation/index.qmd)
+- [Regulatory landscape orientation](../../foundations/regulatory-landscape-orientation/index.qmd)
+  — you'll need it constantly here. This course mixes FDA regulation, FDA guidance, an
+  international standard (ISO 13485), and industry practice (GAMP 5, IQ/OQ/PQ), and mixing
+  them up is the most common mistake in validation documents.
+- [Risk and controls vocabulary](../../foundations/risk-and-controls-vocabulary/index.qmd)
+  — validation effort scales with risk. Likelihood, severity, and detectability do real work
+  in modules 1 and 6.
+- [Blood Center Operations](../blood-center-operations/index.qmd), especially
+  [BECS in the pipeline](../blood-center-operations/becs-in-the-pipeline/index.qmd). Its
+  definition of BECS (the system behind eligibility, release, labeling, and disposition) is
+  the one this course uses.
+
+Strongly recommended, because this course picks up their open threads:
+
+- [Change control for regulated systems](../quality-system-essentials/change-control-for-regulated-systems/index.qmd)
+  from [Quality System Essentials](../quality-system-essentials/index.qmd). Module 6 assumes
+  you know the change-control stages and doesn't re-teach them.
+- [Reviewing a validation package: the decision trail](../directing-the-quality-analyst/reviewing-validation-packages/index.qmd)
+  from [Directing the Quality Analyst](../directing-the-quality-analyst/index.qmd). Its
+  cold-read test is the first half of every review in this course. This course adds the
+  second half.
+
+## The seven modules
+
+Each module is one sitting, and each has its own finish line.
+
+1. **How much validation, and why: GAMP 5 and the V-model.** Sort any BECS component into
+   its GAMP 5 software category, walk the V-model from requirements to the tests that answer
+   them, and explain why a risk assessment, not the category, sets how hard you test.
+2. **IQ, OQ, PQ, and the traceability matrix.** Read an executed validation package and judge
+   whether every high-risk requirement was tested in a way that could fail, under the
+   conditions it will really run in, with every failure explained. Then say whether the
+   package is defensible.
+3. **BECS as a regulated device.** Explain what makes BECS a medical device under FDA rules,
+   what a 510(k) clearance does and doesn't tell you about the version you run, and what FDA's
+   BECS validation guidance expects your own validation to add, at every site.
+4. **The vendor's quality system: QMSR and ISO 13485.** Say which quality rules bind the BECS
+   manufacturer and which bind Lakeshore, what device-grade evidence you can ask the vendor
+   for, and when building your own software could make *you* the manufacturer.
+5. **Part 11 for validated systems.** Name the electronic-records controls a BECS validation
+   has to prove the system enforces, explain where FDA actually focuses enforcement of
+   validation, and decide whether a vendor-supported BECS is still a "closed system."
+6. **Staying validated: changes, patches, and periodic review.** Run any change, including an
+   OS patch, through regression analysis and right-sized regression testing, design a
+   periodic review that catches drift, and finally answer whether VIA-0842's twelve tests
+   were enough.
+7. **Interfaces and data across systems.** Follow data across every BECS boundary
+   (instrument results in, labels out, reference tables in, shipment data out to hospitals,
+   legacy data converted) and judge whether the interface validation and monitoring prove
+   each record lands complete, correct, on time, and on the right donor or unit.
+
+## What this course finally delivers
+
+Two earlier modules stopped at a line on purpose, and said so.
+
+`BECS in the pipeline` explained why BECS changes need a validation impact assessment and
+Quality's blocking sign-off. It named GAMP 5, IQ/OQ/PQ, and FDA's BECS validation guidance but
+didn't teach any of them. Modules 1 through 3 do.
+
+`Reviewing a validation package` taught you to check the decision trail: scope, criteria set
+before testing, failures recorded, approvals before deployment. It told you to route "was the
+testing *enough*?" to Quality's validation lead, because you didn't yet have the method to
+judge it yourself. Modules 2 and 6 give you that method. Module 6 applies it to VIA-0842, and
+module 7 closes the interface testing VIA-0842 left as "to follow."
+
+You still won't be the validation engineer. You'll be the system owner who can tell a
+package that proves something from one that only looks finished, and who can say exactly what
+is missing.
+
+## A note on sources
+
+This course leans on more kinds of source than any before it, so keep the labels straight:
+
+- **FDA regulation** (binding): the CFR sections behind BECS validation and device
+  classification, quoted from local copies.
+- **FDA guidance** (FDA's current thinking, "should" language): chiefly *Blood Establishment
+  Computer System Validation in the User's Facility* (CBER, April 2013), quoted from a local
+  copy.
+- **International standard**: ISO 13485, which FDA's device quality rule incorporates by
+  reference. It's copyrighted, so it's named and described here, never quoted.
+- **Industry practice**: GAMP 5 (ISPE) and the IQ/OQ/PQ vocabulary. Widely used and
+  defensible, but not law. Also copyrighted, so it's described in this course's own words.
+
+Modules appear in the sidebar as they're built.
