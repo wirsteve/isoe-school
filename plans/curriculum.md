@@ -269,17 +269,18 @@ has no `plans/<slug>.md` file until its first session.
 | `quality-system-essentials` | 7 / 7 | Done |
 | `directing-the-quality-analyst` | 6 / 6 | Done |
 | `csv-and-becs` | 7 / 7 | Done |
-| `data-integrity-and-records` | 1 / 6 | In progress |
+| `data-integrity-and-records` | 2 / 6 | In progress |
 | `fda-and-aabb-in-practice` | 0 / 6 | Not started |
 | `grc-frameworks-and-risk-management` | 0 / 5 | Not started |
 | `healthcare-security-and-privacy` | 0 / 5 | Not started |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `data-integrity-and-records` module 2, `audit-trails-and-esignatures` (Track 3).
-Module 1 (`alcoa-and-data-integrity`) is published — see `plans/data-integrity-and-records.md`'s
-progress log for the locked scenario facts (DI-0301's self-assessment, the DED-0458 record and
-its ALCOA findings) that module 2 builds on.
+**Next up:** `data-integrity-and-records` module 3, `predicate-rules-and-hybrid-systems` (Track
+3). Modules 1-2 (`alcoa-and-data-integrity`, `audit-trails-and-esignatures`) are published — see
+`plans/data-integrity-and-records.md`'s progress log for the locked scenario facts (DI-0301's
+self-assessment, the DED-0458 record's ALCOA findings, the audit-trail and e-signature findings)
+that module 3 builds on.
 `csv-and-becs` is fully built and published (7/7 modules) — see `plans/csv-and-becs.md` for the
 complete course, including module 6's VIA-0842 verdict and module 7's closing of its last two
 open interface items. Once `data-integrity-and-records` and

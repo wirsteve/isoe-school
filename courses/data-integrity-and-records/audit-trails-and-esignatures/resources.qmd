@@ -1,0 +1,24 @@
+---
+title: "Resources"
+order: 59
+---
+
+Four places to go deeper than this lesson, or to check a citation yourself before it goes in a
+real Lakeshore document. All four were checked and loading at the time this page was written.
+
+- **[FDA guidance page: Data Integrity and Compliance With Drug CGMP — Questions and Answers](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/data-integrity-and-compliance-drug-cgmp-questions-and-answers)**
+  — the same December 2018 guidance module 1 used, reused here for Questions 7, 8, and 11. Worth
+  rereading Questions 1.c through 1.f in full alongside this lesson's audit-trail material.
+
+- **[21 CFR 11.100, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.100)**
+  — the general requirements for electronic signatures: uniqueness, identity verification, and the
+  certification-to-FDA requirement. Check this page directly before citing any of the three in a
+  real document.
+
+- **[21 CFR 11.200, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.200)**
+  — the two-distinct-components and two-person-collaboration controls this module's e-signature
+  test actually turns on. The page most worth bookmarking from this lesson.
+
+- **[21 CFR 11.70, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.70)**
+  — the signature/record linking requirement, short enough to reread in full in under a minute, and
+  easy to misquote from memory if you don't check it here first.
