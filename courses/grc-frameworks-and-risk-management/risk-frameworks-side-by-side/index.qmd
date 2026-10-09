@@ -1,0 +1,355 @@
+---
+title: "Risk Management Frameworks Side by Side"
+order: 82
+---
+
+## Three risk conversations, one new system
+
+The eQMS (electronic quality-management system) project has a name, a budget line, and — as of
+this week's planning meeting — a go-live target. It's the system Lakeshore has needed for a
+while: one place to hold CAPA (corrective and preventive action) records, document control, and
+internal-audit logs across all three sites, replacing a patchwork of spreadsheets, a BECS-adjacent
+tool nobody loves, and — at Fairview specifically — a fair amount of paper that `fda-and-aabb-in-
+practice` already put on the record. You're not here to fix Fairview's paper problem today; the
+eQMS is simply the reason it keeps coming up.
+
+Your Quality Analyst opens with a risk question, and she opens it well: "Before we migrate CAPA
+records into this thing, I want to run a proper risk assessment on the cutover — what could go
+wrong, how bad, how we'd catch it." She's already reaching for Risk Identification, Risk Analysis,
+likelihood and severity and detectability scores — the ICH Q9(R1) vocabulary `quality-risk-
+management` built into her. It's rigorous, it's documented, and it's going to produce exactly the
+kind of artifact an assessor would want to see.
+
+Your systems administrator has a risk question too, about the same system: who gets administrative
+access to the new eQMS, how that access is provisioned and reviewed, what happens if the migration
+window gets interrupted partway through. He's not wrong to worry about any of it. But watch how he
+says it: "I'll just make sure the usual people have the usual access, and we'll keep an eye on it
+after launch." No named process, no written threshold, no document that will exist six months from
+now when someone asks why access was granted the way it was. It's a real risk judgment — he's been
+doing this job long enough to make good calls — it just never gets built into anything.
+
+Two competent people, one new system, two completely different risk conversations, and no shared
+place where either conversation shows up next to the other. That gap is this module's whole
+subject. The eQMS is the first system at Lakeshore that genuinely needs both: real quality risk
+thinking, because its records feed AABB and FDA-facing decisions, and real security/operational
+risk thinking, because it's new infrastructure spanning three sites with nothing today playing the
+IT-security-flavored role your QA's ICH Q9 work already plays for quality. You're about to go
+looking for a third framework — not to replace what your QA already runs well, but to give the
+eQMS one framework that runs start to finish, instead of two that never talk to each other.
+
+No citations yet. Just a planning meeting, two risk conversations running in parallel, and the
+honest realization that "we've always handled this informally" was fine when the stakes were
+smaller than a three-site system of record.
+
+## Why this matters — and the ITSM bridge
+
+Here's the failure this module is actually about preventing, and it's not "the eQMS gets hacked"
+or "the eQMS loses a CAPA record" in isolation — plenty of individual controls can prevent either
+of those. The failure is subtler and more corrosive: **a system goes live with risk reasoning that
+exists, is probably even correct, and is scattered across people's heads and a handful of
+disconnected documents in two different vocabularies** — so that six months later, when something
+goes wrong, nobody can reconstruct *why* a given risk was judged acceptable, who signed off on
+that judgment, or whether anyone ever checked that the controls built to address it actually work.
+Your QA's ICH Q9 process would survive that question for the quality side. Nothing survives it for
+the security side, because nothing is written down.
+
+You already know this shape of problem from ITSM, just under different names. Think about the
+difference between an organization that runs a real **Service Design** and **Service Transition**
+practice for every new service — sizing it, picking controls, testing them, getting a documented
+go-live decision, then monitoring it in **Continual Improvement** — versus one where every team
+ad-libs its own launch checklist. Both might ship something that works. Only one can answer an
+auditor's "why" six months later, and only one catches the slow-drifting problem a one-time
+checklist was never built to catch. RMF (Risk Management Framework), ISO 31000, and ICH Q9 are
+three different industries' answers to "what does real Service Transition for *risk decisions*
+look like," written by three very different kinds of body. Lakeshore already runs one of them
+well. This module looks at the other two, not to replace what works, but to find a structure that
+can finally hold the systems administrator's half of the conversation — and apply it to the eQMS,
+end to end, across this course's next four modules.
+
+One honest note before you go further, the same one `the-aabb-assessment-process` already taught
+you to make about AABB accreditation: **borrowing a framework's structure is not the same as being
+legally bound by it.** Lakeshore volunteered into AABB accreditation because Riverside General and
+other hospital customers expect it, not because federal law requires it. What you're about to do
+with RMF is the identical move, aimed at a different gap: adopt a structure voluntarily because it
+names a motion worth running consistently, not because anyone is required to run it.
+
+## The same motion, three vocabularies
+
+Strip away each framework's own words and all three are doing the same six things, in roughly the
+same order, for every risk decision they govern:
+
+1. **Identify and assess the risk** — name what could go wrong and how bad it would be.
+2. **Decide how to respond** — reduce it, accept it, or some mix of both.
+3. **Implement that response** — actually build the control, process, or safeguard.
+4. **Verify the response works** — check, ideally independently, that the control does what it's
+   supposed to.
+5. **Accept the residual risk**, formally or informally — someone with standing says "what's left
+   is tolerable" on the record.
+6. **Keep monitoring** — because a risk judgment made once, at launch, goes stale.
+
+Here's how each framework names that same motion:
+
+**NIST's Risk Management Framework (RMF)** — from NIST (the National Institute of Standards and
+Technology, a U.S. federal agency) — names it as **seven sequential steps**: Prepare, Categorize,
+Select, Implement, Assess, Authorize, Monitor. RMF is documented in NIST Special Publication
+(SP) 800-37, Revision 2 (the current version, finalized December 2018). Two things worth being
+precise about before you borrow it. First: **Prepare is Revision 2's own addition** — earlier
+versions of RMF, and most older public material describing it, show a six-step cycle without it.
+This course works from the current, seven-step version, and says so honestly rather than quietly
+treating Prepare as if it had always been there. Second, and more important: **RMF is written for
+U.S. federal information systems.** Its own text says it's carried out by "a senior Federal
+official" on behalf of an agency. Lakeshore is a private blood establishment. Nothing in federal
+law requires Lakeshore to run RMF, issue anything resembling a federal authorization, or use any
+of SP 800-37's vocabulary at all. What you're about to do — the same thing this curriculum has
+already shown Lakeshore doing with ICH Q9's structure and AABB's own accreditation structure — is
+**borrow RMF's structure voluntarily** because it names the categorize→select→implement→assess→
+authorize→monitor motion with unusual precision, not because anyone outranks Lakeshore into using
+it.
+
+**ISO 31000**, "Risk management — Guidelines," is published by ISO (the International Organization
+for Standardization) — an international standards body, not a government agency and not an
+industry-specific regulator. It's deliberately generic: usable by any organization, for any kind
+of risk, in any sector. ISO 31000 is a paid standard; this curriculum has never independently
+purchased, fetched, or quoted its actual text — the same handling already given to AABB Standards,
+GAMP 5, and ISO 19011 elsewhere. What can be said honestly, in this course's own words, is the
+general shape of the risk-management *process* ISO 31000 is publicly known to describe: establishing
+the context a risk decision sits in, assessing the risk (identifying, analyzing, and evaluating
+it), treating the risk (choosing and applying a response), monitoring and reviewing it over time,
+and recording and reporting the whole decision. That's five recurring activities this course will
+refer to — described from the outside, not quoted, and not asserted as an exact, complete,
+word-for-word enumeration of the standard's own structure, since nobody on this project has read
+the paid document itself.
+
+**ICH Q9(R1)**, already taught in full in `quality-system-essentials`'s `quality-risk-management`
+module, names the same motion as **four stages**: Risk Assessment (itself broken into
+Identification, Analysis, and Evaluation), Risk Control (Reduction and Acceptance), Risk
+Communication, and Risk Review. ICH (the International Council for Harmonisation of Technical
+Requirements for Pharmaceuticals for Human Use) is a harmonized international guideline body for
+pharmaceuticals and biologics specifically — guidance-tier, not a government regulation, but
+adopted by regulators including FDA as the accepted method for defensible quality risk assessment
+in this industry. Your QA already runs this one fluently; this module names it only to put it next
+to the other two, not to re-derive its stages or re-run its FMEA (Failure Mode and Effects
+Analysis) example.
+
+Lined up against the six-step motion, the honest mapping looks like this — and it's genuinely
+uneven, not a clean one-to-one swap of vocabulary:
+
+| The underlying motion | NIST RMF | ISO 31000 (described, not quoted) | ICH Q9(R1) |
+|---|---|---|---|
+| Get ready to make the call | **Prepare** | *(folded into establishing context)* | *(no distinct stage — assumed before Risk Assessment begins)* |
+| Identify and assess the risk | **Categorize** | Establishing context, then risk assessment | **Risk Assessment** (Identification/Analysis/Evaluation) |
+| Decide and build the response | **Select**, then **Implement** | Risk treatment | **Risk Control** — Reduction half |
+| Verify the response works | **Assess** | *(folded into monitoring and review)* | *(implicit — verification feeds Risk Review)* |
+| Accept the residual risk, on the record | **Authorize** | *(no single named decision point)* | **Risk Control** — Acceptance half |
+| Share the decision with the people who need it | *(threaded through RMF's tasks, no separate step)* | Recording and reporting | **Risk Communication** |
+| Keep watching | **Monitor** | Monitoring and review | **Risk Review** |
+
+Notice what that table actually shows, because it's the real point of this module, not a footnote
+to it: **the genuine differences aren't just vocabulary.** RMF is the only one of the three with a
+single, named, formal decision point — Authorize — where one accountable person looks at the whole
+picture and says, on the record, "this risk is acceptable, operate." ISO 31000, true to being a
+general-purpose standard usable for any risk in any organization, never names one universal
+sign-off gate the way RMF does; risk treatment and acceptance happen, but ISO 31000 doesn't force
+them through a single named ceremony. ICH Q9(R1) comes closest to RMF's shape — Risk Acceptance is
+a real, deliberate decision Q9 insists on — but it's scoped to pharmaceutical and biologics quality
+risk specifically, and this curriculum has already built it out in real depth. RMF is also the
+only one of the three written for a specific *kind* of organization (U.S. federal agencies) rather
+than a specific *kind* of risk (ISO 31000) or a specific *industry* (ICH Q9). That's exactly why
+RMF's structure is the one worth borrowing for the eQMS: it's the only one of the three built
+around a system going live, with a named, accountable, yes/no moment attached to it — which is
+precisely the gap your systems administrator's informal "I'll keep an eye on it" left open.
+
+## Citation decoder
+
+NIST Special Publications use a different citation shape than anything else in this curriculum so
+far: a document number and revision (`SP 800-37 Rev. 2`), then a chapter and section number
+(`3.2`) instead of a CFR-style part/section/paragraph. Read `SP 800-37 Rev. 2, §3.2` aloud as
+"Special Publication eight-hundred-thirty-seven, Revision two, section three point two" — the same
+way you'd read any numbered technical document.
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| NIST SP 800-37 Rev. 2, Ch. 2 (Figure 2 framing) | "Special Publication eight-hundred-thirty-seven, Revision two, Chapter Two" | U.S. government work, public domain, safe to quote verbatim. Describes, in sequence, what the Select, Implement, Assess, Authorize, and Monitor steps each do. | The five-step backbone of what modules 2 through 5 will actually build for the eQMS. |
+| NIST SP 800-37 Rev. 2, §3.1 (Prepare's purpose) | "...section three point one" | Same tier. States why Prepare exists as its own step. | The honest answer to "why does RMF have seven steps now instead of six." |
+| NIST SP 800-37 Rev. 2, §3.2 (Categorize's purpose) | "...section three point two" | Same tier. States what the Categorize step is actually deciding. | What module 2 will apply directly to the eQMS's CAPA, document-control, and audit-log data. |
+| ICH Q9(R1) | "The ICH Q9, Revision 1, Quality Risk Management guideline" | Guideline-tier, reused from `quality-risk-management` — a harmonized method, not a numbered legal requirement. Not re-quoted here. | The third point of comparison — already fully built, named only. |
+| ISO 31000 | "ISO three-one-thousand" | A paid international standard — named and described in this course's own words only, never quoted. No part/section citation exists in this curriculum because the text itself hasn't been read. | The second point of comparison — general-purpose, industry-agnostic, no authorization-style gate. |
+
+## The actual text
+
+Figure 2's own framing of what five of the seven steps do, from NIST SP 800-37 Rev. 2, Chapter Two
+(page 9) — U.S. government work, public domain, quoted verbatim from `sources/nist/sp-800-37r2-
+excerpt.md`:
+
+> Select an initial set of controls for the system and tailor the controls as needed to reduce
+> risk to an acceptable level based on an assessment of risk.
+> Implement the controls and describe how the controls are employed within the system and
+> its environment of operation.
+> Assess the controls to determine if the controls are implemented correctly, operating as
+> intended, and producing the desired outcomes with respect to satisfying the security and
+> privacy requirements.
+> Authorize the system or common controls based on a determination that the risk to
+> organizational operations and assets, individuals, other organizations, and the Nation is
+> acceptable.
+> Monitor the system and the associated controls on an ongoing basis to include assessing
+> control effectiveness, documenting changes to the system and environment of operation,
+> conducting risk assessments and impact analyses, and reporting the security and privacy
+> posture of the system.
+
+Read that against ISO 31000's five themes and ICH Q9's four stages above: "Select... tailor the
+controls... to reduce risk to an acceptable level" is risk treatment, is Risk Control. "Assess the
+controls to determine if [they are]... producing the desired outcomes" is verification, is the
+half of Risk Review that actually checks a control works. "Authorize... based on a determination
+that the risk... is acceptable" is the one moment none of the other two frameworks names quite as
+sharply — a single, dated, accountable decision.
+
+On sequencing, immediately following that passage, quoted verbatim:
+
+> While the RMF steps are listed in sequential order above and in Chapter Three, the steps
+> following the Prepare step can be carried out in a nonsequential order.
+
+Worth sitting with that line, because it undercuts the tidiest possible misreading of this whole
+module: none of these three frameworks is actually a straight line you walk once and file away.
+ISO 31000's monitoring-and-review theme and ICH Q9's Risk Review stage both say the same thing in
+their own words — these are cycles, not checklists.
+
+The Prepare step's own purpose statement, quoted verbatim:
+
+> The purpose of the Prepare step is to carry out essential activities at the organization,
+> mission and business process, and information system levels of the organization to
+> help prepare the organization to manage its security and privacy risks using the Risk
+> Management Framework.
+
+And the Categorize step's own purpose statement — the one module 2 will actually apply to the
+eQMS — quoted verbatim:
+
+> The purpose of the Categorize step is to inform organizational risk management processes and
+> tasks by determining the adverse impact to organizational operations and assets, individuals,
+> other organizations, and the Nation with respect to the loss of confidentiality, integrity, and
+> availability of organizational systems and the information processed, stored, and transmitted by
+> those systems.
+
+Read "confidentiality, integrity, and availability" carefully — that's the actual categorization
+question module 2 will ask about the eQMS: what happens if a CAPA record is altered undetected,
+exposed to someone who shouldn't see it, or simply unavailable the week an AABB assessor asks for
+it. None of that mechanics belongs in this module. What belongs here is noticing that RMF names
+that question with more precision, this early in its own process, than either ISO 31000's general
+"risk assessment" theme or ICH Q9's "Risk Identification" step does — not because the other two are
+worse, but because RMF was built, specifically, around information systems.
+
+## What a reviewer would actually look for
+
+No external body audits Lakeshore against RMF — it isn't a regulation, an AABB Standard, or
+anything any outside reviewer checks a private blood establishment's paperwork against. So the
+honest version of this section isn't "what would an RMF auditor ask," because no such visitor is
+coming. It's: **what would your own CIO, an AABB assessor who stumbles onto the eQMS during a
+future reassessment, or you yourself six months from now actually want to find?**
+
+Not three unrelated risk documents in three different drawers, each legible only to the person who
+wrote it. What a competent reviewer — internal or external — wants to see is one traceable story
+for the eQMS: what was this system's risk judged to be, who decided, what controls got built
+because of that judgment, who checked the controls actually work, who accepted what was left over,
+and when is that decision getting revisited. That story can legitimately be told in ICH Q9's
+vocabulary for the quality-record half of the eQMS and in RMF's vocabulary for the
+access-control/availability half — the frameworks don't have to merge into one document. They do
+have to both *exist*, in writing, with a name attached to each decision. A bad answer to "show me
+the eQMS's risk assessment" sounds exactly like your systems administrator's line from the opening
+scenario: "we'll keep an eye on it." A good answer produces a document with a date, a named
+decision-maker, and a next review date already on the calendar — regardless of which of the three
+vocabularies produced it.
+
+## Common traps
+
+**"Now that Lakeshore uses RMF's structure, RMF is basically a regulatory requirement for the
+eQMS."** No. Nothing in federal law requires a private blood establishment to run RMF, issue
+anything resembling a federal authorization to operate, or use any of SP 800-37's terms at all.
+Lakeshore borrowed the structure because it's a well-built description of a motion worth running
+consistently — the identical move this curriculum already showed with AABB accreditation itself,
+which `the-aabb-assessment-process` was explicit is voluntary, not a legal requirement to operate.
+Calling RMF "required" the moment it's useful is exactly the kind of overstatement that module
+warned against.
+
+**"ISO 31000 must be less rigorous than RMF, since it doesn't have a named Authorize step."**
+Wrong comparison. ISO 31000 is a general-purpose standard meant to work for a hospital's
+enterprise risk register, a manufacturer's supply-chain risk, or a blood center's reputational
+risk, equally. It doesn't name one universal sign-off gate because it isn't written around any one
+kind of decision the way RMF is written around a federal information system going live. That's a
+difference in *scope*, not a difference in how seriously either document takes risk.
+
+**"Since Quality already runs ICH Q9 well, the eQMS doesn't need anything else."** This is the
+trap the opening scenario was built to puncture. ICH Q9(R1) is the right tool for the quality-record
+risk the eQMS carries — and it should keep doing that job. It was never built to carry the
+confidentiality/integrity/availability question RMF's Categorize step asks, or to produce a single
+accountable go-live decision the way RMF's Authorize step does. "We already have a risk framework"
+and "we have the right risk framework for every question this system raises" are two different
+claims.
+
+## What this means for your job
+
+- **Ask which vocabulary produced a given risk decision, and whether that's the right one for the
+  question being asked.** ICH Q9 for a quality-record risk, something RMF-shaped for a
+  confidentiality/integrity/availability risk — a mismatch between the question and the vocabulary
+  answering it is itself a finding.
+- **Never let "we're using RMF now" get repeated as "RMF is required."** It isn't, for Lakeshore,
+  and letting that drift go uncorrected is exactly the kind of overstatement that costs credibility
+  with a CIO or an assessor who knows better.
+- **Push for a single, accountable, dated acceptance decision on every system this significant** —
+  the thing RMF's Authorize step names explicitly and that your administrator's "I'll keep an eye
+  on it" never produced. It doesn't have to use RMF's word for it. It has to exist, in writing,
+  with a name on it.
+- **When someone cites ISO 31000 or any other paid standard, ask whether they've actually read it
+  or are repeating its publicly known themes** — the same discipline this curriculum applies to
+  every paywalled source. Describing a standard's shape honestly is fine. Quoting text nobody has
+  actually read is not.
+- **Expect this to take four more modules, not one meeting.** This module only justifies the
+  choice. Categorizing the eQMS, selecting its controls, building and assessing them, making the
+  actual authorization call, and tracking what's left on a POA&M (plan of action and milestones)
+  are each their own real piece of work — covered next.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your systems administrator asks, "Now that we're using NIST's framework for the eQMS, are we legally required to get a federal authorization to operate before it goes live?" What do you tell him?
+
+No. An authorization to operate, as NIST SP 800-37 describes it, is a decision made by a senior
+federal official for a federal information system — it has no legal application to a private blood
+establishment like Lakeshore. Nothing in federal law requires Lakeshore to seek, obtain, or even
+name anything called an "authorization to operate" for the eQMS. What Lakeshore *is* doing is
+borrowing RMF's structure — including an authorization-style decision point — voluntarily, because
+it names a motion worth running consistently, the same way Lakeshore voluntarily holds AABB
+accreditation without AABB accreditation being a legal requirement to operate either.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Your Quality Analyst says, "ISO 31000 is basically ICH Q9 with different labels — same number of stages, same process." Is that right?
+
+Not quite, and the imprecision matters. Both describe risk assessment, a response, and ongoing
+review — that much genuinely overlaps. But ICH Q9(R1) is a four-stage pharmaceutical/biologics-
+specific guideline with a named Risk Acceptance decision inside its Risk Control stage; ISO 31000
+is a general-purpose, industry-agnostic standard this curriculum has never independently quoted,
+whose publicly known themes (establishing context, risk assessment, risk treatment, monitoring and
+review, recording and reporting) don't name one single universal acceptance ceremony the way ICH
+Q9 or RMF each do in their own ways. Same underlying motion, genuinely different scope and
+precision — not an identical process wearing a different label.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A peer at another blood center tells you they adopted "RMF" but never use the word "Prepare." Did they get it wrong?
+
+Not necessarily — it depends which version of RMF they're describing. Prepare is Revision 2's own
+addition to RMF; Revision 1 and earlier public material describe a six-step cycle (Categorize,
+Select, Implement, Assess, Authorize, Monitor) without it. If your peer adopted an older
+description of RMF, or simply folds Prepare's activities informally into Categorize without naming
+it separately, that's a defensible, if slightly dated, choice — not an error. Worth asking which
+revision they actually read, the same instinct this curriculum has taught you to apply to any
+citation: the revision number changes what's actually being claimed.
+:::
+
+## Where this goes next
+
+The decision is made: the eQMS runs through RMF's structure, end to end, voluntarily, as
+Lakeshore's own methodology for this one system. `categorize-and-select-controls` picks up exactly
+where Categorize's purpose statement above leaves off — actually asking what happens to Lakeshore
+if the eQMS's confidentiality, integrity, or availability fails, and then selecting a set of
+controls sized to that answer, not copied wholesale from a template built for a lower-stakes
+system.
