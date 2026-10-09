@@ -269,22 +269,20 @@ has no `plans/<slug>.md` file until its first session.
 | `quality-system-essentials` | 7 / 7 | Done |
 | `directing-the-quality-analyst` | 6 / 6 | Done |
 | `csv-and-becs` | 7 / 7 | Done |
-| `data-integrity-and-records` | 0 / 6 | Not started |
+| `data-integrity-and-records` | 0 / 6 | Scoped |
 | `fda-and-aabb-in-practice` | 0 / 6 | Not started |
 | `grc-frameworks-and-risk-management` | 0 / 5 | Not started |
 | `healthcare-security-and-privacy` | 0 / 5 | Not started |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `data-integrity-and-records` (Track 3's second course). `csv-and-becs` is fully built
-and published (7/7 modules) — see `plans/csv-and-becs.md` for the complete course, including
-module 6's VIA-0842 verdict (the twelve-test scope was never the defect; a missing regression
-analysis was) and module 7's closing of VIA-0842's last two open interface items. Scope
-`data-integrity-and-records` (Phase 1/2 of `create-course`), then build its first module. It
-picks up ALCOA+ in full depth, audit-trail review in practice, Part 11's predicate-rule and
-hybrid-system doctrine, legacy-system Part 11 gap assessment, retention, and multi-site data
-governance/unique donor identification — all deliberately left open by `csv-and-becs`'s Part 11
-and interfaces modules for this course to pick up. Once `data-integrity-and-records` and
+**Next up:** `data-integrity-and-records` module 1, `alcoa-and-data-integrity` (Track 3). The
+course map is scoped and published — see `plans/data-integrity-and-records.md` for the full
+6-module plan, its scenario (DI-0301, a data-integrity self-assessment ahead of an AABB
+reassessment), and its careful handling of the ALCOA-vs-"ALCOA+" terminology distinction.
+`csv-and-becs` is fully built and published (7/7 modules) — see `plans/csv-and-becs.md` for the
+complete course, including module 6's VIA-0842 verdict and module 7's closing of its last two
+open interface items. Once `data-integrity-and-records` and
 `vendor-and-third-party-risk-management` both exist, `directing-the-quality-analyst` modules 4
 and 5 should be revisited per that course's own "Deliberately deferred" table.
 `directing-the-quality-analyst` (Track 6) is fully built and published (6/6 modules) — see

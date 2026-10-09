@@ -1,0 +1,85 @@
+---
+title: "Data Integrity & Records"
+order: 55
+---
+
+## The finish line
+
+By the end of this course you can apply ALCOA+ to a real electronic record, explain Part 11's
+e-signature and predicate-rule requirements — including for hybrid paper/electronic and legacy
+systems — and describe how Lakeshore's multi-state data governance holds up under audit. You'll
+also finally get full depth on three things `csv-and-becs` deliberately left as names and
+pointers: predicate rules, Part 11's electronic-signature components, and audit-trail review in
+practice.
+
+This course's scenario: Lakeshore's next AABB reassessment cycle is on the calendar, and an FDA
+inspection could land before it. Your Quality Analyst is running a data-integrity self-assessment
+across every system that creates or holds a record Lakeshore depends on — not just BECS (Blood
+Establishment Computer Software), but the paper donor file still used at one satellite site, an
+aging instrument predating Part 11 entirely, and the cumulative record that tracks a deferred
+donor across every Lakeshore location. Call it **DI-0301**. You review her findings module by
+module, and by the end you can defend every one of them yourself.
+
+## Before you start
+
+This course assumes the three foundations and two earlier courses:
+
+- [Reading a CFR citation](../../foundations/reading-a-cfr-citation/index.qmd) — its retention
+  clause, 606.160(d), is a fact this course builds on and never re-derives.
+- [Regulatory landscape orientation](../../foundations/regulatory-landscape-orientation/index.qmd)
+  and [Risk and controls vocabulary](../../foundations/risk-and-controls-vocabulary/index.qmd).
+- [Quality System Essentials](../quality-system-essentials/index.qmd), especially
+  [Document control and records](../quality-system-essentials/document-control-and-records/index.qmd).
+  That module owns the *paper* SOP lifecycle and AABB's Documents and Records QSE. This course
+  owns the *electronic-record* layer underneath it — a different drawer, same filing cabinet.
+- [CSV & BECS](../csv-and-becs/index.qmd), especially
+  [Part 11 for validated systems](../csv-and-becs/part-11-for-validated-systems/index.qmd). That
+  module scoped Part 11 to what a *validation* has to prove the system enforces — access limits,
+  sequencing, authority checks — and named three things it deliberately left for this course:
+  **predicate rules** in full, **electronic-signature components** (11.50–11.300), and
+  **audit-trail review in practice**. This course picks up exactly there.
+
+## The six modules
+
+Each module is one sitting, and each has its own finish line.
+
+1. **ALCOA and data integrity.** Define data integrity the way FDA's own guidance does — ALCOA,
+   five letters, verified from a real source — distinguish it from "ALCOA+," the broader
+   industry/international term this course will use carefully, and apply both to a real
+   Lakeshore electronic record.
+2. **Audit trails and e-signatures in practice.** Review an audit trail the way an inspector
+   would — who should review it, how often, what counts as a real review versus a rubber stamp —
+   and name the specific controls (11.50, 11.70, 11.100, 11.200, 11.300) an e-signature has to
+   satisfy to stand in for a handwritten one.
+3. **Predicate rules and hybrid systems.** Explain what a predicate rule actually is and how it
+   decides whether a given record is a "Part 11 record" at all, and judge whether a system that
+   mixes paper and electronic records — paper as the record of record, electronic as a
+   convenience copy, or the reverse — is handling that mix defensibly.
+4. **Assessing a legacy system for Part 11 gaps.** Apply FDA's own four-part legacy-system test
+   to a system older than Part 11 itself, and say what has to be true for continued enforcement
+   discretion to actually hold.
+5. **Retention across record types.** Go beyond 606.160(d)'s product-record clock — already
+   yours — to the records that don't share its schedule: donor records, electronic-signature
+   components, audit trails and their metadata, and what "retain the record" actually requires
+   for a dynamic electronic record versus a static printout.
+6. **Multi-site governance and donor identification.** Explain how Lakeshore keeps one donor's
+   identity and eligibility history consistent across a central system and every satellite site,
+   using the cumulative deferred-donor record 606.160(e) already requires — and say what breaks
+   if two sites' records disagree about the same donor.
+
+## A note on sources
+
+Two guidance documents carry most of this course's weight, and both are FDA guidance (current
+thinking, "should" language) — never binding regulation, even where they're this precise:
+
+- **FDA's 2003 Part 11 guidance** (*Scope and Application*), already used in `csv-and-becs`,
+  returns here for its legacy-system criteria and its enforcement-discretion treatment of record
+  copies.
+- **FDA's 2018 data-integrity guidance** (*Data Integrity and Compliance With Drug CGMP:
+  Questions and Answers*) is new to this course. It was written for drug CGMP (21 CFR Parts 210,
+  211, 212), not Part 606 directly — it reaches a blood establishment's records the same way
+  211.68 always has in this curriculum, through 210.2(a)'s supplementation principle. It defines
+  "ALCOA." It does not use the term "ALCOA+" anywhere — that distinction matters, and this course
+  keeps it straight throughout.
+
+Modules appear in the sidebar as they're built.

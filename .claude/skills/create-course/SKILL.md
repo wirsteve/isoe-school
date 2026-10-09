@@ -79,9 +79,11 @@ originally shipped with all five modules at `order: 2`, so the sidebar fell back
 order instead of the intended sequence — since fixed). Each course's own plan file records the
 exact `order:` value for each of its files (course map, Phase 2, sets these); the next course
 picks up numbering exactly where the previous one left off. Current running total, updated after
-every course is scoped: **next unused value is 55** (`blood-center-operations` used 1–11;
+every course is scoped: **next unused value is 68** (`blood-center-operations` used 1–11;
 `quality-system-essentials` used 12–26; `directing-the-quality-analyst` used 27–39; `csv-and-becs`
-used 40–54, verified by grep on 2026-10-09 with max 39 and no duplicates before assigning). Whoever runs Phase 2 for the next course: check this
+used 40–54, course complete, 7/7 modules published; `data-integrity-and-records` used 55–67,
+course map scoped 2026-10-09, syllabus plus 6 modules, verified by grep with max 54 and no
+duplicates before assigning). Whoever runs Phase 2 for the next course: check this
 number, use it as that course's own `order:`, continue sequentially for its modules (two values
 per module — index.qmd and resources.qmd each get their own), and update this number here before
 finishing. `foundations/**` is a separate glob from `courses/**` and keeps its own independent
