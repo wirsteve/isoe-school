@@ -1,0 +1,311 @@
+---
+title: "The AABB Assessment Process"
+order: 75
+---
+
+## A different kind of visitor, on a different kind of clock
+
+BPD-0512 is filed. The 483 response is sitting with FDA. And now a third thing lands on your
+calendar, one that's been "on the calendar" in the loosest sense for months and is suddenly
+real: Lakeshore's AABB (Association for the Advancement of Blood & Biotherapies) reassessment
+cycle has opened.
+
+Nobody showed up unannounced. Your Quality Analyst (QA) logs into **APEX** — AABB's own online
+accreditation portal, the system Lakeshore uses to do business with AABB directly — and starts
+working through AABB's self-assessment tool, activity by activity: donor collection, testing,
+component processing, labeling, distribution, equipment, the works. This is the **self-assessment
+phase**, and it's Lakeshore's own staff, not an outside reviewer, doing the looking.
+
+She's most of the way through the equipment section when she stops. The self-assessment tool
+asks, in its own words, whether Lakeshore can produce documented evidence that every piece of
+laboratory equipment currently in service has been reviewed and justified as fit for its intended
+use. She already knows the answer, because DI-0301 — her own data-integrity self-assessment, built
+for a completely different reason — already found it: **LAB-07**, the legacy benchtop analyzer,
+passes every quality-control (QC) check it runs, every morning, without exception. What it doesn't
+have is a dated, signed document saying, on the record, that someone with the authority to make
+that call has reviewed it and confirmed it's still fit for its job.
+
+She brings it to you, and so does the deferred-donor-record cadence question — still sitting
+exactly where `data-integrity-and-records` left it, "under internal review," neither closed nor
+forgotten. You notice something, and so does she: neither finding is a surprise. AABB's own
+self-assessment tool just independently rediscovered a gap Lakeshore already knew about and was
+already working. That's not luck. That's what a good internal self-assessment is supposed to buy
+you — and this module is about to make the case for exactly why.
+
+No citations yet. Just APEX, a self-assessment tool working through Lakeshore's own activities one
+by one, and the honest question of what happens next, once the on-site assessor actually walks in.
+
+## Why this rule exists — and the ITSM bridge
+
+Here's the failure AABB's whole process is built to catch, and it's a close cousin of the one FDA's
+inspection authority catches, not an identical twin. A blood establishment can write a flawless set
+of policies, processes, and procedures (PPPs) — the internal documents that spell out exactly how
+Lakeshore does its own regulated work — and still not actually follow a single one of them on the
+floor. A self-reported "yes, we have a policy for that" isn't verification any more than a vendor's
+own claim that its system is "fully compliant" is verification. Someone without a stake in the
+answer has to actually look.
+
+You already navigate this exact shape of problem in IT, just under a different name. **ISO 20000**
+(IT service management), **ISO 27001** (information security management), and **SOC 2** (a
+third-party assurance report on security and availability controls) are all **voluntary**
+certifications: nobody is legally required to hold any of them. An external auditor checks your
+organization's own documented processes against a standard you *chose* to adopt, and "failing" means
+losing or risking the certification — which matters commercially, sometimes enormously, because
+customers write it into contracts, but it isn't itself a legal violation the way failing a mandatory
+regulatory audit is. AABB accreditation is that exact same shape, built for blood banking
+specifically. And you already know a concrete downstream consumer of that distinction: Riverside
+General Hospital, Lakeshore's own established hospital customer, is precisely the kind of
+counterparty that may require AABB accreditation as a condition of doing business — a contractual
+expectation, not a federal one.
+
+Here's where this module earns its keep: FDA inspection and AABB assessment look, from across the
+room, like the same kind of visit. They are not the same instrument, and confusing them is exactly
+the mistake a Director can't afford to make.
+
+## The rule in plain English
+
+**The two-phase structure.** AABB's own accreditation process runs in two phases: the self-assessment
+phase, then the on-site assessment phase. Self-assessment comes first, performed in APEX, AABB's
+own online accreditation portal — Lakeshore's staff work through AABB's own tool, naming every
+activity Lakeshore performs and documenting, activity by activity, how its own PPPs address AABB's
+Standards. AABB reviews and approves that self-assessment before the on-site phase is allowed to
+proceed. Only after the on-site assessment is successfully completed — including the resolution of
+any nonconformances the assessor identifies — does Lakeshore actually achieve (or, in Lakeshore's
+case this cycle, retain) AABB accreditation. Once a facility is accredited, that on-site phase
+repeats on a fixed **two-year cycle** — which is exactly why this is happening now, not because
+anything went wrong.
+
+One more piece of context worth naming, even though it doesn't directly apply to Lakeshore's own
+situation this cycle: a facility seeking AABB accreditation for the very first time (or adding a
+brand-new activity it's never been accredited for) has to have a minimum of **six months of actual
+operating history** in that activity before the process can even begin. Lakeshore isn't in that
+position — it's already accredited and going through its routine reassessment — but it's worth
+knowing the full shape of the process, not just the slice that applies to you this time.
+
+**What "AABB assessment" is checking, and what "FDA inspection" is checking, are genuinely different
+things.** They overlap in subject matter — the same quality system, the same records, sometimes the
+same piece of equipment — but they differ in almost every other way that matters:
+
+| | **FDA inspection** | **AABB assessment** |
+|---|---|---|
+| **Voluntary or mandatory?** | Mandatory. Backed by federal statute — 21 U.S.C. 374, the same inspection authority module 1 covered — government-run. | Voluntary. Industry-run. Lakeshore chose to seek and keep this accreditation; nothing forces it to. |
+| **Checked against what?** | Facility, records, and practice checked against binding federal regulation — 21 CFR Parts 211, 600-series, 606, 610, 630, Part 11, and more. | Lakeshore's own PPPs checked against AABB's own Standards — and then, just as importantly, checked against whether those PPPs are actually *followed*. |
+| **What does "failing" mean?** | A Form 483, potentially escalating to a Warning Letter, potentially landing at OAI (Official Action Indicated) — a federal regulatory action with real legal weight. | A nonconformance that blocks accreditation from being renewed until it's resolved — a serious hit to Lakeshore's standing, but not itself a federal legal action. |
+| **Legal character** | The investigator's authority to walk in and demand records exists by law, whether Lakeshore likes it or not. | An assessor's authority to walk in exists only because Lakeshore invited AABB in, as a condition of a credential Lakeshore voluntarily holds. |
+
+Read that last row carefully, because it's the single most precise, most easily overstated point in
+this whole module: **AABB accreditation is not itself a legal requirement for Lakeshore to operate
+as a blood establishment.** Lakeshore's actual legal authority to operate — its FDA registration and,
+where applicable, licensure — is a completely separate thing, already covered in earlier courses in
+this curriculum, and it doesn't depend on AABB accreditation at all. What AABB accreditation *does*
+carry is serious real-world weight anyway: hospital customers like Riverside General may require it
+contractually, peers and regulators alike treat it as a credible signal of a functioning quality
+system, and losing it would be a genuine, painful event for Lakeshore — just not a federal one.
+Don't overstate AABB's authority into something it isn't, and don't understate the real consequences
+of losing it either. Both mistakes are easy to make and both are wrong.
+
+**"All standards are addressed in policies, processes and procedures (PPPs), and that PPPs are
+followed as written" — the sharpest sentence in this whole module.** This is AABB's own stated
+expectation of what an assessment actually checks for, and it's a two-part test, not a one-part
+test. Part one: does a written PPP exist that addresses this AABB Standard? Part two — the part
+that actually does the work — is the PPP *followed*, in practice, as written? A policy that exists
+on paper and a policy that's actually enforced are two different claims, and this curriculum has
+already shown you exactly how far apart those two claims can be: `data-integrity-and-records`
+found Lakeshore's own written password-revision policy sitting right next to zero evidence it was
+ever technically enforced — the policy said passwords would be changed on a schedule, and nobody
+could produce a log showing it actually happened. That's the "documented but not implemented" gap
+this curriculum keeps surfacing, in a new context now. An AABB assessor isn't trained to be fooled
+by a well-written binder. The assessor is trained to ask for the binder *and* the evidence it's
+being followed, and treat the second part as the real test.
+
+## Citation decoder
+
+Every row below cites `sources/aabb/accreditation-process.md`, AABB's own public page describing its
+accreditation process. This is a new source tier for this curriculum, worth naming precisely:
+**AABB's own public program description** — AABB's own marketing/informational content about how its
+accreditation program *works*, safe to quote directly. It is not AABB Standards text, which stays
+copyrighted and unquoted everywhere in this curriculum, this module included.
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| AABB, "Accreditation Process" page, "Accreditation Phases and Expectations" | "AABB's own accreditation-process page" | **AABB's own public program description.** Names the two-phase structure: self-assessment phase, then on-site assessment phase. | The shape of the reassessment cycle Lakeshore just entered. |
+| Same page, same section | — | **AABB's own public program description.** States AABB's own expectation: all Standards addressed in PPPs, and PPPs followed as written. | The two-part test — document exists, document is followed — LAB-07's own gap sits inside. |
+| Same page, same section | — | **AABB's own public program description.** States the two-year on-site reassessment cycle for an already-accredited facility. | Why this reassessment is happening now, on schedule, not because of a complaint. |
+| Same page, same section | — | **AABB's own public program description.** States the six-month minimum operating history required before a *first* accreditation can begin. | Context only — doesn't apply to Lakeshore's reassessment, since Lakeshore is already accredited. |
+| AABB, "Accreditation Process" page, "Steps to Become AABB-Accredited" | — | **AABB's own public program description.** Names APEX as the portal where self-assessment is performed, that AABB reviews and approves it before on-site proceeds, and that accreditation is achieved only upon successful completion of on-site assessment, including resolution of any nonconformances. | What Lakeshore's QA is doing right now in APEX, and what has to happen before this cycle closes. |
+
+## The actual text
+
+From AABB's own "Accreditation Process" page (**AABB's own public program description**), the
+phases themselves, quoted verbatim:
+
+> There are two phases involved with achieving AABB accreditation for the first time or adding a
+> new activity: the self-assessment phase, followed by the on-site assessment phase.
+
+The central expectation — the sentence this module keeps coming back to, quoted verbatim:
+
+> The expectations of an AABB assessment are that all standards are addressed in policies, processes
+> and procedures (PPPs), and that PPPs are followed as written.
+
+The reassessment cycle, quoted verbatim:
+
+> Once a facility becomes AABB-accredited, it must go through the accreditation process (on-site
+> assessment phase) every two years.
+
+The minimum operating history, named for completeness, quoted verbatim:
+
+> Please note that a facility must be in operation for a minimum of 6 months (in the desired
+> accreditation activity) before the initial accreditation process can begin.
+
+And from the same page's own numbered steps to accreditation, this module's single most load-bearing
+phrase, quoted verbatim:
+
+> achieve AABB accreditation upon successful completion of the on-site assessment, including
+> resolution of any nonconformances.
+
+AABB's page also describes, in its own words rather than a single quotable sentence, the steps
+sitting between those two quotes: Lakeshore performs its self-assessment in **APEX** (AABB's online
+accreditation portal), and AABB reviews and approves that self-assessment before the on-site
+assessment phase is allowed to proceed. One more detail worth naming briefly, not developing
+further: AABB's page also states that a facility can't advertise any relationship to AABB until it's
+actually accredited — a marketing restriction, not something this module needs to go further into.
+
+## What an AABB assessor would actually look for
+
+An AABB assessor, on-site at Lakeshore, isn't checking whether a binder of PPPs exists on a shelf.
+They're running the same two-part test AABB's own page describes, activity by activity, the same
+discipline DI-0301 already modeled internally.
+
+**For LAB-07's fitness-for-use gap specifically:** the assessor would ask to see the written PPP
+covering legacy-equipment fitness-for-use review — and then ask, separately, to see the dated,
+signed evidence that review actually happened. That's a two-part test, procedurally close to, but
+not identical to, how an FDA investigator would approach the same instrument. An FDA investigator
+checks LAB-07 against the binding four-part legacy-system test from FDA's own 2003 Part 11 guidance
+— a federal compliance question. An AABB assessor checks the same instrument against Lakeshore's own
+PPP for equipment qualification — a PPP-versus-practice question, under AABB's own QSE
+(Quality System Essential) 3, Equipment, the adjacent drawer in AABB's own Quality System Essentials
+framework for equipment qualification and fitness-for-use documentation generally (named only, no
+standard number, consistent with how this curriculum always handles AABB Standards). Same
+instrument, same underlying gap, two different reviewers asking two related but not identical
+questions.
+
+**For the deferred-donor-record cadence question:** the assessor would ask what Lakeshore's own PPP
+says about updating the cumulative deferred-donor record, and whether the practice matches it.
+Lakeshore's honest answer right now is that the regulatory floor — at least monthly — is being met
+every cycle, with the dated log to prove it, and that whether to go faster than that floor is a risk
+question still genuinely under internal review, not yet decided either way. That's a different kind
+of answer than a silent gap, and an AABB assessor reading it the way this curriculum has modeled
+every other honest finding would see an actively-tracked, well-documented open question — not a PPP
+that says one thing while practice does another. Nothing in AABB's own equipment or process-control
+themes requires Lakeshore to move faster than the regulatory floor; this stays a risk decision, not
+a nonconformance waiting to happen.
+
+**For events outside this module's own subject, named without re-teaching them:** an AABB assessor
+would also want to know about BPD-0512 (the plasma-labeling deviation and recall) and the pending
+483 from Lakeshore's recent FDA inspection, since both are real, relevant quality-system events — not
+because this module develops either one further, but because a competent assessor doesn't pretend a
+known event didn't happen just because it belongs to a different reviewer's jurisdiction.
+
+A bad answer, to any of these, sounds like "we have a policy for that." A good answer produces the
+policy, and then produces the proof.
+
+## Common traps
+
+**"We already passed DI-0301's own internal self-assessment, so the on-site visit is basically a
+formality."** Not quite — and this is worth refuting precisely, because the instinct behind it is
+actually half-right. A strong internal self-assessment genuinely does make AABB's own process more
+confirmatory than exploratory — that's exactly the honest point this module exists to make. But
+AABB's own page is explicit that accreditation is achieved only upon *successful completion of the
+on-site assessment, including resolution of any nonconformances* — the on-site phase is a real,
+separate gate, not a rubber stamp on top of a good self-assessment. Knowing your own gaps going in is
+a genuine advantage. It isn't the same thing as the gate not existing.
+
+**"AABB accreditation isn't legally required, so it doesn't really matter if Lakeshore loses it."**
+Wrong, and this is the nuance this whole module is built around. AABB accreditation is not itself a
+legal requirement to operate — that's true, and it's worth saying plainly rather than overstating
+AABB's authority. But "not legally required" and "doesn't matter" are not the same claim. A hospital
+customer like Riverside General may require AABB accreditation as a condition of doing business, even
+though federal law itself imposes no such requirement. Losing accreditation could mean losing that
+contract, and the broader reputational standing that comes with holding it — serious, real
+consequences, just not legal ones in the way a Warning Letter or an OAI classification would be.
+
+## What this means for your job
+
+- **Ask your QA what APEX's self-assessment tool flagged, activity by activity — and whether any of
+  it is new.** If DI-0301 already found it, that's a strength to name explicitly, not a coincidence
+  to shrug past.
+- **For any gap the self-assessment surfaces, ask for both halves of AABB's own test**: does a
+  written PPP exist, and is there dated evidence it's actually being followed? Settle for neither
+  half alone.
+- **Before the on-site assessor arrives, know which open findings you'd disclose proactively** —
+  BPD-0512, the pending 483, LAB-07's criterion-4 gap — the same instinct module 1 taught about a
+  known, actively-worked gap looking like a strength, not a liability, to an outside reviewer.
+- **Don't let "not legally required" become the whole sentence when someone asks whether AABB
+  accreditation matters.** Finish the sentence: not legally required, and still something Riverside
+  General and other hospital customers may require contractually, with real business consequences if
+  Lakeshore lost it.
+- **Treat a resolved AABB nonconformance the same way this curriculum treats a well-documented 483
+  observation** — a sign of a functioning quality system, not evidence of one that's broken, as long
+  as it's actually resolved on the timeline AABB sets, not quietly left open.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA says, "AABB accreditation isn't a legal requirement, so losing it wouldn't really matter to Lakeshore." Right or wrong?
+
+Wrong, and this is the genuine nuance this module exists to teach — not a simple yes-or-no. She's
+right about the first half: AABB accreditation is not itself a legal requirement for Lakeshore to
+operate as a blood establishment. Lakeshore's actual legal authority to operate comes from its FDA
+registration and licensure, a completely separate thing, already covered earlier in this curriculum,
+and it doesn't depend on AABB accreditation at all. But "not legally required" doesn't mean
+"doesn't matter." A hospital customer like Riverside General may require AABB accreditation
+contractually as a condition of doing business, even though no federal law requires Lakeshore to
+hold it. Losing accreditation could cost Lakeshore that relationship and real standing in the
+industry — serious, real-world consequences, just not the kind a court or FDA enforcement action
+produces.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: An AABB assessor and an FDA investigator both ask to see documentation on LAB-07. Are they checking the same thing?
+
+Related, but not the same thing. An FDA investigator checks LAB-07 against FDA's own binding
+four-part legacy-system test from its 2003 Part 11 guidance — a federal compliance question with a
+483 or worse riding on a bad answer. An AABB assessor checks LAB-07 against Lakeshore's own written
+PPP for equipment fitness-for-use review, and then checks whether that PPP is actually being
+followed — a PPP-versus-practice question, with an accreditation nonconformance riding on a bad
+answer instead. Same instrument, same underlying gap (the missing criterion-4 documentation DI-0301
+already found), but two different reviewers, checking it against two different things, with two
+different consequences for failing.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Lakeshore's on-site assessor finds LAB-07's fitness-for-use documentation still incomplete and issues a nonconformance. Does that mean Lakeshore has failed its AABB reassessment?
+
+No — and this is worth being precise about, the same way this curriculum has always distinguished a
+real failure from a well-documented, actively-managed finding. AABB's own page states accreditation
+is achieved "upon successful completion of the on-site assessment, including resolution of any
+nonconformances" — meaning a nonconformance is something Lakeshore resolves as part of completing
+the process, not automatic proof the process has failed. A known gap, already surfaced honestly by
+Lakeshore's own DI-0301 self-assessment, with a corrective action already underway, is exactly the
+kind of nonconformance this curriculum has modeled before as a sign of a functioning quality system
+— not a secret an outside reviewer had to dig up.
+:::
+
+## Where this goes next
+
+Lakeshore's on-site assessor spends the visit the way the self-assessment tool predicted: PPPs
+pulled, practice checked against them, activity by activity. The visit surfaces one formal
+nonconformance — LAB-07's still-missing criterion-4 fitness-for-use documentation, the same gap
+DI-0301 already found and was already working. Nothing else rises to that level; the deferred-donor
+cadence question is discussed, understood, and left exactly where Lakeshore's own risk judgment has
+it, under internal review, not treated as a PPP failure. Lakeshore gets a resolution window, submits
+the dated qualification review the gap has always been missing, and the nonconformance closes.
+Accreditation continues, on schedule, for another two-year cycle — not because nothing was found, but
+because what was found was already known, already documented, and resolved on AABB's own terms.
+
+That resolution requirement — AABB's own expectation that a nonconformance gets *resolved*, not just
+noted — is itself a bridge into this course's next module. Knowing a PPP exists and is followed as
+written is only half the job; the other half is having an internal audit program rigorous enough to
+catch gaps like LAB-07's before an external assessor ever has to.
+`designing-an-internal-audit-program` builds exactly that: auditor independence, risk-based
+scheduling, real evidence sampling, and a nonconformance grading scale with teeth.

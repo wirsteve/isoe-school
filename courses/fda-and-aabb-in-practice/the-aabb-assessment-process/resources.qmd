@@ -1,0 +1,24 @@
+---
+title: "Resources"
+order: 76
+---
+
+Three places to go deeper than this lesson. All three were checked and loading (HTTP 200) at
+the time this page was written.
+
+- **[AABB, "Accreditation Process"](https://www.aabb.org/standards-accreditation/accreditation/become-accredited/accreditation-process)**
+  — the page this lesson quotes directly: the two-phase self-assessment/on-site structure, APEX,
+  the "PPPs are followed as written" expectation, the two-year reassessment cycle, and the
+  six-month minimum operating history for a first accreditation. Read it yourself before citing
+  any of its wording in a real Lakeshore document.
+
+- **[AABB, "Become Accredited"](https://www.aabb.org/standards-accreditation/accreditation/become-accredited)**
+  — AABB's own landing page for the accreditation program generally, one level up from the
+  process page above. Useful for the broader context of what accreditation covers and why a
+  facility pursues it in the first place.
+
+- **[AABB, Updated Quality Systems Essentials](https://www.aabb.org/standards-accreditation/standards/about-aabb-standards/updated-quality-systems-essentials)**
+  — AABB's own current page on the ten Quality System Essentials (QSEs), including QSE 3
+  (Equipment) and QSE 8 (Assessments: Internal and External), the two QSE themes this lesson
+  names without quoting any Standards text. Use it to see the theme and scope of each QSE in
+  AABB's own words; don't cite a standard number from it.
