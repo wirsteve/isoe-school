@@ -1,0 +1,24 @@
+---
+title: "Resources"
+order: 57
+---
+
+Three places to go deeper than this lesson, or to check a citation yourself before it goes in a
+real Lakeshore document. All three were checked and loading at the time this page was written.
+
+- **[FDA guidance page: Data Integrity and Compliance With Drug CGMP — Questions and Answers](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/data-integrity-and-compliance-drug-cgmp-questions-and-answers)**
+  — FDA's own December 2018 guidance page for the source this whole module is built on. Read the
+  full Q&A list once: this lesson only used the ALCOA, metadata, and "systems" questions, and the
+  rest covers audit trails, static/dynamic records, and backups that later modules in this course
+  pick up directly.
+
+- **[21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)**
+  — the automatic/mechanical/electronic equipment section this curriculum has used since
+  `csv-and-becs`, and one of the drug-CGMP sections FDA's own footnote ties to ALCOA's "accurate"
+  element. Worth rereading alongside this lesson's citation decoder.
+
+- **[21 CFR 210.2, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/210.2)**
+  — the supplementation clause that lets a drug-CGMP guidance like this one reach a blood
+  establishment's own records at all. Already the subject of its own full lesson in
+  `gamp5-and-the-v-model`; this page is here so you can check the exact text yourself without
+  re-deriving it.
