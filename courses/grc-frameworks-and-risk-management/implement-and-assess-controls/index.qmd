@@ -1,0 +1,251 @@
+---
+title: "Implement and Assess Controls"
+order: 86
+---
+
+## The schedule that said "quarterly" and the review that never ran
+
+Six weeks after the Select conversation that closed out the last module, you're back with your
+Quality Analyst and your systems administrator for what's supposed to be a short status check.
+Your systems administrator opens with something close to triumph: "All three families are built.
+Every eQMS (electronic quality-management system) account across all three sites is tied to a
+named role now, not a shared login. Every CAPA (corrective and preventive action), document-
+control, and audit-log change gets logged — who, what, when. And I confirmed the data center
+that hosts the eQMS has backup power and fire suppression, in writing." He slides a one-page
+summary across the table, visibly proud of it, and he's earned the right to be — six weeks ago
+his answer to "who has access" was "the usual people."
+
+You read the summary, and one line catches your eye: *account access reviewed quarterly, owned
+by [him], first review due last month.* You ask the obvious follow-up: "Did that first review
+happen?"
+
+He pauses. "It's on the calendar. I haven't actually run it yet — I was heads-down building the
+other two pieces." Your Quality Analyst, sitting across from both of you, says nothing yet, but
+you can see her making a note. That pause is the whole reason this module exists: building a
+control and having it actually work are two different facts, and nobody in the room — including
+the person who built it — is the right person to confirm which one is true here.
+
+## Why this step exists — and the ITSM bridge
+
+Here's the failure Implement and Assess together are built to prevent, and it's the natural
+next failure after Categorize and Select: a team picks the right controls, on paper, sized to
+the right impact level — and then either never actually builds them, or builds them and takes
+the builder's word that they work. A control that exists only as a line item in a selection
+table protects nobody. A control the builder insists works, checked by nobody else, protects
+exactly as much as the builder's own blind spots allow — which is usually quite a bit less than
+the builder believes, for the same reason nobody proofreads their own writing well.
+
+You already know this exact two-step discipline from ITSM (IT service management), just under
+different names. **Implement** is change implementation — actually deploying the change you
+approved, not just approving it. **Assess** is the step right after it that a mature change
+practice never skips: validation and testing, ideally run by someone who wasn't the one who
+built the change, before anyone calls it done. A change record that says "implemented" with no
+post-implementation review attached is exactly as incomplete as your systems administrator's
+one-page summary was the moment you asked about the review date. Nobody accepts "I built it" as
+proof it works in a change process you'd defend to an auditor; the same standard applies here.
+
+## The rule in plain English
+
+**Implement** means two things happen, not one: Lakeshore actually builds the control families
+Select chose, *and* writes down how each one actually operates — who owns it, what triggers it,
+what it produces as evidence. A control nobody wrote the mechanics of is a control nobody can
+later prove was ever real.
+
+**Assess** means someone who didn't build the control checks whether it's actually doing what it
+was built to do — not whether it exists, but whether it's "operating as intended" and
+"producing the desired outcome." Those are RMF's (Risk Management Framework's) own words, and
+they're doing real work: a control can exist, be documented beautifully, and still not yet be
+proven to work, the way your systems administrator's access-review schedule exists and is
+documented and still hasn't actually run once.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| NIST SP 800-37 Rev. 2, Ch. 2 (Figure 2 framing — Implement) | "...Chapter Two" | U.S. government work, public domain, safe to quote verbatim. States that Implement means building the controls *and* describing how they're employed within the system and its environment of operation. | Actually configuring account access, audit logging, and the physical/environmental confirmation for the eQMS — and writing down how each one works. |
+| NIST SP 800-37 Rev. 2, Ch. 2 (Figure 2 framing — Assess) | "...Chapter Two" | Same tier. States that Assess means determining whether the controls are implemented correctly, operating as intended, and producing the desired outcomes. | The QA's independent check of all three control families, six weeks after they were built. |
+
+## The actual text
+
+Implement's one-line action, quoted verbatim from `sources/nist/sp-800-37r2-excerpt.md` (part
+of the Figure 2 passage already quoted in full in `risk-frameworks-side-by-side` — this is the
+one line this module actually acts on):
+
+> Implement the controls and describe how the controls are employed within the system and
+> its environment of operation.
+
+Two separate obligations live inside that one sentence, and it's easy to read only the first
+half. "Implement the controls" is the build. "Describe how the controls are employed within the
+system and its environment of operation" is a documentation requirement sitting right next to
+it, not an afterthought — RMF doesn't consider a control implemented just because it exists; it
+has to be described well enough that someone who didn't build it could understand how it
+actually operates.
+
+Assess's one-line action, quoted verbatim from the same excerpt:
+
+> Assess the controls to determine if the controls are implemented correctly, operating as
+> intended, and producing the desired outcomes with respect to satisfying the security and
+> privacy requirements.
+
+Three separate questions live inside that sentence too, and they're not the same question asked
+three times: *implemented correctly* (built the way it was designed), *operating as intended*
+(actually running, not just configured and forgotten), and *producing the desired outcomes*
+(the thing it's supposed to catch, it actually catches). A control can pass the first test and
+fail the third — built correctly, technically running, but never yet exercised against a real
+case, which is exactly where your systems administrator's access review sits this week.
+
+## What actually got built
+
+Walk through what "implement" meant for each of the three families Select chose last module,
+concretely, not just named again.
+
+**Account and identity management.** Every eQMS account across Lakeshore's three sites is now
+tied to a named individual and a specific role — no shared logins, no "the usual people." New
+access requires a documented request and an approval step before the account is created. On top
+of that, your systems administrator owns a quarterly access-review cycle: every quarter, he
+pulls the full access list per site, checks it against who currently holds each role, and signs
+off that it still matches. That's the control as designed. The documentation piece — RMF's
+"describe how the controls are employed" requirement — means this isn't just a verbal
+understanding between you and him; it's written down who owns the review, what triggers it
+(the calendar date, not a complaint), and what it produces (a signed, dated reconciliation per
+site).
+
+**Audit and logging.** The eQMS's built-in audit-logging feature is turned on across all three
+sites, configured to capture every change to a CAPA record, a document-control record, or an
+audit-log entry itself — who made the change, what field changed, and when. It's not enough that
+the feature exists in the software; it has to actually be switched on, and the written
+description has to say what fields it captures and that the log itself is retained for at least
+as long as the records it's logging changes to, so the log can't quietly be shorter-lived than
+the evidence it's supposed to protect.
+
+**Physical and environmental protection.** Wherever the eQMS's underlying infrastructure
+actually sits — a question the last module left open and this one answers by confirming, not
+assuming — your systems administrator obtained written confirmation that the hosting facility
+has the basics: backup power, fire suppression, and controlled physical access to the server
+room itself. That confirmation is now a dated document Lakeshore holds, not a assumption nobody
+ever checked.
+
+All three of those are real, specific builds — not a restatement of the family names from last
+module. That's what distinguishes "implemented" from "selected."
+
+## The independent assessment
+
+Here's where the scene that opened this lesson actually matters. Your systems administrator
+built all three families. That makes him the wrong person to confirm they work — not because
+you doubt his honesty, but for the same reason this curriculum already established once,
+in `designing-an-internal-audit-program`: an auditor can't check their own work. The same rule
+applies here, one layer removed from an audit: whoever builds a control isn't the person who
+gets to declare it effective.
+
+So you hand the assessment to your Quality Analyst — she didn't build any of the three families,
+which clears her against that same independence test. She checks each one against RMF's three
+questions: implemented correctly, operating as intended, producing the desired outcome.
+
+**Physical and environmental protection** clears all three. The written confirmation exists, is
+dated, and matches what the facility actually provides.
+
+**Audit and logging** clears all three. She spot-checks the log against a handful of recent
+CAPA and document-control edits and confirms it's actually capturing who, what, and when for
+each one — not just configured, but producing real entries.
+
+**Account and identity management** is where she stops. The process is implemented correctly —
+the account structure, the request-and-approval step, and the quarterly review schedule are all
+real and documented, exactly as described. But the first scheduled review never actually ran;
+its due date already passed by the time she assessed it. That means Lakeshore has no evidence
+yet that the review actually catches what it's designed to catch — a stale account, a role that
+changed without access following it, an account that should have been revoked. The control
+exists and is documented. It has not yet been exercised, and "producing the desired outcomes" is
+exactly the test it hasn't had the chance to pass.
+
+That is the one concrete deficiency this module's assessment produces: **the quarterly eQMS
+access-review control is implemented and documented, but has not yet been exercised on its first
+scheduled cycle.** Not a vague "access controls need work" — a specific, dated, named gap. This
+is also exactly what Assess is supposed to do. Finding this is the process working, not the
+process failing; the whole reason an independent assessment happens before an authorization
+decision is so a gap like this surfaces here; carrying it forward honestly, not hiding it, is
+this module's actual job.
+
+## What a reviewer would actually look for
+
+What a competent reviewer — your CIO, your QA acting as assessor, or you yourself revisiting
+this later — wants to find for each control family is the same four things: a written
+description of how the control actually operates, evidence it was actually configured (not just
+designed), evidence someone independent of the builder checked it, and an honest statement of
+what that check found, including anything short of fully working. A bad answer sounds like "the
+administrator says it's all set." A good answer sounds like the walkthrough above: three
+families, each checked by someone who didn't build it, two confirmed working and one named
+honestly as not yet proven.
+
+## Common traps
+
+**"It's built, so it's done."** Implement and Assess are two separate steps for a reason — a
+control that exists is not the same fact as a control that works, and RMF's own language
+("operating as intended," "producing the desired outcomes") exists specifically to stop a team
+from treating "we configured it" as the finish line.
+
+**"The person who built it is the best person to confirm it works."** Backwards, on purpose.
+The person who built it knows it best, which is exactly why they're the worst-positioned person
+to notice what they missed. Independence isn't a formality here — it's the only way a gap like
+an unrun access review actually gets found instead of assumed away.
+
+## What this means for your job
+
+- **Ask for the written "how it operates" description before you believe a control is
+  implemented**, not just a verbal confirmation it exists. If nobody can hand you that
+  description, Implement's own documentation half hasn't actually happened yet.
+- **Never let the builder self-certify.** Whoever configured a control names someone else — your
+  QA, a peer, an outside reviewer if nobody internal clears the independence test — to check it,
+  the same release valve `designing-an-internal-audit-program` already built for exactly this
+  staffing problem.
+- **Treat "implemented but not yet exercised" as a real, nameable finding, not a technicality.**
+  A quarterly review that hasn't run its first cycle yet is not the same fact as a review that
+  ran and found nothing wrong — don't let anyone round the first up to the second.
+- **Expect an assessment to find something.** A first-pass assessment that clears every control
+  with zero findings is itself worth a second look — it's more often a sign nobody looked hard
+  enough than a sign everything is actually perfect.
+- **Keep the finding specific enough to act on.** "Account management needs attention" doesn't
+  give the next module anything to authorize around. "The quarterly review is documented but its
+  first cycle hasn't run yet" does.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your systems administrator asks why writing down "how" the access-review control works matters, since the control itself — the quarterly schedule — already exists. What do you tell him?
+
+Because Implement's own one-line action requires both things: building the control *and*
+describing how it's employed within the system and its environment of operation. A control that
+exists only in someone's head, or as a verbal understanding between two people, can't be checked
+by anyone independent, can't survive him changing roles or leaving, and can't be assessed against
+what it was supposed to do. The written description is what makes the control real enough for
+someone else to verify — which is exactly what happens next, in Assess.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Could your systems administrator have assessed his own account-and-identity-management build himself, to save time, since he's the one who understands it best?
+
+No. The same independence rule this curriculum already established for internal audits —
+the person checking the work can't be the person who did the work — applies here. Understanding
+a control best is exactly what makes its builder the least likely person to notice what it's
+missing; that's not a knock on his competence, it's just how blind spots work. The assessment has
+to go to someone who didn't build it, which is why it went to the QA.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The assessment found a real gap — the access review hasn't run its first cycle yet. Does that mean Lakeshore failed Implement and Assess?
+
+No — it means they worked. Assess exists specifically to surface a gap like this *before* anyone
+decides whether to authorize the eQMS for use, not to rubber-stamp whatever got built. An
+assessment that found nothing wrong on the very first pass would actually be more worth
+questioning than one that found something concrete and specific. The failure would be building
+the control, skipping an independent check, and finding out about the unrun review some other
+way — from an assessor, or from the gap actually being exploited.
+:::
+
+## Where this goes next
+
+Implement built the three control families and wrote down how each one works. Assess checked
+all three independently and found two working and one real, specific, open item: the quarterly
+access review, implemented and documented, not yet exercised on its first cycle. Someone now has
+to decide what to do with that open item before the eQMS goes live — accept it as a named,
+time-bound risk, or hold go-live until it's closed. That decision, and the ongoing monitoring
+plan that follows it, is `authorize-and-monitor`.

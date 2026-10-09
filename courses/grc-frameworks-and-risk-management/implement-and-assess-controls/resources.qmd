@@ -1,0 +1,25 @@
+---
+title: "Resources"
+order: 87
+---
+
+This module applies the same saved NIST excerpt the first two modules introduced — no new
+source was independently fetched, since the new content here is application (building the
+selected control families and assessing them independently), not new citation. The link below
+was checked at the time this page was written.
+
+- **[NIST SP 800-37 Rev. 2, "Risk Management Framework for Information Systems and
+  Organizations"](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf)**
+  (PDF, final, December 2018) — the document behind both quotes in this lesson (Implement's and
+  Assess's one-line actions), via the same saved excerpt in `sources/nist/` used in the first two
+  modules. Curl-checked directly from this session: returns HTTP 200.
+
+- **[Categorize and Select Controls](../categorize-and-select-controls/index.qmd)** — the
+  previous module: where the eQMS was categorized moderate-impact and the three control families
+  built here (account and identity management, audit, physical and environmental protection) were
+  selected and tailored.
+
+- **[Designing an Internal Audit Program](../../fda-and-aabb-in-practice/designing-an-internal-audit-program/index.qmd)** —
+  the module that first established, in Lakeshore's own worded rule, that an auditor can't check
+  their own work. This module applies that same independence principle to an RMF control
+  assessment instead of an internal audit.
