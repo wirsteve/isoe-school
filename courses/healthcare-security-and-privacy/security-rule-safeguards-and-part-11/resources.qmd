@@ -1,0 +1,33 @@
+---
+title: "Resources"
+order: 98
+---
+
+Four primary-source pages, plus one internal link back to this curriculum's Part 11 depth. All
+four eCFR links were curl-verified (`curl -s -o /dev/null -w "%{http_code}" -L <url>`) and
+returned `200` at the time this page was written.
+
+- **[45 CFR 164.306, eCFR](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.306)**
+  — the general rules section this module leans on hardest: the overall confidentiality/integrity/
+  availability mandate in (a), and the Required-vs-Addressable mechanism in (d) that this whole
+  module turns on.
+
+- **[45 CFR 164.308, eCFR](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.308)**
+  — the administrative safeguards: risk analysis, workforce security, security incident
+  procedures, and the information-system-activity-review requirement behind this module's
+  verification-gap finding.
+
+- **[45 CFR 164.310, eCFR](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.310)**
+  — the physical safeguards, including device and media controls, the standard most directly on
+  point for a laptop carrying e-PHI (electronic protected health information) leaving a facility.
+
+- **[45 CFR 164.312, eCFR](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.312)**
+  — the technical safeguards: access control (including the Required unique-user-ID specification
+  and the Addressable encryption specification the laptop's status turns on), audit controls, and
+  person/entity authentication.
+
+- **[`audit-trails-and-esignatures`, this curriculum](../../data-integrity-and-records/audit-trails-and-esignatures/index.qmd)**
+  — where 21 CFR Part 11's own audit-trail (11.10(e)), signature (11.50, 11.70), identity
+  (11.100), execution (11.200), and credential-control (11.300) requirements are quoted and
+  taught in full. Read it if you want the complete Part 11 text behind the comparison table above
+  — none of it is re-quoted at length in this module.

@@ -272,14 +272,14 @@ has no `plans/<slug>.md` file until its first session.
 | `data-integrity-and-records` | 6 / 6 | Done |
 | `fda-and-aabb-in-practice` | 6 / 6 | Done |
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
-| `healthcare-security-and-privacy` | 2 / 5 | In progress |
+| `healthcare-security-and-privacy` | 3 / 5 | In progress |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `healthcare-security-and-privacy` module 3,
-`security-rule-safeguards-and-part-11` (Track 4, Phase 8). Modules 1 and 2 are published — see
+**Next up:** `healthcare-security-and-privacy` module 4,
+`breach-notification-and-dual-reporting` (Track 4, Phase 8). Modules 1-3 are published — see
 `plans/healthcare-security-and-privacy.md`'s progress log for the full detail, including locked
-facts for modules 3-5: Lakeshore is now this course's adopted working premise as a HIPAA covered
+facts for modules 4-5: Lakeshore is now this course's adopted working premise as a HIPAA covered
 entity (reasoned from 45 CFR 160.103's "covered entity" clause (3) and "health care provider"
 catch-all, not asserted); the course's running incident is locked as a Brookfield staff member's
 work laptop, left in a shared ride after presenting a deferral-coding consistency review,
@@ -301,7 +301,23 @@ pulled likely did not satisfy minimum necessary**, because three of its six fiel
 date of birth, lifetime donation count) weren't needed for the review and rode along on a
 routine/recurring report template 164.514(d)(3)(i) obligates Lakeshore to have scoped down. This
 finding is independent of, and holds regardless of, how the breach/encryption questions resolve.
-No `csv-and-becs`/`data-integrity-and-records` locked identifier was touched by either module. `grc-frameworks-and-risk-management` is now 5/5 and complete — see
+Module 3 quoted 164.306/164.308/164.310/164.312 in full and built an honest comparison against
+Part 11 (164.312(a)(2)(i) unique user ID ≈ 11.100 uniqueness; 164.312(b) audit controls ≈
+11.10(e) audit trail; 164.312(d) person/entity authentication ≈ 11.200 two-component execution;
+reference only, Part 11 itself already fully taught in `data-integrity-and-records`), naming the
+one genuine structural difference honestly: Part 11 has no Required/Addressable concept, HIPAA's
+Security Rule does. Module 3's own locked finding, which module 4 inherits as an input, not a
+breach verdict: 164.312(a)(2)(iv) (encryption of e-PHI) is Addressable, and Lakeshore's policy of
+auto-enforcing full-disk encryption at enrollment was a sound response to 164.306(d)(3)'s
+assess-then-implement process — but that policy soundness doesn't by itself satisfy 164.306(a)'s
+ongoing confidentiality/integrity/availability mandate, because nobody can confirm encryption was
+actually active on this specific laptop when it went missing (the device-management migration
+left its status field "not reported"). This is reasoned as a **verification/monitoring gap under
+164.308(a)(1)(ii)(D)**, not a policy-design failure — the same "documented but not verified/
+enforced" pattern `data-integrity-and-records` used for its password-revision finding. Module 3
+explicitly does not determine whether a reportable breach occurred; that is 164.402's four-factor
+test, module 4's own job. No `csv-and-becs`/`data-integrity-and-records` locked identifier was
+touched by any of modules 1-3. `grc-frameworks-and-risk-management` is now 5/5 and complete — see
 `plans/grc-frameworks-and-risk-management.md`'s progress log for the full course, including
 module 5's final, locked state: a built POA&M (plan of action and milestones) entry for the
 eQMS's one open deficiency (the quarterly access-review control for account and identity

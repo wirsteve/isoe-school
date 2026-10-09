@@ -1,0 +1,515 @@
+---
+title: "Security Rule Safeguards and Part 11"
+order: 97
+---
+
+## "Was that a Required control, or an Addressable one?"
+
+Your Quality Analyst (QA) is back, and she's narrowed the question. The minimum-necessary finding
+from `the-hipaa-privacy-rule` is logged — three of the extract's six fields didn't need to be
+there. The covered-entity premise from `information-governance-in-a-covered-entity` is adopted.
+Neither of those settles the question she actually walked in with: "Before we even get to whether
+this is a breach — was the Brookfield laptop *supposed* to be encrypted? Not 'was Lakeshore's
+policy reasonable.' I mean: under HIPAA's own rule, was encryption a flat requirement we failed,
+or something else?"
+
+It's the right question to ask before the breach question, not after. The systems administrator
+has already told you what he can and can't confirm: the laptop was enrolled under Lakeshore's
+full-disk-encryption policy, auto-enforced at enrollment — but a device-management platform
+migration left this specific device's encryption-status field reading "not reported," neither on
+nor off, for the exact window spanning the migration and the loss. Nobody can say, today, whether
+encryption was actually running on that device when it went missing.
+
+That's not a question `the-hipaa-privacy-rule` can answer — it governs use and disclosure, not
+safeguards. It's not `breach-notification-and-dual-reporting`'s question either — that module runs
+the four-factor breach test, and it needs this module's answer as an input, not the other way
+around. This module owns exactly one thing: what the HIPAA Security Rule's own safeguards
+required of that laptop, and whether Lakeshore's encryption posture — and its gap — is a
+compliance problem in its own right, independent of whatever module 4 eventually decides about the
+breach itself.
+
+## Why this rule exists, and the ITSM bridge
+
+The HIPAA Privacy Rule, which the last module covered, answers "who's allowed to see this and for
+what reason." The Security Rule answers a different question: once PHI (protected health
+information) exists electronically, what actually has to stand between it and the people who
+aren't allowed to see it, or the failure that destroys or corrupts it. The failure mode the
+Security Rule exists to prevent isn't a nurse browsing a chart out of curiosity — that's a Privacy
+Rule problem. It's an unencrypted laptop in the back seat of a car, a terminated employee's login
+still working two months after the exit interview, a server with no audit log admitting nobody
+knows who touched what. Confidentiality, integrity, and availability — lose any one of them and a
+donor-eligibility record becomes untrustworthy, exposed, or gone.
+
+You already run a version of this discipline. `grc-frameworks-and-risk-management` built a full
+categorize → select → implement → assess → authorize → monitor cycle, and showed you a POA&M
+(plan of action and milestones) tracking a control implemented and documented but not yet exercised
+on its first scheduled cycle. That cycle's "select" step is where NIST's own tailoring guidance
+lets an organization choose a compensating control instead of a baseline one, document why, and
+move on. That's the same shape you're about to read in 164.306(d): an "Addressable" implementation
+specification isn't a control you can skip — it's one where the organization has to show its work,
+assess it, implement it if reasonable, or document why not and substitute something equivalent. The
+paperwork differs; the discipline is the same risk-based tailoring decision you've already learned
+to defend.
+
+## The rule in plain English
+
+Start with what every covered entity has to do, full stop, no tailoring available: 164.306(a)
+requires ensuring the confidentiality, integrity, and availability of all electronic PHI the
+organization creates, receives, maintains, or transmits; protecting against reasonably anticipated
+threats; protecting against impermissible uses or disclosures; and ensuring workforce compliance.
+That's the destination. Everything in 164.308, 164.310, and 164.312 is a means to that end, and
+164.306(b) explicitly lets a covered entity choose *how* to get there — any security measure that
+reasonably and appropriately implements the standards, sized to the organization's own scale, tech
+stack, cost constraints, and actual risk.
+
+Then comes the mechanism that decides how much flexibility exists for any *specific* control:
+164.306(d)'s Required/Addressable split. If an implementation specification is labeled "Required,"
+there's no judgment call — implement it. If it's labeled "Addressable," the organization must (1)
+assess whether that specification is a reasonable and appropriate safeguard given its own
+environment, and then either (2a) implement it if the assessment says yes, or (2b) if not, document
+*why* it isn't reasonable and appropriate, and implement an equivalent alternative measure if one
+is reasonable and appropriate. Read that again, because it's the single most commonly
+misunderstood sentence in this whole subpart: "Addressable" is not a synonym for "optional." It's a
+mandatory *process* — assess, then implement-or-substitute-and-document — attached to a control
+whose *outcome* has some flexibility. Skipping the process entirely, with no assessment and no
+documentation, satisfies nothing.
+
+164.312(a)(2)(iv) — encryption and decryption of electronic PHI — is labeled Addressable. That one
+fact is the hinge this whole module turns on, for the laptop and for every other Addressable
+specification in 164.308, 164.310, and 164.312.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 45 CFR 164.306(a) | "One-sixty-four point three-oh-six, paragraph a" | The overall standard: ensure confidentiality, integrity, and availability of e-PHI; protect against reasonably anticipated threats and impermissible disclosures; ensure workforce compliance. | The outcome every safeguard below exists to serve — and the standard a documented-but-unverified control can still fail even if its own paperwork is clean. |
+| 45 CFR 164.306(d) | "Paragraph d" | Defines Required vs. Addressable implementation specifications, and spells out the Addressable process: assess, then implement, or document why not and substitute an equivalent measure. | The mechanism that decides whether the laptop's encryption gap is a paperwork problem or a real one. |
+| 45 CFR 164.308(a)(1)(ii)(D) | "Three-oh-eight, paragraph a, sub-one, sub-two, sub-D" | Information system activity review (Required): regularly review records of system activity — audit logs, access reports, security incident tracking. | The provision that should have caught an "unreported" encryption-status field before the laptop ever left the building. |
+| 45 CFR 164.308(a)(6) | "Paragraph a, sub-six" | Security incident procedures: policies to address security incidents, with a Required specification to identify, respond to, mitigate, and document them. | What's now actually running, because the laptop is missing. |
+| 45 CFR 164.310(d)(1)-(2) | "Three-ten, paragraph d" | Device and media controls: policies governing hardware/media carrying e-PHI moving into, out of, and within a facility; disposal and media re-use are Required, accountability and backup-before-movement are Addressable. | Governs exactly the act of a staff member carrying a BECS extract out of Lakeshore's central site on a laptop. |
+| 45 CFR 164.312(a)(2)(i) | "Three-twelve, paragraph a, sub-two, sub-one" | Unique user identification (Required): assign each user a unique name or number for identifying and tracking identity. | Compare directly to Part 11's 11.100 uniqueness requirement, below. |
+| 45 CFR 164.312(a)(2)(iv) | "Sub-two, sub-four" | Encryption and decryption of e-PHI (Addressable). | The exact specification the laptop's status is genuinely unresolved against. |
+| 45 CFR 164.312(b) | "Paragraph b" | Audit controls: hardware/software/procedural mechanisms that record and examine activity in systems holding e-PHI. | Compare directly to Part 11's 11.10(e) audit-trail requirement, below. |
+| 45 CFR 164.312(d) | "Paragraph d" | Person or entity authentication: verify that whoever is accessing e-PHI is actually who they claim to be. | Compare directly to Part 11's 11.200 identity-verification components, below. |
+
+## The actual text
+
+All quotes below come verbatim from `sources/cfr/45-164-security-rule-excerpt.md`.
+
+### 164.306 — Security standards: General rules
+
+> (a) General requirements. Covered entities and business associates must do the following:
+> (1) Ensure the confidentiality, integrity, and availability of all electronic protected health
+> information the covered entity or business associate creates, receives, maintains, or
+> transmits.
+> (2) Protect against any reasonably anticipated threats or hazards to the security or integrity
+> of such information.
+> (3) Protect against any reasonably anticipated uses or disclosures of such information that are
+> not permitted or required under subpart E of this part.
+> (4) Ensure compliance with this subpart by its workforce.
+> (b) Flexibility of approach. (1) Covered entities and business associates may use any security
+> measures that allow the covered entity or business associate to reasonably and appropriately
+> implement the standards and implementation specifications as specified in this subpart.
+> (2) In deciding which security measures to use, a covered entity or business associate must take
+> into account the following factors: (i) The size, complexity, and capabilities of the covered
+> entity or business associate. (ii) The covered entity's or the business associate's technical
+> infrastructure, hardware, and software security capabilities. (iii) The costs of security
+> measures. (iv) The probability and criticality of potential risks to electronic protected health
+> information.
+> (c) Standards. A covered entity or business associate must comply with the applicable standards
+> as provided in this section and in §§ 164.308, 164.310, 164.312, 164.314 and 164.316 with
+> respect to all electronic protected health information.
+> (d) Implementation specifications. In this subpart: (1) Implementation specifications are
+> required or addressable. If an implementation specification is required, the word "Required"
+> appears in parentheses after the title of the implementation specification. If an implementation
+> specification is addressable, the word "Addressable" appears in parentheses after the title of
+> the implementation specification. (2) When a standard adopted in § 164.308, § 164.310, §
+> 164.312, § 164.314, or § 164.316 includes required implementation specifications, a covered
+> entity or business associate must implement the implementation specifications. (3) When a
+> standard adopted in § 164.308, § 164.310, § 164.312, § 164.314, or § 164.316 includes
+> addressable implementation specifications, a covered entity or business associate must— (i)
+> Assess whether each implementation specification is a reasonable and appropriate safeguard in
+> its environment, when analyzed with reference to the likely contribution to protecting
+> electronic protected health information; and (ii) As applicable to the covered entity or
+> business associate— (A) Implement the implementation specification if reasonable and
+> appropriate; or (B) If implementing the implementation specification is not reasonable and
+> appropriate— (1) Document why it would not be reasonable and appropriate to implement the
+> implementation specification; and (2) Implement an equivalent alternative measure if reasonable
+> and appropriate.
+> (e) Maintenance. A covered entity or business associate must review and modify the security
+> measures implemented under this subpart as needed to continue provision of reasonable and
+> appropriate protection of electronic protected health information, and update documentation of
+> such security measures in accordance with § 164.316(b)(2)(iii).
+
+Notice what (d)(3) actually demands, word by word: "assess," then "implement ... or ... document
+why ... and implement an equivalent alternative." Three possible honest end-states for an
+Addressable specification — implemented, or documented-not-reasonable-with-a-substitute, never a
+fourth, silent option of "didn't get to it." And notice (e): the standard isn't a one-time box to
+check. Security measures have to be reviewed and modified "as needed," on an ongoing basis — a
+Required or satisfied-Addressable control from last year isn't automatically still satisfied this
+year.
+
+### 164.308 — Administrative safeguards
+
+> (a) A covered entity or business associate must, in accordance with § 164.306:
+> (1)(i) Standard: Security management process. Implement policies and procedures to prevent,
+> detect, contain, and correct security violations.
+> (ii) Implementation specifications: (A) Risk analysis (Required). Conduct an accurate and
+> thorough assessment of the potential risks and vulnerabilities to the confidentiality, integrity,
+> and availability of electronic protected health information held by the covered entity or
+> business associate. (B) Risk management (Required). Implement security measures sufficient to
+> reduce risks and vulnerabilities to a reasonable and appropriate level to comply with §
+> 164.306(a). (C) Sanction policy (Required). Apply appropriate sanctions against workforce
+> members who fail to comply with the security policies and procedures of the covered entity or
+> business associate. (D) Information system activity review (Required). Implement procedures to
+> regularly review records of information system activity, such as audit logs, access reports,
+> and security incident tracking reports.
+> (2) Standard: Assigned security responsibility. Identify the security official who is
+> responsible for the development and implementation of the policies and procedures required by
+> this subpart for the covered entity or business associate.
+> (3)(i) Standard: Workforce security. Implement policies and procedures to ensure that all
+> members of its workforce have appropriate access to electronic protected health information, as
+> provided under paragraph (a)(4) of this section, and to prevent those workforce members who do
+> not have access under paragraph (a)(4) of this section from obtaining access to electronic
+> protected health information.
+> (ii) Implementation specifications: (A) Authorization and/or supervision (Addressable).
+> Implement procedures for the authorization and/or supervision of workforce members who work with
+> electronic protected health information or in locations where it might be accessed. (B)
+> Workforce clearance procedure (Addressable). Implement procedures to determine that the access
+> of a workforce member to electronic protected health information is appropriate. (C) Termination
+> procedures (Addressable). Implement procedures for terminating access to electronic protected
+> health information when the employment of, or other arrangement with, a workforce member ends or
+> as required by determinations made as specified in paragraph (a)(3)(ii)(B) of this section.
+> (4)(i) Standard: Information access management. Implement policies and procedures for
+> authorizing access to electronic protected health information that are consistent with the
+> applicable requirements of subpart E of this part.
+> (ii) Implementation specifications: (A) Isolating health care clearinghouse functions
+> (Required). If a health care clearinghouse is part of a larger organization, the clearinghouse
+> must implement policies and procedures that protect the electronic protected health information
+> of the clearinghouse from unauthorized access by the larger organization. (B) Access
+> authorization (Addressable). Implement policies and procedures for granting access to electronic
+> protected health information, for example, through access to a workstation, transaction,
+> program, process, or other mechanism. (C) Access establishment and modification (Addressable).
+> Implement policies and procedures that, based upon the covered entity's or the business
+> associate's access authorization policies, establish, document, review, and modify a user's
+> right of access to a workstation, transaction, program, or process.
+> (5)(i) Standard: Security awareness and training. Implement a security awareness and training
+> program for all members of its workforce (including management).
+> (ii) Implementation specifications. Implement: (A) Security reminders (Addressable). Periodic
+> security updates. (B) Protection from malicious software (Addressable). Procedures for guarding
+> against, detecting, and reporting malicious software. (C) Log-in monitoring (Addressable).
+> Procedures for monitoring log-in attempts and reporting discrepancies. (D) Password management
+> (Addressable). Procedures for creating, changing, and safeguarding passwords.
+> (6)(i) Standard: Security incident procedures. Implement policies and procedures to address
+> security incidents.
+> (ii) Implementation specification: Response and reporting (Required). Identify and respond to
+> suspected or known security incidents; mitigate, to the extent practicable, harmful effects of
+> security incidents that are known to the covered entity or business associate; and document
+> security incidents and their outcomes.
+> (7)(i) Standard: Contingency plan. Establish (and implement as needed) policies and procedures
+> for responding to an emergency or other occurrence (for example, fire, vandalism, system
+> failure, and natural disaster) that damages systems that contain electronic protected health
+> information.
+> (ii) Implementation specifications: (A) Data backup plan (Required). Establish and implement
+> procedures to create and maintain retrievable exact copies of electronic protected health
+> information. (B) Disaster recovery plan (Required). Establish (and implement as needed)
+> procedures to restore any loss of data. (C) Emergency mode operation plan (Required). Establish
+> (and implement as needed) procedures to enable continuation of critical business processes for
+> protection of the security of electronic protected health information while operating in
+> emergency mode. (D) Testing and revision procedures (Addressable). Implement procedures for
+> periodic testing and revision of contingency plans. (E) Applications and data criticality
+> analysis (Addressable). Assess the relative criticality of specific applications and data in
+> support of other contingency plan components.
+> (8) Standard: Evaluation. Perform a periodic technical and nontechnical evaluation, based
+> initially upon the standards implemented under this rule and, subsequently, in response to
+> environmental or operational changes affecting the security of electronic protected health
+> information, that establishes the extent to which a covered entity's or business associate's
+> security policies and procedures meet the requirements of this subpart.
+> (b)(1) Business associate contracts and other arrangements. A covered entity may permit a
+> business associate to create, receive, maintain, or transmit electronic protected health
+> information on the covered entity's behalf only if the covered entity obtains satisfactory
+> assurances, in accordance with § 164.314(a), that the business associate will appropriately
+> safeguard the information.
+
+164.308(a)(1)(ii)(D) — information system activity review, Required, no tailoring available — is
+worth sitting with before moving on. It obligates Lakeshore to regularly review records of
+information system activity: audit logs, access reports, security incident tracking reports. A
+device-management platform's own inventory report, showing a device's encryption-status field
+as "not reported," is exactly the kind of record this specification requires someone to be
+reviewing on a regular cadence — not waiting to discover it only after a laptop goes missing.
+
+### 164.310 — Physical safeguards
+
+> A covered entity or business associate must, in accordance with § 164.306:
+> (a)(1) Standard: Facility access controls. Implement policies and procedures to limit physical
+> access to its electronic information systems and the facility or facilities in which they are
+> housed, while ensuring that properly authorized access is allowed.
+> (2) Implementation specifications: (i) Contingency operations (Addressable). Establish (and
+> implement as needed) procedures that allow facility access in support of restoration of lost
+> data under the disaster recovery plan and emergency mode operations plan in the event of an
+> emergency. (ii) Facility security plan (Addressable). Implement policies and procedures to
+> safeguard the facility and the equipment therein from unauthorized physical access, tampering,
+> and theft. (iii) Access control and validation procedures (Addressable). Implement procedures to
+> control and validate a person's access to facilities based on their role or function, including
+> visitor control, and control of access to software programs for testing and revision. (iv)
+> Maintenance records (Addressable). Implement policies and procedures to document repairs and
+> modifications to the physical components of a facility which are related to security (for
+> example, hardware, walls, doors, and locks).
+> (b) Standard: Workstation use. Implement policies and procedures that specify the proper
+> functions to be performed, the manner in which those functions are to be performed, and the
+> physical attributes of the surroundings of a specific workstation or class of workstation that
+> can access electronic protected health information.
+> (c) Standard: Workstation security. Implement physical safeguards for all workstations that
+> access electronic protected health information, to restrict access to authorized users.
+> (d)(1) Standard: Device and media controls. Implement policies and procedures that govern the
+> receipt and removal of hardware and electronic media that contain electronic protected health
+> information into and out of a facility, and the movement of these items within the facility.
+> (2) Implementation specifications: (i) Disposal (Required). Implement policies and procedures
+> to address the final disposition of electronic protected health information, and/or the
+> hardware or electronic media on which it is stored. (ii) Media re-use (Required). Implement
+> procedures for removal of electronic protected health information from electronic media before
+> the media are made available for re-use. (iii) Accountability (Addressable). Maintain a record
+> of the movements of hardware and electronic media and any person responsible therefore. (iv)
+> Data backup and storage (Addressable). Create a retrievable, exact copy of electronic protected
+> health information, when needed, before movement of equipment.
+
+164.310(d) is the physical-safeguard standard most directly on point for a staff member carrying a
+BECS extract out of Lakeshore's central site on a laptop in the first place: "device and media
+controls" exist precisely to govern hardware "into and out of a facility." Note that accountability
+— maintaining a record of who's responsible for hardware as it moves — is itself only Addressable,
+not Required. That matters later: Lakeshore can't be faulted under 164.310(d) for failing to track
+the laptop's movement unless it either never assessed that specification or assessed it, found it
+reasonable, and still didn't implement it.
+
+### 164.312 — Technical safeguards
+
+> A covered entity or business associate must, in accordance with § 164.306:
+> (a)(1) Standard: Access control. Implement technical policies and procedures for electronic
+> information systems that maintain electronic protected health information to allow access only
+> to those persons or software programs that have been granted access rights as specified in §
+> 164.308(a)(4).
+> (2) Implementation specifications: (i) Unique user identification (Required). Assign a unique
+> name and/or number for identifying and tracking user identity. (ii) Emergency access procedure
+> (Required). Establish (and implement as needed) procedures for obtaining necessary electronic
+> protected health information during an emergency. (iii) Automatic logoff (Addressable).
+> Implement electronic procedures that terminate an electronic session after a predetermined time
+> of inactivity. (iv) Encryption and decryption (Addressable). Implement a mechanism to encrypt
+> and decrypt electronic protected health information.
+> (b) Standard: Audit controls. Implement hardware, software, and/or procedural mechanisms that
+> record and examine activity in information systems that contain or use electronic protected
+> health information.
+> (c)(1) Standard: Integrity. Implement policies and procedures to protect electronic protected
+> health information from improper alteration or destruction.
+> (2) Implementation specification: Mechanism to authenticate electronic protected health
+> information (Addressable). Implement electronic mechanisms to corroborate that electronic
+> protected health information has not been altered or destroyed in an unauthorized manner.
+> (d) Standard: Person or entity authentication. Implement procedures to verify that a person or
+> entity seeking access to electronic protected health information is the one claimed.
+> (e)(1) Standard: Transmission security. Implement technical security measures to guard against
+> unauthorized access to electronic protected health information that is being transmitted over an
+> electronic communications network.
+> (2) Implementation specifications: (i) Integrity controls (Addressable). Implement security
+> measures to ensure that electronically transmitted electronic protected health information is
+> not improperly modified without detection until disposed of. (ii) Encryption (Addressable).
+> Implement a mechanism to encrypt electronic protected health information whenever deemed
+> appropriate.
+
+And there it is, inside 164.312(a)(2): unique user identification is **Required**; encryption and
+decryption of e-PHI is **Addressable**. Same paragraph, same standard, two completely different
+compliance postures for two different controls sitting right next to each other.
+
+## Mapping this against Part 11, honestly
+
+`data-integrity-and-records`'s `audit-trails-and-esignatures` module already taught 11.10, 11.50,
+11.70, 11.100, 11.200, and 11.300 in full depth — none of that gets re-quoted here. What's worth
+building is an honest comparison, because the overlap is real and so is the difference, and
+flattening either one into "basically the same rule" would be wrong.
+
+| HIPAA Security Rule | Part 11 (reference only) | The real overlap | The real difference |
+|---|---|---|---|
+| 164.312(a)(2)(i), unique user identification (Required) | 11.100(a), each signature unique to one individual, never reused or reassigned | Both demand one identity, one accountable person, never shared or recycled credentials. | 164.312(a)(2)(i) is about system *access* broadly; 11.100 is specifically about the identity behind a *signature*. Related controls, not the same control. |
+| 164.312(b), audit controls | 11.10(e), secure, computer-generated, time-stamped audit trail | Both require a mechanism that records and lets you reconstruct who did what, when, to data that matters. | 164.312(b) exists to protect PHI confidentiality/integrity generally; 11.10(e) exists specifically to prove a CGMP record wasn't altered without a trace. Same mechanism, different regulated interest behind it. |
+| 164.312(d), person or entity authentication | 11.200, two distinct identification components for a non-biometric signature | Both require verifying that whoever is acting is actually who they claim to be, not assumed. | 164.312(d) is a general login/access standard; 11.200 is narrower and stricter — it specifically requires *signature execution* to use two components and be collusion-resistant, not just login. |
+
+**The one genuine structural difference, stated plainly: Part 11 has no Required/Addressable
+concept at all.** Every Part 11 control this curriculum has taught — 11.10(e)'s audit trail,
+11.50's signature manifestation, 11.70's tamper-resistant linkage, 11.100's uniqueness, 11.200's
+two-component execution, 11.300's password controls — simply applies, in full, to any system that
+falls under Part 11's scope, or it doesn't apply at all (the system is outside Part 11's scope, or
+the enforcement-discretion question `audit-trails-and-esignatures` already walked through for
+11.10(e) specifically). There is no Part 11 mechanism that says "assess whether 11.300(b)'s
+password-revision requirement is reasonable for your environment, and if not, document why and
+substitute something equivalent." If 11.300(b) applies, Lakeshore revises passwords periodically,
+full stop. HIPAA's Security Rule, by contrast, builds that exact assess-or-substitute process
+directly into roughly half its implementation specifications. That's not a loophole HIPAA built in
+by accident — 164.306(b)(2) says plainly that a covered entity's size, infrastructure, and cost
+constraints are legitimate factors in choosing *how* to meet a standard. Part 11 was written for a
+narrower, more homogeneous universe of CGMP record-keeping systems; HIPAA's Security Rule was
+written to reach everything from a solo practitioner's laptop to a multi-hospital health system,
+and the Required/Addressable split is how it does that without either over-specifying small
+operations or under-specifying large ones.
+
+Don't let that difference collapse into "HIPAA is more lenient." It isn't — 164.306(d)(3)'s process
+for an Addressable specification is itself mandatory, and skipping it (no assessment, no
+documentation, no substitute) is every bit as much a finding as failing a Part 11 Required control
+outright. The two rules also aren't protecting the same thing: Part 11 exists to make an electronic
+record or signature trustworthy enough to stand in for paper in an FDA-regulated record-keeping
+system; HIPAA's Security Rule exists to keep PHI confidential, intact, and available, regardless of
+whether it ever touches a signature or a CGMP record. They overlap hard on access control and audit
+logging because both care about "who touched this and can we prove it" — but one is answering "is
+this signature legally binding" and the other is answering "is this information still safe."
+
+## Resolving the encryption question — a Security Rule question, not the breach question
+
+Now apply all of this to the one open fact module 1 locked and left open: the laptop's encryption
+status.
+
+**Step one: classify the control.** 164.312(a)(2)(iv), encryption and decryption of e-PHI, is
+labeled Addressable in the text just quoted. Not Required. There is no blanket HIPAA mandate that
+every laptop holding e-PHI must be encrypted.
+
+**Step two: was Lakeshore's policy itself a sound response to 164.306(d)(3)?** Yes — and this is
+worth crediting plainly, the same way `the-hipaa-privacy-rule` credited a clean pass on 11.200 in
+a prior module rather than treating every finding as a gap. Lakeshore assessed that full-disk
+encryption is a reasonable and appropriate safeguard for laptops carrying e-PHI (an assessment any
+competent risk analysis would reach, given how often laptops are lost or stolen relative to
+servers sitting in a locked facility), and it implemented that assessment as a standing policy:
+full-disk encryption required on every end-user laptop, auto-enforced through central device
+management at the moment of enrollment. That's exactly the Addressable process working as
+designed — assess, then implement, not implement-by-default and not skip-and-hope. **By policy,
+Lakeshore's posture on this Addressable specification is sound.**
+
+**Step three — and this is the real finding — a sound policy is not the same thing as a satisfied
+164.306(a).** The systems administrator can confirm the laptop was enrolled under the encryption
+policy. He cannot confirm, for this specific device, that full-disk encryption was actually active
+when it went missing, because a device-management platform migration left exactly this unit's
+encryption-status field reading "not reported" for the relevant window. That is not a policy
+failure. It's a verification and monitoring failure, and it sits squarely on 164.308(a)(1)(ii)(D) —
+the Required specification obligating Lakeshore to regularly review records of information system
+activity. An encryption-status field stuck at "not reported" is precisely the kind of record that
+specification exists to catch, and catch *before* the device is gone, not after. 164.306(a)(1)'s
+own overall mandate — ensure the confidentiality, integrity, and availability of e-PHI — isn't
+satisfied by a well-reasoned Addressable-specification decision sitting in a policy binder if
+nobody can confirm, for an actual device, that the control it describes actually ran.
+
+This is the same pattern this curriculum has flagged before, in a different system, for a
+different reason: `audit-trails-and-esignatures` found a Part 11 password-revision policy that was
+written correctly but never verified as actually enforced — "the policy was written. It was never
+technically enforced. Nobody circled back to confirm the system was doing what the document said
+it would." The Brookfield laptop's encryption gap is the same shape, wearing different clothes: a
+policy that reads well, and no evidence the control it describes was confirmed operating on this
+one device, at the one moment it mattered.
+
+**State the finding precisely, because modules 4 and 5 build directly on exactly this wording and
+nothing broader:** Lakeshore has a genuine Security Rule compliance gap in *how it verifies that
+an Addressable control it chose to implement actually operated on a given device* — a
+monitoring/verification gap under 164.308(a)(1)(ii)(D), sitting on top of an otherwise reasonable
+164.306(d)(3) decision about encryption itself. **This finding says nothing about whether a breach
+occurred.** Whether unencrypted PHI was actually acquired, viewed, or exfiltrated by whoever has
+that laptop now is 164.402's own four-factor test — a completely separate question that turns on
+facts (was the data actually accessed, who has the device now, what's the nature and extent of the
+PHI involved) this module doesn't have and isn't trying to reason through. `breach-notification-
+and-dual-reporting` picks that up next, carrying this exact, narrow finding forward as one input
+among several, not as a predetermined verdict.
+
+## What an inspector or reviewer would actually look for
+
+An OCR (Office for Civil Rights) investigator wouldn't ask "do you have an encryption policy" —
+every organization being investigated has a policy. They'd ask for the 164.308(a)(1)(ii)(A) risk
+analysis that led Lakeshore to treat encryption as reasonable and appropriate in the first place,
+the 164.306(d)(3) documentation of that assessment, and then — separately — the device-level
+evidence that encryption was actually active on *this* laptop at the relevant time: a management
+console's status log, a compliance report, anything beyond the policy document itself. Right now,
+Lakeshore has the first two. It doesn't have the third, for this one device, because the migration
+left that field blank. A bad answer sounds like "our policy requires full-disk encryption on every
+laptop." A credible answer produces the device's own status history, not just the policy that was
+supposed to produce it.
+
+## Common traps
+
+**"Addressable means optional."** This is the trap the whole module exists to refute. 164.306(d)(3)
+makes the process itself mandatory — assess, then implement or document-and-substitute. An
+organization that never assessed an Addressable specification at all, and has nothing on file
+explaining why, has failed 164.306(d)(3) regardless of whether the underlying control would have
+turned out to be reasonable.
+
+**"We have a policy that covers this, so we're compliant."** Also the trap this module's own
+finding refutes directly. A sound 164.306(d)(3) decision, properly documented, is necessary but not
+sufficient. 164.306(a)'s overall confidentiality/integrity/availability mandate is a standing,
+ongoing obligation — satisfied only when there's evidence the control the policy describes is
+actually operating, not merely written down. A policy document proves intent. A device's own status
+log proves compliance.
+
+## What this means for your job
+
+- **Before you accept "it's Addressable" as the end of a conversation, ask for the 164.306(d)(3)
+  paperwork.** An Addressable specification never formally assessed, with no documented reasoning
+  on file, is a finding — whether or not the underlying control happens to be in place.
+- **Separate "is our policy reasonable" from "can we prove it ran on this device."** Different
+  questions, different evidence. Make sure someone is answering both, per device, not just citing
+  the fleet-wide policy.
+- **Treat an "unreported" or "unknown" status field as a finding the moment you see it, not after a
+  device goes missing.** 164.308(a)(1)(ii)(D) obligates regular review of exactly this kind of
+  record. A migration that silently breaks status reporting on even one device is worth escalating
+  immediately, not discovering during an incident review.
+- **When comparing "HIPAA-compliant" and "Part 11-compliant" claims, ask which specific controls
+  they mean.** The access-control and audit-logging overlap is real, but satisfying 11.100's
+  signature-uniqueness requirement doesn't automatically satisfy 164.312(a)(2)(i)'s broader access
+  standard, or vice versa — adjacent controls, not identical ones.
+- **Don't let this module's finding slide into a breach conclusion.** The verification gap is real
+  and logged. Whether it adds up to a reportable breach is 164.402's four-factor test, next module,
+  and it needs facts this module doesn't have.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Does HIPAA's Security Rule flatly require every laptop holding e-PHI to be encrypted?
+
+No — and this is worth holding onto precisely. 164.312(a)(2)(iv), encryption and decryption of
+e-PHI, is explicitly labeled **Addressable**, not Required. There is no blanket HIPAA mandate that
+every device be encrypted. What *is* mandatory is the 164.306(d)(3) process attached to that
+Addressable label: assess whether encryption is reasonable and appropriate in your environment,
+then implement it if so, or document why not and substitute something equivalent. Lakeshore's
+policy of auto-enforcing full-disk encryption at enrollment is one way of discharging that process
+soundly — but it's a reasonable choice within a flexible requirement, not evidence of an absolute
+rule that doesn't exist in the text.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: If Lakeshore's encryption policy was itself reasonable and properly documented, is there still a Security Rule compliance problem with the Brookfield laptop?
+
+Yes — and this is this module's central, locked finding. A sound 164.306(d)(3) decision about the
+*policy* doesn't satisfy 164.306(a)'s ongoing mandate to actually ensure confidentiality,
+integrity, and availability for *this device*. The device-management migration left this laptop's
+encryption-status field "not reported," and nobody can currently confirm encryption was active on
+it when it went missing. That's a monitoring/verification gap tied to 164.308(a)(1)(ii)(D)'s
+Required information-system-activity-review specification — a real, separate compliance problem
+sitting on top of an otherwise sound policy decision. It is not, on its own, a determination that a
+breach occurred; that's 164.402's four-factor test, taken up next module.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Part 11 has strict controls for electronic signatures. Does Part 11 have its own "Addressable" category the way HIPAA's Security Rule does, for a control a regulated company judges isn't reasonable in its environment?
+
+No. This is the one genuine structural difference this module insists on naming honestly: Part 11,
+as taught in full in `data-integrity-and-records`, has no Required/Addressable concept anywhere in
+its text. 11.10(e)'s audit trail, 11.50's signature manifestation, 11.70's tamper-resistant
+linkage, 11.100's uniqueness, 11.200's two-component execution, and 11.300's password controls each
+simply apply, in full, to a system within Part 11's scope, or they don't apply because the system
+or the specific clause falls outside that scope (or inside FDA's own stated enforcement-discretion
+list, a separate and narrower question `audit-trails-and-esignatures` already covered). There's no
+Part 11 mechanism letting an organization assess a control, decide it's not reasonable for its
+environment, and substitute something equivalent instead. HIPAA's Security Rule built that
+flexibility in on purpose; Part 11 did not.
+:::
+
+## Where this goes next
+
+The Security Rule side of this incident is now reasoned through: Lakeshore's encryption policy was
+a sound response to an Addressable specification, but a real, specific verification gap means
+nobody can confirm that policy actually operated on the one device that matters. That finding —
+not a breach determination, just a safeguards gap — is now the locked input `breach-notification-
+and-dual-reporting` picks up next, where 164.402's four-factor test finally asks the question this
+module deliberately didn't: given everything now known, and everything still genuinely unresolved,
+did a reportable breach of unsecured PHI actually occur — and does it also trigger FDA's own,
+separate 45-day BPDR clock alongside HIPAA's 60-day one?
