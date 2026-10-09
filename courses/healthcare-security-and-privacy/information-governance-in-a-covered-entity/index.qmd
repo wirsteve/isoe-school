@@ -1,0 +1,384 @@
+---
+title: "Information Governance in a Covered Entity"
+order: 93
+---
+
+## A laptop that isn't where it should be
+
+Your Quality Analyst (QA) catches you between meetings. A Brookfield-based staff member — part
+of the small team that runs deferral-coding reviews out of that site — can't find their work
+laptop. The story so far: the staff member traveled to Lakeshore's central site to walk a
+quality meeting through the findings of a deferral-coding consistency review, carried the
+laptop in a shoulder bag, and at some point after the meeting ended, left that bag in the back
+seat of a shared ride on the way to catch a return flight. The loss wasn't noticed until hours
+later, back at the gate. A report's been filed. The device itself — where it is now, whether
+anyone else has it, whether it will ever turn up — is unknown.
+
+Here's the part that stops the meeting cold. That laptop carried a local copy of an extract
+pulled from BECS (Blood Establishment Computer Software) — the system this curriculum has
+already spent a full course on — for exactly the review the staff member was presenting. Donor
+records. Eligibility determinations. On a laptop, in a bag, in a car that's no longer answering.
+
+Someone at the table — not your QA, not the systems administrator, someone newer to the
+conversation — asks the obvious question: "Don't we have to report this? Isn't there a HIPAA
+(the Health Insurance Portability and Accountability Act) clock running right now?"
+
+And you realize nobody in the room can actually answer the question underneath that question.
+Not "was this a breach" — that's getting ahead of things. The real first question, the one
+nobody at Lakeshore has ever had to answer out loud before: **is Lakeshore even a HIPAA covered
+entity in the first place?** If it isn't, HIPAA's breach-notification machinery never engages at
+all, whatever else this incident turns out to be. If it is, everything downstream — what counts
+as protected information, what the laptop's encryption status actually means, what clock starts
+running and when — depends on an answer you're about to have to work out from scratch.
+
+No citations yet. Just the laptop, the extract, and a question this curriculum has successfully
+avoided for nine courses because nothing before now has forced it.
+
+## Why this question exists, and the ITSM bridge
+
+Blood centers have always lived inside FDA's and AABB's (the Association for the Advancement of
+Blood & Biotherapies') regulatory world — that's the ground this entire curriculum stands on.
+HIPAA comes from a different place: a healthcare-privacy and security statute, administered by
+HHS (the Department of Health and Human Services) through its Office for Civil Rights, built for
+a universe of hospitals, clinics, health plans, and insurers. Nothing about collecting, testing,
+and distributing blood obviously screams "covered entity" the way a hospital does. A blood center
+could plausibly sit outside HIPAA's reach entirely, or sit squarely inside it — and the only way
+to know which is to read the actual definition and apply it honestly to what Lakeshore does, not
+to guess from the industry's general vibe.
+
+This is a familiar move, even in an unfamiliar framework. In ITSM (IT service management) terms,
+you don't start a configuration-management exercise by assuming you already know what counts as
+a service asset — you apply the classification scheme to what you actually have, and let the
+answer be whatever it is. A CMDB (configuration management database) populated by assumption
+instead of by checking against the actual schema becomes untrustworthy the same way a regulatory
+determination does when someone just asserts "we're covered" or "we're not" without opening the
+statute. The failure this module exists to head off isn't getting the covered-entity question
+wrong — it's never asking it at all, and building a privacy and security program on an assumption
+nobody tested.
+
+It also isn't academic right now. Whether Lakeshore is a covered entity decides whether the
+donor-eligibility extract on that missing laptop is a confidential business record — serious in
+its own right, already reached by FDA's and AABB's existing record-security expectations — or
+PHI (protected health information) in HIPAA's specific defined sense, which brings a separate
+notification clock, a separate regulator, and separate rules about who gets told what and when.
+You can't scope the rest of this course, or this incident, until this question is answered.
+
+## The rule in plain English — are we a covered entity?
+
+HIPAA's rules don't apply to everyone. They apply to a specific, defined category of
+organization called a **covered entity**, and to that entity's **business associates** (a
+related category this course doesn't need today, but you'll meet it again in
+`vendor-and-third-party-risk-management`). If Lakeshore doesn't fit the covered-entity
+definition, none of HIPAA's Privacy Rule, Security Rule, or Breach Notification Rule machinery
+ever turns on for Lakeshore's own data — whatever else might be true about how it should handle
+donor records.
+
+The definition has three doors. An organization is a covered entity if it's **(1)** a health
+plan, **(2)** a health care clearinghouse, or **(3)** "a health care provider who transmits any
+health information in electronic form in connection with a transaction covered by this
+subchapter." Lakeshore is obviously not an insurer or a health plan, and it's not a
+clearinghouse — it doesn't exist to reformat other organizations' health-care transactions. So
+the whole question comes down to door three, and door three itself has two parts stacked on top
+of each other: first, is Lakeshore a "health care provider" at all, and second, does it transmit
+health information electronically in connection with a covered transaction.
+
+Walk the first part honestly. "Health care provider" is defined broadly — broadly enough that
+it's worth reading twice. It reaches a provider of services, a provider of medical or health
+services, "and any other person or organization who furnishes, bills, or is paid for health care
+in the normal course of business." Lakeshore furnishes blood products and donation-related
+services, and it is paid for them — by hospitals, by health plans, in the ordinary course of
+running a blood center. That's enough to clear the broad catch-all in the definition's final
+clause. Lakeshore is, on this reading, a health care provider.
+
+Now the second part. Clause (3) doesn't stop at "health care provider" — it only brings a health
+care provider inside HIPAA if that provider "transmits any health information in electronic form
+in connection with a transaction covered by this subchapter." A blood center that only ever
+exchanged paper records with the hospitals it supplies would arguably clear the "health care
+provider" bar and still miss clause (3) entirely, for want of an electronic covered transaction.
+But that's not a realistic picture of how a modern, multi-site blood center like Lakeshore
+actually bills. If Lakeshore bills a hospital or health plan electronically for blood products or
+services — which is the ordinary, unremarkable way billing happens in this industry today — that
+electronic billing transmission is itself "health information in electronic form in connection
+with a transaction," and clause (3) is satisfied.
+
+Chain it together: health care provider (broad catch-all, furnishes and is paid for health care)
+**+** transmits health information electronically in connection with a billing transaction
+**=** a health care provider who transmits health information electronically in connection with
+a covered transaction **=** a covered entity under clause (3).
+
+Say this plainly, because it matters more than the conclusion itself: **this is a reasoned
+interpretation of real regulatory text, not a fact anyone at Lakeshore has formally verified.**
+Nobody has pulled Lakeshore's actual billing-transaction records and confirmed, line by line,
+that they meet the technical definition of a "covered transaction" under this subchapter (a
+detail that lives elsewhere in HIPAA's Administrative Simplification rules, not in 160.103
+itself, and isn't independently verified for this curriculum). No one has asked compliance or
+counsel to put their name on this determination. What you have is a textual chain that holds up
+on its own terms, applied to the plausible, ordinary facts of how a blood center like Lakeshore
+actually operates.
+
+That's enough to proceed on. **This course adopts, from this point forward, an explicit working
+premise: Lakeshore is a HIPAA covered entity.** Every later module in this course — the Privacy
+Rule's use-and-disclosure limits, the Security Rule's safeguards, the breach-notification
+analysis — builds on this premise without re-deriving it. If that premise is ever wrong, it's
+wrong in the more conservative direction: treating donor data with HIPAA's protections when it
+turns out not to need them is a safer error than the reverse, and it's also, frankly, the more
+useful teaching case for everything this course needs to build.
+
+## The rule in plain English — what counts as PHI
+
+Once an organization is a covered entity, a second question follows immediately: which of its
+records actually count as PHI? Not everything a covered entity touches is protected health
+information — HIPAA's definition is specific, and it's built on top of a second, more granular
+term: **individually identifiable health information (IIHI)**.
+
+IIHI is health information that's created or received by a health care provider, health plan,
+employer, or clearinghouse; that relates to an individual's past, present, or future physical or
+mental health or condition, the provision of health care to them, or payment for that care; and
+that either identifies the individual or carries a reasonable basis to believe it could be used
+to identify them. PHI is, in turn, IIHI that's transmitted or maintained electronically, or
+transmitted or maintained in any other form or medium — with a short list of specific exclusions
+(education records, certain FERPA-adjacent records, a covered entity's own employment records
+about its own staff, and the records of someone deceased more than fifty years) that don't apply
+to anything this course deals with.
+
+Apply that to what BECS actually holds. `csv-and-becs` already established BECS's role in this
+curriculum — the system of record for donor-eligibility determinations and donation history, the
+system that decides whether a donor is accepted or deferred and tracks their donation record
+over time. A donor-eligibility determination relates directly to that donor's health
+condition — it's a judgment about their medical and behavioral-risk eligibility to donate — and
+it's tied to a specific, identifiable donor. It's created by Lakeshore, a health care provider.
+It's maintained electronically, inside BECS. Every element of both definitions lines up: a
+donor-eligibility determination is IIHI, and because it's maintained in electronic media, it's
+PHI. The same reasoning reaches donation history for the same donor — past donations relate to
+that individual's health-adjacent activity and identify them just as directly.
+
+One nuance worth holding onto for later: IIHI doesn't require a name. It requires either that
+the information identifies the individual *or* that there's a reasonable basis to believe it
+could be used to identify them. A donor's unique internal identifier, combined with enough other
+detail, can clear that second bar even with the name stripped out. Don't let "no name field" be
+your test for "not PHI" — you'll need that distinction later in this module.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 45 CFR 160.103, "covered entity," clause (3) | "Forty-five CFR one-sixty point one-oh-three" | A health care provider is a covered entity only if it transmits health information electronically in connection with a covered transaction. | The clause that brings Lakeshore inside HIPAA at all, reasoned through above — not clauses (1) or (2), which plainly don't fit. |
+| 45 CFR 160.103, "health care provider" | Same section, different defined term | Defines "health care provider" broadly: any provider of services or medical/health services, or "any other person or organization who furnishes, bills, or is paid for health care in the normal course of business." | The catch-all that captures Lakeshore even though it's a blood center, not a hospital or clinic. |
+| 45 CFR 160.103, "protected health information" | Same section | Defines PHI as IIHI that's transmitted or maintained electronically (or in any other form/medium), minus four specific exclusions. | Why BECS's electronically-maintained donor-eligibility data is PHI, not just a confidential business record. |
+| 45 CFR 160.103, "individually identifiable health information" | Same section | Defines IIHI: health information tied to an identifiable individual's health, care, or payment for care. | The underlying test a donor-eligibility determination or donation-history entry has to clear before PHI's own definition can even apply. |
+
+## The actual text
+
+All four definitions below are quoted verbatim from `sources/cfr/45-160.103.md`, Title 45,
+Subtitle A, Subchapter C (HIPAA Administrative Simplification), Part 160, Section 103.
+
+The covered-entity definition, in full:
+
+> Covered entity means:
+> (1) A health plan.
+> (2) A health care clearinghouse.
+> (3) A health care provider who transmits any health information in electronic form in
+> connection with a transaction covered by this subchapter.
+
+Clause (3) is the one doing all the work for Lakeshore. Notice it's phrased as "shall" in effect
+even without the word — this is a binding regulatory definition, not guidance. An organization
+either clears clause (3) or it doesn't; there's no "should" softening it.
+
+The health care provider definition:
+
+> Health care provider means a provider of services (as defined in section 1861(u) of the Act,
+> 42 U.S.C. 1395x(u)), a provider of medical or health services (as defined in section 1861(s) of
+> the Act, 42 U.S.C. 1395x(s)), and any other person or organization who furnishes, bills, or is
+> paid for health care in the normal course of business.
+
+That final clause — "furnishes, bills, or is paid for health care in the normal course of
+business" — is doing the real work here. Lakeshore doesn't need to fit the Social Security Act's
+narrower, statute-specific definitions of "provider of services" to qualify; the broad catch-all
+reaches it on its own.
+
+The protected health information definition:
+
+> Protected health information means individually identifiable health information: (1) Except as
+> provided in paragraph (2) of this definition, that is: (i) Transmitted by electronic media; (ii)
+> Maintained in electronic media; or (iii) Transmitted or maintained in any other form or medium.
+> (2) Protected health information excludes individually identifiable health information: (i) In
+> education records covered by the Family Educational Rights and Privacy Act, as amended, 20
+> U.S.C. 1232g; (ii) In records described at 20 U.S.C. 1232g(a)(4)(B)(iv); (iii) In employment
+> records held by a covered entity in its role as employer; and (iv) Regarding a person who has
+> been deceased for more than 50 years.
+
+Notice how wide clause (1) is — "maintained in electronic media" alone is enough, with no
+requirement that the data ever leave the building. BECS maintaining a donor-eligibility
+determination on its own servers is already enough to clear clause (1)(ii), independent of
+whether that record is ever transmitted anywhere.
+
+The individually identifiable health information definition:
+
+> Individually identifiable health information is information that is a subset of health
+> information, including demographic information collected from an individual, and: (1) Is
+> created or received by a health care provider, health plan, employer, or health care
+> clearinghouse; and (2) Relates to the past, present, or future physical or mental health or
+> condition of an individual; the provision of health care to an individual; or the past, present,
+> or future payment for the provision of health care to an individual; and (i) That identifies the
+> individual; or (ii) With respect to which there is a reasonable basis to believe the information
+> can be used to identify the individual.
+
+That "(i) ... or (ii)" structure is the part to hold onto. It's an "or," not an "and" — either
+the information identifies the person outright, or there's merely a reasonable basis to believe
+it could. A donor ID, a date of birth, and a donation history, taken together, can clear bar
+(ii) even without a name attached.
+
+## What an inspector or a reviewer would actually look for
+
+Nobody from HHS has knocked on Lakeshore's door yet in this scenario, and this module isn't
+pretending otherwise. But the discipline matters now, before any investigator ever asks: if
+someone — an AABB assessor noting HIPAA has entered Lakeshore's compliance picture, outside
+counsel, a new compliance hire — asked you "on what basis do you treat Lakeshore as a covered
+entity," a bad answer sounds like "we've always assumed so" or "someone told me once." A good
+answer walks the same chain this module just walked: here's the definition, here's how our
+billing actually works, here's the clause it satisfies, and here's the fact that this conclusion
+is reasoned, not independently confirmed by counsel — logged as exactly that.
+
+The document that would actually prove this, if anyone asked for it, doesn't exist yet at
+Lakeshore — and that's worth naming as a gap in its own right. A real information-governance
+program keeps a written covered-entity determination on file: the reasoning, the date it was
+made, who reviewed it, and when it gets revisited (a billing-practice change, for instance,
+could change the answer). Right now, this module's reasoning is the closest thing Lakeshore has
+to that document. That's a reasonable place to start. It's not a reasonable place to stay
+indefinitely.
+
+For the PHI question specifically, a reviewer would ask a narrower question: "Walk me through
+why this specific BECS field is PHI." The answer isn't "it's in a healthcare system, so it's
+probably PHI" — it's the two-step test above: does it meet IIHI's definition, and does it then
+meet PHI's own electronic-or-other-medium test. A free-text notes field, a lab result, a billing
+record, and a shipment manifest with no donor names on it could land in different places on that
+test, and a credible answer treats each one separately rather than reaching for one blanket
+label.
+
+## Common traps
+
+**"We're a blood center, not a hospital, so HIPAA doesn't apply to us."** This is the trap this
+whole module exists to refute. "Health care provider" under 160.103 isn't limited to hospitals
+and clinics — its catch-all clause reaches "any other person or organization who furnishes,
+bills, or is paid for health care in the normal course of business." Industry identity isn't the
+test. The actual billing and transmission facts are.
+
+**"If it doesn't have the donor's name on it, it's not PHI."** IIHI's own definition refutes
+this directly: clause (2)(ii) reaches information with "a reasonable basis to believe" it could
+identify someone, not only information that already does. A donor ID plus a date of birth plus a
+donation history is a real re-identification risk even with the name field stripped, and
+treating "no name" as a clean safe harbor is exactly the kind of assumption that doesn't survive
+a careful look.
+
+## What this means for your job
+
+- **When anyone in the room asserts Lakeshore's HIPAA status one way or the other, ask them to
+  show the chain, not just state the conclusion.** This module's own answer is reasoned, not
+  certified — treat every future claim about covered-entity status the same way.
+- **Get this covered-entity determination in front of compliance or counsel, on paper, with a
+  date.** A reasoned classroom chain is a defensible starting point. It isn't a substitute for
+  someone with that authority confirming it, and you're the one positioned to make that referral
+  happen.
+- **When your QA scopes a BECS extract for any purpose, ask what fields it carries, not just
+  whether it has a name column.** The IIHI test runs on re-identification risk, not on the
+  presence of one obviously sensitive field.
+- **Don't wait for a confirmed breach to start treating BECS data as PHI.** The classification
+  question (is this PHI at all) and the breach question (did a reportable event happen) are
+  separate, and this module only answers the first one — on purpose.
+- **Keep a short list, somewhere durable, of exactly which BECS data elements you've reasoned
+  through as PHI and why.** You'll need that list again the moment any of this data moves,
+  changes systems, or ends up on a device that leaves the building — which is exactly what
+  happened next.
+
+## The incident this course carries forward
+
+Here's exactly what's known, and it's logged here because every module after this one depends on
+these facts staying put.
+
+**What happened.** A Brookfield-based staff member traveled to Lakeshore's central site to
+present the findings of a deferral-coding consistency review — a routine quality check on
+whether BECS's deferral reason codes were being applied consistently across a recent stretch of
+donor-eligibility determinations. After the meeting, the staff member left their work laptop,
+inside a shoulder bag, in the back seat of a shared ride on the way to the airport. The loss
+wasn't discovered until hours later. The laptop has not been recovered, and there's no reason yet
+to believe anyone has — or hasn't — accessed it.
+
+**What data the extract contained.** To run the review, the staff member had pulled a standard
+BECS report — a standing template the team always uses for this kind of check — covering a
+rolling twelve-month window at Brookfield, roughly 212 donor records. For each donor, the report
+carried six fields: a BECS-internal donor identifier (not a Social Security number or any
+government ID), the donor's name, the donor's date of birth, each eligibility determination in
+the window with its date, the deferral reason code where a determination was a deferral, and the
+donor's total lifetime donation count at Lakeshore. The review itself only needed three of
+those six fields — the donor identifier, the determination and its date, and the deferral reason
+code — to check coding consistency. Name, date of birth, and lifetime donation count rode along
+because the standing report template pulls them automatically; nobody scoped the export down to
+what this particular review actually required. Hold onto that gap — it's exactly the kind of
+question `the-hipaa-privacy-rule` picks up next.
+
+**Encryption status: genuinely unresolved, not swept under anything.** Lakeshore's device policy
+requires full-disk encryption on every end-user laptop, enforced automatically through the
+organization's central device-management platform at the time each device is enrolled. This
+laptop was enrolled under that policy when it was first issued. But it was issued several weeks
+before Lakeshore's device-management platform was migrated to a newer version, and the
+migration's own device inventory shows this specific unit's encryption-status field as "not
+reported" rather than a clear "on" or "off" for the period spanning the migration and the loss.
+The systems administrator can confirm the device was enrolled in the policy. He cannot yet
+confirm, one way or the other, whether full-disk encryption was actually active on this specific
+device at the moment it went missing. That's not a resolved "no" and it's not a resolved "yes" —
+it's an open question, logged honestly as open, and it stays open until `security-rule-safeguards-and-part-11`
+and `breach-notification-and-dual-reporting` do the work of reasoning through what that
+uncertainty actually means.
+
+**Any connection to a live quality event: none.** The 212 donors in this extract are a clean
+population for the purposes of this course. None of them is connected to any other open
+deviation, CAPA (corrective and preventive action), or quality event at Lakeshore. This incident
+is, deliberately, a privacy-and-security question standing on its own — not entangled with a
+parallel product-quality investigation.
+
+Those four facts — the circumstance, the six data fields (three beyond what the review strictly
+needed), the genuinely uncertain encryption status, and the clean donor population — are now
+locked. Nothing later in this course should contradict them.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Is there a federal registration process or an HHS determination letter that officially makes an organization a "HIPAA covered entity"?
+
+No — and this is worth getting right because it's easy to assume otherwise. There's no
+application to file and no certificate HHS issues. An organization determines its own
+covered-entity status by applying 45 CFR 160.103's own definitions to its own facts, the same
+reasoning this module just walked through for Lakeshore. **This is not a regulatory filing
+requirement** — it's a self-assessment the organization is responsible for getting right, on its
+own, and for being able to defend if anyone ever asks how it reached that conclusion.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A colleague argues: "Lakeshore mostly ships paper shipment manifests between sites, so even though it bills hospitals electronically for blood products, it's probably not a covered entity." Is that reasoning sound?
+
+No. Clause (3) of the covered-entity definition turns on whether the organization "transmits any
+health information in electronic form in connection with a transaction covered by this
+subchapter" — and electronic billing is itself that transmission. Whether shipment manifests
+happen to travel on paper is beside the point; one electronic covered transaction is enough to
+satisfy clause (3) on its own. Your colleague is looking at the wrong transaction.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: True or false: the missing laptop's extract only counts as "individually identifiable health information" because it includes the donor's name and date of birth.
+
+False, and this is the nuance worth keeping. IIHI's definition reaches information that either
+identifies the individual outright *or* carries "a reasonable basis to believe" it could be used
+to identify them. Even with name and date of birth stripped out, a BECS-internal donor ID
+combined with a donation history and a pattern of eligibility determinations could plausibly
+clear that second bar on its own. In this extract, the name and date of birth are present anyway
+— but don't let their presence become your only test for what counts as identifying information
+the next time a field list looks different.
+:::
+
+## Where this goes next
+
+Lakeshore's working premise is now set: it's a covered entity, and BECS's donor-eligibility data
+is PHI. The missing laptop's facts are locked. Neither of those answers the questions that
+actually decide what Lakeshore owes anyone next. `the-hipaa-privacy-rule` picks up from here: was
+pulling this extract for a quality review even a permitted use of PHI in the first place, and did
+it need to carry six fields when the review only needed three?

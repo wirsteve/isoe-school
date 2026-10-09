@@ -1,0 +1,25 @@
+---
+title: "Resources"
+order: 94
+---
+
+Three places to check this module's reasoning yourself, or go deeper on the definitions it
+leans on. All three were checked and loading (via `curl`) at the time this page was written.
+
+- **[45 CFR 160.103, eCFR](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-160/subpart-A/section-160.103)**
+  — the current, official text of the section this entire module is built on: covered entity,
+  health care provider, business associate, protected health information, and individually
+  identifiable health information, all in one place. This is the primary source `sources/cfr/45-160.103.md`
+  was excerpted from — read the full section if you want the definitions this module didn't need
+  (health plan, health care clearinghouse, and the health-plan sub-definitions among them).
+
+- **[45 CFR 160.102, eCFR](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-160/subpart-A/section-160.102)**
+  — the applicability section sitting right next to 160.103. It states which parts of the HIPAA
+  Administrative Simplification regulations apply "to the following entities," i.e., it's the
+  provision that actually puts weight behind the "covered entity" label once a determination
+  like this module's is made. Worth reading once alongside 160.103, not quoted here.
+
+- **[45 CFR 160.103, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/45/160.103)**
+  — a secondary, independently maintained mirror of the same section, useful for a fast
+  cross-check or a plain-text copy to search, the same way this curriculum has used Cornell's
+  mirrors for CFR sections since `csv-and-becs`.

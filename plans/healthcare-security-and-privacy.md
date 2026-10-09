@@ -69,7 +69,7 @@ vendor.
 | # | Slug | Finish line | `order:` | Status |
 |---|---|---|---|---|
 | — | (syllabus) | — | 92 | Published |
-| 1 | `information-governance-in-a-covered-entity` | Answer whether Lakeshore is a HIPAA covered entity, reasoned from HIPAA's own definitions, and introduce the incident this course's remaining four modules carry forward. | 93/94 | Not started |
+| 1 | `information-governance-in-a-covered-entity` | Answer whether Lakeshore is a HIPAA covered entity, reasoned from HIPAA's own definitions, and introduce the incident this course's remaining four modules carry forward. | 93/94 | Published |
 | 2 | `the-hipaa-privacy-rule` | Apply the actual rules governing when a donor's PHI can be used or disclosed without authorization, when it can't, and the specific exception covering an FDA-regulated recall/BPDR disclosure. | 95/96 | Not started |
 | 3 | `security-rule-safeguards-and-part-11` | Map HIPAA's administrative/physical/technical safeguards against Part 11's own controls — genuine overlaps and one genuine structural difference (required vs. addressable). | 97/98 | Not started |
 | 4 | `breach-notification-and-dual-reporting` | Run the incident through HIPAA's breach test and 60-day clock side by side with FDA's 45-day BPDR clock, and say honestly when one incident triggers both. | 99/100 | Not started |
@@ -224,3 +224,62 @@ as every prior course) — already done as part of Phase 2 scoping below.
   reopened. `.claude/skills/create-course/SKILL.md`'s running order-counter updated to 103 (this
   course used 92-102, verified by grep with no duplicates before assigning).
   Next: build m1, `information-governance-in-a-covered-entity`.
+
+- **2026-10-09**: Module 1, `information-governance-in-a-covered-entity`, drafted and published
+  (`courses/healthcare-security-and-privacy/information-governance-in-a-covered-entity/index.qmd`,
+  `order: 93`, ~4,300 words; `resources.qmd`, `order: 94`). Covered-entity reasoning done in full:
+  walked 160.103's "covered entity" clause (3) and "health care provider" catch-all ("furnishes,
+  bills, or is paid for health care in the normal course of business") to the conclusion that
+  Lakeshore plausibly qualifies as a covered entity because it bills hospitals/health plans
+  electronically — stated explicitly as a reasoned interpretation nobody at Lakeshore has had
+  confirmed by counsel or compliance, not an asserted fact. This course now formally adopts
+  "Lakeshore is a covered entity" as its own working premise for modules 2-5, per this plan's own
+  instruction. PHI (protected health information) and IIHI (individually identifiable health
+  information) definitions quoted in full and applied to BECS's donor-eligibility determinations
+  and donation history (BECS referenced only by name/role from `csv-and-becs`; no locked
+  identifier from that course touched).
+
+  **The incident — locked facts for modules 2-5, stated exactly:**
+  - **Circumstance:** a Brookfield-based staff member traveled to Lakeshore's central site to
+    present a deferral-coding consistency review; after the meeting, left their work laptop
+    (inside a shoulder bag) in the back seat of a shared ride en route to the airport; the loss
+    wasn't discovered until hours later; the device has not been recovered.
+  - **Data fields in the extract:** a standing BECS report template, pulled for the review,
+    covering a rolling 12-month window at Brookfield, roughly 212 donor records. Six fields per
+    donor: BECS-internal donor identifier, donor name, date of birth, each eligibility
+    determination with its date, the deferral reason code (where applicable), and total lifetime
+    donation count at Lakeshore. The review itself only needed three of the six (donor
+    identifier, determination + date, deferral reason code) — name, date of birth, and lifetime
+    donation count rode along because the standing template wasn't scoped down. This gap is
+    deliberately left open here for `the-hipaa-privacy-rule`'s minimum-necessary (164.514(d))
+    teaching moment.
+  - **Encryption status: genuinely, honestly unresolved — not resolved either way.** Lakeshore's
+    device policy requires full-disk encryption on every end-user laptop, auto-enforced via
+    central device management at enrollment, and this laptop was enrolled under that policy. But
+    it was issued shortly before a device-management platform migration, and the migration's own
+    inventory shows this specific device's encryption-status field as "not reported" (neither
+    "on" nor "off") for the window spanning the migration and the loss. The systems administrator
+    can confirm enrollment; he cannot yet confirm whether full-disk encryption was actually
+    active on this device when it went missing. This ambiguity is intentional and must stay open
+    through `security-rule-safeguards-and-part-11` (164.312(a)(2)(iv), addressable) and
+    `breach-notification-and-dual-reporting` (164.402's four-factor test) — do not resolve it
+    before module 5 reasons it through (or leaves it honestly open).
+  - **Quality-event connection: none.** The ~212 donors in the extract are a clean population —
+    not connected to any other open deviation, CAPA, or quality event at Lakeshore. No
+    `csv-and-becs`/`data-integrity-and-records` locked identifier (VAL-1203, VIA-0842, DEV-1147,
+    CAPA-1147-A, VRA-0219, DI-0301, DED-0458, LAB-07) was touched or reopened.
+
+  Sources: no new source fetched this module — `sources/cfr/45-160.103.md` (already saved) was
+  the only source used, all four quotes (covered entity, health care provider, PHI, IIHI)
+  verbatim from that file. `resources.qmd` links the eCFR page for 45 CFR 160.103 (curl-verified,
+  `-L` follows a redirect to 200), 45 CFR 160.102 (applicability, curl-verified 200 via redirect),
+  and a Cornell LII mirror of 160.103 (curl-verified 200) — `hhs.gov` pages were tried and
+  rejected (403 to `curl`, including with a browser user agent; not used).
+
+  Next: build m2, `the-hipaa-privacy-rule` — apply 164.502(a), 164.506, 164.508(a)(1)/(b)(2),
+  164.512(b)(1)(iii), 164.514(d), and 164.524(a)(1)/(b)(2) to this same extract: was pulling it
+  for a quality review a permitted use (164.506, health care operations) without an
+  authorization, and does the minimum-necessary standard (164.514(d)) flag the three extra
+  fields (name, date of birth, lifetime donation count) the review didn't strictly need — a
+  concrete minimum-necessary teaching moment independent of how the eventual breach
+  determination resolves.
