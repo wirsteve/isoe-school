@@ -1,0 +1,382 @@
+---
+title: "GAMP 5 and the V-Model"
+order: 41
+---
+
+## The question this course exists to answer
+
+Last spring, a validation package closed with one question left hanging. Lakeshore ran twelve
+targeted tests against an operating-system patch, declared no impact to BECS's (Blood
+Establishment Computer Software's) validated state, and both required signatures landed. Nobody
+in that review could say whether twelve was actually the right number, or just a number that
+felt defensible at the time. This course exists to give you a real way to answer that question —
+not by revisiting that patch today, but by building, from the ground up, the method a real
+answer would require.
+
+That method starts somewhere else entirely: a new project, with its own draft plan, already
+making the same kind of judgment call before a single test runs.
+
+A few months after that patch closed out, Lakeshore's BECS vendor announced end-of-support for
+the release running today. No more security patches, no more support tickets, on a clock
+Lakeshore doesn't control. The only real option is to move to the vendor's new major release —
+call it Release B. That upgrade is now a project, with a validation package number of its own:
+**VAL-1203**, distinct from everything this curriculum has already named (VIA-0842, DEV-1147,
+CAPA-1147-A, VRA-0219). Scope: the central BECS application server, plus the BECS clients running
+at both of Lakeshore's satellite collection sites, Brookfield and Fairview. One more piece of
+scope matters a lot, for reasons that will come back twice more later in this course: a small
+piece of software Lakeshore IT itself wrote and maintains, a translation script that takes result
+messages out of the testing lab's LIS (laboratory information system — the software the testing
+lab runs its own workflows on) and reformats them into what BECS expects on the way in. Nobody
+sells that script. Nobody else has ever tested it. It's Lakeshore's.
+
+The draft validation plan and risk assessment for VAL-1203 reach your desk for review. They were
+written by the **Quality Validation Lead** — the role that signs test-scope rationales, the one
+your Quality Analyst already knows to route sufficiency questions to — working with IT and the
+vendor's implementation consultant. Quality's sign-off is blocking, same as always. You're the
+system-owner co-approver, same as always.
+
+Your systems administrator has already read it, and he's got a position: "It's a Category 4
+vendor product. The vendor built it, the vendor tested it before they ever shipped it to us. We
+run a smoke test, confirm it installed, and we're done."
+
+Attached to the plan is a first draft of the URS (user requirements specification — the document
+that states, in plain business language, what the system has to do). Three rows are worth
+sitting with before you read any further:
+
+| Req ID | Requirement | Risk ranking |
+|---|---|---|
+| REQ-014 | "The system shall be user-friendly for all BECS users." | — |
+| REQ-022 | "The system shall not permit release of a blood component until all required test results for that donation are recorded as complete." | *(blank)* |
+| *(none)* | *(no requirement covers the LIS-to-BECS results translation script at all)* | — |
+
+Something is wrong with the sysadmin's one-liner, and with all three rows on that table. By the
+end of this lesson you'll be able to say exactly what, and why a category label was never going
+to settle it either way.
+
+## Why this rule exists — and the ITSM bridge
+
+Here's the failure mode a validation plan like VAL-1203's is actually built to prevent: software
+that silently does less than it's supposed to do, or more than it should, on a system that stands
+between a unit of blood and the patient who receives it. Nobody ships code that's supposed to
+fail. Every defect that ever reached production, in any industry, passed through someone who
+believed the software did what they thought it did. Validation is the discipline of not taking
+that belief on faith — proving, with evidence someone else can check later, that the system
+actually does what you need it to do, before you let it decide anything that matters.
+
+You already own the ITSM (IT service management) vocabulary for the shape of this problem, even
+though you've never had to apply it to a question this strict.
+
+**SDLC (software development lifecycle) and release management** already structure how you move
+any system from requirements to a live release: gather requirements, design, build, test, deploy.
+Nothing about that shape is new here. What's new is how much proof has to exist at each step
+before you're allowed to move on, and who's allowed to sign off on "good enough."
+
+**Requirements engineering** is a discipline you already practice, even if nobody at Lakeshore
+calls it that: a requirement that can't be tested isn't a requirement, it's a wish. You already
+know a bad user story when you see one in a sprint backlog. The standard here is the same
+instinct, with less room for charity.
+
+**CI (configuration item) classification by type** is the cleanest bridge of all. Your CMDB
+(configuration management database) already sorts systems by what kind of thing they are —
+infrastructure, commercial package, custom application — because that classification drives which
+change model applies by default: a routine patch to a commodity server gets a lighter touch than
+a change to bespoke code nobody else runs. GAMP 5 (Good Automated Manufacturing Practice) — an
+industry framework from ISPE (the International Society for Pharmaceutical Engineering), now in
+its Second Edition, published July 2022, and one you should treat as **industry practice, not
+FDA regulation** anywhere you encounter it — does the same sorting, for the same reason: knowing
+what *kind* of software a thing is tells you the default amount of scrutiny it should get.
+
+Here's where the regulated world demands more than your CMDB's default logic does. In ordinary IT
+risk scoring, a component with a long, quiet track record earns a lower assumed likelihood of
+failure over time — that's usually reasonable. FDA's BECS guidance (FDA's current, non-binding
+recommendations on this topic — more on that tier distinction below) says the opposite for
+software performing a function like this: because software defects are hard to predict and hard
+to see coming, you should **assume most hazards are likely, not unlikely**, until a documented
+risk assessment says otherwise. A GAMP category sets where you start. A documented risk
+assessment — not the category, and not a vendor's reputation — is what's allowed to say where you
+actually need to end up.
+
+## The rule in plain English
+
+Two separate things are happening inside VAL-1203's draft plan, and your sysadmin has only
+noticed one of them.
+
+**First: every piece of software in the BECS upgrade sorts into one of four GAMP categories**,
+industry practice's own names for "what kind of thing is this." No Category 2 — it fell out of
+use industry-wide and nobody uses it anymore.
+
+- **Category 1 — infrastructure.** The operating system and the database engine underneath BECS.
+  Nobody configured business logic into it; it's the platform everything else runs on. Lowest
+  default scrutiny, because its behavior isn't specific to Lakeshore's use of it.
+- **Category 3 — non-configured product.** Software used exactly as the vendor ships it, with no
+  configuration choices that change its behavior. Not much of VAL-1203's stack lives here, but
+  it's the category a vendor tool earns when Lakeshore runs it untouched, out of the box.
+- **Category 4 — configured product.** BECS itself, as Lakeshore configures it: the vendor built
+  the product, but Lakeshore's own configuration choices — business rules, user roles, interface
+  mappings, report layouts — shape how it actually behaves at Lakeshore. That configuration is
+  Lakeshore's own work, and it needs to be validated as Lakeshore built it, not just as the vendor
+  shipped it.
+- **Category 5 — custom/bespoke.** Code nobody but Lakeshore wrote. The LIS-to-BECS translation
+  script lives here. Nothing about it was vendor-tested, vendor-documented, or vendor-supported,
+  because it isn't the vendor's code.
+
+What a category implies is a *starting point* for how much validation effort a thing probably
+needs — infrastructure usually needs less than bespoke code, because bespoke code is the one
+category where nobody besides Lakeshore has ever looked at it. That's useful. It's also where
+your sysadmin stopped reading.
+
+**Second: a documented risk assessment, not the category, is what actually sets test depth.**
+ISPE's own description of GAMP 5's Second Edition is worth knowing here, in its own words,
+paraphrased rather than quoted (it's a paid publication, so treat this as a pointer, not a
+source to cite from): the Second Edition leans harder than the first toward **critical thinking**
+by people who actually understand the system, instead of mechanically running every Category 4
+system through the same fixed test recipe. A category tells you where to start looking. It was
+never built to tell you where to stop.
+
+That's exactly the gap in your sysadmin's "Category 4, vendor tested it, smoke test's enough"
+position. BECS *as Lakeshore configures it* is Category 4 — true. But Category 4 covers
+everything from a report template nobody relies on to a configuration setting that gates whether
+a unit of blood gets released. Those two don't deserve the same test depth just because they
+share a category number. What decides test depth is risk: how bad is it if this breaks, and how
+likely is it that nobody would notice before it mattered. A category sorts software. A risk
+assessment sizes the response.
+
+### The V-model: specs going down, tests going up
+
+Here's the shape every validation plan in this course will keep coming back to, industry
+practice's own way of drawing the relationship between what you ask for and what you prove.
+Picture a capital V. Down the left side, you write what the system is supposed to do, at three
+levels of increasing detail:
+
+- **URS (user requirements specification)** — what Lakeshore, as the business, needs the system to
+  do. Plain language, no implementation detail.
+- **FS or FRS (functional specification / functional requirements specification)** — how the
+  system will actually behave to satisfy each URS requirement. Still no code-level detail, but
+  specific enough that someone could build to it.
+- **DS (design specification)** — the technical design: the exact configuration setting, workflow
+  rule, or code logic that implements each functional requirement.
+
+Up the right side, each level gets a test that answers it, industry practice's common pairing,
+named here as a concept only — you'll meet each test type's actual contents in the next module:
+
+- **DS pairs with IQ** (installation qualification) — does the system exist, installed and
+  configured, as the design specification says it should?
+- **FS pairs with OQ** (operational qualification) — does each function actually work the way the
+  functional spec says it should?
+- **URS pairs with PQ** (performance qualification) — does the system, running at Lakeshore, with
+  Lakeshore's own people and procedures, actually meet the business need the URS stated?
+
+That's the whole shape: every requirement you write down on the way down the V gets a test that
+answers it on the way up. A requirement with no test is a promise nobody checked. A test with no
+requirement behind it is effort spent proving nothing anyone asked for.
+
+**What makes a URS/FRS/DS requirement good or bad is whether it can fail.** Look again at
+VAL-1203's draft rows. REQ-014 — "the system shall be user-friendly" — cannot fail. Nobody can
+write a test case with a pass/fail outcome against it, because nothing in it says what
+"user-friendly" means in a way two reviewers would agree on. It's not a requirement — it's a
+wish wearing a requirement's row number. A good version of that same intent is testable:
+something like "a user can complete donor check-in in under three steps from the main screen."
+
+REQ-022 — the release-gate requirement — is the opposite problem. The *wording* is genuinely
+testable. What's missing is the risk ranking next to it, and that's not a formatting gap. This
+is the requirement that gates whether an incompletely-tested unit of blood can be released.
+Leave its risk ranking blank, and nothing tells the person building the test plan that this row
+deserves more scrutiny than a report-formatting preference three rows below it. A risk ranking
+isn't decoration on a URS row. It's the input the rest of the V depends on.
+
+And the row that doesn't exist at all — nothing in the draft URS covers the LIS-to-BECS
+translation script — is the sharpest gap of the three. That script is Category 5: the one
+category where nobody but Lakeshore has ever tested it. A URS with no row for it means nobody has
+even started the V for the one component with the least outside scrutiny behind it already.
+
+### The vendor's V, and Lakeshore's V
+
+One more distinction, worth holding onto in two sentences, because the next two modules will
+build real weight on top of it. The vendor ran its own V — its own internal build-and-test
+process — before Release B ever shipped to a customer; that's the vendor's own validation,
+module 4's subject, not something Lakeshore performs or can substitute for its own. VAL-1203 is
+**Lakeshore's** V: proving, in Lakeshore's own facility, with Lakeshore's own configuration, data,
+and people, that the system meets Lakeshore's requirements — the subject module 3 picks up when
+it asks what a vendor's clearance can and can't tell you about the version you actually run.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 211.68(a) | "Two-eleven point sixty-eight, paragraph a" | Automated, mechanical, or electronic equipment — including computers — used in manufacturing must be routinely calibrated, inspected, or checked under a written program designed to assure proper performance, with written records of those checks maintained. | The regulatory floor VAL-1203's validation plan exists to satisfy — the reason a written, controlled validation plan isn't optional paperwork, it's what the regulation itself requires before routine use. |
+| 21 CFR 210.2(a) | "Two-ten point two, paragraph a" | Part 211 (drug CGMP, current good manufacturing practice) and Parts 600–680 (biological products, including blood) "supplement, not supersede, each other." | The reason a regulation written for drug manufacturing — 211.68 — reaches a blood establishment's computer system at all. |
+
+## The actual text
+
+The validation floor, quoted verbatim from `sources/cfr/211.68.md`:
+
+> (a) Automatic, mechanical, or electronic equipment or other types of equipment, including
+> computers, or related systems that will perform a function satisfactorily, may be used in the
+> manufacture, processing, packing, and holding of a drug product. If such equipment is so used,
+> it shall be routinely calibrated, inspected, or checked according to a written program designed
+> to assure proper performance. Written records of those calibration checks and inspections shall
+> be maintained.
+
+Read that as the bar VAL-1203's validation plan has to clear: a written program, routine checks,
+and records someone can produce later. Nothing in that sentence mentions GAMP, categories,
+IQ/OQ/PQ, or a V-model — because none of that vocabulary is regulatory. It's industry's own
+answer to "how do I satisfy this sentence in a way I can defend."
+
+The supplementation sentence, quoted verbatim from `sources/cfr/210.2.md`:
+
+> The regulations in this part and in parts 211, 213, 225, and 226 of this chapter as they may
+> pertain to a drug; in parts 600 through 680 of this chapter as they may pertain to a biological
+> product for human use; ... shall be considered to supplement, not supersede, each other, unless
+> the regulations explicitly provide otherwise.
+
+Blood is regulated under Parts 600–680, not Part 211. 210.2(a) is the clause that keeps a
+drug-manufacturing section like 211.68 from simply not applying to a blood establishment: the two
+sets of regulations layer on top of each other instead of one replacing the other. That's why
+FDA's own BECS guidance can say, without contradiction, that 211.68 is one of the requirements
+that reaches Lakeshore's computer systems.
+
+And FDA's BECS guidance says exactly that, in its own introduction, quoted from
+`sources/fda-guidance/becs-validation-users-facility-2013.md` — labeled here as guidance, because
+that's what it is, not binding regulation:
+
+> This guidance describes the following: • Requirements in Title 21 Code of Federal Regulations
+> (21 CFR) (e.g., 21 CFR 211.68, 606.100(b), and 606.160) that apply to blood establishment
+> validation of systems; and • FDA's recommendations for the validation of systems.
+
+That sentence is the guidance naming its own two tiers side by side: things it's quoting out of
+actual regulation (211.68, 606.100(b), 606.160), and everything else, which is FDA's
+recommendation. The guidance is careful about this distinction everywhere, including stating its
+own rule for reading it:
+
+> The use of the word should in FDA guidances means that something is suggested or recommended,
+> but not required.
+
+Keep that "shall versus should" test running under everything else in this lesson. When the
+guidance says a validation plan "must" require validation before routine use, it's citing
+211.68(a) — regulation. When it recommends testing "worst case scenarios" or keeping a remote
+access log, that's FDA's current thinking, worth doing, not independently enforceable.
+
+Two more guidance-tier sentences are worth having in front of you, both doing real work in this
+lesson. On how much confidence is enough:
+
+> Generally, software validation is a matter of developing a "level of confidence" (Ref. 1) that
+> the software device meets all requirements and user expectations for the automated functions
+> and features of the software.
+
+And on how to assume probability when you can't actually measure it:
+
+> Because of the complexity of software, especially BECS, it is difficult to predict the
+> probability of a hazard occurrence. Therefore, when you conduct your risk assessment, we
+> recommend you consider most hazards to have a high probability of occurrence.
+
+That second sentence is the guidance-tier twist behind this lesson's likelihood-severity-
+detectability vocabulary from `risk-and-controls-vocabulary`: for BECS, don't let a plausible-
+sounding "this probably won't happen" lower your risk ranking on its own. Let severity and
+detectability carry the weight instead, and make likelihood do less work than it normally would.
+
+One more citation earns a name here and nothing more: **21 CFR 11.10(a)**, the Part 11
+(electronic records and signatures) clause earlier modules already quoted for "consistent
+intended performance." It isn't the hook doing the work in this lesson — 211.68(a) is — and
+exactly why that's true is the Part 11 hook module 5 will unpack. Leave it there for now.
+
+AABB's Quality System Essentials (QSE) framework — the ten-part structure behind an AABB
+accreditation assessment, introduced earlier in this curriculum — sits on top of all of this,
+paraphrased only, no standard number: validation work like VAL-1203 lives under **QSE 5, Process
+Control**, the theme covering how a blood establishment controls and proves out a regulated
+process, software included.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB assessor reading VAL-1203's file isn't going to ask whether the
+upgrade is "Category 4." They're going to ask for the document that shows Lakeshore actually
+reasoned through the risk, not just filed a category label and moved on. Three things, in order:
+
+**A documented risk assessment, performed before the test plan was written, not after.** Not a
+sentence buried in a validation plan's introduction that says "this is a Category 4 system, so
+standard testing applies." A real assessment: which functions were evaluated, what hazard each
+one could cause if it failed, and why the resulting test depth follows from that, not from a
+category number alone.
+
+**A URS where every requirement touching a critical function carries an explicit risk ranking.**
+Not every row needs the same ranking — a report-formatting preference and a release gate
+shouldn't carry equal weight — but every row needs *some* ranking, set before testing starts, not
+reverse-engineered afterward to match whatever got tested.
+
+**Evidence the in-house component got its own full treatment**, not a free ride on BECS's
+Category 4 status. A translation script Lakeshore wrote doesn't inherit anyone else's testing.
+If the URS has no row for it, that's the gap an inspector finds in about thirty seconds — because
+it's the one piece of this upgrade nobody outside Lakeshore has ever put a test case against.
+
+A bad answer to "why wasn't this requirement risk-ranked" sounds like "it's a Category 4 vendor
+system, we trusted their testing." A good answer points to a dated risk assessment, signed by
+someone qualified to make that call, with the reasoning written down.
+
+## Common traps
+
+**"It's a Category 4 vendor product, so the vendor's testing covers it."** This is your
+sysadmin's exact position, and it's the single most common misreading of GAMP categories in the
+industry. A category describes what *kind* of software something is. It doesn't describe how much
+risk it carries at this specific site, in this specific configuration, for this specific function.
+FDA's guidance is blunt about who owns the result regardless of category: equipment vendors and
+consultants "may provide assistance," but "you are ultimately responsible for validation of your
+system in your facility." The vendor tested its own product, in its own environment, against its
+own intended uses. That's an input to Lakeshore's validation. It was never a substitute for it.
+
+**"The category tells you the test depth, so once you know it's Category 4, you know how hard to
+test."** Backwards. The category sets a default starting point — useful for staffing and planning
+a validation project, the same way knowing a CI's type helps you pick a default change model. What
+actually sets depth is the risk assessment: which functions are high-consequence, how likely a
+hazard really is (assume likely, per the guidance, not unlikely), and how bad it is if nobody
+catches a failure before it reaches a patient. Two Category 4 systems can reasonably get very
+different test depths, and a validation plan that doesn't show why is missing its real argument.
+
+## What this means for your job
+
+- **When a GAMP category and a risk assessment point to different test depths, trust the risk
+  assessment.** A category is a starting assumption; a documented, signed risk assessment is a
+  decision. If VAL-1203's plan leans on "it's Category 4" instead of a risk assessment, send it
+  back before you co-sign.
+- **Ask whether the risk assessment assumed each hazard is likely or unlikely, and why.** FDA's
+  guidance recommends assuming most software hazards have a high probability of occurrence. A
+  risk assessment that quietly assumes low probability with no stated reason is worth a direct
+  question.
+- **Read every URS row for whether it could actually fail a test.** "User-friendly," "intuitive,"
+  "should work correctly" — none of these can fail, so nothing written against them can pass or
+  fail either. Send vague rows back before they reach a functional spec.
+- **Check that every critical-function requirement carries a risk ranking before testing starts**,
+  not after someone notices a gap later. A blank ranking next to a release gate means nobody has
+  yet decided how hard that row needs to be tested.
+- **Treat every in-house-built piece as its own full V, with no inherited credit from BECS's
+  Category 4 status.** If a script, report, or interface Lakeshore itself wrote isn't in the URS
+  with its own requirements, risk ranking, and eventual test evidence, nobody has started
+  validating it at all.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Someone on the upgrade project says, "FDA's 2026 Computer Software Assurance guidance replaced computer system validation, so we can drop scripted testing on BECS." Accurate?
+
+No, on two separate grounds. First, that guidance (`sources/fda-guidance/csa-production-qms-software-2026-excerpt.md`) covers computer software used in a **device manufacturer's own** production and quality-management systems — its scope section says plainly that it does not cover "device software functions," software that itself meets the legal definition of a medical device. BECS is a device. It's out of scope for that guidance entirely, on both sides of this question: not because of what the guidance says, but because of what it was never written to reach. Second, even where that guidance does apply, it's FDA guidance, not regulation — it describes a risk-based approach to testing rigor, not a replacement for the validation obligation 211.68(a) itself sets. Neither fact lets Lakeshore drop scripted testing on BECS.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Your sysadmin's position — "it's a Category 4 vendor product, the vendor tested it, we run a smoke test" — would he be right if VAL-1203's risk assessment specifically concluded every affected function was low-risk?
+
+If that conclusion were actually documented and reasoned — not just assumed from the category label — then a lighter test plan for those specific functions could be defensible. The problem with his actual position isn't that light testing is always wrong; it's that he's reasoning from the category instead of from a risk assessment. "Category 4" alone never answers the question. A dated, signed risk assessment that says why a function is low-risk, consistent with FDA's guidance that most software hazards should be assumed likely rather than unlikely unless shown otherwise, is what would actually justify a lighter touch — and that assessment has to exist and say so in writing, not live in his head.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Which GAMP category does the LIS-to-BECS translation script fall into, and what does that imply for how VAL-1203 should test it?
+
+Category 5 — custom, bespoke code, because Lakeshore itself built and maintains it. That's the category with the least outside scrutiny already behind it: no vendor built it, no vendor tested it, no vendor support contract backs it. It implies the opposite of a smoke test — it needs its own full URS-to-PQ treatment, written and tested as thoroughly as any Category 4 critical function, because nobody else has ever validated a single line of it. A draft URS with no row for it at all isn't a gap to note later. It's a component that hasn't started being validated.
+:::
+
+## Where this goes next
+
+You now have the vocabulary and the logic: categories sort software, a documented risk
+assessment sets how hard to test it, and the V-model is the shape connecting every requirement to
+the test that answers it. What you don't have yet is what that testing actually looks like once
+it's executed — what IQ, OQ, and PQ evidence has to contain, how a traceability matrix proves
+every requirement was actually tested, and how to tell a test that could fail from one that never
+really tried. That's `iq-oq-pq-and-traceability`, next, where VAL-1203's full executed package
+lands on your desk.
