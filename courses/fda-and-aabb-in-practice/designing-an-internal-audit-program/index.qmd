@@ -1,0 +1,325 @@
+---
+title: "Designing an Internal Audit Program"
+order: 77
+---
+
+## The debrief nobody wanted to have
+
+The AABB (Association for the Advancement of Blood & Biotherapies) on-site assessor left
+two days ago. The one nonconformance the visit produced — LAB-07's missing criterion-4
+fitness-for-use documentation — closed inside the resolution window: your Quality Analyst
+(QA) submitted a dated qualification review, and accreditation continued for another
+two-year cycle. By every measure that matters externally, this reassessment was a success.
+
+You called the debrief anyway, and you open it with a question your QA wasn't expecting.
+
+"The assessor's own self-assessment tool found LAB-07's gap in APEX. DI-0301 — your own
+data-integrity self-assessment — found the same gap, independently, months earlier. I'm
+glad both of those worked. I want to know why our *internal audit program* didn't find it
+first. That instrument has been checking Lakeshore's quality system for years. Equipment
+fitness-for-use review is exactly the kind of thing it's supposed to catch."
+
+She doesn't have a comfortable answer, and to her credit, she doesn't invent one. "Our
+audit calendar checks every site and every process area on roughly the same schedule.
+Nobody ever sat down and decided LAB-07's area, or Fairview generally, deserved a tighter
+interval than, say, Brookfield's. And when an audit *does* touch equipment records, the
+auditor pulls whatever's quickest to find and calls it a sample. There's no real rule
+about who's independent enough to run which audit, no training record showing anyone was
+ever taught audit technique specifically, and no consistent scale for how serious a
+finding is once one turns up. We have an audit program in the sense that audits happen.
+We don't have one in the sense that it's actually built to find the next LAB-07 before
+someone else does."
+
+That's the honest diagnosis, and it's this module's whole job to fix. `internal-audits-
+and-management-review` already told you what an internal audit *is* — a planned, periodic,
+independent check that practice matches documentation — and told you, by name, that
+independence is a property the audit has to have without showing you how to build it.
+This module builds the missing layer: who's allowed to audit what, what makes someone
+qualified to do it, which processes and sites get checked more often, how a sample
+actually has to be chosen to mean anything, and how a finding gets sorted by how serious
+it actually is. You'll build all four pieces against Lakeshore's real situation — LAB-07's
+now-closed history as the cautionary example, and Fairview's paper-file practice as the
+live risk sitting in front of you right now.
+
+## Why this matters — and the ITSM bridge
+
+Here's the failure mode a weak internal audit program produces, and it's subtler than
+"no audits happen." Lakeshore's audits *did* happen, on schedule, with a report at the
+end of each one — and they still missed a real, multi-year gap that an outside tool
+caught twice before the internal program ever did. A program that runs on a fixed
+calendar, staffed by whoever's available, sampling whatever's convenient, and grading
+every finding the same way isn't broken in any way that shows up on an audit log. It's
+broken in the one way that actually counts: it isn't built to find what it doesn't
+already expect to find.
+
+You already know this exact failure mode by a different name. A vulnerability-scanning
+program that scans every system on the same interval, run by whoever's on the rotation
+that week, without weighting internet-facing or legacy systems any higher than anything
+else, "runs" in every sense an audit trail can prove — and still misses the one legacy
+box nobody's looked at hard in years, right up until someone else finds it first. The fix
+in your world isn't "scan more." It's risk-based asset tiering, named scanner
+qualifications, a defined sampling approach instead of "whatever's open," and a severity
+scale that actually changes what happens next. This module builds the identical four
+pieces, for the identical reason, on top of a practice — internal audit — you already
+know exists but have never had to design yourself.
+
+One line of continuity worth naming before you build any of this: your QA's independence
+on a *quality decision* — a disposition, a reportability call, a CAPA (corrective and
+preventive action) sign-off — is a control you already protect deliberately, covered in
+`directing-the-quality-analyst`. Auditor independence is that same muscle, aimed at a
+different question: not "can anyone override her disposition," but "is the person
+checking a process's paper trail ever the same person who built or runs that process."
+Same principle, new application. This module doesn't redevelop the first one — it builds
+the second.
+
+## The rule in plain English
+
+Four pieces, each one a real design decision for Lakeshore, not an abstract definition.
+
+**1. Auditor independence — a concrete rule, not a slogan.** "The auditor isn't the
+person who did the work" has to resolve to an actual test someone can apply before an
+audit is assigned. Lakeshore's rule: **an auditor may not audit a process they directly
+perform, a site they operationally manage, or a system or record they personally
+approved, signed, or configured within the audit's look-back period.** Your QA can audit
+Brookfield's donor-eligibility records, because she doesn't run Brookfield day to day.
+She cannot audit a validation package she signed as quality approver, or a CAPA she
+closed herself — that's not a different person checking the work, it's the same person
+checking their own work twice. For a quality team as small as Lakeshore's, where one
+person sometimes has to both do the work and eventually audit somewhere nearby, the rule
+needs a release valve: when no internal staff member clears the independence test for a
+given area, Lakeshore brings in a contracted or cross-trained auditor from outside that
+area's chain, rather than quietly waiving the rule for convenience.
+
+**2. Auditor competency — two different kinds, both required, neither optional.**
+Someone qualified to audit BECS (Blood Establishment Computer Software) validation
+records needs real working familiarity with what a validation package should contain —
+otherwise they can confirm a signature exists without ever noticing the signature is
+dated after the system went live. That's process knowledge. Separately, that same person
+needs training in audit technique itself: how to plan a sample, how to ask a question
+that doesn't lead the witness, how to write a finding that states what was observed
+against what was expected, not an opinion. A subject-matter expert who's never been
+taught to audit will often find nothing, not because nothing's wrong, but because they
+don't know how to look. Lakeshore's fix: a simple competency record per auditor — which
+process areas they're qualified to audit, and when they last completed audit-technique
+training — checked before an assignment goes out, not assumed because someone has
+seniority.
+
+**3. Risk-based audit scheduling — the calendar your debrief just found missing.** This
+is a direct callback to `quality-risk-management`'s risk ranking and filtering: sort
+audit subjects into bins — high, medium, low — using factors that actually predict where
+a gap is likely to be hiding, then audit the high bin more often. For Lakeshore, that
+means weighing site and process risk honestly instead of treating every subject as
+interchangeable. Fairview scores higher than Brookfield on this exercise for a specific,
+nameable reason: its downtime SOP binder and several other quality records still live on
+paper rather than fully inside BECS, which makes drift between the record and reality
+easier to miss between audits. Legacy equipment like LAB-07 scores higher too — older
+instruments with a thinner, less automated maintenance trail are exactly where a
+documentation gap survives longest unnoticed. A flat, same-interval calendar treats
+Fairview's paper binders and Brookfield's current BECS records as equally easy to verify.
+They aren't, and the schedule should say so.
+
+**4. Evidence sampling — large and representative enough to mean something, not a
+handful of convenient records.** An audit can't check every record a process has
+produced, and it doesn't need to — but the sample it does check has to be big enough,
+and chosen well enough, that a clean result actually supports a conclusion about the
+*whole* population, not just the few records someone happened to grab. Pulling the three
+easiest-to-find fitness-for-use files and calling the whole equipment population
+confirmed is not a sample; it's a guess with a checkbox next to it. This is exactly where
+Fairview's paper-file practice bites hardest. BECS's electronic records can be filtered
+and pulled as a genuine random subset in minutes. A box of paper binders can't — pulling
+a defensible sample from them takes real, deliberate selection, not whatever's on top.
+An auditor assigned to Fairview needs to plan the sample before walking in, not improvise
+it once there, and the plan needs to say how many records, selected how, and why that's
+enough to support a conclusion about everything Fairview holds, not just what got
+checked.
+
+**5. Nonconformance grading — a scale with teeth, not a single "finding" bucket.**
+Lakeshore's internal audit findings get sorted into three tiers, each with its own clock
+and its own escalation path:
+
+- **Critical** — a finding tied to an immediate patient-safety signal, or one that
+  independently triggers a reportability question. Same-day containment, immediate
+  escalation to you and to Quality leadership, full investigation opened now, not at the
+  next audit meeting.
+- **Major** — a real, systemic gap in a control that's supposed to be working, with no
+  patient-safety event yet, but a genuine mechanism failure. A defined short window — 30
+  calendar days is Lakeshore's own choice here, not a cited number — to reach a
+  disposition and open a CAPA if the root cause is systemic.
+- **Minor** — an isolated documentation or process gap, unlikely on its own to indicate a
+  broader failure. Logged, trended, and fixed on a longer timeline — Lakeshore's own
+  choice of 90 days — with one real teeth: **three Minor findings against the same
+  process within a year escalate the whole pattern to Major**, so a slow accumulation of
+  small gaps can't sit forever under a label that never forces real action.
+
+Run LAB-07's now-closed history back through this scale, honestly, as the worked example
+it is. A documented fitness-for-use gap on equipment that still passed every daily
+quality-control check, with no patient-safety event behind it, is **Major**, not
+Critical — real and systemic, but not an active safety signal. Under a 30-day Major
+clock, a program built this way would have forced a disposition on LAB-07's gap on its
+own schedule, years before AABB's self-assessment tool or DI-0301 ever had to find it for
+Lakeshore. That's not a reason to reopen LAB-07 — it's closed, correctly, on its own
+timeline. It's the argument for why this module exists at all.
+
+One more instrument worth naming once, not redeveloping: `directing-the-quality-analyst`
+gave you the cold-read test and gap triage — *must fix before I sign*, *fix going
+forward*, *fine as is* — for reviewing a document's own defensibility. Nonconformance
+grading is a related but separate judgment: not "is this write-up good enough to sign,"
+but "how serious is the underlying gap this audit just found, and how fast does it have
+to move." Different question, same underlying discipline of sorting findings instead of
+treating them all alike.
+
+## Citation decoder
+
+Every row below is labeled the same way, deliberately: **industry practice (ASQ Certified
+Quality Auditor body-of-knowledge themes) — described in this curriculum's own words, not
+a cited standard.** No ASQ section number, exam-objective number, or body-of-knowledge
+text is quoted or cited anywhere in this module, the same handling this curriculum has
+always given GAMP 5 (Good Automated Manufacturing Practice) and AABB Standards text. This
+module introduces no new regulation, guidance, or standard.
+
+| Row | Tier | What it covers |
+|---|---|---|
+| Auditor independence | Industry practice (ASQ CQA themes) | The rule that disqualifies an auditor from checking their own work or their own area — Lakeshore's own worded version above. |
+| Auditor competency | Industry practice (ASQ CQA themes) | Process knowledge plus audit technique, both required, tracked per auditor. |
+| Risk-based audit scheduling | Industry practice (ASQ CQA themes) | The bin-and-frequency logic built directly on `quality-risk-management`'s risk ranking and filtering. |
+| Evidence sampling | Industry practice (ASQ CQA themes) | The general principle of a defensible sample — no statistical formula cited or implied. |
+| Nonconformance grading | Industry practice (ASQ CQA themes) | Lakeshore's own three-tier scale, its own choice of labels and timelines. |
+| 21 CFR 606.100(c) | Regulation — already quoted in full in `internal-audits-and-management-review` | A thorough, recorded investigation of any discrepancy, regardless of how it was found. Referenced here, not re-quoted. |
+
+## The actual text
+
+There is almost no text to quote in this module, and that's by design, not an omission.
+ASQ's Certified Quality Auditor body of knowledge is a real, respected professional
+framework behind the themes this module builds on — independence, competency, risk-based
+planning, sampling, severity grading — but it's proprietary exam content, not a public
+regulatory or standards text this curriculum can quote or cite by section number, the
+same handling already given to GAMP 5's own copyrighted guidance. Naming the themes
+honestly, in Lakeshore's own words, is the correct and complete citation here. There is
+no fake section number to invent, and this module doesn't invent one.
+
+The one piece of regulatory text underneath all of it is the same sentence
+`internal-audits-and-management-review` already quoted in full from `sources/cfr/606.100.md`:
+
+> A thorough investigation, including the conclusions and followup, of any unexplained
+> discrepancy or the failure of a lot or unit to meet any of its specifications shall be
+> made and recorded.
+
+Read it the same way that module already taught you to: an audit finding is a deviation
+discovered through a particular channel, and it owes that same investigation-and-record
+floor regardless of which tier this module's own grading scale assigns it. A **Minor**
+finding still gets a recorded investigation. It just doesn't get the same clock or the
+same escalation path a **Critical** one does.
+
+## What an assessor or inspector would actually look for
+
+Not whether Lakeshore's internal audit program exists — that part is easy to confirm.
+What a sharp reviewer actually probes is whether the program is *built* to find things,
+and that comes down to four concrete artifacts.
+
+**An audit calendar that shows its own risk logic.** Not just dates and sites, but a
+visible reason Fairview and legacy-equipment areas sit in a tighter rotation than
+lower-risk subjects — and evidence the calendar was actually kept, not just drafted.
+
+**Auditor qualification records, checked before assignment.** Process-area competency and
+audit-technique training, both dated, for the specific person assigned to a specific
+audit — not "she's senior, she can audit anything."
+
+**A stated sampling plan per audit**, written before the auditor walks in: how many
+records, selected how, from what population. An auditor who can't say why their sample
+size was enough, or how the records were chosen, hasn't actually sampled anything — they
+pulled whatever was easiest to find and are calling it representative after the fact.
+
+**A nonconformance log that shows the grading tier actually drove the timeline.** A
+Critical finding that sat for three weeks before anyone escalated it is worse than no
+grading scale at all — it means Lakeshore wrote down a severity rule it doesn't actually
+follow, which reads to an assessor as exactly the kind of "documented but not followed"
+gap this curriculum has surfaced before.
+
+## Common traps
+
+**"Whoever's free that week audits whatever's due that week."** The single most common
+way a paper audit program stays a paper audit program. Staffing by availability instead
+of by independence-and-competency is how an auditor ends up checking a process they
+helped build, or checking equipment records without ever having been taught what a
+fitness-for-use file is actually supposed to contain. Availability answers "who has
+time." It never answers "who's qualified and independent enough to find something real."
+
+**Treating every finding as equally urgent, or equally unimportant.** Grading everything
+"Critical" burns out an organization's own escalation path until nobody treats the label
+as meaning anything — the same alarm fatigue you already know from a paging system that
+cries wolf. Grading everything "Minor" is the opposite failure, and the one Lakeshore's
+old program was quietly closer to: a real, systemic gap like LAB-07's sits for years
+because nothing ever forced it onto a shorter clock. A grading scale only works if its
+tiers actually produce different timelines and different escalation paths — and if
+someone is checking, after the fact, that they did.
+
+## What this means for your job
+
+- **Ask to see the independence rule applied, not just written down.** A policy that says
+  auditors must be independent and an audit roster that never actually tests anyone
+  against that rule are two different things — ask who was disqualified from an
+  assignment recently, and why.
+- **Check that risk-based scheduling produced a real calendar difference, not just a
+  sentence about risk.** If Fairview and Brookfield sit on the same interval anyway, the
+  risk-ranking exercise was theater.
+- **Ask what a sample actually looked like on the last audit that touched a paper-file
+  site or process.** "We pulled a few records" is not an answer; "we pulled N records,
+  selected this way, out of a population of this size" is.
+- **Watch for a grading scale that exists on paper but doesn't change behavior.** A
+  Critical finding that moved at Minor speed is the single fastest way to lose an
+  assessor's confidence in the whole program.
+- **Run LAB-07's own history as a standing lesson, not a closed file to forget.** The
+  question worth asking of any new audit finding isn't just "how bad is this" — it's
+  "would our *old* program have caught this before an outside reviewer did, and does our
+  new one actually fix that."
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA proposes labeling Lakeshore's nonconformance tiers "Critical / Major / Minor," with a 30-day Major clock and a 90-day Minor clock. Is she required to use those exact labels and timelines because that's the industry-standard scale?
+
+No — and this is worth being precise about. There is no single cited AABB, FDA, or ASQ
+standard that fixes these labels or these timelines; this is industry practice, and the
+exact labels and clocks are Lakeshore's own design choice, not a requirement imposed from
+outside. What *is* expected, by any reviewer worth the name, is that whatever scale
+Lakeshore picks actually produces different, enforced timelines and escalation paths per
+tier — the specific words "Critical" and "Major" could just as easily be "Tier 1" and
+"Tier 2" and nothing about the program's real strength would change.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: An auditor pulls the five most recently updated equipment files at Fairview, finds all five current, and reports "equipment records at Fairview are in good shape." Is that a defensible sample?
+
+No. The five most recently updated files are the ones *least* likely to show a gap —
+they were just touched. A defensible sample has to be drawn so it could actually surface
+a problem if one exists: a genuinely representative cross-section of the equipment
+population, not the subset most likely to already look clean. This is exactly the trap
+Fairview's paper-file practice makes easy to fall into, since pulling a true cross-section
+from paper binders takes deliberate planning that pulling the top few files on a shelf
+does not.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Your QA audited a CAPA she herself closed three months ago, reasoning that "enough time passed that it's basically a fresh look." Does that satisfy Lakeshore's auditor-independence rule?
+
+No. The independence rule turns on *who did the work*, not on how much time has passed
+since they did it. Lakeshore's own rule disqualifies an auditor from checking a system or
+record they personally approved, signed, or configured within the audit's look-back
+period — and closing the CAPA is exactly that kind of personal involvement. A delay
+doesn't convert the same person into a different, independent reviewer. This audit needs
+to go to someone else, or, if nobody internally clears the independence test for this
+area, to an outside auditor brought in for exactly this gap.
+:::
+
+## Where this goes next
+
+Lakeshore's internal audit program now has the four pieces it was missing: a real
+independence rule, tracked competency, a calendar built on actual risk instead of a flat
+interval, a sampling discipline strong enough to mean something even against Fairview's
+paper files, and a grading scale that would have forced LAB-07's own gap onto a real
+clock years before an outside reviewer found it. `mock-inspections-and-presenting-it-
+becs-evidence` closes this course by putting all of it — this program, the AABB process,
+the BPDR (Biological Product Deviation Report) filing, the 483 response — in front of a
+reviewer actually in the room, and by resolving, out loud, what `data-integrity-and-
+records` left open: DED-0458's "accurate" question and the deferred-donor-record cadence
+decision.
