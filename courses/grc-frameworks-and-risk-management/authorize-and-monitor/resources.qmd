@@ -1,0 +1,30 @@
+---
+title: "Resources"
+order: 89
+---
+
+This module applies the same saved NIST excerpt the first three modules introduced — no new
+source was independently fetched, since the new content here (the Authorize decision, the
+authorization-to-operate glossary definition, and the Monitor plan) all comes from material
+already saved in `sources/nist/sp-800-37r2-excerpt.md`. The link below was checked directly from
+this session.
+
+- **[NIST SP 800-37 Rev. 2, "Risk Management Framework for Information Systems and
+  Organizations"](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf)**
+  (PDF, final, December 2018) — the document behind every quote in this lesson (Authorize's
+  one-line action, the authorization-to-operate glossary definition sourced to OMB Circular
+  A-130, and Monitor's one-line action), via the same saved excerpt in `sources/nist/` used in
+  the first three modules. Curl-checked directly from this session: returns HTTP 200.
+
+- **[Implement and Assess Controls](../implement-and-assess-controls/index.qmd)** — the previous
+  module: where the Quality Analyst's independent assessment confirmed audit/logging and
+  physical/environmental protection, and found the one open item this module's authorization
+  decision addresses — the quarterly access-review control, implemented and documented, not yet
+  exercised on its first scheduled cycle.
+
+- **[Staying Validated: Changes, Patches, and Periodic
+  Review](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd)** — the
+  `csv-and-becs` module behind this lesson's single most load-bearing comparison: a Quality
+  Validation Lead's sign-off to move a validated system to production, followed by periodic
+  review, is the same underlying motion as today's authorization decision and its ongoing
+  monitoring plan, in a different vocabulary.

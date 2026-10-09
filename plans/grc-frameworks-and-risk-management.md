@@ -63,7 +63,7 @@ or cloud-platform brand for the eQMS — describe it generically.
 | 1 | `risk-frameworks-side-by-side` | Put NIST RMF, ISO 31000, and ICH Q9 next to each other and show they're the same underlying motion in three different vocabularies, issued by three very different kinds of body. | 82/83 | Published |
 | 2 | `categorize-and-select-controls` | Apply RMF's Categorize and Select steps to the eQMS: determine its impact level, then select and tailor a control set sized to that, not a one-size-fits-all checklist. | 84/85 | Published |
 | 3 | `implement-and-assess-controls` | Build the selected controls, then run an independent assessment of whether they actually work. | 86/87 | Published |
-| 4 | `authorize-and-monitor` | Make and document the authorization decision (accepting a named residual risk), and build the ongoing monitoring plan — say in one sentence why this is the same decision as a validation release and periodic review. | 88/89 | Not started |
+| 4 | `authorize-and-monitor` | Make and document the authorization decision (accepting a named residual risk), and build the ongoing monitoring plan — say in one sentence why this is the same decision as a validation release and periodic review. | 88/89 | Published |
 | 5 | `poams-and-capas` | Track every control gap to closure on a POA&M, then place it next to a CAPA and show they do the identical job in two vocabularies. | 90/91 | Not started |
 
 The next course after this one continues at **92**. Update `create-course`'s SKILL.md when this
@@ -320,3 +320,55 @@ as every prior course) — already done as part of Phase 2 scoping below.
   needed since all new content applies the already-saved excerpt). Word count: ~2,655 words for
   the lesson page (markdown word count including front matter and headings).
   Next: build m4, `authorize-and-monitor`.
+
+- **2026-10-09**: Module 4, `authorize-and-monitor` (`order: 88/89`), built and published.
+  Scenario: an eQMS go/no-go meeting with the same three characters — the Quality Analyst hands
+  over her closed assessment (audit/logging and physical/environmental protection both confirmed;
+  account/identity management still carrying the one open item), the systems administrator offers
+  to just run the overdue review informally this week, and the Director declines to let the
+  go-live date make the decision by default. Quoted verbatim from
+  `sources/nist/sp-800-37r2-excerpt.md`: Authorize's one-line action (reused as a single line from
+  the Figure 2 passage already quoted in full in m1) and Monitor's one-line action (same handling).
+  **New verbatim quote this module** (not previously quoted in m1-m3, confirmed by re-reading m1
+  before drafting): the full "authorization to operate" glossary definition, Appendix B, sourced
+  by the excerpt itself to OMB Circular A-130 — walked through clause by clause and mapped onto
+  what Lakeshore is and is not doing (explicitly **not** issuing or receiving a real federal ATO;
+  borrowing the decision's shape only — one accountable person, explicit acceptance, on the record,
+  tied to documented controls).
+  **THE AUTHORIZATION DECISION (locked fact for module 5 — verbatim as stated in the lesson):**
+  the Director chose **Option B — authorize the eQMS for production now, across all three sites,
+  explicitly accepting the one open deficiency (the quarterly access-review control, implemented
+  and documented, not yet exercised on its first scheduled cycle) as a named, time-bound residual
+  risk** — not Option A (hold go-live until the review runs). Reasoning stated on the record in the
+  lesson: the two other control families were already fully verified by Assess, and the open item
+  is a documented, scheduled control that simply hasn't had its first exercise yet (a bounded,
+  well-understood gap), not a missing or broken one — a reasonable basis to authorize now rather
+  than hold a three-site launch over it, provided the acceptance is explicit and dated rather than
+  informal. **Remediation commitment, exact wording, locked for module 5's POA&M entry:** the
+  systems administrator must complete the first quarterly access review and report its results to
+  the Director **within 30 days of the authorization decision**; a clean result closes the
+  acceptance, a finding (e.g., a stale account or mismatched role) becomes a new, immediate finding
+  rather than something the authorization already waived; the standing quarterly cadence continues
+  on schedule afterward regardless. Built a concrete ongoing monitoring plan: the 30-day
+  remediation check specifically, the continuing quarterly cycle generally, periodic spot-checks of
+  audit/logging (not assumed to age forever from Assess's one-time verdict), a fresh look
+  triggered by any material change to the eQMS (new site, new integration, vendor patch, new
+  record category), and an explicit standing trigger to reopen this specific authorization (the
+  review finding a real problem, a previously-cleared control failing, or the 30-day window
+  passing with no review run). **The course's single load-bearing sentence**, delivered explicitly
+  and specifically (not just asserted): authorizing the eQMS is the same underlying motion as a
+  Quality Validation Lead's sign-off to move a validated system to production followed by periodic
+  review (`csv-and-becs`'s `validated-state-lifecycle-and-patching` module, referenced by name and
+  module link only — no `csv-and-becs` locked identifier touched) — one accountable person reviewing
+  independently-verified evidence and a named residual risk, saying "acceptable, go live," bundled
+  with an ongoing commitment to keep checking it stays true. The "not a real federal ATO" callback
+  was kept to one paragraph plus one check-your-understanding question, not re-argued at length,
+  per the module's own instruction. No `csv-and-becs`/`data-integrity-and-records` locked identifier
+  (VAL-1203, VIA-0842, DEV-1147, CAPA-1147-A, VRA-0219, DI-0301, DED-0458, LAB-07) referenced or
+  reopened. Does not own POA&M mechanics — the remediation commitment above is the raw material m5
+  builds its POA&M entry from, not the entry itself. Sourcing verified this session: NIST PDF
+  curl-checked directly, returns HTTP 200 (same URL as m1-m3, re-verified, not re-fetched as a new
+  source — the ATO glossary definition was already present in the saved excerpt, not newly
+  fetched). Word count: ~3,500 words for the lesson page (markdown word count including front
+  matter and headings).
+  Next: build m5, `poams-and-capas`.
