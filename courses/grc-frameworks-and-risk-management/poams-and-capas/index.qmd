@@ -1,0 +1,353 @@
+---
+title: "POA&Ms and CAPAs"
+order: 90
+---
+
+## "Write it down the way we'd write down a CAPA"
+
+Four days after the eQMS (electronic quality-management system) go-live meeting, your Quality
+Analyst catches you between calls with a question that isn't really a question. "I keep thinking
+about what you said to [the systems administrator] — thirty days, report the results, clean or
+not. Where does that actually live?" You point at the meeting minutes. She doesn't look
+convinced. "Minutes get filed and forgotten. If this were a CAPA (corrective and preventive
+action) finding, I'd have opened a tracked record the same day: the gap, the action, the owner,
+the date, who signs off on closing it. Right now this is just a very well-worded sentence
+someone said out loud."
+
+She's right, and it's worth sitting with why. The authorization decision itself — module 4's
+decision — was real. It had a name on it, a date, an explicit acceptance. But a decision and a
+tracking record are two different things. A decision says "here's what we're doing about this."
+A tracking record is what still exists in ninety days if the decision-maker is on vacation, the
+systems administrator changes roles, or an AABB (Association for the Advancement of Blood &
+Biotherapies) assessor asks to see it. NIST (the National Institute of Standards and Technology)
+has a name for that tracking record in its own Risk Management Framework (RMF): a **POA&M** —
+plan of action and milestones. Your QA, reaching for the closest thing she already trusts, called
+it by its quality-system name instead: a CAPA. Both of you are pointing at the same gap in your
+own process right now. This module closes it, and then asks the more interesting question: now
+that you can build both, what's actually the same between them, and what genuinely isn't?
+
+## Why this step exists — and the ITSM bridge
+
+Here's the failure a POA&M and a CAPA both exist to prevent, and it's a close cousin of the one
+module 4 already named, one step further down the line. Module 4 stopped a decision from
+happening silently, by default, the day a go-live date arrived. This module stops something that
+happens *after* a decision has already been made honestly: a named, accepted risk that quietly
+stops being tracked, because the acceptance itself felt like the finish line. "I accepted it" is
+not the same sentence as "and here's how Lakeshore knows, three months from now, whether the
+thing I accepted ever actually got fixed."
+
+You already run the ITSM (IT service management) version of this discipline, and — usefully — so
+does your Quality Analyst, in a different vocabulary. Think about **problem management**: an
+incident gets resolved, the immediate service is restored, but the underlying root cause can't be
+permanently fixed today — maybe it needs a vendor patch, a budget cycle, a maintenance window.
+A mature problem management practice doesn't just shrug and move on. It opens a **problem
+record**, with a known error logged in the KEDB (known error database), a named owner, and a
+target date for the permanent fix — tracked, visibly, until it actually closes. CAPA is that
+exact discipline, aimed at a quality deviation instead of a service incident, which is precisely
+the bridge `capa-root-cause-to-effectiveness` already built for you. **A POA&M is the identical
+discipline a third time, aimed at a security or risk-control deficiency instead of either one.**
+Three different originating worlds — ITIL, AABB's Quality System Essentials, NIST's RMF — all
+landed on the same answer: a known gap needs a tracked record with an owner and a date, or it
+isn't actually being managed. It's being tolerated.
+
+## The rule in plain English
+
+A POA&M entry does one job: it takes a deficiency someone already found — here, the one Assess
+surfaced in module 3 and Authorize accepted in module 4 — and turns it into a tracked commitment.
+Concretely, that means naming the specific gap, naming the specific action that closes it, naming
+who owns that action, naming a date by which it has to be done, and naming who reviews the
+progress and decides whether the commitment was actually met. Nothing about this is exotic. It's
+the same five questions you'd ask about any open item on a project plan — what's wrong, what are
+we doing about it, who's doing it, by when, and who checks. NIST's own version of this just
+happens to have a name and a specific place in RMF's Authorize step where it lives.
+
+One thing worth saying plainly, the same way this course has said it about every other borrowed
+piece of RMF: nothing about a POA&M is a legal requirement for Lakeshore. No regulator audits
+Lakeshore's POA&M log. Lakeshore is building this entry because it's a genuinely well-built
+tracking instrument, the same reason it borrowed Categorize, Select, Implement, Assess, and
+Authorize in the four modules before this one — not because anyone outranks Lakeshore into
+using NIST's paperwork.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| NIST SP 800-37 Rev. 2, Ch. 3 (Authorize step, Task A-6 — plan of action and milestones) | "Special Publication eight-hundred-thirty-seven, Revision two, Chapter Three, Task A-six" | U.S. government work, public domain, safe to quote verbatim. Describes what a plan of action and milestones includes, who reviews it, and when an entry isn't even necessary. | The one new source this module draws on — the instrument you build below for the eQMS's open access-review item. |
+
+That's the whole table. This module owns no new regulatory content beyond this single passage —
+everything else here is synthesis of what modules 1 through 4 already built, plus one reference
+to a CAPA module this course doesn't re-teach.
+
+## The actual text
+
+Quoted verbatim from `sources/nist/sp-800-37r2-excerpt.md` — the fullest, most load-bearing POA&M
+passage the saved excerpt contains:
+
+> The plan of action and milestones is included as part of the authorization package. The plan
+> of action and milestones describes the actions that are planned to correct deficiencies in the
+> controls identified during the assessment of the controls and during continuous monitoring. The
+> plan of action and milestones includes tasks to be accomplished with a recommendation for
+> completion before or after system authorization; resources required to accomplish the tasks;
+> milestones established to meet the tasks; and the scheduled completion dates for the milestones
+> and tasks. The plan of action and milestones is reviewed by the authorizing official to ensure
+> there is agreement with the remediation actions planned to correct the identified deficiencies.
+> It is subsequently used to monitor progress in completing the actions. Deficiencies are accepted
+> by the authorizing official as residual risk or are remediated during the assessment or prior to
+> submission of the authorization package to the authorizing official. Plan of action and
+> milestones entries are not necessary when deficiencies are accepted by the authorizing official
+> as residual risk.
+
+Read it slowly, because almost every clause maps onto something you already have sitting on the
+record from module 4.
+
+**"Tasks to be accomplished with a recommendation for completion before or after system
+authorization."** Lakeshore's eQMS access review wasn't completed before authorization — Option B
+was authorizing now, with remediation scheduled *after*. That's not an irregular use of a POA&M;
+it's exactly the "after" half of this clause, named explicitly.
+
+**"Resources required to accomplish the tasks."** For this entry, modest and already real: the
+systems administrator's own time to actually sit down and run the review against the eQMS's
+current account list. No new budget line, no new tool, no new hire — the review mechanism itself
+already exists from module 3's Implement step. The gap was never capability. It was simply that
+the first cycle hadn't run yet.
+
+**"Milestones... and the scheduled completion dates."** The 30-day window, named on the record in
+module 4's own authorization language.
+
+**"Reviewed by the authorizing official to ensure there is agreement with the remediation actions
+planned."** That's you, the Director — the same accountable role Authorize already gave you, now
+doing a second job: not just accepting the risk, but confirming the plan to close it is one you
+actually agree with.
+
+**"Subsequently used to monitor progress in completing the actions."** This is the thread that
+connects straight back to Monitor's own one-line action, already quoted in `authorize-and-
+monitor`. A POA&M isn't a one-time memo — it's the specific artifact Monitor checks against.
+
+Now the sentence worth reading twice, because it's the one genuinely surprising line in this
+whole passage: **"Plan of action and milestones entries are not necessary when deficiencies are
+accepted by the authorizing official as residual risk."** Taken on its own, that could sound like
+Lakeshore didn't need to build anything at all — you already accepted the risk in module 4, full
+stop. That reading misses what actually happened in that room, and it's worth being precise about
+the difference. A bare acceptance — "this is a known gap, and I'm choosing to live with it,
+indefinitely, no further action planned" — is the case this sentence is describing, and that case
+genuinely doesn't need a POA&M entry; there's nothing left to track. What you did in module 4 was
+different in one specific, deliberate way: you accepted the risk **for a bounded window, tied to
+a named remediation action with its own date.** That's not a bare acceptance. It's the "accepted,
+with a recommendation for completion after authorization" case the earlier part of this same
+passage describes — which is exactly the case a POA&M entry exists to track. The distinction is
+honest and worth keeping straight: NIST's own text doesn't require Lakeshore to write this entry.
+What it requires is that *if* Lakeshore's acceptance comes bundled with a planned action and a
+date — which yours does — that's precisely the situation the instrument was built for.
+
+## Lakeshore's own POA&M entry
+
+Here's the entry itself, built from the exact facts module 4 already put on the record, nothing
+invented:
+
+| Field | This entry |
+|---|---|
+| **Finding / deficiency** | The quarterly eQMS access-review control (account and identity management) is implemented and documented, but has not yet been exercised on its first scheduled cycle. |
+| **Planned action** | Run the first quarterly access review against the eQMS's current account list, across all three sites, and report the results. |
+| **Resources required** | The systems administrator's own time; the review mechanism already exists from Implement — no new tool, budget, or staffing. |
+| **Recommendation for completion** | After authorization — the Director authorized the eQMS for production now, with this action scheduled to follow, not a precondition to go-live. |
+| **Owner** | The systems administrator. |
+| **Milestone / scheduled completion date** | Within 30 days of the Director's authorization decision. |
+| **Reviewed and accepted by** | The Director, as Lakeshore's own authorizing official. |
+| **Status / closure rule** | A clean result closes the acceptance. A finding (a stale account, a mismatched role) becomes a new, immediate finding on its own record — not something this entry already waived. If the 30-day date passes with no review run, the authorization itself is reopened, per module 4's own standing trigger. |
+
+That's it. There's nothing in this table that wasn't already said out loud in module 4's own
+authorization sentence — the only thing this module adds is the discipline of writing it down in
+a form that survives a staff change, a long weekend, or an assessor's question six months from
+now, instead of living only in a meeting transcript.
+
+## Placing it next to a CAPA
+
+Your Quality Analyst's instinct — "if this were a CAPA, I'd already have a tracked record" — was
+exactly right, and it's worth saying precisely why, instead of just agreeing. `quality-system-
+essentials`'s own CAPA module, `capa-root-cause-to-effectiveness`, already built the full
+mechanics of a CAPA in depth: root cause analysis past the first "why," a corrective action for
+the instance found, a preventive action for the systemic cause, and a required effectiveness check
+with its own pre-agreed criterion, time window, data source, and failure definition. This module
+doesn't re-teach any of that. What it does is put the finished POA&M table above right next to
+that structure and ask, honestly, where they match and where they don't.
+
+**Where they genuinely match.** Both instruments exist for the identical underlying reason: a
+known gap doesn't get to just sit there unnamed. Both require a root finding, a planned action, a
+named owner, a milestone date, and review by someone with real authority to accept or reject the
+plan — the authorizing official for a POA&M, whoever signs CAPA closure for a quality deviation.
+Both come from completely different originating worlds — NIST's RMF, built for federal
+information security; AABB's Quality System Essentials, built for regulated biologics quality —
+and arrived at the same shape of answer anyway. That convergence is the real teaching point of
+this entire course, not a coincidence: a prioritized, dated, owned remediation record for a known
+gap is simply what a mature risk-management process looks like, regardless of which regulatory
+family invented the vocabulary for it.
+
+**Where they genuinely differ, and it's worth being honest about this rather than flattening it.**
+Re-read Task A-6's own text above carefully: nowhere does it ask for a documented root-cause
+analysis before the planned action, and nowhere does it require a formal, pre-agreed effectiveness
+check after the fix, the way CAPA's own structure explicitly does. A POA&M entry's own closing
+language is simply "used to monitor progress in completing the actions" — progress against a
+schedule, not a required, independently verified proof that the fix actually worked, checked
+against a criterion written down in advance. RMF's separate Monitor step (already quoted in
+`authorize-and-monitor`) does include "assessing control effectiveness" as an ongoing, standing
+obligation — so effectiveness isn't absent from RMF altogether. It just isn't built into the
+POA&M instrument itself the way it's built directly into CAPA's own four-stage structure, with its
+own named, required final stage.
+
+| | POA&M (NIST RMF, Task A-6) | CAPA (AABB QSE 9) |
+|---|---|---|
+| Root finding | A control deficiency, from assessment or monitoring | A deviation or nonconformance, from investigation |
+| Root-cause analysis required by the text itself | Not specified — the deficiency is treated as already named | Explicit and central — must go past the first "why" to a systemic cause |
+| Planned action | Tasks, resources, milestones, scheduled completion dates | Corrective action (the instance) and preventive action (the system) |
+| Owner | Named individual accomplishing the tasks | Named individual(s) for each action |
+| Review/acceptance authority | The authorizing official | Whoever signs CAPA closure |
+| Verification after the fix | "Monitor progress" — schedule tracking; effectiveness lives in RMF's separate Monitor step, not inside Task A-6 itself | A required effectiveness check: pre-agreed criterion, time window, data source, defined failure condition |
+| Entry required even for a bare, indefinite acceptance | No — Task A-6 says so directly | Yes — a reported deviation doesn't have a "just accept it, no record" option |
+
+Here's the honest reason this particular entry doesn't make the difference feel sharper than it
+is. The access-review gap has an unusually obvious root cause — the review simply hadn't run yet
+on schedule — so skipping a formal root-cause step costs nothing this time. That won't always be
+true. A future POA&M entry, for a genuinely unclear deficiency, would benefit from borrowing
+CAPA's root-cause discipline even though Task A-6's own text doesn't demand it — the same way this
+course has already shown Lakeshore borrowing structure voluntarily when it's simply a better way
+to work, not because any instrument requires it. Say that to your CIO exactly this plainly: a
+POA&M and a CAPA are the same motion in two vocabularies, with one real difference in emphasis
+worth naming rather than glossing over.
+
+## What a reviewer would actually look for
+
+What a competent reviewer wants — your CIO, an AABB assessor who happens to ask about the eQMS
+during a future reassessment, or you yourself revisiting this in six months — is the table above,
+not the meeting minutes it was built from. A bad answer sounds like "we talked about it and the
+systems administrator was going to handle it." A good answer produces a dated entry with a named
+owner, a specific date, and a closure rule that was written down *before* the 30 days ran out, not
+reconstructed afterward depending on how the review happened to turn out.
+
+## Common traps
+
+**"The Director already accepted the risk in module 4, so writing a POA&M entry now is
+redundant."** Not quite, and the distinction matters. A bare, indefinite acceptance genuinely
+wouldn't need one, per Task A-6's own words. This acceptance came with a named action and a date
+attached — which is exactly the situation the instrument exists to track. The entry doesn't
+duplicate the authorization decision; it's what keeps that decision from quietly becoming a bare
+acceptance by default, the same way an unwritten authorization becomes a shrug.
+
+**"A POA&M and a CAPA are literally the same form, just with different labels on the boxes."**
+Also not quite. The overlap is real and is this module's whole point — finding, action, owner,
+date, review. But CAPA's own text demands a documented root-cause chain and a formal, pre-agreed
+effectiveness check; Task A-6's own text asks for neither inside the POA&M instrument itself.
+Calling them identical erases a real difference in what each one requires you to prove before you
+get to call the gap closed.
+
+## What this means for your job
+
+- **Treat an accepted risk with a remediation date as an open tracking item, not a closed
+  conversation.** The acceptance and the tracking record are two different artifacts; only one of
+  them survives a staff change.
+- **Ask, for any gap someone wants to "just accept," whether a real action and date are attached.**
+  If yes, write the entry — that's exactly the case Task A-6 describes. If genuinely no further
+  action is planned, say that honestly instead of building a hollow tracking record for a decision
+  that was always a flat acceptance.
+- **When you compare a POA&M to a CAPA for your CIO or your QA, name the real difference, not just
+  the real overlap.** Both track remediation to a date with a named owner. CAPA additionally
+  demands root cause and a verified effectiveness check; a bare POA&M entry does not, by NIST's
+  own text, though nothing stops Lakeshore from borrowing that discipline anyway when a deficiency
+  is genuinely unclear.
+- **Never let "we accepted it" stand in for "and here's how we'll know it's actually fixed."**
+  That gap is exactly what your QA caught four days after the go-live meeting, and it's the
+  instinct worth keeping for every future accepted risk, security or quality.
+- **Hold the closure rule to the standard you already set in module 4.** A clean review closes
+  this specific entry. A finding opens a new one. The 30-day date passing with nothing run reopens
+  the authorization itself — not a quiet extension nobody wrote down.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your systems administrator says, "The Director already accepted this risk — why do we need to write a separate POA&M entry at all?" Is he right that NIST's own text requires one here?
+
+Not quite, and the honest answer has two parts. NIST's own text says plainly that POA&M entries
+"are not necessary when deficiencies are accepted by the authorizing official as residual risk" —
+so a flat, indefinite acceptance genuinely wouldn't need one. But that's not what happened in
+module 4. The Director's acceptance came bundled with a named action (the first access review)
+and a specific date (30 days) — which is exactly the "recommendation for completion... after
+system authorization" case the same passage describes as needing tasks, resources, milestones,
+and a scheduled date tracked. The entry isn't an NIST mandate standing on its own; it's the right
+instrument for the specific kind of acceptance Lakeshore actually made.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Your Quality Analyst asks whether this POA&M entry needs a documented root-cause analysis and a scheduled effectiveness check, the way one of her CAPAs would. Does it?
+
+Not by NIST's own text. Task A-6's POA&M passage asks for tasks, resources, milestones, and
+scheduled completion dates, reviewed by the authorizing official and then used to "monitor
+progress in completing the actions" — it never asks for a documented root-cause chain or a formal,
+pre-agreed effectiveness criterion the way CAPA's own four-stage structure explicitly does. In
+this case the root cause is close to self-evident (the review simply hadn't run on schedule), so
+skipping that step costs little. A genuinely unclear deficiency would be a good candidate for
+borrowing CAPA's root-cause discipline voluntarily — a sensible practice, not something the POA&M
+instrument itself demands.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The systems administrator runs the review on day 28 and finds one stale account that should have been removed weeks earlier. Does that mean this POA&M entry failed?
+
+No — read the closure rule again, the same one module 4 built: a clean result closes the
+acceptance; a finding becomes a new, immediate finding of its own, not something this entry
+already waived. Finding the stale account inside the 30-day window is the process working exactly
+as designed — the whole reason the review existed was to catch exactly this kind of drift. What
+would actually be a failure is the 30-day date passing with no review run at all, and nobody
+noticing.
+:::
+
+## Where this course ends, and what's still ahead
+
+Five modules ago, this course opened with two competent people — your Quality Analyst, fluent in
+ICH Q9; your systems administrator, running real but undocumented risk judgment — having two
+disconnected risk conversations about the same new system. It closes today with both of those
+conversations finally sharing one vocabulary, and a tracked record to prove it.
+
+Here's the arc, named once, start to finish. Module 1 put NIST's Risk Management Framework, ISO
+31000, and ICH Q9(R1) side by side and showed they run the identical six-part motion —
+identify, respond, implement, verify, accept, monitor — in three vocabularies from three very
+different kinds of body, and chose RMF's structure, voluntarily, as the one worth running for the
+eQMS end to end. Module 2 applied RMF's own Categorize and Select steps to the eQMS itself:
+reasoned it to moderate-impact, and selected a tailored set of control families — account and
+identity management, audit/logging, physical and environmental protection — sized to that
+impact, not copied from a template built for a smaller system. Module 3 built those three control
+families for real, then handed the assessment to someone who hadn't built them, applying this
+curriculum's own auditor-independence principle — and found the one honest gap this course has
+carried ever since: a quarterly access-review control, implemented and documented, not yet
+exercised on its first scheduled cycle. Module 4 put a name and a date on what to do about that
+gap: the Director authorized the eQMS for production now, across all three sites, explicitly
+accepting that one deficiency as a named, time-bound residual risk, with a 30-day remediation
+commitment — and delivered this course's single load-bearing sentence, that authorizing a system
+this way is the same underlying motion as a validation release followed by periodic review. And
+this module took that exact commitment and gave it the tracked record it was always missing: a
+real POA&M entry, built field by field from facts module 4 had already put on the record, placed
+next to a CAPA to show the same motion in a second vocabulary — genuinely alike in finding, action,
+owner, date, and review; genuinely different in how hard each one leans on root-cause depth and a
+formal effectiveness check.
+
+Say plainly what this course leaves you with, because it's the whole point of having built it.
+Lakeshore now has one shared vocabulary for a sentence you'll need constantly, in every room you
+sit in: *here's a known gap, here's the plan, here's the date, here's who signed off on it* —
+whether the gap surfaced as a security control deficiency tracked on a POA&M or a quality
+deviation tracked on a CAPA. That sentence doesn't change shape depending on which regulatory
+family is in the room. Neither should your confidence saying it.
+
+Two courses in this curriculum's Track 4 pick this vocabulary back up directly.
+`healthcare-security-and-privacy` will run HIPAA (Health Insurance Portability and Accountability
+Act) breach response and privacy-control gaps through the same RMF-shaped reasoning this course
+just built — categorizing what a privacy failure would cost, selecting safeguards sized to that,
+and tracking whatever's left on exactly this same kind of entry.
+`vendor-and-third-party-risk-management` will turn this course's own scrutiny outward, onto every
+vendor underneath Lakeshore's systems — reading a vendor's own risk posture, tiering it, and
+tracking a vendor's open gaps the identical way you just tracked the eQMS's. And Track 5's
+capstone, `itsm-for-regulated-blood-services`, is where this risk vocabulary finally sits next to
+ITIL's own problem management and continual improvement practices in one crosswalk, in language
+built to survive a conversation with your CIO and your exec quality council in the same breath.
+
+You came into this course running two separate, competent risk conversations with no shared
+floor under either one. You leave it able to take any system through categorize, select,
+implement, assess, authorize, and monitor, and track whatever's left over on a record that holds
+up in any room you carry it into — security, quality, or your own CIO's.

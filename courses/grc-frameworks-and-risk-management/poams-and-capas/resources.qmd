@@ -1,0 +1,28 @@
+---
+title: "Resources"
+order: 91
+---
+
+This module's only new regulatory content is the POA&M (plan of action and milestones) passage
+itself, drawn from the same saved excerpt the first four modules already used — no new source was
+independently fetched. The two internal links below are the direct inputs this module builds on
+and the parallel it draws against; both were followed and confirmed to load correctly from this
+session.
+
+- **[NIST SP 800-37 Rev. 2, "Risk Management Framework for Information Systems and
+  Organizations"](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf)**
+  (PDF, final, December 2018) — the document behind this lesson's one new quote, Task A-6's plan
+  of action and milestones discussion, via the same saved excerpt in `sources/nist/` used in all
+  four earlier modules. Curl-checked directly from this session: returns HTTP 200.
+
+- **[Authorize and Monitor](../authorize-and-monitor/index.qmd)** — the previous module, where the
+  Director's authorization decision and its exact 30-day remediation commitment (the systems
+  administrator completing the first quarterly access review and reporting results to the
+  Director) were put on the record. This module's POA&M entry is built field by field from that
+  decision — nothing here is a new finding.
+
+- **[CAPA: root cause to effectiveness
+  check](../../quality-system-essentials/capa-root-cause-to-effectiveness/index.qmd)** — the
+  `quality-system-essentials` module this lesson places its POA&M entry next to. Read it for the
+  actual CAPA mechanics (root cause analysis, corrective and preventive action, the effectiveness
+  check) this lesson references by name but deliberately doesn't redevelop.
