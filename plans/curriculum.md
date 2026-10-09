@@ -274,37 +274,27 @@ has no `plans/<slug>.md` file until its first session.
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
 | `healthcare-security-and-privacy` | 5 / 5 | Done |
 | `vendor-and-third-party-risk-management` | 5 / 5 | Done |
-| `itsm-for-regulated-blood-services` | 5 / 6 | In progress |
+| `itsm-for-regulated-blood-services` | 6 / 6 | Done |
 
-**Next up:** `itsm-for-regulated-blood-services` module 6,
-`presenting-it-service-and-risk-performance` (Track 5, Phase 10) — this course's own capstone
-module AND the entire curriculum's final module. Modules 1
-(`itil-to-qse-crosswalk-change-and-problem`), 2
-(`itil-to-qse-crosswalk-cmdb-and-continual-improvement`), 3 (`itil-to-grc-crosswalk`), 4
-(`building-an-inspection-ready-service-catalog-and-cmdb`), and 5
-(`translating-itsm-and-risk-metrics-for-executives`) are now published (see
-`plans/itsm-for-regulated-blood-services.md`'s progress log for their locked state, including
-module 4's own reconciled eQMS CMDB entry — its qualification field now filled with a pointer to
-the RMF file, not a new exercise — and reconciled service-catalog entry, with the Fairview
-document-control mismatch corrected and given a dated migration action item, plus the honest
-three-reviewer test result modules 5-6 reuse: satisfies an FDA investigator and an AABB
-assessor outright, but remains only strong partial evidence for a full ISO 27001/SOC 2-style
-security review; and module 5's own dual-audience translation of the eQMS's locked POA&M entry
-— CIO language and exec-quality-council language, same finding/owner/date/closure rule in both,
-only framing and emphasis differing — which module 6 can reuse as its own worked model for
-translating the Brookfield incident to both audiences at once). Module 6 is the capstone, built
-last per this file's own "Prerequisite order" diagram ("capstone — wants everything else done").
-**Checked against the progress tracker above and the full prerequisite chain in this file's
-"Prerequisite order" section: every other course in this curriculum is now Done** —
-`reading-a-cfr-citation`, `regulatory-landscape-orientation`, `risk-and-controls-vocabulary`
-(foundations); `blood-center-operations` (Track 1); `quality-system-essentials`,
-`fda-and-aabb-in-practice` (Track 2); `csv-and-becs`, `data-integrity-and-records` (Track 3);
-`grc-frameworks-and-risk-management`, `healthcare-security-and-privacy`,
-`vendor-and-third-party-risk-management` (Track 4, now complete as of this session — see below);
-and `directing-the-quality-analyst` (Track 6). The capstone's own stated dependency (Tracks 1, 2,
-and 4) is fully satisfied, and nothing else in the "Recommended sequence" table sits between here
-and it. There is nothing outstanding to flag before scoping it, beyond the ordinary first-session
-work of actually scoping its own running example and module list.
+**THE ENTIRE ISOE SCHOOL CURRICULUM IS NOW COMPLETE.** Every course in every track — foundations,
+Track 1 (`blood-center-operations`), Track 2 (`quality-system-essentials`,
+`fda-and-aabb-in-practice`), Track 3 (`csv-and-becs`, `data-integrity-and-records`), Track 4
+(`grc-frameworks-and-risk-management`, `healthcare-security-and-privacy`,
+`vendor-and-third-party-risk-management`), Track 5 (`itsm-for-regulated-blood-services`), and
+Track 6 (`directing-the-quality-analyst`) — is built and published, 13/13 courses, every module
+checked in the tracker above. **There is no next course and no "Next up" line.** The capstone's
+own final module, `presenting-it-service-and-risk-performance` (`itsm-for-regulated-blood-
+services` module 6, `order: 125/126`), was published last and closes with the curriculum's own
+required two-layer passage: first the capstone course's own five-module arc, then — the
+significant one — the entire curriculum's arc by name, stating plainly that the curriculum is
+complete and the Director's job from here is applying what's been built, not waiting for a next
+module. See `plans/itsm-for-regulated-blood-services.md`'s progress log for that module's full
+locked state, including: the Brookfield incident's full history (breach determination FINAL,
+encryption status PERMANENTLY unresolved, root-cause ranking unchanged) presented once, live, to
+the CIO and exec quality council simultaneously, using every crosswalk this course built across
+its six modules, with no locked fact from any prior course reopened or altered. A future session
+that adds a brand-new course would start its own `order:` numbering at **127** per
+`.claude/skills/create-course/SKILL.md`'s running counter, but nothing currently calls for one.
 
 Relevant locked facts for whoever scopes `itsm-for-regulated-blood-services` next, gathered from
 across the whole curriculum rather than any single course: this is explicitly a **crosswalk**
