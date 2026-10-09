@@ -200,7 +200,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 | # | Slug | Finish line | Status |
 |---|---|---|---|
 | 1 | `gamp5-and-the-v-model` | Sort any BECS or BECS-adjacent component into its GAMP 5 software category and say what that implies; walk the V-model from user, functional, and design specifications (URS, FS/FRS, DS) to the tests that answer each; and explain why a documented risk assessment, not the category alone, sets test depth. Say what 21 CFR 211.68(a) and FDA's BECS guidance actually require and what GAMP 5 only supplies as practice. | Published |
-| 2 | `iq-oq-pq-and-traceability` | Read an executed validation package (IQ, OQ, and PQ evidence, the traceability matrix, and the summary report) and judge whether every high-risk requirement was tested in a way that could fail, under the conditions it will really run in, with every failure dispositioned. Say whether the package is defensible, using the cold-read test plus the new adequacy check. | Not started |
+| 2 | `iq-oq-pq-and-traceability` | Read an executed validation package (IQ, OQ, and PQ evidence, the traceability matrix, and the summary report) and judge whether every high-risk requirement was tested in a way that could fail, under the conditions it will really run in, with every failure dispositioned. Say whether the package is defensible, using the cold-read test plus the new adequacy check. | Published |
 | 3 | `becs-as-a-regulated-device` | Explain what makes BECS a regulated medical device (21 CFR 864.9165, Class II with special controls, cleared through 510(k) premarket notification), what a clearance does and doesn't tell you about the version and configuration you run, and how cleared, custom-built, and legacy or unsupported systems differ. Say what FDA's BECS user-facility guidance expects Lakeshore's own validation to add, including at every site and when vendor test scripts are used. | Not started |
 | 4 | `qmsr-iso-13485-and-the-vendor` | Place BECS correctly under FDA's device-grade quality system: Part 820 (the QMSR, incorporating ISO 13485:2016, effective February 2, 2026) binds the BECS manufacturer, and 820.1(a)(3) excludes blood manufacturers, so Lakeshore answers to blood CGMP. Say what the vendor's design controls and 864.9165 special-control deliverables (unresolved anomalies, revision history, traceability matrix) give you as validation *inputs*, and when Lakeshore's own development could raise the manufacturer question. | Not started |
 | 5 | `part-11-for-validated-systems` | Name the Part 11 closed-system controls a BECS validation must prove the system actually enforces (access limits, operational sequencing checks, authority checks; device checks named, taught in m7), explain why FDA's 2003 Part 11 guidance points validation enforcement to predicate rules rather than 11.10(a), and decide whether a vendor-supported or vendor-hosted BECS is still a "closed system." Hand ALCOA+, audit-trail review, and e-signatures to `data-integrity-and-records`. | Not started |
@@ -970,3 +970,25 @@ fallback.
     narrative.
   Next: build m2, `iq-oq-pq-and-traceability`, the course's main planted-document teaching
   device (VAL-1203's executed package).
+- **2026-10-09**: Module 2, `iq-oq-pq-and-traceability`, drafted (via subagent), audited, and
+  published (`courses/csv-and-becs/iq-oq-pq-and-traceability/index.qmd` and `resources.qmd`,
+  `order: 43`/`44`, ~4,323 words). Introduces the **adequacy check** by name (Coverage, Design,
+  Fidelity, Regression) alongside the existing cold-read test; applies Coverage, Design, and
+  Fidelity to VAL-1203's executed package, names Regression only (module 6's subject). All
+  quotes verified verbatim against `sources/fda-guidance/becs-validation-users-facility-2013.md`
+  (sections III.B, III.C, III.D, III.E, III.F, III.G, III.H, plus the "Qualification operational"
+  and "User validation" definitions); all four `resources.qmd` links curl-verified 200.
+  **Planted package gaps** (so later modules don't contradict the read): REQ-022 traced only to
+  one normal-case test (OQ-114, Coverage gap); REQ-031 (an invented S/CO-ratio marker result,
+  analogous to but not copying the guidance's hematocrit example) tested only at one normal value
+  (OQ-128, Design gap); PQ-07 run in the vendor's own staging environment/staff/dataset, business
+  hours only (Fidelity gap); REQ-045 (the in-house LIS-to-BECS script, now in the URS per module
+  1's fix) has no test ID at all (orphan/traceability gap); the summary report declares the
+  system "validated and ready for routine production use" while deviation VD-007 is open and the
+  Director's approval line is undated (decision-trail gap). **Non-gap:** OQ-142 failed once,
+  was logged as VD-003, root-caused, fixed, and re-tested with the deviation referenced — correct
+  handling, the mirror image of VIA-0842's step 7. **Director-only catch:** IQ-02 records the
+  database engine tested as version 14.3; the CMDB/change record shows 14.4.2 was actually
+  promoted to production. None of module 1's locked facts (VAL-1203, scope, the in-house script,
+  roles, approvers) were altered.
+  Next: build m3, `becs-as-a-regulated-device`.
