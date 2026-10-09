@@ -1,0 +1,82 @@
+---
+title: "FDA & AABB in Practice"
+order: 68
+---
+
+## The finish line
+
+By the end of this course you can design a defensible internal audit program, prepare a system
+or process for an FDA inspection or AABB (Association for the Advancement of Blood & Biotherapies)
+assessment, and respond to a Form FDA 483 observation. You'll know exactly what FDA can walk in
+and ask for, what happens after an inspection ends, when a problem becomes a recall and which
+class it gets, when a deviation becomes a report FDA actually receives, and what an AABB assessor
+expects to see that an FDA investigator doesn't.
+
+This course's scenario picks up exactly where `data-integrity-and-records` left its own
+self-assessment, DI-0301: Lakeshore's next AABB reassessment is now close enough to have a real
+timeline, and a routine FDA inspection could land before it. Everything DI-0301 found — DED-0458's
+still-open "accurate" question, LAB-07's documented-fitness-for-use gap, the cumulative
+deferred-donor record's monthly-floor-versus-real-risk finding — is still sitting on the Director's
+desk. This course is where those findings meet an actual outside reviewer.
+
+## Before you start
+
+This course assumes the three foundations and three earlier courses:
+
+- [Reading a CFR citation](../../foundations/reading-a-cfr-citation/index.qmd),
+  [Regulatory landscape orientation](../../foundations/regulatory-landscape-orientation/index.qmd),
+  and [Risk and controls vocabulary](../../foundations/risk-and-controls-vocabulary/index.qmd).
+- [Quality System Essentials](../quality-system-essentials/index.qmd), especially
+  [Deviations and nonconformances](../quality-system-essentials/deviations-and-nonconformances/index.qmd)
+  (already teaches 606.171's reportability test and 45-day clock in full — this course picks up
+  exactly where that module stopped, at the point of actually filing a report) and
+  [Internal audits and management review](../quality-system-essentials/internal-audits-and-management-review/index.qmd)
+  (already teaches what an internal audit and a management review *are* — this course builds the
+  *program design* layer on top: auditor independence, scheduling, sampling, grading).
+- [CSV & BECS](../csv-and-becs/index.qmd) and
+  [Data Integrity & Records](../data-integrity-and-records/index.qmd), both for their closed and
+  still-open findings this course's final module puts in front of an inspector.
+
+## The six modules
+
+Each module is one sitting, and each has its own finish line.
+
+1. **FDA inspection authority and outcomes.** Name what FDA's own inspection authority actually
+   lets an investigator do and ask for, explain Form FDA 483's real purpose and legal weight, and
+   name the three possible outcomes an inspection can end in.
+2. **Warning Letters and recalls.** Explain when a 483 escalates into a Warning Letter, and sort
+   any product problem into the right recall classification — Class I, II, or III — using FDA's
+   own health-hazard test, not a guess at severity.
+3. **Filing a Biological Product Deviation Report.** Pick up exactly where an earlier course left
+   off — the reportability *determination* — and finish the job: file the report itself, on the
+   right form, to the right office, in the right window.
+4. **The AABB assessment process.** Walk Lakeshore through both phases of an AABB reassessment —
+   self-assessment and on-site — and say precisely what an assessor expects that an FDA
+   investigator doesn't.
+5. **Designing an internal audit program.** Build the program an internal audit needs to actually
+   hold up: auditor independence and competency, risk-based scheduling, real evidence sampling,
+   and a nonconformance grading scale with teeth.
+6. **Mock inspections: presenting IT and BECS evidence.** Put everything this course and the last
+   two taught in front of a reviewer who's actually in the room — and finally resolve, out loud,
+   what's still open from `data-integrity-and-records`.
+
+## A note on sources
+
+This course leans on a wider range of source types than most in this curriculum:
+
+- **Statute**: 21 U.S.C. 374 (FD&C Act § 704) — FDA's actual inspection-authority law, quoted from
+  an excerpt saved locally, not the full, heavily amended section.
+- **FDA regulation**: 21 CFR Part 7 (recalls) and 606.171 (biological product deviation reports),
+  quoted from local copies.
+- **FDA public/informational pages and presentations**: Form 483's own description, and the
+  NAI/VAI/OAI inspection-outcome classification — verified from FDA's own public materials, with
+  one source's genuine scope limit (a clinical-trial-inspection presentation, used only for its
+  general classification scheme) flagged honestly rather than overstated.
+- **AABB's own public program description**: the accreditation process itself, never AABB
+  Standards text, which stays copyrighted and unquoted throughout, as in every course before this
+  one.
+- **Industry practice**: the ASQ (American Society for Quality) Certified Quality Auditor body of
+  knowledge's themes — independence, competency, sampling, grading — described in this course's
+  own words, never quoted or cited by exam-objective number.
+
+Modules appear in the sidebar as they're built.
