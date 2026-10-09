@@ -71,7 +71,7 @@ brand — all already-established conventions this course continues.
 | — | (syllabus) | — | 68 | Published |
 | 1 | `fda-inspection-authority-and-outcomes` | Name what FDA's inspection authority actually lets an investigator do and ask for, explain Form FDA 483's real purpose and legal weight, and name the three possible outcomes an inspection can end in. | 69/70 | Published |
 | 2 | `warning-letters-and-recalls` | Explain when a 483 escalates into a Warning Letter, and sort any product problem into the right recall classification (Class I, II, or III) using FDA's own health-hazard test. | 71/72 | Published |
-| 3 | `filing-a-biological-product-deviation-report` | Pick up exactly where `deviations-and-nonconformances` left off (the reportability determination) and finish the job: file the report on the right form, to the right office, in the right window. | 73/74 | Not started |
+| 3 | `filing-a-biological-product-deviation-report` | Pick up exactly where `deviations-and-nonconformances` left off (the reportability determination) and finish the job: file the report on the right form, to the right office, in the right window. | 73/74 | Published |
 | 4 | `the-aabb-assessment-process` | Walk Lakeshore through both phases of an AABB reassessment (self-assessment and on-site) and say precisely what an assessor expects that an FDA investigator doesn't. | 75/76 | Not started |
 | 5 | `designing-an-internal-audit-program` | Build the program an internal audit needs to actually hold up: auditor independence/competency, risk-based scheduling, real evidence sampling, and a nonconformance grading scale with teeth. | 77/78 | Not started |
 | 6 | `mock-inspections-and-presenting-it-becs-evidence` | Put everything this course (and `csv-and-becs`/`data-integrity-and-records`) taught in front of a reviewer who's actually in the room, and resolve, out loud, what's still open from `data-integrity-and-records`. | 79/80 | Not started |
@@ -347,3 +347,20 @@ as every prior course).
   still teaching the escalation mechanism. The deferred-donor-record cadence question was not
   mentioned and remains exactly "under internal review."
   Next: build m3, `filing-a-biological-product-deviation-report`.
+- **2026-10-09**: Module 3, `filing-a-biological-product-deviation-report`, drafted (via
+  subagent), audited, and published (`courses/fda-and-aabb-in-practice/filing-a-biological-
+  product-deviation-report/index.qmd` and `resources.qmd`, `order: 73`/`74`, ~3,350 words).
+  606.171(a), (d), (e)/(e)(1)/(e)(2), and (f) quoted in full and verified verbatim, including
+  the source regulation's own inconsistent spacing of the form name ("Form FDA-3486" in (d),
+  "Form FDA 3486" in (e), "Form FDA3486" in (e)(2)) — preserved faithfully rather than
+  normalized. 606.171(b)/(c) referenced in one line only, per `deviations-and-nonconformances`'s
+  own explicit deferral. All four `resources.qmd` links curl-verified 200 (two new FDA pages
+  found via live search for this module: BPDR Form FDA 3486 instructions and eBPDR system
+  instructions — linked only, not quoted in the lesson body). **New locked fact:** the
+  plasma-labeling event (module 2) is now tracked as **BPD-0512**, filed electronically with
+  CBER, well inside the 45-day window. Resolved the recall/BPDR relationship as two parallel,
+  non-substitutable obligations on separate clocks. Recommended electronic filing as this
+  course's own operational judgment, explicitly labeled not-a-regulatory-requirement (606.171(e)
+  treats both channels as equal). The deferred-donor-record cadence question was not mentioned
+  and remains exactly "under internal review." No `csv-and-becs` locked fact altered.
+  Next: build m4, `the-aabb-assessment-process`.
