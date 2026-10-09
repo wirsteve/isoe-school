@@ -201,7 +201,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 |---|---|---|---|
 | 1 | `gamp5-and-the-v-model` | Sort any BECS or BECS-adjacent component into its GAMP 5 software category and say what that implies; walk the V-model from user, functional, and design specifications (URS, FS/FRS, DS) to the tests that answer each; and explain why a documented risk assessment, not the category alone, sets test depth. Say what 21 CFR 211.68(a) and FDA's BECS guidance actually require and what GAMP 5 only supplies as practice. | Published |
 | 2 | `iq-oq-pq-and-traceability` | Read an executed validation package (IQ, OQ, and PQ evidence, the traceability matrix, and the summary report) and judge whether every high-risk requirement was tested in a way that could fail, under the conditions it will really run in, with every failure dispositioned. Say whether the package is defensible, using the cold-read test plus the new adequacy check. | Published |
-| 3 | `becs-as-a-regulated-device` | Explain what makes BECS a regulated medical device (21 CFR 864.9165, Class II with special controls, cleared through 510(k) premarket notification), what a clearance does and doesn't tell you about the version and configuration you run, and how cleared, custom-built, and legacy or unsupported systems differ. Say what FDA's BECS user-facility guidance expects Lakeshore's own validation to add, including at every site and when vendor test scripts are used. | Not started |
+| 3 | `becs-as-a-regulated-device` | Explain what makes BECS a regulated medical device (21 CFR 864.9165, Class II with special controls, cleared through 510(k) premarket notification), what a clearance does and doesn't tell you about the version and configuration you run, and how cleared, custom-built, and legacy or unsupported systems differ. Say what FDA's BECS user-facility guidance expects Lakeshore's own validation to add, including at every site and when vendor test scripts are used. | Published |
 | 4 | `qmsr-iso-13485-and-the-vendor` | Place BECS correctly under FDA's device-grade quality system: Part 820 (the QMSR, incorporating ISO 13485:2016, effective February 2, 2026) binds the BECS manufacturer, and 820.1(a)(3) excludes blood manufacturers, so Lakeshore answers to blood CGMP. Say what the vendor's design controls and 864.9165 special-control deliverables (unresolved anomalies, revision history, traceability matrix) give you as validation *inputs*, and when Lakeshore's own development could raise the manufacturer question. | Not started |
 | 5 | `part-11-for-validated-systems` | Name the Part 11 closed-system controls a BECS validation must prove the system actually enforces (access limits, operational sequencing checks, authority checks; device checks named, taught in m7), explain why FDA's 2003 Part 11 guidance points validation enforcement to predicate rules rather than 11.10(a), and decide whether a vendor-supported or vendor-hosted BECS is still a "closed system." Hand ALCOA+, audit-trail review, and e-signatures to `data-integrity-and-records`. | Not started |
 | 6 | `validated-state-lifecycle-and-patching` | Keep a validated BECS validated: require a documented regression analysis and risk-scaled regression testing for every change, including OS, infrastructure, vendor patches, and reference-table updates; manage patching and end-of-support without breaking the validated state; run a periodic review that would catch drift; and give VIA-0842's "were twelve targeted tests enough?" a real methodological answer. | Not started |
@@ -992,3 +992,20 @@ fallback.
   promoted to production. None of module 1's locked facts (VAL-1203, scope, the in-house script,
   roles, approvers) were altered.
   Next: build m3, `becs-as-a-regulated-device`.
+- **2026-10-09**: Module 3, `becs-as-a-regulated-device`, drafted (via subagent), audited, and
+  published (`courses/csv-and-becs/becs-as-a-regulated-device/index.qmd` and `resources.qmd`,
+  `order: 45`/`46`, ~4,010 words). Quotes 864.9165(a) in full (including the "BECS accessory"
+  definition), 864.9165(b)'s opening classification line only (special controls themselves
+  deferred to m4), 606.60(a)'s "shall perform in the manner for which it was designed" clause
+  (explicitly noting 606.60's own text/table are written for physical lab equipment, not
+  software), and the guidance's Section I scope statement, II.A system definition, III.A vendor/
+  cleared-list caveat, and III.D multi-location/"ultimately responsible" sentences — all verified
+  verbatim against `sources/cfr/864.9165.md`, `sources/cfr/606.60.md`, and
+  `sources/fda-guidance/becs-validation-users-facility-2013.md` (one silently-dropped citation
+  parenthesis in a III.A quote was caught on audit and restored). All three `resources.qmd` links
+  curl-verified 200. No Part 807 section, 510(k) number, product code, or clearance date cited or
+  invented. Scenario: VAL-1203's plan asserts "Release B is FDA 510(k)-cleared" with no backing
+  and reads as central-server-only despite naming Brookfield and Fairview in scope — both left as
+  open questions for the Director to push on, not resolved with a tidy ending, consistent with
+  modules 1-2. No locked facts altered.
+  Next: build m4, `qmsr-iso-13485-and-the-vendor`.
