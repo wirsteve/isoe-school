@@ -80,7 +80,7 @@ curriculum's standing convention.
 | # | Slug | Finish line | `order:` | Status |
 |---|---|---|---|---|
 | — | (syllabus) | — | 55 | Published |
-| 1 | `alcoa-and-data-integrity` | Define data integrity the way FDA's own guidance does (ALCOA, verified, five letters), distinguish it from "ALCOA+" (industry/international term, used carefully), and apply both to a real Lakeshore electronic record. | 56/57 | Not started |
+| 1 | `alcoa-and-data-integrity` | Define data integrity the way FDA's own guidance does (ALCOA, verified, five letters), distinguish it from "ALCOA+" (industry/international term, used carefully), and apply both to a real Lakeshore electronic record. | 56/57 | Published |
 | 2 | `audit-trails-and-esignatures` | Review an audit trail the way an inspector would (who reviews it, how often, what a real review looks like versus a rubber stamp) and name the specific controls (11.50, 11.70, 11.100, 11.200, 11.300) an e-signature has to satisfy to stand in for a handwritten one. | 58/59 | Not started |
 | 3 | `predicate-rules-and-hybrid-systems` | Explain what a predicate rule is and how it decides whether a given record is a "Part 11 record" at all, and judge whether a system mixing paper and electronic records is handling that mix defensibly. | 60/61 | Not started |
 | 4 | `legacy-systems-and-part-11-gaps` | Apply FDA's own four-part legacy-system test to a system older than Part 11, and say what has to stay true for its enforcement-discretion status to hold. | 62/63 | Not started |
@@ -318,3 +318,20 @@ confirmed by grep with no duplicates, same discipline as every prior course).
   practice of auditing the Phase 2 course map before publishing, same as every prior course).
   Next: review this plan one more time, then publish the course map and build module 1,
   `alcoa-and-data-integrity`.
+- **2026-10-09**: Module 1, `alcoa-and-data-integrity`, drafted (via subagent), audited, and
+  published (`courses/data-integrity-and-records/alcoa-and-data-integrity/index.qmd` and
+  `resources.qmd`, `order: 56`/`57`, ~3,360 words). Quotes (the data-integrity definition,
+  ALCOA's footnote-5 citation chain, the metadata definition, the ANSI "systems" definition) all
+  verified verbatim against `sources/fda-guidance/data-integrity-cgmp-qa-2018.md`. ALCOA-vs-
+  "ALCOA+" distinction held precisely throughout: ALCOA labeled guidance-tier with a real FDA
+  citation; "ALCOA+" named only as industry/international practice (MHRA referenced generally,
+  no document cited or quoted), never attributed to FDA. All three `resources.qmd` links
+  curl-verified 200. **Locked scenario facts:** DI-0301 (the course's self-assessment project)
+  opens here; its first test case is **DED-0458**, a BECS donor-eligibility determination record,
+  walked through all five ALCOA letters (Attributable and Legible pass cleanly; Contemporaneously
+  recorded is the planted trap — a timestamp from an unsynchronized local workstation clock;
+  Original/true copy passes with a nuance pointed to module 3; Accurate is left deliberately
+  open/unresolved, modeling an honest "still checking" finding rather than a false resolution).
+  No `csv-and-becs` locked fact (VAL-1203, VIA-0842, DEV-1147, CAPA-1147-A, VRA-0219) referenced
+  or altered.
+  Next: build m2, `audit-trails-and-esignatures`.

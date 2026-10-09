@@ -1,0 +1,312 @@
+---
+title: "ALCOA and Data Integrity"
+order: 56
+---
+
+## DI-0301 opens: one record, five letters
+
+Your Quality Analyst (QA) is starting something new. She's calling it **DI-0301**: a
+data-integrity self-assessment that will eventually touch every system at Lakeshore that creates
+or holds a record — BECS (Blood Establishment Computer Software), a paper donor file still in use
+at one satellite site, an aging lab instrument, the cumulative record that follows a deferred
+donor across every Lakeshore location. The trigger isn't a finding. It's timing: the next AABB
+(Association for the Advancement of Blood & Biotherapies) reassessment cycle is on the calendar,
+and nobody can rule out an FDA inspection landing before it. She wants to know, system by system,
+whether Lakeshore's records would hold up to either one.
+
+She starts small, on purpose. She pulls a single electronic record out of BECS: a completed
+**donor-eligibility determination** for today's donation session — the record that says a specific
+donor was accepted, on what basis, and when. She's giving it a tracking label, **DED-0458**, so
+the two of you can keep referring to the same record as DI-0301 moves forward. No citations yet.
+Her question, stated plainly: "If an inspector picked this exact record off the screen, would it
+survive the questions they'd actually ask?"
+
+You don't know yet. Neither does she. That's the point of starting here.
+
+## Why this rule exists — and the ITSM bridge
+
+Here's the failure this module exists to head off: a record that *looks* fine — present, dated,
+filled in, printable — but doesn't actually prove what it claims to prove, because nobody checked
+whether its underlying data and its own description of itself actually match. A record can pass a
+glance and fail an inspection, and the gap between those two is exactly where data-integrity
+problems live.
+
+You already run the instincts this needs, from ITSM (IT service management) disciplines you
+practice daily. **Master data management** is the discipline of knowing
+where the one authoritative value for a given fact lives, instead of trusting whichever copy is in
+front of you. **Data lineage** is the practice of being able to trace a value back to where it
+actually came from — not where a report says it came from. **Data classification** is deciding, in
+advance, which data matters enough to protect carefully. ALCOA (you'll meet the acronym properly
+in a moment) is those three instincts, applied letter by letter to a single record. "Who touched
+this record, and when" is lineage. "Can I actually trust this record's timestamp, or does it just
+look trustworthy" is a data-quality check you'd already run on a suspicious log entry in any
+ordinary IT system.
+
+Here's where the regulated world demands more. In ordinary IT operations, a data-quality gap —
+a timestamp you can't fully trust, a field whose source is murky — is a ticket. Annoying, worth
+fixing, but not urgent unless something else depends on it. For a record governed by current good
+manufacturing practice (CGMP, the FDA's umbrella term for the quality controls drug and biologics
+manufacturing must meet), each of the five letters below is tied to an actual regulatory
+requirement. A gap in any one of them isn't just messy data. It's a specific compliance exposure,
+with its own citation sitting behind it — which is exactly why DI-0301 is treating DED-0458 as a
+real test case, not a formality.
+
+## The rule in plain English
+
+**Data integrity**, for the purposes of this module, is not a vague buzzword — it's a term FDA
+itself defines, in guidance it published in December 2018 called *Data Integrity and Compliance
+With Drug CGMP: Questions and Answers*. That guidance is **guidance tier**: FDA's current
+thinking, written in "should" language, not binding regulation. It was written for drug CGMP under
+21 CFR Parts 210, 211, and 212 — not Part 606, the blood-specific regulation this curriculum has
+built on from the start. It reaches Lakeshore's own records the same way 211.68 always has in this
+curriculum: through 21 CFR 210.2(a)'s supplementation principle, already established in
+`csv-and-becs`. One line is enough here — this guidance was written for drug manufacturing, but
+210.2(a) is why its CGMP concepts reach Lakeshore's own records the same way 211.68 always has.
+
+FDA's guidance defines data integrity as completeness, consistency, and accuracy — and says that
+complete, consistent, accurate data should be five things, which spell an acronym: **ALCOA**.
+
+- **A**ttributable — tied to a specific person or system action, not anonymous.
+- **L**egible — readable, not degraded or ambiguous.
+- **C**ontemporaneously recorded — captured at the time the work actually happened.
+- **O**riginal or a true copy — the real record, or a verified faithful copy of it.
+- **A**ccurate — correct, and actually checked to be correct.
+
+Five letters. That's the whole acronym, as FDA's own 2018 guidance uses it.
+
+Here's the sharpest point in this module, so get it exactly right: **FDA's guidance never uses the
+term "ALCOA+."** Not once, anywhere in its text. "ALCOA+" — commonly described as ALCOA with four
+more letters added (Complete, Consistent, Enduring, Available) — is real, and you'll hear it
+constantly in industry conversation and from auditors trained on it. But it's **industry and
+international-regulator practice**, not an FDA term, and bodies like the UK's MHRA (Medicines and
+Healthcare products Regulatory Agency) are commonly associated with popularizing it. This module
+doesn't cite a specific MHRA or WHO document for "ALCOA+" — none has been verified for this
+curriculum — and it doesn't claim FDA has adopted or endorsed it. The tiers matter: **ALCOA is
+guidance-tier, FDA's own words, from a real, cited source. "ALCOA+" is industry-practice-tier,**
+described here in general terms, never attributed to FDA.
+
+One more definition this guidance supplies, worth having before you look at DED-0458: **metadata**
+is the contextual information that makes a piece of data mean anything at all. A bare number is
+meaningless without it. You'll see FDA's own example below.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| FDA 2018 Data Integrity Q&A, Section III.1.a | "Section three, question one, part a" | Guidance tier. Defines "data integrity" as completeness, consistency, accuracy; names ALCOA's five letters. | The source DI-0301 pulls from to test DED-0458 letter by letter. |
+| 21 CFR 210.2(a) | "Two-ten point two, paragraph a" | Regulation. Parts 211 and 600–680 "supplement, not supersede, each other." | Why a drug-CGMP guidance's ALCOA concepts reach a blood-establishment record at all — already established in `csv-and-becs`. |
+| Guidance footnote 5, "attributable" group: §§ 211.101(d), 211.122, 211.186, 211.188(b)(11), 212.50(c)(10) | "the footnote behind 'attributable'" | Drug-CGMP sections FDA itself ties "attributable" back to. | Named only — these are outside this course's citation set, shown so you see ALCOA isn't an invented checklist. |
+| Guidance footnote 5, "legible" group: §§ 211.180(e), 212.110(b) | "the footnote behind 'legible'" | Drug-CGMP sections tied to legibility. | Named only, same reason. |
+| Guidance footnote 5, "contemporaneously recorded" group: §§ 211.100(b), 211.160(a) | "the footnote behind 'contemporaneous'" | Drug-CGMP sections requiring activities documented at the time of performance. | Named only — this is the pair behind DED-0458's trickiest test below. |
+| Guidance footnote 5, "original or a true copy" group: §§ 211.180, 211.194(a) | "the footnote behind 'original or a true copy'" | Drug-CGMP sections on retaining original records or true copies. | Named only. |
+| Guidance footnote 5, "accurate" group: §§ 211.22(a), 211.68, 211.188, 212.60(g) | "the footnote behind 'accurate'" | Drug-CGMP sections requiring review, checked output, and complete data. | Named only. |
+
+## The actual text
+
+FDA's own definition, quoted verbatim from `sources/fda-guidance/data-integrity-cgmp-qa-2018.md`
+(Section III, Question 1a):
+
+> data integrity refers to the completeness, consistency, and accuracy of data. Complete,
+> consistent, and accurate data should be attributable, legible, contemporaneously recorded,
+> original or a true copy, and accurate (ALCOA).
+
+Read "should," not "shall" — this is guidance, FDA's recommended way of satisfying regulations
+that do use "shall," not a regulation itself. The same guidance backs that sentence with its own
+footnote, which is the reason you can tell your QA — or an inspector — that ALCOA isn't a
+mnemonic someone made up. It's a label FDA ties to real regulatory text, quoted verbatim:
+
+> These characteristics are important to ensuring data integrity and are addressed throughout the
+> CGMP regulations for drugs. For attributable, see §§ 211.101(d), 211.122, 211.186, 211.188(b)(11),
+> and 212.50(c)(10); for legible, see §§ 211.180(e) and 212.110(b); for contemporaneously recorded
+> (at the time of performance), see §§ 211.100(b) and 211.160(a); for original or a true copy, see
+> §§ 211.180 and 211.194(a); and for accurate, see §§ 211.22(a), 211.68, 211.188, and 212.60(g).
+
+Those are drug-CGMP sections, outside this course's own citation set — they're named here, not
+developed, just so you see the chain from "ALCOA" back to actual regulatory requirements.
+
+Now the metadata definition, quoted in full, including its own example:
+
+> Metadata is the contextual information required to understand data. A data value is by itself
+> meaningless without additional information about the data. Metadata is often described as data
+> about data. Metadata is structured information that describes, explains, or otherwise makes it
+> easier to retrieve, use, or manage data. For example, the number "23" is meaningless without
+> metadata, such as an indication of the unit "mg." Among other things, metadata for a particular
+> piece of data could include a date/time stamp documenting when the data were acquired, a user ID
+> of the person who conducted the test or analysis that generated the data, the instrument ID used
+> to acquire the data, material status data, the material identification number, and audit trails.
+
+Notice "audit trails" sitting at the end of that list. A secure, computer-generated record of who
+changed what, and when, is itself a piece of metadata — context that makes the rest of the record
+trustworthy. Reviewing an audit trail in practice, and what counts as a real review versus a
+rubber stamp, is next module's subject, `audit-trails-and-esignatures`. Here, just notice it's on
+this list.
+
+Last, the "systems" definition, quoted verbatim:
+
+> The American National Standards Institute (ANSI) defines systems as people, machines, and methods
+> organized to accomplish a set of specific functions. Computer or related systems can refer to
+> computer hardware, software, peripheral devices, networks, cloud infrastructure, personnel, and
+> associated documents (e.g., user manuals and standard operating procedures).
+
+ANSI is the American National Standards Institute, the body FDA is quoting there. If that
+definition sounds familiar, it should: it's a near-twin of
+[`becs-as-a-regulated-device`'s](../../csv-and-becs/becs-as-a-regulated-device/index.qmd) own
+"system" definition — hardware, software, peripherals, networks, personnel, documentation. Two
+different FDA source documents, two near-identical definitions. That's not a coincidence; it's the
+same CGMP systems-thinking tradition showing up twice. One line is all that callback needs — this
+module doesn't re-teach that lesson.
+
+### Running DED-0458 through ALCOA
+
+Here's the actual exercise your QA ran. DED-0458 looks complete on screen: donor name, a unique
+donor identifier, a set of screening responses, an accept determination, a timestamp, the
+screener's login. Walking it through ALCOA letter by letter is where the real test happens.
+
+**Attributable — passes.** Every field in DED-0458 traces to a specific, unique BECS login: the
+screener who conducted this donor's eligibility interview, not a shared or generic account. No
+login, no entry. This is a clean pass, and it's worth noticing *why* it's clean: it's provable, not
+assumed. Anyone can check which individual account produced this record.
+
+**Legible — passes.** DED-0458 lives as structured data in BECS, not handwriting that degrades or
+shorthand only one person can read. Every field renders the same way for anyone who pulls the
+record up. Straightforward pass.
+
+**Contemporaneously recorded — this is the trap.** DED-0458 has a timestamp field. At a glance,
+that looks like exactly what "contemporaneous" requires: the record shows when the determination
+happened. But your QA asked one more question — where does that timestamp actually come from? The
+answer: the workstation's own local system clock, which is not synchronized to a trusted, centrally
+managed time source. Nobody has verified that workstation clock matches real time. It could be
+minutes off. It could, after an uncorrected drift, be more than that. The record *claims* a time.
+Nothing currently proves that claim is true. "Contemporaneous" doesn't mean "has a timestamp
+field" — it means the data actually reflects when the work was performed, and that's a provable
+fact, not a surface feature. DED-0458 looks like it passes. It doesn't yet.
+
+**Original or a true copy — passes, with a nuance worth flagging.** The record your QA is
+examining is the live row inside BECS's own database — the original electronic record, not a
+printout or a manual re-entry of it. That's a real pass today. The nuance: if anyone later decides
+to retain a printed report generated from this record instead of the underlying BECS record
+itself, that question gets more complicated — whether a printout can stand in for a dynamic
+electronic original is a question this curriculum picks up directly in
+`predicate-rules-and-hybrid-systems`. For today's DED-0458, the original record is what's being
+kept, and that's what passes.
+
+**Accurate — open, not yet resolved.** This is the one your QA flagged as genuinely unfinished.
+"Accurate" isn't just "legible and present" — it means the recorded determination actually matches
+what should have resulted from the donor's actual screening answers, and that match has been
+checked, not assumed. DI-0301's assessment of DED-0458 hasn't confirmed that yet one way or the
+other. That's not a failure to report — an honest "still checking" is a legitimate, useful finding
+for a self-assessment to produce. It's worse to call something accurate because nothing has
+obviously broken than to say plainly that the check hasn't been done.
+
+One record. Five real tests. Two clean passes, one surface-level trap, one nuance, one open
+question — and that's the whole teaching point. ALCOA is something you apply to a record, not
+something you read off its surface.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB assessor wouldn't ask whether Lakeshore has an ALCOA policy. They'd ask
+for specific proof, record in hand.
+
+**For "attributable":** a list of who holds which BECS login, and confirmation no login is shared
+— the same shared-credential question this curriculum has raised before, here applied to data
+integrity rather than access control alone.
+
+**For "contemporaneous":** evidence that the system clock DED-0458's timestamp came from is
+actually synchronized to a trusted, centrally managed time source — not a policy saying clocks
+should be accurate, but a configuration record and a log showing synchronization actually happens.
+That's the systems administrator's evidence to produce, not Quality's. A bad answer sounds like
+"the system shows a time, so it's contemporaneous." A good answer points to the synchronization
+configuration itself.
+
+**For "original or a true copy":** confirmation of exactly which artifact Lakeshore treats as the
+record of record — the live BECS row, not whichever printed report happens to be in a binder.
+
+**For "accurate":** evidence of an actual verification step, not an assumption that the system's
+calculation is correct because nothing has visibly gone wrong.
+
+None of this has an assigned AABB standard number in this module — if you want the adjacent
+drawer, QSE 6 (Documents and Records) is the quality-system framework this ultimately feeds, not
+developed further here.
+
+## Common traps
+
+**"FDA requires ALCOA+ compliance."** Not quite, and this is the trap worth catching before it
+reaches an audit report. FDA's own 2018 guidance defines and requires attention to ALCOA — five
+letters, tied to specific CGMP sections. "ALCOA+" is industry and international-regulator practice
+layered on top of that, not a term FDA's guidance uses anywhere. Saying "ALCOA+" when you mean
+"the five things FDA's guidance actually requires attention to" blurs a real distinction: one is
+guidance tied to a citation chain; the other is useful industry vocabulary with no FDA citation
+behind the "+".
+
+**"A timestamp on a record proves it's contemporaneous."** DED-0458 is the refutation, built in.
+The guidance ties "contemporaneously recorded" to activities "documented at the time of
+performance" (§§ 211.100(b), 211.160(a) — named in its own footnote). A timestamp field is a
+*claim* about when something happened. Whether that claim is true depends on whether the clock
+that produced it can be trusted — which is a separate, checkable fact, not something a timestamp's
+mere presence establishes.
+
+## What this means for your job
+
+- **When your QA reports a record as "passes ALCOA," ask her to walk you through all five letters,
+  not give you a single pass/fail label.** DED-0458 shows why: four different answers (two passes,
+  one trap, one open item) all hid behind one record that looked fine at a glance.
+- **Ask specifically whether BECS workstation clocks are synchronized to a trusted, centrally
+  managed time source.** You don't need to configure it yourself — you need to know whether anyone
+  has verified it, and whether that verification is itself documented.
+- **Correct "ALCOA+" when you hear it used as if FDA required it.** It's a useful industry term.
+  It is not a citation. If a vendor or auditor says "FDA requires ALCOA+," that's worth a polite
+  correction, not agreement.
+- **Watch for a record's "original" status quietly shifting to a printout over time**, especially
+  once people get used to working from a printed report instead of the live system record. Ask
+  which one Lakeshore actually treats as authoritative, today, in writing.
+- **Treat an honestly unresolved finding — like "accurate" on DED-0458 — as a good outcome of a
+  self-assessment, not a bad one.** DI-0301 is doing its job if it surfaces an open question before
+  an inspector does.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Someone on your team says, "FDA requires ALCOA+ compliance for all electronic records." Accurate?
+
+Not quite — and this is worth getting exactly right. FDA's own 2018 data-integrity guidance defines
+and requires attention to ALCOA: attributable, legible, contemporaneously recorded, original or a
+true copy, and accurate — five letters, each tied back to specific CGMP (current good
+manufacturing practice) sections in the guidance's own footnote. "ALCOA+" — commonly ALCOA plus
+Complete, Consistent, Enduring, and Available — is industry and international-regulator practice,
+commonly associated with bodies like the UK's MHRA, layered on top of ALCOA. It is not a term
+FDA's own guidance uses anywhere in its text, and this is **not a regulatory requirement** in the
+sense of being an FDA citation — it's useful industry vocabulary, not a rule FDA enforces by that
+name. Tell your CIO: FDA's own guidance gives you five letters with citations behind them; "ALCOA+"
+is a broader industry habit worth knowing, not an FDA rule you're failing to meet.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: DED-0458 has a timestamp showing when the donor-eligibility determination was made. Does that satisfy ALCOA's "contemporaneously recorded" element?
+
+Not on its own. A timestamp is a claim about when something happened. DED-0458's timestamp comes
+from the workstation's own local clock, which nobody has confirmed is synchronized to a trusted,
+centrally managed time source. "Contemporaneously recorded" means the record actually reflects the
+time the work was performed — a provable fact, backed by a trustworthy clock — not merely that a
+time field exists and displays something. Until the clock's synchronization is verified, DED-0458's
+timestamp is a claim, not yet a proven one.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A colleague says the "systems" definition in FDA's 2018 data-integrity guidance is basically the same idea as the "system" definition in FDA's BECS validation guidance from `csv-and-becs`. Right or wrong?
+
+Right. Both definitions describe a system as more than software: people, machines or hardware,
+methods, and — in both versions — personnel and documentation, organized to accomplish specific
+functions. They come from different FDA guidance documents written for different purposes, but
+they rhyme because they both draw on the same CGMP systems-thinking tradition, and one (quoted
+here) explicitly credits ANSI (American National Standards Institute) as its source. The parallel
+is worth noticing. Neither definition needs re-teaching here — `becs-as-a-regulated-device` already
+built that lesson out in full.
+:::
+
+## Where this goes next
+
+DI-0301 has its first finding, and it's a genuinely mixed one: two clean passes, a trap that
+teaches you to distrust a timestamp's surface claim, and an honest open question on "accurate."
+Next, `audit-trails-and-esignatures` picks up where metadata's own list left off — audit trails —
+and asks who's actually reviewing BECS's audit trail, how often, and what Lakeshore's e-signatures
+would need to prove to stand in for a handwritten one.
