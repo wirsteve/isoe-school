@@ -57,7 +57,7 @@ ticketing platform — describe generically.
 |---|---|---|---|---|
 | — | (syllabus) | — | 114 | Published |
 | 1 | `itil-to-qse-crosswalk-change-and-problem` | Map ITIL's change enablement onto Lakeshore's change control, and problem management onto CAPA. | 115/116 | Published |
-| 2 | `itil-to-qse-crosswalk-cmdb-and-continual-improvement` | Map a CMDB onto an equipment/validated-system inventory, a service catalog onto quality-system scope, and continual improvement onto process improvement. | 117/118 | Not started |
+| 2 | `itil-to-qse-crosswalk-cmdb-and-continual-improvement` | Map a CMDB onto an equipment/validated-system inventory, a service catalog onto quality-system scope, and continual improvement onto process improvement. | 117/118 | Published |
 | 3 | `itil-to-grc-crosswalk` | Map service asset/config management onto RMF's Categorize/Select, continual improvement onto Monitor, and security management onto ISO 27001's Annex A domains. | 119/120 | Not started |
 | 4 | `building-an-inspection-ready-service-catalog-and-cmdb` | Apply all three crosswalks to build one real service-catalog/CMDB entry for the eQMS that survives an FDA inspection, an AABB assessment, and a security assessment at once. | 121/122 | Not started |
 | 5 | `translating-itsm-and-risk-metrics-for-executives` | Present the same underlying fact (an incident, a residual risk, a control gap) in CIO language and exec-quality-council language without changing what it means. | 123/124 | Not started |
@@ -264,3 +264,77 @@ verified file:
   CMDB ↔ equipment/validated-system inventory, service catalog ↔ quality-system scope,
   continual improvement ↔ QSE 9 — the first module to pick up the eQMS as this course's own
   running artifact.
+
+- **2026-10-09**: Module 2, `itil-to-qse-crosswalk-cmdb-and-continual-improvement`
+  (`order: 117/118`), drafted and published. Built all three crosswalks this module owns,
+  concretely, using the eQMS (electronic quality-management system) as this course's first
+  running artifact, picked up again in m4. No new citation introduced anywhere in the module —
+  it names AABB's QSE 3 (Equipment, explicitly extended to IT systems per
+  `sources/aabb/qse-framework.md`) and QSE 9 (Process Improvement, titled "Process Improvement
+  Through Corrective and Preventive Action" in an older AABB template per that same source
+  file's own note) by theme only, no Standards text, no standard number, and references
+  `csv-and-becs`'s validation lifecycle (validated state, periodic review, IQ/OQ/PQ,
+  traceability matrix) by name without redeveloping it. **(1) CMDB ↔ equipment/validated-system
+  inventory** — built an honest field-by-field comparison and named the real gap plainly: a
+  CMDB's CI (configuration item) record tracks identity, version, and dependencies, but does
+  not, in plain ITIL practice, carry a required qualification/validation-status field, where an
+  AABB-governed equipment or system inventory entry is built around that field as its whole
+  point. **(2) Service catalog ↔ quality-system scope** — built two concrete, partial artifacts
+  side by side and used a deliberate, catchable inconsistency as the teaching device: the
+  service-catalog entry (drafted by IT) lists document control as offered to all three sites,
+  while the quality-system scope statement (owned by Quality) names document control in scope
+  only for the central site and Brookfield, with Fairview's document control still under its
+  existing paper-based process pending migration — consistent with, not contradicting,
+  Fairview's already-established paper habit from `fda-and-aabb-in-practice`/
+  `risk-frameworks-side-by-side`. **(3) Continual improvement ↔ process improvement (QSE 9)** —
+  named the honest difference (ITIL's register can hold a purely aspirational/efficiency idea
+  with no compliance stakes; QSE 9's own CAPA-linked process improvement is specifically about
+  closing a gap a deviation, audit, or nonconformance actually found) and built a fresh,
+  non-locked example: the eQMS's CAPA-entry screen requires the same lot/batch number to be
+  re-keyed into three separate fields, logged as a continual-improvement register entry (owner:
+  systems administrator; status: proposed, pending a build-effort estimate; review: next
+  quarterly IT service review) and explicitly contrasted with what would turn it into an actual
+  CAPA (an audit or investigation tracing a real transcription error to that same field design).
+
+  **The exact eQMS CMDB entry built (module 4 builds on this directly):** CI name "eQMS
+  (electronic quality-management system)"; CI type "Application"; current version "current
+  production release"; owner (system) "systems administrator, on behalf of IT"; in production at
+  "Lakeshore's central site, Brookfield, and Fairview"; depends on "the central identity/access
+  system (authentication for all eQMS accounts across all three sites); each site's local network
+  infrastructure; the underlying storage/backup system the eQMS's records are written to"; feeds/
+  relied on by "Quality staff at all three sites, for CAPA tracking, document control, and
+  internal-audit logging; site operations leadership, for document-control access"; qualification/
+  validation status: explicitly left blank, flagged as "not a standard CMDB field," the exact gap
+  crosswalk 1 names and module 4 is expected to fill. Note the entry explicitly does NOT assert
+  any data interface between the eQMS and BECS — they're described as separate systems, since no
+  such interface was established anywhere in `grc-frameworks-and-risk-management` or elsewhere;
+  the eQMS replaced an older "BECS-*adjacent*" tool per `risk-frameworks-side-by-side`, which this
+  module is careful to read as proximity, not integration.
+
+  **The exact eQMS service-catalog entry built (module 4 builds on this directly):** service
+  "eQMS"; provides "CAPA tracking, document control, internal-audit logging"; offered to "Quality
+  staff and site operations leadership"; offered at "central site, Brookfield, and Fairview";
+  service level "business-hours support; next-business-day response for access issues" — sitting
+  next to the quality-system scope statement's own text (owned by Quality, not IT): "The eQMS is
+  in scope for CAPA management and internal-audit logging across all three sites. The eQMS is in
+  scope for document control at the central site and Brookfield. Fairview's document-control
+  records remain under the site's existing paper-based process pending migration." The mismatch
+  (service catalog claims document control at all three sites; scope statement names only two) is
+  the deliberate, catchable inconsistency this module built — unresolved on purpose, left for
+  module 4 to actually reconcile as part of building one artifact that survives all three
+  reviewer lenses.
+
+  **No `grc-frameworks-and-risk-management` locked eQMS fact was touched or contradicted**: the
+  eQMS's moderate-impact categorization, its three control families (account and identity
+  management, audit/logging, physical and environmental protection), and its POA&M'd access-
+  review deficiency (owner: systems administrator; 30-day window; reviewed/accepted by: the
+  Director) are referenced by name only where relevant (the "central identity/access system"
+  dependency and the account-and-identity-management control family are consistent, not
+  identical — the dependency is this module's own plausible CMDB addition, not a re-assertion of
+  the control family itself) and never restated as if newly decided here. Lesson page is ~3,730
+  words of prose (TEACHING.md's 2,000–4,000-word target). `quarto` is unavailable in this cloud
+  session (per CLAUDE.md rule 6) — not rendered locally; the GitHub Action renders on push.
+  Published via the `publish` skill to branch `claude/confident-brahmagupta-b499un`.
+  Next: build m3, `itil-to-grc-crosswalk` (`order: 119/120`) — service asset/config management ↔
+  RMF Categorize/Select, continual improvement ↔ Monitor, security management ↔ ISO 27001 Annex
+  A — applied to the eQMS's own already-authorized RMF history, reference only, no new citation.

@@ -1,0 +1,53 @@
+---
+title: "Resources"
+order: 118
+---
+
+This module introduces no new regulation, standard, or framework, and no new source was fetched
+for it. It crosswalks ITIL (Information Technology Infrastructure Library) vocabulary — the
+learner's own professional background, never itself cited to a specific AXELOS/PeopleCert
+publication anywhere in this curriculum — onto AABB's (Association for the Advancement of Blood
+& Biotherapies) own QSE (Quality System Essential) taxonomy and onto the eQMS's (electronic
+quality-management system's) own already-built record from `grc-frameworks-and-risk-management`.
+The links below are the direct inputs this module maps against, plus the already-verified AABB
+page this course's own prior module relied on.
+
+- **[AABB: Updated Quality Systems
+  Essentials](https://www.aabb.org/standards-accreditation/standards/about-aabb-standards/updated-quality-systems-essentials)**
+  — AABB's own current page on the QSE framework, including QSE 3 (Equipment) and QSE 9 (Process
+  Improvement), the two QSE themes this module names and maps against without quoting any
+  Standards text. The same link `aabb-qse-framework`'s own resources page and
+  `the-aabb-assessment-process`'s resources page already verified and used — reused here rather
+  than re-checked from scratch. Use it to confirm each QSE's theme and scope in AABB's own words;
+  don't cite a standard number from it.
+
+- **[The AABB quality system at a
+  glance](../../quality-system-essentials/aabb-qse-framework/index.qmd)** — the
+  `quality-system-essentials` module that first named and listed all ten QSEs, including QSE 3 and
+  QSE 9, the two this module's crosswalks map onto. Read it for the full taxonomy and the
+  discipline of naming a QSE by theme without quoting AABB's own Standards text — the exact
+  pattern this module follows.
+
+- **[Risk Management Frameworks Side by
+  Side](../../grc-frameworks-and-risk-management/risk-frameworks-side-by-side/index.qmd)** and
+  **[Categorize and Select
+  Controls](../../grc-frameworks-and-risk-management/categorize-and-select-controls/index.qmd)**
+  — the two `grc-frameworks-and-risk-management` modules this module's running artifact draws its
+  eQMS facts from: that it holds CAPA records, document control, and internal-audit logs across
+  all three sites, replacing an older BECS (Blood Establishment Computer Software)-adjacent
+  tracking tool and, at Fairview specifically, a paper-based process. Read either one for the
+  eQMS's full categorization reasoning and control-family selection, which this module references
+  by name but doesn't redevelop.
+
+- **[Staying Validated: Changes, Patches, and Periodic
+  Review](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd)** — the
+  `csv-and-becs` module this module's CMDB crosswalk names, reference only, for BECS's own
+  validation lifecycle (a validated state, periodic review, and revalidation triggered by change)
+  — the fuller version of the qualification concept a plain CMDB entry doesn't carry by default.
+
+- **[ITIL-to-QSE Crosswalk: Change and
+  Problem](../itil-to-qse-crosswalk-change-and-problem/index.qmd)** — this course's own module 1,
+  for the same honest-mapping method this module continues (same discipline, narrower or stricter
+  gate — never "basically identical") and for the `change-control-for-regulated-systems` and
+  `capa-root-cause-to-effectiveness` references this module's QSE 9 crosswalk builds on without
+  re-quoting.

@@ -274,12 +274,13 @@ has no `plans/<slug>.md` file until its first session.
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
 | `healthcare-security-and-privacy` | 5 / 5 | Done |
 | `vendor-and-third-party-risk-management` | 5 / 5 | Done |
-| `itsm-for-regulated-blood-services` | 1 / 6 | In progress |
+| `itsm-for-regulated-blood-services` | 2 / 6 | In progress |
 
-**Next up:** `itsm-for-regulated-blood-services` module 2,
-`itil-to-qse-crosswalk-cmdb-and-continual-improvement` (Track 5, Phase 10) — module 1,
-`itil-to-qse-crosswalk-change-and-problem`, is now published (see
-`plans/itsm-for-regulated-blood-services.md`'s progress log for its locked state). The capstone
+**Next up:** `itsm-for-regulated-blood-services` module 3, `itil-to-grc-crosswalk` (Track 5,
+Phase 10) — modules 1 (`itil-to-qse-crosswalk-change-and-problem`) and 2
+(`itil-to-qse-crosswalk-cmdb-and-continual-improvement`) are now published (see
+`plans/itsm-for-regulated-blood-services.md`'s progress log for their locked state, including
+module 2's own eQMS CMDB/service-catalog artifact that module 4 builds on directly). The capstone
 is the curriculum's final course, built last per this file's own "Prerequisite order" diagram
 ("capstone — wants everything else done"). **Checked against the progress tracker above and the
 full prerequisite chain in this file's "Prerequisite order" section: every other course in this
