@@ -1,0 +1,32 @@
+---
+title: "Resources"
+order: 124
+---
+
+This module introduces no new regulation, standard, or framework, and no new source was fetched
+for it. It takes a single already-locked fact — the eQMS's (electronic quality-management
+system's) own POA&M (plan of action and milestones) entry — and translates it for two audiences
+without changing what it says. The links below are the direct inputs this module draws on; read
+any of them for the actual mechanics, citations, and reasoning this lesson references by name but
+doesn't redevelop.
+
+- **[POA&Ms and
+  CAPAs](../../grc-frameworks-and-risk-management/poams-and-capas/index.qmd)**
+  (`grc-frameworks-and-risk-management`) — where the exact POA&M entry this module translates was
+  built, field by field, from NIST SP 800-37 Rev. 2's Task A-6, and placed next to a CAPA
+  (corrective and preventive action) to show the same tracking discipline in two vocabularies.
+  Read it for the verbatim NIST text and the full reasoning behind every field this module quotes
+  unchanged.
+
+- **[Coaching your QA and reporting
+  upward](../../directing-the-quality-analyst/coaching-and-reporting-upward/index.qmd)**
+  (`directing-the-quality-analyst`) — where the "watermelon report" problem and the discipline of
+  separating system measures from personal performance measures were first built, and where a
+  management-review packet was first rebuilt around trend and aging instead of raw counts. This
+  module's audience-translation instinct is the same discipline, aimed sideways instead of upward.
+
+- **[Building an inspection-ready service catalog and
+  CMDB](../building-an-inspection-ready-service-catalog-and-cmdb/index.qmd)** — this course's own
+  module 4, which first showed that a self-identified, actively-managed gap grades differently
+  than one a reviewer finds cold. This module's exec-quality-council translation leans directly on
+  that same point.

@@ -274,24 +274,28 @@ has no `plans/<slug>.md` file until its first session.
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
 | `healthcare-security-and-privacy` | 5 / 5 | Done |
 | `vendor-and-third-party-risk-management` | 5 / 5 | Done |
-| `itsm-for-regulated-blood-services` | 4 / 6 | In progress |
+| `itsm-for-regulated-blood-services` | 5 / 6 | In progress |
 
-**Next up:** `itsm-for-regulated-blood-services` module 5,
-`translating-itsm-and-risk-metrics-for-executives` (Track 5, Phase 10) — modules 1
+**Next up:** `itsm-for-regulated-blood-services` module 6,
+`presenting-it-service-and-risk-performance` (Track 5, Phase 10) — this course's own capstone
+module AND the entire curriculum's final module. Modules 1
 (`itil-to-qse-crosswalk-change-and-problem`), 2
-(`itil-to-qse-crosswalk-cmdb-and-continual-improvement`), 3 (`itil-to-grc-crosswalk`), and 4
-(`building-an-inspection-ready-service-catalog-and-cmdb`) are now published (see
+(`itil-to-qse-crosswalk-cmdb-and-continual-improvement`), 3 (`itil-to-grc-crosswalk`), 4
+(`building-an-inspection-ready-service-catalog-and-cmdb`), and 5
+(`translating-itsm-and-risk-metrics-for-executives`) are now published (see
 `plans/itsm-for-regulated-blood-services.md`'s progress log for their locked state, including
 module 4's own reconciled eQMS CMDB entry — its qualification field now filled with a pointer to
 the RMF file, not a new exercise — and reconciled service-catalog entry, with the Fairview
 document-control mismatch corrected and given a dated migration action item, plus the honest
-three-reviewer test result module 5/6 can reuse: satisfies an FDA investigator and an AABB
+three-reviewer test result modules 5-6 reuse: satisfies an FDA investigator and an AABB
 assessor outright, but remains only strong partial evidence for a full ISO 27001/SOC 2-style
-security review). The capstone
-is the curriculum's final course, built last per this file's own "Prerequisite order" diagram
-("capstone — wants everything else done"). **Checked against the progress tracker above and the
-full prerequisite chain in this file's "Prerequisite order" section: every other course in this
-curriculum is now Done** —
+security review; and module 5's own dual-audience translation of the eQMS's locked POA&M entry
+— CIO language and exec-quality-council language, same finding/owner/date/closure rule in both,
+only framing and emphasis differing — which module 6 can reuse as its own worked model for
+translating the Brookfield incident to both audiences at once). Module 6 is the capstone, built
+last per this file's own "Prerequisite order" diagram ("capstone — wants everything else done").
+**Checked against the progress tracker above and the full prerequisite chain in this file's
+"Prerequisite order" section: every other course in this curriculum is now Done** —
 `reading-a-cfr-citation`, `regulatory-landscape-orientation`, `risk-and-controls-vocabulary`
 (foundations); `blood-center-operations` (Track 1); `quality-system-essentials`,
 `fda-and-aabb-in-practice` (Track 2); `csv-and-becs`, `data-integrity-and-records` (Track 3);

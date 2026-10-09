@@ -60,7 +60,7 @@ ticketing platform — describe generically.
 | 2 | `itil-to-qse-crosswalk-cmdb-and-continual-improvement` | Map a CMDB onto an equipment/validated-system inventory, a service catalog onto quality-system scope, and continual improvement onto process improvement. | 117/118 | Published |
 | 3 | `itil-to-grc-crosswalk` | Map service asset/config management onto RMF's Categorize/Select, continual improvement onto Monitor, and security management onto ISO 27001's Annex A domains. | 119/120 | Published |
 | 4 | `building-an-inspection-ready-service-catalog-and-cmdb` | Apply all three crosswalks to build one real service-catalog/CMDB entry for the eQMS that survives an FDA inspection, an AABB assessment, and a security assessment at once. | 121/122 | Published |
-| 5 | `translating-itsm-and-risk-metrics-for-executives` | Present the same underlying fact (an incident, a residual risk, a control gap) in CIO language and exec-quality-council language without changing what it means. | 123/124 | Not started |
+| 5 | `translating-itsm-and-risk-metrics-for-executives` | Present the same underlying fact (an incident, a residual risk, a control gap) in CIO language and exec-quality-council language without changing what it means. | 123/124 | Published |
 | 6 | `presenting-it-service-and-risk-performance` | The capstone exercise and the curriculum's closing module: present the Brookfield incident's full, four-lens history to both audiences at once, and close the entire curriculum. | 125/126 | Not started |
 
 This is the curriculum's final course. No further course continues after it — if a future session
@@ -483,3 +483,86 @@ verified file:
   access-review control, accepted as a named residual risk with a 30-day remediation commitment)
   and present it two ways — CIO language and exec-quality-council language — showing both describe
   the same underlying fact.
+
+- **2026-10-09**: Module 5, `translating-itsm-and-risk-metrics-for-executives` (`order: 123/124`),
+  drafted and published. Pure synthesis, no new citation introduced — the module draws on exactly
+  one already-locked artifact, `poams-and-capas`'s (`grc-frameworks-and-risk-management`) finished
+  POA&M entry for the eQMS, and references `coaching-and-reporting-upward`
+  (`directing-the-quality-analyst`) and this course's own module 4,
+  `building-an-inspection-ready-service-catalog-and-cmdb`, entirely by name, redeveloping neither.
+
+  **The single fact used, quoted verbatim from `poams-and-capas`, field for field, nothing
+  invented or altered:** finding/deficiency — "the quarterly eQMS access-review control (account
+  and identity management) is implemented and documented, but has not yet been exercised on its
+  first scheduled cycle"; planned action — run the first quarterly access review against the
+  eQMS's current account list across all three sites and report the results; resources required —
+  the systems administrator's own time, no new tool/budget/staffing; recommendation for completion
+  — after authorization; owner — the systems administrator; milestone — within 30 days of the
+  Director's authorization decision; reviewed/accepted by — the Director; status/closure rule — a
+  clean result closes the acceptance, a finding becomes a new immediate finding on its own record,
+  and a missed 30-day date reopens the authorization itself. This table was reproduced in the
+  lesson exactly as `poams-and-capas` built it and is explicitly framed as the fixed point both
+  translations below must match on four load-bearing fields: the finding, the owner, the date, and
+  the closure rule.
+
+  **Scene:** the Director has two meetings the same week — a 10-minute CIO (chief information
+  officer) briefing ahead of a risk-register sign-off, and an exec-quality-council review the same
+  afternoon — and has to carry the identical fact into both without the two tellings drifting
+  apart. The Quality Analyst (QA) frames the module's own thesis the night before: "these don't
+  read anything alike... good. They shouldn't. They just can't disagree."
+
+  **Translation one (CIO):** built as an actual spoken briefing (quoted in full in the lesson) plus
+  a structured risk-register-line table (item, status, owner, target date, cost/schedule impact,
+  escalation trigger, decision needed today). Leads with operational exposure in plain terms, zero
+  new cost/schedule impact, the 30-day date, and the one trigger that reaches his desk unscheduled
+  (a missed date reopening the system's own authorization). Omits AABB vocabulary and never uses
+  the word "nonconformance" — framed explicitly in the lesson as omission for relevance, not
+  softening.
+
+  **Translation two (exec quality council):** built the same way — a spoken briefing quoted in
+  full, explicitly naming what the item is *not* ("not a nonconformance and not a CAPA — nothing
+  has deviated"), tied to AABB (Association for the Advancement of Blood & Biotherapies)/FDA (Food
+  and Drug Administration) framing and the audit-trail point module 4 already proved (a
+  self-identified, actively-tracked gap reads differently to an assessor than one found cold).
+  Carries the identical owner, date, and closure rule, stated with equal weight, not buried.
+
+  **The side-by-side comparison table** (CIO needs to hear / quality council needs to hear) is the
+  module's central teaching device: nine rows contrasting emphasis (finding framing, primary
+  vocabulary, what's emphasized vs. de-emphasized) against three rows the lesson explicitly calls
+  out as non-negotiable and identical in both versions — owner, closure date, and closure rule.
+  The lesson states plainly: everything above and below those three rows is legitimate audience
+  judgment; those three rows are the fixed facts that make both tellings the same story, not a
+  place to exercise framing judgment.
+
+  **The common trap named explicitly, per the module's own brief:** translating for an audience is
+  not softening, spinning, or describing two different severities of the same problem to two
+  audiences — demonstrated with a wrong-version contrast (calling the item a "nonconformance" to
+  make the quality council take it more seriously, or rounding off the date/owner to simplify the
+  CIO's version) and named as the exact move that destroys credibility the moment anyone compares
+  notes between the two briefings. The "what an assessor or your CIO would actually look for"
+  section gives the concrete cross-check: read only the owner, date, and closure rule across both
+  documents — any mismatch there is itself the finding, not the underlying access-review gap.
+
+  One check-your-understanding question (Q2) lands on "this is NOT a regulatory requirement" —
+  confirming neither NIST, AABB, nor FDA requires Lakeshore to produce two differently-worded
+  briefings at all; building dual-audience translations is Lakeshore's own communication choice.
+  Q1 and Q3 reinforce the core distinction (not a nonconformance; word choice reflects vocabulary,
+  not severity).
+
+  No `grc-frameworks-and-risk-management` locked fact was touched, reopened, or altered — the
+  POA&M entry's eight fields are reproduced exactly as `poams-and-capas` built them, never added
+  to, re-dated, or re-owned. No `directing-the-quality-analyst` or `building-an-inspection-ready-
+  service-catalog-and-cmdb` locked fact was altered — both are referenced by name only, for the
+  concepts (watermelon reporting, system-vs-personal measures; self-identified-gap grading) they
+  already established. No new citation, standard number, or clause appears anywhere in the module.
+  Lesson page is ~3,190 words of prose (TEACHING.md's 2,000-4,000-word target, body text only).
+  This course's own established pattern for a pure-synthesis module carried forward again: no new
+  citation decoder table — a short "note on citations" section points back to `poams-and-capas`
+  for the verbatim NIST text and full field-by-field reasoning. `quarto` is unavailable in this
+  cloud session (per CLAUDE.md rule 6) — not rendered locally; the GitHub Action renders on push.
+  Published via the `publish` skill to branch `claude/confident-brahmagupta-b499un`.
+  Next: build m6, `presenting-it-service-and-risk-performance` (`order: 125/126`) — the capstone
+  exercise and the curriculum's own final module: present the Brookfield incident's full,
+  four-lens history to the CIO and the exec quality council at once, using every crosswalk this
+  course built, and close both this course's own five-module arc and the entire curriculum. Do
+  not reopen, alter, or re-resolve anything any prior course locked about that incident.
