@@ -203,7 +203,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 | 2 | `iq-oq-pq-and-traceability` | Read an executed validation package (IQ, OQ, and PQ evidence, the traceability matrix, and the summary report) and judge whether every high-risk requirement was tested in a way that could fail, under the conditions it will really run in, with every failure dispositioned. Say whether the package is defensible, using the cold-read test plus the new adequacy check. | Published |
 | 3 | `becs-as-a-regulated-device` | Explain what makes BECS a regulated medical device (21 CFR 864.9165, Class II with special controls, cleared through 510(k) premarket notification), what a clearance does and doesn't tell you about the version and configuration you run, and how cleared, custom-built, and legacy or unsupported systems differ. Say what FDA's BECS user-facility guidance expects Lakeshore's own validation to add, including at every site and when vendor test scripts are used. | Published |
 | 4 | `qmsr-iso-13485-and-the-vendor` | Place BECS correctly under FDA's device-grade quality system: Part 820 (the QMSR, incorporating ISO 13485:2016, effective February 2, 2026) binds the BECS manufacturer, and 820.1(a)(3) excludes blood manufacturers, so Lakeshore answers to blood CGMP. Say what the vendor's design controls and 864.9165 special-control deliverables (unresolved anomalies, revision history, traceability matrix) give you as validation *inputs*, and when Lakeshore's own development could raise the manufacturer question. | Published |
-| 5 | `part-11-for-validated-systems` | Name the Part 11 closed-system controls a BECS validation must prove the system actually enforces (access limits, operational sequencing checks, authority checks; device checks named, taught in m7), explain why FDA's 2003 Part 11 guidance points validation enforcement to predicate rules rather than 11.10(a), and decide whether a vendor-supported or vendor-hosted BECS is still a "closed system." Hand ALCOA+, audit-trail review, and e-signatures to `data-integrity-and-records`. | Not started |
+| 5 | `part-11-for-validated-systems` | Name the Part 11 closed-system controls a BECS validation must prove the system actually enforces (access limits, operational sequencing checks, authority checks; device checks named, taught in m7), explain why FDA's 2003 Part 11 guidance points validation enforcement to predicate rules rather than 11.10(a), and decide whether a vendor-supported or vendor-hosted BECS is still a "closed system." Hand ALCOA+, audit-trail review, and e-signatures to `data-integrity-and-records`. | Published |
 | 6 | `validated-state-lifecycle-and-patching` | Keep a validated BECS validated: require a documented regression analysis and risk-scaled regression testing for every change, including OS, infrastructure, vendor patches, and reference-table updates; manage patching and end-of-support without breaking the validated state; run a periodic review that would catch drift; and give VIA-0842's "were twelve targeted tests enough?" a real methodological answer. | Not started |
 | 7 | `becs-interfaces-and-data-integrity` | Trace data across every BECS boundary (instrument and testing-lab LIS results in, labels out, reference tables in, shipment data out to hospital customers, satellite sites, legacy-data conversion) and judge whether interface validation and ongoing monitoring prove each record arrives complete, correct, on time, and on the right donor or unit. Close VIA-0842's open interface items. | Not started |
 
@@ -1024,3 +1024,31 @@ fallback.
   hook for this module). No locked facts altered; module 3's two open questions (510(k) backing,
   multi-site plan) were not reopened.
   Next: build m5, `part-11-for-validated-systems`.
+- **2026-10-09**: Module 5, `part-11-for-validated-systems`, drafted, audited, and published
+  (`courses/csv-and-becs/part-11-for-validated-systems/index.qmd` and `resources.qmd`,
+  `order: 49`/`50`, ~4,700 words). Quotes verified verbatim against their source files: 11.1(a)
+  and (b) (`sources/cfr/11.1.md`), 11.3(b)(4) and (b)(9) (`sources/cfr/11.3.md`), 11.30 in full
+  (`sources/cfr/11.30.md`), 11.10(d)/(f)/(g)/(h) in full (`sources/cfr/11.10.md`, with (a), (e),
+  (i), (j), (k) named/briefly quoted only, never re-explained at length), the 2003 Part 11
+  guidance's enforcement-discretion paragraph, its full "we intend to enforce" bulleted list, and
+  its audit-trail-discretion sentence (`sources/fda-guidance/part-11-scope-and-application-
+  2003.md` — confirmed exact after stripping the source file's PDF-extraction line-number
+  artifacts), and the BECS guidance's III.G training sentence and III.B remote-access-log note
+  (`sources/fda-guidance/becs-validation-users-facility-2013.md`). "Predicate rule" named exactly
+  once, pointed to `data-integrity-and-records`. All four `resources.qmd` links curl-verified 200
+  (two Cornell LII pages for 11.10 and 11.3, the FDA guidance pages for the 2003 Part 11
+  Scope-and-Application guidance and the BECS user-facility guidance, the latter reused from
+  earlier modules). Scenario: the vendor's implementation consultant requests persistent,
+  unlogged, non-expiring remote access to the production BECS server, explicitly tied to DQA m3's
+  remote-support security incident and VRA-0219's vendor-notification finding; resolved as a
+  nuanced closed-vs-open-system judgment (who controls, logs, and can revoke access — not whether
+  a vendor can connect at all), with the guidance's remote-access-log recommendation (III.B) as
+  the concrete, actionable fix, left as a control gap to close rather than a flat verdict. Second
+  thread: VAL-1203's URS still has no testable requirement for operational-sequencing (11.10(f))
+  or authority-check (11.10(g)) behavior, tied directly to the quarantine-release gate and
+  flagged as an actionable gap for the test plan, not resolved. Required nuance question used
+  ("11.10(a) is FDA's main enforcement hook") with the predicate-rule-not-11.10(a) answer. No
+  calendar year in the fictional narrative; no real vendor/product/OS/database named. Module 4's
+  manufacturer question and module 3's 510(k)/multi-site open questions were not mentioned,
+  reopened, or resolved. No locked facts altered.
+  Next: build m6, `validated-state-lifecycle-and-patching`.
