@@ -64,7 +64,9 @@ or cloud-platform brand for the eQMS — describe it generically.
 | 2 | `categorize-and-select-controls` | Apply RMF's Categorize and Select steps to the eQMS: determine its impact level, then select and tailor a control set sized to that, not a one-size-fits-all checklist. | 84/85 | Published |
 | 3 | `implement-and-assess-controls` | Build the selected controls, then run an independent assessment of whether they actually work. | 86/87 | Published |
 | 4 | `authorize-and-monitor` | Make and document the authorization decision (accepting a named residual risk), and build the ongoing monitoring plan — say in one sentence why this is the same decision as a validation release and periodic review. | 88/89 | Published |
-| 5 | `poams-and-capas` | Track every control gap to closure on a POA&M, then place it next to a CAPA and show they do the identical job in two vocabularies. | 90/91 | Not started |
+| 5 | `poams-and-capas` | Track every control gap to closure on a POA&M, then place it next to a CAPA and show they do the identical job in two vocabularies. | 90/91 | Published |
+
+**COURSE COMPLETE: 5/5 modules published.** `grc-frameworks-and-risk-management` is done.
 
 The next course after this one continues at **92**. Update `create-course`'s SKILL.md when this
 course's numbering is final (verify by grep with no duplicates before assigning, same discipline
@@ -372,3 +374,70 @@ as every prior course) — already done as part of Phase 2 scoping below.
   fetched). Word count: ~3,500 words for the lesson page (markdown word count including front
   matter and headings).
   Next: build m5, `poams-and-capas`.
+
+- **2026-10-09**: Module 5, `poams-and-capas` (`order: 90/91`), built and published. **This is the
+  course's final module — the course is now complete, 5/5.**
+  Scenario: four days after module 4's go-live meeting, the Quality Analyst notices the
+  authorization decision's 30-day remediation commitment lives only in meeting minutes, not in any
+  tracked record, and reaches for the CAPA (corrective and preventive action) vocabulary she
+  already trusts to name the gap — which becomes this module's own hook for building a POA&M
+  (plan of action and milestones) entry properly. **New verbatim quote this module** (the only new
+  regulatory content, per the module's own guardrail): Task A-6's full POA&M discussion from
+  `sources/nist/sp-800-37r2-excerpt.md` — tasks to be accomplished with a recommendation for
+  completion before or after system authorization, resources required, milestones, scheduled
+  completion dates, review by the authorizing official to ensure agreement with the remediation
+  actions, subsequent use to monitor progress, and the closing sentence that POA&M entries "are
+  not necessary when deficiencies are accepted... as residual risk."
+  **Built Lakeshore's own POA&M entry**, field by field, from module 4's exact locked facts, no new
+  deficiency invented: finding — the quarterly eQMS access-review control (account and identity
+  management) implemented and documented but not yet exercised on its first scheduled cycle;
+  planned action — run the first quarterly access review across all three sites and report
+  results; resources required — the systems administrator's own time only, no new tooling or
+  budget; recommendation for completion — after authorization, per Option B; owner — the systems
+  administrator; milestone/scheduled completion date — within 30 days of the Director's
+  authorization decision; reviewed and accepted by — the Director, as Lakeshore's own authorizing
+  official; closure rule — a clean result closes the acceptance, a finding becomes a new,
+  immediate finding, and the 30-day date passing with no review run reopens the authorization
+  itself (all per module 4's own locked language, not invented here).
+  **Handled the POA&M-vs-CAPA comparison honestly, including the genuine difference the plan
+  explicitly asked this module to check rather than assume.** Re-read Task A-6's text carefully:
+  it does not require a documented root-cause analysis before the planned action, and it does not
+  require a formal, pre-agreed effectiveness check after the fix, the way `capa-root-cause-to-
+  effectiveness` (referenced by name only, not redeveloped) explicitly requires both. The module
+  states this as a real difference in emphasis, not a flaw in either framework: RMF's separate
+  Monitor step (already quoted in m4) does include ongoing "assessing control effectiveness" as a
+  standing obligation, but that obligation isn't built into the POA&M/Task A-6 instrument itself
+  the way effectiveness-checking is built directly into CAPA's own four-stage structure. A
+  comparison table makes the overlap (root finding, planned action, owner, milestone, review) and
+  the divergence (root-cause depth, effectiveness-check formality, and whether an entry is even
+  necessary for a bare acceptance with no attached action) both explicit. Also surfaced, and
+  resolved honestly rather than glossed over: Task A-6's own text says a POA&M entry "is not
+  necessary" for a deficiency simply accepted as residual risk with nothing further planned — the
+  module explains why Lakeshore's case doesn't fall into that bucket (the acceptance came bundled
+  with a named action and a date, which is the "recommendation for completion... after
+  authorization" case the same passage separately describes), rather than silently building an
+  entry the source text would call unnecessary without explaining why it still applies here. One
+  check-your-understanding question lands on this exact nuance — the honest answer that NIST's own
+  text doesn't flatly require this entry, Lakeshore's specific acceptance does.
+  **Course-ending passage**: named the full five-module arc (frameworks compared → categorize and
+  select → implement and assess → authorize and monitor → POA&Ms and CAPAs), stated plainly that
+  Lakeshore now has one shared vocabulary — finding, plan, date, sign-off — spanning security risk
+  (POA&M) and quality risk (CAPA) alike, and forward-pointed to `healthcare-security-and-privacy`
+  and `vendor-and-third-party-risk-management` (both Track 4, both reusing this course's RMF
+  vocabulary directly) and the Track 5 capstone `itsm-for-regulated-blood-services`. Modeled on
+  this curriculum's established closing pattern (`fda-and-aabb-in-practice` module 6,
+  `data-integrity-and-records` module 6): a named module-by-module recap, a plainly stated "what
+  this course leaves you with" sentence, and explicit forward pointers rather than a generic
+  wrap-up.
+  No `csv-and-becs`/`data-integrity-and-records` locked identifier (VAL-1203, VIA-0842, DEV-1147,
+  CAPA-1147-A, VRA-0219, DI-0301, DED-0458, LAB-07) referenced or reopened. No new deficiency
+  invented beyond module 3's single locked finding. No new RMF/POA&M-as-legal-requirement claim
+  made. Sourcing verified this session: NIST PDF curl-checked directly, returns HTTP 200 (same URL
+  as m1-m4, re-verified, not re-fetched as a new source — the Task A-6 passage was already present
+  in the saved excerpt). Word count: ~4,250 words for the lesson page (markdown word count
+  including front matter, headings, and tables) — slightly above this course's usual 2,500-3,500
+  range, deliberately, to carry the required course-ending passage alongside the module's own
+  content.
+  **Course complete.** `plans/curriculum.md`'s progress tracker and "Next up" line updated in the
+  same session to point to `healthcare-security-and-privacy` (Track 4), the next course in the
+  recommended sequence (Phase 8).

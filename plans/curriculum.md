@@ -271,35 +271,34 @@ has no `plans/<slug>.md` file until its first session.
 | `csv-and-becs` | 7 / 7 | Done |
 | `data-integrity-and-records` | 6 / 6 | Done |
 | `fda-and-aabb-in-practice` | 6 / 6 | Done |
-| `grc-frameworks-and-risk-management` | 4 / 5 | In progress |
+| `grc-frameworks-and-risk-management` | 5 / 5 | Done |
 | `healthcare-security-and-privacy` | 0 / 5 | Not started |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `grc-frameworks-and-risk-management` module 5, `poams-and-capas`
-(Track 4, the course's final module). Modules 1-4 are published — see
-`plans/grc-frameworks-and-risk-management.md`'s progress log for the locked scenario facts (the
-eQMS, Lakeshore's new three-site electronic quality-management system, run through NIST RMF's
-structure voluntarily; categorized moderate-impact; selected/tailored/built control families —
-account and identity management, audit, physical and environmental protection; the decision not
-to reopen BECS/`csv-and-becs`/`data-integrity-and-records` locked facts) that module 5 builds on.
-Module 3's independent assessment cleared audit/logging and physical/environmental protection as
-implemented correctly, operating as intended, and producing the desired outcomes, but found one
-deficiency: the quarterly eQMS access-review control implemented and documented but not yet
-exercised on its first scheduled cycle. **Module 4's locked authorization decision, which module
-5 builds its POA&M entry from:** the Director authorized the eQMS for production now, across all
-three sites, explicitly accepting that one deficiency as a named, time-bound residual risk (chose
-go-live over holding until the review closed) — with a dated remediation commitment that the
-systems administrator complete the first quarterly access review and report results to the
-Director **within 30 days of the authorization decision**; a clean result closes the acceptance, a
-finding becomes a new, immediate finding rather than something already waived, and the standing
-quarterly cadence continues afterward regardless. Module 4 also delivered the course's single
-most load-bearing sentence: authorizing the eQMS is the same underlying motion as a Quality
-Validation Lead's sign-off to release a validated system to production followed by periodic review
-(`csv-and-becs`). Module 5 must build a POA&M entry around this exact 30-day commitment (no new
-deficiency invented) and place it next to a CAPA to show the same parallel in a second vocabulary,
-then close out the course with its genuine closing passage per this curriculum's established
-practice.
+**Next up:** `healthcare-security-and-privacy` (Track 4), the next course in the recommended
+sequence (Phase 8). `grc-frameworks-and-risk-management` is now 5/5 and complete — see
+`plans/grc-frameworks-and-risk-management.md`'s progress log for the full course, including
+module 5's final, locked state: a built POA&M (plan of action and milestones) entry for the
+eQMS's one open deficiency (the quarterly access-review control for account and identity
+management, implemented and documented, not yet exercised on its first scheduled cycle — owner:
+the systems administrator; milestone: within 30 days of the Director's module-4 authorization
+decision; reviewed/accepted by: the Director), placed next to a CAPA (corrective and preventive
+action) to show the same motion in two vocabularies, with an honestly-drawn difference in
+emphasis (CAPA's text requires root-cause analysis and a formal effectiveness check; NIST's own
+POA&M passage, Task A-6, requires neither inside the instrument itself). Relevant locked facts for
+whoever scopes `healthcare-security-and-privacy` next: this curriculum now has a fully-built,
+five-module RMF (Risk Management Framework) vocabulary — categorize→select→implement→assess→
+authorize→monitor, plus POA&M tracking — that `healthcare-security-and-privacy` is expected to
+reuse directly (per `curriculum.md`'s own module list: HIPAA Security Rule safeguards mapped
+against Part 11 controls, and breach incident response with dual HIPAA/FDA reporting), not
+re-derive. The eQMS itself (Lakeshore's three-site electronic quality-management system) is
+`grc-frameworks-and-risk-management`'s own running example and is not automatically
+`healthcare-security-and-privacy`'s scenario to inherit — that course's own scoping session should
+decide its own running example, the same way `grc-frameworks-and-risk-management` deliberately
+built a fresh one instead of reopening BECS. No `csv-and-becs`/`data-integrity-and-records` locked
+identifier (VAL-1203, VIA-0842, DEV-1147, CAPA-1147-A, VRA-0219, DI-0301, DED-0458, LAB-07) was
+touched by `grc-frameworks-and-risk-management` at any point across its five modules.
 `fda-and-aabb-in-practice` is now 6/6 and complete. See `plans/fda-and-aabb-in-practice.md`'s
 progress log for module 6's locked outcomes: DED-0458's "accurate" ALCOA letter is now CLOSED (an
 independent, dated verification confirmed BECS's stored donor-eligibility determination against
