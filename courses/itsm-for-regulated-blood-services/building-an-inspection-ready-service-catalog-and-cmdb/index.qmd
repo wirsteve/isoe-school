@@ -1,0 +1,292 @@
+---
+title: "Building an Inspection-Ready Service Catalog and CMDB"
+order: 121
+---
+
+## The assembly meeting
+
+You've called this meeting for one reason: finish the thing. Your systems administrator has
+the eQMS's (electronic quality-management system's) CMDB (configuration management database)
+entry open on one screen — every field filled in except the last one, still blank three modules
+later. Your Quality Analyst (QA) has the service-catalog entry and the quality-system scope
+statement open side by side on another, the same two documents that have quietly disagreed with
+each other since you first drafted them.
+
+"We've been pointing at these two gaps for weeks," your QA says. "Every module finds them again
+and explains why they matter. At some point we have to actually fix them, not just understand
+them better."
+
+She's right, and today's the day. Nothing in this room is new work. The qualification field's
+answer already exists — it's sitting in a different file, under a different name, and you proved
+that yourself two modules ago. The Fairview mismatch has one honest resolution available right
+now and a second one that needs a real decision, not a shrug. Your job this meeting isn't
+discovery. It's assembly: take everything this course has already built and turn it into one
+artifact that actually holds up when someone outside this room reads it cold.
+
+## Why this matters — and the ITSM bridge
+
+Here's the failure a half-assembled artifact produces, stated plainly before any framework
+enters the room: **three different reviewers — an FDA investigator, an AABB assessor, a security
+assessor — each ask a version of the same question ("is this system actually under control?"),
+and Lakeshore answers it three different ways, in three different documents, because nobody ever
+sat down and made them agree.** That's not a crisis by itself, any more than the blank field or
+the Fairview mismatch was a crisis on its own. It's a slow, compounding liability: every reviewer
+who finds a gap your own records could have closed is a reviewer who now has a reason to ask what
+else hasn't been reconciled.
+
+You already own the ITSM (IT service management) concept that names exactly this discipline,
+even if you've never had to apply it under three sets of eyes at once: a **single source of
+truth**. A CMDB's whole reason for existing, in plain ITIL practice, is that nobody should have to
+guess which of five spreadsheets is the real one — there's one record, kept current, that
+everyone defers to. A service catalog exists for the same reason, one layer up: one place that
+says what IT actually offers, so a requester doesn't have to triangulate between an old email
+and somebody's memory. You've run this discipline for years, for version numbers and dependency
+maps. This module asks you to run the exact same discipline somewhere higher-stakes: one record
+that an FDA investigator, an AABB assessor, and a security assessor can all read and all trust,
+instead of three separately-maintained stories that happen to describe the same system.
+
+## A note on citations: still none new here
+
+This module introduces no new regulatory source, control number, or standard — the discipline
+this entire course has held since module 1. Everything below reassembles facts this curriculum
+already locked: `categorize-and-select-controls` and `authorize-and-monitor` (both
+`grc-frameworks-and-risk-management`) hold the eQMS's full RMF (Risk Management Framework) file,
+referenced here, not re-quoted — read those two modules for the actual citation decoder and
+verbatim NIST text, the same pattern modules 1-3 of this course already set for a synthesis
+module with nothing new to cite. `the-aabb-assessment-process`, `fda-inspection-authority-and-
+outcomes`, and `warning-letters-and-recalls` (all `fda-and-aabb-in-practice`) are referenced by
+name for what each reviewer actually checks, not redeveloped. `reading-a-soc-2-report` and
+`reading-an-iso-27001-certificate` (both `vendor-and-third-party-risk-management`) are referenced
+the same way for the security assessor's lens. No AABB Standard number, no ISO 27001 Annex A
+control number, and no new ITIL publication citation appears anywhere below.
+
+## Filling the blank: the CMDB's qualification field
+
+Your systems administrator has his cursor sitting in the one field that's been blank since
+module 2. "I keep wanting to write something here," he says. "A status. A date. Something.
+But every time I start, it feels like I'd be making it up — we never ran a separate qualification
+exercise for the eQMS the way BECS (Blood Establishment Computer Software) got one."
+
+"You don't need a new exercise," your QA says. "You need a pointer. We already did this — it's
+just sitting under RMF's name instead of a CMDB's."
+
+That's the whole fix, and it's worth being precise about why it's not a shortcut. The field was
+never asking "did someone run IQ/OQ/PQ (installation, operational, and performance qualification)
+on this system" — it was asking "has anyone established, with evidence, whether this system is
+fit to do the job it's doing." `categorize-and-select-controls` already answered that question in
+full, with more rigor than a bare CMDB template would ever have demanded: the eQMS categorized as
+**moderate-impact**, reasoned through three specific failure modes (CAPA-record alteration,
+cross-site exposure, audit-log unavailability during an assessment), with three control families
+sized to that finding. `authorize-and-monitor` already answered the follow-up question — is
+anyone still checking — with a standing monitoring plan tied to a real authorization decision.
+
+Here's the exact text going into the CMDB's qualification/validation-status field:
+
+> **Categorized moderate-impact per RMF** (reasoned through three CIA — confidentiality,
+> integrity, availability — failure modes specific to this system). **Three control families
+> selected and implemented**: account and identity management, audit/logging, and physical and
+> environmental protection. **Two confirmed operating as intended** at Assess (audit/logging;
+> physical and environmental protection). **One — the quarterly access-review control, within
+> account and identity management — accepted as a named, time-bound residual risk** at Authorize,
+> not a failure: implemented and documented, its first scheduled cycle tracked under a 30-day
+> remediation window, now folded into a standing monitoring plan (ongoing quarterly cadence,
+> periodic audit-log spot-checks, a standing trigger to reopen the authorization on material
+> change). Authorization: active. **Full file: `categorize-and-select-controls` and
+> `authorize-and-monitor`.**
+
+Read that against what the field looked like three modules ago: a note that it "wasn't a standard
+CMDB field," blank by default. The difference isn't new work — it's the first time anyone wrote
+the cross-reference down where a reader of the CMDB entry alone would actually find it. That's the
+real teaching point, worth saying to your CIO (chief information officer) in one sentence: **a
+gap in one record doesn't always need new work to close it. Sometimes it needs the two people who
+each did real work, in two different systems, to finally read each other's files.**
+
+## Reconciling Fairview: a correction, plus a dated decision
+
+The second gap is messier, because unlike the qualification field, it isn't a missing
+cross-reference — it's two documents making genuinely different claims about the same fact. Your
+QA reads both versions out loud, the way she did the day she first caught it.
+
+**The service catalog, drafted by IT, says:** document control is offered at the central site,
+Brookfield, *and* Fairview.
+
+**The scope statement, owned by Quality, says:** document control is in scope for the central
+site and Brookfield only. Fairview's document-control records remain on paper, under the site's
+existing process, pending migration.
+
+"One of these is just wrong," your systems administrator says. "Let's fix the catalog and move
+on." That's half right, and today it's exactly what happens — the catalog's wording changes to
+stop claiming something that isn't true. But stopping there would just be a quieter version of
+the same problem: the catalog would go from *actively false* to *silently accurate*, with the
+real question — is Fairview's migration to the eQMS actually planned, and when — still sitting
+unanswered, the way it's sat unanswered since module 2.
+
+So the meeting does both things. First, the correction:
+
+**The reconciled service-catalog entry:**
+
+| Field | Entry |
+|---|---|
+| **Service** | eQMS |
+| **Provides** | CAPA tracking (all three sites); internal-audit logging (all three sites); document control (central site and Brookfield — see note) |
+| **Offered to** | Quality staff and site operations leadership |
+| **Offered at** | Central site, Brookfield, and Fairview (full eQMS access for CAPA tracking and audit logging at all three; document-control access follows the note below) |
+| **Service level** | Business-hours support; next-business-day response for access issues |
+| **Note** | Fairview's document control remains on the site's existing paper-based process. This is not an unexplained mismatch — see the dated action item below. |
+
+That brings the catalog into exact agreement with the scope statement your QA already owns —
+no more "all three sites" claim for a service that only two sites actually receive. Second, the
+part a silent correction would have skipped: your QA picks up her phone and calls Fairview's site
+operations lead, the same conversation she should have had the day she first found the gap.
+Fairview's paper-based process isn't frozen in place by accident — a migration has been informally
+discussed for a while, with no committed date, because nobody ever made it anyone's actual job to
+commit to one.
+
+That changes today. The three of you agree on a real action item, not a vague intention:
+
+| Field | Entry |
+|---|---|
+| **Action** | Migrate Fairview's document control onto the eQMS, matching central site and Brookfield |
+| **Owner** | Systems administrator, with sign-off from the QA and Fairview's site operations lead |
+| **Target** | Within two quarters |
+| **Trigger to revisit if missed** | Raised at the next quarterly IT service review, the same standing cadence the continual-improvement register already uses |
+
+Notice what this is and isn't. It isn't a new regulatory requirement — nothing in AABB's
+framework or FDA regulation tells Lakeshore it must run document control electronically at every
+site; a paper-based process, properly controlled, is a legitimate choice `quality-system-
+essentials`'s own document-control module never ruled out. What changes is that "pending
+migration" now has an owner and a date instead of sitting as a phrase in a scope statement nobody
+had committed to acting on. A reviewer reading either document today finds the same honest story
+twice: here's what's true right now, and here's exactly who's accountable for when it changes.
+
+## Testing the artifact: three reviewers, one document
+
+Here's the actual point of this module. You now have one CMDB entry and one service-catalog
+entry, reconciled with each other and with the scope statement. Walk it past three different
+readers, one at a time, the way this course's plan always intended this module to close.
+
+**An FDA investigator** (reference `fda-inspection-authority-and-outcomes` and `warning-letters-
+and-recalls`, don't redevelop). An investigator reviewing a system that holds CAPA records,
+document control, and audit logs isn't grading your ITSM maturity — she's checking whether
+Lakeshore's own records are internally consistent and whether the system producing them is under
+control. Two things she'd ask for, and the reconciled artifact answers both: *is this system
+qualified to produce reliable records?* — yes, with a direct pointer to the RMF file, not a blank
+field or a vague assurance. *Do your own documents agree with each other about what this system
+does and where?* — yes, now that the catalog and scope statement say the same thing, and the one
+place they used to differ is itself documented as a tracked, dated action rather than something
+she'd have to catch herself. `warning-letters-and-recalls` already named an unreconciled
+documentation inconsistency as exactly the kind of finding that turns into a 483 observation; this
+artifact is built specifically so that finding doesn't exist anymore.
+
+**An AABB assessor** (reference `the-aabb-assessment-process`, don't redevelop). An assessor
+running a QSE-based review checks something subtly different: not just whether the records agree,
+but whether Lakeshore *found its own gaps before she did.* `the-aabb-assessment-process` already
+teaches that a self-identified, actively-managed gap grades very differently than the same gap
+discovered cold by the assessor. The Fairview line is the clean test case here — it's not hidden,
+it's not glossed over, and it's not pretended-solved. It's named, dated, and owned. That's close
+to the best outcome an organization can show on an open item: not zero gaps, but demonstrated
+control over the gaps that exist.
+
+**A security assessor** (reference `vendor-and-third-party-risk-management`'s `reading-a-soc-2-
+report` and `reading-an-iso-27001-certificate`, don't redevelop). This is the reviewer worth being
+most honest about, because the artifact does *not* fully satisfy her the way it satisfies the
+other two. She'd find real, usable material: a complete CI record with identity, dependencies,
+and ownership; a qualification field that traces cleanly to a documented RMF categorization and
+control selection; a monitoring plan with named owners and real triggers. All of that reads like
+good evidence toward an access-control domain, the one clean match `itil-to-grc-crosswalk` already
+found between the eQMS's RMF work and ISO 27001's Annex A structure. But that same module was
+honest about two domains with no counterpart at all in the eQMS's existing controls — supplier
+relationships and business continuity — and nothing built in this assembly meeting changes that.
+A security assessor running a real ISO 27001 or SOC 2-style review would still ask questions this
+single artifact can't answer: what's Lakeshore's documented approach to the vendors behind the
+eQMS's own infrastructure, and what's the tested plan if the eQMS itself goes down for an extended
+period? Those aren't failures of this module's work — they're domains Lakeshore's RMF selection
+was never asked to cover, named honestly back in module 3, and naming them again here instead of
+quietly letting this artifact imply full coverage is the honest thing to do.
+
+So the real answer to this course's own central question — does one artifact replace three
+separate documents maintained in parallel? — is **mostly yes, with one named boundary**. For
+"is this system under control, and do your own records agree with each other," one reconciled
+CMDB-and-catalog entry genuinely satisfies an FDA investigator and an AABB assessor without any
+separate document built just for them. For "does this system meet a full ISMS-grade security
+review," the same artifact is strong partial evidence, not a complete answer — and saying so
+plainly is worth more than a confident claim that wouldn't survive a specific follow-up question.
+
+## Common traps
+
+**"Filling in the qualification field means we need to go run a validation exercise on the
+eQMS."** No — and treating it that way would waste real effort on work already done. The field
+needed a pointer to rigor that already exists, not a new instance of that rigor. Confusing "this
+field is blank" with "this work was never done" is the exact mistake this module exists to
+correct.
+
+**"Correcting the service-catalog wording is the whole fix."** It's half of it. A quietly
+accurate document is better than an actively false one, but it leaves the real underlying
+question — is Fairview's migration actually happening, and when — exactly as unanswered as it was
+before. An artifact that looks reconciled but still has a live, undated "pending" sitting inside
+it hasn't actually closed the gap; it's just made the gap harder to notice.
+
+## What this means for your job
+
+- **Before accepting any blank or inconsistent field in a quality-relevant system record as
+  unsolved, ask whether the real answer already exists somewhere else under a different name.**
+  That's the move that closed the qualification field here, and it generalizes to almost any
+  cross-functional gap you'll find between IT's records and Quality's.
+- **When you correct a stale or inaccurate catalog entry, don't stop at the correction.** Ask what
+  real decision the inaccuracy was covering for, and give that decision an owner and a date, the
+  way the Fairview migration got one in this meeting.
+- **Know, for any artifact you're about to hand a reviewer, which of the three lenses it was
+  actually built to satisfy — and say so plainly where it falls short**, instead of letting an
+  investigator, assessor, or security auditor discover the boundary themselves. A named gap reads
+  as control. A gap they find first reads as the opposite.
+- **Treat "one source of truth" as a standard that applies above the CMDB, not just inside it.**
+  The same discipline that keeps a CI record from drifting across teams is the discipline that
+  keeps a service catalog and a scope statement from quietly disagreeing for months.
+- **When you brief your CIO or your exec quality council on this artifact, lead with what it
+  actually closes (the qualification pointer, the Fairview reconciliation) and name what it
+  doesn't (a full ISO 27001-grade security picture)** — the same honest balance this course has
+  held since its first crosswalk.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your systems administrator asks whether filling in the CMDB's qualification field required running any new testing or validation work on the eQMS. Did it?
+
+No. The field's answer already existed, in full, in `categorize-and-select-controls` and
+`authorize-and-monitor` — the eQMS's moderate-impact categorization, its three control families,
+and its standing monitoring plan. What changed in this module is that the CMDB entry now points
+directly to that file instead of sitting blank. No new qualification exercise was run, and none
+was needed.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Does AABB or FDA require Lakeshore to migrate Fairview's document control onto the eQMS, the way the dated action item in this module commits to?
+
+No — this is worth stating as plainly as the parallel questions modules 1 through 3 each raised
+about their own crosswalks. A paper-based document-control process, properly controlled, is a
+legitimate choice; nothing in AABB's framework or FDA regulation requires every site to run
+document control electronically. The migration target in this module is Lakeshore's own
+operational decision, made because an undated "pending migration" is weaker than a dated one, not
+because any regulator demanded the system itself change.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Does the reconciled CMDB-and-catalog entry fully satisfy a security assessor running an ISO 27001 or SOC 2-style review of the eQMS?
+
+Not fully, and the honest answer matters more than a confident one. The artifact gives strong
+evidence toward the one domain that already cleanly matches the eQMS's RMF-selected controls
+(access control, via account and identity management), but `itil-to-grc-crosswalk` already found
+two domains — supplier relationships and business continuity — with no counterpart at all in the
+eQMS's existing control set. Nothing built in this module closes those two domains, because
+Lakeshore's RMF selection was never asked to cover them. The artifact is strong partial evidence
+for a security assessor, not a complete answer.
+:::
+
+## Where this goes next
+
+This module closed both gaps this course had been carrying since module 2 — a blank CMDB field,
+now pointed at the RMF file that already answers it, and a reconciled service catalog with a
+dated, owned path to closing its last real mismatch — and tested the result against three
+different reviewers, honestly naming the one place it still falls short. The next module takes a
+single underlying fact about the eQMS and shows how to present it two different ways, in CIO
+language and in exec-quality-council language, without changing what it actually means.

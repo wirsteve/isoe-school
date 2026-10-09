@@ -1,0 +1,57 @@
+---
+title: "Resources"
+order: 122
+---
+
+This module introduces no new regulation, standard, or framework, and no new source was fetched
+for it. It's pure assembly — one real CMDB entry and service-catalog entry for the eQMS
+(electronic quality-management system), built from every crosswalk this course's first three
+modules already locked, then tested against three reviewers this curriculum already built in
+depth elsewhere. The links below are the direct inputs this module draws on; read any of them for
+the actual mechanics, citations, and reasoning this lesson references by name but doesn't
+redevelop.
+
+- **[ITIL-to-QSE crosswalk: CMDB and continual
+  improvement](../itil-to-qse-crosswalk-cmdb-and-continual-improvement/index.qmd)** — this
+  course's own module 2, where the eQMS's CMDB entry (with its blank qualification field) and
+  service-catalog entry (with the Fairview document-control inconsistency) were first built.
+  Read it for the exact field-by-field artifacts this module reconciles.
+
+- **[ITIL-to-GRC crosswalk](../itil-to-grc-crosswalk/index.qmd)** — this course's own module 3,
+  which first recognized that the CMDB's blank qualification field already has its answer in the
+  eQMS's RMF (Risk Management Framework) file, and honestly mapped the eQMS's three RMF control
+  families against ISO/IEC 27001's Annex A domains, finding one clean match and two domains with
+  no counterpart at all. Read it for the full domain-by-domain reasoning this module's security-
+  assessor test relies on.
+
+- **[Categorize and select
+  controls](../../grc-frameworks-and-risk-management/categorize-and-select-controls/index.qmd)**
+  and **[authorize and
+  monitor](../../grc-frameworks-and-risk-management/authorize-and-monitor/index.qmd)** (both
+  `grc-frameworks-and-risk-management`) — the eQMS's full RMF file: its moderate-impact
+  categorization, its three control families, and its standing monitoring plan. This is the
+  actual content now cross-referenced from the CMDB's qualification field; read either module for
+  the verbatim NIST text and the full reasoning behind the moderate-impact finding.
+
+- **[The AABB assessment
+  process](../../fda-and-aabb-in-practice/the-aabb-assessment-process/index.qmd)** — how an AABB
+  (Association for the Advancement of Blood & Biotherapies) assessor actually runs a QSE-based
+  review, including how a self-identified, actively-managed gap grades differently than one the
+  assessor finds cold. This module's AABB-assessor test applies that lens directly.
+
+- **[FDA inspection authority and
+  outcomes](../../fda-and-aabb-in-practice/fda-inspection-authority-and-outcomes/index.qmd)** and
+  **[warning letters and
+  recalls](../../fda-and-aabb-in-practice/warning-letters-and-recalls/index.qmd)** — what an FDA
+  investigator actually checks during a routine or for-cause inspection, and how an unreconciled
+  documentation inconsistency becomes a Form 483 observation. This module's FDA-investigator test
+  applies both directly, without redeveloping either.
+
+- **[Reading a SOC 2
+  report](../../vendor-and-third-party-risk-management/reading-a-soc-2-report/index.qmd)** and
+  **[reading an ISO 27001
+  certificate](../../vendor-and-third-party-risk-management/reading-an-iso-27001-certificate/index.qmd)**
+  (both `vendor-and-third-party-risk-management`) — what a security assessor actually looks for
+  in a SOC 2 or ISO 27001-style review. This module's honest conclusion — that the reconciled
+  artifact is strong partial evidence for this reviewer, not a complete answer — leans directly on
+  the domain gaps these two modules and `itil-to-grc-crosswalk` already found.

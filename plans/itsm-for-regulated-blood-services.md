@@ -59,7 +59,7 @@ ticketing platform — describe generically.
 | 1 | `itil-to-qse-crosswalk-change-and-problem` | Map ITIL's change enablement onto Lakeshore's change control, and problem management onto CAPA. | 115/116 | Published |
 | 2 | `itil-to-qse-crosswalk-cmdb-and-continual-improvement` | Map a CMDB onto an equipment/validated-system inventory, a service catalog onto quality-system scope, and continual improvement onto process improvement. | 117/118 | Published |
 | 3 | `itil-to-grc-crosswalk` | Map service asset/config management onto RMF's Categorize/Select, continual improvement onto Monitor, and security management onto ISO 27001's Annex A domains. | 119/120 | Published |
-| 4 | `building-an-inspection-ready-service-catalog-and-cmdb` | Apply all three crosswalks to build one real service-catalog/CMDB entry for the eQMS that survives an FDA inspection, an AABB assessment, and a security assessment at once. | 121/122 | Not started |
+| 4 | `building-an-inspection-ready-service-catalog-and-cmdb` | Apply all three crosswalks to build one real service-catalog/CMDB entry for the eQMS that survives an FDA inspection, an AABB assessment, and a security assessment at once. | 121/122 | Published |
 | 5 | `translating-itsm-and-risk-metrics-for-executives` | Present the same underlying fact (an incident, a residual risk, a control gap) in CIO language and exec-quality-council language without changing what it means. | 123/124 | Not started |
 | 6 | `presenting-it-service-and-risk-performance` | The capstone exercise and the curriculum's closing module: present the Brookfield incident's full, four-lens history to both audiences at once, and close the entire curriculum. | 125/126 | Not started |
 
@@ -399,3 +399,87 @@ verified file:
   status row this module pointed to, and reconciling the service-catalog/quality-scope Fairview
   mismatch module 2 left deliberately unresolved), and test it against an FDA investigator's, an
   AABB assessor's, and a security assessor's three different questions at once.
+
+- **2026-10-09**: Module 4, `building-an-inspection-ready-service-catalog-and-cmdb`
+  (`order: 121/122`), drafted and published. Pure synthesis, no new citation introduced anywhere
+  — it references `categorize-and-select-controls` and `authorize-and-monitor`
+  (`grc-frameworks-and-risk-management`), `the-aabb-assessment-process`,
+  `fda-inspection-authority-and-outcomes`, and `warning-letters-and-recalls` (all
+  `fda-and-aabb-in-practice`), and `reading-a-soc-2-report`/`reading-an-iso-27001-certificate`
+  (both `vendor-and-third-party-risk-management`) entirely by name, redeveloping none of them.
+  Scene: the Director, QA, and systems administrator sit down together to actually finish the
+  artifact modules 2-3 built in pieces.
+
+  **(1) Filled the CMDB's blank "Qualification/validation status" field** with a pointer, not a
+  new qualification exercise — the exact teaching point the module built around. **Final field
+  text:** "Categorized moderate-impact per RMF (reasoned through three CIA failure modes specific
+  to this system). Three control families selected and implemented: account and identity
+  management, audit/logging, and physical and environmental protection. Two confirmed operating
+  as intended at Assess (audit/logging; physical and environmental protection). One — the
+  quarterly access-review control, within account and identity management — accepted as a named,
+  time-bound residual risk at Authorize, not a failure: implemented and documented, its first
+  scheduled cycle tracked under a 30-day remediation window, now folded into a standing
+  monitoring plan (ongoing quarterly cadence, periodic audit-log spot-checks, a standing trigger
+  to reopen the authorization on material change). Authorization: active. Full file:
+  `categorize-and-select-controls` and `authorize-and-monitor`." Every other CMDB field (CI name,
+  type, version, owner, in-production sites, dependencies, feeds/relied-on-by) is carried forward
+  unchanged from module 2's own entry — nothing else was touched.
+
+  **(2) Reconciled the Fairview service-catalog/scope-statement mismatch** with both halves of
+  the available resolution, not just one: corrected the service-catalog entry's false "document
+  control at all three sites" claim to match the scope statement's own accurate text (document
+  control in scope for central site and Brookfield only; Fairview's document-control records
+  remain on the site's existing paper-based process), AND gave the underlying "pending migration"
+  question a real, dated, owned action item for the first time — **Fairview document-control
+  migration onto the eQMS: owner — systems administrator, with sign-off from the QA and
+  Fairview's site operations lead; target — within two quarters; trigger to revisit if missed —
+  next quarterly IT service review.** Explicitly named as Lakeshore's own operational choice, not
+  a new regulatory requirement — a paper-based document-control process, properly controlled,
+  remains a legitimate choice under AABB's framework. **Final reconciled service-catalog entry:**
+  service "eQMS"; provides "CAPA tracking (all three sites); internal-audit logging (all three
+  sites); document control (central site and Brookfield — see note)"; offered to "Quality staff
+  and site operations leadership"; offered at "Central site, Brookfield, and Fairview (full eQMS
+  access for CAPA tracking and audit logging at all three; document-control access follows the
+  note below)"; service level "Business-hours support; next-business-day response for access
+  issues"; note "Fairview's document control remains on the site's existing paper-based process.
+  This is not an unexplained mismatch — see the dated action item [above]." The quality-system
+  scope statement itself (Quality-owned) was not altered — it was already accurate; only the
+  IT-owned service catalog needed correcting.
+
+  **(3) Tested the reconciled artifact against three reviewers**, per the plan's own guardrail,
+  referencing each by name, redeveloping none: an **FDA investigator** (`fda-inspection-
+  authority-and-outcomes`, `warning-letters-and-recalls`) — satisfied: the qualification pointer
+  answers "is this system qualified," and the reconciled catalog/scope-statement pair answers "do
+  your own records agree," with the one remaining open item (the Fairview migration) itself
+  tracked and dated rather than hidden or silently fixed. An **AABB assessor**
+  (`the-aabb-assessment-process`) — satisfied: a self-identified, actively-managed gap (Fairview)
+  grades differently than one an assessor finds cold, per that module's own teaching. A **security
+  assessor** (`reading-a-soc-2-report`, `reading-an-iso-27001-certificate`) — **honestly NOT fully
+  satisfied, and the module says so explicitly**: the artifact is strong partial evidence toward
+  the one clean ISO 27001 Annex A match `itil-to-grc-crosswalk` already found (access control, via
+  account and identity management), but does nothing to close the two domains that module already
+  found with no counterpart at all in the eQMS's RMF-selected controls (supplier relationships,
+  business continuity) — named again here as a real, standing boundary, not something this
+  assembly closes. **Locked conclusion for m5/m6 to reuse:** one reconciled artifact satisfies an
+  FDA investigator and an AABB assessor without a separate document built for either; it is strong
+  but incomplete evidence for a full ISO 27001/SOC 2-style security review, for reasons named
+  honestly, not glossed over.
+
+  No `grc-frameworks-and-risk-management` locked fact (the moderate-impact categorization, the
+  three control families, the quarterly-access-review deficiency, the 30-day window, the
+  five-part monitoring plan) was altered — only cross-referenced, exactly as `authorize-and-
+  monitor` left it. No `itil-to-grc-crosswalk` locked fact (the one clean ISO 27001 domain match,
+  the two domains with no counterpart) was reopened or altered — only reapplied to test this
+  module's own artifact. No `fda-and-aabb-in-practice` or `vendor-and-third-party-risk-
+  management` locked identifier or fact was touched. Lesson page is ~3,180 words of prose
+  (TEACHING.md's 2,000-4,000-word target, body text only). This course's own established pattern
+  for a pure-synthesis module (no new citation) carried forward again: no separate citation
+  decoder table — the note-on-citations section points back to the modules that already own each
+  decoder and verbatim text. `quarto` is unavailable in this cloud session (per CLAUDE.md rule
+  6) — not rendered locally; the GitHub Action renders on push. Published via the `publish` skill
+  to branch `claude/confident-brahmagupta-b499un`.
+  Next: build m5, `translating-itsm-and-risk-metrics-for-executives` (`order: 123/124`) —
+  synthesis only, no new citation: take the eQMS's own locked POA&M entry (the quarterly
+  access-review control, accepted as a named residual risk with a 30-day remediation commitment)
+  and present it two ways — CIO language and exec-quality-council language — showing both describe
+  the same underlying fact.
