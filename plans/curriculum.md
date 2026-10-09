@@ -273,14 +273,47 @@ has no `plans/<slug>.md` file until its first session.
 | `fda-and-aabb-in-practice` | 6 / 6 | Done |
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
 | `healthcare-security-and-privacy` | 5 / 5 | Done |
-| `vendor-and-third-party-risk-management` | 4 / 5 | In progress |
+| `vendor-and-third-party-risk-management` | 5 / 5 | Done |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `vendor-and-third-party-risk-management` module 5,
-`vendor-change-notifications-and-your-own-change-control` — this course's FINAL module (Track 4,
-Phase 9). Modules 1-4 are published — see
-`plans/vendor-and-third-party-risk-management.md`'s progress log for the full detail, but in
-short: AABB's QSE 4 ("Supplier and Customer Issues," named/themed only, no Standards text or
+**Next up:** `itsm-for-regulated-blood-services` (Track 5, Phase 10) — the curriculum's capstone,
+built last per this file's own "Prerequisite order" diagram ("capstone — wants everything else
+done"). **Checked against the progress tracker above and the full prerequisite chain in this
+file's "Prerequisite order" section: every other course in this curriculum is now Done** —
+`reading-a-cfr-citation`, `regulatory-landscape-orientation`, `risk-and-controls-vocabulary`
+(foundations); `blood-center-operations` (Track 1); `quality-system-essentials`,
+`fda-and-aabb-in-practice` (Track 2); `csv-and-becs`, `data-integrity-and-records` (Track 3);
+`grc-frameworks-and-risk-management`, `healthcare-security-and-privacy`,
+`vendor-and-third-party-risk-management` (Track 4, now complete as of this session — see below);
+and `directing-the-quality-analyst` (Track 6). The capstone's own stated dependency (Tracks 1, 2,
+and 4) is fully satisfied, and nothing else in the "Recommended sequence" table sits between here
+and it. There is nothing outstanding to flag before scoping it, beyond the ordinary first-session
+work of actually scoping its own running example and module list.
+
+Relevant locked facts for whoever scopes `itsm-for-regulated-blood-services` next, gathered from
+across the whole curriculum rather than any single course: this is explicitly a **crosswalk**
+course, not a new-content course — its own module list (ITIL-to-QSE crosswalk: change enablement
+↔ change control, problem management ↔ CAPA, CMDB ↔ equipment/validated-system inventory, service
+catalog, continual improvement; ITIL-to-GRC crosswalk: service asset & config management ↔ RMF
+categorize/select, continual improvement ↔ monitor, security management ↔ ISO 27001 Annex A;
+building a service catalog/CMDB that survives both an inspection and a security assessment;
+translating ITSM and risk metrics for quality and executive audiences) draws on material every
+other track has already built and locked, and its own scoping session should decide which of these
+running examples to reuse (per this curriculum's own established pattern, no course is forced to
+inherit another's scenario just because it's available): the eQMS (`grc-frameworks-and-risk-
+management`'s own running example, with its locked POA&M-next-to-CAPA crosswalk already built);
+BECS and its validation/CSV history (`csv-and-becs`, `data-integrity-and-records`); the Brookfield
+incident and the device-management platform vendor relationship, now viewed through three
+different lenses by three different courses (`healthcare-security-and-privacy`'s own closed
+incident investigation; `vendor-and-third-party-risk-management`'s tiering/SOC 2/ISO 27001/BAA/
+change-notification treatment of that same vendor); and `quality-system-essentials`'s own change-
+control, CAPA, and document-control mechanics, each already taught in depth and available for this
+capstone to crosswalk against ITIL vocabulary rather than re-teach.
+
+`vendor-and-third-party-risk-management` is now **5/5 and complete** — see
+`plans/vendor-and-third-party-risk-management.md`'s progress log for the full course, including
+module 5's final, locked state (summarized further below). In short: AABB's QSE 4 ("Supplier and
+Customer Issues," named/themed only, no Standards text or
 standard number) grounded a reasoned, three-tier vendor risk scheme — **High / Medium / Low**,
 decided by four questions (data touch; system criticality — BECS-adjacent or eQMS; access level
 — logical/data vs. physical-only; blast radius). **Locked vendor placements modules 4-5 pick up
@@ -363,9 +396,31 @@ vendor's own migration history. eCFR's own human-readable pages were blocked by 
 bot protection the same way ISO.org was for module 3 (confirmed via direct `curl`, browser
 user-agent, and `--compressed` attempts, all redirected to `unblock.federalregister.gov`); resolved
 by linking GovInfo's official archive pages instead, each curl-verified HTTP 200 and cross-checked
-against the underlying XML text. Module 5 now closes the course: placing the vendor's own
-change-notification duty (referencing, not re-quoting, (a)(2)(i)(C)/(e)(2)(ii)(C)) against
-Lakeshore's own internal change control, and writing the course's final closing passage.
+against the underlying XML text. **Module 5, `vendor-change-notifications-and-your-own-change-
+control`, is now also published, closing the course.** It placed the one clause module 4's
+checklist does contain — the incident-reporting clause, (a)(2)(i)(C)/(e)(2)(ii)(C), referenced and
+only briefly restated, not re-quoted at length — against the one kind of promise it was never
+written to make: advance notice of a *planned* change. The module's locked central distinction:
+incident reporting is reactive (after something goes wrong); a change-notification clause, not a
+HIPAA requirement but a possible negotiated contract term, would be proactive (before a planned
+material change); conflating the two — "they have to report incidents" mistaken for "they have to
+warn us before they do something that could cause one" — is named as the real, common trap. A
+second conflation was named and resolved: module 3's plausible ISO 27001 "change management" SoA
+finding governs the vendor's own *internal* change process, not a contractual promise to notify
+Lakeshore specifically. Reasoned conclusion, honestly bounded: a change-notification clause is a
+genuine, forward-looking contract improvement worth Lakeshore pursuing at this vendor's next
+renewal — the most directly on-point fix this course identified for the visibility gap
+`investigating-a-healthcare-data-incident` already ranked as the incident's root cause — but it is
+explicitly **not** a retroactive fix for that incident's own closed determination (unchanged,
+not reopened), and whether the clause actually gets added is left as a genuine, unresolved forward
+decision, not resolved by this course. The module closed with the course's own final passage:
+the five-module arc (tiering → SOC 2 → ISO 27001 → BAA → change notifications), what's now
+resolved (a real tiering scheme; the vendor's SOC 2 report and ISO 27001 certificate/SoA actually
+read; a reasoned BAA position and full checklist), what stays open by honest design (the
+Brookfield incident's own permanently unresolved encryption status — lensed, not reopened; whether
+the contract gets strengthened — a forward decision), and a forward pointer to the Track 5
+capstone, `itsm-for-regulated-blood-services`. No `csv-and-becs`/`data-integrity-and-records`/
+`healthcare-security-and-privacy` locked identifier or fact was touched by module 5.
 `healthcare-security-and-privacy` is now **5/5 and complete** — see
 `plans/healthcare-security-and-privacy.md`'s progress log for the full course, including module
 5's final state: Lakeshore's one running incident (a Brookfield staff member's work laptop, lost
