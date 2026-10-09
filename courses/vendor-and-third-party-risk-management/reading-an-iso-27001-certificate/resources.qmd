@@ -1,0 +1,53 @@
+---
+title: "Resources"
+order: 109
+---
+
+This module cites no ISO text — ISO/IEC 27001's structure (what an ISMS certification actually
+certifies, Stage 1/Stage 2 audits, surveillance audits, scope, the Statement of Applicability, and
+a few widely known general control-domain categories) is named and described only, the same
+handling this curriculum gives every paid, proprietary framework (ISO 31000, ISO 19011, GAMP 5,
+and, last module, SOC 2). No specific Annex A control number is asserted anywhere in the lesson.
+
+**A note on ISO's own catalogue page, read before anything else below:** this session tried,
+directly, to find and verify ISO's own public listing page for ISO/IEC 27001:2022 — the same page
+`reading-a-soc-2-report`'s sibling modules elsewhere in this curriculum (`risk-frameworks-side-by-
+side` for ISO 31000, `designing-an-internal-audit-program` for ISO 19011) were able to confirm
+through a Wayback Machine snapshot. For ISO 27001, that path didn't work this time: a direct `curl`
+against `iso.org` returned HTTP 403 on every page tried, including the site's own root — the same
+bot-protection block this curriculum has hit before, just wider this time. The Internet Archive's
+Wayback Machine availability API, tried several times across this session with pauses in between,
+returned HTTP 429 (rate-limited) every time; its CDX API alternative was blocked outright by this
+environment's own egress policy. A national-standards-body guess (a specific ANSI webstore URL)
+also returned 403. Rather than publish an unverified ISO catalogue number — which this module's own
+guardrails explicitly forbid — no direct ISO.org link appears below. In its place are two
+independent, directly `curl`-verified pages from accredited certification bodies that describe
+ISO/IEC 27001's certification structure in their own words, neither one ISO's own site:
+
+- **[BSI: ISO 27001 — Information Security Management](https://www.bsigroup.com/en-GB/iso-27001-information-security/)**
+  — the British Standards Institution's own public page describing ISO/IEC 27001 and its
+  certification process (BSI is itself a national standards body and an accredited ISO 27001
+  certification body, not ISO's own publishing arm). Curl-verified this session: HTTP 200, page
+  title confirmed as "ISO 27001 - Information Security Management | BSI UK." Useful for the general
+  shape of the certification process (initial audit stages, surveillance audits) in a certification
+  body's own words — not a source of the standard's exact text, which remains a paid publication
+  this curriculum has never purchased or quoted.
+
+- **[NQA: ISO 27001 for Information Security](https://www.nqa.com/en-us/certification/standards/iso-27001)**
+  — a second, independent accredited certification body's own public overview page, included for
+  redundancy since the primary source (ISO's own site) couldn't be verified this session. Curl-
+  verified this session: HTTP 200, page title confirmed as "ISO 27001 for Information Security | Get
+  Certified." Same caveat as above: describes the certification process in the certifying body's own
+  words, not a substitute for the standard's own paid text.
+
+- **[Reading a SOC 2 Report](../reading-a-soc-2-report/index.qmd)** — module 2 of this course, where
+  the device-management platform vendor's own SOC 2 report was read for the first time (Type II,
+  Security and Availability certain, Confidentiality plausible, the CUEC finding, the bridge-letter
+  determination). Read it first if you haven't: this module assumes those findings and treats this
+  certificate as a different, complementary kind of assurance about the same vendor, not a restatement
+  of the same one.
+
+**If you're verifying these links yourself later:** try ISO's own catalogue page directly before
+relying on the two certification-body pages above — this session's block may not be permanent, and
+ISO's own page (when reachable) is always the better primary reference for the standard's scope and
+purchase information.
