@@ -70,7 +70,7 @@ vendor.
 |---|---|---|---|---|
 | — | (syllabus) | — | 92 | Published |
 | 1 | `information-governance-in-a-covered-entity` | Answer whether Lakeshore is a HIPAA covered entity, reasoned from HIPAA's own definitions, and introduce the incident this course's remaining four modules carry forward. | 93/94 | Published |
-| 2 | `the-hipaa-privacy-rule` | Apply the actual rules governing when a donor's PHI can be used or disclosed without authorization, when it can't, and the specific exception covering an FDA-regulated recall/BPDR disclosure. | 95/96 | Not started |
+| 2 | `the-hipaa-privacy-rule` | Apply the actual rules governing when a donor's PHI can be used or disclosed without authorization, when it can't, and the specific exception covering an FDA-regulated recall/BPDR disclosure. | 95/96 | Published |
 | 3 | `security-rule-safeguards-and-part-11` | Map HIPAA's administrative/physical/technical safeguards against Part 11's own controls — genuine overlaps and one genuine structural difference (required vs. addressable). | 97/98 | Not started |
 | 4 | `breach-notification-and-dual-reporting` | Run the incident through HIPAA's breach test and 60-day clock side by side with FDA's 45-day BPDR clock, and say honestly when one incident triggers both. | 99/100 | Not started |
 | 5 | `investigating-a-healthcare-data-incident` | Walk the investigation a HIPAA breach demands — scope, root cause, the four-factor compromise assessment — to the closing decision. | 101/102 | Not started |
@@ -283,3 +283,70 @@ as every prior course) — already done as part of Phase 2 scoping below.
   fields (name, date of birth, lifetime donation count) the review didn't strictly need — a
   concrete minimum-necessary teaching moment independent of how the eventual breach
   determination resolves.
+
+- **2026-10-09**: Module 2, `the-hipaa-privacy-rule`, drafted and published
+  (`courses/healthcare-security-and-privacy/the-hipaa-privacy-rule/index.qmd`, `order: 95`,
+  ~3,250 words of lesson prose; `resources.qmd`, `order: 96`). All quotes verbatim from
+  `sources/cfr/45-164-privacy-rule-excerpt.md` — no other source used, no citation or clause
+  number invented.
+
+  **What was reasoned and decided:**
+  - **164.502(a) / 164.506(a) applied to the extract pull:** walked 164.502(a)'s default-deny
+    standard to its one open door for this scenario — 164.502(a)(1)(ii)'s pointer to 164.506 —
+    and reasoned (not asserted) that the Brookfield deferral-coding consistency review plausibly
+    qualifies as a "health care operations" use, as a quality assessment/improvement activity
+    consistent with what 164.506(a)'s own text permits. **Explicitly flagged limitation, logged
+    honestly rather than papered over:** 164.501's own numbered definition of "health care
+    operations" was NOT independently fetched or verified this session (per this plan's own
+    sourcing notes) — no specific sub-clause of 164.501 was quoted or asserted; the module states
+    this gap directly in its own text and in a check-your-understanding question.
+  - **164.508(a)(1)/(b)(2) applied:** since the TPO use is reasoned to be permitted under
+    164.506(a), 164.508(a)(1)'s authorization requirement never engages for the act of pulling
+    the extract — no authorization was needed for that specific act. Stated explicitly, twice in
+    the lesson, as a narrow finding: this is a different and separate question from whether
+    taking the extract off-site on a laptop was handled safely, which stays `security-rule-
+    safeguards-and-part-11`'s and `breach-notification-and-dual-reporting`'s job, not this
+    module's.
+  - **164.512(b)(1)(iii) quoted in full ((A)-(C)):** explained as the general textual reason a
+    real future BPDR filing or Part 7 recall/lookback disclosure wouldn't itself violate the
+    Privacy Rule, referencing `filing-a-biological-product-deviation-report`'s already-taught
+    606.171 mechanics by name/one line only, not redeveloping them. Explicitly precise that this
+    laptop incident is NOT a BPDR-triggering event, consistent with module 1's locked fact that
+    the ~212-donor population has no connection to any quality event — the clause explains why
+    the two regulatory worlds don't conflict in general, not a claim that this incident is a BPDR
+    case.
+  - **164.514(d)(1)-(3) applied — this module's real, locked finding:** ran the minimum-necessary
+    standard against the exact six-field extract module 1 locked, concluding **the extract as
+    pulled likely did NOT satisfy minimum necessary** — three of its six fields (donor name, date
+    of birth, lifetime donation count) were not needed for a deferral-coding consistency review
+    that only required the donor identifier, the determination + date, and the deferral reason
+    code, and the extract came from a standing, routine/recurring report template that
+    164.514(d)(3)(i) obligates Lakeshore to have scoped to the purpose of each disclosure — which
+    it apparently hadn't. **This finding is independent of the breach question and independent of
+    the encryption-status question** — it would hold even if the laptop had never left the
+    building. **New locked fact for modules 3-5:** this minimum-necessary gap (extract exceeded
+    its purpose by three fields, per a routine/recurring report template never scoped down) is
+    now part of this incident's record; later modules may reference it but should not contradict
+    or re-litigate it.
+  - **164.524(a)(1)/(b)(2) applied lightly, as instructed:** introduced as a separate, standing
+    right (donor access to their own eligibility records, 30-day clock, one 30-day extension
+    available) unrelated to and unaffected by this incident — not developed further, not treated
+    as the center of this module.
+  - No `csv-and-becs`/`data-integrity-and-records` locked identifier touched. No real device/OS/
+    vendor name or calendar year used in the Lakeshore narrative.
+
+  Sources: no new source fetched — `sources/cfr/45-164-privacy-rule-excerpt.md` (already saved)
+  was the only source used, all seven quotes (164.502(a), 164.506(a), 164.508(a)(1), 164.508(b)
+  (2), 164.512(b)(1)(iii), 164.514(d)(1)-(3), 164.524(a)(1)/(b)(2)) verbatim from that file.
+  `resources.qmd` links the eCFR pages for 164.506, 164.512, and 164.514 — all three curl-verified
+  (`curl -s -o /dev/null -w "%{http_code}" -L <url>`, each returned `200`) before publishing;
+  164.502, 164.508, and 164.524 were also curl-verified (all `200`) but not included in the final
+  resources page, since 164.506/512/514 carry this module's heaviest teaching weight and
+  `resources.qmd` only needs 2-4 links.
+
+  Next: build m3, `security-rule-safeguards-and-part-11` — map 164.306/164.308/164.310/164.312
+  against Part 11 (11.10, 11.50, 11.70, 11.100, 11.200, 11.300, reference only, already fully
+  quoted in `data-integrity-and-records`), and resolve whether the missing laptop's encryption
+  status was a Required or an Addressable implementation specification under 164.312(a)(2)(iv)
+  (Addressable, per the saved text) — independent of, and without resolving, the breach
+  determination itself (m4's job) or re-litigating this module's minimum-necessary finding.

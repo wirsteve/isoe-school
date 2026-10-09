@@ -272,24 +272,36 @@ has no `plans/<slug>.md` file until its first session.
 | `data-integrity-and-records` | 6 / 6 | Done |
 | `fda-and-aabb-in-practice` | 6 / 6 | Done |
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
-| `healthcare-security-and-privacy` | 1 / 5 | In progress |
+| `healthcare-security-and-privacy` | 2 / 5 | In progress |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `healthcare-security-and-privacy` module 2, `the-hipaa-privacy-rule` (Track 4,
-Phase 8). Module 1, `information-governance-in-a-covered-entity`, is published — see
-`plans/healthcare-security-and-privacy.md`'s progress log for the full module, including its
-locked facts for modules 2-5: Lakeshore is now this course's adopted working premise as a HIPAA
-covered entity (reasoned from 45 CFR 160.103's "covered entity" clause (3) and "health care
-provider" catch-all, not asserted); the course's running incident is locked as a Brookfield
-staff member's work laptop, left in a shared ride after presenting a deferral-coding consistency
-review, carrying a six-field, ~212-donor BECS extract (donor ID, name, date of birth,
-determination + date, deferral reason code, lifetime donation count) of which only three fields
-were actually needed for the review; the laptop's full-disk-encryption status is genuinely
-unresolved (enrolled under policy, but a device-management migration left its encryption-status
-field unreported) and must stay open through modules 3-4; and the donor population has no
-connection to any other open quality event. No `csv-and-becs`/`data-integrity-and-records`
-locked identifier was touched. `grc-frameworks-and-risk-management` is now 5/5 and complete — see
+**Next up:** `healthcare-security-and-privacy` module 3,
+`security-rule-safeguards-and-part-11` (Track 4, Phase 8). Modules 1 and 2 are published — see
+`plans/healthcare-security-and-privacy.md`'s progress log for the full detail, including locked
+facts for modules 3-5: Lakeshore is now this course's adopted working premise as a HIPAA covered
+entity (reasoned from 45 CFR 160.103's "covered entity" clause (3) and "health care provider"
+catch-all, not asserted); the course's running incident is locked as a Brookfield staff member's
+work laptop, left in a shared ride after presenting a deferral-coding consistency review,
+carrying a six-field, ~212-donor BECS extract (donor ID, name, date of birth, determination +
+date, deferral reason code, lifetime donation count) of which only three fields were actually
+needed for the review; the laptop's full-disk-encryption status is genuinely unresolved
+(enrolled under policy, but a device-management migration left its encryption-status field
+unreported) and must stay open through module 4; and the donor population has no connection to
+any other open quality event. Module 2 added its own locked finding, reasoned from
+164.502(a)/164.506(a)/164.508(a)(1)-(b)(2): pulling the extract for the review was plausibly a
+permitted "health care operations" use needing no individual authorization (164.501's own
+numbered definition of "health care operations" was not independently verified this session —
+flagged honestly, not asserted past the text actually read), which is a separate question from
+whether carrying the extract off-site was handled safely; 164.512(b)(1)(iii) (quoted in full)
+was used to explain the general principle that a real BPDR/recall disclosure wouldn't conflict
+with the Privacy Rule, without treating this clean-population incident as a BPDR case; and
+164.514(d)(1)-(3) produced this course's central minimum-necessary finding — **the extract as
+pulled likely did not satisfy minimum necessary**, because three of its six fields (donor name,
+date of birth, lifetime donation count) weren't needed for the review and rode along on a
+routine/recurring report template 164.514(d)(3)(i) obligates Lakeshore to have scoped down. This
+finding is independent of, and holds regardless of, how the breach/encryption questions resolve.
+No `csv-and-becs`/`data-integrity-and-records` locked identifier was touched by either module. `grc-frameworks-and-risk-management` is now 5/5 and complete — see
 `plans/grc-frameworks-and-risk-management.md`'s progress log for the full course, including
 module 5's final, locked state: a built POA&M (plan of action and milestones) entry for the
 eQMS's one open deficiency (the quarterly access-review control for account and identity
