@@ -94,7 +94,7 @@ Build in order. One module per session: lesson `index.qmd` plus `resources.qmd` 
 | 3 | `escalation-criteria` | Sort any event into "call me now," "tell me today," or "your call, tell me at our one-on-one." Know which events go past you and which your QA must be able to take around you. Write escalation criteria keyed to "reasonably suggesting," not "confirmed," so internal escalation beats the regulatory clock. | Full | Published |
 | 4 | `reviewing-validation-packages` | Review a BECS validation impact assessment and test summary for its decision trail (stated scope against the four critical functions, acceptance criteria set before execution, failures recorded rather than silently re-run, approvals before deployment), and say plainly which questions (was the testing *enough*?) you can't answer yet | Lighter (decision trail only) | Published |
 | 5 | `reviewing-vendor-risk-assessments` | Review a vendor risk assessment your QA wrote for whether its evidence covers the service Lakeshore actually buys and the risk that triggered the review, whether the tier follows from the function, and whether the risk decision has an owner with authority, without yet reading a SOC 2 report in technical depth | Lighter (decision trail only) | Published |
-| 6 | `coaching-and-reporting-upward` | Turn repeated review findings into coaching that changes how your QA works, widen her decision rights as her judgment proves out, and report quality, IT, and risk performance upward with measures that show trend, aging, and effectiveness, without turning any of them into a target that teaches under-reporting | Full | Not started |
+| 6 | `coaching-and-reporting-upward` | Turn repeated review findings into coaching that changes how your QA works, widen her decision rights as her judgment proves out, and report quality, IT, and risk performance upward with measures that show trend, aging, and effectiveness, without turning any of them into a target that teaches under-reporting | Full | Published |
 
 Status values: Not started / Drafted / Published.
 
@@ -1281,3 +1281,80 @@ AICPA SOC page only if it verifies, labeled "what a SOC 2 is, for later."
   competence, rebuilding QSE m7's superficial management-review packet, system vs. individual KPIs,
   and the Director's one-page quarterly report to the CIO. Use the strongest model for this final
   module's audit pass per CLAUDE.md rule 4.
+
+- **2026-09-22**: Module 6 (`coaching-and-reporting-upward`) drafted — `index.qmd` (`order: 38`)
+  and `resources.qmd` (`order: 39`). Not committed/pushed yet (held for review per this session's
+  instructions). **The course is now fully drafted, 6/6 modules.** No new source fetch was needed;
+  quoted only `sources/cfr/606.20.md` (paragraph (b), reused verbatim from
+  `qa-deliverables-and-ownership`, no new Part 11 or Part 606 clause spent) and paraphrased AABB's
+  QSE 1 (Organization) and QSE 2 (Resources) from `sources/aabb/qse-framework.md`, no standard
+  numbers.
+  1. **Both required teaching threads present, with real structure, not a checklist:**
+     - **Thread 1 (coaching the pattern):** named the QA's two-part pattern once, across m2/m4/m5,
+       by its established labels — right conclusion/reasoning off the page, stops at the first
+       credible source. Covered questions-not-rewrites, her self-check (cold-read test as her own
+       pre-submission instrument), the three-position delegation ladder (I review everything / I
+       sample / you decide, I'm informed) widened on evidence and narrowed without drama or
+       punitiveness, documented competence (AABB QSE 2 paraphrase + reused 606.20(b)), and
+       coach-the-write-up-never-the-outcome — including the plan's required "genuinely hard case"
+       (coaching her writing style under real pressure without it becoming pressure toward a
+       conclusion), addressed directly in its own paragraph rather than glossed over.
+     - **Thread 2 (reporting upward):** quoted QSE m7's superficial packet verbatim (the exact four
+       lines from `internal-audits-and-management-review`), then rebuilt it line-by-line with real
+       trend, aging, and effectiveness-pass-rate analysis, framed explicitly as something the
+       Director coaches her to produce, not something he builds for her. Covered system measures
+       vs. her performance measures kept strictly separate (with deviation-count-as-target-teaches-
+       under-reporting as its own named point), the two candidate-measure lists exactly as the plan
+       specified, leading vs. lagging indicators, and the Director's own one-page quarterly report
+       to the CIO with one decision asked — used the automated document-control review-date trigger
+       QSE m7 flagged as a management-review output (confirmed by reading that module directly) as
+       the funding decision, not an invented ask.
+  2. **ITIL bridge:** all four plan-specified bridges present — code review (ask, don't rewrite) as
+     the framing device for thread 1 overall; standard-change pre-approval earned by track record
+     as the delegation-ladder bridge, called out explicitly as "the strongest bridge in this
+     module"; "watermelon" SLA metrics for reporting; CSI (continual service improvement) CSFs/KPIs
+     for system-vs-individual measures.
+  3. **"NOT a regulatory requirement" hook used exactly as planned:** "FDA requires blood centers to
+     track specific quality KPIs" → False, paired with AABB's Organization QSE requiring management
+     review with defined inputs (paraphrase, no number) and Lakeshore's own choice of which measures
+     and formulas to use. Appears in the traps/citation-decoder framing and as Check Your
+     Understanding Q1.
+  4. **Facts referenced, checked against each prior module's locked facts, no contradictions
+     introduced:** DEV-1147/CAPA-1147-A (m2), VIA-0842 (m4), VRA-0219 (m5) all named correctly by ID
+     and by their actual headline gaps (supervisor's word / vendor release notes / vendor
+     questionnaire contradicted by Lakeshore's own record). Fairview's binder finding and its RPN 50
+     reused from `internal-audits-and-management-review` in the rebuilt packet's internal-audit
+     line. No new facts invented for any of the three locked documents.
+  5. **Word count:** ~4,500 words including tables, headings, and the two block quotes (the
+     original QSE m7 packet plus the rebuilt version) — above this module's own 3,200–4,000 aim and
+     TEACHING.md's 4,000 ceiling by a modest margin, trimmed several times for length. The overage
+     follows m2's, m3's, and m5's precedent: a capstone module carrying two full teaching threads,
+     a quoted document, and its full rebuild runs longer than a single-thread module, and the task
+     brief explicitly allowed "a bit longer" for this module.
+  6. **Resources.qmd:** three links, all curl-verified 200 this session — Cornell LII for 606.20
+     (reused), AABB's canonical "Updated Quality Systems Essentials" page (the correct canonical
+     URL, matching m5's precedent, not the older redirecting one), and GovInfo's CFR collection.
+  7. **Deliberately excluded, confirmed absent:** the exec quality council presentation, the full
+     ITIL-to-QSE metrics crosswalk (named once, handed to `itsm-for-regulated-blood-services` by
+     name), audit-program metrics, management review's required inputs/outputs re-taught from
+     scratch (applied from QSE m7, not re-explained), and HR/performance-management mechanics.
+  8. **Notes for a future session revisiting this course**, per the plan's "Deliberately deferred"
+     table:
+     - When `csv-and-becs` is built, deepen module 4 in place (same slug, `order: 34`) with GAMP 5,
+       IQ/OQ/PQ, and risk-based test-design sufficiency — VIA-0842's locked facts (12 targeted
+       tests, the Quality Validation Lead's 11/06 scope rationale, the deployed-before-approved
+       gap) should stay untouched; the deepening adds judgment about whether 12 was *technically*
+       enough, not a rewrite of the story.
+     - When `vendor-and-third-party-risk-management` is built, deepen module 5 in place
+       (`order: 36`) with SOC 2 mechanics and vendor risk-tiering methodology — VRA-0219's locked
+       facts (the self-attestation contradiction as headline catch, the questionnaire-only
+       qualification method with its documented rationale) should stay untouched.
+     - When `fda-and-aabb-in-practice` is built, it's the natural place to add a "revisit
+       coaching-and-reporting-upward" note only if audit-program metrics ever need to cross back
+       into this course's KPI material — no such crossover was needed this session.
+     - `plans/curriculum.md` should have this course's tracker moved to "6 / 6, complete" and its
+       "Next up" line advanced to whatever Track comes after Track 6, the next time a session opens
+       it — this plan file can't edit that one directly.
+  Course status: **all six modules of `directing-the-quality-analyst` are now drafted.** None are
+  committed or pushed yet — held for review per this session's instructions, consistent with every
+  prior module in this course.

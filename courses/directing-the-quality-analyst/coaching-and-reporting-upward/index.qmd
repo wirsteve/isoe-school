@@ -1,0 +1,413 @@
+---
+title: "Coaching your QA and reporting upward"
+order: 38
+---
+
+## The ticket
+
+Three documents, three months, one desk: the ICCBBA (International Council for Commonality in
+Blood Banking Automation) deviation and CAPA (corrective and preventive action) packet, the OS
+patch's validation impact assessment, and the BECS (Blood Establishment Computer Software)
+vendor reassessment. Different systems, different regulatory hooks, same Quality Analyst (QA).
+And now that you've reviewed all three, you can't unsee the shape underneath them.
+
+Every one of her conclusions was defensible on the merits. "Not reportable" was very likely
+right. "No impact to the validated state" was very likely right. "Continue using the vendor"
+was very likely right. And every single time, the reasoning that would have proven it was
+missing from the page — and every single time, she'd stopped at the first source that sounded
+credible instead of the one that actually settled the question: a supervisor's word instead of
+a BECS query, a vendor's release notes instead of Lakeshore's own test, a vendor's "yes" instead
+of the deviation record sitting one click away that said the opposite.
+
+That's not three unrelated documents with three unrelated problems. That's one QA with one
+coachable pattern, showing up three times because nobody's named it to her as a pattern yet.
+
+Then, Thursday, her first draft of next quarter's management-review packet lands in your inbox.
+You already know what a superficial one looks like — `quality-system-essentials` showed you,
+months ago, in a lesson you weren't the one drafting: *"Internal audit: 4 sites reviewed, 1
+finding, corrective action initiated. CAPA log: 5 closed this quarter, 3 open. Change control:
+12 changes processed, no overdue verifications. Risk management: FMEA on file for the
+distribution process."* Her draft reads almost identically. Every line true. Every line, on its
+own, close to useless — no trend, no aging, no sense of whether anything is getting better or
+worse, nothing a room full of executives could actually decide something from.
+
+Two problems, one root: your QA is good, and she's stopped short twice — once in how she writes
+a conclusion, once in how she reports a system. Both are fixable. Neither gets fixed by you
+doing it for her.
+
+## Why this matters — and the ITIL bridge
+
+You already know how to grow a direct report past a recurring gap in their work, because you've
+done it in code review. A junior engineer whose pull requests keep the same shape — logic that's
+usually right, but undocumented edge cases, or a habit of trusting the first Stack Overflow
+answer instead of reading the actual library docs — doesn't improve because you rewrite their
+diffs for them every time. They improve because you keep asking the same question until asking
+it becomes their own habit: "what happens if this input is null?" Rewriting the code ships that
+one PR faster. It also guarantees you'll be asking the same question next sprint, because the
+engineer never had to build the muscle themselves.
+
+That's the strongest bridge in this module, and it runs in both directions. **The reward for an
+engineer whose changes keep passing review clean isn't more scrutiny — it's a standard change:
+pre-approved, no CAB (change advisory board) review required, because their track record has
+earned it.** Widening your QA's decision rights as her judgment proves out is the exact same
+mechanism, wearing quality-system clothes instead of change-management ones. Trust earned on the
+page gets spent as autonomy off it.
+
+Two more bridges, both for the second half of this module — reporting upward. You've certainly
+seen a **"watermelon" SLA (service-level agreement) report**: green on every summary tile, red
+the moment you open the ticket underneath it. A quality-metrics packet can do the exact same
+thing: "5 CAPAs closed, 3 open" looks green. It says nothing about whether those three open CAPAs
+are two weeks old or eleven months old, or whether the five closed ones closed on a passed
+effectiveness check or just on "the fix shipped." Same watermelon, different fruit stand.
+
+And you know **CSI (continual service improvement)** — the ITIL practice of defining CSFs
+(critical success factors) and the KPIs (key performance indicators) that measure them at the
+*service* level, deliberately separate from any one engineer's personal metrics, because
+conflating the two breaks both. A CSF like "incidents resolved within SLA" measures the system.
+An engineer's personal ticket count measures a person, and the moment the system metric becomes
+the person's target, people start closing tickets to hit the number instead of fixing things.
+That's exactly where this module's KPI design lands.
+
+## The rule in plain English
+
+Two threads, and they share one root cause: a genuinely good QA who hasn't yet been taught,
+explicitly, that "usually right" isn't the bar, and that a count isn't a report.
+
+### Thread one: coaching the pattern
+
+**Name the pattern once, not three separate times.** You've caught, individually, in
+`reviewing-deviations-and-capas`, `reviewing-validation-packages`, and
+`reviewing-vendor-risk-assessments`: (1) **right conclusion, reasoning off the page** — her
+calls hold up, but the path to them doesn't survive on paper; and (2) **stops at the first
+credible source** — a supervisor's statement, a vendor's release notes, a vendor's own
+questionnaire answer, each accepted as proof instead of as a lead. Naming this once, as one
+pattern with two parts, does something three separate corrections never will: it tells her what
+to watch for in her *own* next document, before you ever see it, instead of teaching her "fix
+this specific line" three times in a row with no throughline between them.
+
+**Questions, not rewrites.** The single most important mechanical choice in this module. If you
+rewrite her reportability paragraph, her test-scope conclusion, or her risk-tier reasoning
+yourself, you've fixed that document and trained her to wait for your red pen on the next one.
+Every review module in this course already modeled the alternative: "What BECS record shows none
+of the 40 units shipped?" not "Add the distribution query." A question makes her do the thinking
+that produces judgment. A rewrite makes you do it, permanently, for as long as she works for you.
+
+**Her self-check.** The payoff of teaching her the cold-read test by name, instead of just using
+it on her work silently, is that it can become *her* instrument before it's ever yours again.
+Ask her, directly, to run Conclusion, Evidence, Reasoning, Criteria first, Decision trail, and
+Loose ends on her own draft before it reaches your desk — same six questions, same order, every
+time. A QA who catches her own "stops at the first source" gap before she routes the document
+has caught it the way an assessor would, which is the finish line this course has been building
+toward.
+
+**The delegation ladder.** Three positions, and movement between them is earned or lost on
+evidence, never on a hunch:
+
+1. **"I review everything."** Where you start with any document type she's new to, or any
+   document type where you've seen the pattern recently and haven't yet seen it corrected.
+2. **"I sample."** You spot-check a subset — say, every third document, or anything above a
+   defined risk threshold — instead of reading every line of everything. This is where a QA
+   moves once she's shown, across several real documents, that she catches her own gaps before
+   you do.
+3. **"You decide, I'm informed."** Reserved for the routine, well-precedented calls
+   `qa-deliverables-and-ownership` already named as hers alone — closing a low-severity
+   deviation with a documented cause and no CAPA, a minor document revision. You're on the
+   notification list, not the approval chain.
+
+**Widen on evidence, narrow on a miss — without drama.** The ladder moves up when she's
+demonstrated the judgment, in writing, more than once: a reportability call with the reasoning
+on the page, a "no impact" conclusion backed by Lakeshore's own check instead of a vendor's word.
+It moves back down when a real miss gets through — not as punishment, but as a plain, unemotional
+fact: "this is why I'm back to reading these closely for a while; show me a few more clean ones
+and we'll widen it again." A ladder that only ever moves in one direction isn't measuring
+judgment, it's measuring seniority. One that narrows *punitively* — in a way that makes the next
+miss less likely to get reported honestly — defeats its own purpose, the trap this module names
+below.
+
+**Documented competence, not just your impression of her.** AABB's Quality System Essentials
+framework — paraphrased, no standard number, from `sources/aabb/qse-framework.md` — places
+competence assessment and training under **Resources** (QSE 2): a blood establishment is
+expected to track staff competence formally, as records, not as a manager's private sense that
+someone's gotten better. Her growth on exactly this pattern — reasoning shown on the page,
+sourcing that goes past the first credible answer — belongs in her own competence record, tied
+to real documents she produced. 21 CFR 606.20(b), already quoted in
+`qa-deliverables-and-ownership`, sets the regulatory floor underneath this: personnel must have
+"a thorough understanding of the procedures or control operations they perform." A widening
+delegation ladder with nothing written down to justify it is exactly the kind of gap this course
+has taught you to catch in *her* documents. Don't leave the same gap in yours.
+
+**Coach the write-up. Never the quality outcome.** `qa-deliverables-and-ownership` drew this
+line the first week: you own supervisory review — is the document defensible? — and never own
+the quality decision itself. That line gets genuinely hard to hold here, and it's worth naming
+the hard case directly instead of pretending it away. Say you're coaching her, repeatedly, on
+"show your reasoning before you state a conclusion." At some point that coaching, followed
+consistently, might mean she writes toward a conclusion you'd have preferred she reach faster —
+and it can start to feel, to both of you, like coaching her writing is nudging her toward a
+particular answer. It isn't, if you hold the line precisely: your feedback can demand that the
+reasoning behind *whatever conclusion she reaches* is on the page. It can never suggest which
+conclusion the reasoning should support. "Show me the evidence behind 'not reportable'" is
+coaching the write-up. "I'd expect this one to land as reportable" is coaching the outcome, and
+it's a line you don't cross even under real pressure — a tight deadline, a CIO (chief information
+officer) asking why quality keeps blocking IT's schedule. The moment your feedback starts
+sounding like a preference for which way a call goes, stop, and ask whether you're still
+reviewing the document or quietly trying to write it.
+
+### Thread two: reporting upward
+
+**Rebuild the packet, by coaching her to build it — not by building it yourself.** Here's the
+superficial version again, quoted exactly as `internal-audits-and-management-review` presented
+it, because your QA's draft reads almost the same:
+
+> *Internal audit: 4 sites reviewed, 1 finding, corrective action initiated.*
+> *CAPA log: 5 closed this quarter, 3 open.*
+> *Change control: 12 changes processed, no overdue verifications.*
+> *Risk management: FMEA on file for the distribution process.*
+
+Every line is a count. None of them is an analysis. Here's the same information, rebuilt with
+the three things that turn a count into something a management review can actually act on —
+**trend** (is this number rising, falling, or flat against recent quarters?), **aging** (how
+old are the open items, against Lakeshore's own targets?), and **effectiveness-pass rate** (of
+what's marked "closed," how much closed on real effectiveness data instead of just "the fix
+shipped"?):
+
+> *Internal audit: 4 sites reviewed this cycle, 1 finding — Fairview's binder gap, RPN 50.
+> Finding rate: 1 per 4 sites this cycle, down from 2 per 4 last cycle. Corrective action
+> initiated; extent-of-condition check of all satellite sites in progress, due [date].*
+>
+> *CAPA log: 8 total open across the quarter. 5 closed — 4 with a passed effectiveness check
+> on file, 1 closed on implementation evidence only (flagged for reopening review). 3 still
+> open, average age 40 days against Lakeshore's 60-day target; oldest is CAPA-1147-A at 55
+> days, on track. Trending down from last quarter's average age of 65 days.*
+>
+> *Change control: 12 changes processed, verifications on time in 11 of 12 (92%); one
+> verification 3 days late, root cause and corrective step noted. Compares to 10 of 11 (91%)
+> last quarter — flat, watching for drift.*
+>
+> *Risk management: FMEA on file for the distribution process; one open validation impact
+> assessment (VIA-0842) closed this cycle, with a decision-trail gap corrected before
+> production sign-off. Vendor reassessment (VRA-0219) current as of this cycle; one contract
+> follow-up still open, owner and date assigned.*
+
+Notice what didn't change: every underlying fact is one this course already established. What
+changed is that each line now answers "so what" instead of stopping at "here's a number." That's
+the whole difference between a packet that looks complete and one that shows a system actually
+working. **Your job in this thread is coaching her to produce this version herself** — asking
+"what's the trend against last quarter?" and "which of those five closures had a passed
+effectiveness check?" — not quietly rewriting her draft the night before the meeting. Same rule
+as thread one, applied to a different document.
+
+**System measures and her performance measures never share a line.** This is the single most
+important design rule in this thread: **deviation count can never be her individual target.**
+The moment "keep your open-deviation count low" becomes something her performance review looks
+at, you've built an incentive to under-report — to call something a training note instead of a
+deviation, to close early instead of thoroughly. A quality system that measures deviations to
+find and fix problems, and simultaneously punishes the person who reports them, is working
+against itself. This is Goodhart's-law territory: a measure that's useful for judging the
+*system* stops being trustworthy the instant it becomes a *target* for the person whose job is to
+report into it honestly.
+
+Two separate lists follow from that rule, and they should never blend into one shared
+scorecard:
+
+**Candidate system measures** — about the quality system as a whole, reported upward, never
+assigned to her as a personal number to hit:
+
+- Deviation cycle time (discovery to disposition)
+- CAPA aging and on-time rate against Lakeshore's own targets
+- Effectiveness-check first-pass rate — of CAPAs claiming closure, how many passed their
+  effectiveness check the first time, without extension or reopening
+- Repeat-root-cause rate — how often the same underlying cause resurfaces across separate
+  events, the clearest possible signal that a "fix" didn't actually fix the system
+- Change verifications completed on time
+- Validation impact assessments completed and approved before deployment, not after
+- Vendor reassessments current against their own review schedule
+
+**Her own performance measures** — about her work, distinct from the system's health:
+
+- Rework rate on her submissions — how often a document she routes to you needs a "must fix
+  before I sign" round versus going through clean
+- On-time delivery against agreed review and reassessment schedules
+- Trend in review findings per document, over time — fewer must-fix findings per document,
+  quarter over quarter, is real, visible evidence of the coaching in thread one working
+
+Read those two lists side by side and notice what they don't share: nothing about *how many*
+deviations, CAPAs, or findings exist appears on her list. Volume belongs to the system. Quality
+of write-up and reliability of delivery belong to her.
+
+**Leading versus lagging.** A lagging indicator tells you what already happened — a deviation
+count, last quarter's CAPA closures. A leading indicator tells you what's likely to happen next,
+early enough to still change it — CAPA aging trending up before it breaches its
+effectiveness-check window, her rework rate climbing before a "must fix" gap reaches a document
+that matters, a vendor reassessment slipping past its due date before the vendor relationship
+causes a problem. A packet built entirely on lagging indicators is a rearview mirror. One that
+tracks a couple of leading indicators alongside them is the only version that lets anyone in the
+room actually prevent something, instead of just explaining it afterward.
+
+**Your own report to the CIO.** Everything above feeds one more document: your own one-page
+quarterly report, up to your CIO, merging quality, IT, and risk into something a non-specialist
+executive can act on in five minutes. Keep it to the same discipline this whole course has
+taught: one page, trend and aging over raw counts, and — critically — **one decision asked**,
+not a status update with no ask attached. A strong candidate sits right in this quarter's own
+numbers: `internal-audits-and-management-review` already named the still-unbuilt automated
+document-control review-date trigger as something management review flagged needing funding.
+That's a real, concrete decision with a dollar figure and an owner — "fund the review-date
+trigger this quarter, or accept that satellite-site binder audits stay manual and keep finding
+gaps like Fairview's" — not a vague request for "more quality resources." A report that ends
+without a specific ask is the executive-level version of the same watermelon problem: it looks
+like a briefing, and it produces nothing anyone can decide on.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.20(b) | "Six-oh-six point twenty, paragraph b" | Personnel performing regulated steps must be adequate in training and experience, with "a thorough understanding of the procedures or control operations they perform." Already quoted in full in `qa-deliverables-and-ownership`. | The regulatory floor under "documented competence" — reused, not re-fetched, as the baseline her growth records sit on top of. |
+
+That's the whole table. This module is mostly synthesis of material this course and
+`quality-system-essentials` already taught; it doesn't need a new citation to carry it.
+
+## The actual text
+
+606.20(b), quoted verbatim from `sources/cfr/606.20.md`, reused from `qa-deliverables-and-ownership`:
+
+> All personnel shall have capabilities commensurate with their assigned functions, a thorough
+> understanding of the procedures or control operations they perform, the necessary training or
+> experience, and adequate information concerning the application of pertinent provisions of
+> this part to their respective functions.
+
+Read it as a floor, not a coaching program: the regulation requires personnel to be competent
+for what they do. It says nothing about *how* Lakeshore demonstrates that competence, tracks its
+growth, or documents a delegation ladder widening as judgment improves — that structure is
+AABB's, not FDA's.
+
+AABB's Quality System Essentials framework, paraphrased only, no standard number, from
+`sources/aabb/qse-framework.md`: **Resources** (QSE 2) covers job qualifications, competence
+assessment, and training as an ongoing program with its own records — not a one-time hiring bar,
+and not a manager's private impression. That's the structure this module's "documented
+competence" point rests on. **Organization** (QSE 1), already named in
+`internal-audits-and-management-review`, is what actually requires management review with
+defined inputs — not any specific KPI, and not any specific formula. That's the exact hook
+behind this module's regulatory-requirement question, below: which measures Lakeshore tracks,
+and how it calculates them, is Lakeshore's own choice, built on top of a requirement to review
+*something* meaningful, not a menu FDA or AABB hands you pre-filled.
+
+## What an inspector or assessor would actually look for
+
+**For coaching and delegation**, evidence that growth is real and recorded, not just felt. A
+competence record showing specific documents reviewed, specific gaps found and corrected over
+time, and a delegation level that changed on a dated basis tied to that evidence — not a
+training certificate from three years ago and nothing since. An assessor watching a widening
+ladder will also ask the harder question: what happens when a miss gets through anyway? A
+documented, undramatic narrowing — not silence — reads as a functioning review structure. A
+ladder that only ever widens reads as a program that isn't actually watching.
+
+**For management review**, exactly what `internal-audits-and-management-review` already told
+you to expect, now with your own fingerprints on it: minutes showing trend and aging analysis,
+not raw counts, and documented decisions with owners and dates attached. An assessor reading
+your packet next to last quarter's will check whether the numbers move in a direction that makes
+sense given what was reported as "fixed" — a CAPA aging metric that never improves despite a
+stream of "closed" CAPAs is itself a finding.
+
+**For your own review discipline**, evidence you actually reviewed the packet before it went
+upward. Questions on the draft, a dated mark distinguishing your read from a rubber stamp, and —
+the tell an assessor or your own CIO notices fastest — a report that changes meaningfully quarter
+to quarter instead of reading like the same four bullet points with new numbers dropped in.
+
+## Common traps
+
+**Rewriting instead of asking.** The most tempting shortcut in this module, especially under a
+deadline: it's Thursday, the meeting is Friday, and it's faster to rewrite her packet's bullets
+into trend-and-aging form yourself than to send it back and wait for a second draft. Do it once
+and you've taught her a rushed first draft is fine, because you'll always catch it. Do it twice
+and it stops being a review — it's you writing the packet with her name on the byline.
+
+**Making deviation count her personal target.** The sharpest trap in this module: the instant a
+system measure becomes her individual number, you've built an incentive to under-report, and you
+won't find out until an assessor — or a real event — finds what she quietly didn't write up.
+
+**Treating "watermelon" metrics as healthy because the summary line looks fine.** "5 CAPAs
+closed, 3 open" is green on the outside. Whether it's red inside depends entirely on aging and
+effectiveness-pass rate you can't see from the count alone.
+
+**Narrowing delegation punitively.** Pulling back to "I review everything" the moment a miss
+surfaces, with blame attached, teaches the safest move next time is not mentioning the miss at
+all. Narrowing has to be plain, undramatic, and explicitly temporary — "here's why, and here's
+what gets us back to sampling" — or it trains the same under-reporting instinct as the KPI trap,
+aimed at your relationship instead of a metric.
+
+## What this means for your job
+
+- **Name the pattern once, out loud, across documents — not the same correction three separate
+  times with no throughline.** "Right conclusion, reasoning off the page, and stops at the first
+  credible source" is a sentence she can carry into her next document herself.
+- **Ask questions on every review, every time, no matter how short on time you are.** Rewrite
+  instead of ask and you've traded one better document for a QA who trusts your red pen more
+  than her own judgment.
+- **Ask her to run the cold-read test on her own draft before it reaches you, and check that she
+  actually did.** Her self-check is the entire payoff of teaching her the instrument by name.
+- **Move the delegation ladder on evidence, in writing, in both directions — never on a hunch,
+  and never with drama.** A widening you can't point to a document for isn't delegation, it's
+  assumption. A narrowing with blame teaches concealment.
+- **Before you sign off on any KPI, ask whether it's measuring the system or measuring her.** If
+  a metric would make her look worse for reporting a real problem honestly, it's the wrong
+  metric.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: "FDA requires blood centers to track specific quality KPIs — deviation cycle time, CAPA aging, effectiveness-check pass rate." True or false?
+
+False. This curriculum's sources show no FDA regulation naming a specific quality KPI, formula,
+or dashboard metric for a blood establishment to track. What AABB's Organization QSE actually
+requires (paraphrase, no standard number) is a management review, on a defined cadence, using
+real inputs to produce real decisions — it doesn't specify which measures satisfy that, or how
+to calculate them. Which KPIs Lakeshore tracks, and their exact formulas — deviation cycle time
+in days, CAPA on-time rate as a percentage against a chosen target window — are Lakeshore's own
+management choices, built to satisfy a real requirement to review the system meaningfully, not a
+menu handed down by a regulator or a standard.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Your QA's third document in a row shows the same "stops at the first credible source" gap. You're behind on your own work this week. Fastest fix: rewrite the weak section yourself and send it back clean, or send it back with a question and wait for round two?
+
+Send it back with a question, even though it's slower this week. A rewrite fixes this one
+document and guarantees you'll be finding the same gap in her fourth, fifth, and sixth — because
+she never had to build the judgment that catches it herself. A question — "what's the source
+behind this claim, and does it actually cover the whole thing you're claiming?" — costs a day
+now and is the only move that changes what her *next* document looks like before it ever reaches
+your desk. The pattern only stops repeating once catching it is her habit, not yours.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Your QA proposes a new individual performance goal for herself: "Close 90% of deviations within 30 days of discovery." Reasonable KPI to approve?
+
+No — not as an individual target, even though it sounds disciplined. Deviation-related counts
+and timelines are system measures: useful for judging whether Lakeshore's quality system is
+healthy, dangerous the moment they become a personal number she's evaluated against. A 30-day
+personal closure target pressures her to close a deviation before the investigation is actually
+done, or to avoid opening a borderline one at all, just to protect the number. The system-level
+version — deviation cycle time, tracked as a trend — belongs in the management-review packet.
+Her own performance measures should track her rework rate and on-time delivery, not the raw
+count or speed of the events she's reporting on.
+:::
+
+## Where this goes next
+
+This closes `directing-the-quality-analyst`. Across six modules, you learned to read four kinds
+of document your QA produces — a deviation and CAPA packet, a validation impact assessment, a
+vendor risk assessment, and a management-review packet — with one shared instrument, the
+cold-read test; to sort what it finds with gap triage; to know which events have to reach you,
+and how fast, before a document ever exists to review; and now, to coach the person writing all
+of it, and to report what you're seeing upward in a way that shows trend and improvement instead
+of just a list of things that went wrong.
+
+Three places to go from here, each picking up something this course deliberately left alone.
+`fda-and-aabb-in-practice`, not yet built, is where audit-program design lives — an actual audit
+schedule, auditor independence and competency, evidence sampling — along with facing an FDA
+inspection or AABB assessment directly. `csv-and-becs` and `vendor-and-third-party-risk-management`,
+also not yet built, are where modules 4 and 5's decision-trail-only scope gets its full technical
+depth: validation methodology, GAMP 5 (Good Automated Manufacturing Practice), and IQ/OQ/PQ for
+the first; SOC 2 mechanics and vendor risk-tiering methodology for the second. And if what you
+want next is the complete version of the bridge this module only sketched — translating quality
+and IT metrics for an executive audience, and the full ITIL-to-QSE (Quality System Essential)
+crosswalk — that's `itsm-for-regulated-blood-services`, the track built to own that translation
+in full.
