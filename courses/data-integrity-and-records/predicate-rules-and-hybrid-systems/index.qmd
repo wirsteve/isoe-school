@@ -1,0 +1,395 @@
+---
+title: "Predicate Rules and Hybrid Systems"
+order: 60
+---
+
+## DI-0301 continues: two threads about one question
+
+Your Quality Analyst (QA) is back with the next piece of **DI-0301**, her data-integrity
+self-assessment. Two things are sitting on her desk, and they turn out to be the same question
+wearing two different coats.
+
+**Thread one** picks up something module 1 left hanging. Her first test case, **DED-0458** — the
+BECS (Blood Establishment Computer Software) donor-eligibility determination she ran through
+ALCOA (attributable, legible, contemporaneously recorded, original or a true copy, accurate) —
+passed "original or a true copy" today, because the live BECS record is what's being examined. But
+she flagged a nuance: what happens the day someone decides it's easier to just keep a printed
+report instead of going back into BECS? Is that printout still the real record, or a copy standing
+in for something it can't actually replace? She never answered that. She's back to answer it now.
+
+**Thread two** is new. DI-0301 has reached Fairview, one of Lakeshore's satellite collection sites,
+where donor-eligibility interviews are still conducted using a paper donor file — pen, clipboard,
+a physical folder per donor. For central reporting, certain fields from that paper file — donor
+ID, determination, date — get typed into BECS afterward, so Lakeshore's central systems can see
+Fairview's activity alongside every other site's. Your QA asks the obvious question, and gets an
+answer that worries her more than a wrong answer would have: nobody at Fairview, and nobody at
+Quality, had ever actually decided which of the two — the paper file or the BECS entry — is the
+**record of record**. The standard operating procedure (SOP) covering donor eligibility at
+Fairview doesn't say. It was just never written down.
+
+No citations yet. Just two open questions, both circling the same thing: when a record exists in
+two forms, which form is actually the one that counts?
+
+## Why this matters — and the ITSM bridge
+
+Here's the failure both threads are circling. A record that exists in two places, with nobody
+having decided which one is authoritative, isn't "extra safe because there are two copies." It's
+the opposite. If the two copies ever disagree — a re-keying error, a field skipped, a timestamp
+drift — nobody can say which one is wrong, because nobody decided in advance which one was ever
+supposed to be right. The ambiguity itself is the failure, long before any specific field turns out
+to be incorrect.
+
+You already carry the instinct for this. In configuration management, you've almost certainly lived
+the moment where a CMDB (configuration management database) says one thing about an asset — its
+owner, its location, its patch level — and a spreadsheet someone built years ago for a specific
+project says something else. Nobody intended for the spreadsheet to become anyone's reference, but
+it did, and now two "sources of truth" exist for the same fact. The fix in ordinary IT governance is
+always the same: designate the authoritative source, in writing, and treat the other one as a
+convenience view at best.
+
+Here's where the regulated world demands more. In ordinary IT, an authoritative-source disagreement
+between a CMDB and a spreadsheet is a process-hygiene problem — worth cleaning up, rarely urgent on
+its own. For a record a predicate rule already requires Lakeshore to keep, failing to document which
+format is authoritative isn't just untidy. It means nobody can say, with evidence, whether the
+record satisfies ALCOA or Part 11 (21 CFR Part 11, Electronic Records; Electronic Signatures) at
+all — because ALCOA's and Part 11's protections (review, retention, signature controls, audit-trail
+review) only mean something once you know which artifact they're supposed to be protecting. The
+ambiguity is the compliance gap. Not a future risk of one — the gap itself, today, as written.
+
+## The rule in plain English
+
+Three ideas untangle both of DI-0301's threads. Here they are, in order.
+
+**First: a "predicate rule" is just the regulation that already required the record to exist, before
+Part 11 ever entered the picture.** Part 11 doesn't invent new recordkeeping duties. It never tells
+Lakeshore it has to start keeping a record it wasn't already required to keep. What it does is set
+conditions for when an *electronic* version of a record some other regulation already demands can
+count as trustworthy and legally equivalent to paper. For DED-0458, the predicate rule is 606.160
+(21 CFR 606.160, Records) and 606.100 (21 CFR 606.100, Standard operating procedures) — the blood
+establishment current good manufacturing practice (CGMP) sections that already require a
+donor-eligibility determination to be documented, whether or not BECS exists. For the automated
+equipment behind it, 211.68 (21 CFR 211.68, Automatic, mechanical, and electronic equipment) plays
+the same role elsewhere in this curriculum. Part 11 rides on top of whichever predicate rule already
+required the record. It never stands alone.
+
+**Second: whether a given record counts as a "Part 11 record" at all depends on what you actually
+rely on, not just what format exists.** FDA's (Food and Drug Administration's) own guidance calls
+this the "narrow interpretation" of Part 11's scope, and it works like a fork in the road. If
+Lakeshore *chooses* to keep a predicate-rule-required record electronically in place of paper, and
+relies on that electronic version to actually perform the regulated activity (accepting or deferring
+a donor, releasing a unit), Part 11 applies to it. But if Lakeshore generates a paper record, that
+paper record satisfies everything the predicate rule requires, and the people doing the work rely on
+the *paper* record — not an electronic copy — to do their regulated work, FDA generally doesn't
+treat that as "using electronic records in lieu of paper records," and Part 11 doesn't reach the
+electronic copy the same way. Reliance decides the question. Format alone doesn't.
+
+**Third: not every record that looks the same on paper and on screen actually preserves the same
+information — and that's where FDA's "static" and "dynamic" distinction comes in.** A static record
+is fixed data: a paper form, a scanned image, a printout. A dynamic record is one whose format lets
+the user interact with the content — change a view, reprocess the underlying data, apply a different
+filter. A printout of a dynamic record isn't automatically equivalent to the dynamic record itself.
+It's a single frozen snapshot of something that was built to be examined more than one way. Whether a
+printout can stand in for the thing it was printed from depends on whether anything real was lost in
+the printing.
+
+Put the three together and both of DI-0301's threads answer the same way: figure out which format
+is actually relied on for the regulated activity, confirm whether that format is static or dynamic,
+and write the decision down. Don't leave it to whoever happens to open the file next.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| FDA 2003 Part 11 Scope and Application guidance, Introduction | "the 2003 Part 11 scope guidance, introduction" | Guidance tier. Defines "predicate rules" as the underlying Act, PHS Act, and FDA regulations other than Part 11 itself. | Names what 606.160 and 606.100 actually are to DED-0458 and Fairview's paper file: the rules that required the record before BECS or Part 11 entered the picture. |
+| FDA 2003 Part 11 Scope and Application guidance, § III.B.1, "Narrow Interpretation of Scope" | "section three-B-one, narrow interpretation" | Guidance tier. Distinguishes choosing electronic format in place of paper (Part 11 applies) from relying on a paper record that independently satisfies the predicate rule (Part 11 doesn't reach the electronic copy the same way). | The test DI-0301 applies to both DED-0458's printout question and Fairview's paper-versus-BECS question. |
+| FDA 2003 Part 11 Scope and Application guidance, § III.B.2, "Definition of Part 11 Records" | "section three-B-two" | Guidance tier. Recommends documenting, in advance, whether you rely on the electronic or paper record for each predicate-rule-required record — e.g., in an SOP. | What Fairview's SOP should have said and didn't; what DI-0301 now recommends Lakeshore write down for DED-0458 too. |
+| 21 CFR 11.2 | "eleven point two" | Regulation. Lets a person use electronic records/signatures in place of paper, for records kept internally (a) or submitted to FDA (b), provided Part 11's own requirements are met. | The regulatory hook the "narrow interpretation" passage cites directly — the choice Part 11 actually governs. |
+| FDA 2018 Data Integrity Q&A, Question 1d | "question one, part d" | Guidance tier. Defines "static" (fixed-data, like paper or an image) versus "dynamic" (format allows user interaction with the record's content). | Whether a DED-0458 printout, or Fairview's BECS re-entry, preserves what the live, dynamic BECS record actually is. |
+| FDA 2018 Data Integrity Q&A, Question 10 | "question ten" | Guidance tier. A paper printout can satisfy retention if it *is* the original record (e.g., some instruments); it cannot if the underlying electronic record is genuinely dynamic and the printout loses that. | Plants the question module 4 answers for Lakeshore's own legacy instrument — not resolved here. |
+
+## The actual text
+
+Start with the predicate-rule definition itself, quoted verbatim from
+`sources/fda-guidance/part-11-scope-and-application-2003.md`:
+
+> The underlying requirements set forth in the Act, PHS Act, and FDA regulations (other than part
+> 11) are referred to in this guidance document as predicate rules.
+
+"The Act" is the Federal Food, Drug, and Cosmetic Act; "PHS Act" is the Public Health Service Act.
+Everything else in that sentence is the point: *predicate rule* isn't a special category of
+regulation. It's just FDA's own shorthand for "whatever rule already required this record," as
+distinct from Part 11 itself.
+
+Now the narrow-interpretation passage, quoted in full:
+
+> Under the narrow interpretation of the scope of part 11, with respect to records required to be
+> maintained under predicate rules or submitted to FDA, when persons choose to use records in
+> electronic format in place of paper format, part 11 would apply. On the other hand, when persons
+> use computers to generate paper printouts of electronic records, and those paper records meet all
+> the requirements of the applicable predicate rules and persons rely on the paper records to
+> perform their regulated activities, FDA would generally not consider persons to be "using
+> electronic records in lieu of paper records" under §§ 11.2(a) and 11.2(b). In these instances, the
+> use of computer systems in the generation of paper records would not trigger part 11.
+
+Read that passage twice, because it's the whole module. It doesn't ask "does an electronic version
+of this record exist somewhere." It asks what Lakeshore actually *relies on* to do the regulated
+work. The same guidance backs that logic with a direct recommendation, quoted here from its
+"Definition of Part 11 Records" section:
+
+> We recommend that you determine, based on the predicate rules, whether specific records are part
+> 11 records. We recommend that you document such decisions.
+
+And again, more specifically, a few lines later:
+
+> Accordingly, we recommend that, for each record required to be maintained under predicate rules,
+> you determine in advance whether you plan to rely on the electronic record or paper record to
+> perform regulated activities. We recommend that you document this decision (e.g., in a Standard
+> Operating Procedure (SOP), or specification document).
+
+Notice the word "in advance." FDA isn't recommending Lakeshore figure this out after an inspector
+asks. It's recommending the decision get made and written down before the question ever comes up —
+exactly what didn't happen at Fairview.
+
+Here's the regulation that passage cites directly, 21 CFR 11.2, quoted in full from
+`sources/cfr/11.2.md`:
+
+> (a) For records required to be maintained but not submitted to the agency, persons may use
+> electronic records in lieu of paper records or electronic signatures in lieu of traditional
+> signatures, in whole or in part, provided that the requirements of this part are met.
+>
+> (b) For records submitted to the agency, persons may use electronic records in lieu of paper
+> records or electronic signatures in lieu of traditional signatures, in whole or in part, provided
+> that:
+>
+> (1) The requirements of this part are met; and
+>
+> (2) The document or parts of a document to be submitted have been identified in public docket No.
+> 92S-0251 as being the type of submission the agency accepts in electronic form. This docket will
+> identify specifically what types of documents or parts of documents are acceptable for submission
+> in electronic form without paper records and the agency receiving unit(s) (e.g., specific center,
+> office, division, branch) to which such submissions may be made. Documents to agency receiving
+> unit(s) not specified in the public docket will not be considered as official if they are submitted
+> in electronic form; paper forms of such documents will be considered as official and must
+> accompany any electronic records. Persons are expected to consult with the intended agency
+> receiving unit for details on how (e.g., method of transmission, media, file formats, and technical
+> protocols) and whether to proceed with the electronic submission.
+
+11.2(a) is the one that matters for DED-0458 and Fairview: neither record gets submitted to FDA
+directly, so the relevant permission is "persons may use electronic records in lieu of paper
+records... provided that the requirements of this part are met." Part 11 is the permission slip for
+a *choice* — it doesn't force the choice, and it doesn't create the underlying duty to keep the
+record in the first place. That duty is the predicate rule's.
+
+Now the static/dynamic distinction, quoted verbatim from
+`sources/fda-guidance/data-integrity-cgmp-qa-2018.md` (Question 1d):
+
+> For the purposes of this guidance, static is used to indicate a fixed-data record such as a paper
+> record or an electronic image, and dynamic means that the record format allows interaction between
+> the user and the record content. For example, a dynamic chromatographic record may allow the user
+> to change the baseline and reprocess chromatographic data so that the resulting peaks may appear
+> smaller or larger. It also may allow the user to modify formulas or entries in a spreadsheet used
+> to compute test results or other information such as calculated yield.
+
+A chromatographic record is one lab technique's output; Lakeshore doesn't run that equipment, but
+the pattern transfers directly. BECS's own donor-eligibility record is interactive in the same
+sense: someone can query it, re-sort a donor's history, filter by a different date range, or pull up
+a different view of the same underlying data. A printed report is one fixed snapshot of one of those
+views, taken at one moment. That's the entire difference between static and dynamic, made concrete.
+
+Last, the guidance's own answer on stand-alone instrument printouts, quoted in full (Question 10) —
+plant this one, don't resolve it yet:
+
+> A paper printout or static record may satisfy retention requirements if it is the original record
+> or a true copy of the original record (see §§ 211.68(b), 211.188, 211.194, and 212.60). During
+> data acquisition, for example, pH meters and balances may create a paper printout or static record
+> as the original record. In this case, the paper printout or static record, or a true copy, must be
+> retained (§ 211.180).
+>
+> However, electronic records from certain types of laboratory instruments—whether stand-alone or
+> networked—are dynamic, and a printout or a static record does not preserve the dynamic record
+> format that is part of the complete original record. For example, the spectral file created by
+> FT-IR (Fourier transform infrared spectroscopy) is dynamic and can be reprocessed. However, a
+> static record or printout is fixed and would not satisfy CGMP requirements to retain original
+> records or true copies (§ 211.180(d)). Also, if the full spectrum is not displayed in the printout,
+> contaminants may be excluded.
+
+Hold that passage. It's doing exactly one job in this module: showing you that "is a printout good
+enough" has two genuinely different right answers depending on the instrument, and that the
+difference turns on whether the instrument's electronic record is static or dynamic by nature — not
+on habit, or on which answer is more convenient. Lakeshore's own aging stand-alone laboratory
+instrument — the one DI-0301 hasn't reached yet — raises exactly this question. Which case it looks
+like, pH-meter or FT-IR, is next module's work, not this one's.
+
+### Resolving DED-0458's nuance, now
+
+Module 1 left this open on purpose. Here's the resolution, using this module's own framework
+instead of guessing.
+
+Apply the narrow interpretation first. Is DED-0458 a record a predicate rule requires? Yes — 606.160
+requires Lakeshore to keep donor-eligibility determination records. Today, the people who perform
+the regulated activity — deciding whether a donor is accepted — rely on the live BECS record, not a
+printout, to do it. Under the narrow-interpretation test, that means DED-0458 is a Part 11 record:
+Lakeshore chose to keep this predicate-rule-required record electronically, in place of paper, and
+relies on the electronic version.
+
+Now apply static versus dynamic. BECS's donor-eligibility record is dynamic — it's a row inside an
+interactive, queryable system, open to being re-examined with different views or filters, tied to
+its own audit trail and e-signature controls (the subject of last module). A printed report
+generated from it is static: one frozen view, taken once. If anyone later swaps the live record for
+that printout as "the" record of DED-0458, they'd be substituting a static snapshot for a dynamic
+original — the same substitution FDA's Question 10 above says can't be made safely for a genuinely
+dynamic record.
+
+So the resolution: the live BECS record — not any printout generated from it — has to remain the
+thing Lakeshore treats as original and record-of-record for DED-0458. That's not a new control to
+build. It's a decision to make and write down, per the 2003 guidance's own recommendation: document,
+in Lakeshore's SOP or specification for DED-0458's record type, that the electronic BECS record is
+the relied-upon original and any printout is a convenience copy only — not a substitute, and not
+itself acceptable as the retained record. The open ALCOA letter from module 1, "accurate," is still
+unresolved and still someone else's job. This one closes.
+
+### Fairview's paper file, resolved the same way
+
+Apply the same two tests to Fairview.
+
+**Narrow interpretation first.** What does the staff member at Fairview actually rely on, in the
+moment, to decide whether to accept or defer a donor? The paper file — that's the record they
+consult, write on, and act on during the interview itself. The BECS entry happens afterward, typed
+in from the paper file, for central reporting. Under the narrow-interpretation test, Fairview hasn't
+"chosen electronic format in place of paper" for the determination itself — it generates a paper
+record that satisfies the predicate rule (606.160, 606.100) and relies on that paper record to
+perform the regulated activity. By the guidance's own logic, that means Part 11 doesn't reach the
+BECS re-entry the same way it would reach a record Fairview genuinely replaced paper with.
+
+**Static versus dynamic, second.** The paper file is static by nature — ink on a form. The question
+worth asking about the BECS re-entry is whether anyone at Fairview, or centrally, ever actually
+*uses* that entry interactively — re-queries it, cross-checks it against another site's data,
+re-sorts it — or whether it only ever gets read back exactly as typed, as a static copy of the same
+facts the paper file already holds. DI-0301's honest finding: nobody had actually thought about it in
+these terms. The BECS entry exists. Whether it's functioning as a dynamic, independently reliable
+record or as a static mirror of the paper file was simply never decided.
+
+**The recommendation.** As practiced today — paper relied on for the actual donor-eligibility
+decision, BECS entry made afterward purely for central visibility — the paper file is Fairview's
+defensible record of record, and the BECS entry is a reporting copy. That's a workable answer, but
+only if Lakeshore does what the 2003 guidance recommends and actually writes it down: an SOP
+statement naming the paper file as record-of-record for Fairview's donor-eligibility determination,
+with the BECS entry documented explicitly as a derived reporting copy, not an independent original.
+Once that's written down, the protections this course has already built — ALCOA (module 1), audit
+trail review and signature controls (module 2) — apply in full to the paper file: it's the one that
+needs the retention, the controlled-document handling, the review attention appropriate to being the
+real record. The BECS copy still matters — a timing or accuracy gap in it could let a stale donor
+status reach another site before the cumulative record catches up, which is exactly the shape of
+problem this course picks up in full in module 6 — but it matters as a reporting feed, not as the
+thing ALCOA and Part 11 are protecting.
+
+One honest flag, for the choice that was logged: this module uses **Fairview** as the site still
+running a paper donor file, by the drafter's own choice, consistent with (and not contradicting)
+Fairview's and Brookfield's prior light appearances elsewhere in this curriculum.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB (Association for the Advancement of Blood & Biotherapies) assessor
+wouldn't ask whether Lakeshore has a predicate-rule policy. They'd ask for one specific thing: proof
+that Lakeshore knows, in writing, which format of each record it actually relies on.
+
+**For DED-0458 and records like it:** a specification or SOP line naming the live BECS record as the
+relied-upon original, not an assumption that "it's in BECS, so it's fine." A bad answer sounds like
+"we have both the system record and a printout, so we're covered." A good answer names one of them
+as authoritative and explains why the other is a convenience copy only.
+
+**For Fairview's donor file:** the same thing, in the other direction — an SOP statement that the
+paper file is the record of record, with the BECS entry named explicitly as a reporting copy. A bad
+answer sounds like "we keep both, so nothing's really at risk." A good answer can point to the line
+in the SOP that settles it, and show the paper file getting exactly the handling (retention, review,
+protection from alteration) a record of record requires.
+
+**For the choice itself:** evidence the decision was made *in advance*, not reconstructed after
+DI-0301 asked the question. An inspector who senses the answer was invented on the spot, to satisfy
+the question being asked, will probe harder — and should.
+
+## Common traps
+
+**"If a record exists on paper, Part 11 never applies, full stop."** Not quite. Part 11's reach
+depends on reliance, not on whether paper exists somewhere. If Lakeshore relied on an electronic
+record to perform the regulated activity and only generated a paper printout afterward for
+convenience, the narrow-interpretation passage above says the *electronic* record is still the one
+that counts — the paper copy existing doesn't retroactively exempt it. DED-0458 is the proof: BECS
+is what's relied on, so BECS is the Part 11 record, printout or no printout.
+
+**"Keeping a record in two formats is safer than keeping it in one."** DI-0301's Fairview finding
+refutes this directly. Two formats with no documented decision about which one is authoritative
+isn't redundancy — it's ambiguity waiting for the two copies to disagree. The fix isn't picking a
+format at random. It's documenting, per the 2003 guidance's own recommendation, which one Lakeshore
+actually relies on — and then making sure that one, specifically, gets the protection a real record
+of record requires.
+
+## What this means for your job
+
+- **Ask, for any record your team touches, "which format do we actually rely on to do the regulated
+  work?"** Not which format exists — which one people would actually act on if the two ever
+  disagreed. That answer is the Part 11 record, regardless of what else happens to exist alongside
+  it.
+- **Treat "we keep it in both formats" as an incomplete answer, not a reassuring one**, until someone
+  can show you the SOP line naming which one is authoritative. Fairview's gap wasn't that two formats
+  existed — it's that nobody had ever written down which one mattered.
+- **When a system is interactive — queryable, filterable, re-sortable — ask whether anyone has ever
+  swapped a printout in for it as "the" record.** That substitution is exactly where a dynamic
+  record quietly turns into a static one without anyone deciding it should.
+- **Push your QA to document the reliance decision in advance, not after an inspector asks.** FDA's
+  own guidance recommends this explicitly. A decision made under inspection pressure looks like what
+  it is.
+- **Remember predicate rules are what actually reaches a record — Part 11 is the layer on top.** If
+  someone tells you "Part 11 doesn't apply here, so we're fine," ask what predicate rule still
+  governs that record regardless. There's almost always one underneath.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Lakeshore's shipping desk keeps a paper temperature log, required by 21 CFR 600.15, that's physically checked before any shipment is released. For her own convenience, a supervisor also types up a spreadsheet summarizing each day's logged temperatures, used only to build a monthly chart for a staff meeting — nobody consults it to decide whether to release a shipment. Is that spreadsheet a "Part 11 record"?
+
+No — and this is a genuine application of the narrow-interpretation test, not a simple yes/no
+recall. The predicate rule (21 CFR 600.15) requires the temperature record to exist; the paper log
+is what satisfies that requirement and what shipping staff actually rely on to release product. The
+spreadsheet is a separate, derivative document — never relied on to perform the regulated activity,
+and not itself required to be maintained under the predicate rule. Under the guidance's own test,
+Part 11 reaches records required under predicate rules that are relied on in electronic format in
+place of paper. This spreadsheet is neither the required record nor the one relied on. It's a
+convenience copy, and FDA's narrow interpretation says the use of a computer to generate it doesn't
+trigger Part 11.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Someone on your team says, "A predicate rule is a special, stricter category of FDA regulation — stricter than an ordinary CFR section." Accurate?
+
+No, and this is worth correcting precisely. A predicate rule isn't a special or stricter category of
+anything. It's FDA's own shorthand — defined in its 2003 Part 11 guidance — for whatever
+regulation (211.68, 606.160, 606.100, or any other section of the Act, the PHS Act, or FDA's
+regulations) already required a record to exist, as distinct from Part 11 itself. 606.160 is a
+predicate rule the moment Part 11 is the thing being discussed; it's an entirely ordinary CGMP
+regulation the rest of the time. Calling something "a predicate rule" doesn't change what it
+requires — it just names its relationship to Part 11 in a given conversation.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: DI-0301 finds that nobody at Fairview had ever decided whether the paper donor file or the BECS re-entry is the record of record. Is that finding itself a Part 11 violation?
+
+Not exactly — and the distinction matters. Nothing in Part 11 or its predicate rules was
+necessarily being violated in substance: the paper file, as actually used, likely does satisfy
+606.160's and 606.100's requirements. The real finding is a documentation gap against FDA's own
+*recommendation* (guidance tier, "should" language) to decide and document, in advance, which format
+is relied on for each predicate-rule-required record. An undocumented decision isn't automatically a
+regulation violated — it's a recommendation not yet followed, which is exactly the kind of gap a
+self-assessment should catch and fix before it hardens into something worse, like the two copies
+actually disagreeing with nobody positioned to say which one is right.
+:::
+
+## Where this goes next
+
+DI-0301 now has a real answer for both of its open threads: DED-0458's live BECS record stays the
+documented original, and Fairview's paper file is the documented record of record, with its BECS
+entry named as a reporting copy. One question stays open on purpose — whether Lakeshore's own aging
+stand-alone laboratory instrument behaves more like FDA's pH-meter example or its FT-IR example.
+That's `legacy-systems-and-part-11-gaps`'s whole job next: apply FDA's own four-part legacy-system
+test to that specific instrument, and answer, for Lakeshore's own equipment, the question this
+module only planted.

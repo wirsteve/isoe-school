@@ -1,0 +1,24 @@
+---
+title: "Resources"
+order: 61
+---
+
+A few primary sources to keep handy, each checked to load before being listed here.
+
+- **FDA guidance: *Part 11, Electronic Records; Electronic Signatures — Scope and Application*
+  (2003)** — <https://www.fda.gov/regulatory-information/search-fda-guidance-documents/part-11-electronic-records-electronic-signatures-scope-and-application>.
+  The guidance this module's predicate-rule definition, narrow-interpretation passage, and
+  documentation recommendation all come from. Use it when you need the full context around any of
+  those quotes, or when you want to read the legacy-system and copies-of-records sections ahead of
+  next module.
+
+- **FDA guidance: *Data Integrity and Compliance With Drug CGMP: Questions and Answers* (2018)** —
+  <https://www.fda.gov/regulatory-information/search-fda-guidance-documents/data-integrity-and-compliance-drug-cgmp-questions-and-answers>.
+  Source for the static/dynamic distinction (Question 1d) and the paper-printout-from-stand-alone-instrument
+  answer (Question 10) this module quotes. Also where modules 1 and 2's ALCOA and audit-trail
+  material came from, if you want one document covering all three.
+
+- **Cornell Legal Information Institute (LII): 21 CFR § 11.2** —
+  <https://www.law.cornell.edu/cfr/text/21/11.2>. A clean, citable, non-FDA rendering of the exact
+  regulation quoted in full above — useful to hand a colleague who wants to read 11.2 on its own,
+  outside this course's framing.
