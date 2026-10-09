@@ -55,7 +55,7 @@ platform, OS, or cloud-platform brand.
 | # | Slug | Finish line | `order:` | Status |
 |---|---|---|---|---|
 | — | (syllabus) | — | 103 | Published |
-| 1 | `supplier-qualification-and-risk-tiering` | Apply AABB's QSE 4 (Supplier and Customer Issues) to a real vendor decision: which vendors need deep qualification and which don't, and why that's risk-tiering, not a one-size-fits-all checklist. | 104/105 | Not started |
+| 1 | `supplier-qualification-and-risk-tiering` | Apply AABB's QSE 4 (Supplier and Customer Issues) to a real vendor decision: which vendors need deep qualification and which don't, and why that's risk-tiering, not a one-size-fits-all checklist. | 104/105 | Published |
 | 2 | `reading-a-soc-2-report` | Tell a Type I report from a Type II, name the five Trust Services Criteria, and read a report's complementary-user-entity-controls section and bridge letter for what they mean for Lakeshore. | 106/107 | Not started |
 | 3 | `reading-an-iso-27001-certificate` | Know what a certificate actually certifies, and read a Statement of Applicability to see which Annex A control domains a vendor claims and which it excludes, with a stated reason. | 108/109 | Not started |
 | 4 | `business-associate-agreements` | Walk the actual HIPAA text requiring a BAA's contract terms — what it obligates a vendor to do, report, and return or destroy. | 110/111 | Not started |
@@ -234,3 +234,63 @@ as every prior course) — already done as part of Phase 2 scoping below.
   SKILL.md`'s running order-counter updated to 114 (this course used 103-113, verified by grep
   with no duplicates before assigning).
   Next: build m1, `supplier-qualification-and-risk-tiering`.
+
+- **2026-10-09**: Module 1, `supplier-qualification-and-risk-tiering` (`order: 104/105`), drafted
+  and published. AABB's QSE 4 named and themed only, no Standards text quoted, no standard number
+  invented — this module makes that limitation explicit to the learner instead of glossing over
+  it (QSE 4's own title drift between the 2021 proposed framework, "Supplier and Customer
+  Agreements," and the 2023/34th-edition proposal, "Suppliers and Customers," is used as the
+  teaching point for why no precise sentence gets attributed to AABB). One-line callback to
+  `categorize-and-select-controls`'s confidentiality/integrity/availability framing included,
+  not redeveloped.
+
+  **The tiering scheme built — locked for modules 2-5 to build on:**
+  Three tiers (High / Medium / Low), decided by four questions asked in order for any vendor:
+  (1) **Data touch** — does the vendor touch PHI/e-PHI, directly or indirectly/adjacently, at
+  all; (2) **System criticality** — does the vendor support a validated system (BECS-adjacent) or
+  the eQMS; (3) **Access level** — logical/data access into Lakeshore's environment, or physical-
+  only/no access; (4) **Blast radius** — how far a failure of the vendor's own security or
+  availability would spread (one shipment/lot, or multi-site/data-confidentiality).
+  - **High** = a meaningful "yes" on data touch or system criticality, *paired with* logical/data
+    access, where blast radius reaches across sites or touches data confidentiality directly. Gets
+    a full qualification file: documented tier decision, the vendor's own assurance evidence (SOC
+    2/ISO 27001 — m2/m3), contract terms reviewed specifically for its risk (BAA — m4).
+  - **Medium** = no data access and no validated-system/eQMS touch, but the vendor's product or
+    service still bears on a regulated process or product quality (a failure could plausibly
+    produce a deviation/CAPA). Gets a lighter record: confirmation of what's supplied, a basic
+    quality agreement where relevant, periodic review.
+  - **Low** = no data access, no validated-system touch, no plausible path to a quality or
+    compliance consequence — failure is purely operational (delay, cost). Gets a basic vendor
+    record only.
+
+  **Vendor placements (all locked facts for m2-m5):**
+  - **The device-management platform vendor — High.** Data touch: yes (manages devices carrying
+    e-PHI-adjacent extracts off-site, per `healthcare-security-and-privacy`'s own locked
+    Brookfield facts — not reopened or altered here). System criticality: adjacent to BECS (the
+    platform isn't BECS itself, but manages devices that carry BECS-adjacent extracts). Access
+    level: logical/data access (enrollment, check-in telemetry, remote lock/wipe, migration of
+    account data). Blast radius: multi-site, both confidentiality and availability exposure. All
+    four questions land high-side — reasoned as having always been High tier; the file simply
+    never existed until today.
+  - **A reagent/consumables supplier (invented, generic) — Medium.** No data access, no validated-
+    system/eQMS touch, but reagent quality bears directly on testing accuracy (a GMP-governed
+    process) — a bad lot could produce an invalid test run and a vendor-caused deviation/CAPA.
+    Blast radius bounded to a lot/site, not multi-site, not a confidentiality event. The
+    instructive middle case: no data touch, still not Low.
+  - **A facilities/janitorial services vendor (invented, generic) — Low, with a named condition.**
+    No data/system access; physical presence limited to common areas (not server rooms or
+    restricted equipment areas) as currently contracted. Blast radius: operational only (missed
+    cleaning, scheduling delay). Explicit condition recorded: if this vendor's access ever expands
+    to a restricted area, re-run all four questions — Low isn't assumed permanent.
+  - **An office-supplies vendor (invented, generic) — Low.** No data/system access beyond a
+    delivery dock; blast radius is a delayed shipment. The clean, uncontroversial Low case.
+
+  Files written: `courses/vendor-and-third-party-risk-management/supplier-qualification-and-risk-
+  tiering/index.qmd` (lesson, ~3,470 words including front matter/markup) and
+  `.../resources.qmd`. Resources link AABB's "Updated Quality Systems Essentials" page and the
+  proposed 34th-edition Standards PDF (both curl-verified 200 this session; the first page's own
+  un-redirected URL 301-redirects to the second, confirmed via `curl -L`), plus an internal link
+  back to `healthcare-security-and-privacy/investigating-a-healthcare-data-incident` for the
+  incident this module reuses. No new regulatory source fetched — QSE 4 reused entirely from the
+  already-saved `sources/aabb/qse-framework.md`; no change to `sources/INDEX.md` needed.
+  Next: build m2, `reading-a-soc-2-report`.
