@@ -271,17 +271,19 @@ has no `plans/<slug>.md` file until its first session.
 | `csv-and-becs` | 7 / 7 | Done |
 | `data-integrity-and-records` | 6 / 6 | Done |
 | `fda-and-aabb-in-practice` | 6 / 6 | Done |
-| `grc-frameworks-and-risk-management` | 1 / 5 | In progress |
+| `grc-frameworks-and-risk-management` | 2 / 5 | In progress |
 | `healthcare-security-and-privacy` | 0 / 5 | Not started |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `grc-frameworks-and-risk-management` module 2, `categorize-and-select-controls`
-(Track 4). Module 1 is published — see `plans/grc-frameworks-and-risk-management.md`'s progress
+**Next up:** `grc-frameworks-and-risk-management` module 3, `implement-and-assess-controls`
+(Track 4). Modules 1-2 are published — see `plans/grc-frameworks-and-risk-management.md`'s progress
 log for the locked scenario facts (the eQMS, Lakeshore's new three-site electronic
-quality-management system, now being run through NIST RMF's structure voluntarily; the decision
-not to reopen BECS/`csv-and-becs`/`data-integrity-and-records` locked facts) that module 2 builds
-on. `fda-and-aabb-in-practice` is now 6/6 and complete. See `plans/fda-and-aabb-in-practice.md`'s
+quality-management system, now being run through NIST RMF's structure voluntarily; categorized
+moderate-impact; selected/tailored control families named — account and identity management,
+audit, physical and environmental protection; the decision not to reopen
+BECS/`csv-and-becs`/`data-integrity-and-records` locked facts) that module 3 builds on.
+`fda-and-aabb-in-practice` is now 6/6 and complete. See `plans/fda-and-aabb-in-practice.md`'s
 progress log for module 6's locked outcomes: DED-0458's "accurate" ALCOA letter is now CLOSED (an
 independent, dated verification confirmed BECS's stored donor-eligibility determination against
 the donor's own original screening responses), the deferred-donor-record cadence question is now

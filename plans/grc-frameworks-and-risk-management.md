@@ -61,7 +61,7 @@ or cloud-platform brand for the eQMS — describe it generically.
 |---|---|---|---|---|
 | — | (syllabus) | — | 81 | Published |
 | 1 | `risk-frameworks-side-by-side` | Put NIST RMF, ISO 31000, and ICH Q9 next to each other and show they're the same underlying motion in three different vocabularies, issued by three very different kinds of body. | 82/83 | Published |
-| 2 | `categorize-and-select-controls` | Apply RMF's Categorize and Select steps to the eQMS: determine its impact level, then select and tailor a control set sized to that, not a one-size-fits-all checklist. | 84/85 | Not started |
+| 2 | `categorize-and-select-controls` | Apply RMF's Categorize and Select steps to the eQMS: determine its impact level, then select and tailor a control set sized to that, not a one-size-fits-all checklist. | 84/85 | Published |
 | 3 | `implement-and-assess-controls` | Build the selected controls, then run an independent assessment of whether they actually work. | 86/87 | Not started |
 | 4 | `authorize-and-monitor` | Make and document the authorization decision (accepting a named residual risk), and build the ongoing monitoring plan — say in one sentence why this is the same decision as a validation release and periodic review. | 88/89 | Not started |
 | 5 | `poams-and-capas` | Track every control gap to closure on a POA&M, then place it next to a CAPA and show they do the identical job in two vocabularies. | 90/91 | Not started |
@@ -246,3 +246,34 @@ as every prior course) — already done as part of Phase 2 scoping below.
   `csv-and-becs`/`data-integrity-and-records` locked facts touched; Fairview's paper practice
   referenced only in passing, not resolved. Word count: ~4,100 words for the lesson page.
   Next: build m2, `categorize-and-select-controls`.
+
+- **2026-10-09**: Module 2, `categorize-and-select-controls` (`order: 84/85`), built and published.
+  Scenario: the QA and systems administrator surface three concrete eQMS failure questions (a CAPA
+  record altered undetected after closure; an open CAPA visible across sites before it's ready; the
+  eQMS or a specific audit log unreachable the week an AABB assessor asks for it) — the
+  confidentiality/integrity/availability question named directly, not abstractly. Quoted verbatim
+  from `sources/nist/sp-800-37r2-excerpt.md`: Categorize's purpose statement (reused from m1, now
+  actually applied) and Select's one-line action (the same line already quoted in full as part of
+  m1's Figure 2 passage, reused here alone per the plan's instruction not to requote the whole
+  passage). Categorization reached: **moderate-impact** — reasoned, not asserted, on the grounds
+  that the eQMS's worst plausible failure (an undetected altered CAPA record, cross-site exposure of
+  an in-progress record, or an unreachable audit log during an active assessment) is serious
+  regulatory/reputational exposure across all three sites, but short of the loss-of-life or
+  organization-ending stakes a true high-impact system would carry; explicitly flagged that a
+  reasonable reviewer could argue high-impact instead, and named one concrete condition (the eQMS
+  becoming the *sole* system of record with no other copy of a given entry) that would be real
+  grounds to revisit the categorization upward. Control families named as concepts only, per the
+  saved excerpt's own reference to SP 800-53 (never fetched, no control numbers invented): account
+  and identity management (mapped to the confidentiality/access question and the systems
+  administrator's module-1 access-control worry), audit/logging (mapped to the integrity question —
+  detecting, not just preventing, alteration), and physical and environmental protection (mapped to
+  the availability question, naming wherever the eQMS's infrastructure sits generically). Explicit
+  callback (one paragraph, not re-argued) that RMF/categorization/ATO remain Lakeshore's own
+  voluntary methodology, never a federal requirement. No `csv-and-becs`/`data-integrity-and-records`
+  locked facts touched. Does not own control implementation/assessment (m3) or the authorization
+  decision (m4) — neither was drafted here. Sourcing verified this session: NIST PDF curl-checked
+  directly, returns HTTP 200 (same URL as m1, re-verified, not re-fetched as a new source — no new
+  independent source was fetched this module since all new content was application of the already-
+  saved excerpt). Word count: ~3,100 words for the lesson page (markdown word count including front
+  matter and headings).
+  Next: build m3, `implement-and-assess-controls`.
