@@ -269,18 +269,17 @@ has no `plans/<slug>.md` file until its first session.
 | `quality-system-essentials` | 7 / 7 | Done |
 | `directing-the-quality-analyst` | 6 / 6 | Done |
 | `csv-and-becs` | 7 / 7 | Done |
-| `data-integrity-and-records` | 3 / 6 | In progress |
+| `data-integrity-and-records` | 4 / 6 | In progress |
 | `fda-and-aabb-in-practice` | 0 / 6 | Not started |
 | `grc-frameworks-and-risk-management` | 0 / 5 | Not started |
 | `healthcare-security-and-privacy` | 0 / 5 | Not started |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `data-integrity-and-records` module 4, `legacy-systems-and-part-11-gaps` (Track 3).
-Modules 1-3 are published — see `plans/data-integrity-and-records.md`'s progress log for the
-locked scenario facts (DI-0301's self-assessment, DED-0458's now-fully-resolved ALCOA findings,
-Fairview's resolved paper-record-of-record decision) and the planted pH-meter/FT-IR
-legacy-instrument question module 4 must answer.
+**Next up:** `data-integrity-and-records` module 5, `retention-across-record-types` (Track 3).
+Modules 1-4 are published — see `plans/data-integrity-and-records.md`'s progress log for the
+locked scenario facts, including LAB-07's now-resolved four-part legacy-system test and its
+split pH-meter/FT-IR finding, that module 5 builds on.
 `csv-and-becs` is fully built and published (7/7 modules) — see `plans/csv-and-becs.md` for the
 complete course, including module 6's VIA-0842 verdict and module 7's closing of its last two
 open interface items. Once `data-integrity-and-records` and

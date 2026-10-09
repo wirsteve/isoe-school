@@ -1,0 +1,26 @@
+---
+title: "Resources"
+order: 63
+---
+
+A few primary sources to keep handy, each checked to load before being listed here.
+
+- **FDA guidance: *Part 11, Electronic Records; Electronic Signatures — Scope and Application*
+  (2003)** — <https://www.fda.gov/regulatory-information/search-fda-guidance-documents/part-11-electronic-records-electronic-signatures-scope-and-application>.
+  The guidance this module's four-part legacy-system test, its changed-system sentence, and its
+  "Copies of Records" section all come from. Use it when you want the full "Legacy Systems" and
+  "Copies of Records" sections in context, alongside the predicate-rule material last module
+  already pulled from the same document.
+
+- **FDA guidance: *Data Integrity and Compliance With Drug CGMP: Questions and Answers* (2018)** —
+  <https://www.fda.gov/regulatory-information/search-fda-guidance-documents/data-integrity-and-compliance-drug-cgmp-questions-and-answers>.
+  Source for the static/dynamic distinction and the pH-meter/FT-IR comparison (Question 10) module
+  3 quoted in full and this module applies directly to Lakeshore's own legacy instrument. Reread
+  Question 10 here if you want the original pH-meter and FT-IR language side by side with this
+  module's own resolution.
+
+- **Cornell Legal Information Institute (LII): 21 CFR § 11.10** —
+  <https://www.law.cornell.edu/cfr/text/21/11.10>. A clean, citable, non-FDA rendering of the full
+  closed-systems control list, including paragraph (b) (the copy-generation requirement this
+  module's "Copies of Records" section names, but doesn't re-quote in full) and paragraph (e) (the
+  audit-trail requirement module 2 already reconciled with the predicate rule underneath it).

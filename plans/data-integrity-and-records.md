@@ -83,7 +83,7 @@ curriculum's standing convention.
 | 1 | `alcoa-and-data-integrity` | Define data integrity the way FDA's own guidance does (ALCOA, verified, five letters), distinguish it from "ALCOA+" (industry/international term, used carefully), and apply both to a real Lakeshore electronic record. | 56/57 | Published |
 | 2 | `audit-trails-and-esignatures` | Review an audit trail the way an inspector would (who reviews it, how often, what a real review looks like versus a rubber stamp) and name the specific controls (11.50, 11.70, 11.100, 11.200, 11.300) an e-signature has to satisfy to stand in for a handwritten one. | 58/59 | Published |
 | 3 | `predicate-rules-and-hybrid-systems` | Explain what a predicate rule is and how it decides whether a given record is a "Part 11 record" at all, and judge whether a system mixing paper and electronic records is handling that mix defensibly. | 60/61 | Published |
-| 4 | `legacy-systems-and-part-11-gaps` | Apply FDA's own four-part legacy-system test to a system older than Part 11, and say what has to stay true for its enforcement-discretion status to hold. | 62/63 | Not started |
+| 4 | `legacy-systems-and-part-11-gaps` | Apply FDA's own four-part legacy-system test to a system older than Part 11, and say what has to stay true for its enforcement-discretion status to hold. | 62/63 | Published |
 | 5 | `retention-across-record-types` | Go beyond 606.160(d)'s product-record clock to the records that don't share its schedule, and say what "retain the record" requires for a dynamic electronic record versus a static printout. | 64/65 | Not started |
 | 6 | `multi-site-governance-and-donor-identification` | Explain how Lakeshore keeps one donor's identity and eligibility history consistent across a central system and every satellite site, using 606.160(e)'s cumulative deferred-donor record, and say what breaks if two sites' records disagree. | 66/67 | Not started |
 
@@ -367,3 +367,22 @@ confirmed by grep with no duplicates, same discipline as every prior course).
   the BECS re-entry a documented reporting copy only), contingent on writing that choice into
   Fairview's SOP. No `csv-and-becs` locked fact referenced or altered.
   Next: build m4, `legacy-systems-and-part-11-gaps`.
+- **2026-10-09**: Module 4, `legacy-systems-and-part-11-gaps`, drafted (via subagent), audited,
+  and published (`courses/data-integrity-and-records/legacy-systems-and-part-11-gaps/index.qmd`
+  and `resources.qmd`, `order: 62`/`63`, ~4,280 words). Quotes (the four-part legacy-system test,
+  the changed-system sentence, footnote 7's "legacy system" definition, and the "Copies of
+  Records" section) all verified verbatim against
+  `sources/fda-guidance/part-11-scope-and-application-2003.md`. All three `resources.qmd` links
+  curl-verified 200. **New locked fact:** Lakeshore's legacy instrument is **Asset LAB-07**, a
+  benchtop analyzer. Runs the four-part test against it: criteria 1-2 (operational/compliant
+  before 1997) pass cleanly on surviving purchase/logbook records; criterion 3 (currently
+  compliant) passes on a reasoned basis (two thermal print-head swaps didn't affect its
+  measurement method); **criterion 4 (documented evidence/justification of fitness for use) is
+  left as a genuine, actionable gap** — "it works" is not "there is documented evidence," modeled
+  as a fixable finding, not a violation. **Resolves module 3's planted pH-meter-vs-FT-IR
+  question with a split finding**: LAB-07's daily printout is the pH-meter case (the printout
+  genuinely is the original), but a dormant, long-unused data-export/reprocessing mode is
+  FT-IR-like (genuinely dynamic) — recommends documenting the daily printout as record-of-record
+  and either prohibiting the export mode for QC use or treating its output as its own dynamic
+  record if ever activated. No `csv-and-becs` or earlier-module locked fact altered.
+  Next: build m5, `retention-across-record-types`.
