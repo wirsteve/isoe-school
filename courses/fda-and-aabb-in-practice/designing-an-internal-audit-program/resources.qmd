@@ -1,0 +1,35 @@
+---
+title: "Resources"
+order: 78
+---
+
+This module cites no new regulation, guidance, or standard — it's industry practice,
+described in this course's own words, the same handling this curriculum has always given
+GAMP 5 (Good Automated Manufacturing Practice). Nothing below is quoted anywhere in the
+lesson; these are general background links for further reading, not verbatim-quoted
+sources. All three were checked and loading at the time this page was written, except as
+noted for the one link blocked by that site's own bot protection in this environment
+(see the note on it below) — confirmed instead through a public web archive snapshot.
+
+- **[ISO 19011:2018, "Guidelines for auditing management systems"](https://www.iso.org/standard/70017.html)**
+  — ISO's own public listing page for its general auditing-guidance standard: scope,
+  structure, and purchase information for the standard itself (the standard's full text
+  is a paid publication; this page describes it, not reproduces it). ISO's own site
+  returned a bot-protection block (HTTP 403) to this session's proxy rather than a normal
+  response — confirmed live and loading instead through a public web-archive snapshot
+  taken recently. Worth a direct check yourself before relying on it. Useful for the
+  general shape of a formal, independence-and-competency-driven audit program in a
+  different industry's own words — nothing on this page is blood-establishment-specific,
+  and nothing from it is cited or quoted in this lesson.
+
+- **[AABB: Updated Quality Systems Essentials](https://www.aabb.org/standards-accreditation/standards/about-aabb-standards/updated-quality-systems-essentials)**
+  — reused from `internal-audits-and-management-review` and `the-aabb-assessment-process`.
+  AABB's own public page naming QSE (Quality System Essential) 8, Assessments: Internal
+  and External — the drawer this whole module's program design sits under, named only,
+  no Standards text quoted. Read it for the theme, not a section number.
+
+- **[ICH Q9(R1), Quality Risk Management](https://database.ich.org/sites/default/files/ICH_Q9%28R1%29_Guideline_Step4_2023_0126_0.pdf)**
+  (PDF, final version adopted 18 January 2023) — reused from `quality-risk-management`.
+  Annex I is the source of Risk Ranking and Filtering, the tool this module's risk-based
+  audit scheduling section calls back to directly rather than re-deriving. Read it if you
+  want the actual guideline behind that one-line callback, not this lesson's paraphrase.

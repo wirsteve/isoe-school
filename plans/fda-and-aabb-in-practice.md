@@ -73,7 +73,7 @@ brand — all already-established conventions this course continues.
 | 2 | `warning-letters-and-recalls` | Explain when a 483 escalates into a Warning Letter, and sort any product problem into the right recall classification (Class I, II, or III) using FDA's own health-hazard test. | 71/72 | Published |
 | 3 | `filing-a-biological-product-deviation-report` | Pick up exactly where `deviations-and-nonconformances` left off (the reportability determination) and finish the job: file the report on the right form, to the right office, in the right window. | 73/74 | Published |
 | 4 | `the-aabb-assessment-process` | Walk Lakeshore through both phases of an AABB reassessment (self-assessment and on-site) and say precisely what an assessor expects that an FDA investigator doesn't. | 75/76 | Published |
-| 5 | `designing-an-internal-audit-program` | Build the program an internal audit needs to actually hold up: auditor independence/competency, risk-based scheduling, real evidence sampling, and a nonconformance grading scale with teeth. | 77/78 | Not started |
+| 5 | `designing-an-internal-audit-program` | Build the program an internal audit needs to actually hold up: auditor independence/competency, risk-based scheduling, real evidence sampling, and a nonconformance grading scale with teeth. | 77/78 | Published |
 | 6 | `mock-inspections-and-presenting-it-becs-evidence` | Put everything this course (and `csv-and-becs`/`data-integrity-and-records`) taught in front of a reviewer who's actually in the room, and resolve, out loud, what's still open from `data-integrity-and-records`. | 79/80 | Not started |
 
 The next course after this one continues at **81**. Update `create-course`'s SKILL.md when this
@@ -385,3 +385,32 @@ as every prior course).
   still where that gets decided. No `csv-and-becs` or `data-integrity-and-records` locked fact
   altered.
   Next: build m5, `designing-an-internal-audit-program`.
+- **2026-10-09**: Module 5, `designing-an-internal-audit-program`, drafted (via subagent),
+  audited, and published (`courses/fda-and-aabb-in-practice/designing-an-internal-audit-
+  program/index.qmd` and `resources.qmd`, `order: 77`/`78`, ~3,450 words). No new regulation
+  introduced — industry practice only (ASQ CQA body-of-knowledge themes, described in this
+  course's own words, no section/exam-objective number anywhere). The one regulatory sentence
+  reused (606.100(c)'s "thorough investigation... shall be made and recorded") verified verbatim
+  against `sources/cfr/606.100.md`. Two of three `resources.qmd` links curl-verified 200 (AABB
+  QSE page, ICH Q9(R1) PDF); the third (ISO 19011:2018's listing page) returns HTTP 403 from
+  this session's own proxy — confirmed as ISO's own Cloudflare bot-protection, not a dead link,
+  via a live, recently-archived (2026-09-28) Wayback Machine snapshot; the resources page
+  discloses this itself. **Scenario:** opens immediately after module 4's AABB reassessment
+  closed; the Director asks why Lakeshore's own internal audit program didn't catch LAB-07's
+  gap before AABB's self-assessment tool and DI-0301 both did. Built all four required pieces
+  concretely: an auditor-independence rule (can't audit your own process/site/signed record,
+  with an outside/contracted-auditor release valve), a two-part competency record (process
+  knowledge + audit technique), risk-based scheduling using Fairview's paper-file practice and
+  LAB-07/legacy-equipment as the two concrete higher-risk subjects, a sampling-principle
+  discussion using Fairview's paper records as the worked example, and a three-tier
+  **Critical/Major/Minor** nonconformance scale (Lakeshore's own chosen labels/timelines — 30-day
+  Major clock, 90-day Minor clock, three-Minors-escalate-to-Major rule) with LAB-07 run back
+  through it as a hypothetical **Major**, explicitly framed as not reopening the closed finding.
+  One-line callbacks only (not redeveloped) to `directing-the-quality-analyst`'s QA-independence
+  principle and cold-read test, and to `quality-risk-management`'s risk ranking and filtering.
+  **The deferred-donor-record cadence question was not mentioned except as a named forward
+  pointer to module 6, where it still gets decided** — remains "under internal review." No
+  `csv-and-becs` or `data-integrity-and-records` locked fact altered; LAB-07 stays closed exactly
+  as module 4 left it.
+  Next: build m6, `mock-inspections-and-presenting-it-becs-evidence` — this course's final
+  module.
