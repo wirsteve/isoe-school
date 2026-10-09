@@ -72,7 +72,7 @@ vendor.
 | 1 | `information-governance-in-a-covered-entity` | Answer whether Lakeshore is a HIPAA covered entity, reasoned from HIPAA's own definitions, and introduce the incident this course's remaining four modules carry forward. | 93/94 | Published |
 | 2 | `the-hipaa-privacy-rule` | Apply the actual rules governing when a donor's PHI can be used or disclosed without authorization, when it can't, and the specific exception covering an FDA-regulated recall/BPDR disclosure. | 95/96 | Published |
 | 3 | `security-rule-safeguards-and-part-11` | Map HIPAA's administrative/physical/technical safeguards against Part 11's own controls — genuine overlaps and one genuine structural difference (required vs. addressable). | 97/98 | Published |
-| 4 | `breach-notification-and-dual-reporting` | Run the incident through HIPAA's breach test and 60-day clock side by side with FDA's 45-day BPDR clock, and say honestly when one incident triggers both. | 99/100 | Not started |
+| 4 | `breach-notification-and-dual-reporting` | Run the incident through HIPAA's breach test and 60-day clock side by side with FDA's 45-day BPDR clock, and say honestly when one incident triggers both. | 99/100 | Published |
 | 5 | `investigating-a-healthcare-data-incident` | Walk the investigation a HIPAA breach demands — scope, root cause, the four-factor compromise assessment — to the closing decision. | 101/102 | Not started |
 
 The next course after this one continues at **103**. Update `create-course`'s SKILL.md when this
@@ -428,3 +428,101 @@ as every prior course) — already done as part of Phase 2 scoping below.
   device at the relevant time). Compare HIPAA's 60-day clock against 606.171's 45-day BPDR clock
   (reference only, already taught in `fda-and-aabb-in-practice`) and say honestly when one
   incident could trigger both.
+
+- **2026-10-09**: Module 4, `breach-notification-and-dual-reporting`, drafted and published
+  (`courses/healthcare-security-and-privacy/breach-notification-and-dual-reporting/index.qmd`,
+  `order: 99`, ~5,730 words including front matter — longer than this curriculum's usual
+  2,000-4,000-word target because this module's job required quoting 164.402, 164.404, 164.406,
+  164.408, and 164.414 **all in full**, per this plan's own instruction, not excerpted clauses;
+  the verbatim CFR text alone runs well over half that total, the same pattern module 3 set;
+  `resources.qmd`, `order: 100`). All quotes verbatim from
+  `sources/cfr/45-164-breach-notification-excerpt.md` — no other source used, no citation or
+  clause number invented. 164.412 (law-enforcement delay) named only as an existing exception to
+  the 60-day clock, never quoted or its mechanics described, per this plan's own house rule.
+
+  **The four-factor test, run honestly against the locked facts — this is the module's central,
+  locked output, and modules 5 depends on it stated exactly this way:**
+  - **Factor 1 (nature/extent of PHI, re-identification likelihood) — weighs against Lakeshore.**
+    The six-field extract (name, date of birth, donor ID, eligibility determination + date,
+    deferral reason code, lifetime donation count) is a meaningful re-identification risk, not a
+    trivial one — name plus date of birth paired with an eligibility/deferral determination is a
+    sensitive, identifiable combination.
+  - **Factor 2 (who the unauthorized person was/disclosure target) — unknown, does not favor low
+    probability of compromise.** The laptop is lost, not confirmed stolen by an identified actor;
+    whoever has it, if anyone, is unknown. An unidentified, unaccountable recipient cannot
+    support a low-probability finding.
+  - **Factor 3 (was PHI actually acquired or viewed) — genuinely unresolved, the pivotal factor.**
+    Carries forward module 3's locked encryption-verification gap directly: had encryption been
+    confirmed active, this factor would weigh strongly toward low probability of compromise
+    (unreadable data isn't meaningfully "acquired or viewed"). Because encryption status is
+    genuinely unconfirmed (not confirmed either way — the device-management migration left the
+    status field "not reported"), this factor cannot be scored in Lakeshore's favor. An unresolved
+    factor does not rebut a presumption.
+  - **Factor 4 (extent of mitigation) — mixed.** Real mitigation in motion (prompt loss report,
+    starting the 164.404(a)(2) discovery clock; a central device-management platform plausibly
+    capable of a remote lock/wipe command — introduced as a reasoned inference consistent with
+    established facts, with the Director's own open action item to confirm a command was actually
+    issued and received, not assumed). Real gaps remain: device not recovered, encryption status
+    still unconfirmed.
+  - **THE DETERMINATION, stated exactly, for module 5 to carry forward without alteration:**
+    164.402(2)'s presumption of breach has **NOT been rebutted** on the facts currently known.
+    Lakeshore cannot demonstrate a low probability of compromise today — factor 3's unresolved
+    status (directly inherited from module 3's unresolved encryption-verification gap) is alone
+    sufficient to prevent rebuttal, regardless of factor 4's partial mitigation. **This incident
+    is therefore being treated AS a reportable breach, provisionally, as of right now — unless
+    and until module 5's investigation produces facts (most directly, a resolved encryption
+    status) that change this picture.** This is an honest, reasoned, provisional conclusion, not
+    a predetermined verdict and not a final one — module 3's unresolved encryption question was
+    deliberately not resolved here, exactly as instructed; module 5 either resolves it or honestly
+    leaves it open.
+  - **Notification obligations mapped from the provisional determination — locked for module 5:**
+    (1) **Individual notification (164.404):** owed to all ~212 affected donors, within 60
+    calendar days of discovery (the clock started the day the loss was reported, not the day this
+    determination was reached), with all five 164.404(c)(1) content elements. (2) **Media
+    notification (164.406): NOT triggered** — the ~212-donor count is well under the 500-resident
+    threshold. (3) **HHS notification (164.408): the under-500 annual-log pathway, 164.408(c)
+    applies, NOT the 500-plus contemporaneous pathway (164.408(b))** — Lakeshore maintains a log
+    and reports within 60 days of the end of the calendar year the breach was discovered in, not
+    contemporaneously with individual notification.
+  - **The dual-reporting comparison — stated honestly, per module 1's own locked clean-population
+    fact:** HIPAA's 60-day clock (164.404(b)) compared side by side against 606.171's 45-day BPDR
+    clock (reference only, already fully taught in `fda-and-aabb-in-practice`'s
+    `filing-a-biological-product-deviation-report` — not re-derived here). **This incident does
+    NOT independently trigger a BPDR filing** — running 606.171(b)'s own two-prong test (a
+    deviation that may affect a *distributed* product's safety/purity/potency) against the locked
+    facts, there is no distributed product and no quality-event connection for this ~212-donor
+    population (module 1's own locked finding, not re-litigated or contradicted here). Used as the
+    honest teaching moment for when a single incident *could* trigger both HIPAA and BPDR
+    obligations (e.g., the same data loss also implicating a distributed product's eligibility
+    status) without forcing this specific incident into that shape — it does not fit, and the
+    module says so directly rather than manufacturing a BPDR angle for symmetry.
+  - **What remains open for module 5, stated precisely:** the encryption-status question
+    (resolve, or honestly leave open, whether full-disk encryption was actually active on the
+    Brookfield laptop at the moment of loss) is the single fact most likely to change this
+    determination — specifically, factor 3 of the four-factor test. Module 5 owns: scoping what
+    was actually on the device, resolving or honestly leaving open the encryption question,
+    re-running or refining this four-factor assessment as new facts surface, and reaching this
+    course's final, honest closing decision (which may still be "resolved cleanly" or "honestly
+    left open with a stated next step and owner," per this curriculum's established convention).
+    Module 5 does not reopen or contradict this module's determination as stated — it builds on it
+    with whatever new facts the investigation produces.
+  - No `csv-and-becs`/`data-integrity-and-records` locked identifier was touched by name or ID. No
+    real device/OS/vendor name or calendar year used in the Lakeshore narrative. 164.412 referenced
+    by name only, not quoted or described, consistent with this course's sourcing notes.
+
+  Sources: no new source fetched — `sources/cfr/45-164-breach-notification-excerpt.md` (already
+  saved, fully quoted this session: 164.402, 164.404, 164.406, 164.408, 164.414, all in FULL) was
+  the only CFR source used. `resources.qmd` links the eCFR pages for 164.402, 164.404, 164.406, and
+  164.408 — all four curl-verified (`curl -s -o /dev/null -w "%{http_code}" -L <url>`, each
+  returned `200`) before publishing — plus one internal link back to
+  `fda-and-aabb-in-practice`'s `filing-a-biological-product-deviation-report` for the 45-day BPDR
+  clock comparison this module references but doesn't re-derive.
+
+  Next: build m5, `investigating-a-healthcare-data-incident` — this course's FINAL module. Walk
+  the investigation a HIPAA breach demands (scope, root cause, re-running or refining the
+  four-factor assessment as new facts surface) to a genuine closing decision, resolving or
+  honestly leaving open the encryption-status question modules 1, 3, and 4 all left unresolved by
+  design. Introduces no new CFR citation — synthesis and application of what modules 1-4 already
+  built. Close with a genuine course-ending passage per this curriculum's established practice,
+  including forward pointers to `vendor-and-third-party-risk-management` and the Track 5 capstone
+  `itsm-for-regulated-blood-services`.

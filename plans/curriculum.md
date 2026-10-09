@@ -272,52 +272,54 @@ has no `plans/<slug>.md` file until its first session.
 | `data-integrity-and-records` | 6 / 6 | Done |
 | `fda-and-aabb-in-practice` | 6 / 6 | Done |
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
-| `healthcare-security-and-privacy` | 3 / 5 | In progress |
+| `healthcare-security-and-privacy` | 4 / 5 | In progress |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `healthcare-security-and-privacy` module 4,
-`breach-notification-and-dual-reporting` (Track 4, Phase 8). Modules 1-3 are published — see
-`plans/healthcare-security-and-privacy.md`'s progress log for the full detail, including locked
-facts for modules 4-5: Lakeshore is now this course's adopted working premise as a HIPAA covered
-entity (reasoned from 45 CFR 160.103's "covered entity" clause (3) and "health care provider"
-catch-all, not asserted); the course's running incident is locked as a Brookfield staff member's
-work laptop, left in a shared ride after presenting a deferral-coding consistency review,
-carrying a six-field, ~212-donor BECS extract (donor ID, name, date of birth, determination +
-date, deferral reason code, lifetime donation count) of which only three fields were actually
-needed for the review; the laptop's full-disk-encryption status is genuinely unresolved
-(enrolled under policy, but a device-management migration left its encryption-status field
-unreported) and must stay open through module 4; and the donor population has no connection to
-any other open quality event. Module 2 added its own locked finding, reasoned from
-164.502(a)/164.506(a)/164.508(a)(1)-(b)(2): pulling the extract for the review was plausibly a
-permitted "health care operations" use needing no individual authorization (164.501's own
-numbered definition of "health care operations" was not independently verified this session —
-flagged honestly, not asserted past the text actually read), which is a separate question from
-whether carrying the extract off-site was handled safely; 164.512(b)(1)(iii) (quoted in full)
-was used to explain the general principle that a real BPDR/recall disclosure wouldn't conflict
-with the Privacy Rule, without treating this clean-population incident as a BPDR case; and
-164.514(d)(1)-(3) produced this course's central minimum-necessary finding — **the extract as
-pulled likely did not satisfy minimum necessary**, because three of its six fields (donor name,
-date of birth, lifetime donation count) weren't needed for the review and rode along on a
-routine/recurring report template 164.514(d)(3)(i) obligates Lakeshore to have scoped down. This
-finding is independent of, and holds regardless of, how the breach/encryption questions resolve.
-Module 3 quoted 164.306/164.308/164.310/164.312 in full and built an honest comparison against
-Part 11 (164.312(a)(2)(i) unique user ID ≈ 11.100 uniqueness; 164.312(b) audit controls ≈
-11.10(e) audit trail; 164.312(d) person/entity authentication ≈ 11.200 two-component execution;
-reference only, Part 11 itself already fully taught in `data-integrity-and-records`), naming the
-one genuine structural difference honestly: Part 11 has no Required/Addressable concept, HIPAA's
-Security Rule does. Module 3's own locked finding, which module 4 inherits as an input, not a
-breach verdict: 164.312(a)(2)(iv) (encryption of e-PHI) is Addressable, and Lakeshore's policy of
-auto-enforcing full-disk encryption at enrollment was a sound response to 164.306(d)(3)'s
-assess-then-implement process — but that policy soundness doesn't by itself satisfy 164.306(a)'s
-ongoing confidentiality/integrity/availability mandate, because nobody can confirm encryption was
-actually active on this specific laptop when it went missing (the device-management migration
-left its status field "not reported"). This is reasoned as a **verification/monitoring gap under
-164.308(a)(1)(ii)(D)**, not a policy-design failure — the same "documented but not verified/
-enforced" pattern `data-integrity-and-records` used for its password-revision finding. Module 3
-explicitly does not determine whether a reportable breach occurred; that is 164.402's four-factor
-test, module 4's own job. No `csv-and-becs`/`data-integrity-and-records` locked identifier was
-touched by any of modules 1-3. `grc-frameworks-and-risk-management` is now 5/5 and complete — see
+**Next up:** `healthcare-security-and-privacy` module 5,
+`investigating-a-healthcare-data-incident` (Track 4, Phase 8) — this course's FINAL module.
+Modules 1-4 are published — see `plans/healthcare-security-and-privacy.md`'s progress log for
+the full detail, including locked facts for module 5: Lakeshore is now this course's adopted
+working premise as a HIPAA covered entity (reasoned from 45 CFR 160.103's "covered entity"
+clause (3) and "health care provider" catch-all, not asserted); the course's running incident is
+locked as a Brookfield staff member's work laptop, left in a shared ride after presenting a
+deferral-coding consistency review, carrying a six-field, ~212-donor BECS extract (donor ID,
+name, date of birth, determination + date, deferral reason code, lifetime donation count) of
+which only three fields were actually needed for the review (module 2's locked minimum-necessary
+finding, independent of the breach/encryption questions); the laptop's full-disk-encryption
+status is genuinely unresolved (enrolled under policy, but a device-management migration left
+its encryption-status field unreported) — module 3 reasoned this as a sound 164.306(d)(3) policy
+decision sitting on top of a real 164.308(a)(1)(ii)(D) verification/monitoring gap, not a
+breach determination itself; and the donor population has no connection to any other open
+quality event (module 1's locked fact, reused directly by module 4 to rule out an independent
+BPDR trigger). **Module 4's own locked output — module 5's central starting point, to build on
+and not contradict:** ran 164.402's four-factor test against these facts and concluded the
+presumption of breach has **NOT been rebutted** — factor 1 (nature/extent of PHI) weighs against
+Lakeshore (a meaningful re-identification risk: name, date of birth, eligibility determination,
+deferral code), factor 2 (who has the device) is unknown, factor 3 (was PHI actually acquired or
+viewed) is **genuinely unresolved** because it inherits module 3's unconfirmed encryption status
+directly — had encryption been confirmed active this factor would favor Lakeshore strongly, but
+it wasn't, so it cannot — and factor 4 (mitigation) is mixed (prompt reporting and a plausible
+remote-lock/wipe capability, against a still-missing device and unconfirmed encryption).
+**Lakeshore is therefore treating this incident AS a reportable breach, provisionally, as of
+right now, unless and until module 5's investigation changes the picture** — most directly, by
+resolving the encryption-status question. Module 4 mapped the resulting notification
+obligations: individual notification owed to all ~212 donors within 164.404's 60-day clock (all
+five content elements); 164.406 media notification **not triggered** (well under the 500-person
+threshold); 164.408(c)'s under-500 annual-log HHS pathway applies, not 164.408(b)'s
+contemporaneous 500-plus pathway. Module 4 also compared HIPAA's 60-day clock against
+606.171's 45-day BPDR clock (reference only, already taught in `fda-and-aabb-in-practice`) and
+concluded, honestly, that **this incident does not independently trigger a BPDR filing** —
+606.171(b)'s own two-prong test needs a distributed product's safety/purity/potency in question,
+and per module 1's locked clean-population fact, none exists here; the module named the general
+shape of an incident that *could* trigger both without forcing this one into it. Module 3
+quoted 164.306/164.308/164.310/164.312 in full and built an honest comparison against Part 11
+(164.312(a)(2)(i) unique user ID ≈ 11.100 uniqueness; 164.312(b) audit controls ≈ 11.10(e) audit
+trail; 164.312(d) person/entity authentication ≈ 11.200 two-component execution; reference only,
+Part 11 itself already fully taught in `data-integrity-and-records`), naming the one genuine
+structural difference honestly: Part 11 has no Required/Addressable concept, HIPAA's Security
+Rule does. No `csv-and-becs`/`data-integrity-and-records` locked identifier was touched by any of
+modules 1-4. `grc-frameworks-and-risk-management` is now 5/5 and complete — see
 `plans/grc-frameworks-and-risk-management.md`'s progress log for the full course, including
 module 5's final, locked state: a built POA&M (plan of action and milestones) entry for the
 eQMS's one open deficiency (the quarterly access-review control for account and identity
