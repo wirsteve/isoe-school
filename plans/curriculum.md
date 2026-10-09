@@ -37,7 +37,7 @@ blueprints raided for content organization and rigor.
 | ISC2 HCISPP body of knowledge (HealthCare Information Security and Privacy Practitioner) | Healthcare industry context, information governance, privacy/security controls, third-party risk, breach investigation — all healthcare-specific | Track 4, `healthcare-security-and-privacy` |
 | ISO/IEC 27001 (ISMS) | Annex A control domains, Statement of Applicability, certification audit structure (Stage 1/2, surveillance) | Track 4, `vendor-and-third-party-risk-management`; Track 5 crosswalk |
 | AICPA SOC 2 (Trust Services Criteria) | Type I vs. Type II, the five Trust Services Criteria, complementary user entity controls, bridge letters | Track 4, `vendor-and-third-party-risk-management` |
-| ISO 13485 / FDA's Quality Management System Regulation (QMSR, replacing 21 CFR 820) | Medical-device-grade QMS structure, software-as-a-medical-device framing, why BECS isn't "just software" | Track 3, `csv-and-becs` |
+| ISO 13485 / FDA's Quality Management System Regulation (QMSR — 21 CFR Part 820 as amended to align with ISO 13485, effective 2026-02-02) | Medical-device-grade QMS structure, software-as-a-medical-device framing, why BECS isn't "just software" | Track 3, `csv-and-becs` |
 | ICH Q9 (Quality Risk Management) | Risk-based thinking as it already exists in GMP/GxP — the bridge between "generic risk management" and what a blood center already half-does | Foundations, `risk-and-controls-vocabulary`; Track 2 |
 | ASQ Certified Quality Auditor body of knowledge | Audit program design, auditor independence, evidence sampling, nonconformance grading, management review | Track 2, `fda-and-aabb-in-practice` |
 | AABB Quality System Essentials | The accreditation-specific vocabulary and structure everything else has to map onto in this industry | Track 2 throughout |
@@ -268,7 +268,7 @@ has no `plans/<slug>.md` file until its first session.
 | `blood-center-operations` | 5 / 5 | Done |
 | `quality-system-essentials` | 7 / 7 | Done |
 | `directing-the-quality-analyst` | 6 / 6 | Done |
-| `csv-and-becs` | 0 / 7 | Not started |
+| `csv-and-becs` | 0 / 7 | Scoped |
 | `data-integrity-and-records` | 0 / 6 | Not started |
 | `fda-and-aabb-in-practice` | 0 / 6 | Not started |
 | `grc-frameworks-and-risk-management` | 0 / 5 | Not started |
@@ -276,8 +276,10 @@ has no `plans/<slug>.md` file until its first session.
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `csv-and-becs` (Track 3). `directing-the-quality-analyst` (Track 6) is fully built
-and published (6/6 modules) — see `plans/directing-the-quality-analyst.md`'s "Deliberately
-deferred" table for which of its modules (4 and 5) should be revisited once `csv-and-becs` and
-`vendor-and-third-party-risk-management` exist. Scope `csv-and-becs` (Phase 1/2), then build its
-first module.
+**Next up:** `csv-and-becs` module 1, `gamp5-and-the-v-model` (Track 3). The course map is
+scoped and published — see `plans/csv-and-becs.md` for the full 7-module plan, the verified
+BECS/QMSR placement finding, and the scenario continuing VIA-0842. `directing-the-quality-analyst`
+(Track 6) is fully built and published (6/6 modules) — see
+`plans/directing-the-quality-analyst.md`'s "Deliberately deferred" table for which of its modules
+(4 and 5) should be revisited once `csv-and-becs` and `vendor-and-third-party-risk-management`
+exist.
