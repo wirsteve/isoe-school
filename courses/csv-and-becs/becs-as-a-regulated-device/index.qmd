@@ -1,0 +1,359 @@
+---
+title: "BECS as a Regulated Device"
+order: 45
+---
+
+## A line in VAL-1203 you didn't write
+
+VAL-1203's validation plan — the same package you've been picking apart for two modules now —
+has a line in its background section you almost skimmed past: "Release B is FDA 510(k)-cleared."
+No test ID attached to it. No citation. Just stated, the way a vendor's marketing deck states it.
+
+You could let that sentence sit there. Nobody signing a validation plan usually stops to ask what
+a clearance claim actually proves. But you're the system-owner co-approver on this package, and
+your name goes next to the Quality Validation Lead's. So you ask the plain question: what does
+"510(k)-cleared" actually tell you about the exact build IT is about to install at Lakeshore, and
+does it tell you anything at all about whether Lakeshore's own validation is done?
+
+A second thread is sitting in the same document. VAL-1203's scope line names the central BECS
+application server, plus BECS clients at Brookfield and Fairview, Lakeshore's two satellite
+collection sites. The validation plan you've been reading, though, reads like it was written
+entirely from the central server's point of view. Nothing in it describes what's different at
+either satellite — different device mix, different staffing, a different network path back to
+the server. Is a single, central-server-shaped validation plan actually enough for a system that
+runs at three locations?
+
+Neither question has a tidy answer yet. Module 2's review of VAL-1203's executed package is still
+open on your desk, with its own list of gaps. This module gives you the legal and regulatory
+footing to push on both of today's new questions the right way, instead of accepting or
+dismissing either sentence on instinct.
+
+## Why this distinction exists, and the ITSM bridge
+
+Here's the failure this module exists to head off: a validation plan that treats a vendor's
+premarket clearance as if it were a stand-in for Lakeshore's own proof that the system works, at
+Lakeshore, as Lakeshore configured and deployed it. That substitution doesn't look like a
+disaster in the moment. It looks like due diligence — "it's cleared, it's a real medical device,
+the agency already looked at it." The actual failure mode is quieter: a system goes into routine
+use on the strength of someone else's premarket review of a different build, running on an
+unverified configuration, at sites nobody separately validated.
+
+You already have the ITSM (IT service management) vocabulary for exactly this shape of mistake,
+even if you've never had to apply it to a federally classified medical device before.
+
+**Vendor product lifecycle and supported-version management** is a practice you run constantly:
+you track which release a vendor still patches, which release is heading toward end-of-support,
+and which specific build is actually deployed in your environment, because "the vendor's current
+release" and "what's running in my data center" are two different facts that drift apart over
+time. A **"certified for platform X"** vendor claim is a close cousin — a vendor telling you their
+product is certified against some external standard, which tells you about their product line in
+general, not about your specific instance of it, your configuration, or your data.
+
+The closest bridge of all is the **cloud shared responsibility model**. When a cloud vendor hands
+you a SOC 2 report or an ISO certification, that document covers the vendor's own infrastructure
+and controls — it says nothing about whether *your* configuration of their service, *your*
+access controls, or *your* data handling is sound. You already know not to treat a vendor's
+compliance certificate as covering your side of that line. A 510(k) clearance is the same shape
+of document, for a much higher-stakes product.
+
+Here's where the regulated world demands more than an ordinary vendor relationship does. There's
+no "the vendor's SOC 2 covers it" shortcut available here, because BECS (Blood Establishment
+Computer Software) isn't just vendor software under a service contract — it's a legally
+classified medical device, and FDA's own guidance says, in so many words, that the user is
+**"ultimately responsible"** for validating it in their own facility. In ordinary enterprise IT,
+leaning on a vendor's certification is often a reasonable, even expected, division of labor. For
+BECS, FDA closes that door explicitly. More on that quote below.
+
+## The rule in plain English
+
+Three separate things are tangled together in that one sentence in VAL-1203's plan, and pulling
+them apart is this module's whole job.
+
+**First: what makes BECS a medical device at all.** It isn't BECS's label, or its price tag, or
+the fact that a vendor sells it. FDA's own device regulation defines BECS by what it *does*:
+identifying donors who shouldn't donate, stopping unsuitable blood or components from being
+released, running compatibility testing between a donor and a recipient, and confirming a
+patient's identity at the point of transfusion. Those are the functions that make software a
+device under FDA's rules, not a business decision anyone at Lakeshore or the vendor gets to make.
+
+This curriculum has its own shorthand for BECS's job, established back in `becs-in-the-pipeline`:
+**eligibility, release, labeling, disposition** — the four critical functions you've used all
+through this course. Worth being honest here: FDA's own classification text doesn't use three of
+those four words. It talks about identifying ineligible donors (this curriculum's "eligibility"),
+preventing release of unsuitable blood and components (this curriculum's "release"), compatibility
+testing, and positive patient identification at transfusion. "Labeling" and "disposition" never
+appear in that sentence. The crosswalk is real and useful, but it's this curriculum's own
+interpretation of how release control gets exercised operationally, not a word-for-word quote.
+Keep that distinction straight the next time you cite 864.9165(a) for all four functions — cite it
+for identification, release-prevention, compatibility testing, and patient ID; don't claim it
+names "labeling" or "disposition" directly.
+
+**Second: BECS's device classification, and why this module stops short of it.** The same
+regulation that defines BECS also classifies it: Class II, meaning it carries what FDA calls
+"special controls" — a defined set of extra conditions the device's manufacturer has to satisfy
+beyond the general controls every device gets. This module names that classification and stops
+there on purpose. The five special controls themselves — software performance specs, verification
+and validation testing, labeling requirements, a traceability matrix, performance testing — bind
+the *vendor*, as the device's manufacturer, and they're `qmsr-iso-13485-and-the-vendor`'s subject,
+next module. What you need here is simpler: knowing that BECS carries a classification at all is
+what makes "FDA regulates this" more than a figure of speech.
+
+**Third, the heart of this module: what a 510(k) clearance is, and what it is not.** A **510(k)
+premarket notification** — that's the guidance's own phrase, and the one you should use; no
+specific Part 807 section number appears anywhere in this lesson, because none has been verified
+against a saved source, and inventing one would be worse than leaving it out — is the
+pre-market regulatory pathway a device manufacturer uses to get a device like BECS cleared for
+sale. Clearance is a statement about the *product*, made by FDA, at a point in time, about a
+*specific version*. It is not a statement about Lakeshore's deployment, Lakeshore's
+configuration, or whether Lakeshore has done any validation work at all. Those are two entirely
+different facts, decided by two entirely different parties, and VAL-1203's one-line claim
+blurs them into a single reassuring sentence.
+
+**Fourth: "the system" is bigger than "the software."** FDA's own guidance defines a Blood
+Establishment Computer System as hardware, software, peripheral devices, networks, **personnel**,
+and documentation — not "the application," full stop. That's a strong parallel to how ITSM
+(IT service management) already defines a service: people, process, and technology together, not
+just the technology component. You already don't let anyone on your team say "the service is just
+the software" about anything else you run. BECS doesn't get an exception.
+
+**Fifth: cleared, custom-built, and legacy or unsupported are three different situations, not
+one.** A vendor-cleared product like Release B is one case. Lakeshore's own in-house-built
+translation script — the Category 5 component this course has carried since module 1 — is a
+second, entirely different case: does building your own software make Lakeshore itself a
+"manufacturer" under FDA's device rules? That question belongs to module 4, not here. A legacy or
+unsupported system — the current release, heading toward end-of-support, that's the whole reason
+VAL-1203 exists — is a third case, and staying validated through end-of-support and patching is
+module 6's subject. Legacy-data conversion during an upgrade like this one is module 7's. This
+module names all three questions and points forward. It doesn't answer any of them.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 864.9165(a) | "Eight sixty-four point ninety-one sixty-five, paragraph a" | Defines BECS as a device by its functions: identifying ineligible donors, preventing release of unsuitable blood/components, compatibility testing, positive patient ID — and names a "BECS accessory" as part of the same device family. | The reason BECS is federally regulated at all, regardless of what Release B's clearance status turns out to be. |
+| 21 CFR 864.9165(b) (opening line only) | "Eight sixty-four point ninety-one sixty-five, paragraph b" | Classifies BECS as Class II, carrying special controls. | Names the classification; the special controls themselves are module 4's subject. |
+| 21 CFR 606.60(a) | "Six-oh-six point sixty, paragraph a" | Equipment used in blood manufacturing must perform in the manner for which it was designed. | The guidance's own basis for treating a computer system as regulated "equipment," not just software. |
+| Guidance Section I | "Section one" | States the guidance's own scope: the regulations and FDA recommendations that apply to a blood establishment's validation of systems — and explicitly excludes the manufacturer's own validation and 510(k) submission. | Tells you this guidance is Lakeshore's playbook, not the vendor's. |
+| Guidance Section II.A | "Section two, part A" | Defines "system" as hardware, software, peripherals, networks, personnel, and documentation together; ties systems to 606.60 and 211.68 as regulated equipment. | Why "BECS is just the app" is the wrong mental model for VAL-1203's scope. |
+| Guidance Section III.A | "Section three, part A" | Recommends vendor evaluation and monitoring adverse events/recalls; states that FDA's cleared-BECS list shows only the version that received clearance, and may include unsupported products. | The direct answer to "Release B is FDA 510(k)-cleared" — clearance is version-specific and can go stale. |
+| Guidance Section III.D | "Section three, part D" | States the user is "ultimately responsible" for validation in their facility; requires a location-specific validation plan at each site a central server serves. | Answers both of today's threads: clearance isn't validation, and Brookfield/Fairview each need their own plan. |
+
+## The actual text
+
+Start with what makes BECS a device at all, quoted verbatim from `sources/cfr/864.9165.md`:
+
+> (a) Identification. Blood establishment computer software (BECS) is a device used in the
+> manufacture of blood and blood components to assist in the prevention of disease in humans by
+> identifying ineligible donors, by preventing the release of unsuitable blood and blood
+> components for transfusion or for further manufacturing into products for human treatment or
+> diagnosis, by performing compatibility testing between donor and recipient, or by performing
+> positive identification of patients and blood components at the point of transfusion to prevent
+> transfusion reactions. This generic type of device may include a BECS accessory, a device
+> intended for use with BECS to augment the performance of the BECS or to expand or modify its
+> indications for use.
+
+Read that last sentence carefully: a **BECS accessory** doesn't have to be BECS itself to be part
+of the regulated device family. A tool that exists to augment BECS's performance, or expand or
+modify what BECS is cleared to do, can be swept into the same regulatory picture as BECS. That
+matters the moment anyone proposes an add-on tool for VAL-1203's scope — the question "is this a
+BECS accessory" is a real regulatory question, not a formality.
+
+The classification line, quoted verbatim, is short on purpose:
+
+> (b) Classification. Class II (special controls).
+
+That's as far as this module goes into (b). The five numbered special controls that follow it in
+the regulation — software specs, V&V testing, labeling, the traceability matrix, performance
+testing — are `qmsr-iso-13485-and-the-vendor`'s text to quote, not this module's.
+
+On BECS being regulated as *equipment*, not just software, from `sources/cfr/606.60.md`:
+
+> The equipment shall be observed, standardized and calibrated on a regularly scheduled basis as
+> prescribed in the Standard Operating Procedures Manual and shall perform in the manner for which
+> it was designed so as to assure compliance with the official requirements prescribed in this
+> chapter for blood and blood products.
+
+Read 606.60 for what it actually is: a section written for physical lab equipment. Its own table
+lists centrifuges, water baths, thermometers, and a vacuum blood agitator — nothing in 606.60's own
+text was ever written with software in mind. FDA's BECS guidance is what stretches "shall perform
+in the manner for which it was designed" to reach a computer system. The stretch is the guidance's
+doing, not something 606.60 says about itself.
+
+Now the guidance's own scope statement, quoted verbatim from
+`sources/fda-guidance/becs-validation-users-facility-2013.md`, Section I:
+
+> This guidance describes the following: • Requirements in Title 21 Code of Federal Regulations
+> (21 CFR) (e.g., 21 CFR 211.68, 606.100(b), and 606.160) that apply to blood establishment
+> validation of systems; and • FDA's recommendations for the validation of systems.
+
+And, immediately after, the exclusion that matters most for today's question:
+
+> this guidance does not address the software manufacturer's validation responsibilities, or the
+> submission of a 510(k) premarket notification for BECS.
+
+That sentence draws the exact line this module needs: this guidance is Lakeshore's rulebook for
+*Lakeshore's own validation*. The vendor's own validation work, and whatever went into Release B's
+510(k) submission, happened under a different set of rules this guidance doesn't touch.
+
+Section II.A's "system" definition, quoted verbatim:
+
+> A Blood Establishment Computer System (system) includes: computer hardware; computer software;
+> peripheral devices; networks; personnel; and documentation, e.g., User's Manuals and Standard
+> Operating Procedures (SOPs).
+
+And its regulatory-basis sentence, immediately after:
+
+> Systems also are regulated as equipment under 21 CFR Part 606 (Current Good Manufacturing
+> Practice for Blood and Blood Components), specifically 21 CFR 606.60, and as automated or
+> electronic equipment under 21 CFR Part 211, Subpart D (Equipment), specifically 21 CFR 211.68.
+
+Section III.A, on vendor selection and monitoring:
+
+> we recommend that you evaluate and compare the available BECS with the needs of your blood
+> establishment and select a BECS that meets your requirements. We further recommend that you
+> monitor reports of adverse events and recalls applicable to your BECS (Refs. 5 through 9).
+
+And the sentence that answers VAL-1203's claim directly:
+
+> You should note that the version number listed is the version that received clearance; however,
+> the manufacturer may have released an upgrade that did not require a new 510(k) clearance. You
+> also should note that the list on our website is cumulative and may include BECS that may no
+> longer be available or supported by the original manufacturer.
+
+Read that twice. FDA's own cleared-BECS list — the thing anyone would check to confirm a "Release
+B is 510(k)-cleared" claim — names the version that was cleared, not necessarily the version
+you're about to install. A vendor can ship an upgrade that never went back through a new 510(k) at
+all. And the list itself never drops a product once it's added, even after it's abandoned. "It's
+on the list" and "the exact build we're deploying was separately cleared" are not the same fact.
+
+Section III.D, on who's actually responsible, and on multi-site scope:
+
+> in cases where a central server is used by multiple locations, not only the main server but also
+> each individual location should have a validation plan that is specific to the functions and
+> configurations at each location.
+
+> Equipment vendors may provide assistance for equipment qualification and consultants may provide
+> assistance with the validation project. However, you are ultimately responsible for validation
+> of your system in your facility.
+
+That last sentence is one you've seen before, in module 1's context — there, it was about not
+trusting a vendor's own testing in place of Lakeshore's. Here it's doing a related but distinct
+job: a 510(k) clearance, however real, is not a substitute for that same validation obligation. The
+regulatory answer to "is the vendor's clearance good enough" is the same answer as "is the
+vendor's testing good enough": no, on both counts, for the same underlying reason.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB (Association for the Advancement of Blood & Biotherapies) assessor
+reading VAL-1203 wouldn't take "Release B is FDA 510(k)-cleared" at face value either, and they
+wouldn't need to cite 864.9165 to do it. They'd ask for three things, in order.
+
+**Written confirmation from the vendor of the regulatory basis for the exact release being
+installed.** Not a marketing statement. A real answer to "was this specific build, this specific
+version, covered by your original clearance, or does it rest on something else." If VAL-1203's
+file has no such letter, "cleared" is an assertion with nothing behind it.
+
+**A validation plan that actually accounts for every location in scope.** VAL-1203 names the
+central server plus Brookfield and Fairview. An inspector reading III.D's multi-location sentence
+would ask to see each site's own validation plan — not a line claiming Brookfield and Fairview are
+"covered" by the central server's testing, but evidence that someone actually looked at what's
+different at each site: device mix, staffing, network path to the central server.
+
+**Proof that Lakeshore's own validation, not the vendor's clearance, is what the file leans on.**
+A bad answer to "why do you believe this system is validated" sounds like "it's a cleared product."
+A good answer points to VAL-1203's own executed package — the IQ/OQ/PQ evidence this course has
+already spent a full module reading critically — not to a line in the background section about the
+vendor's premarket status.
+
+## Common traps
+
+**"The release is 510(k)-cleared, so it's already validated."** This is the exact claim sitting
+in VAL-1203's plan, and it's wrong on its own terms twice over. First, clearance is the vendor's
+premarket status for a *version* of the device — and the guidance says plainly that the cleared
+list's version number is "the version that received clearance," which may not be the build
+actually shipping, and that the list itself can include products "no longer be available or
+supported." Second, even a clean, verified clearance for the exact build being installed says
+nothing about whether Lakeshore has validated the system in its own facility, with its own
+configuration, data, and people. FDA's guidance is explicit about who that obligation falls to:
+"you are ultimately responsible for validation of your system in your facility." A cleared product
+still needs Lakeshore's own validation, completed, before routine use — clearance and validation
+answer two different questions, and VAL-1203's package needs both answered, not one standing in
+for the other.
+
+**"The vendor's cleared-list entry is a live registry — if Release B is on it, we know it's still
+current and supported."** Also wrong, and for a reason worth separating from the trap above: the
+guidance says the list "is cumulative and may include BECS that may no longer be available or
+supported by the original manufacturer." Being listed proves a product was cleared at some point.
+It proves nothing about whether that product, or that exact version, is still the manufacturer's
+current, supported offering.
+
+## What this means for your job
+
+- **Don't accept "510(k)-cleared" as a finished fact in any validation plan you co-sign.** Ask the
+  vendor, in writing, for the regulatory basis of the exact release and build Lakeshore is
+  installing. A generic clearance claim for "the product" isn't the same as confirmation for "this
+  build."
+- **Never let a clearance claim substitute for VAL-1203's own validation obligation.** If anyone on
+  the project — your sysadmin, the vendor's consultant, even the Validation Lead — treats
+  "cleared" as a reason to lighten Lakeshore's own testing, that's the trap above, happening in
+  real time.
+- **Check VAL-1203's plan for a location-specific section covering Brookfield and Fairview, not
+  just the central server.** If it isn't there, send the plan back before you co-sign — III.D's
+  requirement is explicit, and "the central server was tested" doesn't answer for what's different
+  at either satellite site.
+- **Treat the guidance's system-documentation list (III.B) as your own CMDB's job, not extra
+  paperwork.** Hardware specs, instruction manuals, a network diagram, the list of interfaces and
+  environments — a well-run ITSM practice already values keeping that current. The regulation
+  doesn't ask for anything new here. It just turns letting that record go stale into a validation
+  finding instead of an operational nicety.
+- **Remember "system" means more than "the software" every time you scope a validation.**
+  Personnel and documentation are part of the system FDA's guidance describes. A validation plan
+  that only addresses the application is scoped too narrowly before it even starts.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: VAL-1203's plan states "Release B is FDA 510(k)-cleared" as if that settles the validation question. Does it?
+
+No. Clearance is the vendor's premarket status for a version of the device — it says nothing about
+whether Lakeshore has validated the system in its own facility, with its own configuration, data,
+and people. FDA's guidance is explicit: "you are ultimately responsible for validation of your
+system in your facility" (III.D). On top of that, the guidance's own cleared-list caveat (III.A)
+warns that the version listed as cleared isn't necessarily the exact build being installed, and the
+list can include products no longer supported. A cleared product still needs Lakeshore's own
+validation before routine use. The right next step isn't to assume the claim is true or false — it's
+to get the vendor's written confirmation of the regulatory basis for the exact release being
+installed, and to keep that answer separate from whether VAL-1203's own testing is adequate.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: VAL-1203's scope names the central server plus BECS clients at Brookfield and Fairview, but the plan reads as if it were written only from the central server's point of view. Is that a problem?
+
+Yes, on the guidance's own terms. Section III.D says plainly: "in cases where a central server is
+used by multiple locations, not only the main server but also each individual location should have
+a validation plan that is specific to the functions and configurations at each location." A plan
+that covers only the central server hasn't shown that Brookfield's or Fairview's own device mix,
+staffing, or network path were ever accounted for. This is exactly the kind of open question worth
+raising before you co-sign, even without a finished answer yet — ask whether a location-specific
+piece exists for each site, not whether the central server's testing was thorough.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Your sysadmin says, "BECS is just the application — validating it means testing the software." Accurate?
+
+No. FDA's own guidance defines "system" more broadly: "computer hardware; computer software;
+peripheral devices; networks; personnel; and documentation, e.g., User's Manuals and Standard
+Operating Procedures (SOPs)" (II.A). That's the same instinct ITSM (IT service management) already
+applies to any service — people and process matter as much as the technology. A validation plan
+scoped only to "the software" has already missed part of what the guidance says "system" means,
+before a single test case is written.
+:::
+
+## Where this goes next
+
+You now know what makes BECS a device, what a clearance claim can and can't tell you, and that
+cleared, custom-built, and legacy/unsupported systems raise three separate questions. The next one
+is the producer's side of this picture: what quality-system rules actually bind Release B's
+*manufacturer*, what device-grade evidence you can ask the vendor for as a validation input, and
+whether Lakeshore's own in-house-built translation script could ever make Lakeshore itself a
+"manufacturer" under those same rules. That's `qmsr-iso-13485-and-the-vendor`, next.

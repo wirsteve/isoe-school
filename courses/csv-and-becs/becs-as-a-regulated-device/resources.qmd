@@ -1,0 +1,24 @@
+---
+title: "Resources"
+order: 46
+---
+
+Three places to go deeper than this lesson, or to check a citation yourself before it goes in a
+real Lakeshore document. All three were checked and loading at the time this page was written.
+
+- **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)**
+  — FDA's own guidance-database listing for the document this lesson quotes throughout (final,
+  April 2013, CBER). Use this page to confirm you're citing the current, final version, and to
+  download the PDF directly from FDA rather than a mirror.
+
+- **[21 CFR 864.9165, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/864.9165)**
+  — the regulation that defines BECS (Blood Establishment Computer Software) as a device and
+  classifies it Class II. Cornell's free, citable, plain-text CFR mirror — use it when you need to
+  hand someone the regulation itself without an eCFR login or PDF, or to check the special controls
+  this lesson named but didn't quote (that's next module's text).
+
+- **[21 CFR 606.60, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.60)**
+  — the equipment section FDA's BECS guidance stretches to cover computer systems. Read it in full
+  to see for yourself that its own text and table (centrifuges, thermometers, water baths) were
+  written for physical lab equipment, not software — the guidance is what extends it, not the
+  section's own wording.
