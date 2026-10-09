@@ -268,7 +268,7 @@ has no `plans/<slug>.md` file until its first session.
 | `blood-center-operations` | 5 / 5 | Done |
 | `quality-system-essentials` | 7 / 7 | Done |
 | `directing-the-quality-analyst` | 6 / 6 | Done |
-| `csv-and-becs` | 5 / 7 | In progress |
+| `csv-and-becs` | 6 / 7 | In progress |
 | `data-integrity-and-records` | 0 / 6 | Not started |
 | `fda-and-aabb-in-practice` | 0 / 6 | Not started |
 | `grc-frameworks-and-risk-management` | 0 / 5 | Not started |
@@ -276,16 +276,13 @@ has no `plans/<slug>.md` file until its first session.
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `csv-and-becs` module 6, `validated-state-lifecycle-and-patching` (Track 3). Modules
-1-5 (`gamp5-and-the-v-model`, `iq-oq-pq-and-traceability`, `becs-as-a-regulated-device`,
-`qmsr-iso-13485-and-the-vendor`, `part-11-for-validated-systems`) are published — see
-`plans/csv-and-becs.md`'s progress log for the locked scenario facts (validation package
-VAL-1203, the BECS vendor upgrade, the in-house Category 5 translation script, the executed
-package's planted gaps, the open 510(k)/multi-site questions, the unresolved "is Lakeshore a
-manufacturer" question routed to regulatory affairs, module 5's vendor-remote-access
-closed/open-system judgment and the still-unaddressed URS sequencing/authority-check gap) that
-module 6 and later modules build on. Module 6 is where this course finally answers the
-VIA-0842 "were twelve targeted tests enough?" question it opened with.
+**Next up:** `csv-and-becs` module 7, `becs-interfaces-and-data-integrity` (Track 3) — the
+course's final module. Modules 1-6 are published, including module 6's delivery of the VIA-0842
+verdict this course opened with (the twelve-test scope was never derived from a documented
+regression analysis; right-sized remediation, not a full revalidation or a reopened deviation).
+See `plans/csv-and-becs.md`'s progress log for the full locked scenario facts module 7 builds on,
+including VIA-0842's still-open interface items ("BECS-to-hospital interface regression testing
+to follow," no instrument-interface test) that module 7 must close.
 `directing-the-quality-analyst` (Track 6) is fully built and published (6/6 modules) — see
 `plans/directing-the-quality-analyst.md`'s "Deliberately deferred" table for which of its modules
 (4 and 5) should be revisited once `csv-and-becs` and `vendor-and-third-party-risk-management`

@@ -1,0 +1,397 @@
+---
+title: "Staying Validated: Changes, Patches, and Periodic Review"
+order: 51
+---
+
+## Two things land on your desk the same week
+
+Release B — VAL-1203's upgrade, the BECS (Blood Establishment Computer Software) upgrade this
+course has followed for five modules — has been live in production for a full quarter now. No
+open deviations, training done, the version mismatch module 2 caught long since reconciled.
+
+Two things arrive almost together.
+
+First: the vendor's first quarterly OS (operating system) security patch for the new release. A
+medium-severity CVE (Common Vulnerabilities and Exposures — the industry's standard identifier
+for a publicly disclosed security flaw), vendor advisory attached, release notes describing it as
+touching "OS-level memory handling only." If that sentence sounds familiar, it should. It's almost
+exactly what opened this course.
+
+Second: BECS's first periodic review since the upgrade is due. Nobody invented this requirement
+out of nowhere — it's on Lakeshore's own validation calendar, the way any validated system's
+ongoing-fitness check would be. Its scope line reads: "cumulative change history since BECS was
+last proven to work end to end." That history is longer than one quarter. It reaches back through
+VAL-1203's own cutover, through the Friday OS patch that became VIA-0842 — the open question this
+course was built to answer, closed as history two courses ago — through DEV-1147 (the ICCBBA
+product-code-table push that left roughly forty units one revision behind on label text, caught
+before anything shipped), and through a separate, earlier off-hours BECS configuration change
+whose post-deployment check failed on the label-printer interface.
+
+Your Quality Validation Lead is handling the new patch exactly the way this module is about to
+describe. Your periodic review, meanwhile, is about to do something this course has postponed
+twice already: look straight at VIA-0842 and say, finally, whether twelve tests were enough. No
+citations yet. No verdict yet. Both are coming.
+
+## Why this rule exists, and the ITSM bridge
+
+Here's the failure this module exists to prevent: a system gets validated once, carefully, and
+then slowly stops being the system that was proven to work — not through one dramatic change, but
+through a string of small ones, each defensible on its own, none of them re-examined together. A
+validated state isn't a status you earn and keep. It's a claim that has to survive every single
+thing that happens to the system afterward, for as long as the system runs.
+
+You already own the ITSM (IT service management) vocabulary for most of this. **Patch
+management** and **release and deployment management** are practices you run routinely: patches
+arrive on a cadence, get tested, get scheduled, get deployed. A **CAB (change advisory board)**
+gives a change its final look before it ships. And you already know the concept of a **standard
+change** — a change type so well understood, so low-risk, and so consistently executed the same
+way that it's pre-approved by class, instead of re-litigated from scratch every time one comes up.
+
+Here's where the regulated world asks for something your CAB's "standard change" category doesn't,
+by itself, supply. A standard change is pre-approved because its *risk* is well understood. For
+BECS, "well understood" has to mean something specific: somebody has actually analyzed what a patch
+of this *kind* does to the whole system, not just confirmed it installs cleanly on a test server.
+That distinction — install evidence versus analysis evidence — is this module's spine, and it's
+exactly where VIA-0842 went wrong.
+
+There's a real tension underneath all of this, worth naming honestly instead of picking a side. A
+security team wants patches applied fast — an unpatched medium-severity CVE is its own live risk,
+sitting on a production server, every day it waits. A validated system can't just absorb an
+unvalidated change without undermining the entire reason "validated" means anything. Treating those
+two pressures as a forced choice — patch immediately and skip validation, or stay vulnerable for
+months waiting on a full revalidation cycle — is a false choice. The real fix, and this module's
+main practical idea, is a fast path that's still validated: regression analysis and regression
+testing, pre-scoped once per patch *class*, so a well-understood patch doesn't reinvent its test
+plan from nothing every time one ships.
+
+One more risk decision, named here and not developed further: running a release past its vendor's
+end-of-support date, or deciding exactly when to force an upgrade instead, is itself an owned risk
+decision — the same kind this curriculum's quality-risk-management module already taught you to
+demand be written down and signed, not defaulted into by inaction. VAL-1203 exists because
+Lakeshore made that call once already. It won't be the last time.
+
+## The rule in plain English
+
+**First: a vendor's characterization of a patch is an input, never an analysis.** "OS-level memory
+handling only" is a real, useful fact — it tells you something about what the vendor believes it
+changed. It is not evidence about what that change actually touches once it's running inside
+*your* system, against *your* configuration, under *your* load. The regulatory floor behind
+Lakeshore's own validation obligation, 21 CFR 211.68(a), already quoted in full back in module 1,
+requires a written program that keeps the system performing the way it's designed to, on a routine
+basis — and FDA's BECS guidance (guidance tier, not binding regulation) is explicit that for a
+*change*, what makes that program adequate is Lakeshore's own documented regression analysis, not a
+characterization borrowed from someone else's release notes.
+
+**Second: regression analysis and regression testing are two different steps, in order.**
+Regression *analysis* comes first: a documented look at what the change could plausibly affect
+across the whole system, not just the piece it was aimed at. Regression *testing* comes second,
+and its scope is supposed to follow from what the analysis found — not from a number that felt
+defensible, and not from a vendor's say-so. An OS patch that touches memory handling plausibly
+affects anything with timing or concurrency sensitivity: label-print jobs, instrument interfaces,
+anything running under real load. A regression analysis is the document that's supposed to say so
+in writing, before a test plan gets written, not after.
+
+**Third: not every patch needs that analysis written from scratch.** This is where a mature
+validation program earns its keep, and it's industry practice, not anything a regulation names.
+Classify patch *types* once — an "OS security patch, no application code change" is one class; a
+"vendor hotfix to a named BECS module" is a different class; an "infrastructure or network
+change" is a third — and pre-analyze, for each class, what kind of regression testing it plausibly
+requires. The next time a patch in that class arrives, its validation impact assessment (VIA,
+module 1's and VIA-0842's own term) starts from that template instead of reasoning out the
+regression question from zero. This is the direct cousin of your CAB's standard-change category,
+one layer deeper: the category still gets a per-instance VIA, with Quality's blocking sign-off,
+same as `becs-in-the-pipeline` established from the start — but that VIA now starts pre-scoped
+correctly, instead of resting on whatever the vendor's advisory happened to say.
+
+This quarter's patch is the positive version of that story. Your Validation Lead classified it
+immediately: OS security patch, no application code change — the same class VIA-0842 was. Instead
+of asking "does the vendor say this is safe," the VIA opened with a regression analysis: what does
+an OS-level memory-handling change plausibly touch across BECS as a whole? The answer pulled in
+label-print timing, the instrument interfaces, and the testing-lab result feed — not because
+anyone suspected a specific defect, but because that's what the analysis, not the vendor, said to
+look at. The test plan that followed was scoped to that analysis. That's the whole difference this
+module is built to teach, and you're watching it work in real time, on the same kind of patch that
+went wrong once already.
+
+### Periodic review: checking whether "validated" is still true
+
+Patching is one way a validated state can drift. **Periodic review** is the practice that's
+supposed to catch drift from *everything*, on a schedule, whether or not any single change looked
+risky enough to trigger a second look on its own. It's industry practice — GAMP's own concept,
+named and described here in the course's own words, never quoted; GAMP is copyrighted and this
+course doesn't cite it like a regulation — not a regulatory requirement with its own numbered
+clause. Its regulatory hooks are real, just looser than a checklist: 211.68(a)'s "routinely...
+checked according to a written program," already quoted above, and the guidance's own phrase for
+cadence, quoted in full below — "on a routine basis." Neither sentence says how often. That's
+Lakeshore's own call, made and documented, not handed down.
+
+A periodic review that's actually doing its job looks at several things together, not one at a
+time:
+
+- **The cumulative change history** since the system was last proven end to end — VAL-1203's own
+  cutover, the OS patch that became VIA-0842, DEV-1147's table push, and the earlier off-hours
+  configuration change that failed its label-printer check. Looked at individually, each got its
+  own disposition at the time. Looked at together, a pattern can show up that no single review
+  would have caught.
+- **Deviations, incidents, and problem records** — not re-litigated, just surveyed for anything
+  pointing at the same underlying weakness more than once.
+- **The vendor's own unresolved-anomalies list** — module 4's subject, named here only as something
+  a thorough review would pull back out and re-check against what's happened since.
+- **Configuration drift against the validated baseline.** The one check a non-technical reviewer
+  wouldn't think to make, and it's yours specifically: does what's actually running still match
+  what was last validated, or has it drifted through small, individually-approved changes nobody
+  looked at in aggregate? Same instinct that caught VAL-1203's database-version mismatch in module
+  2 — the guidance's own instruction to validate a configuration and move that *same* configuration
+  into production (III.G) — run now across a whole quarter instead of one cutover weekend.
+- **Access reviews** — module 5's closed-system territory, not re-taught here, just checked: does
+  who can touch BECS still match who's supposed to be able to.
+
+A periodic review can conclude three different things: the validated state is confirmed, as is;
+targeted revalidation is needed on a specific function or interface; or a finding is serious enough
+to open a CAPA (corrective and preventive action). This quarter's review is about to produce the
+third outcome — but not against the patch that just shipped correctly. Against a patch that
+shipped a quarter *before* this upgrade ever started.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 211.68(a) | "Two-eleven point sixty-eight, paragraph a" | A written program must keep automated equipment, including computers, performing satisfactorily, with routine checks and records. | The floor every patch's VIA and every periodic review exists to satisfy — quoted in full back in module 1. |
+| Guidance III.C | "Section three, part C" | A written plan isn't "designed to assure proper performance" unless it requires validation prior to routine use, on a routine basis, and any time a change is made that could affect the system's functions. | The cadence hook behind periodic review, and the sequencing problem in VIA-0842's own record. |
+| Guidance III.G (post-implementation monitoring) | "Section three, part G" | Recommends closely monitoring the system for a period after installing new or upgraded software, to catch anything the test cases missed. | What VIA-0842's record never shows happened after its 10:15 p.m. deployment. |
+| Guidance III.I | "Section three, part I" | A software regression analysis of the change's impact on the *entire* system should be conducted for any change, however small; regression testing should follow from that analysis, including by re-running previously passed cases. | The adequacy check's Regression question — and the exact requirement VIA-0842's twelve tests were never shown to satisfy. |
+
+## The actual text
+
+Validation after a change, quoted in full from
+`sources/fda-guidance/becs-validation-users-facility-2013.md`, section III.I — the text this whole
+module, and this course's central verdict, rests on:
+
+> When the BECS manufacturer modifies the software, the manufacturer should inform you of other
+> functions that might be affected. We recommend that your contract with a software manufacturer
+> specifically address this issue. However, you are ultimately responsible for assuring that the
+> system used in your establishment has been validated for use in your establishment.
+
+> Due to the complexity of systems and BECS, a seemingly small local change (e.g., software,
+> hardware, peripherals, or infrastructure) may have a significant global system effect. When any
+> change (even a small change) is made to the software on the system, a software regression
+> analysis should be conducted, not just for validation of the individual change, but also to
+> determine the extent and impact of that change on the entire system. Based on the analysis, you
+> should then conduct an appropriate level of software regression testing to show that unchanged
+> but vulnerable portions of the system have not been adversely affected. Appropriate regression
+> analysis and testing provide the confidence that the system is validated after a software change
+> (Ref. 2). We recommend that you perform regression testing, when indicated by your analysis, by
+> re-running test cases that previously passed.
+
+Read that first paragraph carefully: "the manufacturer *should* inform you" and "we recommend that
+your contract... address this issue" are both guidance-tier, both squarely about the vendor
+relationship — named here, not developed; vendor contract mechanics belong to a future course. The
+sentence that actually binds the outcome is the one after it: "you are ultimately responsible." The
+vendor's characterization of its own patch was always an input to that responsibility. It was never
+a substitute for it.
+
+On cadence, section III.C, already quoted in module 1 for a different point, requoted here for this
+module's own:
+
+> A written plan is not "designed to assure proper performance" unless it requires user validation
+> prior to routine use, on a routine basis, and any time a change is made that has the potential to
+> affect the functions of the system.
+
+"On a routine basis" is the guidance's own cadence phrase — and notice it never says how routine.
+No number of months or years is in that sentence anywhere.
+
+On watching a system after it goes live, from section III.G:
+
+> We recommend that you closely monitor the system for a period of time after installation of the
+> new or upgraded software in the production environment to detect any discrepancies that were not
+> identified by the test cases.
+
+That sentence is this module's answer to "what happens after the twelve tests pass." Testing,
+however well scoped, can't catch everything. A monitoring period afterward is the guidance's own
+backstop for whatever testing missed — and it's a step VIA-0842's own record never shows anyone
+took.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB (Association for the Advancement of Blood & Biotherapies) assessor
+reviewing a patch VIA wouldn't ask whether it installed cleanly. They'd ask for the document that
+shows Lakeshore reasoned about the *whole system*, not just the patch's stated target: **a dated
+regression analysis, written before the test plan**, naming what it considered and ruled in or out
+— not a sentence that restates the vendor's advisory. They'd also ask whether a failed test during
+execution got treated as new information or noise: a test that fails once, gets re-run to a pass,
+and is closed with no discrepancy note is the fastest way an inspector's confidence in the rest of
+the package collapses, because it suggests the team was managing to a result, not reading one. And
+they'd check whether the periodic review actually reaches back across the full change history, not
+one that resets its clock at the last upgrade — "we reviewed this quarter" is a weaker answer than
+"we reviewed everything that's happened to this system, including the patch two releases ago that
+never got a regression analysis."
+
+A bad answer to "why wasn't this patch's regression scope broader" sounds like "the vendor told us
+it was OS-level only." A good answer points to a dated analysis that reasoned past the vendor's own
+words.
+
+## Common traps
+
+**"Our last periodic review set an annual cadence, so that's now Lakeshore's regulatory
+deadline."** No regulation sets any fixed revalidation frequency. 211.68(a) requires routine checks
+"according to a written program," and the guidance's own phrase is "on a routine basis" (III.C) —
+neither names a number. An annual cadence can be exactly the right, risk-based choice, and once
+Lakeshore writes it down it should keep it — but it's Lakeshore's own industry-practice decision
+(GAMP's periodic-review concept), not a clause anyone could cite back as the law.
+
+**"The patch installed without errors, so it's validated."** The trap VIA-0842 fell into, dressed
+differently. A clean install is implementation evidence — proof the patch deployed as intended. It
+says nothing about whether the unchanged, potentially vulnerable, parts of the system still work.
+Only a regression analysis, followed by regression testing scoped to that analysis, can show that.
+
+## What this means for your job
+
+- **Before co-signing any patch VIA, ask for the regression analysis, not the vendor's advisory.**
+  If the whole argument for a reduced test scope is a sentence from the vendor's release notes,
+  send it back — that's an input, never the analysis itself.
+- **Build and maintain patch-class templates with your Validation Lead**, so a well-understood
+  patch type starts its VIA pre-scoped instead of reinventing the question every quarter. This is
+  the single highest-leverage systemic fix you can push for after this module.
+- **Treat a test that fails once and passes on re-run as a signal about scope, not a nuisance to
+  clear.** If nobody wrote down why it failed the first time, ask before you sign — especially on
+  anything timing- or load-sensitive.
+- **Read a periodic review for whether it reaches back across the system's whole history**, not
+  just since the last big project closed — a review scoped to "this quarter" will miss exactly the
+  kind of drift this module is built to catch.
+- **Treat configuration-drift checks as your own job, every cycle.** Nobody else on the review is
+  positioned to pull the CMDB (configuration management database) and ask whether what's running
+  still matches what was last validated. That's the Director-only catch, every time.
+
+## VIA-0842, finally: were twelve tests enough
+
+This course opened by naming VIA-0842 as the reason it exists. Here's the answer, and it's not the
+one either side of that original debate was arguing for.
+
+**The number twelve was never actually the question.** It sounds like it should have been — more
+tests feels safer than fewer — but chasing the right number was always a distraction from the real
+defect. VIA-0842's twelve test cases were never derived from a documented regression analysis of
+the patch's impact on the whole system. They rested entirely on the vendor's own characterization:
+"OS-level memory handling only." That sentence is a vendor **input**. It was never Lakeshore's own
+**analysis**. An OS patch that touches memory handling plausibly affects anything with timing or
+concurrency sensitivity — which, on a BECS server, means instrument interfaces, the hospital
+interface, and label-print timing under real, peak-load conditions, not just the normal-volume
+check the primary print station actually got. None of those three made it into the twelve-test
+scope. A real regression analysis would have had reason to pull in exactly those three. Nobody
+wrote one, so nobody found that reason, so none of them made it into the test plan.
+
+**Step 7's own first-run failure was itself the evidence that got ignored.** Step 7 — label-print
+job timing, at the primary print station — failed on its first run, was re-run the same day, passed
+on re-run, and closed with no discrepancy note. That's not a footnote. A timing-sensitive test
+failing once, right after a memory-handling patch, is the system telling you something directly
+relevant to scope. The correct response to that signal was to widen the test scope — ask what else
+timing-sensitive might be affected — not to re-run the same case until it went green and move on as
+if nothing had happened.
+
+**Here's the two-layer lesson, in one real document.** `directing-the-quality-analyst` already
+reviewed VIA-0842 once, using the cold-read test: would this document survive an inspector reading
+it cold, with its author not in the room? That review found the twelve-test scope was a
+deliberately planted *non-gap* at that layer — the Director couldn't judge whether twelve tests
+were sufficient, but the rationale for the scope was documented and signed, "Scope and rationale
+reviewed: Quality Validation Lead, 11/06." At the decision-trail layer, VIA-0842 held up. That
+finding doesn't change today, and this module doesn't reopen it.
+
+But this course built a second instrument specifically because the first one can't answer every
+question: the adequacy check, and its fourth question, **Regression** — named since module 2,
+applied for the first time right here. Does a documented analysis of the change's impact on the
+*whole* system exist, and does the testing that followed actually follow from that analysis, not
+just from a vendor's say-so? Run VIA-0842 through that question, and the answer is no. No
+regression analysis exists anywhere in its record. The scope rested on the vendor's words, not
+Lakeshore's reasoning. **A package can pass layer 1 and fail layer 2, in the same document, at the
+same time.** VIA-0842 is exactly that case — and it's the reason "defensible" has needed two
+different meanings since this course's first page.
+
+There's a third thread, easy to miss next to the first two, and it's more than a paperwork problem.
+VIA-0842's protocol — its fixed acceptance criteria — wasn't approved until Wednesday 11/11. Its
+twelve tests had already executed Monday through Tuesday, 11/09–11/10, *before* that approval
+existed. Production deployment followed that same Wednesday, 10:15 p.m. Read that sequence against
+section III.C, quoted above: a written plan isn't "designed to assure proper performance" unless it
+requires validation "prior to routine use... and any time a change is made." You cannot prove a
+test was judged against criteria that didn't yet exist when the test ran. That's not a dating
+technicality. It undermines the entire premise of having fixed acceptance criteria at all.
+
+**None of this reopens VIA-0842.** `directing-the-quality-analyst`'s later management-review packet
+already reported it, accurately, as closed — "closed this cycle, with a decision-trail gap
+corrected before production sign-off." That stays true. Nothing above is a new reportable
+deviation, and nothing above rewrites a single fact in VIA-0842's own record. What's different is
+that this periodic review, looking back at closed history with a second instrument the curriculum
+didn't have until now, draws a finding the first review had no way to reach: the testing was never
+shown to be adequate, because no regression analysis ever justified its own scope.
+
+**Right-sized remediation follows directly from that finding, and proportion matters here as much
+as the finding itself.** Two things, not one sweeping one: a documented regression analysis for the
+OS-patch class, going forward, so the next patch like this one starts correctly scoped — exactly
+what your Validation Lead already did for this quarter's patch, which is why it's the positive
+contrast sitting right next to this finding. And targeted supplemental testing now, against the
+*currently running system*, aimed at the three places VIA-0842's analysis should have reached:
+instrument interfaces, the hospital interface, and label-print timing under peak load. That's not a
+reflexive full revalidation of everything BECS does — the finding doesn't call for that, and asking
+for it would be its own kind of overcorrection. It's also not a retroactive rewrite of VIA-0842's
+record. It's confirming, now, that the functions nobody tested back then actually are fine, which is
+exactly what VIA-0842's own open item — "BECS-to-hospital interface regression testing to follow,"
+never assigned an owner or a date — was always going to require eventually anyway.
+
+If this periodic review wants a formal quality-system outcome, the proportionate one is a CAPA, not
+on VIA-0842 itself, but on the VIA template and procedure: require a documented regression analysis
+before any VIA can approve a reduced test scope, for every future patch, every class, every time.
+That's the systemic version of the fix your Validation Lead already applied, once, to this
+quarter's patch. A periodic-review finding that produces that fix is the methodological payoff of
+everything this course has built. A periodic-review finding that tries to retroactively discipline
+a closed deviation is not the same thing, and isn't what this finding calls for.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: "Validated systems must be fully revalidated every year." Accurate?
+
+No. No regulation sets a fixed revalidation frequency — annual or otherwise. 21 CFR 211.68(a)
+requires routine checks "according to a written program," and FDA's guidance says validation should
+happen "on a routine basis" (III.C), but neither sentence names a number. The actual cadence is
+Lakeshore's own risk-based choice, using periodic review as industry practice (GAMP's own concept)
+— not a regulatory mandate of once a year or any other fixed interval. Once Lakeshore writes a
+cadence down and commits to it, that commitment matters. It just isn't a rule anyone could cite back
+as "the law requires annual revalidation," because no rule says that.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: This quarter's OS patch installed cleanly in staging, with no errors. Does that mean it's validated?
+
+No, and this is exactly the trap VIA-0842 fell into once already. A clean install is implementation
+evidence — proof the patch deployed the way it was supposed to. The regulated question is a
+different one entirely: do the unchanged, but potentially vulnerable, parts of the system still
+work the way they did before the patch. Only a documented regression analysis, followed by
+regression testing scoped to what that analysis found, can answer that (guidance III.I). "It
+deployed without errors" and "it's validated" are two separate facts, and only a regression
+analysis connects them.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Someone on the quality team says, "`directing-the-quality-analyst` already reviewed VIA-0842's decision trail and found it held up — so the testing question is already settled." Right?
+
+Only half right, and the half that's wrong is the important half. `directing-the-quality-analyst`'s
+cold-read review found VIA-0842's decision trail held up: the twelve-test scope was documented and
+signed, "Scope and rationale reviewed: Quality Validation Lead, 11/06." That finding is real and
+this module doesn't change it. But that review was explicitly checking whether the *story* held
+together, not whether the *testing* was technically adequate — it told the Director, at the time, to
+route that second question elsewhere, because the method to answer it didn't exist yet. This
+course's adequacy check, specifically its Regression question, is that method, and applying it to
+VIA-0842 finds something the first review had no way to find: no documented regression analysis
+ever justified the twelve-test scope. Both findings are true at once, about the same document. A
+package can pass the decision-trail layer and fail the technical-adequacy layer at the same time.
+:::
+
+## Where this goes next
+
+You can now run a change through regression analysis instead of a vendor's characterization, build
+patch-class templates that start a VIA correctly scoped, design a periodic review that catches
+drift nobody else would think to check for, and give VIA-0842's twelve tests a real, methodological
+verdict instead of a number anyone could argue with. What's still sitting open is VIA-0842's own
+unfinished business: "BECS-to-hospital interface regression testing to follow," never assigned an
+owner, and the instrument-interface test its twelve-test scope never included in the first place.
+That's `becs-interfaces-and-data-integrity`, next — where every boundary BECS touches, instruments
+in, labels out, hospitals downstream, finally gets the interface-specific validation this module
+pointed toward but didn't build.
