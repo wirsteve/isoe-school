@@ -1,0 +1,312 @@
+---
+title: "Authorize and Monitor"
+order: 88
+---
+
+## One open line item, and a go-live date on the calendar
+
+You're back in the same room as the last module — you, your Quality Analyst, your systems
+administrator — but this time there's an agenda item with your name next to it: *eQMS
+(electronic quality-management system) go/no-go*. Your Quality Analyst opens by handing you one
+page, not twelve. It's her independent assessment, closed out: audit/logging, confirmed
+implemented correctly, operating as intended, producing the desired outcomes. Physical and
+environmental protection, same verdict. Account and identity management — the one she stopped
+on — gets a single, specific line: *implemented and documented, but has not yet been exercised on
+its first scheduled cycle.*
+
+Your systems administrator jumps in before you ask. "I can run it this week. Takes maybe two
+days once I actually sit down with it." That's a real offer, and it's tempting to just say "great,
+run it, we'll talk Friday." But notice what that would actually be: postponing the decision, not
+making it. The eQMS has a go-live date. Somebody has to decide, today, on the record, whether
+Lakeshore operates it starting now with that one item still open, or holds the date until it
+closes. Both are legitimate answers. "We'll figure it out informally and see how it goes" is not
+one of them — and that's exactly the habit this whole course has been built to break.
+
+This is the moment the last three modules were all pointing at. Categorize and Select decided
+what the eQMS needed. Implement and Assess built it and checked it. Nobody yet has stood up and
+said, out loud, with their name on it, "I've looked at what's left, and here's what Lakeshore is
+doing about it." That's today's job, and it's yours — not your QA's, not your systems
+administrator's.
+
+## Why this step exists — and the ITSM bridge
+
+Here's the failure Authorize and Monitor are built to prevent, and it's a different failure than
+the one Implement and Assess guarded against. That pair stopped a team from believing an
+unverified control. This pair stops a different, later problem: a verified gap that everyone
+quietly tolerates because nobody wants to be the one who either blocks the go-live date or signs
+their name to accepting the risk. Deficiencies don't usually get buried through malice. They get
+buried because no single person was ever clearly the one whose job it was to decide, so the
+decision never formally happens — it just sort of occurs, undocumented, by default, the day the
+system goes live anyway because the date was already on the calendar.
+
+You already know the ITSM (IT service management) shape of this problem, just under a different
+name. Think about a release that reaches its go/no-go gate with one known, lower-severity defect
+still open — not a blocker, but not nothing either. A mature release management practice doesn't
+pretend the defect isn't there, and it doesn't automatically delay the release over it either. It
+does something more specific: someone with the authority to make that call — a release manager,
+a service owner, a change advisory board acting as a body — looks at the defect, decides whether
+it's acceptable to ship with a documented workaround, logs it as a known error in the KEDB (known
+error database) with an owner and a planned permanent fix, and the release proceeds on the record.
+What never happens in a well-run practice is the defect quietly disappearing from the release
+notes because raising it felt inconvenient the day before launch. **Authorize is that same gate,
+aimed at a security and privacy risk decision instead of a software defect** — a named person,
+reviewing a named gap, making an explicit, logged call instead of letting the go-live date make
+the decision by default.
+
+**Monitor** is the practice right after that gate that ITSM already trained you to expect:
+**continual improvement**, applied specifically to the thing you just accepted. A known error
+with a planned fix and no one ever checking back on it isn't really being managed — it's being
+ignored politely. The same is true of a residual risk nobody revisits.
+
+## The rule in plain English
+
+**Authorize** means one accountable person — here, you, the Director — reviews what Assess
+actually found (not what Select originally planned, not what Implement claims it built, but what
+an independent check confirmed is true today) and makes an explicit, documented call: either the
+eQMS's residual risk, as it stands right now, is acceptable to run on, or it isn't. If it's
+acceptable, that acceptance gets named specifically — which gap, how long you're willing to carry
+it, and what has to happen before you reconsider. A decision nobody can point to in writing isn't
+an authorization. It's a shrug that happened to coincide with a launch date.
+
+**Monitor** means that acceptance isn't the end of the conversation. It's a commitment to keep
+checking — on a stated schedule, against stated triggers — whether the thing you accepted is
+still acceptable, and whether anything else about the eQMS has changed since you made the call.
+
+One thing to say plainly, and then not belabor, because this course has already said it at
+length in the first three modules: **none of this is an actual federal "authorization to
+operate."** Lakeshore is not a federal agency, and the eQMS is not a federal information system.
+What you're about to do borrows the *ceremony* of that federal decision — one accountable person,
+reviewing real evidence, on the record — not the legal instrument itself. Nothing below creates
+any obligation to any federal authorizing body. It creates an obligation Lakeshore chose to carry,
+to itself.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| NIST SP 800-37 Rev. 2, Ch. 2 (Figure 2 framing — Authorize) | "...Chapter Two" | U.S. government work, public domain, safe to quote verbatim. States that Authorize means a determination that the risk is acceptable. | The decision you make today about the one open account-and-identity-management item. |
+| NIST SP 800-37 Rev. 2, Appendix B (authorization to operate, sourced to OMB Circular A-130) | "Appendix B" | Same tier. Defines what an actual federal authorization to operate is and who issues one. | Quoted to show, precisely, what Lakeshore is *not* doing — and what it's borrowing the shape of instead. |
+| NIST SP 800-37 Rev. 2, Ch. 2 (Figure 2 framing — Monitor) | "...Chapter Two" | Same tier. States that Monitor means ongoing assessment, documenting change, reassessing risk, and reporting posture. | The standing eQMS monitoring plan this module builds. |
+
+## The actual text
+
+Authorize's one-line action, quoted verbatim from `sources/nist/sp-800-37r2-excerpt.md` (part of
+the Figure 2 passage already quoted in full in `risk-frameworks-side-by-side` — this is the one
+line this module actually acts on):
+
+> Authorize the system or common controls based on a determination that the risk to
+> organizational operations and assets, individuals, other organizations, and the Nation is
+> acceptable.
+
+Strip away "organizational operations and assets, individuals, other organizations, and the
+Nation" — language written for a federal agency, not Lakeshore — and what's left is the actual
+mechanism: a determination. Not a feeling. Not a date arriving on a calendar. A determination,
+made by someone, about whether a specific, known risk is acceptable.
+
+Now the term this course has named but never actually quoted until this module. "Authorization to
+operate" (ATO) is NIST's own glossary term, and the saved excerpt attributes its definition to a
+separate source document NIST itself cites — OMB (the Office of Management and Budget) Circular
+A-130 — not to SP 800-37 inventing the concept itself. Quoted verbatim:
+
+> The official management decision given by a senior Federal official or officials to authorize
+> operation of an information system and to explicitly accept the risk to agency operations
+> (including mission, functions, image, or reputation), agency assets, individuals, other
+> organizations, and the Nation based on the implementation of an agreed-upon set of security and
+> privacy controls. Authorization also applies to common controls inherited by agency information
+> systems.
+
+Read that definition slowly, because every word of it is doing a job the eQMS decision also needs
+done, with one critical substitution. "A senior Federal official" becomes you, the Director — not
+because any law says so, the way it does for that federal official, but because Lakeshore needs
+exactly one person whose name is on this decision, and that person has to be you. "Explicitly
+accept the risk" is the operative phrase: not "the risk is probably fine," not "we'll keep an eye
+on it" — explicit, on the record, naming the risk being accepted. "Based on the implementation of
+an agreed-upon set of security and privacy controls" is exactly what Categorize, Select, Implement,
+and Assess already gave you: a specific, documented, independently checked set of controls to
+weigh the one open gap against.
+
+Say it once more, plainly, and then move on: Lakeshore's eQMS decision is **not** this. No "senior
+Federal official" exists here; no federal agency owns the eQMS; nothing about "the Nation" is at
+stake. What you're borrowing is the shape of the decision — one accountable person, explicit
+acceptance, on the record, tied to a documented control set — not the legal instrument the
+definition above actually describes.
+
+Monitor's one-line action, quoted verbatim from the same excerpt:
+
+> Monitor the system and the associated controls on an ongoing basis to include assessing
+> control effectiveness, documenting changes to the system and environment of operation,
+> conducting risk assessments and impact analyses, and reporting the security and privacy
+> posture of the system.
+
+Four separate obligations live in that sentence: keep checking that controls still work, write
+down what changes about the system or where it runs, keep reassessing risk rather than assuming
+the original assessment ages gracefully, and report the system's standing to someone — not just
+privately know it.
+
+## The decision
+
+Here's what actually happens in the room. You have one open item: the quarterly access-review
+control, implemented and documented, not yet exercised on its first scheduled cycle. You have two
+honest options, and both are defensible — which is exactly why this has to be a decision, not a
+default.
+
+**Option A: hold go-live** until the review actually runs. Clean, conservative, and not wrong.
+Nothing about the eQMS absolutely requires launching today instead of in two weeks.
+
+**Option B: authorize now, naming the gap as an accepted, time-bound residual risk, with a
+remediation commitment attached.**
+
+You take Option B, and here's the reasoning, said to your QA and your systems administrator in
+the room, not just filed away afterward. The two control families Assess already confirmed —
+audit/logging and physical/environmental protection — are both fully verified: implemented
+correctly, operating as intended, producing the desired outcomes. The one open item isn't a
+control that's missing or broken; it's a control that exists, is documented, and simply hasn't had
+its first scheduled exercise yet. The exposure during that gap is real but bounded: a stale
+account or a role mismatch that an on-time review would have caught, for however many weeks the
+review is late. That's a risk worth naming and carrying briefly, not a reason to hold a three-site
+go-live over a control that's already built and already scheduled.
+
+So you say it, on the record, the way the ATO definition above describes: *"I'm authorizing the
+eQMS for production use, effective today, across all three sites. I am explicitly accepting one
+named residual risk: the first quarterly access review for account and identity management has
+not yet run. I am not accepting this indefinitely. [Systems administrator], I need that first
+review completed and its results reported to me within 30 days of today's decision — not
+'sometime soon,' a specific window. If it finds nothing wrong, the acceptance closes clean. If it
+finds something — a stale account, a mismatched role — we treat that as a new, immediate finding,
+not something this authorization already waived."*
+
+That sentence — a named gap, a named owner, a specific 30-day window, a stated consequence either
+way — is what turns "I'll run it this week" into an actual authorization decision instead of an
+informal promise. It's also, not incidentally, exactly what module 5 is going to need: a dated,
+owned, specific remediation commitment is the raw material a POA&M (plan of action and milestones)
+entry is built from. You haven't built that entry here — that's next module's job — but you've
+just created the one thing it requires to exist.
+
+## The ongoing monitoring plan
+
+Authorize isn't a one-time stamp; it comes with a standing commitment to keep watching, per
+Monitor's own four obligations above. Concretely, for the eQMS, that means:
+
+- **The 30-day remediation check, specifically.** Did the first access review actually run? Did
+  it find what it was designed to find, or did it turn up a stale account or mismatched role the
+  system had been quietly carrying? Either answer gets reported back to you by name, not folded
+  silently into next quarter's routine review.
+- **The ongoing quarterly cycle, generally.** Once the first review clears, the same cadence
+  continues on schedule — this module's accepted gap was about the *first* cycle specifically,
+  not a reason to loosen the schedule going forward.
+- **Audit/logging, spot-checked periodically**, not just confirmed once at Assess. A log that was
+  capturing every CAPA (corrective and preventive action) and document-control change six weeks
+  ago can silently stop doing so if a configuration changes; nobody should assume Assess's verdict
+  ages forever.
+- **A fresh look whenever something material changes about the eQMS** — a new site added, a new
+  integration connected, a vendor patch applied, a new category of record stored in it. Any of
+  those could change what Categorize originally concluded, which is exactly what Monitor's
+  "documenting changes to the system and environment of operation" phrase is there to catch.
+- **A standing trigger for revisiting this specific authorization**, not just a vague "we'll stay
+  alert": if the overdue review turns up a real finding, if a control that cleared Assess ever
+  stops operating as intended, or if the 30-day window passes with no review run at all, this
+  authorization is reopened — it does not quietly keep standing on its own.
+
+## The single sentence this course has been building toward
+
+Here's why making this call is the same underlying decision as something you already understand
+cold from a different vocabulary. In `csv-and-becs`, a validation package reaches its own go/no-go
+moment: a Quality Validation Lead reviews the executed test evidence, including any open
+deviations, and signs and dates an approval that the system may move to production — and from
+that point forward, a periodic review keeps checking, on a schedule, whether the system is still
+behaving the way that approval assumed. **Authorizing the eQMS today is that identical motion, one
+layer removed from software validation and aimed at a security-and-access control instead of a
+tested requirement: one accountable person looks at independently-verified evidence and a named
+residual risk and says "acceptable, go live," and that decision comes bundled with an ongoing
+commitment — Monitor here, periodic review there — to keep checking it stays true.** Different
+vocabulary, different originating framework, same shape of decision, made by the same kind of
+accountable person, for the same underlying reason: nothing proven once stays proven forever
+without somebody committing to keep checking.
+
+## What a reviewer would actually look for
+
+What a competent reviewer — your CIO, an AABB assessor who happens to ask about the eQMS, or you
+yourself revisiting this in six months — wants to find is a single document with your name on it,
+dated the day of the decision, that names the specific gap, states explicitly that the risk is
+accepted (not "noted" or "flagged" — accepted), and gives a specific remediation date. A bad
+answer sounds like "we knew about the access review and just went live" with nothing written down
+about who decided that was fine. A good answer produces exactly the sentence this module just
+walked through, on paper, with a 30-day date on it.
+
+## Common traps
+
+**"We'll just keep an eye on it informally — no need to write anything down."** That's your
+systems administrator's line from module 1, back again in a new disguise. An unwritten acceptance
+isn't an authorization; it's the same ad hoc risk judgment this entire course exists to replace.
+If the decision isn't written down with a name and a date, it didn't happen in any way that
+survives a question six months from now.
+
+**"Authorizing with an open item means the system isn't really secure yet."** No — it means the
+risk was found, named, and deliberately accepted as acceptable for a bounded period, which is a
+stronger position than a system that launched with the same gap nobody ever looked at closely
+enough to name. An honest, time-bound acceptance is a sign the process worked. A system with zero
+named residual risk at authorization is usually a sign nobody looked hard enough, not a sign
+everything is actually perfect.
+
+## What this means for your job
+
+- **Never let a go-live date make the authorization decision by default.** If nobody explicitly
+  said "I accept this risk," the launch happening anyway isn't an authorization — it's a decision
+  that got made silently, by nobody, which is worse than either real option.
+- **Demand a name, a specific gap, and a specific date before you sign anything.** "We'll monitor
+  it" without a date attached isn't a remediation commitment; it's the same shrug this course keeps
+  warning you about.
+- **Treat Monitor as a real, standing obligation, not a one-time afterthought to Authorize.** A
+  risk accepted and never revisited is functionally the same as a risk nobody ever named.
+- **Ask what would make you revisit an authorization before anyone tells you to.** A new site, a
+  new vendor patch, a control that stops working — if you can't name at least one concrete trigger,
+  your monitoring plan is decorative.
+- **When you explain this upward, to your CIO or sideways to an AABB assessor, say plainly that
+  this is Lakeshore's own voluntary risk-acceptance discipline, not a federal requirement.**
+  Overclaiming it as "our federal authorization process" the moment it sounds impressive is exactly
+  the overstatement this course has warned against from its first module.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your systems administrator asks, "Since we just authorized the eQMS using NIST's framework, did Lakeshore just issue a real federal authorization to operate?" What do you tell him?
+
+No. An actual authorization to operate, per OMB Circular A-130's own definition that NIST's
+document cites, is issued by a senior Federal official for a federal information system, and
+explicitly accepts risk to agency operations and "the Nation." The eQMS is not a federal system,
+and Lakeshore is not a federal agency — nothing about today's decision has any legal force outside
+Lakeshore itself. What happened is that Lakeshore borrowed the *shape* of that decision — one
+accountable person, explicit acceptance, documented evidence — entirely voluntarily, the same way
+it already borrowed ICH Q9's structure and AABB's own accreditation structure elsewhere.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Why did the Director authorize the eQMS today instead of waiting the two days it would have taken to just run the overdue access review first?
+
+Because the two confirmed control families (audit/logging, physical and environmental
+protection) were fully verified, and the one open item was a control that exists and is
+documented but simply hasn't had its first scheduled exercise — a bounded, well-understood gap,
+not an unknown one. Waiting would have been defensible too; so would authorizing. What makes
+authorizing now defensible, rather than reckless, is that it came with an explicit, named,
+dated acceptance — not a quiet decision to just launch and hope the review happens eventually.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: If the 30-day access review turns up a stale account that should have been revoked weeks ago, does that mean the Director's authorization decision was wrong?
+
+No — it means Monitor is doing exactly what it's supposed to do. The authorization didn't claim
+the access list was clean; it explicitly named the fact that nobody had checked yet as the risk
+being accepted, for a bounded window, with a commitment to look. Finding a real problem inside
+that window is the monitoring plan working as designed, the same way module 3's assessment
+finding the unrun review in the first place was the process working, not failing. What would
+actually call the authorization into question is the 30-day date passing with still no review
+run and nobody revisiting the decision.
+:::
+
+## Where this goes next
+
+You've made and logged the eQMS's authorization decision — one named residual risk, accepted for
+30 days, with a specific remediation commitment — and built the ongoing monitoring plan that
+keeps checking it. That dated commitment is exactly what `poams-and-capas` needs to build a real
+POA&M (plan of action and milestones) entry around, and to place next to a CAPA and show they're
+doing the identical job in two different vocabularies.
