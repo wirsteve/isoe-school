@@ -274,12 +274,16 @@ has no `plans/<slug>.md` file until its first session.
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
 | `healthcare-security-and-privacy` | 5 / 5 | Done |
 | `vendor-and-third-party-risk-management` | 5 / 5 | Done |
-| `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
+| `itsm-for-regulated-blood-services` | 1 / 6 | In progress |
 
-**Next up:** `itsm-for-regulated-blood-services` (Track 5, Phase 10) — the curriculum's capstone,
-built last per this file's own "Prerequisite order" diagram ("capstone — wants everything else
-done"). **Checked against the progress tracker above and the full prerequisite chain in this
-file's "Prerequisite order" section: every other course in this curriculum is now Done** —
+**Next up:** `itsm-for-regulated-blood-services` module 2,
+`itil-to-qse-crosswalk-cmdb-and-continual-improvement` (Track 5, Phase 10) — module 1,
+`itil-to-qse-crosswalk-change-and-problem`, is now published (see
+`plans/itsm-for-regulated-blood-services.md`'s progress log for its locked state). The capstone
+is the curriculum's final course, built last per this file's own "Prerequisite order" diagram
+("capstone — wants everything else done"). **Checked against the progress tracker above and the
+full prerequisite chain in this file's "Prerequisite order" section: every other course in this
+curriculum is now Done** —
 `reading-a-cfr-citation`, `regulatory-landscape-orientation`, `risk-and-controls-vocabulary`
 (foundations); `blood-center-operations` (Track 1); `quality-system-essentials`,
 `fda-and-aabb-in-practice` (Track 2); `csv-and-becs`, `data-integrity-and-records` (Track 3);
