@@ -1,0 +1,75 @@
+---
+title: "Healthcare Security & Privacy"
+order: 92
+---
+
+## The finish line
+
+By the end of this course you can apply HIPAA's (the Health Insurance Portability and
+Accountability Act's) Privacy Rule and Security Rule requirements to a donor or patient record,
+and run an actual breach through both HIPAA's own notification obligation and FDA's reporting
+obligations at once — on two separate clocks, for two separate reasons, owed to two separate
+regulators.
+
+This course asks a question this curriculum has never had to answer directly before: is
+Lakeshore even a HIPAA covered entity in the first place? The honest answer — reasoned from
+HIPAA's own definitions, not assumed — sets up everything that follows: Privacy Rule limits on
+using and disclosing a donor's protected health information, Security Rule safeguards mapped
+against Part 11's own electronic-records controls (already deeply taught in
+`data-integrity-and-records`), and a breach-response plan that has to satisfy HHS and FDA
+simultaneously, not in sequence.
+
+## Before you start
+
+This course assumes the foundations and two earlier courses:
+
+- [Reading a CFR citation](../../foundations/reading-a-cfr-citation/index.qmd),
+  [Regulatory landscape orientation](../../foundations/regulatory-landscape-orientation/index.qmd),
+  and [Risk and controls vocabulary](../../foundations/risk-and-controls-vocabulary/index.qmd).
+- [Data Integrity & Records](../data-integrity-and-records/index.qmd), especially its Part 11
+  modules (11.10, 11.50, 11.70, 11.100, 11.200, 11.300, all already quoted in full) — this
+  course's Security Rule module maps directly against that content rather than re-teaching it.
+- [FDA & AABB in Practice](../fda-and-aabb-in-practice/index.qmd), especially
+  [Filing a Biological Product Deviation Report](../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd)
+  (606.171's filing mechanics and 45-day clock) — this course's breach-notification module
+  compares HIPAA's own 60-day clock against that one, never re-deriving it.
+- [GRC Frameworks & Risk Management](../grc-frameworks-and-risk-management/index.qmd) — the
+  categorize→select→implement→assess→authorize→monitor vocabulary this course reuses by name
+  when sizing Security Rule safeguards to a real system.
+
+## The five modules
+
+Each module is one sitting, and each has its own finish line.
+
+1. **Information governance in a covered entity.** Answer the question this curriculum has never
+   had to ask before — is Lakeshore a HIPAA covered entity at all? — reasoned from HIPAA's own
+   definitions, and introduce the incident this course's remaining four modules carry forward.
+2. **The HIPAA Privacy Rule.** Apply the actual rules governing when a donor's protected health
+   information can be used or disclosed without authorization, when it can't, and the specific,
+   textual exception that already covers disclosing PHI to support an FDA-regulated recall or
+   biological product deviation report.
+3. **Security Rule safeguards and Part 11.** Map HIPAA's administrative, physical, and technical
+   safeguards against Part 11's own electronic-records controls — genuine overlaps, and one
+   genuine structural difference (required vs. addressable) Part 11 has no equivalent for.
+4. **Breach notification and dual reporting.** Run a real incident through HIPAA's own breach
+   test and 60-day notification clock, side by side with FDA's 45-day BPDR clock, and say
+   honestly when one incident genuinely triggers both.
+5. **Investigating a healthcare data incident.** Walk the investigation a HIPAA breach actually
+   demands — scope, root cause, the four-factor compromise assessment — through to the closing
+   decision both this course and this incident have been building toward.
+
+## A note on sources
+
+This course introduces HIPAA into the curriculum for the first time, sourced the same way every
+regulation here always has been — fetched and saved locally, never quoted from memory:
+
+- **45 CFR 160.103** — covered entity, business associate, and health care provider definitions,
+  the textual basis for this course's own first real question.
+- **45 CFR 164, Subpart E (Privacy Rule)** — general uses and disclosures, authorization, the
+  FDA-regulated-product public-health exception, minimum necessary, and the right of access.
+- **45 CFR 164, Subpart C (Security Rule)** — administrative, physical, and technical safeguards,
+  quoted in full.
+- **45 CFR 164, Subpart D (Breach Notification Rule)** — the breach definition, the four-factor
+  risk assessment, and the notification obligations to individuals, media, and HHS.
+
+Modules appear in the sidebar as they're built.
