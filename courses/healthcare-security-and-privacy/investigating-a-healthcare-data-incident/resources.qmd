@@ -1,0 +1,34 @@
+---
+title: "Resources"
+order: 102
+---
+
+This module introduces no new CFR (Code of Federal Regulations) citation and no new external
+source — it's pure synthesis, applying 164.306(d)(3), 164.308(a)(1)(ii)(D), 164.402(2), and
+164.414(b), all already fetched, verified, and quoted in full in earlier modules of this course.
+No new source was independently fetched this session, consistent with how this curriculum has
+handled prior synthesis-only closing modules (see `grc-frameworks-and-risk-management`'s
+`poams-and-capas` resources page for the same pattern). The links below point back to this
+course's own earlier modules — the actual sources behind everything this module reused.
+
+- **[Information Governance in a Covered Entity](../information-governance-in-a-covered-entity/index.qmd)**
+  — module 1. This is where the Brookfield laptop incident and all of its locked facts were
+  first logged: the six-field, ~212-donor extract, the encryption-status ambiguity, and the
+  clean-population finding this module's investigation never touched or reopened.
+
+- **[Security Rule Safeguards and Part 11](../security-rule-safeguards-and-part-11/index.qmd)**
+  — module 3. The source of 164.306(d)(3) and 164.308(a)(1)(ii)(D), both reused (not re-quoted
+  at length) in this module, and of the original finding — Lakeshore's encryption *policy* was
+  sound, its *verification* for this one device was not — that this module's investigation set
+  out to test further.
+
+- **[Breach Notification and Dual Reporting](../breach-notification-and-dual-reporting/index.qmd)**
+  — module 4. The source of 164.402's four-factor test and 164.414(b)'s burden of proof, both
+  reused in this module, and of the provisional breach determination this module's investigation
+  was built to confirm, rebut, or honestly leave standing. It now stands as this course's final
+  determination.
+
+If a future session needs to go beyond what this course's own four modules already sourced —
+for example, 164.412's law-enforcement-delay mechanics, or HHS's own specified encryption
+methodology referenced in 164.402's "unsecured protected health information" definition — run
+`fetch-source` first rather than asserting anything about either one from memory.

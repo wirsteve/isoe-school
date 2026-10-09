@@ -1,0 +1,385 @@
+---
+title: "Investigating a Healthcare Data Incident"
+order: 101
+---
+
+## "Go find out. Actually find out."
+
+That's what you told the systems administrator three modules ago, when `breach-notification-and-
+dual-reporting` left the Brookfield laptop in exactly the state 164.402's presumption leaves
+anything it can't rebut: treated as a breach, provisionally, until someone brings back a better
+answer. He's back now, with your Quality Analyst (QA) beside him, and a folder of exactly what
+he found — enrollment logs, a vendor support ticket, a network log excerpt, and one short,
+useless interview.
+
+"I want to be straight with you before you read any of it," he says. "I did everything I know
+how to do. I don't have a clean answer. I have a better-documented version of the same unknown."
+
+That sentence is this module's whole job, stated honestly before a single page gets turned.
+Not every investigation ends with a flipped verdict. Some end exactly where they started, with
+a thicker file proving the organization actually looked. Your job today is to read that file the
+way an OCR (the HHS Office for Civil Rights) investigator eventually might, decide whether it
+changes anything module 4 locked, find the actual root cause underneath all of it, and close
+this course with whatever honest answer the facts support — not the one that would look best in
+a slide.
+
+## Why this step exists, and the ITSM bridge
+
+Every prior module in this course was about a rule and a test: who may see PHI (protected
+health information), what has to guard it, whether a presumption gets rebutted. This module is
+about something ITSM (IT service management) already has a name for, even though HIPAA's text
+never uses it: **problem management**. An incident gets contained and a workaround gets applied
+long before anyone knows the actual root cause. Problem management is the separate discipline
+that keeps digging after the fire's out — not to change what already happened, but to find the
+underlying condition that let it happen, log it in a known-error record, and decide whether a
+permanent fix is worth building.
+
+HIPAA doesn't hand you a section titled "root cause analysis." What it hands you instead is
+164.414(b)'s burden of proof: Lakeshore has to demonstrate either that every required
+notification was made, or that the event wasn't a breach at all. You cannot demonstrate either
+one by shrugging. You demonstrate it by actually investigating — pulling every log that might
+exist, escalating to the people who hold data you don't, interviewing the person who was there —
+and writing down what you found, including what you tried and still couldn't find. The failure
+mode this module guards against isn't "the investigation reached an unsatisfying conclusion."
+It's "nobody can show their work," which is a different and much worse problem to have in front
+of a regulator who has the burden of proof sitting squarely on you.
+
+## The rule in plain English
+
+There's no new regulation to read today. This module's job is to apply, honestly and in order,
+everything the first four already built: re-open the encryption question module 1 logged and
+module 3 and 4 couldn't close, dig as far as a real investigation can actually dig, and then
+re-run — not re-litigate — 164.402's four-factor test with whatever the dig actually produced.
+If new facts change a factor, the determination can change. If the dig comes up empty, the
+determination module 4 reached stands, now as this course's **final** answer instead of a
+provisional one — and 164.414(b)'s burden of proof means Lakeshore still has to be able to show,
+on paper, that it tried.
+
+## Citation decoder — citations reused, not newly introduced
+
+This module introduces no new CFR (Code of Federal Regulations) citation. Every row below was
+already fully quoted in an earlier module; it's listed again only because this module re-applies
+it to a different, later set of facts.
+
+| Citation | How to read it aloud | What it requires | Reused from | In this module |
+|---|---|---|---|---|
+| 45 CFR 164.306(d)(3) | "One-sixty-four point three-oh-six, paragraph (d)(3)" | **Regulation.** For an Addressable implementation specification: assess reasonableness, then implement it or document why not and implement an equivalent alternative. | `security-rule-safeguards-and-part-11` | The standard the investigation has to show Lakeshore actually met, not just claimed. |
+| 45 CFR 164.308(a)(1)(ii)(D) | "Three-oh-eight, (a)(1)(ii)(D)" | **Regulation, Required.** Regularly review records of information system activity — audit logs, access reports, security incident tracking. | `security-rule-safeguards-and-part-11` | The provision this module's own digging is, in effect, finally doing — late, and for one device, but doing it. |
+| 45 CFR 164.402(2) | "Four-oh-two, paragraph two" | **Regulation.** The presumption of breach and its four-factor rebuttal test. | `breach-notification-and-dual-reporting` | Re-run against whatever this module's investigation actually finds. |
+| 45 CFR 164.414(b) | "Four-fourteen, paragraph (b)" | **Regulation.** Burden of proof: demonstrate all notifications were made, or that no breach occurred. | `breach-notification-and-dual-reporting` | Why "we still don't know" has to come with a file proving the attempt, not just the sentence. |
+
+## The actual text, reused
+
+All quotes below are verbatim from the same saved files modules 3 and 4 already quoted in full —
+`sources/cfr/45-164-security-rule-excerpt.md` and `sources/cfr/45-164-breach-notification-
+excerpt.md`. Nothing here is new; it's reproduced only where this module leans on it directly.
+
+> **164.308(a)(1)(ii)(D):** Information system activity review (Required). Implement procedures
+> to regularly review records of information system activity, such as audit logs, access reports,
+> and security incident tracking reports.
+
+> **164.402(2)(iii):** Whether the protected health information was actually acquired or
+> viewed[.]
+
+> **164.414(b):** [T]he covered entity or business associate, as applicable, shall have the
+> burden of demonstrating that all notifications were made as required by this subpart or that
+> the use or disclosure did not constitute a breach, as defined at § 164.402.
+
+Read those three together and the module's whole shape is right there. 164.308(a)(1)(ii)(D) is
+the Required specification this investigation is, belatedly, finally satisfying for this one
+device. 164.402(2)(iii) is the single factor the whole course has been circling since module 3.
+164.414(b) is why "we tried and couldn't tell" has to be a documented finding, not a verbal
+shrug.
+
+## The investigation — what the systems administrator actually did
+
+Four separate leads. Walk each one the way the folder on your desk lays them out.
+
+**1. Enrollment and policy-push logs.** The device-management platform's own enrollment record
+confirms, cleanly, what module 3 already said could be confirmed: the laptop enrolled under
+Lakeshore's full-disk-encryption policy, and the policy profile pushed successfully at
+enrollment. That much was never actually in doubt. It answers "was the device told to encrypt
+itself," not "did it."
+
+**2. Check-in history, read more carefully than the surface-level status field.** Here's where
+the systems administrator went past where module 3 stopped. The laptop was issued shortly
+before the device-management platform migration — which means its entire operating life, before
+the loss, sits almost entirely inside the migration window. Pulling the raw check-in history
+instead of trusting the dashboard's single "not reported" field, he found only two check-ins
+ever logged for this specific device before the migration cutover. Both show the encryption
+policy as assigned. Neither shows a completed encryption-status attestation.
+
+That's a real, structural reason, not a shrug: on this platform's architecture, encryption
+attestation runs as a background compliance scan that doesn't finish on a device's first one or
+two check-ins after imaging — it needs an idle window the device apparently never had, because
+it went straight from imaging into travel service for the Brookfield review. The "not reported"
+field isn't only a migration artifact. It may be that no attestation had ever completed, on
+either platform, before the device went missing. The migration didn't necessarily erase a known
+answer. It may have cut off the only chance for an answer to ever get recorded.
+
+**3. Vendor escalation.** The systems administrator opened a case with the device-management
+platform's vendor and asked them to check their own backend telemetry — the raw data their
+servers receive, not just what the admin console surfaces. Two findings came back. First, the
+vendor confirmed a known defect class in their migration tooling: devices with fewer than a
+handful of check-ins at cutover could lose in-progress compliance-attribute data during the
+account remap, which is consistent with, though doesn't fully prove, what happened here. Second,
+and more final: the old platform was already decommissioned on its own retention schedule before
+this investigation began, and its last full data export — the one place a late-arriving
+attestation might have been archived — was already purged under that same routine schedule. If
+anything more existed, it's no longer retrievable from either side.
+
+**4. Network logs, and the one human being who was there.** The central site's meeting-room
+network — the one the Brookfield staff member's laptop connected to on the day of the
+presentation, its last confirmed network session before the loss — is a visitor-segment network
+that doesn't run device posture or compliance checks on anything that joins it. No attestation
+exists from that connection either, by design, not by oversight anyone can fix retroactively.
+And the staff member, interviewed directly, isn't a technical employee and genuinely doesn't
+remember ever seeing an encryption indicator, a prompt, or anything else that would help either
+way. That's not evasiveness. It's an honest "I wasn't looking for that, and I had no reason to."
+
+**One thread did close.** Module 4 left an open action item: confirm whether a remote
+lock-or-wipe command was actually issued through the device-management platform when the loss
+was reported, not merely assumed. It was issued — the systems administrator can show the
+command's timestamp and status in the platform's own log. What the log also shows, honestly, is
+that the command has never been marked delivered, because a lock or wipe command can only reach
+a device that comes back online, and this one hasn't. Issuance is now a confirmed fact. Receipt
+is not, and structurally may never be confirmable unless the device itself resurfaces.
+
+## The honest conclusion: this cannot be resolved
+
+Four leads, four dead ends, each explained by something real rather than a failure to look.
+There is no last-known-good encryption reading to recover, because the device's whole short life
+sits inside a window where no platform — old or new — ever completed its first confirmation, and
+the one record that might have captured a late one no longer exists. This is not the same
+finding as "encryption was off." It is also not "encryption was confirmed on." It is a genuine,
+permanent unknown, and per this curriculum's own working rule — stated honestly, not dressed up
+as a cleaner finding than it is — that unknown stays an unknown.
+
+## Root cause — reasoning through which gap actually matters most
+
+Three real gaps sit behind this incident. Naming all three without picking one and calling it
+done would be the easy, lazy version of this section. Here's the reasoning, in order of how
+directly each one explains what actually happened.
+
+**The proximate cause of the loss itself: a physical-handling gap.** Nothing downstream in this
+course happens if the laptop never leaves the staff member's hand. A shoulder bag, set down
+unattended in the back seat of a shared ride, with no second control — no cable lock, no
+"carry-on only" habit, no reflex to keep the bag in sight between a meeting and a gate — is a
+training and process gap, plain and simple. This is the thing a CAPA (corrective and preventive
+action)-style fix should target directly: a concrete handling rule for devices carrying BECS
+(Blood Establishment Computer Software) extracts off-site, reinforced the way any workforce
+security-awareness control under 164.308(a)(5) would be.
+
+**The reason the compliance question can never close: a deployment-sequencing gap.** This is the
+root cause this module's own digging actually surfaced, and it's the one worth fixing first,
+because it's structural and will recur. A freshly imaged device went straight into travel
+service before its first encryption attestation had time to complete — and then a platform
+migration permanently cut off any later chance to backfill that confirmation. The fix isn't "be
+more careful during the next migration." It's a standing rule: a newly enrolled device doesn't
+leave the building for field or travel use until its first compliance attestation has actually
+completed and been confirmed, migration or no migration. That single rule would have prevented
+today's unresolved question regardless of whether the laptop had ever been lost at all, which is
+exactly the kind of fix 164.308(a)(1)(ii)(D)'s "regularly review" standard is meant to produce —
+not a review that happens after the device is already gone.
+
+**The gap that made the exposure worse than it needed to be: the minimum-necessary gap.**
+`the-hipaa-privacy-rule` already found this, independently of everything above: three of the
+extract's six fields — name, date of birth, lifetime donation count — never needed to ride
+along. That gap didn't cause the loss and didn't cause the encryption question to go unanswered.
+What it did was guarantee that if this device's contents were ever acquired or viewed, the
+record exposed was bigger and more re-identifiable than the review ever required. A standing
+report template scoped to actual need, per 164.514(d)(3)(i)'s own requirement, would have made
+every future version of this exact incident smaller, regardless of what happens to any specific
+laptop.
+
+Ranked honestly: the physical-handling gap is what triggered this specific event, but the
+deployment-sequencing gap is the one that most directly explains why today's question can never
+be answered — and it's the one most likely to produce the identical unresolved finding again,
+on a different device, the next time a migration or a rushed deployment collides with a new
+enrollment. Fix the sequencing gap, and the organization at least gets a clean yes-or-no answer
+next time, even if the device still gets lost. The minimum-necessary gap doesn't explain this
+incident's facts at all, but it's the one multiplier sitting quietly under every version of this
+story, making each one worse than it had to be.
+
+## Closing the four-factor assessment — the final determination
+
+Re-run module 4's own test, factor by factor, against what this module actually found.
+
+**Factor 1 (nature and extent of the PHI).** Unchanged. The six-field extract is still what it
+was — still a meaningful re-identification risk. Nothing this investigation found touches this
+factor.
+
+**Factor 2 (who received it).** Unchanged. Still unknown. No lead above identified a recipient.
+
+**Factor 3 (was it actually acquired or viewed) — the one factor this entire investigation was
+built to resolve.** It remains unresolved, now for a documented, structural reason instead of a
+simple "migration broke the field": no attestation ever completed on this device, on either
+platform, and no corroborating record exists anywhere else that could substitute for one. An
+unresolved factor still cannot rebut a presumption. Nothing about having a thicker, more honest
+file changes that math.
+
+**Factor 4 (mitigation).** Slightly more resolved than before. The remote wipe command is now
+confirmed **issued**, closing module 4's open action item — but confirmed **not delivered**,
+because the device has never come back online to receive it. Real mitigation effort, genuinely
+undercut by a device that simply isn't reachable.
+
+**The final determination.** Four factors, and factor 3 — the pivotal one — is exactly where
+module 4 left it, now for a fully investigated reason instead of an open question. 164.402(2)'s
+presumption of breach was not rebutted in module 4, and it is **still not rebutted today.**
+There is no new fact strong enough to change that. **Module 4's provisional breach determination
+is now this course's final one.** Individual notification under 164.404 proceeds on the clock
+that already started the day the loss was reported — this investigation, run over roughly the
+weeks since, has not reset or extended that clock, and notifications are being finalized on
+schedule, not delayed to wait for an answer that was never going to arrive. 164.406 media
+notification stays not triggered; 164.408(c)'s under-500 annual-log pathway still applies. None
+of module 4's mapped obligations change. What changes is only this: Lakeshore can now show,
+on paper, that it did not simply assume this answer — it looked, documented four real attempts,
+and can prove exactly why each one came up empty. That file is what 164.414(b)'s burden of proof
+actually demands, and it's a materially stronger position than "we don't know" ever was, even
+though the bottom-line determination is identical.
+
+## What an inspector or reviewer would actually look for
+
+An OCR investigator, or an AABB (the Association for the Advancement of Blood & Biotherapies)
+assessor asking how Lakeshore handled a device loss, wouldn't be satisfied by the determination
+alone. They'd ask for this investigation's actual record: the enrollment log, the raw check-in
+history (not just the dashboard summary), the vendor case number and its written response, the
+network-segment finding, and a dated note of the staff interview — plus the remote-wipe command's
+issued-but-undelivered status, timestamped. A weak answer sounds like "we couldn't confirm
+encryption, so we treated it as a breach." A credible answer produces the file above, factor by
+factor, showing exactly what was tried and why each avenue closed. 164.414(b) puts the burden on
+Lakeshore; an investigator who asks "show me you actually looked" and gets this file has nothing
+left to cite.
+
+## Common traps
+
+**"We couldn't resolve it, so the investigation failed."** No. An investigation that
+documents four genuine, structurally-explained dead ends and closes one real open item (the
+wipe command) is a successful investigation with an unresolved finding — a different thing
+entirely from an investigation nobody bothered to run. 164.414(b) doesn't require a resolved
+answer. It requires a demonstrated one, and "we tried everything available and here's exactly
+why none of it worked" is a demonstrated answer.
+
+**"The notifications already went out, so the matter is closed."** Notification discharges
+164.404's obligation. It doesn't discharge the organization's separate obligation to fix what
+actually let this happen. The deployment-sequencing gap this module found doesn't go away
+because 212 donors got a letter — it's still sitting there, ready to produce the identical
+unresolved finding on the next device that gets imaged, deployed, and lost inside a migration
+window.
+
+## What this means for your job
+
+- **Know the difference between "we assumed" and "we investigated and couldn't confirm."**
+  164.414(b) only rewards the second one. If your systems administrator ever hands you a
+  conclusion without a file behind it, that's the question to ask before you sign off on
+  anything.
+- **Treat an unresolved factor as a finished finding, not an open task waiting on someone else.**
+  Once every reasonable lead has been run down and documented, "genuinely unknown" is itself the
+  answer — don't let your team keep the determination "pending" past the point where pending
+  stops meaning anything.
+- **Separate root cause from breach determination, and fix the root cause regardless of how the
+  determination lands.** This incident's deployment-sequencing gap would be worth fixing even in
+  a universe where the presumption had been rebutted. Don't let a favorable breach outcome talk
+  your team out of a genuine process fix.
+- **Rank candidate root causes instead of listing them.** Your QA and your systems administrator
+  will often hand you two or three plausible causes at once. Your job is to ask which one most
+  directly explains what happened and which one is most likely to recur — not to accept whichever
+  one is handed to you first or feels least embarrassing.
+- **Keep the vendor relationship itself on your radar as its own risk, not just a source of
+  logs.** The device-management platform's migration is sitting at the center of this entire
+  unresolved thread — a vendor's own change, outside Lakeshore's direct control, produced a gap
+  Lakeshore now has to live with. That's worth remembering past this course.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your systems administrator says, "I found a structural reason for every dead end, so I'm confident encryption was actually on." Is that a fair reading of the investigation?
+
+Not quite. Every dead end this module found has a real, honest explanation — but none of them is
+evidence that encryption *was* active, only evidence of why no record exists either way. "I can
+explain why I don't have proof" is not the same claim as "I have proof." 164.402(2)(iii) asks
+whether the PHI was actually acquired or viewed, and the honest answer stays "unresolved," not
+"probably fine." Confidence has to come from evidence, not from a satisfying explanation for its
+absence.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is running an investigation like this one — enrollment logs, vendor escalation, network logs, an interview — itself something 164.414(b) names as a required step?
+
+No, and this is worth being precise about. 164.414(b)'s actual text requires demonstrating that
+notifications were made or that no breach occurred — it never uses the word "investigation" or
+lists these specific steps. Running an investigation this thorough is the practical, sensible way
+to meet that burden of proof; it's good practice that makes 164.414(b) defensible, not a
+citation of its own. Don't let your team describe "we ran a four-part investigation" as if it
+were itself a regulatory checkbox — it's the method, not the requirement.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Does confirming the remote-wipe command was issued (even though it was never confirmed delivered) change today's breach determination at all?
+
+No. It closes module 4's own open action item and strengthens factor 4 (mitigation) honestly —
+real effort, genuinely undercut by an unreachable device — but factor 4 was never the factor
+standing between Lakeshore and rebutting the presumption. Factor 3 was, and still is. A stronger
+mitigation story doesn't substitute for an unresolved acquisition-or-viewing question; all four
+factors have to support low probability of compromise, and one unresolved pivotal factor is
+enough to keep the presumption standing regardless of how well the other three read.
+:::
+
+## Where this course ends, and what's still ahead
+
+Five modules ago, this course opened with a question nobody at Lakeshore had ever had to answer
+out loud: is a blood center even subject to HIPAA at all? It closes today with that same
+organization holding a fully investigated, honestly unresolved incident — and knowing exactly
+what it can and can't say about it.
+
+Here's the arc, named once, start to finish. Module 1 reasoned Lakeshore into HIPAA's reach from
+160.103's own definitions — not asserted, worked out — and logged this course's one incident: a
+Brookfield laptop, a six-field extract, an encryption status nobody could confirm. Module 2 ran
+the Privacy Rule against that extract and found a real, independent minimum-necessary gap: three
+of six fields that never needed to make the trip. Module 3 placed the Security Rule's
+Required-versus-Addressable mechanism against Part 11's all-or-nothing controls, and found
+Lakeshore's encryption *policy* sound while its *verification* of this one device was not — a
+genuine compliance gap, deliberately kept separate from any breach question. Module 4 took that
+unresolved verification gap into 164.402's actual four-factor test and reached an honest,
+provisional conclusion: the presumption of breach was not rebutted, with factor 3 — was the PHI
+actually acquired or viewed — as the single pivot point everything else turned on. And this
+module sent someone to go find out, as far as a real investigation can go, and came back with an
+honestly thicker, better-documented version of the exact same unknown.
+
+Say plainly what's resolved now. The minimum-necessary finding is closed and logged. The
+Security Rule's Required-versus-Addressable mechanism is fully understood, with its one genuine
+Part 11 difference named and held to. The remote-wipe command's issuance is confirmed. The root
+cause is identified and ranked — a deployment-sequencing gap, ahead of a physical-handling gap,
+ahead of a severity-multiplying minimum-necessary gap — and the first one comes with a concrete,
+fixable rule: no newly enrolled device leaves the building for field service before its first
+compliance attestation completes. And the determination itself is final: this incident is a
+reportable breach, individual notification proceeding on 164.404's clock, HHS notification on
+164.408(c)'s under-500 pathway, no BPDR (Biological Product Deviation Report) independently
+triggered.
+
+Say plainly, too, what stays open by honest design, the same way this curriculum has closed
+every other course. The Brookfield laptop's encryption status at the moment it went missing will
+likely never be known. That is not a loose end this course failed to tie off — it's the
+documented, structurally-explained limit of what an investigation can actually recover once a
+device's own history and a vendor's retention schedule have both already moved on. A tidier
+ending was available if this module had invented a convenient recovered log. It wasn't used,
+because this curriculum's whole credibility rests on reporting what an investigation actually
+finds, not what would read better.
+
+Two courses ahead pick up exactly where this one stops. `vendor-and-third-party-risk-management`
+turns the same scrutiny this module aimed at four internal leads outward, onto the
+device-management platform's own vendor — the same vendor whose migration tooling, retention
+schedule, and backend telemetry sat at the center of this entire unresolved thread. Reading that
+vendor's own security posture, knowing what its change-notification obligations are, and tiering
+that relationship's risk the way you'd tier any other vendor's is the natural next place this
+exact incident keeps teaching. And Track 5's capstone, `itsm-for-regulated-blood-services`, is
+where this course's own move — treating a breach investigation as problem management, root cause
+analysis, and a known-error record instead of a one-off scramble — finally sits next to every
+other crosswalk this curriculum has built, in the one language built to survive a conversation
+with your CIO and your exec quality council in the same breath.
+
+You came into this course unable to say whether HIPAA even applied to a blood center. You leave
+it having run one incident through every subpart this course was built to teach — Privacy,
+Security, Breach Notification — and closed it the only honest way a real investigation ever
+closes: with a final determination, an identified root cause, and one well-documented unknown
+left exactly where the evidence actually ran out.

@@ -1,5 +1,7 @@
 # `healthcare-security-and-privacy` — course plan
 
+**Status: COMPLETE (5/5 modules published).**
+
 Read this whole file before drafting any module. Update the module table and append a progress
 log entry after every module, same discipline as every other course in this curriculum.
 
@@ -73,7 +75,7 @@ vendor.
 | 2 | `the-hipaa-privacy-rule` | Apply the actual rules governing when a donor's PHI can be used or disclosed without authorization, when it can't, and the specific exception covering an FDA-regulated recall/BPDR disclosure. | 95/96 | Published |
 | 3 | `security-rule-safeguards-and-part-11` | Map HIPAA's administrative/physical/technical safeguards against Part 11's own controls — genuine overlaps and one genuine structural difference (required vs. addressable). | 97/98 | Published |
 | 4 | `breach-notification-and-dual-reporting` | Run the incident through HIPAA's breach test and 60-day clock side by side with FDA's 45-day BPDR clock, and say honestly when one incident triggers both. | 99/100 | Published |
-| 5 | `investigating-a-healthcare-data-incident` | Walk the investigation a HIPAA breach demands — scope, root cause, the four-factor compromise assessment — to the closing decision. | 101/102 | Not started |
+| 5 | `investigating-a-healthcare-data-incident` | Walk the investigation a HIPAA breach demands — scope, root cause, the four-factor compromise assessment — to the closing decision. | 101/102 | Published |
 
 The next course after this one continues at **103**. Update `create-course`'s SKILL.md when this
 course's numbering is final (verify by grep with no duplicates before assigning, same discipline
@@ -526,3 +528,115 @@ as every prior course) — already done as part of Phase 2 scoping below.
   built. Close with a genuine course-ending passage per this curriculum's established practice,
   including forward pointers to `vendor-and-third-party-risk-management` and the Track 5 capstone
   `itsm-for-regulated-blood-services`.
+
+- **2026-10-09**: Module 5, `investigating-a-healthcare-data-incident`, drafted and published
+  (`courses/healthcare-security-and-privacy/investigating-a-healthcare-data-incident/index.qmd`,
+  `order: 101`, ~4,350 words — modestly over this curriculum's usual 2,000-4,000-word target,
+  the same honestly-logged pattern modules 3 and 4 set, here because the module had to
+  synthesize all four prior modules' locked facts, walk a four-part investigation narrative in
+  concrete detail, re-run the four-factor test, and still carry a full course-closing passage;
+  `resources.qmd`, `order: 102`). **This course is now COMPLETE, 5/5 modules published.** No new
+  CFR citation introduced, per this module's own job description — 164.306(d)(3),
+  164.308(a)(1)(ii)(D), 164.402(2), and 164.414(b) were all reused from modules 3 and 4's own
+  already-fully-quoted text (a short reused-verbatim block, explicitly marked as reused, not
+  new, per TEACHING.md's spine requirement for an "actual text" section even on a synthesis-only
+  module). No new external source was fetched; `resources.qmd` links back internally to modules
+  1, 3, and 4 only, stating plainly that no new sourcing was needed — the same pattern
+  `grc-frameworks-and-risk-management`'s `poams-and-capas` resources page already set for a
+  synthesis-only closing module.
+
+  **How the encryption question was resolved — chosen deliberately, per this curriculum's own
+  "honest findings over tidy endings" convention, and NOT flipped to a clean rebuttal:** the
+  module invents a four-part investigation (enrollment/policy-push logs; raw check-in history
+  read more carefully than the surface "not reported" field; a vendor escalation to the
+  device-management platform's own backend telemetry; network-log and staff-interview checks) —
+  each one a plausible, generic investigative step, no real product/vendor named. Every lead
+  dead-ends for a *specific, structurally reasoned* cause, not a hand-wave: the laptop was issued
+  shortly before the platform migration (a locked module-1 fact), so its only two pre-migration
+  check-ins never had time to complete a first encryption attestation at all (the platform's
+  attestation scan needs an idle window the device, pressed straight into travel service, never
+  got); the vendor confirms both a known migration-era data-loss defect class *and* that the old
+  platform's last archival export was already purged under its own routine retention schedule
+  before this investigation began, so nothing more is recoverable from either side; the one
+  network segment the device touched before the loss doesn't run device posture/compliance
+  checks; and the non-technical staff member has no relevant recollection. **Net effect: the
+  encryption question is permanently, honestly unresolved** — not "resolved against Lakeshore,"
+  not "resolved for Lakeshore," genuinely unknowable now. One real thread DOES close: module 4's
+  open action item (confirm a remote wipe command was actually issued, not just assumed) —
+  confirmed issued, confirmed never delivered (device never came back online), which strengthens
+  factor 4 honestly without touching the pivotal factor 3. **Why this choice, not option (a):**
+  flipping factor 3 to a clean rebuttal would have required inventing a corroborating record this
+  course's own locked facts don't support — module 1 already locked that the laptop was issued
+  "shortly before" the migration, which (reasoned honestly) means there's barely any
+  pre-migration operating history to recover a confirmation from in the first place. Manufacturing
+  a last-known-good ping would have contradicted that locked fact's own logical implication, not
+  just been a stylistic choice. A genuinely unresolvable finding, reasoned from the facts already
+  on record rather than asserted for convenience, was the more honest and better-supported choice,
+  consistent with `data-integrity-and-records` and `fda-and-aabb-in-practice`'s own closing
+  modules leaving real threads open more often than not.
+
+  **The final determination — re-run, not re-litigated, against module 4's own four factors:**
+  factor 1 (nature/extent of PHI) and factor 2 (unknown recipient) are unchanged. Factor 3 (was
+  PHI actually acquired or viewed) remains genuinely unresolved, now for a fully investigated,
+  documented reason instead of an open question — an unresolved factor still cannot rebut
+  164.402(2)'s presumption. Factor 4 (mitigation) is marginally stronger (wipe command confirmed
+  issued, confirmed not delivered) but was never the deciding factor. **164.402(2)'s presumption
+  of breach was NOT rebutted — module 4's provisional determination is now this course's FINAL
+  determination.** Individual notification under 164.404 proceeds on the clock that started the
+  day the loss was reported (not reset or extended by this investigation); 164.406 media
+  notification stays not triggered; 164.408(c)'s under-500 annual-log HHS pathway still applies;
+  no BPDR (Biological Product Deviation Report) is independently triggered. Nothing module 4
+  mapped changes — what changes is that Lakeshore can now produce a documented investigation
+  record satisfying 164.414(b)'s burden of proof, rather than an unsupported "we don't know."
+
+  **Root cause — reasoned and ranked, not merely listed:** (1) the **physical-handling gap** (an
+  unattended laptop, no cable lock or carry discipline, left in a shared ride) is this incident's
+  proximate cause — nothing else in this course's five modules happens without it; a CAPA-style
+  fix belongs here. (2) The **device-management-platform deployment-sequencing gap** — a freshly
+  imaged device pressed into travel service before its first encryption attestation ever
+  completed, then permanently cut off by a migration — is reasoned as the root cause that matters
+  *most* going forward, because it's structural, recurring, and is what actually prevents this
+  exact unresolved-encryption-status finding from ever closing; the module names a concrete fix
+  (no newly enrolled device leaves the building for field/travel use before its first compliance
+  attestation completes and is confirmed, independent of any migration). (3) The
+  **minimum-necessary gap** (module 2's locked finding, three of six fields never needed) is
+  reasoned as a severity multiplier, not a cause of this incident or of the unresolved encryption
+  question — it makes every version of this story worse than it had to be, independent of
+  anything else. No `csv-and-becs`/`data-integrity-and-records` locked identifier was touched by
+  name or ID. No real device/OS/vendor name or calendar year used in the Lakeshore narrative.
+
+  **The course-closing passage:** names the five-module arc in order (covered-entity reasoning →
+  minimum-necessary → Security Rule/Part 11 comparison → the provisional four-factor breach
+  determination → this module's investigation and final determination); states plainly what's
+  resolved (minimum-necessary finding, the Required-vs-Addressable mechanism, the wipe-command's
+  issuance, the ranked root cause with a concrete fix, and the now-final breach determination with
+  its mapped notification obligations) and what stays open by honest design (the Brookfield
+  laptop's actual encryption status at the moment of loss, permanently unrecoverable, not a loose
+  end this course failed to tie off). Forward-points explicitly to
+  `vendor-and-third-party-risk-management` (naming the device-management platform's own vendor
+  relationship — its migration tooling, retention schedule, and backend telemetry — as the
+  natural next place this exact incident keeps teaching) and to the Track 5 capstone
+  `itsm-for-regulated-blood-services` (naming this module's own problem-management/root-cause/
+  known-error framing as the crosswalk that course will build on).
+
+  Sources: no new source fetched. `sources/cfr/45-164-security-rule-excerpt.md` and
+  `sources/cfr/45-164-breach-notification-excerpt.md` (both already saved, already fully quoted
+  in modules 3 and 4) were the only sources referenced, each reused clause explicitly marked as
+  reused rather than newly introduced. `resources.qmd` links internally only, to modules 1, 3,
+  and 4 — no external link was added, consistent with this module's "no new sourcing needed"
+  job description.
+
+  **THIS COURSE IS NOW COMPLETE.** All five modules published:
+  `information-governance-in-a-covered-entity` (93/94), `the-hipaa-privacy-rule` (95/96),
+  `security-rule-safeguards-and-part-11` (97/98), `breach-notification-and-dual-reporting`
+  (99/100), `investigating-a-healthcare-data-incident` (101/102). Next course in sequence per
+  `plans/curriculum.md`'s own Recommended sequence (Phase 9, Track 4):
+  `vendor-and-third-party-risk-management`. Relevant locked fact for that course's own scoping
+  session to pick up if useful: this module surfaced the device-management platform's own vendor
+  relationship (a migration defect class, a retention schedule that already purged potentially
+  relevant data, and a backend-telemetry escalation path) as a concrete, ready-made example of
+  exactly the kind of vendor-risk question that course exists to teach — reading a vendor's own
+  posture, knowing what its change-notification obligations are, and tiering that relationship's
+  risk. Per this curriculum's own established pattern (the same note `grc-frameworks-and-risk-
+  management` left for this course), that next course's own scoping session should still decide
+  its own running example rather than being forced to inherit this one.
