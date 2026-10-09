@@ -56,7 +56,7 @@ ticketing platform — describe generically.
 | # | Slug | Finish line | `order:` | Status |
 |---|---|---|---|---|
 | — | (syllabus) | — | 114 | Published |
-| 1 | `itil-to-qse-crosswalk-change-and-problem` | Map ITIL's change enablement onto Lakeshore's change control, and problem management onto CAPA. | 115/116 | Not started |
+| 1 | `itil-to-qse-crosswalk-change-and-problem` | Map ITIL's change enablement onto Lakeshore's change control, and problem management onto CAPA. | 115/116 | Published |
 | 2 | `itil-to-qse-crosswalk-cmdb-and-continual-improvement` | Map a CMDB onto an equipment/validated-system inventory, a service catalog onto quality-system scope, and continual improvement onto process improvement. | 117/118 | Not started |
 | 3 | `itil-to-grc-crosswalk` | Map service asset/config management onto RMF's Categorize/Select, continual improvement onto Monitor, and security management onto ISO 27001's Annex A domains. | 119/120 | Not started |
 | 4 | `building-an-inspection-ready-service-catalog-and-cmdb` | Apply all three crosswalks to build one real service-catalog/CMDB entry for the eQMS that survives an FDA inspection, an AABB assessment, and a security assessment at once. | 121/122 | Not started |
@@ -218,3 +218,49 @@ verified file:
   no duplicates before assigning) — noted as the curriculum's final course; no further course is
   expected to continue after it.
   Next: build m1, `itil-to-qse-crosswalk-change-and-problem`.
+
+- **2026-10-09**: Module 1, `itil-to-qse-crosswalk-change-and-problem` (`order: 115/116`),
+  drafted and published. Built both crosswalks this module owns, concretely, against freshly
+  invented scenarios (not reusing any BECS/eQMS/Brookfield locked fact): **(1) change
+  enablement ↔ change control** — a routine vendor security patch to Lakeshore's reagent/
+  supply inventory-tracking system (fresh, generic, quality-adjacent because it tracks lot
+  numbers and expiration dates, but not a locked fact from any prior course) walked stage-for-
+  stage through both ITIL's change enablement (RFC → risk/impact assessment → CAB authorization
+  → implementation → PIR) and `quality-system-essentials`'s own five-stage change-control
+  process, using that module's exact stage names verified by reading it in full: **change
+  request → impact and risk assessment → approval → implementation → verification**. Named the
+  honest difference plainly, per the plan's own guardrail: a CAB is a cross-functional body that
+  could in principle outvote a dissenting member; Lakeshore's approval stage makes **Quality a
+  required approver, not a notified party, and not one vote among several** — a narrower,
+  regulation-shaped version of the same gate, not an identical process. **(2) Problem management
+  ↔ CAPA** — a freshly invented recurring incident (repeated mid-shift lockouts from the
+  inventory system at one satellite site, resolved each time with a password reset and never
+  investigated further) walked through both ITIL's problem management (known-error record:
+  problem, workaround, root cause, tracked in a KEDB) and `quality-system-essentials`'s own
+  CAPA structure, using that module's exact four stages verified by reading it in full: **root
+  cause analysis → corrective action → preventive action → effectiveness check** (the
+  effectiveness check's four required pieces — measurable criterion, time window, data source,
+  pre-agreed failure definition — stated explicitly, matching the CAPA module's own language).
+  Named the honest difference: a known-error record can, in ITIL's own practice, document a
+  workaround indefinitely without a hard requirement that it ever close; CAPA cannot — it stays
+  open until a scheduled, independent effectiveness check with a pre-agreed criterion either
+  passes, fails (CAPA reopened), or is extended, which the lesson states is a stricter, more
+  final standard of "actually fixed," not just "tracked." No new citation introduced anywhere in
+  the module — it references `change-control-for-regulated-systems` (21 CFR 606.100(b), AABB's
+  Process Control QSE) and `capa-root-cause-to-effectiveness` (21 CFR 606.100(c)/606.171(f),
+  AABB's Process Improvement QSE) by name, without re-quoting either module's citations or
+  redeveloping their content, and states plainly that ITIL itself is never cited to a specific
+  publication anywhere in this curriculum. One check-your-understanding question (Q3) lands on
+  "this is NOT a regulatory requirement" — confirming neither AABB nor FDA requires Lakeshore to
+  use ITIL vocabulary anywhere in its actual change-control or CAPA records. `resources.qmd`
+  states plainly that no new sourcing was needed and links back to both
+  `quality-system-essentials` modules, following the exact pattern
+  `grc-frameworks-and-risk-management`'s `poams-and-capas/resources.qmd` set for a synthesis-
+  only module. Lesson page is ~3,350 words of prose (TEACHING.md's 2,000–4,000-word target,
+  counting only body text, not front matter/table markup). `quarto` is unavailable in this
+  cloud session (per CLAUDE.md rule 6) — not rendered locally; the GitHub Action renders on
+  push. Published via the `publish` skill to branch `claude/confident-brahmagupta-b499un`.
+  Next: build m2, `itil-to-qse-crosswalk-cmdb-and-continual-improvement` (`order: 117/118`) —
+  CMDB ↔ equipment/validated-system inventory, service catalog ↔ quality-system scope,
+  continual improvement ↔ QSE 9 — the first module to pick up the eQMS as this course's own
+  running artifact.

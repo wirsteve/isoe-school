@@ -1,0 +1,31 @@
+---
+title: "Resources"
+order: 116
+---
+
+This module introduces no new regulation, standard, or framework, and no new source was
+fetched for it. Its entire job is crosswalking ITIL (Information Technology Infrastructure
+Library) vocabulary — the learner's own professional background, never itself cited to a
+specific AXELOS/PeopleCert publication anywhere in this curriculum — onto two mechanics
+`quality-system-essentials` already built and locked. The two links below are the direct
+inputs this module maps against; read either one for the actual process mechanics and
+citations, which this module deliberately doesn't redevelop.
+
+- **[Change control for regulated
+  systems](../../quality-system-essentials/change-control-for-regulated-systems/index.qmd)** —
+  the five-stage process (change request, impact and risk assessment, approval, implementation,
+  verification) this module's first crosswalk maps ITIL's change enablement practice onto,
+  including the regulatory grounding (21 CFR 606.100(b)) and the AABB (Association for the
+  Advancement of Blood & Biotherapies) Process Control QSE (Quality System Essential) behind it.
+  Read it for the actual citation decoder, verbatim regulatory text, and the full stage-by-stage
+  mechanics this lesson references by name but doesn't re-quote.
+
+- **[CAPA: root cause to effectiveness
+  check](../../quality-system-essentials/capa-root-cause-to-effectiveness/index.qmd)** — the
+  four-stage CAPA (corrective and preventive action) structure (root cause analysis, corrective
+  action, preventive action, effectiveness check) this module's second crosswalk maps ITIL's
+  problem management practice onto, including the regulatory grounding (21 CFR 606.100(c) and
+  606.171(f)) and the AABB Process Improvement QSE behind it. Read it for the actual root-cause
+  technique (5 Whys), the four required pieces of a real effectiveness check, and the three
+  possible closure outcomes (close, extend, reopen) this lesson references but doesn't
+  redevelop.

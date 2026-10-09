@@ -1,0 +1,285 @@
+---
+title: "ITIL-to-QSE Crosswalk: Change and Problem"
+order: 115
+---
+
+## The patch nobody thought twice about
+
+Your systems administrator stops by with what he clearly expects to be a thirty-second
+conversation. The vendor for Lakeshore's reagent and supply inventory-tracking system — the
+tool satellite sites use to log lot numbers, expiration dates, and remaining stock for
+collection-bag kits, test tubes, and the other consumables every draw depends on — has shipped
+a routine security patch. Nothing about the patch touches how the software calculates anything;
+it closes a login vulnerability flagged in the vendor's release notes. "I'll push it Thursday
+night," he says. "Standard change, low risk, I'll note it in the change log same as always."
+
+Normally you'd wave it through. This time you stop him. "Walk me through what 'low risk' means
+here. What does this system actually drive?"
+
+He talks it through out loud, and you can see him catch it mid-sentence: the inventory system
+is where a site lead checks remaining shelf life before pulling a kit for a collection. If the
+patch breaks a report, degrades a search function, or changes how an expiration date renders —
+even temporarily, even for a few hours — a site could pull expired stock without anyone
+noticing, because nobody else is cross-checking by hand anymore. That's not a service-impact
+question. That's a product-quality question wearing an IT patch's clothes.
+
+"Write it up as a change," you tell him — the same instinct your Quality Analyst (QA) has
+heard from you before, about a different system, for the same underlying reason. "Not a
+patch-and-note. A change."
+
+## Why this matters — and the two bridges you already own
+
+Here's the failure mode a casual "standard change, I'll note it in the log" approach risks: a
+patch that looks purely technical turns out to touch something that affects whether a
+regulated process still works correctly — and because nobody treated it as that kind of
+change, nobody who actually understands the regulated side ever looked at it before it shipped.
+The risk isn't that the patch is bad. It's that the question "does this affect anything
+quality-relevant" never got asked by anyone with the authority to answer it, which is precisely
+the gap `quality-system-essentials`'s own change-control module built its entire process to
+close.
+
+You already have a name for the discipline that's supposed to prevent exactly this: **change
+enablement** — the ITIL (Information Technology Infrastructure Library) practice you've run for
+years. Assess a proposed change's risk and impact, get it authorized by the right governing
+body — usually a **CAB** (change advisory board), a cross-functional group that reviews and
+approves changes before they ship — schedule and implement it, then review the outcome
+afterward with a post-implementation review (PIR). That's the whole shape of what you just
+walked your systems administrator through, in the vocabulary you've always used for it.
+
+There's a second practice sitting right behind this one, and it's worth naming now because this
+lesson builds both crosswalks together. Suppose that patch had shipped without this
+conversation, and three weeks later the same login timeout starts recurring — not every day,
+just often enough that the help desk has quietly reset the same three site accounts five times
+without anyone asking why. That's **problem management**: investigating the root cause behind
+a recurring or significant incident, logging a **known-error record** — the problem, a
+workaround, and its root cause, kept in a **KEDB** (known error database) — when a permanent
+fix isn't immediately available, and tracking toward that permanent fix. You already run this
+discipline too, constantly, without thinking of it as anything exotic.
+
+This lesson's entire job is showing you something you don't yet have language for: both of
+these ITIL practices already have a direct, working counterpart inside Lakeshore's own quality
+system, built and locked in `quality-system-essentials`. Change enablement maps onto
+**change control**. Problem management maps onto **CAPA** (corrective and preventive action).
+Neither mapping is a coincidence, and neither is exact. The job here is building both crosswalks
+concretely enough that you can use them in a real conversation with your CIO (chief information
+officer) or your exec quality council — not just gesture at "these are kind of similar."
+
+## Crosswalk 1: change enablement ↔ change control
+
+`change-control-for-regulated-systems` built Lakeshore's own five-stage process in detail:
+**change request → impact and risk assessment → approval → implementation → verification.**
+Line it up against change enablement's four moves, stage for stage.
+
+| ITIL: change enablement | Lakeshore: change control | What's the same | What's genuinely different |
+|---|---|---|---|
+| Request for change (RFC) — what's changing, why | **Change request** | Both demand a documented trigger and scope before anything else happens. A request that can't state its own scope in a sentence isn't ready to move. | None worth naming here — this stage is close to identical in both worlds. |
+| Risk and impact assessment — what does this touch, how likely and severe is getting it wrong | **Impact and risk assessment** | Both apply a likelihood/severity framework to the proposed change itself, not just the system it runs on. Both ask who else needs to weigh in before approval. | Lakeshore's assessment adds a question your normal CAB criteria were never built to ask: *does this change put a controlled process, document, or system out of a compliant, working state* — a question that can come back "yes" even when ordinary service-risk scoring reads low, exactly what the inventory-system patch surfaced above. |
+| Authorization by a CAB (or a defined approver for lower-risk changes) | **Approval** | Both require a named approver with real authority to say no, not a rubber stamp after the decision is already made. | This is the honest difference, and it's worth stating plainly rather than softening it. A CAB is a cross-functional *body* — in principle, a majority of voices on that board could approve something one dissenting member objects to. Lakeshore's regulated change control doesn't work that way: **Quality is a required approver, not a notified party, and not one vote among several.** If Quality doesn't sign, the change doesn't go — there's no outvoting a Quality objection the way a CAB could, in principle, outvote a single dissenter. It's the same gate, narrowed and reshaped by regulation: fewer people can say yes, and one of them has veto power the rest don't share. |
+| Implementation, on a scheduled release | **Implementation** | Both treat "shipped" as a milestone, not the finish line. | Lakeshore's version adds a completion condition a normal IT change doesn't carry: anyone whose work depends on the change — a site lead, collection staff — has to actually receive and understand what changed *before* the change's effective date, not learn about it from the deploy. |
+| Post-implementation review (PIR) | **Verification** | Both exist to check the change actually worked, after the fact, instead of assuming a clean deployment means success. | Lakeshore's verification has to produce dated evidence the change achieved its intended, quality-relevant effect — not just "deployed without errors," which is implementation evidence standing in for verification evidence, the same substitution that module's own common traps section names directly. |
+
+Run the inventory-system patch through both columns side by side, and the difference stops
+being abstract.
+
+**Under plain change enablement**, this patch is almost a non-event: low service risk, a short
+RFC, probably pre-approved as a standard change by your normal criteria, pushed Thursday night,
+reviewed at the next change meeting if anyone remembers to mention it.
+
+**Under Lakeshore's change control**, the same patch becomes: a change request naming the
+system and the specific fix; an impact assessment that explicitly asks whether the patch could
+affect expiration-date display, search, or reporting — the actual quality-relevant function —
+and names Quality and site operations leadership as consulted parties, because the system
+touches lot tracking for materials used in collection; approval from Quality as the owner of
+the process this system supports, and from you or your delegate as the owner of the system
+itself — both real, both dated, neither standing in for the other; implementation timed so that
+no site is mid-shift on an unverified version with nobody aware a patch just went in; and
+verification that confirms, with evidence, that expiration-date logic, search, and reporting
+still behave correctly post-patch — not merely that the login vulnerability closed.
+
+Notice what didn't change: the shape is the same five-to-four-stage motion, assess-before-you-
+approve, review-after-you-ship. What changed is who gets to say no, and what "done" requires
+before anyone calls it done. That's the honest crosswalk — not "they're the same process," and
+not "they're unrelated," but "same discipline, narrower gate, stricter finish line," the exact
+pattern this curriculum has already used for other cross-framework comparisons elsewhere (a
+Required safeguard under HIPAA and an Addressable one aren't the same promise, even though both
+live under the word "safeguard"; Part 11's electronic-signature controls don't bend the way a
+risk-based judgment call can). Don't flatten this one into "basically identical." It isn't, and
+saying so honestly is the actual skill this lesson is teaching.
+
+## A note on citations: there isn't a new one here
+
+Nothing above introduces a regulatory source. `change-control-for-regulated-systems` already
+grounded its five-stage process in 21 CFR 606.100(b) — the requirement that written procedures
+be established, maintained, and kept available where they're used — and in AABB's (Association
+for the Advancement of Blood & Biotherapies) Process Control QSE, which supplies the actual
+request-assess-approve-implement-verify structure Part 606's text never spells out. Go back to
+that module for the citation decoder and the verbatim text; this lesson doesn't re-quote either,
+and doesn't need to. ITIL's own side of the table is never cited to a specific publication
+anywhere in this curriculum — it's used throughout as your own professional vocabulary, not a
+standard requiring sourcing. Keep that distinction straight when you brief your CIO: the QSE
+column above rests on regulation and an AABB standard; the ITIL column rests on nothing you'd
+ever need to cite, because nobody's auditing Lakeshore's ITIL fluency.
+
+## Crosswalk 2: problem management ↔ CAPA
+
+Here's the second scenario, unrelated to the patch above. For months, the help desk has logged
+a recurring ticket from one satellite site: staff repeatedly get locked out of the inventory
+system mid-shift, usually twice a week, always resolved the same way — a password reset, a
+"you're back in," ticket closed. Nobody has asked why this keeps happening at that one site and
+nowhere else. Your QA notices the pattern first, because it reminds her of something she's seen
+in a CAPA file: an action that keeps "working" without ever actually fixing anything.
+
+**Under plain problem management**, this is a textbook known error. The incidents are the
+symptom; the underlying cause hasn't been fixed, and a workaround exists — reset the password,
+move on. ITIL's practice would have you log a known-error record: the problem (recurring
+lockouts at this one site), the workaround (password reset), and a stated root cause once
+someone investigates it, tracked in the KEDB until a permanent fix ships. That's a real,
+legitimate practice, and it's exactly the discipline that keeps a known gap from just
+disappearing into a pile of closed tickets that all look resolved.
+
+**Under CAPA**, the same recurring failure has to clear a higher bar before anyone's allowed to
+call it handled. `capa-root-cause-to-effectiveness` built the four-stage structure this maps
+onto: **root cause analysis** (pushed past the first "why," not stopping at a description of
+behavior in the moment), a **corrective action** (fixes the instance in front of you), a
+**preventive action** (addresses the systemic cause so it can't resurface elsewhere), and a
+required **effectiveness check** — with its own measurable criterion, time window, data source,
+and pre-agreed definition of failure, written down before anyone checks, not decided afterward
+depending on what the data shows.
+
+Run the lockout problem through both structures side by side.
+
+| ITIL: problem management | CAPA | What's the same | What's genuinely different |
+|---|---|---|---|
+| Investigate the recurring incident's root cause | **Root cause analysis** | Both demand more than "it happened again" — a real investigation, not a description of the symptom. Pushing past "staff keep mistyping their password" to something systemic (say: a session-timeout setting at that site's network segment logs users out mid-shift, and the lockout threshold then treats the stale session's retry as a failed login) is the identical discipline either framework expects. | Neither framework differs here in what good practice looks like — a lazy problem record ("root cause: user error, workaround: reset password") fails problem management's own standard just as badly as it fails CAPA's. |
+| Known-error record: the problem, workaround, and root cause, logged and tracked | **Corrective action** (fixes the instance) **+ preventive action** (fixes the systemic cause) | Both insist the workaround isn't the end of the story — a known-error record exists precisely so the organization doesn't forget there's still a permanent fix owed. CAPA's corrective/preventive split does the same job in two explicit pieces: patch the immediate pain (reset affected accounts, document the fix for this site) and fix the setting causing it everywhere it could exist (check every site's session-timeout configuration, not just the one that complained loudest). | None sharp enough to call a real difference — this is the strongest point of overlap in the whole crosswalk. |
+| Track toward a permanent fix, workaround documented in the meantime | **Effectiveness check**: a measurable criterion, a time window, a data source, a pre-agreed failure definition | Both exist to stop a known gap from simply sitting there, tolerated indefinitely under a comfortable label. | This is the honest, real difference, and it's worth being precise about it rather than overstating it. A known-error record can, in principle, document a workaround indefinitely — ITIL's own practice doesn't set a hard requirement that the workaround ever gets retired, only that it stays logged and visible while a permanent fix is pursued. CAPA doesn't get to stop there. It stays open until someone checks, on a schedule set in advance, with real data, whether the failure mode actually stopped — and a CAPA "closed" the same week a fix ships, with no effectiveness data in the file, reads to an assessor as never actually verified, only completed. CAPA sets a stricter, more final standard of "actually fixed," not just "tracked." |
+
+A concrete effectiveness check for the lockout fix looks like this, matching the same four
+required pieces module 3 of `quality-system-essentials` built in depth: **criterion** — zero
+recurring lockout tickets from that site's inventory-system users over a defined period;
+**window** — the next 60 days; **data source** — the help-desk ticket log, pulled by someone
+other than whoever implemented the fix; **failure definition**, agreed in advance — even one
+recurrence in that window means the fix didn't address the real root cause, and the problem
+gets reopened and investigated further, not quietly re-patched and left alone.
+
+Here's the piece worth saying to your CIO in plain terms: a known-error record that never
+closes isn't automatically a failure in ITIL's own world — tracked and visible beats silent and
+forgotten, and that's a real, legitimate bar. It would be a failure in a CAPA file, because
+AABB's framework doesn't treat "we're tracking it" as equivalent to "we proved it's fixed."
+That's not ITIL being sloppy. It's two frameworks built for different stakes setting different
+finish lines, and the regulated one is the stricter of the two.
+
+## What an assessor or your CIO would actually look for
+
+Nobody auditing Lakeshore checks whether you call this process "change enablement" or "change
+control," "problem management" or "CAPA." The vocabulary is yours to use however gets the point
+across fastest in whatever room you're in. What an AABB assessor, or an FDA investigator reading
+a change or CAPA file, actually checks is whether the *substance* survived translation: a
+documented request tied to a real trigger; an impact assessment that asked the regulated
+question, not just the service-risk one; Quality's own dated, real approval sitting in the
+record, not a courtesy mention; implementation evidence distinct from verification evidence; and,
+for a recurring failure, root cause analysis that went past the first "why," a preventive action
+scoped to everywhere the cause could exist, and an effectiveness check with a criterion that was
+written down before anyone looked at the results.
+
+A record built entirely in ITIL vocabulary, with no visible Quality approval and no effectiveness
+check, is not a translation problem — it's a sign the regulated version of the process never
+actually ran. The crosswalk in this lesson is for *your* understanding, so you can move fluently
+between your CIO's language and your exec quality council's. It is not a substitute vocabulary
+you can use in the record itself in place of the elements AABB's framework actually requires.
+
+## Common traps
+
+**"Our CAB has a Quality Analyst on it, so that's basically the same as Quality approval."**
+It isn't, and this is the single most important distinction in this entire lesson. A CAB is a
+cross-functional body that reaches a collective decision — in principle, a QA's single dissenting
+vote could be outvoted by the rest of the board. Lakeshore's change control doesn't work that
+way: Quality's sign-off is a required, independent approval with the power to stop the change on
+its own, not one seat at a table that could, in theory, overrule her. If your mental model treats
+"a Quality Analyst sits in the room" as equivalent to "Quality approved it," you're one disputed
+vote away from a change going live that Quality actually objected to — which an assessor reading
+the approval record would catch immediately, because there'd be no documented Quality sign-off
+to find.
+
+**"We've got a known-error record open on this, so it's being handled."** A known-error record
+proves the gap is visible and tracked. It doesn't prove anyone has committed to checking, on a
+set schedule with pre-agreed criteria, whether the underlying cause is actually gone. If a
+recurring failure touches a quality-relevant process — the way the lockout issue does, given
+that it's blocking access to a system staff rely on to verify expiration dates — "it's a known
+error" isn't a stopping point. It's the trigger to open a CAPA, with its own effectiveness check,
+not a substitute for one.
+
+## What this means for your job
+
+- **Before you wave through any change your team calls "standard" or "low risk," ask the
+  question your systems administrator had to answer out loud above: what does this system
+  actually drive, and could getting it wrong put a controlled process out of a compliant
+  state?** That question, not the service-risk score, is what decides whether this needs full
+  change control.
+- **Confirm Quality's approval exists in the record as an actual sign-off, every time — never
+  accept "she's aware of it" or "she's on the CAB" as equivalent.** If you can't point to a dated
+  approval with her name on it, it isn't there.
+- **Watch for a known-error record that's quietly become permanent.** A workaround that's been
+  "temporary" for six months, with no effectiveness check ever scheduled, is the moment to ask
+  whether this should have become a CAPA already.
+- **When you translate between your CIO and your exec quality council, use the crosswalk to move
+  fast — but never let the translation itself stand in for the regulated record.** "This is change
+  enablement with a Quality veto" is a sentence that helps your CIO understand the stakes in five
+  seconds. It is not a document an assessor would accept in place of the actual change-control
+  file.
+- **Treat "root cause: human error" the same way in both worlds.** Whether it shows up in a
+  problem record or a CAPA draft, it's the same tell: the investigation found where the failure
+  surfaced, not why the system let it surface there. Push past it regardless of which vocabulary
+  the person in front of you is using.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your systems administrator says, "Our CAB already has someone from Quality on it, so our change process already satisfies Lakeshore's regulated change-control requirement." Is he right?
+
+No, and the gap is worth naming precisely. A CAB is a cross-functional body that reaches a
+collective decision — a Quality Analyst's seat on it is one voice among several, and in
+principle the rest of the board could approve something she objected to. Lakeshore's actual
+change-control process requires Quality's sign-off as a **named, independent, required
+approval** — not a vote that could be outvoted. If the change record shows only a CAB decision
+with no separate, dated Quality approval, an assessor would read that as a missing approval,
+regardless of who happened to be sitting in the room.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A recurring incident has had an open known-error record, with a documented workaround, for the last eight months. Is that record doing its job under CAPA's own standard?
+
+Not on its own. A known-error record satisfies ITIL's own practice by staying visible and
+tracked — that's a real, legitimate bar in that world. CAPA's standard is stricter: it requires
+a root cause analysis, corrective and preventive action, and a required effectiveness check
+with a pre-agreed criterion and time window, checked by someone independent of whoever
+implemented the fix. Eight months of an open workaround with no effectiveness check scheduled
+anywhere is exactly the gap this lesson's second crosswalk names — tracked is not the same
+promise as proven fixed.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Does AABB or the FDA require Lakeshore to use ITIL vocabulary — change enablement, problem management, CAB, known-error record — anywhere in its change-control or CAPA records?
+
+No. This is worth stating plainly, because it's easy to let a good crosswalk blur into "these
+are basically interchangeable requirements." ITIL is never cited in this curriculum to a
+specific AXELOS/PeopleCert publication or page, because it isn't a regulatory or accreditation
+standard at all — it's your own professional vocabulary, useful for translating what's
+happening to your CIO or your team, quickly. What's actually required — a documented change
+request, impact and risk assessment, named approval with Quality's required sign-off,
+implementation, and verification; or root cause analysis, corrective action, preventive action,
+and a scheduled effectiveness check — comes from AABB's own Quality System Essentials and the
+21 CFR Part 606 floor underneath them, built in full in `quality-system-essentials`. Use ITIL's
+words all day in conversation. Never let them substitute for the actual elements an assessor
+would look for in the record itself.
+:::
+
+## Where this goes next
+
+Change and problem are the two ITIL practices every IT leader already reaches for daily, which
+is exactly why they made the right place to start this crosswalk. The next module picks up the
+ITSM (IT service management) concepts that sit one layer further out — a CMDB (configuration
+management database) and a service catalog — and maps them onto AABB's own equipment and
+validated-system inventory and Lakeshore's quality-system scope, using the eQMS (electronic
+quality-management system) itself as the first real artifact this course builds and carries
+forward.
