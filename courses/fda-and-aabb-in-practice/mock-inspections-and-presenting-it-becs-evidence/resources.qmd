@@ -1,0 +1,36 @@
+---
+title: "Resources"
+order: 80
+---
+
+This module cites no new regulation, guidance, or standard — it's a synthesis exercise,
+combining evidence this course already built in depth, the same handling
+`designing-an-internal-audit-program`'s own resources page gave its own synthesis-only
+module. Nothing below is quoted in this lesson. These links point back to the primary
+sources this course has already verified and cited at length, so you can go straight to the
+actual text behind today's two re-referenced phrases, rather than a brand-new search for
+sources this module doesn't need.
+
+- **[Cornell LII: 21 U.S.C. § 374](https://www.law.cornell.edu/uscode/text/21/374)** —
+  reused from `fda-inspection-authority-and-outcomes`. The full statutory text behind
+  374(a)(1)'s inspection authority and 374(b)(1)'s written-report requirement — the actual
+  legal basis for everything the morning, FDA-style mock session can ask to see.
+
+- **[AABB: Accreditation Process](https://www.aabb.org/standards-accreditation/accreditation/become-accredited/accreditation-process)**
+  — reused from `the-aabb-assessment-process`. AABB's own public description of its
+  two-phase process, including the "PPPs... followed as written" sentence this module's
+  afternoon session is built around. Read it for the full context this module only
+  re-references in one line.
+
+- **[Cornell LII: 21 CFR § 606.160](https://www.law.cornell.edu/cfr/text/21/606.160)**
+  — reused from `data-integrity-and-records`. The full text of 606.160(e), including the
+  "at least monthly" floor this module's cadence decision is measured against. This course
+  never quoted (e) in full itself; read it here if you want the actual regulatory floor
+  behind Lakeshore's own weekly decision, not just this module's paraphrase of it.
+
+If you want the general, non-regulatory background on how a mock inspection or mock audit
+is typically run in a regulated industry, ASQ's (American Society for Quality) own public
+materials on internal-audit program maturity are a reasonable starting point — the same
+industry-practice tier `designing-an-internal-audit-program` already drew on, described
+there in this curriculum's own words rather than quoted or cited to a specific
+body-of-knowledge section number.
