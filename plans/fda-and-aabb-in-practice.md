@@ -69,7 +69,7 @@ brand — all already-established conventions this course continues.
 | # | Slug | Finish line | `order:` | Status |
 |---|---|---|---|---|
 | — | (syllabus) | — | 68 | Published |
-| 1 | `fda-inspection-authority-and-outcomes` | Name what FDA's inspection authority actually lets an investigator do and ask for, explain Form FDA 483's real purpose and legal weight, and name the three possible outcomes an inspection can end in. | 69/70 | Not started |
+| 1 | `fda-inspection-authority-and-outcomes` | Name what FDA's inspection authority actually lets an investigator do and ask for, explain Form FDA 483's real purpose and legal weight, and name the three possible outcomes an inspection can end in. | 69/70 | Published |
 | 2 | `warning-letters-and-recalls` | Explain when a 483 escalates into a Warning Letter, and sort any product problem into the right recall classification (Class I, II, or III) using FDA's own health-hazard test. | 71/72 | Not started |
 | 3 | `filing-a-biological-product-deviation-report` | Pick up exactly where `deviations-and-nonconformances` left off (the reportability determination) and finish the job: file the report on the right form, to the right office, in the right window. | 73/74 | Not started |
 | 4 | `the-aabb-assessment-process` | Walk Lakeshore through both phases of an AABB reassessment (self-assessment and on-site) and say precisely what an assessor expects that an FDA investigator doesn't. | 75/76 | Not started |
@@ -313,3 +313,20 @@ as every prior course).
   publishing, same as every prior course).
   Next: review this plan one more time, then publish the course map and build module 1,
   `fda-inspection-authority-and-outcomes`.
+- **2026-10-09**: Module 1, `fda-inspection-authority-and-outcomes`, drafted (via subagent),
+  audited, and published (`courses/fda-and-aabb-in-practice/fda-inspection-authority-and-
+  outcomes/index.qmd` and `resources.qmd`, `order: 69`/`70`, ~3,570 words). Quotes (21 U.S.C.
+  374(a)(1)/(b)(1)/(c)/(h)(1)'s opening clause, the Form 483 description, the NAI/VAI/OAI
+  definitions) all verified against their source files. Handled "routine vs. for-cause" with
+  real tier precision (named as FDA operational vocabulary, not a universal statutory term;
+  374(h)(1) named honestly as a narrow, device-specific anchor). Stated the GCP-source scope
+  caveat explicitly and did not borrow clinical-trial-specific content. All three
+  `resources.qmd` links curl-verified 200. **Scenario:** Lakeshore's routine inspection
+  produces a 483 with two observations — one reusing LAB-07's own standing documented-fitness-
+  for-use gap (not a new fact), one small, newly-invented SOP-approval-timing gap. Ends with
+  the Director's own reasoned, explicitly-not-certain judgment ("probably VAI"), left genuinely
+  open rather than forced to a tidy resolution. **The deferred-donor-record cadence decision
+  was left "under internal review"** — not yet specified which way Lakeshore decided; a later
+  module in this course (module 6 at the latest) still needs to pick a direction and log it.
+  No `csv-and-becs` or `data-integrity-and-records` locked fact altered.
+  Next: build m2, `warning-letters-and-recalls`.
