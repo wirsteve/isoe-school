@@ -1,0 +1,364 @@
+---
+title: "Legacy Systems and Part 11 Gaps"
+order: 62
+---
+
+## DI-0301 reaches the instrument it's been circling since module 3
+
+Your Quality Analyst (QA) is back, and this time she's holding the thread last module
+deliberately left dangling: Lakeshore's aging stand-alone laboratory instrument, tagged in the
+equipment log as **Asset LAB-07** — a benchtop analyzer older than Part 11 itself. It's never been
+replaced. Nobody's ever formally asked whether it still gets to be treated the way it always has.
+
+LAB-07 earns its keep quietly. Every morning, before the day's blood-typing reagents go anywhere
+near a donor or patient sample, a lab tech runs a quality-control (QC) check on them through LAB-07:
+a small reagent sample goes in, the instrument reads it, and a thermal-paper strip prints out a
+single number — an absorbance reading — next to a pass or fail flag. The tech initials the strip,
+dates it, and files it in the day's QC binder. That's been the routine since before BECS (Blood
+Establishment Computer Software) existed, back when the whole lab recorded its QC checks by hand
+into a logbook and LAB-07 was just the machine that gave you the number to write down.
+
+DI-0301 — your QA's data-integrity self-assessment — has already resolved two threads: **DED-0458**
+(module 1's BECS donor-eligibility record, now settled except for "accurate," still open) and
+Fairview's paper donor file (module 3, settled as Fairview's own record of record). Last module
+planted a question about LAB-07 and left it open on purpose: is this instrument more like the Food
+and Drug Administration's (FDA's) own pH-meter example — a simple readout that genuinely *is* the
+original record — or more like FDA's own FT-IR (Fourier transform infrared spectroscopy) example,
+where the real record is an electronic trace that can be reprocessed, and a printout can quietly
+leave something out?
+
+Your QA found the answer isn't as simple as either one. While reading LAB-07's original manual —
+something nobody at Lakeshore had opened in years — she found a second mode almost nobody knows
+exists. No citations yet. Just the instrument, the manual, and the question she's bringing you.
+
+## Why this rule exists — and the ITSM bridge
+
+Here's the failure this module exists to head off: a piece of equipment that keeps producing
+results nobody questions, year after year, purely because it's always worked — while the actual
+question FDA would ask ("can you prove, on paper, that this thing is still fit for what you use it
+for, and that its records are secure and trustworthy?") never gets asked by anyone at all. A system
+can run flawlessly for decades and still be a compliance gap, because "it runs" and "someone can
+prove it should still be trusted" are not the same fact.
+
+You already run the discipline this needs, under a name you already know: **legacy system
+management**, and the **technical debt** it accumulates. You already track which systems in your
+environment are old enough that "it still runs" and "it's actually supportable and well-documented"
+have quietly become two different claims. Problem management gives you the sharper version of the
+same idea: the **root-cause-versus-symptom** distinction. "The system still works" is a symptom —
+something you can observe by watching it run. Whether it's been kept in a genuinely documented,
+defensible state is the deeper question a real problem record would actually need answered, and
+watching it run never answers that question by itself.
+
+Here's where the regulated world demands more. In ordinary IT operations, a legacy system that still
+works is very often left alone indefinitely, on the honest logic of "if it ain't broke, don't touch
+it" — nobody opens a problem ticket just because a stable system is old. For a Part 11 (21 CFR —
+Code of Federal Regulations — Part 11, Electronic Records; Electronic Signatures) legacy system,
+"it still works" isn't the test at all.
+FDA's own guidance sets a specific, four-part test instead, and one of those four parts demands
+*documented evidence and justification* — on an ongoing basis — that the system is fit for its
+intended use. Skip that documentation, and enforcement discretion simply stops applying, no matter
+how reliably the instrument keeps printing results.
+
+## The rule in plain English
+
+A **legacy system**, for Part 11's purposes, isn't just "an old system." It's a specific, narrow
+category: a system that was already up and running before Part 11's effective date — **August 20,
+1997** — and that has kept meeting the rules that governed it ever since. FDA built a real,
+four-part test around that category, and — this is the part worth
+getting exactly right — passing it isn't automatic, and it isn't permanent. It isn't automatic
+because every one of the four conditions has to actually be true, with evidence, not just assumed
+because the system is old. It isn't permanent because the fourth condition asks for documented
+justification on an ongoing basis, not a one-time pass stamped at installation and never revisited.
+An instrument can lose its legacy-system status years after it first qualified, simply by nobody
+keeping that documentation current.
+
+This whole module sits at **guidance tier**: everything here comes from FDA's 2003 Part 11 guidance
+(*Scope and Application*), the same source last module used for predicate rules and the
+narrow-interpretation test. It's FDA's current thinking, written in "should" and "intend to" language
+— not binding regulation. This module doesn't introduce a new regulation-tier citation beyond what's
+already in this curriculum; the four-part test itself is an enforcement-discretion policy, not a CFR
+section with its own number.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| FDA 2003 Part 11 Scope and Application guidance, § III.C.3, "Legacy Systems" | "section three-C-three, legacy systems" | Guidance tier. Sets the four-part test: FDA doesn't intend to enforce *any* Part 11 requirement against a system that meets all four criteria. | The test DI-0301 runs against LAB-07, criterion by criterion. |
+| The same section's closing sentence | "the legacy-systems section's own closing line" | Guidance tier. If a legacy system has been changed since 1997 in a way that breaks predicate-rule compliance, Part 11 controls should apply going forward. | The question DI-0301 asks about LAB-07's service history — has anything about it ever actually changed? |
+| FDA 2003 guidance, footnote 7 (defining "legacy system") | "footnote seven" | Guidance tier. Defines the term itself: "we use the term legacy system to describe systems already in operation before the effective date of part 11." | Confirms LAB-07 fits the category this test was written for. |
+| FDA 2003 guidance, § III.C.4, "Copies of Records" | "section three-C-four, copies of records" | Guidance tier. Enforcement discretion on specific §11.10(b) copy-generation requirements; all records remain subject to inspection under predicate rules; recommends common portable or converted formats for copies. | What format DI-0301 should expect LAB-07 to hand an inspector, and whether LAB-07 can actually produce it. |
+| 21 CFR 11.10(b) (named here, not re-quoted in full) | "eleven point ten, paragraph b" | Regulation tier. One of §11.10's closed-system controls: the ability to generate accurate, complete copies of records. | The specific requirement the "Copies of Records" section's enforcement discretion attaches to — named for context, not developed further here. |
+
+## The actual text
+
+Start with the four-part test itself, quoted verbatim from
+`sources/fda-guidance/part-11-scope-and-application-2003.md`, § III.C.3, "Legacy Systems":
+
+> This means that the Agency does not intend to take enforcement action to enforce compliance with
+> any part 11 requirements if all the following criteria are met for a specific system:
+>
+> - The system was operational before the effective date.
+> - The system met all applicable predicate rule requirements before the effective date.
+> - The system currently meets all applicable predicate rule requirements.
+> - You have documented evidence and justification that the system is fit for its intended use
+>   (including having an acceptable level of record security and integrity, if applicable).
+
+Read that word "all" twice. Not three of four. Not "mostly." All four, or the enforcement-discretion
+umbrella FDA describes for legacy systems doesn't cover the system at all.
+
+Now the sentence that keeps this from being a one-time pass, quoted in full, from the same section:
+
+> If a system has been changed since August 20, 1997, and if the changes would prevent the system
+> from meeting predicate rule requirements, Part 11 controls should be applied to Part 11 records
+> and signatures pursuant to the enforcement policy expressed in this guidance.
+
+And the guidance's own definition of the term, quoted from its footnote 7:
+
+> In this guidance document, we use the term legacy system to describe systems already in operation
+> before the effective date of part 11.
+
+### Running the four-part test against LAB-07
+
+Here's DI-0301's actual exercise — the same criterion-by-criterion discipline module 3 used for the
+pH-meter-versus-FT-IR question, now applied to a real piece of Lakeshore equipment.
+
+**Criterion 1 — operational before August 20, 1997. Clean yes.** Lakeshore's own equipment file
+still holds LAB-07's original installation record: a purchase order and an asset-tagging entry,
+both dated years before Part 11's effective date, plus early logbook pages in the same lab notebook
+that show LAB-07's QC results being recorded by hand, long before BECS existed. This is the easiest
+of the four to confirm, and it's worth noticing exactly why it's easy: it's a historical fact backed
+by a surviving paper trail, not an assumption resting on "it feels old."
+
+**Criterion 2 — met all applicable predicate rule requirements before the effective date. Yes,
+supportable.** Those same retained logbook pages show LAB-07's QC results being documented the way
+the lab's own procedure at the time required: a reading, a pass/fail call, an initial, a date. That's
+thin evidence compared to criterion 1's purchase order, but it's real evidence, not silence — the
+logbook itself is the artifact that answers this criterion.
+
+**Criterion 3 — currently meets all applicable predicate rule requirements. Yes, and this is where
+the changed-system sentence actually gets used, not just quoted.** Your QA asks the sharp, concrete
+question the guidance's closing sentence demands: has LAB-07 ever been patched, had its firmware
+updated, or had any component replaced since 1997? The honest answer: its thermal print mechanism has
+been swapped twice over the years, by a vendor technician under a standard service contract, each
+time logged in the maintenance file. Its underlying measurement method and embedded software have
+never been touched. Applying the test exactly as written: did either repair *prevent the system from
+meeting predicate rule requirements*? No — the lab's QC procedure still gets satisfied the same way
+it always has, with the same measurement logic, just a replacement part doing the printing. A worn
+print head failing and getting swapped isn't the kind of change the guidance is warning about. This
+criterion holds, and it holds for a documented, reasoned reason — not because nobody asked the
+question.
+
+**Criterion 4 — documented evidence and justification that the system is fit for its intended use,
+including acceptable record security and integrity. Genuinely uncertain — and this is DI-0301's real
+finding.** Your QA went looking for the actual artifact this criterion asks for: a document — a
+memo, a periodic equipment review, anything — that states, on the record, that LAB-07 is still fit
+for its intended use and that its records are adequately secure and intact. She couldn't find one.
+Not a wrong document. No document. What she found instead is daily proof that LAB-07 *functions*:
+QC checks pass every morning, the printout comes out, nobody's filed a complaint about it in living
+memory. That's real, and it matters — but it isn't the same claim the test actually requires. "It
+still works" is something you can observe by watching it run. "There is documented evidence and
+justification that it's fit for its intended use, including an acceptable level of record security
+and integrity" is a specific, written artifact the test asks you to produce. Lakeshore has the first.
+It doesn't yet have the second.
+
+This is not a confirmed violation, and it shouldn't be treated like one. Nothing here proves LAB-07
+is unfit, insecure, or non-compliant. The finding is a gap in *evidence*, not a proven failure — the
+same honest distinction this curriculum has drawn before (module 1's "accurate" on DED-0458, module
+2's audit-trail review frequency). The right response isn't to panic, and it isn't to replace the
+instrument. It's to go get, or create, the documentation the test actually asks for: a short,
+dated qualification review — someone with the authority to say so, confirming LAB-07 still performs
+its intended function, that its printed QC records haven't been shown to be tampered with or lost,
+and that the lab's handling of those printouts (initialed, dated, filed) is adequate. That's a
+findable, fixable gap, not a five-alarm fire.
+
+### Resolving the pH-meter-versus-FT-IR question for LAB-07
+
+Last module planted this exactly, and quoted FDA's own contrast in full (Question 10 of the 2018
+data-integrity guidance): a pH meter or balance that produces a paper printout *as* the original
+record satisfies retention once that printout is kept; an instrument like FT-IR, whose underlying
+electronic record is genuinely dynamic — reprocessable, re-baselined — loses real information if only
+a static printout is kept, and FDA's own example warns a printout might not even show the full
+spectrum, potentially excluding contaminants from view. Module 3 built that distinction; this module
+applies it, one piece of actual equipment at a time, rather than re-deriving it.
+
+For its ordinary, everyday path, **LAB-07 is the pH-meter case.** The QC check a tech runs every
+morning produces exactly one output: a single absorbance number and a pass/fail flag, printed once,
+on the spot. There's no underlying file behind that printout that anyone queries, re-sorts, or
+reprocesses — the printed strip, initialed and filed, genuinely *is* the whole record of that check.
+Nothing is lost by keeping the strip. That's precisely FDA's pH-meter logic, applied honestly, not
+assumed because the instrument is old.
+
+Here's the twist your QA actually found, reading the manual nobody else had opened in years: **LAB-07
+has a second mode nobody uses, and that mode is FT-IR-like, not pH-meter-like.** Buried in its original
+documentation is a data-export function — built for a connected workstation this lab stopped using
+long ago — that can save the instrument's full absorbance scan across the whole wavelength range as a
+trace file, not just the single summary number the daily printout shows. That trace file can be
+reopened and reprocessed: a different baseline applied, the curve re-smoothed, the result recalculated
+from the raw scan. Nobody at Lakeshore has used that mode in years. Nobody realized it still existed.
+But it's still physically present on the instrument, and nothing in writing says it's off-limits.
+
+That matters, because it means LAB-07 isn't a clean, single-case answer. It's a **split finding**,
+and that's the honest one: the instrument's actual, relied-upon daily output is a static printout that
+genuinely is the original record — the pH-meter case, settled. But its dormant export/reprocessing
+mode, if anyone ever switched it on, would produce a genuinely dynamic electronic record — the
+FT-IR case — and a printout taken from *that* mode would be a frozen snapshot of something built to
+be examined more than one way, the same risk FDA's own example warns about. The fix isn't technical.
+It's documentation, using the same tool module 3 already built: write down, in LAB-07's own QC
+procedure, that the daily absorbance printout is the relied-upon record of record, and that the
+export/reprocessing mode is either formally prohibited for QC determinations or — if anyone ever
+has a reason to use it — treated from that point forward as producing a dynamic record subject to its
+own review and retention requirements, not casually swapped in as "the" result because it happened to
+be convenient that day. Static versus dynamic, and the narrow-interpretation reliance test — what
+you actually rely on to do the regulated work — is module 3's framework; this is that same framework,
+now pointed at a specific piece of lab equipment instead of a database record.
+
+### Copies of records — what LAB-07 hands an inspector
+
+FDA's 2003 guidance also addresses copies directly, quoted in full from the same source, § III.C.4,
+"Copies of Records":
+
+> The Agency intends to exercise enforcement discretion with regard to specific part 11 requirements
+> for generating copies of records (§ 11.10 (b) and any corresponding requirement in §11.30). You
+> should provide an investigator with reasonable and useful access to records during an inspection.
+> All records held by you are subject to inspection in accordance with predicate rules (e.g., §§
+> 211.180(c), (d), and 108.35(c)(3)(ii)).
+>
+> We recommend that you supply copies of electronic records by:
+>
+> - Producing copies of records held in common portable formats when records are maintained in these
+>   formats
+> - Using established automated conversion or export methods, where available, to make copies in a
+>   more common format (examples of such formats include, but are not limited to, PDF, XML, or SGML)
+
+Two things at once, and both matter: enforcement discretion applies to the *specific generating-copies
+mechanics* of §11.10(b) itself — but every record LAB-07 produces is still fully subject to inspection
+under the predicate rule, full stop. FDA isn't saying inspectors get less access. It's saying the
+precise technical method of producing a copy isn't what FDA intends to police line-by-line.
+
+Applied to LAB-07, practically: for the ordinary daily QC printout, the answer is easy. The printout
+*is* the original record, so a clean photocopy or scan of it — ideally a scanned PDF, since thermal
+paper fades over time, which is its own separate retention concern this course's next module picks
+up — preserves its content and meaning exactly. That satisfies the guidance's recommendation without
+any special effort: a "common portable format," produced by an "established... conversion... method,"
+with nothing lost in translation.
+
+The export/reprocessing mode is where LAB-07 actually falls short, and it's worth flagging now, before
+an inspector ever asks. If that mode were ever used, its only output is a raw trace file in an old,
+instrument-specific format — tied to companion software built for a workstation this lab no longer
+operates. There's no built-in conversion to PDF, XML, or anything else an inspector could read without
+that same obsolete software. Right now, that gap is dormant: the mode isn't used, so the gap isn't
+live. But it's exactly the kind of thing DI-0301 is supposed to surface before it becomes a real
+problem — a capability sitting on the instrument that, if anyone ever switched it on, Lakeshore
+currently has no good way to hand over in a format the guidance actually recommends.
+
+## What an inspector would actually look for
+
+An FDA investigator or AABB (Association for the Advancement of Blood & Biotherapies) assessor
+wouldn't ask whether Lakeshore has a legacy-system policy. They'd ask for the specific artifact each
+criterion of the four-part test actually requires.
+
+**For criteria 1 and 2:** the purchase and installation record, and the earliest logbook pages
+showing QC results documented under the procedure of the time — exactly the paper trail DI-0301
+already found. A bad answer sounds like "it's been here forever." A good answer produces the
+documents.
+
+**For criterion 3:** the maintenance and service log — every repair, part swap, or software touch
+LAB-07 has had since 1997, with a clear statement of whether any of them affected its measurement
+method or its ability to meet the predicate rule. A bad answer sounds like "nothing's really
+changed." A good answer names each change and explains, specifically, why it didn't matter.
+
+**For criterion 4:** a dated qualification or fitness-for-use review — the exact document DI-0301
+couldn't find. A bad answer sounds like "it's never given us a problem." A good answer points to a
+specific memo or review, signed by someone with the authority to make that call, addressing both
+function *and* record security and integrity.
+
+QSE 3 (Equipment), one of AABB's Quality System Essentials, is the adjacent drawer here — equipment
+qualification and fitness-for-use documentation generally, paraphrased only, no specific standard
+number developed in this module.
+
+## Common traps
+
+**"It still works, so it's fine."** This is the trap this module exists to refute, and LAB-07's own
+criterion 4 is the refutation, built in. FDA's four-part test doesn't ask whether a system functions
+— it asks for documented evidence and justification that it's fit for its intended use, including
+record security and integrity. A system can run perfectly, every day, for years, and still fail this
+specific requirement, because "it runs" and "someone can produce the documentation proving it should
+still be trusted" are two different claims. Only the second one is what the test actually requires.
+
+**"Once a system qualifies as a legacy system, it's grandfathered forever."** Not quite. The test's
+own fourth criterion demands evidence on an ongoing basis, not a one-time pass stamped at some point
+in the past. And the guidance's own closing sentence makes the point explicit: if a legacy system is
+later changed in a way that breaks predicate-rule compliance, Part 11 controls apply going forward —
+the legacy status isn't a permanent exemption, it's a conditional one, re-earned by staying true,
+continuously, not granted once and forgotten.
+
+## What this means for your job
+
+- **Ask whether anyone can produce LAB-07's — or any legacy system's — documented fitness-for-use
+  justification, by name.** "It's never given us trouble" is not that document. A dated review with
+  someone's name on it is.
+- **Treat a missing criterion-4 document as an actionable gap to fix, not a reason to panic or
+  replace the equipment.** The fix is usually a short, honest qualification memo — not a capital
+  project.
+- **Ask what's changed on any legacy system since it was installed — parts, firmware, software —
+  and whether each change was actually assessed against predicate-rule requirements**, the way
+  LAB-07's print-head swaps were. Don't let "nothing's really changed" stand in for an actual answer.
+- **Find out whether a legacy instrument has a mode nobody uses, and ask what it would produce if
+  someone did.** LAB-07's export function was sitting there, unused and unassessed, until DI-0301
+  went looking. A dormant capability is still a capability.
+- **Before an inspection, confirm what format a copy of each legacy system's records would actually
+  take, and whether the system can produce it.** A clean scan of a paper printout is usually fine. A
+  proprietary export file nobody can open without obsolete software usually isn't — and that's worth
+  knowing before an investigator asks, not after.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA reports, "LAB-07 passes every QC check every morning, and nobody's ever complained about it — so criterion 4 of the legacy-system test is satisfied." Is she right?
+
+No — and this is the central nuance this module exists to teach. Criterion 4 of FDA's four-part test
+doesn't ask whether a system functions day to day. It asks for *documented evidence and justification*
+that the system is fit for its intended use, including an acceptable level of record security and
+integrity. "It passes every morning" is evidence the instrument works. It is not the same thing as a
+dated review, signed by someone with the authority to make the call, stating that LAB-07 is fit for
+its intended use and that its records are adequately secure. Lakeshore has the first. Until someone
+produces the second, criterion 4 is a genuine open gap — not a proven violation, but not satisfied
+either.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: LAB-07's thermal print mechanism has been replaced twice since Part 11 took effect. Does that automatically reopen the whole four-part legacy-system test?
+
+Not automatically — you have to actually ask the question the guidance's own closing sentence asks:
+did the change prevent the system from meeting predicate rule requirements? Here, it didn't. The
+print-head swaps replaced a worn part under a standard service arrangement; LAB-07's underlying
+measurement method and embedded software were untouched, and the lab's QC documentation requirement
+is still met exactly as it was before. Criterion 3 — "currently meets all applicable predicate rule
+requirements" — holds, and it holds for a reasoned, documented reason. A different kind of change —
+say, a firmware update that altered how a result gets calculated — would need the same question
+asked just as seriously, and might come out the other way.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Must Lakeshore hand an inspector LAB-07's records specifically as a PDF file, because that's what FDA's guidance requires?
+
+No — and this is **not a regulatory requirement** read correctly. FDA's 2003 guidance's "Copies of
+Records" section is guidance tier, "we recommend" language, not a regulation mandating one specific
+file format. It recommends common portable formats, or established conversion/export methods, with
+PDF, XML, and SGML named only as *examples*. The real, binding piece underneath it is the predicate
+rule: every record stays subject to inspection, and a copy has to preserve its content and meaning.
+For LAB-07's daily printout, a scanned PDF is a sensible, easy way to meet that recommendation — but
+the requirement is "preserve content and meaning in a reasonably accessible format," not "must be a
+PDF specifically."
+:::
+
+## Where this goes next
+
+DI-0301 now has a real, worked answer for LAB-07: a clean pass on whether it's old enough and once
+compliant enough to qualify as a legacy system, a reasoned pass on whether its service history still
+keeps it compliant today, a genuine, fixable gap on the documented-justification criterion, and a
+split, concrete answer to the pH-meter-versus-FT-IR question module 3 planted — simple daily printout,
+dormant dynamic export mode, two different answers for two different outputs of the same instrument.
+Next, `retention-across-record-types` goes beyond 606.160(d)'s product-record clock to ask what
+"retain the record" actually requires once you know whether what you're retaining is static or
+dynamic — the exact distinction this module just finished applying to LAB-07's own two output modes.
