@@ -1,0 +1,315 @@
+---
+title: "Filing a Biological Product Deviation Report"
+order: 73
+---
+
+## The form that's still blank
+
+The plasma-labeling event is a week old. Your Quality Analyst (QA) walked you through it in
+`warning-letters-and-recalls`: a reference-table error inside Fairview's BECS (Blood
+Establishment Computer Software) printed one production lot's plasma containers with the
+wrong subtype — standard Fresh Frozen Plasma (FFP) labeled as "Plasma Frozen Within 24 Hours
+After Phlebotomy" (PF24), a different subtype with meaningfully different clotting-factor
+levels. The lot left Fairview's control and reached one hospital transfusion service before
+anyone caught it. No unit has been transfused. Your QA has already walked the six-factor
+health-hazard test and reached a reasoned recommendation of Class II, and that recall
+paperwork is already moving toward FDA (Food and Drug Administration).
+
+She's back in your office with a second, separate question. "We also need to file a BPDR
+(Biological Product Deviation Report) on this. I know it's reportable — that part's not in
+question. What I don't actually know is how we file it, who signs it, or where it goes."
+
+She's right that reportability isn't the open question here. A deviation that affects a
+distributed blood component's identity and labeling clears that bar without a close call.
+What's still sitting undone is the filing itself — the actual form, the actual office, the
+actual window — and that's today's job.
+
+## Why this rule exists — and the ITSM bridge
+
+Deciding something is reportable and actually reporting it are two different acts, and a
+regulator who only checks the first one is checking the easy half. An organization can have
+a perfect internal reportability determination — timestamped, reasoned, signed — and still
+never get that information to the one federal office whose entire job is tracking patterns
+across every blood establishment in the country. CBER can't act on a determination it never
+receives. The filing mechanics exist because the paperwork isn't a formality on top of the
+decision; it's the only part of this that actually reaches anyone outside Lakeshore.
+
+You already run something structurally identical, and you've probably run it personally. A
+security incident that crosses a reporting threshold — a data breach notification law, a
+contractual SLA (service level agreement) breach notice — doesn't end when your team finishes
+remediation. It triggers a separate, timed, addressed filing: a specific form or format, sent
+to a specific recipient, inside a specific clock, independent of how well the remediation
+itself went. Doing excellent incident response doesn't substitute for actually making that
+filing, on time, to the right party, in the right format. A BPDR is that same shape, applied
+to a blood component instead of a data record.
+
+Here's where the regulated world asks for more precision than most of your compliance
+filings do. An ordinary breach notice's recipient and format are often negotiable in
+practice — email a named contact, use whatever template the contract specifies, adjust the
+channel if the primary one is unavailable. A BPDR's recipient and acceptable formats are
+fixed by regulation, not left to firm discretion: it goes to CBER specifically, not any other
+FDA office, and only in one of two forms the regulation itself names. There's no "close
+enough" recipient and no improvised third format.
+
+## The rule in plain English
+
+Three questions, in order: who reports, how, and where — plus how this duty sits next to
+Lakeshore's recall and its own internal investigation.
+
+**Who reports isn't an individual — it's the establishment, through Quality.** The
+regulation's own language is "you," meaning whichever licensed manufacturer, unlicensed
+registered blood establishment, or transfusion service had control over the product when the
+deviation occurred. For Lakeshore, "you" is the establishment itself, acting through its
+Quality function — not your QA personally, not whichever technician first flagged the
+reference-table error, and not you as an individual Director. Your QA prepares the filing and
+your Quality unit owns the submission, the same way the establishment, not any one employee,
+holds the AABB (Association for the Advancement of Blood & Biotherapies) accreditation and
+answers to an FDA inspection.
+
+That matters for one more reason: the regulation also closes an obvious loophole. If
+Lakeshore ever arranged for someone else to perform a step — a contract testing lab running a
+confirmatory assay, a courier handling distribution — while the product was still under
+Lakeshore's control, that step counts as performed *under Lakeshore's control*. Lakeshore
+can't hand off a processing or distribution step to a contractor and then claim the
+contractor, not Lakeshore, owed FDA the report. The reporting duty follows control of the
+product, not whoever happened to touch it last.
+
+**How you report has exactly one answer: Form FDA-3486.** Not a memo, not an internal
+deviation record forwarded as-is, not an email summary. One specific, named form.
+
+**Where you report also has exactly one answer: CBER**, FDA's Center for Biologics
+Evaluation and Research — the one FDA center with authority over blood and blood-component
+reporting, not FDA generally and not whichever office handled the routine inspection in
+module 1. The regulation gives two acceptable channels for getting the completed form there:
+paper, mailed to CBER's own Document Control Center, with the envelope itself marked to
+identify that a BPDR is enclosed; or electronic, submitted through CBER's own web-based
+filing application. Nothing else qualifies as "filed."
+
+**How this sits next to the recall and next to Lakeshore's own investigation duty.** Two
+things are true about the plasma-labeling event at once, and neither one substitutes for the
+other. First: the recall already underway (module 2) is about the product itself — getting
+the mislabeled units corrected or removed from the hospital's inventory. The BPDR is a
+completely separate duty — telling CBER about the deviation that caused the problem. A firm
+can file a perfect recall notification and still owe FDA a BPDR it never sent, and vice
+versa. Second: 606.171 doesn't just govern reporting outward. It says plainly that Lakeshore's
+duty to investigate a biological product deviation internally exists whether or not that
+deviation ever had to be reported to FDA at all. Reportability to CBER and the duty to
+investigate under Lakeshore's own quality system are two different questions with two
+different answers — a deviation can fail the reportability test and still demand a full
+internal investigation under Lakeshore's own procedures.
+
+**A one-line reference, not a re-derivation, for the test and the clock already fully taught
+in `deviations-and-nonconformances`:** 606.171(b)'s two-prong reportability test (a deviation
+that may affect safety, purity, or potency, involving distributed product) and 606.171(c)'s
+45-calendar-day reporting clock are settled ground, applied here, not re-walked. The
+plasma-labeling event clears (b) without a close call — it's a reference-table deviation that
+put the wrong clotting-factor information in a clinician's hands, on a lot that left
+Fairview's control and reached a hospital — and the clock on (c) started the day Lakeshore's
+label reconciliation caught it, which is where this module's own timeline picks up.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.171(a) | "Six-oh-six point one-seven-one, paragraph a" | **Regulation.** Names who must report — the establishment with control over the product when the deviation occurred — and that a step performed by a contracted party, while the product is under that establishment's control, is still performed "under your control." | Lakeshore's Quality function, not any one individual, owns this filing; the clause closes off outsourcing the reporting duty itself. |
+| 21 CFR 606.171(d) | "Paragraph d" | **Regulation.** The report must be made on Form FDA-3486 — no other document satisfies this. | What BPD-0512's filing actually has to be submitted on. |
+| 21 CFR 606.171(e), (e)(1), (e)(2) | "Paragraph e, sub-one, sub-two" | **Regulation.** Where the completed form goes — CBER, in paper (to CBER's Document Control Center, envelope marked "BPDR enclosed") or electronic format (CBER's own web-based application). | The two filing channels Lakeshore's QA is choosing between right now. |
+| 21 CFR 606.171(f) | "Paragraph f" | **Regulation.** This section supplements, not supersedes, other FDA regulations; *all* biological product deviations — reportable or not — should still be investigated under Parts 211, 606, and 820. | Why Lakeshore's internal investigation duty exists independent of whether BPD-0512 ever had to go to CBER. |
+| 21 CFR 606.171(b) / (c) | "Paragraph b / paragraph c" | **Regulation.** The reportability test and the 45-day reporting clock. **Already fully taught in `deviations-and-nonconformances`** — referenced here, not re-quoted. | Confirms BPD-0512 is reportable and that the clock started at discovery; the determination itself isn't redone here. |
+
+## The actual text
+
+21 CFR 606.171(a) — who must report, quoted in full:
+
+> *Who must report under this section?* You, a licensed manufacturer of blood and blood
+> components, including Source Plasma; an unlicensed registered blood establishment; or a
+> transfusion service who had control over the product when the deviation occurred, must
+> report under this section. If you arrange for another person to perform a manufacturing,
+> holding, or distribution step, while the product is in your control, that step is performed
+> under your control. You must establish, maintain, and follow a procedure for receiving
+> information from that person on all deviations, complaints, and adverse events concerning
+> the affected product.
+
+Read that middle sentence as the closed loophole it is. Lakeshore never gets to treat a
+contracted step as someone else's reporting problem, as long as the product was under
+Lakeshore's control when the deviation happened. And the last sentence adds a standing duty
+most firms don't think about until they need it: Lakeshore has to have a working procedure
+for *receiving* deviation information back from anyone it contracts a step to, not just a
+procedure for its own staff.
+
+21 CFR 606.171(d) — how, quoted in full:
+
+> *How do I report under this section?* You must report on Form FDA-3486.
+
+One sentence, one form, no substitutes.
+
+21 CFR 606.171(e), with (e)(1) and (e)(2) — where, quoted in full:
+
+> *Where do I report under this section?* You must send the completed Form FDA 3486 to the
+> Center for Biologics Evaluation and Research (CBER), either in paper or electronic format.
+>
+> (1) If you make a paper filing, send the completed form to the CBER Document Control Center
+> (see mailing address in § 600.2(a) of this chapter), and identify on the envelope that a
+> BPDR (biological product deviation report) is enclosed; or
+>
+> (2) If you make an electronic filing, send the completed Form FDA3486 electronically using
+> CBER's electronic Web-based application.
+
+Two channels, both acceptable, both landing at the same office. 606.171 names the mailing
+address only by cross-reference, to § 600.2(a) — a separate section this course doesn't
+independently source or quote here, since the operational point is which office, not the
+literal street address.
+
+21 CFR 606.171(f) — how this section relates to other FDA regulations, quoted in full:
+
+> *How does this regulation affect other FDA regulations?* This part supplements and does not
+> supersede other provisions of the regulations in this chapter. All biological product
+> deviations, whether or not they are required to be reported under this section, should be
+> investigated in accordance with the applicable provisions of parts 211, 606, and 820 of
+> this chapter.
+
+Read that first sentence carefully: "whether or not they are required to be reported." FDA
+wrote the reportability test into (b) precisely so that not every deviation has to go to
+CBER. (f) then closes the gap that sentence could otherwise leave open: a deviation that
+genuinely fails (b)'s test still isn't nobody's problem. It still gets investigated under
+Lakeshore's own Part 606 quality system — and under Parts 211 and 820 where they apply.
+Reportability to FDA and the duty to investigate internally are two separate questions, and
+this is the clause that says so directly, not an inference.
+
+## Filing BPD-0512: the walkthrough
+
+Lakeshore's QA gives this event a tracking label, BPD-0512, distinct from any ID this
+curriculum has used before — a new, previously untracked event, not a reuse of `csv-and-
+becs`'s DEV-1147 or any other locked finding. Here's what actually goes into filing it,
+mapped to 606.171's own lettered structure.
+
+**Who.** The submission is made by Lakeshore's establishment, through its Quality function.
+Your QA drafts and assembles the filing; Quality signs and submits it. Fairview's own
+technical staff aren't the "who" here any more than the phlebotomist who drew a unit is the
+"who" on a donor-eligibility report — the establishment reports, acting through the people its
+quality system designates to do so.
+
+**What.** The filing describes the deviation itself: the BECS reference-table error that
+caused one code to print PF24 instead of FFP, when the discrepancy was caught (during routine
+label reconciliation), what product and how much of it is affected (the one lot, and the
+specific units that reached the hospital), and the corrective steps already underway — the
+same recall notification already moving under 7.46(a) from module 2, plus whatever
+reference-table correction and verification Fairview's team is running now. None of this
+requires inventing Form FDA-3486's literal field layout; it requires the same five pieces any
+deviation record needs — discovery, containment, extent, disposition, and now the
+reportability call applied — organized the way 606.171 asks for.
+
+**How.** Form FDA-3486, per (d). No other document satisfies this regulation, no matter how
+thorough Lakeshore's own internal deviation write-up already is.
+
+**Where.** CBER, per (e). The practical choice between paper and electronic is real, and it's
+worth a straight recommendation rather than pretending both are equally good defaults.
+Electronic filing, through CBER's own web-based application, is the better fit for a modern
+blood establishment like Lakeshore running this day to day: it's faster to submit, it
+produces a cleaner, time-stamped submission record than a mailed envelope does, and it
+removes the mail-transit uncertainty that sits between "we sent it" and "CBER has it" — a
+real gap when a 45-day clock is running. Paper still has a place honestly worth naming: a
+genuinely down electronic system, a firm with limited access to the web-based application, or
+simply an established internal habit some establishments haven't yet moved off of. Neither
+channel is more or less compliant than the other — 606.171(e) treats them as equals — but for
+an establishment the size of Lakeshore, with BECS infrastructure already in place, electronic
+is the practical default and paper is the fallback, not the other way around.
+
+**When.** Discovery was prompt — caught during routine label reconciliation, well before any
+unit was issued to a patient — and the filing is going out under a week later. That's
+comfortably inside 606.171(c)'s 45-calendar-day clock, with no need to push the filing out to
+the deadline just because the deadline exists.
+
+## What CBER's own review would actually look for
+
+CBER isn't reading BPD-0512 to see whether Lakeshore felt bad about it. It's reading for
+whether the filing actually answers 606.171's own questions: who's reporting and did they
+have control over the product, what the deviation was and what product it touched, that it
+landed on Form FDA-3486 rather than some internal substitute, and that it arrived inside the
+45-day window with a discovery date that holds up. A filing that's vague about the discovery
+date, or that describes the deviation in general terms instead of naming the specific lot and
+the specific reference-table error, reads the same way a weak 483 response does: like a firm
+that hasn't actually worked through its own facts yet.
+
+## Common traps
+
+**"We already filed the recall paperwork — that covers the BPDR too."** No. 7.46(a)'s
+nine-item recall submission (module 2) and Form FDA-3486 ask overlapping but not identical
+questions, and they go to different purposes even when they land at the same federal agency.
+The recall paperwork is about correcting or removing the product. The BPDR, under 606.171, is
+about reporting the deviation that caused the problem. Both draw on the same underlying
+facts — what happened, what product is affected — but filing one doesn't file the other, and
+Lakeshore owes both for the same event.
+
+**"We determined this isn't reportable, so there's nothing left to do."** Even when that
+determination is correct, 606.171(f) says plainly that the investigation duty doesn't
+disappear with it. A deviation that genuinely fails (b)'s test still has to be investigated
+under Lakeshore's own Part 606 quality system. "Not reportable to CBER" and "not our problem"
+are not the same sentence, and (f) exists specifically to make sure nobody reads them as the
+same sentence.
+
+## What this means for your job
+
+- **Treat "it's reportable" and "it's filed" as two separate milestones**, with two separate
+  completion dates in your own tracking — not one checkbox that closes when the reportability
+  call gets made.
+- **Ask your QA which channel she used and why**, not just whether the filing went out.
+  Electronic, for the reasons above, should be the default answer for a routine filing;
+  paper should come with a stated reason, not an unexamined habit.
+- **Run the recall and the BPDR as two parallel workstreams, not a sequence.** Neither one
+  waits on the other to finish. The recall's pace is driven by how urgently the product needs
+  to come off the shelf; the BPDR's pace is driven by its own 45-day clock. Don't let a
+  Director's instinct to "finish one thing before starting the next" slow either one down.
+- **When a deviation comes back "not reportable," ask what the internal investigation looks
+  like anyway** — 606.171(f) means that question doesn't close itself just because CBER never
+  sees the file.
+- **Know, before an inspector or CBER ever asks, which office a filing went to and how.** "We
+  filed BPD-0512 electronically with CBER on [date], inside the 45-day window" is the kind of
+  sentence that should come out of your QA without a pause.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA says, "If a deviation turns out not to meet 606.171(b)'s reportability test, there's nothing left for us to do with it." Right or wrong?
+
+Wrong, and 606.171(f) is written specifically to correct this. A deviation that genuinely
+fails (b)'s test still "should be investigated in accordance with the applicable provisions
+of parts 211, 606, and 820" — Lakeshore's own internal investigation duty under its quality
+system doesn't depend on whether CBER ever sees a BPDR about it. Reportability to FDA and the
+duty to investigate internally are two different questions. A non-reportable deviation with
+no internal investigation behind it is still an open gap, even though nothing was ever owed
+to CBER.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is filing BPD-0512 electronically, rather than on paper, a regulatory requirement?
+
+No — and this is worth being precise about. 606.171(e) treats paper and electronic filing as
+two equally acceptable channels; nothing in the regulation prefers one over the other.
+Recommending electronic filing for an establishment like Lakeshore is this lesson's own
+operational judgment — faster, a cleaner time-stamped record, no mail-transit uncertainty
+against a 45-day clock — not a requirement the text itself imposes. A paper filing to CBER's
+Document Control Center, properly marked "BPDR enclosed," satisfies 606.171 exactly as well.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Lakeshore's recall notification for the plasma lot has already gone out under 7.46(a). Does that satisfy 606.171's reporting duty too?
+
+No. The recall submission and the BPDR are separate obligations that can both apply to the
+same event, and one doesn't substitute for the other. 7.46(a)'s nine-item submission is about
+correcting or removing the mislabeled product itself. Form FDA-3486, filed under 606.171(d)
+and (e), is a distinct report to CBER about the deviation that caused the problem. Both draw
+on overlapping facts — what happened, what product is affected — but they're prepared and
+filed separately, and BPD-0512 still needs its own BPDR regardless of how the recall
+paperwork is going.
+:::
+
+## Where this goes next
+
+BPD-0512 is filed: electronically, to CBER, well inside the 45-day window, running in
+parallel with the recall already underway and independent of Lakeshore's own internal
+investigation into the reference-table error itself. FDA now has what 606.171 requires it to
+have. `the-aabb-assessment-process` turns to a completely different reviewer next — one
+Lakeshore invites rather than one the law sends, checking Lakeshore's policies, processes, and
+procedures against AABB's own Standards rather than against federal regulation, and expecting
+things an FDA investigator never asks about.

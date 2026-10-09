@@ -1,0 +1,27 @@
+---
+title: "Resources"
+order: 74
+---
+
+Four places to go deeper than this lesson, or to check a citation yourself before it goes
+into a real Lakeshore filing. All four were checked and loading at the time this page was
+written.
+
+- **[21 CFR 606.171, eCFR](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-F/part-606/subpart-F/section-606.171)**
+  — the full section this lesson quotes from: who must report (a), how (d), where (e), and
+  how this duty relates to other FDA regulations (f). eCFR's "current as of" banner is useful
+  for confirming you're reading the in-force version.
+
+- **[21 CFR 606.171, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.171)**
+  — the same section, formatted for quick paragraph-by-paragraph reading, useful as a second
+  copy to cross-check a quote against.
+
+- **[FDA, General Instructions for Completing the Biological Product Deviation Report (BPDR) — Form FDA 3486](https://www.fda.gov/vaccines-blood-biologics/report-problem-center-biologics-evaluation-research/general-instructions-completing-biological-product-deviation-report-bpdr-form-fda-3486)**
+  — FDA's own public instructions page for the form this lesson's walkthrough describes at a
+  conceptual level. Useful if you ever need the actual field-by-field layout, which this
+  lesson deliberately doesn't reproduce.
+
+- **[FDA, Instructions for Using the eBPDR System](https://www.fda.gov/vaccines-blood-biologics/report-problem-center-biologics-evaluation-research/instructions-using-ebpdr-system)**
+  — FDA's own instructions for the electronic filing channel 606.171(e)(2) describes as
+  "CBER's electronic Web-based application." Worth reading before recommending electronic
+  filing to a team that's never used it.
