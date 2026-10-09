@@ -1,5 +1,7 @@
 # `vendor-and-third-party-risk-management` — course plan
 
+**Status: COMPLETE (5/5 modules published).**
+
 Read this whole file before drafting any module. Update the module table and append a progress
 log entry after every module, same discipline as every other course in this curriculum.
 
@@ -59,7 +61,7 @@ platform, OS, or cloud-platform brand.
 | 2 | `reading-a-soc-2-report` | Tell a Type I report from a Type II, name the five Trust Services Criteria, and read a report's complementary-user-entity-controls section and bridge letter for what they mean for Lakeshore. | 106/107 | Published |
 | 3 | `reading-an-iso-27001-certificate` | Know what a certificate actually certifies, and read a Statement of Applicability to see which Annex A control domains a vendor claims and which it excludes, with a stated reason. | 108/109 | Published |
 | 4 | `business-associate-agreements` | Walk the actual HIPAA text requiring a BAA's contract terms — what it obligates a vendor to do, report, and return or destroy. | 110/111 | Published |
-| 5 | `vendor-change-notifications-and-your-own-change-control` | Place a vendor's change-notification/incident-reporting duties against Lakeshore's own change control, and close the course by returning to the Brookfield incident with this course's own new lens. | 112/113 | Not started |
+| 5 | `vendor-change-notifications-and-your-own-change-control` | Place a vendor's change-notification/incident-reporting duties against Lakeshore's own change control, and close the course by returning to the Brookfield incident with this course's own new lens. | 112/113 | Published |
 
 The next course after this one continues at **114**. Update `create-course`'s SKILL.md when this
 course's numbering is final (verify by grep with no duplicates before assigning, same discipline
@@ -539,3 +541,78 @@ as every prior course) — already done as part of Phase 2 scoping below.
   all five modules; what's resolved; what stays open by honest design — the Brookfield incident's own
   permanently unresolved encryption status; forward pointer to the Track 5 capstone
   `itsm-for-regulated-blood-services`).
+
+- **2026-10-09**: Module 5, `vendor-change-notifications-and-your-own-change-control` (`order:
+  112/113`), drafted and published — **this course's final module. The course is now COMPLETE,
+  5/5.** Owns synthesis only, no new citation: 45 CFR 164.314(a)(2)(i)(C)/164.504(e)(2)(ii)(C), the
+  incident-reporting clause, is referenced and partially restated (one short fragment, clearly
+  flagged as already quoted in full in module 4) rather than re-quoted at length, exactly per the
+  module's own guardrail. `quality-system-essentials/change-control-for-regulated-systems` (that
+  course's module 4, the five-stage request→impact-assessment→approval→implementation→verification
+  process, Quality as a required approver) was read in full and referenced by name — its mechanics
+  were not redeveloped here.
+
+  **The central teaching move, locked:** a vendor's **incident-reporting duty** ((a)(2)(i)(C)/
+  (e)(2)(ii)(C)) is reactive — it obligates the vendor to report only after it becomes aware
+  something has already gone wrong. A **change-notification clause** — not a HIPAA requirement,
+  a possible negotiated contract term — would be proactive, obligating advance notice of a planned
+  material change (an infrastructure migration, a platform upgrade, a subcontractor change). These
+  are different promises, and conflating "they have to report incidents" with "they have to warn us
+  before they do something that could cause one" is named explicitly as the module's central,
+  real-world trap. Per this course's own locked facts (`healthcare-security-and-privacy`'s closed
+  incident), the device-management platform vendor's earlier migration happened without, as far as
+  established, any advance notice Lakeshore could have acted on ahead of time — the structural gap
+  this module's proposed fix addresses going forward, not retroactively.
+
+  **Scenario used:** a routine quarterly vendor "what's new" email, three paragraphs into which sits
+  a disclosure of an upcoming backend-infrastructure consolidation ("no expected disruption"),
+  recognized by the Director as structurally identical to the kind of event that produced the
+  Brookfield incident. The QA's own instinct — "doesn't the BAA already cover this?" — is used as the
+  live demonstration of the trap, then corrected.
+
+  **A second conflation named and resolved, consistent with module 3's own locked SoA (Statement of
+  Applicability) finding:** the vendor's plausible ISO/IEC 27001 "change management" SoA domain
+  (module 3) governs the vendor's own **internal** change process — it is not, and was never asserted
+  to be, a contractual promise to notify Lakeshore specifically before a change. A vendor can have a
+  mature internal change-management domain and zero contractual duty to warn any given customer in
+  advance; these rest on different documents (the vendor's own ISMS vs. the signed contract).
+
+  **Honest reasoning on the contract-gap question, locked as this course's actual closing
+  position:** a change-notification clause is a genuine, real, forward-looking improvement worth
+  Lakeshore pursuing at this vendor's next contract renewal — the single most directly on-point fix
+  this course's five modules have identified for preventing a *repeat* of the visibility gap
+  `investigating-a-healthcare-data-incident` already ranked as the incident's structural root cause.
+  It is explicitly **not** a retroactive fix: `investigating-a-healthcare-data-incident`'s own final,
+  closed determination (164.404 individual-notification clock, no BPDR, the laptop's encryption
+  status permanently, honestly unresolved) is not reopened, altered, or in any way changed by this
+  module. And whether the clause actually gets added is stated plainly as a genuine, unresolved,
+  forward decision this course sets up (a contract-renewal negotiation for Lakeshore's own
+  procurement/legal/compliance function to run) and explicitly does not resolve — consistent with
+  this course's own established pattern of honest, undecided endings (module 2's eventual-bridge-
+  letter check, module 4's "ask counsel" conclusion).
+
+  **The course-closing passage, written into the lesson's own final section:** summarizes the arc of
+  all five modules (tiering → SOC 2 → ISO 27001 → BAA → change notifications); states what's now
+  resolved (a real, applied tiering scheme; the vendor's own SOC 2 report and ISO 27001
+  certificate/SoA actually read; a reasoned BAA position and full checklist walkthrough); states what
+  stays open by honest design (the Brookfield incident's own permanently unresolved encryption
+  status — not reopened, only lensed; whether the contract actually gets strengthened — a forward
+  decision, not resolved here); and forward-points explicitly to the Track 5 capstone,
+  `itsm-for-regulated-blood-services`, naming this course's vendor-relationship crosswalk thinking as
+  exactly the kind of problem-management-shaped reasoning that capstone generalizes.
+
+  Files written:
+  `courses/vendor-and-third-party-risk-management/vendor-change-notifications-and-your-own-change-
+  control/index.qmd` (lesson, ~3,845 words including front matter/markup) and `.../resources.qmd`.
+  No new external source fetched or cited — `resources.qmd` states this plainly and links back to
+  module 4 (the incident-reporting clause), `quality-system-essentials/change-control-for-regulated-
+  systems` (referenced, not redeveloped), module 3 (the ISO 27001 change-management SoA finding), and
+  `healthcare-security-and-privacy/investigating-a-healthcare-data-incident` (the closed incident
+  this course's running example is built on). No `csv-and-becs`/`data-integrity-and-records`/
+  `healthcare-security-and-privacy` locked identifier or fact was touched, reopened, or altered.
+
+  **Course complete: 5/5 modules published.** `plans/curriculum.md`'s progress tracker and "Next up"
+  line are being updated in this same session to reflect this course's completion and to point to
+  the next course in the curriculum's own recommended sequence.
+  Next (for the curriculum, not this course — this plan file's own job is done): see
+  `plans/curriculum.md` for what's next across the whole curriculum.
