@@ -273,11 +273,12 @@ has no `plans/<slug>.md` file until its first session.
 | `fda-and-aabb-in-practice` | 6 / 6 | Done |
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
 | `healthcare-security-and-privacy` | 5 / 5 | Done |
-| `vendor-and-third-party-risk-management` | 3 / 5 | In progress |
+| `vendor-and-third-party-risk-management` | 4 / 5 | In progress |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `vendor-and-third-party-risk-management` module 4, `business-associate-agreements`
-(Track 4, Phase 9). Modules 1-3 are published — see
+**Next up:** `vendor-and-third-party-risk-management` module 5,
+`vendor-change-notifications-and-your-own-change-control` — this course's FINAL module (Track 4,
+Phase 9). Modules 1-4 are published — see
 `plans/vendor-and-third-party-risk-management.md`'s progress log for the full detail, but in
 short: AABB's QSE 4 ("Supplier and Customer Issues," named/themed only, no Standards text or
 standard number) grounded a reasoned, three-tier vendor risk scheme — **High / Medium / Low**,
@@ -334,9 +335,37 @@ not have definitely prevented the Brookfield incident. ISO's own catalogue page 
 returned 429 on every retry; its CDX API was blocked by this environment's own egress policy) —
 resolved by publishing two independent, curl-verified accredited-certification-body pages (BSI and
 NQA) instead of guessing a catalogue number, with the full attempt history disclosed in the
-module's own `resources.qmd` for a future session to retry. Module 4 now opens Lakeshore's actual
-contract with this vendor: is it a Business Associate Agreement, and what does HIPAA require one
-to say?
+module's own `resources.qmd` for a future session to retry. **Module 4,
+`business-associate-agreements`, is now also published** — it quoted 164.314(a) (full, Security
+Rule) and 164.504(e)(1)-(2) (full, Privacy Rule, including the (e)(2)(ii)(A)-(J) ten-item
+contract-terms checklist) verbatim from `sources/cfr/45-164-business-associate-excerpt.md`, and
+reasoned honestly through this course's central question: does Lakeshore actually need a BAA with
+this vendor? **Locked conclusion for module 5: plausibly yes, not certainly yes.** The platform's
+core function (device configuration, enrollment, policy push) doesn't inherently require reading a
+device's content, but `healthcare-security-and-privacy`'s own locked facts (not reopened) — the
+vendor's enrollment/check-in telemetry, its migration tooling, and its remote lock/wipe capability
+acting directly on a device's data layer — plausibly cross the general, well-established HIPAA
+threshold of "maintains, or has the practical ability to access, PHI on Lakeshore's behalf," even
+without any vendor employee ever reading a donor record. The module states this is a reasoned
+judgment, not a certified legal determination, and that the real answer requires Lakeshore's own
+counsel reading the actual contract. The (e)(2)(ii)(A)-(J) checklist was walked concretely against
+this vendor: (A) permitted uses tied to `healthcare-security-and-privacy`'s own minimum-necessary
+finding (three of six Brookfield extract fields never needed to travel off-site); (B) safeguards
+tied to this course's own module 2 (SOC 2 Type II) and module 3 (ISO 27001 certificate) findings as
+evidence a vendor would offer, not a substitute for the clause; (C) incident/breach reporting
+identified as the single highest-value clause for this vendor, reasoned as the textual basis for
+the proactive notice Lakeshore would have wanted during the Brookfield migration — explicitly not
+used to reopen or alter `investigating-a-healthcare-data-incident`'s own closed breach
+determination; (D) subcontractor flow-down tied to module 3's "supplier relationships" SoA finding;
+(E)-(G) access/amendment/accounting walked as a narrow but real exposure; (I) Secretary access and
+(J) return-or-destroy-at-termination walked as non-negotiable, with (J) tied forward to this
+vendor's own migration history. eCFR's own human-readable pages were blocked by this environment's
+bot protection the same way ISO.org was for module 3 (confirmed via direct `curl`, browser
+user-agent, and `--compressed` attempts, all redirected to `unblock.federalregister.gov`); resolved
+by linking GovInfo's official archive pages instead, each curl-verified HTTP 200 and cross-checked
+against the underlying XML text. Module 5 now closes the course: placing the vendor's own
+change-notification duty (referencing, not re-quoting, (a)(2)(i)(C)/(e)(2)(ii)(C)) against
+Lakeshore's own internal change control, and writing the course's final closing passage.
 `healthcare-security-and-privacy` is now **5/5 and complete** — see
 `plans/healthcare-security-and-privacy.md`'s progress log for the full course, including module
 5's final state: Lakeshore's one running incident (a Brookfield staff member's work laptop, lost
