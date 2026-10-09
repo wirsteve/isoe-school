@@ -1,0 +1,372 @@
+---
+title: "The HIPAA Privacy Rule"
+order: 95
+---
+
+## Three questions nobody asked at the time
+
+The laptop is still missing. Your Quality Analyst (QA) has moved past the "are we even a
+covered entity" question — `information-governance-in-a-covered-entity` settled that, as a
+reasoned working premise, not a certified fact — and she's back with the question that was
+always coming next: "Before we talk about whether this is a breach, can we back up? Was pulling
+that extract even something we were allowed to do in the first place?"
+
+It's a fair question, and it's one nobody at Lakeshore asked when the Brookfield staff member
+pulled the report. Nobody paused to check whether running a deferral-coding consistency review
+counted as a permitted use of the donor-eligibility data inside it. Nobody asked whether the
+staff member needed the donor's written permission to pull it. And nobody looked twice at the
+report template itself — the one that, out of habit, attaches a donor's name, date of birth, and
+lifetime donation count to every extract it produces, whether or not the person running the
+report needs any of those three fields.
+
+Those are three separate questions, and this module exists to answer all three honestly, using
+only the HIPAA Privacy Rule text Lakeshore has actually pulled and verified — nothing quoted from
+memory, nothing inferred from a definition this curriculum hasn't independently fetched yet.
+
+## Why this rule exists, and the ITSM bridge
+
+Strip away the acronyms and HIPAA's Privacy Rule is answering one question every data-handling
+organization eventually has to answer: who gets to touch this information, for what reason, and
+how much of it do they actually need. Get that wrong in a hospital setting and the failure mode
+is obvious — a nurse browsing a celebrity patient's chart out of curiosity, a billing clerk
+emailing an entire medical record when a claims adjuster asked for one line item. Blood centers
+don't look like hospitals day to day, but BECS (Blood Establishment Computer Software) holds the
+same kind of information a hospital's EHR (electronic health record) does, and the same failure
+mode is available here: pulling more than the job requires, because the report template makes it
+easy and nobody's ever had to justify the extra columns.
+
+You already run a close cousin of this discipline under a different name. Access management and
+least-privilege provisioning — the ITSM (IT service management) practice of granting a user only
+the access their role actually requires, not everything the system could technically give
+them — is the same instinct the Privacy Rule is encoding into federal regulation, just aimed at
+data fields on a per-disclosure basis instead of system permissions on a per-account basis. A
+service desk that grants admin rights to everyone because it's easier than scoping tickets
+correctly is running the same failure mode a BECS report template runs when it bundles six
+fields into every extract because nobody ever trimmed the standard output. The regulatory
+version of that failure has a name: a minimum-necessary violation. The ITSM version just gets
+called bad access hygiene. They're the same mistake.
+
+## The rule in plain English
+
+Start from the Privacy Rule's actual starting point: a covered entity may not use or disclose
+protected health information (PHI) at all, unless the Privacy Rule itself permits or requires it.
+That's the default-deny posture underneath everything else in this module — not "anything goes
+unless specifically forbidden," but the reverse. Every use of the donor-eligibility extract has
+to trace back to one of a short list of permissions the rule actually grants.
+
+One of those permissions is using PHI for the covered entity's own "treatment, payment, or health
+care operations" — TPO, in the shorthand this field uses. That's the category the Brookfield
+staff member's extract has to fit inside, if it fits anywhere without an individual
+authorization. A deferral-coding consistency review isn't treatment (nobody's being treated) and
+it isn't payment (nobody's being billed for anything in this extract). So the only door left open
+without an authorization is "health care operations" — and whether a quality-coding review
+through that door is the first real judgment call this module has to make, not assume.
+
+Reason through it honestly, the way this curriculum insists on. A review of whether BECS's
+deferral reason codes were being applied consistently is, at its core, a quality assessment and
+improvement activity — checking that a clinical/eligibility determination process is being
+executed the way it's supposed to be. That's the kind of activity "health care operations" is
+generally understood to include. But say the limitation plainly, because it matters: the actual
+numbered definition of "health care operations" lives in 45 CFR 164.501, and that section has
+not been independently fetched or verified this session. This module isn't going to quote a
+specific sub-clause of 164.501 it hasn't actually read. What it can do is reason in general terms
+consistent with what 164.506(a) itself says — that TPO use is permitted — and flag this as an
+honest gap: a formal determination that this specific review falls inside 164.501's definition of
+health care operations should still go on record as something to confirm, not something this
+module is asserting it has already nailed down.
+
+Working from that reasoned (not certified) conclusion — the review plausibly qualifies as a
+health care operations use — a second question follows immediately: did the staff member need
+the donor's written authorization to pull the extract at all? The Privacy Rule's authorization
+requirement is itself conditioned on nothing else permitting the use. If 164.506(a)'s TPO
+permission already covers this review, then the authorization requirement never engages for
+*this* specific act — pulling PHI from BECS for the review. That's worth saying twice, because
+it's the part of this module easiest to get backwards: **whether an authorization was needed to
+pull the extract is a completely separate question from whether it was safe to carry that extract
+out of Lakeshore's control on a laptop.** The first question is this module's. The second is
+`security-rule-safeguards-and-part-11`'s and `breach-notification-and-dual-reporting`'s. Don't let
+"no authorization needed" quietly turn into "nothing here needed scrutiny" — that's a different
+claim this module isn't making.
+
+Third question, and the one with the most teaching mileage: even if pulling the extract needed no
+authorization, did the extract itself contain more than the review needed? This is where the
+Privacy Rule's minimum-necessary standard does its actual work, and it's where this incident has
+a real, concrete finding to make — not a hypothetical.
+
+Fourth, a connecting thread rather than a live question for this incident: a wholly different
+provision — 164.512(b)(1)(iii) — is the reason a future BPDR (Biological Product Deviation
+Report) filing or Part 7 recall disclosure wouldn't itself run into the Privacy Rule's
+restrictions. That's worth understanding now, as a general principle, even though this
+particular incident isn't a BPDR-triggering event.
+
+And fifth, lightly: if a donor whose record was in that extract ever asks Lakeshore for their own
+eligibility records, there's a separate right — and clock — that engages regardless of how
+anything else in this incident resolves.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 45 CFR 164.502(a) | "One-sixty-four point five-oh-two, paragraph a" | The general standard: a covered entity may not use or disclose PHI except as the Privacy Rule itself permits or requires — a default-deny posture, not default-allow. | The reason every other citation in this module has to answer "which permission does this fit under," not just "was it reasonable." |
+| 45 CFR 164.502(a)(1)(ii) | "Paragraph a, sub-one, sub-two" | One of the specific permitted uses: for treatment, payment, or health care operations, as permitted by and consistent with § 164.506. | The clause that points directly at 164.506 as the real test for the Brookfield extract. |
+| 45 CFR 164.506(a) | "One-sixty-four point five-oh-six, paragraph a" | A covered entity may use or disclose PHI for treatment, payment, or health care operations without an authorization, subject to the rule's other requirements. | The provision the deferral-coding review has to fit inside — reasoned through above as plausible, not independently confirmed against 164.501's own definition. |
+| 45 CFR 164.508(a)(1) | "One-sixty-four point five-oh-eight, paragraph a, sub-one" | General rule: a covered entity may not use or disclose PHI without a valid authorization, except as otherwise permitted or required elsewhere in the subchapter. | Confirms the authorization requirement is conditional — it steps aside when another permission, like 164.506(a), already applies. |
+| 45 CFR 164.508(b)(2) | "Paragraph b, sub-two" | Lists what makes an authorization defective (expired, incomplete, known-revoked, violates other paragraphs, known-false material information) — i.e., what a bad authorization looks like, if one had been needed. | Relevant mainly by contrast: since no authorization was needed here under 164.506(a), there's no document to check against this list for this specific extract. |
+| 45 CFR 164.512(b)(1)(iii) | "One-sixty-four point five-twelve, paragraph b, sub-one, sub-three" | Permits disclosing PHI to an FDA-regulated person/entity for activities related to an FDA-regulated product's quality, safety, or effectiveness — including BPDRs, product tracking, and recall/lookback. | The textual reason a future BPDR filing on a genuinely connected product-quality event wouldn't conflict with the Privacy Rule — not a claim that this laptop incident is such an event. |
+| 45 CFR 164.514(d)(1)-(3) | "One-sixty-four point five-fourteen, paragraph d, sub-one through sub-three" | Minimum necessary: a covered entity must limit PHI use and disclosure to the amount reasonably necessary for the purpose, including identifying who needs access to what. | This module's central finding: three of the extract's six fields likely exceeded what the review needed. |
+| 45 CFR 164.524(a)(1) | "One-sixty-four point five-twenty-four, paragraph a, sub-one" | An individual has a right to inspect and obtain a copy of their own PHI in a designated record set, with narrow exceptions. | If any of the ~212 Brookfield donors asked for their own eligibility records, this is the right that engages. |
+| 45 CFR 164.524(b)(2) | "Paragraph b, sub-two" | The covered entity must act on an access request within 30 days, with one possible 30-day extension if a written reason is given. | The clock Lakeshore would be on if that request ever came in — unrelated to anything the laptop's loss changes. |
+
+## The actual text
+
+All quotes below come verbatim from `sources/cfr/45-164-privacy-rule-excerpt.md`.
+
+**164.502(a), the general standard:**
+
+> (a) Standard. A covered entity or business associate may not use or disclose protected health
+> information, except as permitted or required by this subpart or by subpart C of part 160 of
+> this subchapter.
+> (1) Covered entities: Permitted uses and disclosures. A covered entity is permitted to use or
+> disclose protected health information as follows:
+> ...
+> (ii) For treatment, payment, or health care operations, as permitted by and in compliance with
+> § 164.506;
+
+Read that structure carefully: the standard itself is a prohibition, and (1)(ii) is one narrow
+door back open — conditioned explicitly on compliance with 164.506, not a freestanding
+permission.
+
+**164.506(a), the TPO permission:**
+
+> (a) Standard: Permitted uses and disclosures. Except with respect to uses or disclosures that
+> require an authorization under § 164.508(a)(2) through (4) or that are prohibited under
+> § 164.502(a)(5)(i), a covered entity may use or disclose protected health information for
+> treatment, payment, or health care operations as set forth in paragraph (c) of this section,
+> provided that such use or disclosure is consistent with other applicable requirements of this
+> subpart.
+
+Notice this provision doesn't define "health care operations" itself — it cross-references
+paragraph (c), and the term's actual definition lives in 164.501. Neither has been independently
+pulled this session. Treat the Brookfield review's fit inside "health care operations" as this
+module's reasoned judgment, not a verified textual match.
+
+**164.508(a)(1) and (b)(2), authorization and its defects:**
+
+> (a) Standard: Authorizations for uses and disclosures—(1) Authorization required: General rule.
+> Except as otherwise permitted or required by this subchapter, a covered entity may not use or
+> disclose protected health information without an authorization that is valid under this
+> section. When a covered entity obtains or receives a valid authorization for its use or
+> disclosure of protected health information, such use or disclosure must be consistent with such
+> authorization.
+>
+> (b)(2) Defective authorizations. An authorization is not valid, if the document submitted has
+> any of the following defects: (i) The expiration date has passed or the expiration event is
+> known by the covered entity to have occurred; (ii) The authorization has not been filled out
+> completely, with respect to an element described by paragraph (c) of this section, if
+> applicable; (iii) The authorization is known by the covered entity to have been revoked; (iv)
+> The authorization violates paragraph (b)(3) or (4) of this section, if applicable; (v) Any
+> material information in the authorization is known by the covered entity to be false.
+
+"Except as otherwise permitted or required by this subchapter" is the hinge. 164.506(a) is one
+of those other permissions. If the TPO analysis above holds, (a)(1)'s general rule never actually
+applies to this extract in the first place — there's no authorization to validate or invalidate,
+because none was required.
+
+**164.512(b)(1)(iii), the FDA-regulated-product exception, in full:**
+
+> (iii) A person subject to the jurisdiction of the Food and Drug Administration (FDA) with
+> respect to an FDA-regulated product or activity for which that person has responsibility, for
+> the purpose of activities related to the quality, safety or effectiveness of such FDA-regulated
+> product or activity. Such purposes include:
+> (A) To collect or report adverse events (or similar activities with respect to food or dietary
+> supplements), product defects or problems (including problems with the use or labeling of a
+> product), or biological product deviations;
+> (B) To track FDA-regulated products;
+> (C) To enable product recalls, repairs, or replacement, or lookback (including locating and
+> notifying individuals who have received products that have been recalled, withdrawn, or are the
+> subject of lookback); or
+
+This is the clause that keeps HIPAA and FDA's blood-establishment regulations from colliding when
+both genuinely apply to the same record. `filing-a-biological-product-deviation-report` already
+walked how a BPDR under 21 CFR 606.171 gets filed, on Form FDA-3486, to CBER (the Center for
+Biologics Evaluation and Research) — none of that mechanics is redeveloped here. What 164.512(b)
+(1)(iii) adds is the other side of the same coin: when a blood establishment discloses PHI *for*
+one of those FDA purposes — (A) reporting a biological product deviation, (B) tracking a
+regulated product, (C) enabling a recall or lookback — that disclosure is itself permitted under
+the Privacy Rule, without needing a separate authorization. Be precise about what this incident
+actually is, though: per this course's own locked facts, the ~212 donors in the Brookfield
+extract are a clean population with no connection to any open deviation, CAPA, or quality event.
+This clause explains why these two regulatory worlds *don't* have to fight each other when they
+both show up on the same record — it is not, and this module isn't claiming it is, a statement
+that the missing laptop is itself a BPDR-triggering event.
+
+**164.514(d)(1)-(3), minimum necessary:**
+
+> (d)(1) Standard: minimum necessary requirements. In order to comply with § 164.502(b) and this
+> section, a covered entity must meet the requirements of paragraphs (d)(2) through (d)(5) of this
+> section with respect to a request for, or the use and disclosure of, protected health
+> information.
+> (2) Implementation specifications: Minimum necessary uses of protected health information. (i) A
+> covered entity must identify: (A) Those persons or classes of persons, as appropriate, in its
+> workforce who need access to protected health information to carry out their duties; and (B)
+> For each such person or class of persons, the category or categories of protected health
+> information to which access is needed and any conditions appropriate to such access.
+> (ii) A covered entity must make reasonable efforts to limit the access of such persons or
+> classes identified in paragraph (d)(2)(i)(A) of this section to protected health information
+> consistent with paragraph (d)(2)(i)(B) of this section.
+> (3) Implementation specification: Minimum necessary disclosures of protected health information.
+> (i) For any type of disclosure that it makes on a routine and recurring basis, a covered entity
+> must implement policies and procedures (which may be standard protocols) that limit the
+> protected health information disclosed to the amount reasonably necessary to achieve the purpose
+> of the disclosure.
+
+Apply this directly, field by field. `information-governance-in-a-covered-entity` logged exactly
+what the extract carried: a BECS-internal donor identifier, the donor's name, date of birth, each
+eligibility determination with its date, the deferral reason code where applicable, and the
+donor's lifetime donation count at Lakeshore — six fields, pulled for a deferral-coding
+consistency review that needed exactly three of them (identifier, determination plus date,
+deferral reason code) to check whether reason codes were being applied consistently.
+
+Run that against (d)(3)(i): this extract is exactly "a type of disclosure that [Lakeshore] makes
+on a routine and recurring basis" — the staff member pulled a *standing* report template, the
+kind run repeatedly for this review, not a one-off query built field-by-field for this specific
+purpose. (d)(3)(i) requires Lakeshore to have "policies and procedures ... that limit the
+protected health information disclosed to the amount reasonably necessary to achieve the purpose
+of the disclosure." Name, date of birth, and lifetime donation count don't serve a
+deferral-coding consistency check in any way the stated purpose requires — a reviewer checking
+whether reason code X was applied consistently to determination Y doesn't need to know who the
+donor is, how old they are, or how many times they've donated. Those three fields rode along
+because the standard report template was never scoped down for this specific purpose, which is
+precisely the gap (d)(2) and (d)(3) exist to close.
+
+**This module's finding, stated plainly: the extract as pulled likely did not satisfy the
+minimum-necessary standard.** Not because any of the six fields was improperly accessed in some
+dramatic sense — everything in BECS was already appropriately within Lakeshore's own systems —
+but because the disclosure (the extract itself, pulled out of BECS and onto that laptop) carried
+three fields the stated purpose didn't call for, from a routine, recurring report template that
+(d)(3)(i) obligates Lakeshore to have scoped down and apparently hadn't. That's a real,
+independent compliance gap — about the breadth of the extract, not about whether it was stolen,
+lost, or encrypted. It would be a minimum-necessary problem even if that laptop had never left
+the building.
+
+**164.524(a)(1) and (b)(2), right of access:**
+
+> (a) Standard: Access to protected health information—(1) Right of access. Except as otherwise
+> provided in paragraph (a)(2) or (a)(3) of this section, an individual has a right of access to
+> inspect and obtain a copy of protected health information about the individual in a designated
+> record set, for as long as the protected health information is maintained in the designated
+> record set, except for: (i) Psychotherapy notes; and (ii) Information compiled in reasonable
+> anticipation of, or for use in, a civil, criminal, or administrative action or proceeding.
+>
+> (b)(2) Timely action by the covered entity. (i) Except as provided in paragraph (b)(2)(ii) of
+> this section, the covered entity must act on a request for access no later than 30 days after
+> receipt of the request...
+
+A lighter point, deliberately: if any of the ~212 Brookfield donors asked Lakeshore for a copy of
+their own eligibility record, 164.524(a)(1) gives them that right, and (b)(2) puts Lakeshore on a
+30-day clock (extendable once, by up to 30 more days, with a written reason). Nothing about the
+missing laptop changes this right or its clock — it's a standing obligation that exists
+independent of this incident, worth knowing is there, not a thread this incident pulls on
+directly.
+
+## What an inspector or reviewer would actually look for
+
+For the TPO/authorization question, a reviewer wouldn't ask "did anyone feel like this was fine"
+— they'd ask for the document that shows Lakeshore classified this type of review as a health
+care operations activity *before* anyone pulled PHI for it, and for whatever workforce training or
+policy tells staff when an authorization is and isn't required. Lakeshore doesn't have that
+document yet, any more than it had a written covered-entity determination in module 1. That's a
+second gap worth naming honestly, not papering over with "we reasoned it through just now."
+
+For minimum necessary, the ask is sharper: show the report template's field list, show who
+approved it, and show when it was last reviewed against what each requesting purpose actually
+needs. A bad answer sounds like "that's just the standard report, it always pulls those fields."
+A credible answer shows a template that's been scoped to the request type, or — if it hasn't
+been — a documented plan to fix it, with an owner and a date. Right now, Lakeshore has neither.
+
+## Common traps
+
+**"If BECS access itself was authorized, pulling an extract from it is automatically fine."**
+No. Having legitimate access to a system is a different question from whether a specific
+extract, pulled from that system for a specific purpose, satisfies minimum necessary. The staff
+member's BECS access wasn't the problem here — the width of what the standard report pulled, for
+this specific review, was.
+
+**"164.512(b)(1)(iii) means HIPAA and FDA reporting never conflict."** Overstated. The clause
+means a disclosure made *for* one of its named FDA purposes — reporting a deviation, tracking a
+product, enabling a recall or lookback — is itself permitted. It doesn't bless every disclosure
+that happens to touch an FDA-regulated product, and it doesn't make the missing laptop into a
+BPDR event just because the data came out of a blood establishment's system. Reportability under
+606.171 still turns on 606.171's own two-prong test, taught in full in
+`filing-a-biological-product-deviation-report` — a test this incident, per module 1's locked
+facts, doesn't come close to tripping.
+
+## What this means for your job
+
+- **Ask your QA which permission a BECS extract relies on, before it's pulled — not after.**
+  "Health care operations," treatment, payment, authorization, and the public-health exceptions
+  are different doors with different conditions. "We needed it for a review" isn't an answer on
+  its own; "it's a health care operations use under 164.506" is the kind of answer that holds up.
+- **Treat "no authorization needed" as a narrow, specific conclusion, not a green light.** It
+  answers one question (did we need the donor's written permission to pull this) and says nothing
+  about whether the extract was scoped correctly, stored safely, or taken somewhere it shouldn't
+  have gone.
+- **Push back on standing report templates that always pull the same field set.** A template
+  built once and reused for every request is a minimum-necessary liability waiting to surface,
+  exactly the way this one did. Ask when BECS's standard reports were last reviewed against what
+  each requesting purpose actually needs.
+- **Keep the BPDR/FDA-disclosure exception and this incident mentally separate.** 164.512(b)(1)
+  (iii) is why a real future BPDR wouldn't create a HIPAA problem on top of an FDA one — it is not
+  a reason to treat this laptop incident as if it were a quality event, when module 1 already
+  established it isn't connected to one.
+- **Log the minimum-necessary finding now, in writing, independent of how the breach question
+  resolves.** Whether the laptop turns out to have been encrypted, whether this clears 164.402's
+  four-factor test later — none of that changes the fact that the extract itself carried three
+  fields the review didn't need. That's a fixable gap today, not something to wait on.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your QA says, "Since the extract was for health care operations, no authorization was needed, so there's nothing wrong with how it was pulled." Right or wrong?
+
+Half right, and the half that's wrong matters. If the deferral-coding review is genuinely a
+health care operations use under 164.506(a), then yes — 164.508(a)(1)'s authorization requirement
+doesn't engage, because it only applies when nothing else in the subchapter already permits the
+use. But "no authorization needed" only answers the authorization question. It says nothing about
+164.514(d)'s minimum-necessary standard, which is a separate requirement the same extract still
+has to satisfy — and, per this module's own finding, likely didn't, because three of its six
+fields weren't needed for the review.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is there a numbered CFR definition, fetched and verified this session, that confirms a "deferral-coding consistency review" specifically counts as "health care operations" under HIPAA?
+
+No — and this is the honest limitation to hold onto. 164.501's actual definition of "health care
+operations" has not been independently fetched or verified in this curriculum. This module
+reasoned, in general terms consistent with 164.506(a)'s own text, that a quality-coding
+consistency review plausibly fits the kind of activity "health care operations" is understood to
+cover — a quality assessment and improvement activity. That's a reasoned judgment, not a verified
+textual match, and it's logged here as exactly that rather than asserted as settled.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The extract carried six fields; the review needed three. Does the minimum-necessary standard require Lakeshore to prove the extra three fields caused actual harm before it counts as a violation?
+
+No. 164.514(d)(3)(i) requires policies and procedures that limit a routine, recurring disclosure
+"to the amount reasonably necessary to achieve the purpose of the disclosure" — the standard
+turns on whether the disclosure was scoped to the purpose, not on whether the extra fields were
+later misused or caused harm. Name, date of birth, and lifetime donation count exceeding what a
+deferral-coding consistency check needed is the violation on its own terms, independent of
+anything that happens to the laptop itself.
+:::
+
+## Where this goes next
+
+The Privacy Rule side of this incident is now reasoned through: the review was plausibly a
+permitted health care operations use needing no individual authorization, and the extract itself
+likely failed minimum necessary by three fields. Neither of those is the breach question, and
+neither resolves the laptop's own encryption uncertainty.
+`security-rule-safeguards-and-part-11` picks up exactly there — not who was allowed to use the
+data, but what technical and physical safeguards were supposed to protect the device it ended up
+on, and whether the missing laptop's unresolved encryption status was a Required or an Addressable
+gap under HIPAA's own Security Rule.

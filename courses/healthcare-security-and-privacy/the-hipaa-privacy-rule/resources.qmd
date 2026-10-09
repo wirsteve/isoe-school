@@ -1,0 +1,25 @@
+---
+title: "Resources"
+order: 96
+---
+
+Three primary-source pages to check this module's reasoning yourself. All three were
+curl-verified (`curl -s -o /dev/null -w "%{http_code}" -L <url>`) and returned `200` at the time
+this page was written.
+
+- **[45 CFR 164.506, eCFR](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-E/section-164.506)**
+  — the treatment/payment/health care operations permission this module leans on hardest. Read
+  paragraph (c), which this module's excerpt didn't quote, if you want the full list of what
+  counts as a TPO disclosure beyond the standard in (a).
+
+- **[45 CFR 164.512, eCFR](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-E/section-164.512)**
+  — the full public-health-activities section that paragraph (b)(1)(iii) (the FDA-regulated-product
+  exception quoted in full above) sits inside. Useful if you ever need one of 164.512's other
+  paragraphs (judicial/law-enforcement disclosures, decedents, research) — none of which this
+  module quotes or relies on.
+
+- **[45 CFR 164.514, eCFR](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-E/section-164.514)**
+  — the full minimum-necessary section, including paragraphs (a)-(c) and (e)-(g) this module's
+  excerpt deliberately left out (de-identification methodology, limited data sets, and
+  research/marketing-adjacent provisions). Read (d)(4) and (d)(5) here if you want the rest of the
+  minimum-necessary implementation specifications beyond (d)(1)-(3).
