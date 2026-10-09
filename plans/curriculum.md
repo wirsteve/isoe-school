@@ -272,54 +272,47 @@ has no `plans/<slug>.md` file until its first session.
 | `data-integrity-and-records` | 6 / 6 | Done |
 | `fda-and-aabb-in-practice` | 6 / 6 | Done |
 | `grc-frameworks-and-risk-management` | 5 / 5 | Done |
-| `healthcare-security-and-privacy` | 4 / 5 | In progress |
+| `healthcare-security-and-privacy` | 5 / 5 | Done |
 | `vendor-and-third-party-risk-management` | 0 / 5 | Not started |
 | `itsm-for-regulated-blood-services` | 0 / 6 | Not started |
 
-**Next up:** `healthcare-security-and-privacy` module 5,
-`investigating-a-healthcare-data-incident` (Track 4, Phase 8) — this course's FINAL module.
-Modules 1-4 are published — see `plans/healthcare-security-and-privacy.md`'s progress log for
-the full detail, including locked facts for module 5: Lakeshore is now this course's adopted
-working premise as a HIPAA covered entity (reasoned from 45 CFR 160.103's "covered entity"
-clause (3) and "health care provider" catch-all, not asserted); the course's running incident is
-locked as a Brookfield staff member's work laptop, left in a shared ride after presenting a
-deferral-coding consistency review, carrying a six-field, ~212-donor BECS extract (donor ID,
-name, date of birth, determination + date, deferral reason code, lifetime donation count) of
-which only three fields were actually needed for the review (module 2's locked minimum-necessary
-finding, independent of the breach/encryption questions); the laptop's full-disk-encryption
-status is genuinely unresolved (enrolled under policy, but a device-management migration left
-its encryption-status field unreported) — module 3 reasoned this as a sound 164.306(d)(3) policy
-decision sitting on top of a real 164.308(a)(1)(ii)(D) verification/monitoring gap, not a
-breach determination itself; and the donor population has no connection to any other open
-quality event (module 1's locked fact, reused directly by module 4 to rule out an independent
-BPDR trigger). **Module 4's own locked output — module 5's central starting point, to build on
-and not contradict:** ran 164.402's four-factor test against these facts and concluded the
-presumption of breach has **NOT been rebutted** — factor 1 (nature/extent of PHI) weighs against
-Lakeshore (a meaningful re-identification risk: name, date of birth, eligibility determination,
-deferral code), factor 2 (who has the device) is unknown, factor 3 (was PHI actually acquired or
-viewed) is **genuinely unresolved** because it inherits module 3's unconfirmed encryption status
-directly — had encryption been confirmed active this factor would favor Lakeshore strongly, but
-it wasn't, so it cannot — and factor 4 (mitigation) is mixed (prompt reporting and a plausible
-remote-lock/wipe capability, against a still-missing device and unconfirmed encryption).
-**Lakeshore is therefore treating this incident AS a reportable breach, provisionally, as of
-right now, unless and until module 5's investigation changes the picture** — most directly, by
-resolving the encryption-status question. Module 4 mapped the resulting notification
-obligations: individual notification owed to all ~212 donors within 164.404's 60-day clock (all
-five content elements); 164.406 media notification **not triggered** (well under the 500-person
-threshold); 164.408(c)'s under-500 annual-log HHS pathway applies, not 164.408(b)'s
-contemporaneous 500-plus pathway. Module 4 also compared HIPAA's 60-day clock against
-606.171's 45-day BPDR clock (reference only, already taught in `fda-and-aabb-in-practice`) and
-concluded, honestly, that **this incident does not independently trigger a BPDR filing** —
-606.171(b)'s own two-prong test needs a distributed product's safety/purity/potency in question,
-and per module 1's locked clean-population fact, none exists here; the module named the general
-shape of an incident that *could* trigger both without forcing this one into it. Module 3
-quoted 164.306/164.308/164.310/164.312 in full and built an honest comparison against Part 11
-(164.312(a)(2)(i) unique user ID ≈ 11.100 uniqueness; 164.312(b) audit controls ≈ 11.10(e) audit
-trail; 164.312(d) person/entity authentication ≈ 11.200 two-component execution; reference only,
-Part 11 itself already fully taught in `data-integrity-and-records`), naming the one genuine
-structural difference honestly: Part 11 has no Required/Addressable concept, HIPAA's Security
-Rule does. No `csv-and-becs`/`data-integrity-and-records` locked identifier was touched by any of
-modules 1-4. `grc-frameworks-and-risk-management` is now 5/5 and complete — see
+**Next up:** `vendor-and-third-party-risk-management` (Track 4, Phase 9) — build its first
+module. `healthcare-security-and-privacy` is now **5/5 and complete** — see
+`plans/healthcare-security-and-privacy.md`'s progress log for the full course, including module
+5's final state: Lakeshore's one running incident (a Brookfield staff member's work laptop, lost
+in a shared ride, carrying a six-field, ~212-donor BECS extract) is now fully closed out. Module
+2's minimum-necessary finding stands (three of six fields never needed to ride along). Module 3's
+Security Rule finding stands (the encryption *policy* was sound under 164.306(d)(3); verification
+of *this device* was not, under 164.308(a)(1)(ii)(D)). Module 4 ran 164.402's four-factor test and
+reached a provisional breach determination — presumption NOT rebutted, pivoting on factor 3
+(was the PHI actually acquired or viewed), unresolved because encryption status couldn't be
+confirmed. **Module 5 investigated that open question as far as a real investigation can go**
+(enrollment/check-in logs read past the surface "not reported" field, a vendor escalation to the
+device-management platform's own backend telemetry, network-log and staff-interview checks) and
+found the question **permanently, honestly unresolvable** — the laptop's entire pre-migration
+operating life was too short for a first encryption attestation to ever complete, and the one
+archival record that might have captured a late one was already purged under the vendor's own
+retention schedule before the investigation began. **Module 4's provisional breach determination
+is therefore now this course's FINAL determination**: individual notification proceeds on
+164.404's 60-day clock (started the day of discovery, not reset by the investigation); 164.406
+media notification stays not triggered; 164.408(c)'s under-500 annual-log HHS pathway applies; no
+BPDR is independently triggered (per module 1's own locked clean-population fact, reused without
+contradiction). Module 5 also ranked this incident's root causes: a physical-handling gap (the
+proximate cause of the loss itself) ahead of a device-management-platform deployment-sequencing
+gap (reasoned as the root cause that matters most going forward, since it's what actually
+prevents this exact unresolved-encryption finding from ever closing, with a concrete fix named:
+no newly enrolled device leaves the building for field/travel use before its first compliance
+attestation completes) ahead of the minimum-necessary gap (a severity multiplier, not a cause).
+No `csv-and-becs`/`data-integrity-and-records` locked identifier was touched by any of this
+course's five modules. **Relevant locked fact for `vendor-and-third-party-risk-management`'s own
+scoping session to pick up if useful, not a scenario it's required to inherit:** module 5
+surfaced the device-management platform's own vendor relationship — its migration tooling, its
+data-retention schedule, its backend-telemetry escalation path — as a concrete, ready-made
+example of exactly the kind of vendor-risk question that course exists to teach (reading a
+vendor's own posture, knowing its change-notification obligations, tiering the relationship's
+risk); per this curriculum's own established pattern, that course's own scoping session should
+still decide its own running example rather than being forced to reuse this one.
+`grc-frameworks-and-risk-management` is 5/5 and complete — see
 `plans/grc-frameworks-and-risk-management.md`'s progress log for the full course, including
 module 5's final, locked state: a built POA&M (plan of action and milestones) entry for the
 eQMS's one open deficiency (the quarterly access-review control for account and identity
