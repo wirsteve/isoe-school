@@ -1,0 +1,82 @@
+---
+title: "GRC Frameworks & Risk Management"
+order: 81
+---
+
+## The finish line
+
+By the end of this course you can run a system or process through a full
+categorize→select→implement→assess→authorize→monitor cycle, track its open deficiencies the way
+a POA&M (plan of action and milestones) does, and say in one sentence why that whole motion is
+the same decision Lakeshore already makes every time it releases a validated system or runs a
+periodic review. This is the course where "GRC" (Governance, Risk, and Compliance) stops being a
+buzzword your CIO uses and becomes a framework you can actually run.
+
+This course borrows its structure from NIST's Risk Management Framework (RMF) — built for U.S.
+federal information systems, never a legal requirement for a private blood establishment like
+Lakeshore — the same way this curriculum has already borrowed ICH Q9's structure for quality risk
+and AABB's accreditation structure for assessment readiness. The point isn't that Lakeshore is
+suddenly a federal agency. It's that RMF names, with unusual precision, a motion you already run
+informally: decide how much a system matters, pick safeguards sized to that, build them, check
+they actually work, decide the residual risk is acceptable, and keep checking. One vocabulary,
+spoken fluently, instead of three different ones for quality, security, and validation.
+
+## Before you start
+
+This course assumes the foundations and two earlier Track 2/3 courses:
+
+- [Reading a CFR citation](../../foundations/reading-a-cfr-citation/index.qmd),
+  [Regulatory landscape orientation](../../foundations/regulatory-landscape-orientation/index.qmd),
+  and [Risk and controls vocabulary](../../foundations/risk-and-controls-vocabulary/index.qmd) —
+  likelihood/severity/detectability and inherent-versus-residual risk are assumed fluent, not
+  re-taught.
+- [Quality System Essentials](../quality-system-essentials/index.qmd), especially
+  [Quality risk management](../quality-system-essentials/quality-risk-management/index.qmd)
+  (ICH Q9(R1)'s own four-stage process and its FMEA/Risk-Ranking-and-Filtering toolkit — already
+  built in depth; this course names it again only to compare it, never to re-teach it) and
+  [CAPA](../quality-system-essentials/index.qmd) (root cause through effectiveness check — the
+  direct parallel this course's final module draws against a POA&M).
+- [CSV & BECS](../csv-and-becs/index.qmd), for the validation lifecycle (IQ/OQ/PQ, periodic
+  review) this course's own closing module says is "the same motion" as an authorization
+  decision.
+
+## The five modules
+
+Each module is one sitting, and each has its own finish line.
+
+1. **Risk management frameworks side by side.** Put NIST's Risk Management Framework, ISO 31000,
+   and ICH Q9 next to each other, and show they're the same underlying motion — identify risk,
+   decide on a response, implement it, verify it, accept the residual risk, keep watching — in
+   three different vocabularies, issued by three very different kinds of body.
+2. **Categorize and select controls.** Apply RMF's own first two steps to a real Lakeshore
+   system: decide how much a system actually matters (its impact if confidentiality, integrity,
+   or availability failed), then select and tailor a set of controls sized to that, not a
+   one-size-fits-all checklist.
+3. **Implement and assess controls.** Build the controls the previous module selected, then run
+   an independent assessment of whether they actually work — the security-risk equivalent of a
+   validation study, run by someone who didn't build the thing they're checking.
+4. **Authorize and monitor.** Make and document the authorization decision itself — accepting a
+   named residual risk, on the record, the way an Authorizing Official does — and build the
+   ongoing monitoring plan that keeps that decision honest after go-live. Say, in one sentence,
+   why this is the same decision as a validation release followed by periodic review.
+5. **Tracking remediation: POA&Ms next to CAPAs.** Take every control gap the assessment
+   surfaced and track it to closure on a POA&M, then place that instrument next to a CAPA and
+   show they're doing the identical job — prioritized, dated remediation with real
+   accountability — in two different vocabularies.
+
+## A note on sources
+
+- **NIST SP 800-37 Rev 2** (public, U.S. government work, free to quote verbatim) supplies RMF's
+  seven steps (Prepare, Categorize, Select, Implement, Assess, Authorize, Monitor — Prepare is
+  named honestly as Rev 2's own addition, not folded silently into the curriculum's own six-step
+  framing), the authorization-to-operate concept, and the POA&M discussion. Quoted from a saved,
+  scoped excerpt — never the full 183-page document from memory.
+- **ISO 31000** (a paid international standard) is named and its themes described in this
+  course's own words — never quoted, the same handling this curriculum already gives AABB
+  Standards, GAMP 5, and ISO 19011.
+- **ICH Q9(R1)** is never re-taught here — only named as the third point of comparison, pointing
+  back to `quality-risk-management` for the actual content.
+- No new CFR, FDA guidance, or AABB material is introduced in this course; it sits one level up,
+  in the risk-framework vocabulary that sits over all of them.
+
+Modules appear in the sidebar as they're built.
