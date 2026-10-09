@@ -1,0 +1,333 @@
+---
+title: "ITIL-to-QSE Crosswalk: CMDB and Continual Improvement"
+order: 117
+---
+
+## The record with a blank where the important field should be
+
+Your systems administrator is doing something routine: adding the eQMS (electronic
+quality-management system) to the CMDB (configuration management database) — the record of
+every system IT runs, kept current so anyone can see what exists and what depends on what. He
+pulls up the entry he's drafted. Name, a version number, "owned by: IT," a short description.
+Clean, fast, exactly the kind of record he's built hundreds of times for hundreds of other
+systems.
+
+Your Quality Analyst (QA) is reading over his shoulder, because the eQMS is hers as much as his
+— it's where CAPA (corrective and preventive action) records, document control, and
+internal-audit logs live for all three of Lakeshore's sites. She asks one question: "Where does
+it say whether this thing is actually qualified to run? What cycle is it on?"
+
+He checks the template. There's no field for that. There's never been a field for that — every
+other system in the CMDB is a laptop, a network switch, a ticketing tool, nothing anyone outside
+IT has ever asked to see a qualification status on. "I can add a note," he offers. "Not the same
+thing as a real field," she says, "and not something I'd want to explain to an assessor who asks
+why the one system holding our audit trail doesn't carry the one piece of information that tells
+her it's trustworthy."
+
+Nobody did anything wrong here. The CMDB did exactly what a CMDB is built to do. It just was
+never built to answer the question your QA just asked — and that gap, not any single mistake, is
+this lesson's actual subject.
+
+## Why this matters — and the ITSM bridges you already own
+
+Here's the failure this gap can produce, and it's worth naming before any framework enters the
+room: a system holds the evidence an AABB (Association for the Advancement of Blood &
+Biotherapies) assessor or an FDA investigator will actually rely on, and nothing in its own
+IT-side record says whether that system has ever been proven fit to do the job. Not because
+anyone hid it — because the record IT already keeps was never designed to ask. A CMDB entry that
+can tell you a system's version but not its qualification status is a record built for a
+different question than the one a regulated environment actually needs answered.
+
+You already own three ITSM (IT service management) concepts that sit exactly where this gap
+lives, and this lesson's whole job is giving each one a working AABB counterpart.
+
+**The CMDB** you just watched your administrator populate: a record of configuration items
+(CIs — a system, a component, a piece of infrastructure) and the relationships between them, kept
+current so anyone can answer "what exists, what version, what does it depend on, what depends on
+it." **The service catalog**: a listing of what IT actually offers, to whom, at what service
+level — the artifact a site operations lead or a Quality director reads to find out what a given
+service actually promises. **Continual improvement**: a standing register of improvement ideas,
+each with an owner and a status, reviewed periodically so a good idea from a retrospective doesn't
+simply evaporate once the meeting ends.
+
+All three already have a direct, working counterpart inside AABB's own framework — not identical,
+the same honest caveat this course has carried since module 1, but close enough, and different
+enough, to be worth mapping precisely rather than gesturing at. CMDB maps onto AABB's own
+**equipment and validated-system inventory** concept. Service catalog maps onto a **quality
+system's own defined scope**. Continual improvement maps onto AABB's own **process-improvement**
+discipline. Build all three concretely, using the eQMS as the live example, and you'll have this
+course's first real artifact — the same CMDB entry and service-catalog entry module 4 picks back
+up and finishes.
+
+## A note on citations: there isn't a new one here
+
+This module introduces no new regulatory source, the same discipline the plan for this course set
+from the start. `sources/aabb/qse-framework.md` names AABB's Quality System Essentials (QSEs) as a
+ten-element taxonomy — themes and titles only, never Standards text, never a standard number. Two
+of those ten do real work below: **QSE 3, Equipment** — covering equipment selection,
+qualification (in IQ/OQ/PQ-style language — installation, operational, and performance
+qualification, the same vocabulary `csv-and-becs` built out in full for BECS), monitoring, and
+maintenance, and stated explicitly, in AABB's own framework, to include IT systems — and **QSE 9,
+Process Improvement** — titled "Process Improvement Through Corrective and Preventive Action" in
+an older AABB template, per that same source file's own note. Both are named and themed only,
+exactly the discipline `aabb-qse-framework` modeled first. ITIL's own vocabulary — CMDB, service
+catalog, continual improvement — is never cited to a specific AXELOS/PeopleCert publication
+anywhere in this curriculum. It's your professional background, used as a bridge, not a standard
+anyone is auditing Lakeshore against.
+
+## Crosswalk 1: CMDB ↔ equipment and validated-system inventory
+
+Line up what each record actually holds, field for field.
+
+| A CMDB's CI record holds | An AABB-governed equipment/validated-system inventory entry holds | What's the same | What's genuinely different |
+|---|---|---|---|
+| What it is (name, type, description) | What it is | Both start with plain identification. Nothing differs here. | — |
+| Its version | Its qualification status — installed, operationally qualified, performance qualified, due for revalidation | Both track a single current state for the item. | This is the real gap, and it's the one your QA just caught. A CMDB's "version" field answers *what build is running*. It does not, by default ITIL practice, answer *has anyone proven this build actually works correctly* — that second question simply isn't part of what a CMDB is built to ask. |
+| Its dependencies and relationships (what it runs on, what talks to it) | What it depends on and feeds, as part of its qualified, validated operation | Both exist to answer "if this breaks, what else breaks with it." | Lakeshore's version ties each dependency back to a quality-relevant consequence — the same connection `change-control-for-regulated-systems` already drew for the inventory-system patch in module 1 — where a CMDB's dependency map, on its own, is relationship data without that consequence attached. |
+| Who owns it | Who owns it, for maintenance *and* for the qualification record itself | Both name an accountable owner. | AABB's version can require two names doing different jobs — an IT owner for the system itself, a quality owner for the record proving it's qualified — where a CMDB typically names one. |
+
+Here's the honest version of that gap, stated plainly rather than softened: **a CMDB entry, in
+plain ITIL practice, does not carry a required qualification or validation-status field.** Nothing
+about ITIL's own discipline demands one, because most of what a CMDB tracks — a laptop, a switch,
+a ticketing tool — was never going to be qualified in the first place. An AABB-governed equipment
+or system inventory entry is built around the opposite assumption: the qualification status *is*
+the record's whole point, because QSE 3 explicitly extends equipment qualification to IT systems,
+not just lab instruments and centrifuges. A CMDB and a validated-system inventory are structurally
+similar — identity, current state, dependencies, owner — and they're answering genuinely different
+questions about that state.
+
+BECS (Blood Establishment Computer Software) already lives on the stricter side of that line.
+`csv-and-becs` built its own full validation lifecycle — a validation plan, executed IQ/OQ/PQ
+evidence, a traceability matrix, and a standing periodic-review cycle that reopens the question
+every time a patch or a configuration change lands, all reference-only here, not redeveloped. The
+eQMS, now that you're looking at it this way, sits on that same side of the line, even though
+nobody built it a BECS-style validation package from day one. It holds the evidence an assessor
+relies on; QSE 3's own scope reaches IT systems explicitly; the honest conclusion is that a bare
+CMDB entry was never going to be enough for this particular system; it needs the qualification
+field a validated-system inventory assumes by default.
+
+### The eQMS's own CMDB entry — this course's first real artifact
+
+Here's the draft entry, built concretely, carried forward to module 4.
+
+| Field | This entry |
+|---|---|
+| **CI name** | eQMS (electronic quality-management system) |
+| **CI type** | Application |
+| **Current version** | Current production release |
+| **Owner (system)** | Systems administrator, on behalf of IT |
+| **In production at** | Lakeshore's central site, Brookfield, and Fairview |
+| **Depends on** | The central identity/access system (authentication for all eQMS accounts across all three sites); each site's local network infrastructure; the underlying storage/backup system the eQMS's records are written to |
+| **Feeds / relied on by** | Quality staff at all three sites, for CAPA tracking, document control, and internal-audit logging; site operations leadership, for document-control access |
+| **Qualification/validation status** | *Not a standard CMDB field — blank by default, the exact gap your QA caught above* |
+
+That blank last row is the artifact's honest point, not an oversight to quietly fill in. A CI
+record this complete on every other field, with nothing at all answering "is it fit to run the
+job it's doing," is precisely what a validated-system inventory entry would never allow — and
+precisely what module 4 picks up directly, building the field a plain CMDB template never asked
+for.
+
+One dependency worth being precise about by its absence: nothing here claims a data interface
+between the eQMS and BECS. They're separate systems, serving separate functions, and this course
+doesn't invent a connection between them that was never established. The eQMS replaced an older,
+BECS-*adjacent* quality-tracking tool, per `risk-frameworks-side-by-side` — "adjacent" is doing
+real work in that sentence, and it isn't the same claim as "integrated."
+
+## Crosswalk 2: service catalog ↔ quality-system scope
+
+A service catalog answers three questions about anything IT runs: what does it provide, to whom,
+at what level of service. A quality system's own scope statement — the document naming which
+processes and activities the quality system actually covers, built on AABB's own framework —
+answers a parallel set of questions: what's covered, where, and under what quality commitment.
+Same three questions, asked by two different owners, about the same system. That's the whole
+crosswalk, and it's worth building both artifacts side by side to see why keeping them in sync
+actually matters.
+
+**A plausible, partial service-catalog entry for the eQMS — drafted by IT:**
+
+| Field | Entry |
+|---|---|
+| **Service** | eQMS |
+| **Provides** | CAPA tracking, document control, internal-audit logging |
+| **Offered to** | Quality staff and site operations leadership |
+| **Offered at** | Central site, Brookfield, and Fairview |
+| **Service level** | Business-hours support; next-business-day response for access issues |
+
+**The quality-system scope statement for the same system — owned by Quality:**
+
+> The eQMS is in scope for CAPA management and internal-audit logging across all three sites. The
+> eQMS is in scope for document control at the central site and Brookfield. Fairview's
+> document-control records remain under the site's existing paper-based process pending
+> migration.
+
+Read both again, side by side. The service catalog says document control is offered to all three
+sites. The scope statement says document control is only actually in scope for two of them.
+That's not a nitpick — it's exactly the kind of inconsistency `fda-and-aabb-in-practice` already
+flagged as a real, catchable gap wherever Fairview's paper habit shows up, and this is the same
+gap wearing a different artifact's clothes. One of these two documents is wrong, or at least
+stale, and nobody can tell which one just by reading either in isolation.
+
+The honest read here, and the one worth saying to your CIO (chief information officer) in one
+sentence: **a service catalog and a quality-system scope statement describe the same system from
+two different angles, and when they drift apart, it's not a paperwork problem — it's a sign one
+of the two owners doesn't actually know what's true in production anymore.** Maybe IT's catalog
+entry was drafted optimistically, ahead of Fairview's actual rollout. Maybe it's simply never been
+updated since Fairview's migration got delayed. Either way, an assessor reading the scope
+statement and a help-desk ticket referencing "document control, all three sites" in the same
+review would catch the mismatch in about thirty seconds — and so should you, well before she does.
+
+## Crosswalk 3: continual improvement ↔ process improvement (QSE 9)
+
+ITIL's continual improvement register is a running list: an improvement idea, an owner, a status,
+reviewed on some standing cadence so a good suggestion from a retrospective doesn't simply
+disappear once the meeting ends. AABB's QSE 9 — Process Improvement, named and themed only, never
+quoted — exists for the same underlying reason your QA already knows by a different name: an
+identified gap doesn't get to just sit there, untracked, forgotten the moment the room moves on to
+something else.
+
+Here's where the two genuinely diverge, and it's worth being precise rather than flattening it.
+**ITIL's continual improvement register can hold a purely aspirational or efficiency-driven idea
+with no compliance stakes at all** — "this would be nice to streamline" is a perfectly legitimate
+register entry on its own terms. **QSE 9's own CAPA-linked process improvement is narrower and
+stricter: it's specifically about closing a gap a deviation, an audit, or a nonconformance
+actually found** — not just an idea someone had in a meeting. A continual improvement register
+with no compliance gate at all would be exactly the wrong instrument for a finding your internal
+audit already wrote down; a CAPA would be exactly the wrong instrument for an idea nobody has
+actually traced to a real failure yet.
+
+A concrete example, invented fresh for this module, touching nothing any prior course locked:
+your systems administrator notices that the eQMS's CAPA-entry screen asks staff to re-key the
+same lot or batch number into three separate fields before a new CAPA record saves. Nothing's
+broken — every field ends up correct, it's just slower and more annoying than it needs to be.
+
+**As a continual improvement register entry**, that's a clean, honest fit:
+
+| Field | Entry |
+|---|---|
+| **Idea** | Auto-fill the lot/batch number across the eQMS's CAPA-entry fields after first entry, instead of requiring three separate re-keyed entries |
+| **Owner** | Systems administrator |
+| **Status** | Proposed, pending a build-effort estimate |
+| **Review cadence** | Next quarterly IT service review |
+
+**Would it qualify for QSE 9's own CAPA-linked process?** Not as described above — and saying so
+plainly is the actual teaching point. Nothing here traces back to a deviation, an audit finding,
+or a nonconformance; it's an efficiency idea with no compliance stakes, exactly the kind of entry
+ITIL's own register was built to hold without needing a compliance gate first. That changes the
+moment the facts change: if an internal audit instead found that the triple-entry field had
+actually caused a real transcription error — a lot number recorded incorrectly on a closed CAPA
+record, discovered during a later review — the same underlying issue would need to open as an
+actual CAPA, with root cause analysis, corrective and preventive action, and a scheduled
+effectiveness check, the full structure `capa-root-cause-to-effectiveness` already built in depth.
+The field design is identical in both stories. What decides which register it belongs in isn't the
+idea itself — it's whether a real finding, not just a hunch, is driving it.
+
+Lakeshore plausibly needs both registers running, not one replacing the other. A continual
+improvement register that only ever held CAPA-worthy findings would quietly lose every genuine
+efficiency idea that never rose to that bar — exactly the kind of small, cumulative improvement a
+mature ITSM practice exists to capture. A CAPA process that absorbed every minor annoyance,
+whether or not a real finding drove it, would dilute the one instrument built to prove a real gap
+actually got fixed. Keep them separate, and know, for any given idea, which one it belongs in.
+
+## What an assessor or your CIO would actually look for
+
+Nobody auditing Lakeshore checks whether a system record is called a "CMDB entry" or an
+"equipment inventory record." What an AABB assessor actually checks, for any IT system touching a
+quality-relevant process, is whether its qualification status is findable, current, and dated —
+not whether it lives in a field IT happens to call by a familiar name. What she'd check in a
+service catalog or scope statement is whether the two independently describe the same reality;
+finding one that promises more than the other admits is itself a finding, regardless of which
+document is more up to date. And what she'd check in a continual improvement register is whether
+anything in it should have been a CAPA months ago — an idea quietly carrying a real compliance gap
+inside language that reads like a nice-to-have.
+
+Your CIO would ask a narrower, faster question: does the eQMS's own record — CMDB, catalog, and
+registers together — actually match what's true in production right now, or has the paperwork
+drifted from the system while nobody was looking. That's the same question either audience is
+asking, in different words.
+
+## Common traps
+
+**"If it's in the CMDB, it's documented — that's good enough."** Documented and qualified are two
+different claims. A CMDB entry with a clean version number and a dependency map tells you the
+system is tracked. It tells you nothing about whether anyone has actually proven the system works
+correctly for the job it's doing, which is the specific question QSE 3 extends to IT systems and
+a plain CMDB was never built to answer.
+
+**"The service catalog and the quality-system scope statement are basically the same document
+with different headers."** They describe the same system, but they're owned, updated, and relied
+on by two different people for two different purposes — which is exactly why they can quietly
+drift apart, the way the Fairview document-control line did above. Treating them as interchangeable
+is how a stale catalog entry survives for months without anyone catching it.
+
+## What this means for your job
+
+- **Before you accept any CI record for a quality-relevant system as "done," ask the question your
+  QA asked above: where's the field that says whether it's actually qualified, and when was that
+  status last checked?** If the answer is "there isn't one," that's not a technicality — it's the
+  gap this lesson exists to name.
+- **Treat a service catalog and a quality-system scope statement as a matched pair that has to be
+  reconciled, not two independent documents that happen to describe the same system.** Ask, out
+  loud, whether the sites and services named in one actually match the other — the Fairview
+  mismatch above is exactly the kind of drift that survives until someone asks.
+- **Watch for a continual improvement register quietly carrying a compliance-relevant finding
+  dressed up as an efficiency idea.** If an entry traces back to an actual deviation, audit
+  finding, or nonconformance, it belongs in a CAPA, with an effectiveness check — not in a backlog
+  competing for priority against a nice-to-have.
+- **Don't let a legitimate efficiency idea get forced into a CAPA it doesn't need, either.** A CAPA
+  with no real finding behind it just adds weight to an instrument that needs to stay credible for
+  the findings that actually matter.
+- **When you brief your CIO or your exec quality council on the eQMS, use this module's three
+  mappings to answer "is this system actually under control" in one breath, in whichever
+  vocabulary the room speaks** — but never let the crosswalk itself substitute for the real
+  qualification record, the real scope statement, or the real CAPA file an assessor would ask to
+  see.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Your systems administrator says, "Every system we run is in the CMDB with a version number, so every system is already properly tracked for AABB purposes." Is that true for the eQMS?
+
+Not on its own. A CMDB entry with a current version number proves the system is tracked and
+identified — a real, useful fact. It does not prove the system has been qualified to do the job
+it's doing, which is a separate question a plain CMDB field was never built to answer. AABB's QSE
+3 (Equipment) explicitly extends equipment qualification to IT systems, and the eQMS holds the
+records an assessor relies on — which is exactly why a bare CMDB entry isn't enough for this
+particular system, even though it would be perfectly sufficient for a laptop or a network switch.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Does AABB or the FDA require every CMDB entry at Lakeshore to carry a qualification-status field, the way this lesson built one for the eQMS?
+
+No — and this is worth stating as plainly as the parallel question module 1 raised about ITIL
+vocabulary. Nothing in AABB's framework or FDA regulation reaches into Lakeshore's general IT
+asset records and requires every CI to carry a validation field; most of what IT tracks (a laptop,
+a switch, a ticketing tool) was never going to be qualified in the first place, and nothing
+requires it to be. What AABB's QSE 3 does require — in substance, not by naming a CMDB field
+specifically — is that a system touching a quality-relevant process, like the eQMS, have its
+fitness for use established and tracked somewhere. Whether that "somewhere" is a CMDB field, a
+separate validated-system inventory, or a dedicated record modeled on BECS's own validation
+lifecycle is Lakeshore's own implementation choice, not a specific format any regulation dictates.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Your Quality Analyst finds the lot/batch triple-entry idea already sitting in IT's continual improvement register, untouched for two quarters. Is that, on its own, a finding she should escalate as a compliance gap?
+
+Not based on what's in the register today. As described, it's a genuine efficiency idea with no
+deviation, audit finding, or nonconformance behind it — exactly the kind of entry ITIL's continual
+improvement register is built to hold without a compliance gate first, and a slow-moving backlog
+item isn't automatically a compliance problem. It becomes one the moment the facts change — if an
+audit or investigation ever traces an actual recording error back to that same field design. Until
+then, the honest answer is that this entry is doing its job in the register it's already sitting
+in, not an overdue CAPA hiding in plain sight.
+:::
+
+## Where this goes next
+
+This module built three honest mappings and one shared artifact: a CMDB entry and a
+service-catalog entry for the eQMS, each carrying a gap worth naming rather than smoothing over.
+The next module steps back one more layer, crosswalking ITIL's own service-asset-and-configuration
+discipline and security management onto the GRC (governance, risk, and compliance) vocabulary
+`grc-frameworks-and-risk-management` already built for the eQMS — its RMF (Risk Management
+Framework) categorization, its control families, and ISO/IEC 27001's own Annex A domains — using
+the eQMS's own already-authorized history as the proof this crosswalk needs, not a new exercise to
+build from scratch.
