@@ -1,0 +1,48 @@
+---
+title: "Resources"
+order: 111
+---
+
+This module quotes 45 CFR 164.314(a) and 164.504(e)(1)-(2) in full, verbatim, from
+`sources/cfr/45-164-business-associate-excerpt.md` — the only source used. 164.308(b), 164.410, and
+164.502(e) are named only, because they're referenced repeatedly by the saved excerpt but weren't
+independently fetched this session; don't look to this module for their specific mechanics.
+
+**A note on eCFR's own site, read before the links below:** this session tried, directly, to load
+eCFR's own human-readable pages for both sections — the same `www.ecfr.gov/current/...` URLs
+recorded in the saved source file. Every attempt (plain `curl`, with a browser user-agent, with
+compression) redirected to `unblock.federalregister.gov`, a bot-protection wall blocking this
+environment specifically — the same class of block `reading-an-iso-27001-certificate` hit on
+`iso.org`. The eCFR Versioner API itself (the machine-readable data source, reached with
+`--compressed`) *did* return the current section text successfully (HTTP 200), confirming eCFR's
+underlying data is live and matches what's quoted above — but that API endpoint isn't a page meant
+for a person to open and read. In its place, the links below go to GovInfo (the U.S. Government
+Publishing Office's own official archive, the same underlying government source eCFR itself
+republishes), each directly curl-verified this session:
+
+- **[164.314 — GovInfo, CFR title 45, volume 2](https://www.govinfo.gov/app/details/CFR-2023-title45-vol2/CFR-2023-title45-vol2-sec164-314)**
+  — the official U.S. Government Publishing Office page for this section. Curl-verified this
+  session: HTTP 200 from `govinfo.gov`. Like several client-rendered government sites this
+  curriculum has already encountered (AICPA in `reading-a-soc-2-report`), the page's title tag
+  doesn't carry section-specific text to grep for — verified by status code and domain, plus a
+  direct check of GovInfo's underlying XML for this section (also HTTP 200), which was read and
+  confirmed to match the text quoted in this lesson word for word.
+- **[164.504 — GovInfo, CFR title 45, volume 2](https://www.govinfo.gov/app/details/CFR-2023-title45-vol2/CFR-2023-title45-vol2-sec164-504)**
+  — the same official archive's page for 164.504. Curl-verified HTTP 200 the same way, including a
+  direct check of the underlying XML against the text quoted above.
+- **If you're checking these yourself later:** try eCFR's own current-text pages first —
+  `https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.314`
+  and `.../subpart-E/section-164.504` — since this session's block is specific to this environment
+  and may not affect a normal browser. GovInfo's annual-edition text (above) is official and
+  verified current against this excerpt, but eCFR's own "current" page reflects amendments in real
+  time, which is the better source going forward if it loads for you.
+
+**Internal links:**
+
+- **[Reading a SOC 2 Report](../reading-a-soc-2-report/index.qmd)** — module 2. This module's
+  safeguards-clause discussion ((e)(2)(ii)(B)) points back to this vendor's Type II report and its
+  Security/Availability Trust Services Criteria as the kind of evidence a vendor would offer to show
+  it's actually meeting a BAA's safeguards requirement.
+- **[Reading an ISO 27001 Certificate](../reading-an-iso-27001-certificate/index.qmd)** — module 3.
+  Its change-management and supplier-relationships Statement of Applicability findings are the other
+  half of that same safeguards-and-subcontractor-flow-down evidence picture.

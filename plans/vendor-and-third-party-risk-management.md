@@ -58,7 +58,7 @@ platform, OS, or cloud-platform brand.
 | 1 | `supplier-qualification-and-risk-tiering` | Apply AABB's QSE 4 (Supplier and Customer Issues) to a real vendor decision: which vendors need deep qualification and which don't, and why that's risk-tiering, not a one-size-fits-all checklist. | 104/105 | Published |
 | 2 | `reading-a-soc-2-report` | Tell a Type I report from a Type II, name the five Trust Services Criteria, and read a report's complementary-user-entity-controls section and bridge letter for what they mean for Lakeshore. | 106/107 | Published |
 | 3 | `reading-an-iso-27001-certificate` | Know what a certificate actually certifies, and read a Statement of Applicability to see which Annex A control domains a vendor claims and which it excludes, with a stated reason. | 108/109 | Published |
-| 4 | `business-associate-agreements` | Walk the actual HIPAA text requiring a BAA's contract terms — what it obligates a vendor to do, report, and return or destroy. | 110/111 | Not started |
+| 4 | `business-associate-agreements` | Walk the actual HIPAA text requiring a BAA's contract terms — what it obligates a vendor to do, report, and return or destroy. | 110/111 | Published |
 | 5 | `vendor-change-notifications-and-your-own-change-control` | Place a vendor's change-notification/incident-reporting duties against Lakeshore's own change control, and close the course by returning to the Brookfield incident with this course's own new lens. | 112/113 | Not started |
 
 The next course after this one continues at **114**. Update `create-course`'s SKILL.md when this
@@ -454,3 +454,88 @@ as every prior course) — already done as part of Phase 2 scoping below.
   verbatim source was fetched — ISO/IEC 27001 remains, deliberately, never independently fetched
   anywhere in this curriculum).
   Next: build m4, `business-associate-agreements`.
+
+- **2026-10-09**: Module 4, `business-associate-agreements` (`order: 110/111`), drafted and
+  published. 164.314(a) (full, Security Rule side, including (a)(2)(i)(C)'s incident/breach-
+  reporting clause) and 164.504(e)(1)-(2) (full, Privacy Rule side, including the
+  (e)(2)(ii)(A)-(J) ten-item contract-terms checklist) both quoted verbatim from
+  `sources/cfr/45-164-business-associate-excerpt.md`, the only source used. 164.308(b), 164.410,
+  and 164.502(e) named only, never quoted or paraphrased beyond naming that they exist, per the
+  module's own guardrail and the source file's own "not saved" section.
+
+  **The central reasoned question, answered — locked for module 5 to build on:** does Lakeshore
+  actually need a BAA with the device-management platform vendor? **Reasoned conclusion: plausibly
+  yes, not certainly yes.** The case for "maybe not" was walked honestly first — the platform's
+  core function (device configuration, enrollment, policy push) doesn't inherently require reading
+  the *content* on a device, the same way a shipping company doesn't need to know what's in the box
+  it carries. The case against that comfortable answer, built entirely on `healthcare-security-and-
+  privacy`'s own locked facts (not reopened or altered): this vendor's enrollment/check-in
+  telemetry and migration tooling plausibly involve awareness of what data types a device carries,
+  and its remote lock/wipe capability acts directly on a device's data layer regardless of whether
+  any vendor employee ever views donor data. Weighing both, the module concludes this vendor
+  plausibly crosses from "manages the box" into "maintains, or has the practical ability to access,
+  PHI on Lakeshore's behalf" — the general, well-established HIPAA threshold for requiring a BAA
+  (referenced only as a general concept, tied loosely to 164.308(b)/164.502(e) which the module
+  explicitly does NOT quote or cite for specific mechanics, consistent with the source file's own
+  note that those sections weren't independently fetched). The module states plainly, and locks for
+  module 5: this is a reasoned judgment, not a certified legal determination — the actual,
+  defensible answer requires Lakeshore's own counsel/compliance reading the real contract and
+  determining whether it already functions as a BAA in substance or needs converting into one. The
+  scenario's actual contract-on-hand was described as a standard commercial services agreement with
+  a thin "Data Protection Addendum" that does not appear to meet the (e)(2)(ii)(A)-(J) checklist as
+  found — not asserted as a certain real-world fact, consistent with the module's own "reasoned, not
+  certain" framing throughout.
+
+  **Checklist findings, (e)(2)(ii)(A)-(J) applied concretely to this vendor — locked for module 5:**
+  (A) permitted/required uses tied directly to `healthcare-security-and-privacy`'s own locked
+  minimum-necessary finding (three of six Brookfield extract fields never needed to travel
+  off-site) as the operational content a use-limitation clause should encode; (B) safeguards tied to
+  this course's own module 2 (SOC 2 Type II, Security/Availability criteria) and module 3 (ISO 27001
+  certificate, change-management/asset-management SoA domains) as the evidence a vendor would offer
+  to demonstrate it meets this clause, explicitly framed as evidence FOR the clause, not a substitute
+  for it; (C) incident/breach reporting identified as the single highest-value clause for this
+  vendor specifically, reasoned as the textual basis for the proactive notice Lakeshore would have
+  wanted during the Brookfield migration, explicitly not used to reopen or alter
+  `investigating-a-healthcare-data-incident`'s own closed breach determination (locked as
+  unchanged — Q3 in the lesson states this explicitly); (D) subcontractor flow-down tied back to
+  module 3's "supplier relationships" SoA domain finding; (E)-(G) access/amendment/accounting walked
+  as a real, if narrow, exposure for a device-management platform's own enrollment/telemetry
+  records; (H) carrying-out-the-covered-entity's-own-duties noted as a narrow fit for this vendor
+  type; (I) Secretary access for compliance review and (J) return-or-destroy-at-termination both
+  walked as non-negotiable, with (J) tied forward to the vendor's own migration/offboarding history
+  as a reason to confirm this clause in writing now.
+
+  Files written:
+  `courses/vendor-and-third-party-risk-management/business-associate-agreements/index.qmd` (lesson,
+  ~4,400 words including front matter/markup — slightly over this course's usual ~3,400-3,800 word
+  range because the module's job required quoting both CFR provisions in full verbatim plus walking
+  all ten (e)(2)(ii) sub-clauses concretely against the vendor; judged a reasonable, deliberate
+  exception given the source material) and `.../resources.qmd`.
+
+  **eCFR link issue, same class of problem module 3 hit with ISO.org, resolved differently:** eCFR's
+  own human-readable pages (`www.ecfr.gov/current/...`, the exact URLs already recorded in the saved
+  source file) were tried directly this session — plain `curl`, with a browser user-agent, and with
+  `--compressed` — and every attempt redirected to `unblock.federalregister.gov`, a bot-protection
+  wall specific to this environment. The eCFR Versioner API itself (machine-readable XML, reached
+  with `--compressed`) DID return HTTP 200 with current section text matching the saved excerpt,
+  confirming eCFR's underlying data is live, but that endpoint isn't a page for a person to read.
+  Resolved by linking GovInfo (the U.S. Government Publishing Office's own official archive)
+  instead: both section pages
+  (`govinfo.gov/app/details/CFR-2023-title45-vol2/CFR-2023-title45-vol2-sec164-314` and `...-
+  sec164-504`) curl-verified HTTP 200 this session, and — since GovInfo's own page title tag is
+  client-rendered and uninformative (the same AICPA-page situation module 2 already documented) —
+  additionally cross-checked by reading GovInfo's underlying XML for both sections directly, which
+  was confirmed word-for-word against the quotes in this lesson. `resources.qmd` discloses the full
+  attempt history and suggests eCFR's own current-text pages as the better source for a future
+  session or reader whose own connection isn't blocked. No new regulatory source fetched (the
+  excerpt file was already complete and correct from scoping); no change to `sources/INDEX.md`
+  needed.
+
+  Next: build m5, `vendor-change-notifications-and-your-own-change-control` — this course's FINAL
+  module. It should reference, not re-quote, (a)(2)(i)(C)/(e)(2)(ii)(C)'s incident-reporting clause
+  as the BAA-specific instance of the broader vendor-change-notification theme, place it against
+  Lakeshore's own internal change-control process (`quality-system-essentials`, reference only), and
+  close the course with a genuine ending passage per this curriculum's established practice (arc of
+  all five modules; what's resolved; what stays open by honest design — the Brookfield incident's own
+  permanently unresolved encryption status; forward pointer to the Track 5 capstone
+  `itsm-for-regulated-blood-services`).
