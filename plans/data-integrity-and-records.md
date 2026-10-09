@@ -84,7 +84,7 @@ curriculum's standing convention.
 | 2 | `audit-trails-and-esignatures` | Review an audit trail the way an inspector would (who reviews it, how often, what a real review looks like versus a rubber stamp) and name the specific controls (11.50, 11.70, 11.100, 11.200, 11.300) an e-signature has to satisfy to stand in for a handwritten one. | 58/59 | Published |
 | 3 | `predicate-rules-and-hybrid-systems` | Explain what a predicate rule is and how it decides whether a given record is a "Part 11 record" at all, and judge whether a system mixing paper and electronic records is handling that mix defensibly. | 60/61 | Published |
 | 4 | `legacy-systems-and-part-11-gaps` | Apply FDA's own four-part legacy-system test to a system older than Part 11, and say what has to stay true for its enforcement-discretion status to hold. | 62/63 | Published |
-| 5 | `retention-across-record-types` | Go beyond 606.160(d)'s product-record clock to the records that don't share its schedule, and say what "retain the record" requires for a dynamic electronic record versus a static printout. | 64/65 | Not started |
+| 5 | `retention-across-record-types` | Go beyond 606.160(d)'s product-record clock to the records that don't share its schedule, and say what "retain the record" requires for a dynamic electronic record versus a static printout. | 64/65 | Published |
 | 6 | `multi-site-governance-and-donor-identification` | Explain how Lakeshore keeps one donor's identity and eligibility history consistent across a central system and every satellite site, using 606.160(e)'s cumulative deferred-donor record, and say what breaks if two sites' records disagree. | 66/67 | Not started |
 
 The next course after this one continues at **68**. Update `create-course`'s SKILL.md when this
@@ -386,3 +386,18 @@ confirmed by grep with no duplicates, same discipline as every prior course).
   and either prohibiting the export mode for QC use or treating its output as its own dynamic
   record if ever activated. No `csv-and-becs` or earlier-module locked fact altered.
   Next: build m5, `retention-across-record-types`.
+- **2026-10-09**: Module 5, `retention-across-record-types`, drafted (via subagent), audited, and
+  published (`courses/data-integrity-and-records/retention-across-record-types/index.qmd` and
+  `resources.qmd`, `order: 64`/`65`, ~3,730 words). 606.160(d) referenced in one line only, never
+  re-quoted (already fully taught in `reading-a-cfr-citation`). Quotes (211.68(b), the backup
+  definition and temporary-backup sentence, the electronic-copies-as-true-copies passage, and
+  606.160(b)(1)'s donor-records list) all verified verbatim. All three `resources.qmd` links
+  curl-verified 200. **Scenario finding:** Lakeshore's nightly BECS snapshot (30-day rolling
+  disaster-recovery job) is a sound RPO/RTO choice but is exactly the "temporary backup copy...
+  in case of a computer crash" FDA's guidance says does NOT satisfy 211.68(b)'s actual
+  retention-period backup requirement — flagged as a real misstatement risk, not resolved with an
+  invented fix. **Donor-record retention left genuinely open** (606.160(d)'s text ties its clock
+  to a single unit, not a cumulative multi-donation donor record; no precise number invented;
+  routed to document control to resolve, consistent with `document-control-and-records`'s own
+  deferral). No `csv-and-becs` or earlier-module locked fact altered.
+  Next: build m6, `multi-site-governance-and-donor-identification` — this course's final module.

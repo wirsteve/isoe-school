@@ -1,0 +1,25 @@
+---
+title: "Resources"
+order: 65
+---
+
+A few primary sources to keep handy, each checked to load before being listed here.
+
+- **FDA guidance: *Data Integrity and Compliance With Drug CGMP: Questions and Answers* (2018)** —
+  <https://www.fda.gov/regulatory-information/search-fda-guidance-documents/data-integrity-and-compliance-drug-cgmp-questions-and-answers>.
+  Source for this module's backup definition (Question 1e), the temporary-backup-doesn't-count
+  sentence, and the electronic-copies-as-true-copies answer (Question 9). Also where modules 1
+  through 4's ALCOA, audit-trail, and static/dynamic material came from, if you want one document
+  covering this whole course's guidance-tier citations.
+
+- **Cornell Legal Information Institute (LII): 21 CFR § 211.68** —
+  <https://www.law.cornell.edu/cfr/text/21/211.68>. A clean, citable, non-FDA rendering of the
+  backup and input/output-verification regulation this module quotes in full from paragraph (b) —
+  the same section this curriculum first used in `csv-and-becs` for a different point (interface
+  accuracy), here reused for retention and backup specifically.
+
+- **Cornell Legal Information Institute (LII): 21 CFR § 606.160** —
+  <https://www.law.cornell.edu/cfr/text/21/606.160>. The full records section this module quotes
+  from twice: the donor-records list in paragraph (b)(1), developed here in depth for the first
+  time, and paragraph (d), the product-record retention clock already fully taught in
+  `reading-a-cfr-citation` and referenced here only in passing.
