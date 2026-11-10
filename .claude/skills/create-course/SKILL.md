@@ -12,6 +12,15 @@ Read `CLAUDE.md`, `TEACHING.md`, `.claude/course-authoring/learner-profile.md`, 
 
 ## Figure out what to build
 
+0. **Check `plans/retrofit.md` first, if it exists.** The curriculum went through a
+   production-quality retrofit (richer lessons, Mermaid diagrams, verified video embeds —
+   see `TEACHING.md`'s current spine and `.claude/course-authoring/video-sourcing.md`) after
+   the original 13 courses were first built. If `plans/retrofit.md` exists and its own
+   tracker shows modules still "Not started" or "In progress," **the retrofit takes
+   priority over any new course** — "Continue" with no specifics means resume the retrofit
+   at its own "Next up" module, not look for new curriculum content to build (there may be
+   none; the curriculum itself can be fully built while the retrofit on top of it isn't).
+   Only move to steps 1–3 below once `plans/retrofit.md` itself says every module is done.
 1. **User named an explicit new course** ("Create a course: I want to be able to X") that isn't
    in `plans/curriculum.md` → this is an ad hoc addition. Scope it (Phase 1/2 below), add a row
    for it to `plans/curriculum.md`'s progress tracker, then build its first module.
@@ -58,9 +67,13 @@ Draft everything else (Phase 3) with the default model.
 
 Follow the lesson spine in `TEACHING.md` exactly, in order, for the module's lesson page.
 Build two pages under `courses/<slug>/<module-slug>/`:
-- `index.qmd` — the lesson (the 10-step spine, including the inline "check your
-  understanding" questions — there is no separate practice page).
-- `resources.qmd` — 2–4 verified external links.
+- `index.qmd` — the lesson (the current 12-step spine, including a Mermaid diagram where
+  step 6 calls for one, a verified video embed where step 7 finds one — see
+  `.claude/course-authoring/video-sourcing.md` for the exact sourcing/verification
+  procedure, never skip the oEmbed check — and the inline "check your understanding"
+  questions; there is no separate practice page).
+- `resources.qmd` — 4–8 verified external links, including any embedded video(s) with
+  their verification noted.
 
 Every regulatory claim needs a source. Check `sources/INDEX.md` first; if the citation isn't
 there yet, use the `fetch-source` skill once to get it — never invent a citation or quote from
