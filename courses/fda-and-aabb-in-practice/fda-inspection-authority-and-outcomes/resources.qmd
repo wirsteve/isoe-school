@@ -62,3 +62,12 @@ written.
   educational tool for firms and why inspections matter even when no violations are found. Read
   it for FDA's own framing of what a well-run inspection looks like from the firm's side.
   Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about how FDA inspections run and what happens after the 483.
+
+- **[FDA Form 483: Inspectional Observations Best Practices for Responding](https://www.reedsmith.com/fr/perspectives/2023/05/fda-form-483-inspectional-observations-best-practices-for-responding)** (Reed Smith, law firm) — a plain-language lawyer's view of what a 483 is, what it isn't, and how firms should handle the response. Good for the "what do we do after the closeout meeting" part of this lesson. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Tips to Help You Prepare for an FDA Inspection](https://www.greenlight.guru/blog/preparing-for-fda-inspection)** (Greenlight Guru, medical-device software vendor; vendor content) — a practitioner checklist on hosting investigators, document requests and staff preparation. Written for device firms, so treat it as a model of habits, not of blood-establishment rules. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[QGP Short: Responding to 483 Observations and Warning Letters](https://www.buzzsprout.com/2352037/episodes/17675590-qgp-short-responding-to-483-observations-and-warning-letters)** (Quality Grind Podcast) — a short podcast episode on treating a 483 as a turning point rather than an endpoint; handy for a commute. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[FDA inspection readiness: Preparing for surveillance and pre-approval inspections](https://manufacturingchemist.com/fda-inspection-readiness-preparing-for-surveillance-and-pre)** (Manufacturing Chemist, trade publication) — an overview of how readiness is organized before an investigator arrives, useful for the Director's own readiness list. Verified loading via `curl` on 2026-11-11 (HTTP 200).
