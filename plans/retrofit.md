@@ -62,7 +62,7 @@ In progress / Done.
 | 11 | `quality-system-essentials` | `capa-root-cause-to-effectiveness` | 17/18 | Done |
 | 12 | `quality-system-essentials` | `change-control-for-regulated-systems` | 19/20 | Done |
 | 13 | `quality-system-essentials` | `document-control-and-records` | 21/22 | Done |
-| 14 | `quality-system-essentials` | `quality-risk-management` | 23/24 | Not started |
+| 14 | `quality-system-essentials` | `quality-risk-management` | 23/24 | Done |
 | 15 | `quality-system-essentials` | `internal-audits-and-management-review` | 25/26 | Not started |
 | 16 | `directing-the-quality-analyst` | `qa-deliverables-and-ownership` | 28/29 | Not started |
 | 17 | `directing-the-quality-analyst` | `reviewing-deviations-and-capas` | 30/31 | Not started |
@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #14, `quality-system-essentials`/`quality-risk-management`.**
+**Next up: #15, `quality-system-essentials`/`internal-audits-and-management-review`.**
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -417,3 +417,21 @@ module retrofit changes a course's own module list or description.
   independently re-verified at publish time, all HTTP 200. Word count 4,108 (prose), within
   target. `order:` values (21, 22) confirmed unchanged.
   Next: module 14, `quality-system-essentials`/`quality-risk-management`.
+
+- **2026-11-11**: Module 14, `quality-system-essentials`/`quality-risk-management`
+  (`order: 23/24`), retrofitted under the rebalanced standard and published. Every original
+  locked fact confirmed unchanged: the QA's uneasy follow-up scenario, the four-stage ICH
+  Q9(R1) process, the full FMEA worked table (5 failure modes, RPN 60/50/30/25/16), the risk-
+  ranking-and-filtering section, both citations (ICH Q9(R1), 606.100(c)), all 3 Q&As, all 3
+  traps, the 5 job bullets. Added a `flowchart TD` Mermaid diagram (step 6, the lesson's own
+  four-stage process with Risk Evaluation branching on its own RPN-40 threshold into reduction
+  vs. acceptance, looping back through Risk Review) — syntax validated by rendering to SVG via
+  `mermaid-cli`. Added a verified video embed (step 7): "ICH Q9(R1): Quality Risk Management"
+  (BioBoston Consulting) — independently re-verified via YouTube oEmbed (HTTP 200, title/author
+  match) at publish time. `resources.qmd` expanded from 3 to 8 links: kept all 3 original, added
+  the video, an iSixSigma FMEA explainer, a PIC/S risk-based-inspection piece, an ISO 14971
+  explainer, and an InvGate ITIL risk-management piece. All 7 non-embedded links independently
+  re-verified at publish time, all HTTP 200. Word count 4,175 (prose), within target. `order:`
+  values (23, 24) confirmed unchanged.
+  Next: module 15, `quality-system-essentials`/`internal-audits-and-management-review` — the
+  final module of this course.

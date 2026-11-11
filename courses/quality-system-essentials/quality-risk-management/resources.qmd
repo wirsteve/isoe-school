@@ -3,7 +3,7 @@ title: "Resources"
 order: 24
 ---
 
-Three links, each checked this session and confirmed to load.
+Eight links, each checked this session and confirmed to load.
 
 - **[ICH Q9(R1), Quality Risk Management](https://database.ich.org/sites/default/files/ICH_Q9%28R1%29_Guideline_Step4_2023_0126_0.pdf)**
   (PDF, ICH, final version adopted 18 January 2023). The actual guideline this module is built
@@ -11,16 +11,55 @@ Three links, each checked this session and confirmed to load.
   lifecycle in full, Section 5 covers formality, risk-based decision-making, and managing
   subjectivity (the R1-specific additions), and Annex I describes FMEA, Risk Ranking and
   Filtering, and the other named tools. Read this when you want the source itself, not this
-  lesson's paraphrase of it.
+  lesson's paraphrase of it. Verified loading via `curl` on 2026-11-11 (HTTP 200).
 
 - **[21 CFR 606.100, Standard operating procedures — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)**
   Free, reliably reachable mirror of the regulatory floor this module reuses — paragraph (c)'s
   "thorough investigation... conclusions and followup" requirement, which underlies any
   risk-based investigation depth regardless of how formal the process. Use this when you need
   the regulation's own wording quickly, without going through eCFR's blocked rendered pages.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
 
 - **[Title 21 — Code of Federal Regulations — GovInfo](https://www.govinfo.gov/app/collection/cfr/2024/title21)**
   The U.S. Government Publishing Office's official CFR collection, one level up from a single
   section. Use this as a fallback source, or to browse Part 606 and its neighboring parts
   directly, when you need to confirm a citation against the government's own publication rather
-  than a secondary mirror.
+  than a secondary mirror. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[ICH Q9(R1): Quality Risk Management​](https://www.youtube.com/watch?v=6twBwRyAZf4)**
+  (BioBoston Consulting, from oEmbed `author_name`) — the video embedded in this lesson. A
+  pharma-consulting educational channel walking through ICH Q9(R1) directly — the exact guideline
+  revision this module is built on. It's general pharma-industry framing, not blood-specific, and
+  it won't mention Lakeshore or tracked distribution — watch it for the four-stage lifecycle and
+  the R1 formality point, then map both onto this lesson's own FMEA. Verified embeddable via
+  YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[iSixSigma: FMEA — Failure Mode and Effects Analysis](https://www.isixsigma.com/tools-templates/fmea/)**
+  — a widely used Six Sigma / quality-engineering explainer of FMEA specifically: how to name
+  failure modes, score severity/occurrence/detection, and compute a risk priority number (RPN).
+  Distinct from the general likelihood/severity/detectability vocabulary `risk-and-controls-
+  vocabulary` already covered — use this when you want FMEA's own mechanics argued in full,
+  outside this lesson's one worked table. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Pharmaceutical Technology: A New Risk-based GMP Inspection Planning Tool](https://www.pharmtech.com/view/new-risk-based-gmp-inspection-planning-tool)**
+  — covers the PIC/S (Pharmaceutical Inspection Co-operation Scheme) risk-based inspection
+  planning model, built directly on ICH Q9's QRM framework, which ranks manufacturing sites by
+  risk to decide which get inspected first. A real-world case of risk ranking and filtering doing
+  exactly the job this lesson's own example does — deciding which satellite site to audit first —
+  just at regulator scale instead of Lakeshore's. Verified loading via `curl` on 2026-11-11 (HTTP
+  200).
+
+- **[Greenlight Guru: ISO 14971 Medical Device Risk Management: What to Know](https://www.greenlight.guru/blog/iso-14971-medical-device-risk-management)**
+  — an explainer on ISO 14971, the international standard for risk management across a medical
+  device's lifecycle (plan, analyze, evaluate, control, monitor). Not itself cited anywhere in
+  this lesson, but worth knowing as the standard most often compared to ICH Q9: both run a
+  near-identical assess-control-review lifecycle, from the medical-device side of the same
+  regulatory family rather than the pharma/biologics side. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[InvGate: ITIL & Risk Management: How Do They Relate?](https://blog.invgate.com/itil-4-best-practice-overviews-risk-management)**
+  — an ITSM-angle explainer of ITIL 4's Risk Management general management practice and the risk
+  register as its central tool. Backs this module's own ITIL bridge — a risk register with a
+  named lifecycle (assess, control, communicate, review) instead of a spreadsheet updated when
+  someone remembers — argued in full ITIL terms before mapping it onto ICH Q9(R1)'s own four
+  stages. Verified loading via `curl` on 2026-11-11 (HTTP 200).
