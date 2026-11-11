@@ -28,3 +28,18 @@ The regulation text quoted in this lesson comes straight from eCFR's public API 
   lesson against the same vocabulary as it's used in security/GRC contexts. Track 4 of this
   curriculum (`grc-frameworks-and-risk-management`) will lean on this same NIST vocabulary
   directly.
+
+- **[Preventive, Detective & Corrective controls | Administrative, Physical & Technical measures](https://www.youtube.com/watch?v=9iT-PwvhNWs)**
+  (Security For You, from oEmbed `author_name`) — the video embedded in this lesson. Teaches the
+  preventive/detective/corrective taxonomy in a general IT/physical-security context, not a
+  blood-establishment one; use it to hear the same three-way vocabulary applied to firewalls and
+  badge readers instead of platelet units, which is a good test of whether the vocabulary actually
+  stuck independent of this lesson's scenario. Verified embeddable via YouTube oEmbed on
+  2026-11-11.
+
+- **[iSixSigma: FMEA (Failure Mode and Effects Analysis)](https://www.isixsigma.com/tools-templates/fmea/)**
+  — an industry-practice overview of FMEA and the risk priority number (RPN) calculation this
+  lesson's worked numeric example borrows from. Useful if you want the fuller engineering-side
+  version of the likelihood/severity/detectability math before adapting it for a quality council
+  packet — remember ICH Q9 itself doesn't mandate this specific formula or scale; this is an
+  industry-practice source behind the illustrative method, not a regulatory or AABB citation.

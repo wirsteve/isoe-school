@@ -116,6 +116,54 @@ severity and thin detectability) and the callback "low" (defensible, on severity
 doesn't mean "no CAPA." It means the corrective action might be lighter, not that closing it
 with a note is correct without that same risk reasoning written down.
 
+## Putting a number on it: a worked risk-priority example
+
+"High" and "low" are words, and words are exactly what get challenged in a quality council
+meeting when two people disagree. Engineering risk management has a standard way to force the
+disagreement into numbers: an **FMEA (Failure Mode and Effects Analysis)** calculates a **risk
+priority number (RPN)** by scoring likelihood, severity, and detectability on a fixed scale and
+multiplying them together. ICH Q9 doesn't mandate this specific formula, or any specific numeric
+scale — it describes risk assessment in qualitative terms and leaves the exact method to the
+organization. What follows is one illustrative method, not a cited regulatory or AABB
+requirement, but it's the kind of math a QA function can defensibly show its work with, and it
+makes the "high versus low" disagreement concrete enough to argue about.
+
+Score each factor 1 (best/lowest risk) to 5 (worst/highest risk), then multiply:
+**RPN = Likelihood × Severity × Detectability.** A higher detectability *score* means *harder*
+to detect — the convention matches the lesson's own point above: low detectability (hard to
+catch) pushes risk up, so it earns a high number in this scheme, not a low one.
+
+**Deviation A — the late callback:**
+
+| Factor | Score (1–5) | Reasoning |
+|---|---|---|
+| Likelihood | 3 | Staffing pressure makes a missed callback window plausible; it's a known failure mode but not a frequent one. |
+| Severity | 2 | Worst case is a delayed donor-status update. The unit was never released; no product or patient was ever at risk. |
+| Detectability | 1 | The quarantine hold is an independent, structural control — the unit physically cannot ship while quarantined, regardless of whether anyone notices the late callback. Easy to catch because the system doesn't depend on a person noticing. |
+
+RPN = 3 × 2 × 1 = **6**
+
+**Deviation B — the label mix-up:**
+
+| Factor | Score (1–5) | Reasoning |
+|---|---|---|
+| Likelihood | 4 | A manual labeling step with visually similar adjacent units is a well-known failure mode, and this process point has less built-in redundancy than most other steps. |
+| Severity | 5 | Worst case is a patient transfused against the wrong donor's identity — a severe patient-safety and traceability failure. |
+| Detectability | 4 | Caught only at the very last checkpoint, with nothing after it. One missed scan, one moment of operator fatigue, and it ships. Hard to catch reliably because only one control stands between the error and the courier van. |
+
+RPN = 4 × 5 × 4 = **80**
+
+An 80 against a 6 is the same conclusion your QA reached by instinct — but now it's defensible
+math instead of a gut call, and it's math an inspector or assessor can follow line by line. Two
+things are worth noticing about the exercise itself, not just the result. First, the ranking
+didn't flip on severity alone — Deviation B wins on *every* factor, which is a stronger result
+than "it's worse because it's worse." Second, and more useful going forward: if your QA ever
+hands you a ranking where the RPN math and the plain-English "high/low" label disagree, that
+mismatch is itself worth asking about — either the scores were assigned loosely, or the label
+was decided first and the scores were back-filled to match it. The number is only as honest as
+the reasoning that produced it; it's a tool for making the reasoning visible, not a replacement
+for having done it.
+
 ## Citation decoder
 
 | Citation | How to read it aloud | What it requires | In our scenario |
@@ -184,6 +232,136 @@ That 45-day clock starts on *discovery*, before the investigation is even finish
 risk ranking can't be a leisurely exercise — the reportability question has to be asked early,
 even if the final answer is "no."
 
+## See it in one picture
+
+The preventive/detective/corrective distinction is easiest to see as a timeline, not a
+definition list — where in the process a preventive control could have stood, where the
+detective control actually sat, and what the corrective action changes so the next version of
+this timeline looks different. Here it is mapped onto Deviation B specifically, because that's
+the deviation where the gap between "a control exists" and "the control runs early enough to
+matter" is the whole lesson.
+
+```{mermaid}
+flowchart TD
+    subgraph Prevent["PREVENTIVE — stops the error from occurring at all"]
+        P1["Two-person independent ID verification<br/>required before a label prints<br/>(the control that COULD have stopped this —<br/>see whether it was actually in place here)"]
+    end
+
+    subgraph Occur["WHAT ACTUALLY HAPPENED, at the processing station"]
+        E1["Two visually similar platelet units<br/>placed adjacent to each other<br/>during manual processing"]
+        E2["Label printed and applied<br/>to the WRONG unit"]
+    end
+
+    subgraph Detect["DETECTIVE — catches the error after it occurs,<br/>before it causes harm"]
+        D1["Final pre-release barcode scan<br/>flags the donor-ID mismatch —<br/>seconds before courier pickup"]
+    end
+
+    subgraph Correct["CORRECTIVE — fixes this instance, and the process"]
+        C1["Immediate correction:<br/>pull the unit, relabel it correctly"]
+        C2["Corrective action:<br/>redesign the station layout so similar units<br/>aren't adjacent, and/or make independent<br/>ID verification mandatory before printing"]
+    end
+
+    P1 -.->|"gap: not reliably enforced at this station"| E1
+    E1 --> E2
+    E2 --> D1
+    D1 --> C1
+    D1 --> C2
+    C2 -.->|"closes the gap - becomes the next version of P1"| P1
+
+    classDef prevent fill:#dcfce7,stroke:#15803d,stroke-width:2px;
+    classDef occur fill:#fee2e2,stroke:#b91c1c,stroke-width:2px;
+    classDef detect fill:#fef3c7,stroke:#b45309,stroke-width:2px;
+    classDef correct fill:#dbeafe,stroke:#1e40af,stroke-width:2px;
+
+    class P1 prevent;
+    class E1,E2 occur;
+    class D1 detect;
+    class C1,C2 correct;
+```
+
+Read the dotted arrows as the two moments this lesson keeps coming back to. The first dotted
+arrow is the actual failure: a preventive control existed in principle but wasn't the thing that
+stood between these two specific units, so the error occurred. The second dotted arrow is the
+point of a corrective *action* as opposed to a mere correction — C2 doesn't just fix the unit
+in front of you, it feeds back into the preventive layer so the next near-miss has a real control
+in front of it, not just a detective one at the very end of the line.
+
+## Watch it explained
+
+The video below isn't about blood establishments, patient safety, or FDA at all — it teaches the
+preventive/detective/corrective taxonomy in a general security-controls context, alongside a
+related administrative/physical/technical breakdown of *where* a control lives. Watch it for the
+three-way control vocabulary itself — the exact distinction this lesson just applied to Deviation
+B — and expect every example in the video to be about IT security or physical security, not
+platelet units or donor records. The mapping that matters is the vocabulary, not the domain: once
+you can hear "preventive," "detective," and "corrective" used correctly about a firewall rule or
+a badge reader, you can hear a QA function misuse those exact same words about a deviation file,
+which is the actual skill this lesson is teaching.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9iT-PwvhNWs"
+  title="Preventive, Detective & Corrective controls |  Administrative, Physical & Technical measures" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## A third worked example: a reagent storage excursion
+
+The method should generalize past the two deviations that opened this lesson, so run it once
+more on a fresh scenario that has nothing to do with either one.
+
+**Deviation C:** overnight, a refrigerator holding ABO/Rh typing reagent (antisera used to
+confirm a donor or unit's blood type) drifted about two degrees outside its validated temperature
+range for roughly six hours. The drift happened because the unit's cold-chain data logger was
+configured to log the excursion but not to page anyone in real time — a configuration gap, not a
+hardware failure. Nobody noticed until the next morning's routine QC (quality control) log
+review. By then, test runs using that reagent lot had already been completed, results recorded,
+and — because nothing flagged the excursion at the time — several units typed using those results
+had already been released and shipped to hospitals.
+
+Run the same four pieces of vocabulary:
+
+**Likelihood** — moderate. Refrigeration excursions are a known, recurring failure mode in any
+cold-chain-dependent process; a misconfigured alert is exactly the kind of gap that doesn't show
+up until it's tested by a real event.
+
+**Severity** — potentially severe, and worse than it looks at first glance. If the temperature
+excursion degraded the reagent enough to produce an inaccurate ABO/Rh result, a patient could
+receive a unit that is mistyped at the most basic level a transfusion depends on — a hemolytic
+transfusion reaction is the worst-case outcome sitting behind this deviation, which is a more
+severe failure mode than either Deviation A or Deviation B individually threatened.
+
+**Detectability** — poor, and this is the scenario's real teaching point. The facility had a
+detective control in place — the data logger — but it was configured incorrectly, so the control
+that was supposed to catch the problem in real time instead only produced a record that a human
+read the next morning, after the affected product had already shipped. A control that exists on
+paper and a control that actually functions as designed are not the same thing; this is the
+"control exists" trap from earlier in this lesson, wearing a different name.
+
+**Preventive vs. detective vs. corrective** — the real-time page-on-alarm function, had it been
+configured correctly, would have been detective (catching the excursion while it was still
+happening, before any test ran on degraded reagent) — fast enough, in this case, to function
+almost like prevention of the downstream labeling error, even though a temperature alarm is never
+itself a preventive control for mistyping. The routine next-morning QC log review that actually
+caught it is a weaker detective control — it worked eventually, but only after the window where it
+could have stopped anything. The corrective action isn't just "fix the alarm configuration" —
+it's also asking whether a single misconfigured notification setting should ever be the only
+thing standing between a cold-chain failure and a shipped unit, the same one-control-deep problem
+Deviation B exposed.
+
+**Inherent vs. residual risk** — inherent risk here is whatever risk a temperature-dependent
+reagent carries with no monitoring at all; the facility had already invested in a logger
+specifically to drive that down. But residual risk wasn't actually low — it just looked low on
+paper, because the control's real function (paging someone immediately) had quietly failed
+without anyone testing it until the night it mattered.
+
+And this scenario adds one wrinkle A and B didn't: unlike Deviation B, which never left the
+building, product potentially affected by Deviation C *was* distributed. That's the fact pattern
+606.171(b)(3) is actually built for — this is the version of the near-miss where the 606.171
+reportability analysis isn't just a defensive "no" to document, but a real determination that has
+to be made, and made fast, because the 45-day clock in 606.171(c) starts at discovery regardless
+of how the investigation eventually resolves.
+
 ## What an inspector would actually look for
 
 An FDA investigator or AABB assessor reviewing this month's deviation log doesn't just check
@@ -221,6 +399,17 @@ but it did nothing to stop the mislabeling and doesn't reduce the likelihood of 
 Confusing "we caught it" (detective) with "we fixed it" (corrective) is how a CAPA gets closed
 after adding zero preventive value — the process that produced the error stays untouched.
 
+**"A documented control that logs or records an event is automatically a working detective
+control."** Deviation C is the trap worth naming on its own: the cold-chain data logger *existed*,
+and it *did* record the excursion — but recording something that nobody is alerted to in real
+time isn't the same as detecting it in time to matter. A detective control has to actually reach
+a person, fast enough to act, before it earns credit as a control that functions. A log entry
+discovered the next morning, after the product it was meant to protect has already shipped, is a
+record of a failure, not a catch. When you review a control in a CAPA or a validation package,
+ask not just "does it log the event" but "who gets told, how fast, and what can they still do
+about it at that point" — the gap between a control that exists and a control that works almost
+always lives in that question.
+
 ## What this means for your job
 
 - **When a QA hands you a risk ranking, ask for all three factors, not just severity.** If the
@@ -237,6 +426,15 @@ after adding zero preventive value — the process that produced the error stays
 - **"Closed, no patient impact" is a conclusion with the reasoning missing, not a risk
   assessment.** If that's the entire justification on file, 606.100(c)'s investigation
   requirement isn't satisfied yet, no matter how the ranking would have come out on paper.
+- **Ask for the numbers, not just the words, on anything heading to the quality council.** You
+  don't need to mandate a specific RPN formula — ICH Q9 doesn't — but if your QA's "high" and
+  "low" can't survive being turned into a likelihood/severity/detectability score on request,
+  the label was probably decided before the reasoning was, not after.
+- **When a control's evidence is a log file, ask who actually gets paged and how fast — before
+  you count it as detective.** A record that something happened, discovered after the product
+  it was meant to protect already moved, is a weaker control than its presence in an SOP
+  suggests. This is the exact gap a validation review or an internal audit should be testing for,
+  not assuming away because the logger was "in place."
 
 ## Check your understanding
 

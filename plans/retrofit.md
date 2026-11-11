@@ -51,7 +51,7 @@ In progress / Done.
 |---|---|---|---|---|
 | 1 | Foundations | `reading-a-cfr-citation` | 1/2 | Done |
 | 2 | Foundations | `regulatory-landscape-orientation` | 3/4 | Done |
-| 3 | Foundations | `risk-and-controls-vocabulary` | 5/6 | Not started |
+| 3 | Foundations | `risk-and-controls-vocabulary` | 5/6 | Done |
 | 4 | `blood-center-operations` | `donor-recruitment-and-screening` | 2/? | Not started |
 | 5 | `blood-center-operations` | `collection-and-testing` | 4/? | Not started |
 | 6 | `blood-center-operations` | `component-processing-and-labeling` | 6/? | Not started |
@@ -111,7 +111,8 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #3, foundations/`risk-and-controls-vocabulary`.**
+**Next up: #4, `blood-center-operations`/`donor-recruitment-and-screening`.** All 3 foundations
+modules are now retrofitted — the production standard carries into Track 1 next.
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -181,3 +182,30 @@ module retrofit changes a course's own module list or description.
   non-video links independently curl-verified HTTP 200 at publish time. Word count 4,606 (prose),
   within target. `order:` values (3, 4) confirmed unchanged.
   Next: module 3, foundations/`risk-and-controls-vocabulary`.
+
+- **2026-11-11**: Module 3, foundations/`risk-and-controls-vocabulary` (`order: 5/6`),
+  retrofitted and published — **completes the foundations track (3/3).** Every original locked
+  fact confirmed unchanged on independent re-read: Deviation A (late callback) and Deviation B
+  (label mix-up near-miss), the ICH Q9 framing, the likelihood/severity/detectability and
+  preventive/detective/corrective definitions, the inherent-vs-residual discussion, the
+  606.100(c) and 606.171(b)/(c) quotes (both independently re-verified character-for-character
+  against `sources/cfr/606.100.md` and `sources/cfr/606.171.md`), all 3 original Q&As, the
+  original 3 traps, and the original 5 job bullets (now 7). New depth added, nothing invented: a
+  worked 1-5 FMEA-style RPN scoring table for Deviations A (RPN=6) and B (RPN=80), explicitly
+  labeled illustrative/not a cited ICH Q9 formula; a fresh third scenario (Deviation C, a
+  cold-chain reagent-refrigerator excursion with a misconfigured real-time alert) — independently
+  grepped for every other course's locked identifier (VAL-1203, VIA-0842, DEV-1147, CAPA-1147-A,
+  VRA-0219, DI-0301, DED-0458, LAB-07) with a clean result, confirming it reuses nothing; and a
+  4th common trap built on it ("a logged event isn't automatically a working detective control").
+  Added a `flowchart TD` Mermaid diagram (step 6) mapping the preventive→occurrence→detective→
+  corrective sequence onto Deviation B, with a feedback loop from the corrective action back to
+  the preventive layer. Added a verified video embed (step 7): "Preventive, Detective & Corrective
+  controls | Administrative, Physical & Technical measures" (Security For You) — independently
+  re-verified via YouTube oEmbed (HTTP 200, title/author match) at publish time; framing is honest
+  that its examples are general security controls, not blood-establishment ones.
+  `resources.qmd` expanded from 3 to 5 links (3 original + the video + a new iSixSigma FMEA/RPN
+  link); all 4 non-video links independently curl-verified at publish time (3 returned HTTP 200
+  directly, the iSixSigma link 301-redirects to its dictionary page, confirmed 200 on follow).
+  Word count 5,231 (prose), within target. `order:` values (5, 6) confirmed unchanged.
+  Next: module 4, `blood-center-operations`/`donor-recruitment-and-screening` — the retrofit's
+  first Track 1 course module.
