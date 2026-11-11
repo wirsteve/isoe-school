@@ -267,6 +267,51 @@ already modeled:
   dated Thursday. Walk me through that sequence."
 - "Who owns the BECS-to-hospital interface regression follow-up, and by when?"
 
+## See it in one picture
+
+VIA-0842 is one document, but the review it needs is a set of separate checks, each with its own
+triage outcome. The diagram below is built only from this module's own package: the findings
+from the reveal, plus the one question the document raises that sits outside this module.
+
+```{mermaid}
+flowchart TD
+    P["VIA-0842 routed to the Director:<br/>OS security patch to the BECS application server"]
+
+    P --> E["Evidence: 'no impact' rests on vendor release notes and compatibility statement;<br/>no instrument-interface test — must fix before sign"]
+    P --> S["Scope: 12 targeted tests; rationale reviewed by Quality Validation Lead 11/06 —<br/>documented, no gap"]
+    P --> F["Step 7 failed, re-ran and passed, no discrepancy note —<br/>fix going forward"]
+    P --> C["Protocol approved Wed 11/11, after execution Mon 11/09 – Tue 11/10 —<br/>must fix before sign"]
+    P --> O["Open item: hospital-interface regression, no owner or date —<br/>fix going forward"]
+
+    P --> D1["Change record: production deployment Wed 11/11, 10:15 p.m."]
+    P --> D2["Quality approval signature: Thu 11/12"]
+    D1 --> X{"Deployed before approved?"}
+    D2 --> X
+    X -->|"yes — only the Director can cross-check IT's change record"| M["Must fix before sign"]
+
+    S -.->|"is twelve enough? not this module's call —<br/>csv-and-becs"| B["Boundary: route to Quality Validation"]
+```
+
+Notice that the sharpest finding is the only one with two inputs from two different records, and
+the only one the Director is positioned to catch. The dotted line is the boundary: whether twelve
+tests were enough is routed onward, not judged here.
+
+## Watch it explained
+
+This episode from GMP Detox, a GxP training channel, walks through IQ, OQ, and PQ alongside ISPE's
+GAMP 5 Second Edition, the industry-practice framework most computerized-system validation
+packages are built on. It's general pharma GMP training, not BECS- or blood-specific, and it
+teaches how qualification is structured rather than how an approver reviews a finished package;
+watch it to make the vocabulary in VIA-0842 feel familiar, then use this lesson for the review
+itself.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/gIlM-JzkoQ0"
+  title="GMP Detox IQ OQ PQ and ISPE GAMP 5 SE" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector or assessor would actually look for
 
 An assessor pulling this file asks for the same things you just went looking for, without you

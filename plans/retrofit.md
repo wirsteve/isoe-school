@@ -67,7 +67,7 @@ In progress / Done.
 | 16 | `directing-the-quality-analyst` | `qa-deliverables-and-ownership` | 28/29 | Done |
 | 17 | `directing-the-quality-analyst` | `reviewing-deviations-and-capas` | 30/31 | Done |
 | 18 | `directing-the-quality-analyst` | `escalation-criteria` | 32/33 | Done |
-| 19 | `directing-the-quality-analyst` | `reviewing-validation-packages` | 34/35 | Not started |
+| 19 | `directing-the-quality-analyst` | `reviewing-validation-packages` | 34/35 | Done |
 | 20 | `directing-the-quality-analyst` | `reviewing-vendor-risk-assessments` | 36/37 | Not started |
 | 21 | `directing-the-quality-analyst` | `coaching-and-reporting-upward` | 38/39 | Not started |
 | 22 | `csv-and-becs` | `gamp5-and-the-v-model` | 41/42 | Not started |
