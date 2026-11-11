@@ -58,3 +58,13 @@ returned `200` at the time this page was written.
 - **[HealthIT.gov: Security Risk Assessment Tool](https://www.healthit.gov/topic/privacy-security-and-hipaa/security-risk-assessment-tool)**
   — the federal tool page for the 164.308(a)(1)(ii)(A) risk analysis this lesson says an
   investigator would ask for first. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about the HIPAA Security Rule, risk analysis, and encryption.
+
+- **[HIPAA Security Rule](https://www.hipaajournal.com/hipaa-security-rule/)** (HIPAA Journal) — a clear tour of the administrative, physical and technical safeguards and the required-versus-addressable idea. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[What are the HIPAA Technical Safeguards?](https://www.hipaajournal.com/hipaa-technical-safeguards/)** (HIPAA Journal) — focuses on access control, audit controls, integrity and transmission security, the part closest to an IT operations role. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[HIPAA Encryption Requirements](https://www.hipaajournal.com/hipaa-encryption-requirements/)** (HIPAA Journal) — a practitioner explainer on how encryption is treated, helpful context for the lesson's addressable-control question. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[The HIPAA Risk Analysis: Guidance and Tools](https://www.hipaajournal.com/hipaa-risk-analysis/)** (HIPAA Journal) — how organizations structure a risk analysis, with tool pointers. Supports CISSP Domain 1 (risk management concepts). Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Cybersecurity Posters and Cheat Sheets](https://www.sans.org/security-resources/posters/)** (SANS Institute) — free one-page references on controls, logging and defensive practice; handy for CISSP Domain 3 and Domain 7 review. Verified loading via `curl` on 2026-11-11 (HTTP 200).
