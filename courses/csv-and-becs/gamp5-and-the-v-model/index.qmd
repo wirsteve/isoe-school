@@ -285,6 +285,61 @@ paraphrased only, no standard number: validation work like VAL-1203 lives under 
 Control**, the theme covering how a blood establishment controls and proves out a regulated
 process, software included.
 
+## See it in one picture
+
+VAL-1203's whole argument fits on one page: three kinds of software feed one risk assessment, the
+risk assessment sets how hard the V gets tested, and the V pairs each spec level with the test
+that answers it. The diagram below uses only this lesson's own scenario and citations.
+
+```{mermaid}
+flowchart TD
+    S["VAL-1203: Release B upgrade"]
+    S --> K1["OS and database<br/>Category 1"]
+    S --> K4["BECS as Lakeshore configures it<br/>Category 4"]
+    S --> K5["LIS-to-BECS translation script<br/>Category 5"]
+
+    K1 --> RA
+    K4 --> RA
+    K5 --> RA
+    RA{"Documented risk assessment<br/>assume hazards likely; category is only the starting point"}
+
+    RA -->|"sets test depth"| URS
+
+    subgraph V["The V: specs down, tests up"]
+        URS["URS<br/>REQ-014 untestable; REQ-022 unranked; script has no row"]
+        FS["FS / FRS"]
+        DS["DS"]
+        IQ["IQ"]
+        OQ["OQ"]
+        PQ["PQ"]
+        URS --> FS --> DS
+        DS -. "pairs with" .-> IQ
+        FS -. "pairs with" .-> OQ
+        URS -. "pairs with" .-> PQ
+        IQ --> OQ --> PQ
+    end
+
+    PQ --> F["Floor: 211.68(a), 210.2(a); FDA BECS guidance: ultimately responsible"]
+```
+
+Notice that the categories sit upstream of the risk assessment, not in place of it, and that the
+three draft URS rows enter the V at its very top, where a gap costs the most.
+
+## Watch it explained
+
+This is ISPE's own short video on the GAMP 5 Guide, Second Edition, the framework behind the
+categories and the V-model used in this lesson. It is general pharmaceutical and life-sciences
+material, not blood- or BECS-specific, and GAMP 5 is industry practice, not FDA regulation. Watch it
+for the Second Edition's emphasis on critical thinking, which is the point behind "the category
+sets the start, the risk assessment sets the depth."
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/fL8gBc4P0og"
+  title="GAMP® 5 Guide, 2nd Edition: Top Takeaways" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector would actually look for
 
 An FDA investigator or AABB assessor reading VAL-1203's file isn't going to ask whether the

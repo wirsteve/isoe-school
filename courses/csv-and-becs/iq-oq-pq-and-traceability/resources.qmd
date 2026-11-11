@@ -3,8 +3,8 @@ title: "Resources"
 order: 44
 ---
 
-Four places to go deeper than this lesson, or to check a citation yourself before it goes in a
-real Lakeshore document. All four were checked and loading at the time this page was written.
+Eight places to go deeper than this lesson, or to check a citation yourself before it goes in a
+real Lakeshore document. All were checked and loading at the time this page was written.
 
 - **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)**
   — FDA's own guidance-database listing for the document this lesson quotes throughout (final,
@@ -26,3 +26,27 @@ real Lakeshore document. All four were checked and loading at the time this page
   like "level of confidence" and software regression testing. Written for device manufacturers,
   not user facilities like Lakeshore, but useful background on where the BECS guidance's own
   vocabulary comes from.
+
+- **[IQ OQ PQ Explained for Computerised Systems and Equipment | Matrix Validate](https://www.youtube.com/watch?v=7keFOP71UIw)**
+  (Matrix One, from oEmbed `author_name`) — the video embedded in this lesson. An industry
+  training explainer of the three qualification stages; not FDA-, BECS-, or blood-specific, so
+  use it for vocabulary only. This page found no video that is specifically about traceability
+  matrices and independently verifiable. Verified embeddable via YouTube oEmbed on 2026-11-11
+  (HTTP 200).
+
+- **[ISPE: GAMP 5 Guide, Second Edition](https://ispe.org/publications/guidance-documents/gamp-5-guide-2nd-edition)**
+  — the publisher's page for the industry-practice guide behind the IQ/OQ/PQ vocabulary. Read
+  it to see what the guide is and who it is for, and to remember it is industry practice, not
+  regulation (the guide itself is sold, not free). Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[21 CFR 211.100, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.100)**
+  — written procedures and deviations; the third regulation FDA's BECS guidance cites for
+  retaining validation records (211.100(b)). Read it for the regulation's own text on
+  documenting deviations from procedures. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA guidance page: Part 11, Electronic Records; Electronic Signatures: Scope and Application](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/part-11-electronic-records-electronic-signatures-scope-and-application)**
+  — FDA's 2003 guidance on how it approaches Part 11, including validation. Not needed for this
+  module, but it is the document module 5 uses to explain why validation is enforced through
+  predicate rules; read it ahead if a matrix row references a Part 11 control. Verified loading
+  via `curl` on 2026-11-11 (HTTP 200).

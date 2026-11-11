@@ -248,6 +248,44 @@ trusting the label the message carries about its own origin? A system that can b
 but false message, and can't tell the difference, hasn't satisfied (h), no matter how fast or
 reliable the channel otherwise is.
 
+## See it in one picture
+
+The six boundaries from this module's opening table all meet the same four-part test, and the
+same monitoring and VIA-0842 closure sit behind them. The diagram below uses only this lesson's
+own boundaries and citations.
+
+```{mermaid}
+flowchart TD
+    B["Central BECS, Release B (VAL-1203)"]
+
+    I1["1. Instruments and testing-lab LIS<br/>results and quarantine status, inbound<br/>(in-house Category 5 script)"] --> B
+    I3["3. ICCBBA reference tables, inbound<br/>(DEV-1147 shape)"] --> B
+    I6["6. Legacy conversion, Release A to B<br/>duplicate donors, deferral codes"] --> B
+
+    B --> O2["2. Label printers, outbound<br/>(VIA-0842 step 7 boundary)"]
+    B --> O4["4. Riverside General Hospital, outbound<br/>606.165(b)/(c) fields"]
+    B <--> S5["5. Brookfield and Fairview<br/>donor, unit, quarantine data, both ways"]
+
+    I1 & I3 & I6 & O2 & O4 & S5 --> T{"Same four-part test at every boundary:<br/>complete, correct, on time, right donor or unit?<br/>211.68(b), 11.10(h), guidance III.G"}
+
+    T --> M["Interface error file monitored after go-live<br/>(guidance III.G)"]
+    T --> V["Closes VIA-0842 open items:<br/>instrument-interface test and<br/>hospital interface regression testing"]
+```
+
+## Watch it explained
+
+This tutorial from a health-IT educator walks through how an HL7 v2 message is structured and read,
+the messaging format many laboratory and hospital interfaces use. It is general healthcare
+integration training, not blood-center-specific and not FDA material, so treat it as background for
+reading interface messages rather than as guidance on Lakeshore's six boundaries.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/RjIDeic78qo"
+  title="HL7 Tutorial for Beginners: How to Read and Build an HL7 v2 Message" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector would actually look for
 
 An FDA investigator or AABB assessor reading this section of VAL-1203's file wouldn't stop at "an

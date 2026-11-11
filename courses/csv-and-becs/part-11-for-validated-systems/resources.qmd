@@ -3,8 +3,9 @@ title: "Resources"
 order: 50
 ---
 
-Four places to go deeper than this lesson, or to check a citation yourself before it goes in a
-real Lakeshore document. All four were checked and loading at the time this page was written.
+Ten places to go deeper than this lesson, or to check a citation yourself before it goes in a
+real Lakeshore document. The first four were checked and loading at the time this page was
+written; the rest were added later and each carries its own verification note.
 
 - **[21 CFR 11.10, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.10)**
   — the full closed-system controls section this lesson quotes from: (d) access limits, (f)
@@ -29,3 +30,41 @@ real Lakeshore document. All four were checked and loading at the time this page
   training sentence (III.G) and remote-access-log recommendation (III.B). Worth rereading section
   III.B in full for the rest of its system-documentation list, which module 3 covered and this
   lesson only used the tail end of.
+
+- **[Electronic Systems, Electronic Records, and Electronic Signatures Webinar](https://www.youtube.com/watch?v=Im7TRkOS0mM)**
+  (U.S. Food and Drug Administration, from oEmbed `author_name`) — the video embedded in this
+  lesson. FDA's own channel, on its Part 11 guidance for electronic systems in clinical
+  investigations. Not blood- or BECS-specific, and not the 2003 scope guidance; watch it for FDA's
+  framing of validation, access, and IT service providers. Verified embeddable via YouTube oEmbed
+  on 2026-11-11 (HTTP 200).
+
+- **[FDA webinar slides: Electronic Systems, Electronic Records, and Electronic Signatures in Clinical Investigations](https://www.fda.gov/media/169688/download)**
+  — the slide deck FDA's Office of Medical Policy presented for the draft version of that guidance
+  (April 2023 presentation). Read it if you'd rather skim than watch; its overview lists
+  electronic records, electronic systems, and IT service providers and services. It covers the
+  draft, so check the final guidance below for the current wording. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[FDA guidance page: Electronic Systems, Electronic Records, and Electronic Signatures in Clinical Investigations: Questions and Answers](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/electronic-systems-electronic-records-and-electronic-signatures-clinical-investigations-questions)**
+  — the final guidance the webinar above explains. Clinical-investigation scope, so it doesn't
+  govern a blood center, but it is current FDA writing on risk-based validation and on using
+  outside service providers for electronic records, useful context for the vendor remote-access and
+  hosting question. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)**
+  — the automatic, mechanical, and electronic equipment section that FDA's BECS guidance names as
+  the predicate-rule basis for validation. Read it next to 11.10(a) to see why the lesson says the
+  enforcement mechanism is the predicate rule. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[NIST SP 800-46 Rev. 2: Guide to Enterprise Telework, Remote Access, and Bring Your Own Device (BYOD) Security](https://csrc.nist.gov/pubs/sp/800/46/r2/final)**
+  — a general IT-security guide to securing remote access, the ITSM side of this lesson's bridge
+  (PAM, time-bound access, logged sessions). It isn't a Part 11 or FDA document; use it for how to
+  engineer a vendor connection Lakeshore can grant, log, and revoke. Verified loading via `curl`
+  on 2026-11-11 (HTTP 200).
+
+- **[ISPE GAMP 5 Guide, Second Edition](https://ispe.org/publications/guidance-documents/gamp-5-guide-2nd-edition)**
+  — the publisher's page for the industry-practice framework from module 1. Its description
+  emphasizes service providers and leveraging supplier documentation, relevant to how much weight a
+  vendor's claims get. The guide itself is a paid publication; this page is the description only.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).

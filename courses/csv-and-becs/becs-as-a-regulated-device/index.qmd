@@ -242,6 +242,35 @@ job: a 510(k) clearance, however real, is not a substitute for that same validat
 regulatory answer to "is the vendor's clearance good enough" is the same answer as "is the
 vendor's testing good enough": no, on both counts, for the same underlying reason.
 
+## See it in one picture
+
+VAL-1203's one-line clearance claim and its central-server-shaped plan are two separate questions, and the diagram below keeps them apart. It is built only from this module's own scenario and citations: the vendor-side facts (864.9165, guidance III.A) on one branch, Lakeshore's own obligations (guidance II.A and III.D) on the other, and the single conclusion they both feed.
+
+```{mermaid}
+flowchart TD
+    V["VAL-1203 background line:<br/>'Release B is FDA 510(k)-cleared'"]
+    V --> Q1{"What does clearance prove?"}
+    V --> Q2{"Is a central-server-shaped<br/>plan enough?"}
+
+    subgraph Vendor["Vendor side: premarket status"]
+        Q1 --> A1["864.9165(a): BECS is a device by function;<br/>(b): Class II"]
+        A1 --> A2["Guidance III.A: cleared list shows the<br/>version cleared; may include unsupported BECS"]
+    end
+
+    subgraph Lakeshore["Lakeshore side: own validation"]
+        Q1 --> B1["Guidance III.D: user is<br/>'ultimately responsible'"]
+        Q2 --> B2["Guidance III.D: each location needs a<br/>location-specific validation plan"]
+        B2 --> B3["Central server + Brookfield + Fairview"]
+        B1 --> B4["Guidance II.A: system = hardware, software,<br/>peripherals, networks, personnel, documentation"]
+    end
+
+    A2 --> X["Clearance does not replace Lakeshore's validation"]
+    B1 --> X
+    B3 --> X
+    B4 --> X
+    X --> Y["Co-sign only after written vendor basis for<br/>the exact release and a plan per site"]
+```
+
 ## What an inspector would actually look for
 
 An FDA investigator or AABB (Association for the Advancement of Blood & Biotherapies) assessor
@@ -264,6 +293,8 @@ A bad answer to "why do you believe this system is validated" sounds like "it's 
 A good answer points to VAL-1203's own executed package — the IQ/OQ/PQ evidence this course has
 already spent a full module reading critically — not to a line in the background section about the
 vendor's premarket status.
+
+AABB Standards §3.9, "Information Systems," is the accreditation-side counterpart to this lesson's FDA device and validation discussion: it is where an AABB assessor looks at the same ground (records and validation, backup and continuity, personnel responsibility, documented change processes, and access control), and this lesson does not reproduce any of its text.
 
 ## Common traps
 
@@ -309,6 +340,17 @@ current, supported offering.
 - **Remember "system" means more than "the software" every time you scope a validation.**
   Personnel and documentation are part of the system FDA's guidance describes. A validation plan
   that only addresses the application is scoped too narrowly before it even starts.
+
+## Watch it explained
+
+This is a recorded talk from the University of Washington's 2023 Medical Data Science Symposium on how FDA oversees software as a medical device. It is a general talk, not blood-specific and not about BECS or Lakeshore, so treat it as background for why software gets device-style regulation; the 864.9165, 606.60, and guidance citations above are what apply to VAL-1203.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/2PYHypPcGJQ"
+  title="Software as a Medical Device" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
 
 ## Check your understanding
 

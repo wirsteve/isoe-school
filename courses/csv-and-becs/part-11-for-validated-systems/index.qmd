@@ -294,6 +294,55 @@ and (h) — plus naming 11.1, 11.3, and 11.30. Put together: the earlier text wa
 this module says, for the first time, which pieces FDA actually enforces and which a BECS
 validation has to put an actual test case against.
 
+## See it in one picture
+
+VAL-1203 carries two open threads that look unrelated and aren't. The diagram below is this
+module's own scenario: the consultant's remote-access request run through the closed-versus-open
+test, and the URS's missing sequencing and authority rows run through the controls FDA's 2003
+guidance says it still intends to enforce. Both end in the same place: evidence Lakeshore can
+show, not a claim.
+
+```{mermaid}
+flowchart TD
+    V["VAL-1203: Release B go-live"]
+
+    V --> A["Vendor consultant asks for standing remote access<br/>to the central BECS server: no expiration stated"]
+    V --> B["URS has no row for out-of-sequence release<br/>or unauthorized-role release"]
+
+    A --> Q{"Who controls access, and are they the people<br/>responsible for the records? 11.3(b)(4) / (b)(9)"}
+    Q -->|"Lakeshore grants for a window, logs it,<br/>can revoke it"| CL["Still a closed system"]
+    Q -->|"Standing credentials, no logging<br/>or revocation path"| DR["Drifts toward open system:<br/>11.30 adds encryption and digital-signature measures"]
+    CL --> LOG["Remote-access log: date, time, reason, name<br/>(BECS guidance III.B, recommended)"]
+    DR --> FIX["Require Lakeshore-controlled grant, log, revocation"]
+    FIX --> LOG
+
+    B --> G["2003 guidance: FDA still intends to enforce<br/>access, sequencing, authority, device checks"]
+    G --> F["11.10(f): test that tries to release with a result pending"]
+    G --> AU["11.10(g): test that tries a release from an unauthorized role"]
+    F --> P["Evidence: BECS refused, recorded in a test case"]
+    AU --> P
+```
+
+Notice the two threads finish at different artifacts, a log and a test record, but for the same
+reason: in each case the system's real behavior has to be demonstrable, not asserted.
+
+## Watch it explained
+
+This is a webinar on the U.S. Food and Drug Administration's own YouTube channel about its
+Part 11 guidance on electronic systems, records, and signatures. It's written around clinical
+investigations, not blood establishments, and it isn't about BECS, so don't read anything in it as
+Lakeshore-specific. It's here because it's FDA explaining, in its own voice, how Part 11 thinking
+applies to validation, access controls, and outsourced IT service providers, which is the same
+territory as the vendor-access question above. The 2003 scope guidance this lesson relies on is
+separate and is the one that governs the enforcement-discretion points.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Im7TRkOS0mM"
+  title="Electronic Systems, Electronic Records, and Electronic Signatures Webinar" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector would actually look for
 
 An FDA investigator or AABB (Association for the Advancement of Blood & Biotherapies) assessor

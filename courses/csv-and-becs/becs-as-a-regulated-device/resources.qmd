@@ -5,6 +5,7 @@ order: 46
 
 Three places to go deeper than this lesson, or to check a citation yourself before it goes in a
 real Lakeshore document. All three were checked and loading at the time this page was written.
+Further entries below were added later and each carries its own verification note.
 
 - **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)**
   — FDA's own guidance-database listing for the document this lesson quotes throughout (final,
@@ -22,3 +23,46 @@ real Lakeshore document. All three were checked and loading at the time this pag
   to see for yourself that its own text and table (centrifuges, thermometers, water baths) were
   written for physical lab equipment, not software — the guidance is what extends it, not the
   section's own wording.
+
+- **[Software as a Medical Device](https://www.youtube.com/watch?v=2PYHypPcGJQ)** (UW Video, from
+  oEmbed `author_name`) — the video embedded in this lesson: a University of Washington 2023
+  Medical Data Science Symposium session on FDA oversight of software as a medical device. A
+  university symposium recording, not an FDA channel, and not blood- or BECS-specific; use it for
+  the general idea of why software is regulated as a device. Verified embeddable via YouTube oEmbed
+  on 2026-11-11 (HTTP 200); the session's content is described from the symposium agenda
+  (imds.uw.edu), since the video page itself could not be read.
+
+- **[FDA: Substantially Equivalent 510(k) Device Information (CBER BECS lists)](https://www.fda.gov/vaccines-blood-biologics/approved-blood-products/substantially-equivalent-510k-device-information)**
+  — the CBER landing page for the cleared-BECS lists, organized by year, that guidance III.A
+  refers to. Open it to see for yourself that an entry shows the cleared version, and to check any
+  vendor's "cleared" claim against FDA's own record. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[FDA: 510(k) Blood Establishment Computer Software, 2026](https://www.fda.gov/vaccines-blood-biologics/substantially-equivalent-510k-device-information/510k-blood-establishment-computer-software-2026)**
+  — one year's actual list of BECS 510(k) decisions. Read it to see what a clearance entry looks
+  like in practice (product, version, decision date), which is the evidence a "Release B is
+  cleared" line should be tied back to. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Premarket Notification 510(k) Process for CBER-Regulated Products](https://www.fda.gov/vaccines-blood-biologics/device-submissions-cber-regulated-products/premarket-notification-510k-process-cber-regulated-products)**
+  — FDA's own explanation of how the 510(k) pathway works for devices CBER reviews, which includes
+  blood-establishment software. Read it when you want the vendor-side process behind a clearance in
+  plain terms. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA CDRH Learn: The 510(k) Program (transcript)](https://www.fda.gov/training-and-continuing-education/cdrh-learn/510k-program-transcript)**
+  — transcript of FDA's own training module on the 510(k) program. Good for understanding what
+  "substantially equivalent" means, and therefore how much, and how little, a clearance tells you.
+  General device training, not BECS-specific. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Software as a Medical Device (SaMD)](https://www.fda.gov/medical-devices/digital-health-center-excellence/software-medical-device-samd)**
+  — FDA's overview page on software that is itself a device. Use it for the regulator's own
+  framing of software-as-device, the broader category BECS belongs to. Verified loading via `curl`
+  on 2026-11-11 (HTTP 200).
+
+- **AABB Standards, Section 3.9, "Information Systems"** — AABB's accreditation-side counterpart to
+  this lesson's FDA device and validation discussion (records/validation, backup/continuity,
+  personnel responsibility, documented change processes, access control). Not independently
+  link-verified at the section level; see `sources/aabb/information-systems-section-3.9.md` for how
+  its number and themes were cross-confirmed. Start from
+  **[AABB: Standards for Blood Banks and Transfusion Services](https://www.aabb.org/standards-accreditation/standards/blood-banks-and-transfusion-services)**
+  (verified loading via `curl` on 2026-11-11, HTTP 200); the full standard text is paywalled behind
+  AABB's member/purchase access, so the free page will not show Section 3.9's requirement language.

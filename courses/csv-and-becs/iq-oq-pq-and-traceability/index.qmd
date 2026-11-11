@@ -313,6 +313,47 @@ decision-trail concern. It's the system working.
 Five gaps, one non-gap, one catch only your background would make — a package that looks
 finished in several places and proves something in only some of them.
 
+## See it in one picture
+
+Everything in the excerpt funnels into one conclusion. The diagram below is built only from VAL-1203's own rows, tests, and the guidance sections already cited: the five gaps, the one non-gap, and the Director-only catch all flow into Section 7's "validated" sentence.
+
+```{mermaid}
+flowchart TD
+    U["VAL-1203 URS rows:<br/>REQ-022, REQ-031, REQ-045"]
+    U --> IQ["IQ-02: database engine 14.3 recorded<br/>(guidance III.B)"]
+    U --> OQ["OQ: OQ-114, OQ-128, OQ-142<br/>(guidance III.G)"]
+    U --> PQ["PQ-07: vendor staging, vendor staff,<br/>business hours (guidance III.D)"]
+
+    OQ --> A22["REQ-022 to OQ-114 only:<br/>normal case, Coverage gap (III.E)"]
+    OQ --> A31["REQ-031 to OQ-128 only:<br/>S/CO 0.40, Design gap (III.G)"]
+    U --> A45["REQ-045: no test ID, orphan"]
+    OQ --> NG["OQ-142 fail, VD-003, fix, re-run:<br/>non-gap, handled per III.F"]
+    PQ --> AF["Fidelity gap: not Lakeshore's<br/>location, SOPs, personnel, or peak load (III.D)"]
+    IQ --> CM{"CMDB change record:<br/>14.4.2 promoted. Matches 14.3?"}
+    CM -->|"no"| DC["Director-only catch (III.G)"]
+
+    A22 --> R["Section 7: validated and ready,<br/>VD-007 open, Director line undated (III.H)"]
+    A31 --> R
+    A45 --> R
+    AF --> R
+    DC --> R
+    NG --> R
+    R --> X["Cold-read fails: conclusion outruns evidence"]
+```
+
+Notice that OQ-142 is the only branch that arrives at the report already dispositioned. Every other branch arrives as an unresolved problem, which is why the conclusion fails the cold-read test.
+
+## Watch it explained
+
+This is a general industry explainer on IQ, OQ, and PQ for computerised systems and equipment, from a validation-software vendor's channel. It isn't FDA-, BECS-, or blood-specific, and it doesn't use Lakeshore's scenario, so treat it as training content on the vocabulary rather than a regulatory source. It is useful for hearing the three qualification stages described by someone other than this lesson.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7keFOP71UIw"
+  title="IQ OQ PQ Explained for Computerised Systems and Equipment | Matrix Validate" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector would actually look for
 
 An FDA investigator or AABB assessor reading VAL-1203's file wouldn't stop at "there's a

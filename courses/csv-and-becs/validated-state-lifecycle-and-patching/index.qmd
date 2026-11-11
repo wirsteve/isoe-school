@@ -343,6 +343,44 @@ quarter's patch. A periodic-review finding that produces that fix is the methodo
 everything this course has built. A periodic-review finding that tries to retroactively discipline
 a closed deviation is not the same thing, and isn't what this finding calls for.
 
+## See it in one picture
+
+This module's two threads, side by side: the patch that arrived this week, taken through the
+regression-analysis-first path, and the periodic review that reaches back across the whole change
+history to a finding about VIA-0842. The dotted line at the bottom is the module's systemic payoff,
+the corrected VIA template feeding every future patch's classification step.
+
+```{mermaid}
+flowchart TD
+    P["Vendor OS security patch<br/>advisory: 'OS-level memory handling only'"]
+    P --> CL["Validation Lead classifies:<br/>OS security patch, no application code change"]
+    CL --> RA["Regression analysis first<br/>(guidance III.I): what could this touch?"]
+    RA --> T["Test plan scoped to the analysis:<br/>label-print timing, instrument interfaces,<br/>testing-lab result feed"]
+    T --> V["VIA with Quality's blocking sign-off"]
+
+    PR["Periodic review: cumulative change history"]
+    PR --> H["VAL-1203 cutover, VIA-0842 patch,<br/>DEV-1147 table push,<br/>off-hours config change"]
+    PR --> I["Deviations, vendor anomalies,<br/>configuration drift, access reviews"]
+    H --> F["Finding: no regression analysis<br/>ever justified VIA-0842's twelve tests"]
+    I --> F
+    F --> O2["Targeted supplemental testing:<br/>instrument and hospital interfaces,<br/>label-print timing at peak load"]
+    F --> O3["CAPA on the VIA template:<br/>analysis required before any reduced scope"]
+    O3 -. "pre-scoped template for every future patch" .-> CL
+```
+
+Separately, from the accreditation side rather than the FDA side, AABB Standards Section 3.9, "Information Systems," is the counterpart to this lesson's validated-state and patching discussion, especially its backup, continuity, and disaster-recovery theme (3.9.2) and its documented change processes.
+
+## Watch it explained
+
+This is a short general-IT explainer on patch management from Group-IB, a cybersecurity company. It is not FDA-, CFR-, or blood-specific and says nothing about validation, regression analysis, or periodic review, so treat it only as the ITSM backdrop this lesson's patch-class idea builds on: patches get identified, prioritized, tested, and deployed. The regulated step this lesson adds, a documented regression analysis before the test plan, is what the video doesn't cover.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/0lo3sTdf4eA"
+  title="Patch Management, explained" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## Check your understanding
 
 ::: {.callout-tip collapse="true"}

@@ -3,8 +3,8 @@ title: "Resources"
 order: 42
 ---
 
-Four places to go deeper than this lesson, or to check a citation yourself before it goes in a
-real Lakeshore document. All four were checked and loading at the time this page was written.
+Places to go deeper than this lesson, or to check a citation yourself before it goes in a
+real Lakeshore document. Each was checked and loading at the time this page was written.
 
 - **[21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)**
   — the regulatory text quoted in this lesson, in Cornell's free, citable, plain-text CFR mirror.
@@ -26,3 +26,35 @@ real Lakeshore document. All four were checked and loading at the time this page
   applies), not a free regulatory document — this page is where to learn what it is and how to
   purchase or read it, not a substitute for owning a copy if your role ever requires citing it
   directly.
+
+- **[GAMP® 5 Guide, 2nd Edition: Top Takeaways](https://www.youtube.com/watch?v=fL8gBc4P0og)**
+  (ISPE, from oEmbed `author_name`) — the video embedded in this lesson, published by the body
+  that publishes GAMP 5. General life-sciences content, not BECS-specific, and industry practice
+  rather than regulation. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[ISPE: GAMP® 5 Guide, 2nd Edition: Top Takeaways (video page)](https://ispe.org/videos/gampr-5-guide-2nd-edition-top-takeaways)**
+  — ISPE's own page for the same video, with its description. Read it to see, in ISPE's words
+  rather than a consultancy's, why the Second Edition stresses critical thinking by people who
+  understand the system. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Qualio: The 10 key changes in GAMP 5 Second Edition](https://www.qualio.com/blog/the-10-key-changes-in-gamp-5-second-edition)**
+  — a quality-software vendor's free summary of what changed from the first edition. It is a
+  commercial secondary source, so use it for orientation and a checklist of topics, never as the
+  citation; the paid ISPE guide is the primary text. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[FDA: General Principles of Software Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)**
+  — FDA's guidance on software validation, written for device manufacturers' software. Read it to
+  see the regulator's own "level of confidence" framing of validation from the vendor's side of
+  the fence; it is the vendor's yardstick, not Lakeshore's, and it is guidance, not regulation.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Part 11, Electronic Records; Electronic Signatures: Scope and Application](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/part-11-electronic-records-electronic-signatures-scope-and-application)**
+  — the 2003 guidance behind the 11.10(a) hook this lesson names in one line and module 5
+  unpacks. Skim it now so module 5's enforcement-discretion point isn't a surprise. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.60, Equipment](https://www.law.cornell.edu/cfr/text/21/606.60)**
+  — the blood-specific equipment regulation that FDA's BECS guidance reads alongside 211.68 when
+  it treats BECS as equipment. Read it to see the Part 606 side of the regulatory floor next to
+  the 211.68 text this lesson quotes. Verified loading via `curl` on 2026-11-11 (HTTP 200).
