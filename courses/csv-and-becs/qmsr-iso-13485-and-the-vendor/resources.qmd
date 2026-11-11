@@ -5,6 +5,7 @@ order: 48
 
 Four places to go deeper than this lesson, or to check a citation yourself before it goes in a
 real Lakeshore document. All four were checked and loading at the time this page was written.
+Five more entries follow the original four, including the video embedded in this lesson.
 
 - **[21 CFR 820.1, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/820.1)**
   — the scope section of the QMSR (Quality Management System Regulation), including 820.1(a)(3),
@@ -33,3 +34,38 @@ real Lakeshore document. All four were checked and loading at the time this page
   exact title, publication date, and effective date yourself, rather than taking this lesson's
   word for them — and to see the rule's own preamble if you ever need more context than a bare
   citation gives you.
+
+- **[An Overview of the Quality Management System Regulation](https://www.youtube.com/watch?v=Na-OF3OkqEg)**
+  (U.S. Food and Drug Administration, from oEmbed `author_name`) — the video embedded in this
+  lesson, listed on FDA's CDRH Learn page as a QMSR module. Written for device manufacturers, not
+  blood centers, so treat it as the vendor's side of the picture; don't expect it to address
+  Lakeshore's position under 820.1(a)(3). Verified embeddable via YouTube oEmbed on 2026-11-11
+  (HTTP 200).
+
+- **[FDA: Quality Management System Regulation (QMSR)](https://www.fda.gov/medical-devices/postmarket-requirements-devices/quality-management-system-regulation-qmsr)**
+  — FDA's own landing page for the QMSR. Read it when someone quotes a QMSR date, scope, or
+  FAQ and you want the agency's wording rather than a consultant's summary. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA CDRH Learn](https://www.fda.gov/training-and-continuing-education/cdrh-learn)** — the
+  agency's training hub, which lists its QMSR modules, webinars, and town halls with slides and
+  transcripts. Useful if you want a transcript to search, or a deeper session than the overview
+  video on design controls or risk. Device-manufacturer oriented throughout. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[21 CFR Part 820, eCFR](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-H/part-820)**
+  — the whole of Part 820 in the government's current-text edition, so you can read 820.1, 820.3,
+  820.7, and 820.10 in context rather than one section at a time. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[FDA: General Principles of Software Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)**
+  — the 2002 guidance this lesson names as the one FDA points a device manufacturer to for
+  validating its own device software. Read it to understand what the vendor is expected to have
+  done before Release B reached you; it is written for the manufacturer, not for Lakeshore's user
+  validation. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[ISPE: GAMP 5 Guide, 2nd Edition](https://ispe.org/publications/guidance-documents/gamp-5-guide-2nd-edition)**
+  — the publisher's page for the industry-practice framework this lesson cites for leveraging
+  supplier documentation. The guide itself is sold, so this page is a catalogue entry, not the
+  text; use it to confirm what the edition is before anyone quotes it as a requirement. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).

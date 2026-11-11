@@ -73,7 +73,7 @@ In progress / Done.
 | 22 | `csv-and-becs` | `gamp5-and-the-v-model` | 41/42 | Done |
 | 23 | `csv-and-becs` | `iq-oq-pq-and-traceability` | 43/44 | Done |
 | 24 | `csv-and-becs` | `becs-as-a-regulated-device` | 45/46 | Done |
-| 25 | `csv-and-becs` | `qmsr-iso-13485-and-the-vendor` | 47/48 | Not started |
+| 25 | `csv-and-becs` | `qmsr-iso-13485-and-the-vendor` | 47/48 | Done |
 | 26 | `csv-and-becs` | `part-11-for-validated-systems` | 49/50 | Not started |
 | 27 | `csv-and-becs` | `validated-state-lifecycle-and-patching` | 51/52 | Not started |
 | 28 | `csv-and-becs` | `becs-interfaces-and-data-integrity` | 53/54 | Not started |

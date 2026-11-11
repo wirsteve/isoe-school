@@ -332,6 +332,50 @@ wastes a regulatory requirement someone else already paid to satisfy.
   research properly, potentially with FDA itself, and it's better asked precisely in writing now
   than guessed at by whoever's in the room when it comes up.
 
+## See it in one picture
+
+The CIO's claim, the vendor's folder, and the in-house script all sit on one map once you ask who
+Part 820 actually binds. The diagram below is this module's own scenario, using only the citations
+quoted above: the blood exclusion sends Lakeshore down one branch, the vendor's quality system and
+special-control deliverables feed VAL-1203 as inputs, and the script's question ends in a written
+routing, not a verdict.
+
+```{mermaid}
+flowchart TD
+    CIO["CIO: 'Since February 2026, Lakeshore must comply<br/>with the QMSR and ISO 13485'"] --> Q{"Who does Part 820 bind?"}
+
+    Q -->|"820.1(a)(3): blood and blood component<br/>manufacturers excluded"| L["Lakeshore answers to Subchapter F:<br/>Part 606, Part 211 as it supplements"]
+    Q -->|"820.3: manufacturer = designs, manufactures,<br/>or processes a finished device"| V["BECS vendor: Part 820 QMSR,<br/>ISO 13485 via 820.7(b), 820.10(a), 820.10(c)"]
+
+    V --> D["Special-control deliverables, 864.9165(b)(1)-(5)"]
+    D --> A["(b)(3)(ii) unresolved anomalies list:<br/>label-reprint edge case"]
+    D --> M["(b)(4) traceability matrix"]
+
+    A -->|"input, never a substitute"| R["VAL-1203 risk assessment<br/>and test plan: named boundary test case"]
+    M -->|"input, never a substitute"| R
+    L --> R
+
+    S["In-house LIS-to-BECS translation script<br/>(Category 5)"] -->|"820.3 'finished device' vs.<br/>864.9165(a) 'BECS accessory'"| RA["Written question routed to regulatory affairs,<br/>not decided by IT"]
+```
+
+Notice that the two vendor deliverables and Lakeshore's own blood-CGMP footing all converge on the
+same place: VAL-1203's own risk assessment and test plan. The script's branch is the only one that
+doesn't resolve, which is why it ends in a question sent to regulatory affairs.
+
+## Watch it explained
+
+FDA's own overview of the Quality Management System Regulation, posted on its CDRH Learn training
+channel for device manufacturers. It is written from the manufacturer's point of view and isn't
+about blood centers or BECS specifically, so it won't speak to Lakeshore's own position under
+820.1(a)(3). Use it to see the vendor's side of the line this lesson draws.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Na-OF3OkqEg"
+  title="An Overview of the Quality Management System Regulation" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## Check your understanding
 
 ::: {.callout-tip collapse="true"}
