@@ -54,7 +54,7 @@ In progress / Done.
 | 3 | Foundations | `risk-and-controls-vocabulary` | 5/6 | Done |
 | 4 | `blood-center-operations` | `donor-recruitment-and-screening` | 2/3 | Done |
 | 5 | `blood-center-operations` | `collection-and-testing` | 4/5 | Done |
-| 6 | `blood-center-operations` | `component-processing-and-labeling` | 6/? | Not started |
+| 6 | `blood-center-operations` | `component-processing-and-labeling` | 6/7 | Done |
 | 7 | `blood-center-operations` | `storage-distribution-and-hemovigilance` | 8/? | Not started |
 | 8 | `blood-center-operations` | `becs-in-the-pipeline` | 10/? | Not started |
 | 9 | `quality-system-essentials` | `aabb-qse-framework` | 13/14 | Not started |
@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #6, `blood-center-operations`/`component-processing-and-labeling`.**
+**Next up: #7, `blood-center-operations`/`storage-distribution-and-hemovigilance`.**
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -264,3 +264,21 @@ module retrofit changes a course's own module list or description.
   Learn link 301-redirects to a locale-qualified URL, confirmed 200 on follow). Word count 4,010
   (prose), within target. `order:` values (4, 5) confirmed unchanged.
   Next: module 6, `blood-center-operations`/`component-processing-and-labeling`.
+
+- **2026-11-11**: Module 6, `blood-center-operations`/`component-processing-and-labeling`
+  (`order: 6/7`), retrofitted under the rebalanced standard and published. Every original locked
+  fact confirmed unchanged: the Wednesday 6:40am forty-units scenario, all citations
+  (606.121(c)(1)-(4), (c)(9), (c)(13), (c)(8)(ii), 610.53(b)), the full dating table, the "ISBT
+  128, in full" section, all 3 Q&As, both traps, the 5 job bullets. Added a scenario-specific
+  `flowchart TD` Mermaid diagram (step 6, the five-step release-eligibility sequence showing
+  steps 1-3 clean and step 4's drifted product code blocking step 5) — syntax validated by
+  actually rendering to SVG via `mermaid-cli`. Added a verified video embed (step 7): "Overview
+  of the ISBT 128 Standard" — from **ICCBBA's own official channel**, the exact standards body
+  this lesson covers, about as close to a primary source as a video gets — independently
+  re-verified via YouTube oEmbed (HTTP 200, title/author match) at publish time. No new invented
+  scenario content. `resources.qmd` expanded from 4 to 8 links: kept all 4 original, added the
+  video, a Code 128 barcode-symbology technical explainer, an Atlassian CMDB explainer (backing
+  the lesson's own naming-convention ITSM bridge), and an AABB accreditation overview. All 7
+  non-embedded links independently re-verified at publish time, all HTTP 200 directly. Word
+  count 4,396 (prose), within target. `order:` values (6, 7) confirmed unchanged.
+  Next: module 7, `blood-center-operations`/`storage-distribution-and-hemovigilance`.
