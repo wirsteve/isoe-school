@@ -19,3 +19,30 @@ order: 100
 - [Filing a Biological Product Deviation Report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd) —
   this course's internal link back to 606.171's own 45-day BPDR clock and filing mechanics, for
   comparing the two reporting pathways side by side.
+- [Federal Register: Modifications to the HIPAA Privacy, Security, Enforcement, and Breach Notification Rules (2013 Omnibus Rule, GovInfo PDF)](https://www.govinfo.gov/content/pkg/FR-2013-01-25/pdf/2013-01073.pdf) —
+  the official preamble where HHS explains why it replaced the old "harm" standard with the
+  presumption of breach and the four-factor assessment. Read it when you need the regulator's own
+  reasoning for how to weigh a factor. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- [Cornell LII: 45 CFR 164.414 — Administrative requirements and burden of proof](https://www.law.cornell.edu/cfr/text/45/164.414) —
+  a second, plain-text view of the burden-of-proof provision the lesson leans on, handy for pasting
+  an exact citation into a risk-assessment record. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- [HHS OCR Breach Portal ("Wall of Shame")](https://ocrportal.hhs.gov/ocr/breach/breach_report.jsf) —
+  OCR's own public list of reported breaches affecting 500 or more individuals; it is also where
+  breach reports are filed. Browse it to see what the 164.408(b) track looks like in practice.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- [NIST SP 800-111: Guide to Storage Encryption Technologies for End User Devices](https://csrc.nist.gov/pubs/sp/800/111/final) —
+  the federal reference on full-disk encryption for laptops. Read it for what "confirmed
+  encryption" means technically, the premise factor 3 turned on. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+- [FDA: Biological Product Deviations](https://www.fda.gov/vaccines-blood-biologics/report-problem-center-biologics-evaluation-research/biological-product-deviations) —
+  FDA/CBER's own page on BPDR reporting, the other side of this lesson's dual-reporting
+  comparison. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- [HIPAA Breach Notification Rule (for managers)](https://www.youtube.com/watch?v=JwIIP4uBiyA)
+  (JurisIQ Learning Center, from oEmbed `author_name`) — the video embedded in this lesson: an
+  attorney-led training presentation on the Breach Notification Rule. Legal-training content, not
+  HHS/OCR (no OCR video on breach notification itself was found), not blood-specific, and silent on
+  FDA reporting. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+hhs.gov's own breach-notification pages returned HTTP 403 to automated checks, so they are not
+linked here; reach them from OCR's site in a browser.
