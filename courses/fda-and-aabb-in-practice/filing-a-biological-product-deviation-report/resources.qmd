@@ -59,3 +59,12 @@ written.
   606.171. It is guidance ("should"), not regulation; read it for FDA's recommendations on what
   is and isn't reportable before Lakeshore's next borderline call. Verified loading via `curl` on
   2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about deviation investigation, root cause and incident handling.
+
+- **[A fresh look at an old topic: Investigations in the GMDP environment](https://mhrainspectorate.blog.gov.uk/2020/09/14/a-fresh-look-at-an-old-topic-investigations-in-the-gmdp-environment/)** (MHRA Inspectorate blog, UK regulator) — an inspectorate's candid take on what makes a deviation investigation good or weak. UK context, but the investigation habits apply to any regulator. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Deviation Management Process In GMP](https://gmpinsiders.com/deviation-management-process/)** (GMP Insiders, practitioner site) — a walk through logging, classifying, investigating and closing a deviation; useful for sanity-checking Lakeshore's own workflow. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Effective CAPA & Root Cause Investigations](https://www.rephine.com/resources/blog/understanding-investigations-root-causes-implementing-effective-capa-system)** (Rephine, consultancy; vendor content) — practical advice on getting from a symptom to a root cause and checking that the fix worked. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CISSP Domain 7: Security Operations Guide](https://destcert.com/resources/cissp-domain-7-security-operations/)** (Destination Certification, CISSP training company; commercial) — covers incident management (detect, respond, recover, lessons learned), the IT-security cousin of deviation handling. Supports CISSP Domain 7 (Security Operations). Verified loading via `curl` on 2026-11-11 (HTTP 200).
