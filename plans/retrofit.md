@@ -103,7 +103,7 @@ In progress / Done.
 | 52 | `vendor-and-third-party-risk-management` | `reading-a-soc-2-report` | 106/107 | Done |
 | 53 | `vendor-and-third-party-risk-management` | `reading-an-iso-27001-certificate` | 108/109 | Done |
 | 54 | `vendor-and-third-party-risk-management` | `business-associate-agreements` | 110/111 | Done |
-| 55 | `vendor-and-third-party-risk-management` | `vendor-change-notifications-and-your-own-change-control` | 112/113 | Not started |
+| 55 | `vendor-and-third-party-risk-management` | `vendor-change-notifications-and-your-own-change-control` | 112/113 | Done |
 | 56 | `itsm-for-regulated-blood-services` | `itil-to-qse-crosswalk-change-and-problem` | 115/116 | Not started |
 | 57 | `itsm-for-regulated-blood-services` | `itil-to-qse-crosswalk-cmdb-and-continual-improvement` | 117/118 | Not started |
 | 58 | `itsm-for-regulated-blood-services` | `itil-to-grc-crosswalk` | 119/120 | Not started |
