@@ -29,4 +29,20 @@ verified-loading mirror of the same official text.)
   — the federal program, run by CMS rather than FDA, that certifies laboratory testing quality.
   Relevant to the "who owns what" question this lesson touches on: a blood center's testing
   operations can fall under CLIA certification in addition to FDA blood regulation and AABB
-  accreditation — three different oversight bodies, three different relationships.
+  accreditation — three different oversight bodies, three different relationships. See this
+  lesson's "A third oversight body hiding in plain sight" section.
+
+- **[Is There a Legal Difference Between Statutes and Rules? \[No. 86\]](https://www.youtube.com/watch?v=bDy25B1OTyQ)**
+  (The Federalist Society, from oEmbed `author_name`) — a general legal-education discussion,
+  featuring a law professor, of whether an agency rule is legally different from a statute
+  Congress passed. It covers the statute-versus-regulation distinction underlying this lesson's
+  Q1/Q2 split, but doesn't touch FDA guidance or AABB Standards at all — the rest of this lesson
+  covers those two tiers on its own. Embedded in the lesson under "Watch it explained." Verified
+  embeddable via YouTube oEmbed (HTTP 200, title and channel name confirmed) on 2026-11-11.
+
+- **[Cornell LII: 21 CFR 10.115, Good guidance practices](https://www.law.cornell.edu/cfr/text/21/10.115)**
+  — the FDA regulation that actually defines what a "guidance document" is and how FDA is
+  supposed to develop, issue, and use one. Useful background on the guidance tier this lesson
+  teaches: this section is itself a *regulation* — it's the rule about what guidance is and how
+  FDA must handle it, not a guidance document itself. Verified loading via direct request (HTTP
+  200) on 2026-11-11.

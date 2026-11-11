@@ -50,7 +50,7 @@ In progress / Done.
 | # | Course | Slug | `order:` | Status |
 |---|---|---|---|---|
 | 1 | Foundations | `reading-a-cfr-citation` | 1/2 | Done |
-| 2 | Foundations | `regulatory-landscape-orientation` | 3/4 | Not started |
+| 2 | Foundations | `regulatory-landscape-orientation` | 3/4 | Done |
 | 3 | Foundations | `risk-and-controls-vocabulary` | 5/6 | Not started |
 | 4 | `blood-center-operations` | `donor-recruitment-and-screening` | 2/? | Not started |
 | 5 | `blood-center-operations` | `collection-and-testing` | 4/? | Not started |
@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #2, foundations/`regulatory-landscape-orientation`.**
+**Next up: #3, foundations/`risk-and-controls-vocabulary`.**
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -156,3 +156,28 @@ module retrofit changes a course's own module list or description.
   unavailable in this cloud session — Mermaid syntax reviewed by hand, not locally rendered; the
   GitHub Action renders on push.
   Next: module 2, foundations/`regulatory-landscape-orientation`.
+
+- **2026-11-11**: Module 2, foundations/`regulatory-landscape-orientation` (`order: 3/4`),
+  retrofitted and published. Every original locked fact confirmed unchanged on independent
+  re-read: the BECS/platelet-bacterial-detection scenario, the four-tier statute/regulation/
+  guidance/AABB-Standard breakdown and its SOX/ITIL/ISO-27001 bridge, the four-question sorting
+  list, the 606.100(b)(22)/(d)/(a) quotes, the FDA-investigator/AABB-assessor comparison, the
+  original 3 traps, all 3 Q&As, and the original 5 job bullets (now 7). New depth added, nothing
+  invented: a second worked example (606.171(c), independently re-verified character-for-
+  character against `sources/cfr/606.171.md` — the "should...as soon as possible but must...not
+  to exceed 45-calendar days" clause); a new 4th trap built on it ("if the word is 'should,' the
+  document must be guidance"); an AABB-accreditation-mechanics paragraph (APEX self-assessment →
+  on-site assessment, PPPs followed as written, 2-year reaccreditation, nonconformance
+  resolution) independently re-verified against `sources/aabb/accreditation-process.md` and
+  confirmed to match exactly; and a new, deliberately generic CLIA subsection that names no
+  invented citation. Added a `flowchart TD` Mermaid diagram (step 6) rendering the lesson's own
+  four-question decision path, with AABB Standards drawn as a parallel, non-chained branch rather
+  than forced into a strict hierarchy — correctly matching what the lesson actually teaches.
+  Added a verified video embed (step 7): "Is There a Legal Difference Between Statutes and
+  Rules? [No. 86]" (The Federalist Society) — independently re-verified via YouTube oEmbed
+  (HTTP 200, title/author match) at publish time; framing is honest that it only covers the
+  statute-vs-regulation (Q1/Q2) distinction, not guidance or AABB Standards. `resources.qmd`
+  expanded from 3 to 5 links (3 original + the video + a new Cornell 21 CFR 10.115 mirror); all 4
+  non-video links independently curl-verified HTTP 200 at publish time. Word count 4,606 (prose),
+  within target. `order:` values (3, 4) confirmed unchanged.
+  Next: module 3, foundations/`risk-and-controls-vocabulary`.
