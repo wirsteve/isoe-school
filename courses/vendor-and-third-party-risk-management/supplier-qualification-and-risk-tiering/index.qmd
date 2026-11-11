@@ -276,6 +276,39 @@ tier describes exposure, not trust.
   this one gets tiered *before* its migration leaves an unresolved question on your desk,
   not after.
 
+## See it in one picture
+
+This module's whole argument, in one view: the QA's empty vendor file leads to a recorded decision under QSE 4, the four questions sort every vendor into a tier, and the four vendors from this lesson land where the walkthrough placed them.
+
+```{mermaid}
+flowchart TD
+    Q["QA finds no vendor file for the<br/>device-management platform vendor"]
+    Q --> R["QSE 4 expects a recorded decision<br/>(themed only, no Standards text quoted)"]
+    R --> F["Four questions, asked in order"]
+    F --> F1["1. Data touch"]
+    F1 --> F2["2. System criticality"]
+    F2 --> F3["3. Access level"]
+    F3 --> F4["4. Blast radius"]
+    F4 --> H["High: full qualification file<br/>(SOC 2, ISO 27001, BAA review)"]
+    F4 --> M["Medium: lighter record,<br/>periodic review"]
+    F4 --> L["Low: basic vendor record"]
+    H --> VH["Device-management platform vendor"]
+    M --> VM["Reagent and consumables supplier"]
+    L --> VL1["Facilities vendor<br/>(re-run if access expands)"]
+    L --> VL2["Office-supplies vendor"]
+```
+
+## Watch it explained
+
+This webinar from Venminder, a third-party risk management training and software company, covers scaling the depth of vendor due diligence to a vendor's risk. It is general vendor-risk training, not blood-establishment-, FDA-, or AABB-specific, and it uses its own vocabulary rather than this lesson's four questions, so treat it as a second explanation of the same risk-based idea.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/e4wBnhqiS14"
+  title="Risk-Based Vendor Due Diligence: Identifying the Proper Scope, Scale, and Documents Webinar" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## Check your understanding
 
 ::: {.callout-tip collapse="true"}

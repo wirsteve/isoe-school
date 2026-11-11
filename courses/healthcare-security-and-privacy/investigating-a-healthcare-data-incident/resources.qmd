@@ -28,6 +28,56 @@ course's own earlier modules — the actual sources behind everything this modul
   was built to confirm, rebut, or honestly leave standing. It now stands as this course's final
   determination.
 
+## External sources
+
+The links below go beyond this course's own modules, for the investigation and incident-response
+side of the topic. All were checked on 2026-11-11.
+
+- **[How the HIPAA Security Rule Can Help Defend Against Cyber-Attacks | October 23, 2023](https://www.youtube.com/watch?v=VnbBxxyZLc8)**
+  (U.S. Department of Health and Human Services, from oEmbed `author_name`) — the video embedded in
+  this lesson. HHS's own presentation on ransomware, what to do if systems are infected, and HIPAA
+  breach reporting requirements (as described in HHS's Change Healthcare incident materials). Not
+  Lakeshore-specific. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-61 Rev. 2, Computer Security Incident Handling Guide](https://csrc.nist.gov/pubs/sp/800/61/r2/final)**
+  — the incident-handling lifecycle (preparation, detection and analysis, containment,
+  eradication and recovery, post-incident activity) that most organizations, healthcare included,
+  build their response plans on. Read it to see where this module's four leads and root-cause
+  ranking sit in the standard lifecycle. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-61 Rev. 3, Incident Response Recommendations and Considerations for Cybersecurity Risk Management](https://csrc.nist.gov/pubs/sp/800/61/r3/final)**
+  — NIST's newer incident-response publication, which recasts response as part of overall
+  cybersecurity risk management. Read it alongside Rev. 2 to see how the guidance has been
+  reframed. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-86, Guide to Integrating Forensic Techniques into Incident Response](https://csrc.nist.gov/pubs/sp/800/86/final)**
+  — how to collect, examine, and preserve evidence during an incident, which is the discipline
+  behind this module's insistence on pulling the raw check-in history rather than trusting a
+  dashboard field. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-66 Rev. 2, Implementing the HIPAA Security Rule: A Cybersecurity Resource Guide](https://csrc.nist.gov/pubs/sp/800/66/r2/final)**
+  — NIST's practical guide to mapping Security Rule requirements, including risk analysis and
+  risk management, to real controls. Useful for the review and monitoring side of the
+  deployment-sequencing gap. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 45 CFR 164.414, Administrative requirements and burden of proof](https://www.law.cornell.edu/cfr/text/45/164.414)**
+  — a mirror of the burden-of-proof section this module's documented file is built to satisfy.
+  Use it to check current text against the dated copy in this repo's `sources/` folder. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[eCFR: 45 CFR Part 164, Subpart D (Breach Notification)](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-D)**
+  — the official, current text of the whole breach notification subpart. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[ASPR TRACIE: Cybersecurity technical resources](https://asprtracie.hhs.gov/technical-resources/86/cybersecurity/0)**
+  — HHS's Administration for Strategic Preparedness and Response collection of healthcare
+  cybersecurity response resources, including ransomware material for the healthcare sector.
+  Use it for sector-specific practice beyond what this course covers. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+Note: CISA's and HHS's own ransomware and breach-notification web pages returned 403 to
+`curl` and were not used.
+
 If a future session needs to go beyond what this course's own four modules already sourced —
 for example, 164.412's law-enforcement-delay mechanics, or HHS's own specified encryption
 methodology referenced in 164.402's "unsecured protected health information" definition — run

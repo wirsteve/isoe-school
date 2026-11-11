@@ -268,6 +268,45 @@ The shape repeats exactly: two lenses fully satisfied, one lens honestly partial
 for the vendor relationship behind Brookfield. That's not a coincidence. It's the same discipline,
 applied twice, landing on the same honest answer both times.
 
+## See it in one picture
+
+The joint meeting is a sandwich: the six-bullet spine opens the room, both audiences' questions are answered in front of everyone, and the spine closes it. The diagram below uses only this lesson's own Brookfield facts, and shows where the one live-room trap (a tidy answer on encryption) sits.
+
+```{mermaid}
+flowchart TD
+    O["Open the room: the six-bullet shared spine,<br/>final, said identically to everyone"]
+
+    O --> B1["Device, breach determination (164.402 / 164.404),<br/>ranked root cause"]
+    O --> B2["Vendor tiered High, SOC 2 and ISO 27001 read,<br/>BAA plausibly required"]
+    O --> B3["Encryption status: permanently unresolved"]
+    O --> B4["Change-notification clause: named, not yet decided"]
+
+    B1 --> H1["Half one: what the CIO needs"]
+    B2 --> H1
+    B3 --> H2["Half two: what the quality council needs"]
+    B4 --> H2
+
+    H1 --> Q{"Live question asks for a tidier answer<br/>than the spine supports?"}
+    H2 --> Q
+
+    Q -->|"yes: 'probably encrypted', 'basically decided'"| R["Restate the spine's wording, same volume,<br/>to the whole room"]
+    Q -->|"no"| C
+    R --> C["Close the room: back to the spine —<br/>one determination, one ranked root cause,<br/>one open contract question, one permanent unknown"]
+```
+
+Notice the question gate: whichever half raises it, the only allowed answer is the spine's own wording, and the meeting ends back on the spine rather than wherever the last thread trailed off.
+
+## Watch it explained
+
+This talk is from the storytelling with data channel, the educator behind the widely used book of the same name, on turning charts into a clear narrative for an audience. It is general data-communication training, not blood-center-, ITSM-, or regulation-specific, and it doesn't address a mixed audience hearing one fixed set of facts at once; the lesson's spine-first sandwich is the part it does not cover.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Hfx1X9WSGYQ"
+  title="How to turn data into stories" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## Common traps
 
 **"Someone in the room asks for a bottom-line answer on encryption, so give them one."** This is the

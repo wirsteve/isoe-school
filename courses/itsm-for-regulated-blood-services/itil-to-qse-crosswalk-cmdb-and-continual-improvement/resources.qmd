@@ -51,3 +51,57 @@ page this course's own prior module relied on.
   gate — never "basically identical") and for the `change-control-for-regulated-systems` and
   `capa-root-cause-to-effectiveness` references this module's QSE 9 crosswalk builds on without
   re-quoting.
+
+- **[Key Concepts | Service Configuration Management | PeopleCert | Axelos | 1WorldTraining.com
+  |](https://www.youtube.com/watch?v=sAdlGl7dM38)** (1 World Training Official Channel, from
+  oEmbed `author_name`) — the video embedded in this lesson. A training provider's walkthrough of
+  ITIL 4 service configuration management's key concepts (CIs, the CMDB). Generic ITSM training,
+  not blood- or validation-specific, and not published by PeopleCert/Axelos themselves — treat it
+  as a refresher on the vocabulary, not as an authority. Verified embeddable via YouTube oEmbed on
+  2026-11-11 (HTTP 200).
+
+- **[Atlassian: What is a CMDB?](https://www.atlassian.com/itsm/it-asset-management/cmdb)** — a
+  vendor-published but tool-neutral explainer of configuration items, relationships, and why
+  change and incident work lean on the CMDB. Read it to see the ITSM side of Crosswalk 1 in
+  plain language before you map it onto an equipment inventory. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[Cloudaware: ITIL CMDB, a practical guide to ITIL 4 service configuration
+  management](https://cloudaware.com/blog/itil-cmdb/)** — an industry explainer on how ITIL 4
+  frames the CMDB inside the service configuration management practice. Useful for the
+  vocabulary the Director's own team uses. It is a vendor blog, so read it as practitioner
+  commentary, not as ITIL's own text. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[PeopleCert: ITIL 4
+  Foundation](https://www.peoplecert.org/browse-certifications/it-governance-and-service-management/ITIL-1/itil-4-foundation-2565)**
+  — the ITIL 4 certification body's own page for the Foundation level, where the practices this
+  module borrows vocabulary from (service configuration management, continual improvement) are
+  taught. Use it to see how the framework's owner describes it. This curriculum never cites ITIL
+  to a specific publication or page. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: General Principles of Software
+  Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)**
+  — FDA's own guidance page on software validation, the regulator-side counterpart to the
+  "qualification/validation status" field a plain CMDB entry lacks. Read it for why a system
+  inventory is expected to say whether software is validated for its intended use. Guidance, not
+  binding regulation. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.60, Equipment](https://www.law.cornell.edu/cfr/text/21/606.60)** —
+  Cornell's mirror of the FDA regulation on equipment used in blood establishments, the
+  federal-regulation neighbor of AABB's QSE 3 (Equipment) theme. This lesson does not quote it;
+  read it to see the regulator's own wording on equipment before comparing it with a CMDB entry.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[ISPE: GAMP 5 Guide, 2nd
+  Edition](https://www.ispe.org/publications/guidance-documents/gamp-5-guide-2nd-edition)** —
+  the pharmaceutical-industry professional body's catalogue page for its widely used guide to
+  validating computerized systems. Useful background for how regulated industries keep a
+  validated-system inventory. The guide itself is a paid publication, and this page is only its
+  description. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-128: Guide for Security-Focused Configuration Management of Information
+  Systems](https://csrc.nist.gov/pubs/sp/800/128/upd1/final)** — NIST's public guide to
+  configuration management as a security discipline: baselines, change control, and monitoring
+  of system configuration. It bridges this module's CMDB crosswalk toward module 3's RMF
+  material. Read it for the government's version of "know exactly what you have and how it is
+  configured." Verified loading via `curl` on 2026-11-11 (HTTP 200).

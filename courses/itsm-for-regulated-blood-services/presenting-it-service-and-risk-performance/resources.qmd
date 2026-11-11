@@ -65,3 +65,39 @@ citations, and reasoning this lesson references by name but doesn't redevelop.
   (`directing-the-quality-analyst`) — the review discipline this module's closing "what this means
   for your job" section points back to when it asks you to review your QA's and systems
   administrator's prep work for defensibility, not just polish.
+
+## External sources
+
+- **[How to turn data into stories](https://www.youtube.com/watch?v=Hfx1X9WSGYQ)** (storytelling
+  with data, from oEmbed `author_name`) — the video embedded in this lesson: a training
+  mini-workshop on building a clear data narrative. General data-communication training, not
+  blood-center- or regulation-specific. Verified embeddable via YouTube oEmbed on 2026-11-11
+  (HTTP 200).
+
+- **[storytelling with data](https://www.storytellingwithdata.com/)** — the training company's
+  site, with a blog and free resources on choosing a chart, cutting clutter, and structuring a
+  data story. Read it when you build the shared spine's supporting visuals. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[ISACA: Cyber Risk and Communicating to a Board of Directors](https://www.isaca.org/resources/news-and-trends/isaca-podcast-library/cyber-risk-and-communicating-to-a-board-of-directors)**
+  — a professional-body podcast page on how to present cyber risk to a board. Read or listen
+  before a board-level session to calibrate how much technical detail directors expect. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST IR 8286: Integrating Cybersecurity and Enterprise Risk Management
+  (ERM)](https://csrc.nist.gov/pubs/ir/8286/final)** — NIST's publication on rolling
+  cybersecurity risk into enterprise risk registers and reporting, the language executives and
+  boards already use. Read it to see how a single incident like Brookfield's maps into an
+  enterprise-level risk statement. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST IR 8286D: Using Business Impact Analysis to Inform Risk Prioritization and
+  Response](https://csrc.nist.gov/pubs/ir/8286/d/final)** — explains how to rank risks by
+  business impact so leadership sees priorities, not a flat list; a companion to this lesson's
+  "ranked, not merely listed" root-cause discipline. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[NIST Cybersecurity Framework 2.0: Enterprise Risk Management
+  Quick-Start Guide](https://www.nist.gov/publications/nist-cybersecurity-framework-20-enterprise-risk-management-quick-start-guide)**
+  — a short NIST guide on connecting cybersecurity outcomes to enterprise risk reporting. Read it
+  when you need a brief, executive-friendly framing of risk communication. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).

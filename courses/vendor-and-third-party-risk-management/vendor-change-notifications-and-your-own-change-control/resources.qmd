@@ -8,6 +8,46 @@ source. It's pure synthesis — placing a clause module 4 already quoted in full
 `quality-system-essentials` already taught in depth — so no new sourcing was needed or attempted
 this session.
 
+Beyond those, the external links below were each checked on 2026-11-11 and cover sub-topics
+(supplier change notification, quality agreements, configuration change control) that this
+module only touches. None is HIPAA-specific, and none is used as a source for any claim in the
+lesson itself.
+
+**External links:**
+
+- **[Pharma Supplier Qualification: Audits, Quality Agreements, Change Control & Supply Chain Controls](https://www.youtube.com/watch?v=Xkg4bmOdsVk)**
+  (GMP Scenarios, from oEmbed `author_name`) — the video embedded in this lesson. Industry
+  training content on pharmaceutical supplier qualification, not blood- or IT-specific. Watch it
+  to see change control and quality agreements treated as one connected system. Verified
+  embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+- **[Contract Manufacturing Arrangements for Drugs: Quality Agreements Guidance for Industry — FDA](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/contract-manufacturing-arrangements-drugs-quality-agreements)**
+  FDA's own guidance page on written quality agreements between a drug owner and a contract
+  facility. It is drug-manufacturing guidance, not blood or IT, but it is the regulator's plain
+  statement of why responsibilities, including change handling, belong in writing. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Supplier-Change Management for Drug-Product Manufacturers — BioPharm International](https://www.biopharminternational.com/view/supplier-change-management-drug-product-manufacturers)**
+  An industry trade-press article on how manufacturers handle supplier-initiated changes: what
+  agreements typically require and how notices feed the buyer's own assessment. Read it for the
+  "supplier change notice" vocabulary this lesson's clause discussion parallels. Verified loading
+  via `curl` on 2026-11-11 (HTTP 200).
+- **[Working with Supplier Change Notifications (QMS) — Veeva Vault Help](https://quality.veevavault.help/en/gr/54469202/)**
+  A software vendor's help page showing how a quality system can receive a supplier's change
+  notice and route it into the customer's own change process. It is product documentation, not a
+  standard; read it as an illustration of the workflow. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+- **[SP 800-128, Guide for Security-Focused Configuration Management of Information Systems — NIST](https://csrc.nist.gov/pubs/sp/800/128/upd1/final)**
+  NIST's guide to controlling and assessing changes to systems from a security standpoint,
+  including security impact analysis. Useful for the impact-assessment step of your own change
+  control. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[SP 800-161 Rev. 1, Cybersecurity Supply Chain Risk Management Practices for Systems and Organizations — NIST](https://csrc.nist.gov/pubs/sp/800/161/r1/final)**
+  NIST's guidance on managing risk from suppliers and subcontractors, the broader frame for why
+  a vendor's own changes and its own suppliers matter to you. Large; skim it rather than read it
+  through. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[How to Review a Vendor Contract — Venminder](https://venminder.com/blog/how-review-vendor-contract)**
+  A third-party-risk vendor's plain-language walkthrough of what to look for in a vendor
+  contract. A commercial blog, so treat it as practitioner perspective, not authority. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+
 **Internal links, not external sources:**
 
 - **[Business Associate Agreements](../business-associate-agreements/index.qmd)** — module 4. The

@@ -3,9 +3,10 @@ title: "Resources"
 order: 96
 ---
 
-Three primary-source pages to check this module's reasoning yourself. All three were
-curl-verified (`curl -s -o /dev/null -w "%{http_code}" -L <url>`) and returned `200` at the time
-this page was written.
+Three primary-source pages to check this module's reasoning yourself, plus a regulator video and
+six further sources added to go deeper. The first three were curl-verified
+(`curl -s -o /dev/null -w "%{http_code}" -L <url>`) and returned `200` at the time this page was
+written; the later entries each note their own verification.
 
 - **[45 CFR 164.506, eCFR](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-E/section-164.506)**
   — the treatment/payment/health care operations permission this module leans on hardest. Read
@@ -23,3 +24,37 @@ this page was written.
   excerpt deliberately left out (de-identification methodology, limited data sets, and
   research/marketing-adjacent provisions). Read (d)(4) and (d)(5) here if you want the rest of the
   minimum-necessary implementation specifications beyond (d)(1)-(3).
+
+- **[Treatment, Payment, & Health Care Operations](https://www.youtube.com/watch?v=ulV3x_v10Uc)**
+  (USGovHHSOCR, from oEmbed `author_name`) — the video embedded in this lesson, from HHS OCR's
+  own channel. General HIPAA training on the 164.506 permission, not blood-specific. Verified
+  embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 45 CFR 164.501, definitions](https://www.law.cornell.edu/cfr/text/45/164.501)**
+  — the section holding the numbered definition of "health care operations" that this lesson
+  flags as not independently fetched. Read it to close that gap yourself before treating the
+  deferral-coding review as confirmed. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[45 CFR 164.501, eCFR](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-E/section-164.501)**
+  — the same definitions section on the official eCFR, for the current text. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 45 CFR 164.502](https://www.law.cornell.edu/cfr/text/45/164.502)** — the full
+  general-rules section behind the 164.502(a) default-deny standard, including paragraph (b)
+  (minimum necessary) that 164.514(d) implements. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[Cornell LII: 45 CFR 164.524](https://www.law.cornell.edu/cfr/text/45/164.524)** — the full
+  right-of-access section, including the exceptions and denial provisions this lesson's light
+  treatment of (a)(1) and (b)(2) leaves out. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[CMS MLN Fact Sheet: HIPAA Basics for Providers](https://www.cms.gov/files/document/mln909001-hipaa-basics-providers-privacy-security-breach-notification-rules.pdf)**
+  — a short federal agency (CMS) fact sheet covering the Privacy, Security, and Breach
+  Notification Rules from a provider's point of view; a plain-language orientation to this whole
+  course. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Federal Register: HIPAA Privacy Rule To Support Reproductive Health Care Privacy](https://www.federalregister.gov/documents/2024/04/26/2024-08503/hipaa-privacy-rule-to-support-reproductive-health-care-privacy)**
+  — an official rulemaking document showing how HHS amends 164.502 and related Privacy Rule
+  provisions, useful as a sample of how the rule's text actually changes over time; a reason to
+  check current eCFR text rather than a dated snapshot. Not about blood establishments. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).

@@ -269,6 +269,34 @@ missing laptop changes this right or its clock — it's a standing obligation th
 independent of this incident, worth knowing is there, not a thread this incident pulls on
 directly.
 
+## See it in one picture
+
+This is the Brookfield extract's path through the Privacy Rule, using only the citations above: the default-deny standard, the one permission reasoned to fit, the authorization question that never engages, and the minimum-necessary test where the real finding lands. The dotted branches are the two connecting threads, not live questions for this incident.
+
+```{mermaid}
+flowchart TD
+    Q["Brookfield deferral-coding review:<br/>standing BECS template pulls a six-field extract"]
+    Q --> D{"164.502(a): default-deny.<br/>Which permission fits?"}
+    D --> TPO["164.506(a): health care operations<br/>(reasoned, 164.501 not verified)"]
+    TPO --> AUTH["164.508(a)(1): authorization not engaged<br/>for pulling the extract"]
+    AUTH --> MN{"164.514(d)(3)(i): routine, recurring<br/>disclosure scoped to the purpose?"}
+    MN -->|"3 fields needed: ID, determination + date, deferral code"| OK["Within the review's purpose"]
+    MN -->|"3 fields not needed: name, DOB, lifetime count"| F["Finding: likely fails minimum necessary,<br/>independent of the laptop's loss"]
+    D -.->|"separate door, not this incident"| FDA["164.512(b)(1)(iii): FDA-purpose disclosures<br/>(BPDR, tracking, recall/lookback)"]
+    D -.->|"standing right"| ACC["164.524: donor access, 30-day clock"]
+```
+
+## Watch it explained
+
+This is the HHS Office for Civil Rights (OCR), the agency that enforces the Privacy Rule, explaining treatment, payment, and health care operations, the permission door this lesson's extract has to fit through. It is general HIPAA training for covered entities, not blood-establishment-specific, so it doesn't address Lakeshore's deferral-coding review, BECS, or the minimum-necessary finding.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ulV3x_v10Uc"
+  title="Treatment, Payment, &amp; Health Care Operations" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector or reviewer would actually look for
 
 For the TPO/authorization question, a reviewer wouldn't ask "did anyone feel like this was fine"

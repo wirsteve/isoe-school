@@ -94,24 +94,24 @@ In progress / Done.
 | 43 | `grc-frameworks-and-risk-management` | `implement-and-assess-controls` | 86/87 | Done |
 | 44 | `grc-frameworks-and-risk-management` | `authorize-and-monitor` | 88/89 | Done |
 | 45 | `grc-frameworks-and-risk-management` | `poams-and-capas` | 90/91 | Done |
-| 46 | `healthcare-security-and-privacy` | `information-governance-in-a-covered-entity` | 93/94 | Not started |
-| 47 | `healthcare-security-and-privacy` | `the-hipaa-privacy-rule` | 95/96 | Not started |
-| 48 | `healthcare-security-and-privacy` | `security-rule-safeguards-and-part-11` | 97/98 | Not started |
-| 49 | `healthcare-security-and-privacy` | `breach-notification-and-dual-reporting` | 99/100 | Not started |
-| 50 | `healthcare-security-and-privacy` | `investigating-a-healthcare-data-incident` | 101/102 | Not started |
-| 51 | `vendor-and-third-party-risk-management` | `supplier-qualification-and-risk-tiering` | 104/105 | Not started |
-| 52 | `vendor-and-third-party-risk-management` | `reading-a-soc-2-report` | 106/107 | Not started |
-| 53 | `vendor-and-third-party-risk-management` | `reading-an-iso-27001-certificate` | 108/109 | Not started |
-| 54 | `vendor-and-third-party-risk-management` | `business-associate-agreements` | 110/111 | Not started |
-| 55 | `vendor-and-third-party-risk-management` | `vendor-change-notifications-and-your-own-change-control` | 112/113 | Not started |
-| 56 | `itsm-for-regulated-blood-services` | `itil-to-qse-crosswalk-change-and-problem` | 115/116 | Not started |
-| 57 | `itsm-for-regulated-blood-services` | `itil-to-qse-crosswalk-cmdb-and-continual-improvement` | 117/118 | Not started |
-| 58 | `itsm-for-regulated-blood-services` | `itil-to-grc-crosswalk` | 119/120 | Not started |
+| 46 | `healthcare-security-and-privacy` | `information-governance-in-a-covered-entity` | 93/94 | Done |
+| 47 | `healthcare-security-and-privacy` | `the-hipaa-privacy-rule` | 95/96 | Done |
+| 48 | `healthcare-security-and-privacy` | `security-rule-safeguards-and-part-11` | 97/98 | Done |
+| 49 | `healthcare-security-and-privacy` | `breach-notification-and-dual-reporting` | 99/100 | Done |
+| 50 | `healthcare-security-and-privacy` | `investigating-a-healthcare-data-incident` | 101/102 | Done |
+| 51 | `vendor-and-third-party-risk-management` | `supplier-qualification-and-risk-tiering` | 104/105 | Done |
+| 52 | `vendor-and-third-party-risk-management` | `reading-a-soc-2-report` | 106/107 | Done |
+| 53 | `vendor-and-third-party-risk-management` | `reading-an-iso-27001-certificate` | 108/109 | Done |
+| 54 | `vendor-and-third-party-risk-management` | `business-associate-agreements` | 110/111 | Done |
+| 55 | `vendor-and-third-party-risk-management` | `vendor-change-notifications-and-your-own-change-control` | 112/113 | Done |
+| 56 | `itsm-for-regulated-blood-services` | `itil-to-qse-crosswalk-change-and-problem` | 115/116 | Done |
+| 57 | `itsm-for-regulated-blood-services` | `itil-to-qse-crosswalk-cmdb-and-continual-improvement` | 117/118 | Done |
+| 58 | `itsm-for-regulated-blood-services` | `itil-to-grc-crosswalk` | 119/120 | Done |
 | 59 | `itsm-for-regulated-blood-services` | `building-an-inspection-ready-service-catalog-and-cmdb` | 121/122 | Done |
-| 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
-| 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
+| 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Done |
+| 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Done |
 
-**Next up: #46, `healthcare-security-and-privacy`/`information-governance-in-a-covered-entity`.** `fda-and-aabb-in-practice` (6/6) and `grc-frameworks-and-risk-management` (5/5) are fully retrofitted.
+**Retrofit complete: all 61 modules done (2026-11-11). There is no next retrofit module.** "Continue" now falls through to `create-course` steps 1–3; since `plans/curriculum.md` is also complete, the next work is only what the user names (or the optional follow-ups in the progress log).
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -499,3 +499,19 @@ module retrofit changes a course's own module list or description.
   FDA REdI 2020 drug inspections, Mike Chapple (RMF overview), Denise Tawwab (Categorize; Assess),
   Enterprise Security Architecture (Authorize), Optic Cyber (POA&M).
   Next: module 46, `healthcare-security-and-privacy`/`information-governance-in-a-covered-entity`.
+- 2026-11-11 — `healthcare-security-and-privacy` (5/5, #46–#50),
+  `vendor-and-third-party-risk-management` (5/5, #51–#55) and `itsm-for-regulated-blood-services`
+  (6/6, #56–#61) retrofitted. **Retrofit complete, 61/61.** Videos: HHS OCR (Security Rule risk
+  management; Treatment, Payment & Health Care Operations; HIPAA Security Rule), HHS (Security Rule
+  vs cyber-attacks, 2023 — swapped into `investigating-a-healthcare-data-incident` to avoid a
+  duplicate), JurisIQ attorney-led breach-notification training (added after the drafting agent
+  found no OCR breach video), Venminder, Worklifecyber (SOC 2), Pyramid Certifications (ISO 27001
+  SoA; IAF CertSearch video linked in resources), HIPAA Vault (BAAs), GMP Scenarios, Atlassian
+  (problem management), 1 World Training (ITIL configuration management), ICOR, InvGate, ERM Academy,
+  storytelling with data. hhs.gov returns 403 to automated checks, so OCR's own web pages aren't
+  linked; eCFR/Cornell/NIST used instead.
+  Optional follow-ups (only if the user asks): swap in better videos where the current one is weak —
+  `retention-across-record-types` (vendor sales piece), `validated-state-lifecycle-and-patching`
+  (generic patch management), `filing-a-biological-product-deviation-report` (deliberate reuse of
+  EtLmHnBuNJQ). Several resources intros now carry a stale "no new source fetched" sentence above
+  the added links (left as locked text).

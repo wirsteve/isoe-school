@@ -228,6 +228,48 @@ mature ITSM practice exists to capture. A CAPA process that absorbed every minor
 whether or not a real finding drove it, would dilute the one instrument built to prove a real gap
 actually got fixed. Keep them separate, and know, for any given idea, which one it belongs in.
 
+## See it in one picture
+
+The three crosswalks all start from the same system. The diagram below is this lesson's own
+eQMS scenario, not a generic ITSM chart: the CMDB entry with its blank qualification field, the
+service-catalog entry and scope statement that disagree about Fairview, and the lot/batch idea
+that either stays on the improvement register or becomes a CAPA depending on one question.
+
+```{mermaid}
+flowchart TD
+    E["eQMS: one system, described<br/>three ways in this lesson"]
+
+    E --> X1["Crosswalk 1: CMDB entry<br/>CI name, type, version, owner,<br/>sites, dependencies, relied-on-by"]
+    X1 --> Q{"Qualification/validation<br/>status field?"}
+    Q -->|"Not a standard CMDB field:<br/>left blank"| G1["Gap named: QSE 3 and BECS's<br/>validation lifecycle expect it<br/>-- filled in module 4"]
+
+    E --> X2["Crosswalk 2: service catalog entry<br/>(IT): document control at<br/>all three sites"]
+    E --> S2["Quality-system scope statement<br/>(Quality): document control at<br/>central site and Brookfield only"]
+    X2 --> M{"Do the two agree?"}
+    S2 --> M
+    M -->|"No: Fairview is on paper<br/>pending migration"| G2["Deliberate mismatch left open<br/>-- reconciled in module 4"]
+
+    E --> X3["Crosswalk 3: idea from the systems<br/>administrator: stop re-keying the<br/>lot/batch number three times"]
+    X3 --> R{"Did an audit, deviation, or<br/>nonconformance find a real gap?"}
+    R -->|"No: efficiency idea only"| CI["Continual improvement register<br/>owner, status, quarterly review"]
+    R -->|"Yes: a real transcription error<br/>was traced to the field"| CA["Opens as a CAPA: QSE 9<br/>root cause, action, effectiveness check"]
+```
+
+## Watch it explained
+
+This is a PeopleCert/Axelos-branded ITIL 4 training clip on the key concepts of service
+configuration management, published by a training provider rather than by Axelos or PeopleCert
+themselves. It covers CIs, the CMDB, and why configuration information matters. It is generic ITSM
+content with no blood-industry or validation angle, so the blank qualification field and the QSE 3
+mapping are this lesson's own work, not something the video shows.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/sAdlGl7dM38"
+  title="Key Concepts | Service Configuration Management | PeopleCert | Axelos | 1WorldTraining.com |" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an assessor or your CIO would actually look for
 
 Nobody auditing Lakeshore checks whether a system record is called a "CMDB entry" or an

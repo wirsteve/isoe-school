@@ -102,6 +102,17 @@ internal governance and contractual notice are different instruments, governed b
 documents, enforced in different ways. One lives inside the vendor's own ISMS. The other, if it
 exists at all, lives inside the contract Lakeshore signed.
 
+## Watch it explained
+
+The video below is a pharmaceutical-industry training explainer on supplier qualification, including quality agreements and change control. It isn't blood-specific, isn't about IT or device-management vendors, and doesn't mention Lakeshore or HIPAA. Watch it for the general idea that a supplier's change should reach you through a written agreement and then enter your own change control, then map that onto this module's reactive-versus-proactive distinction.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Xkg4bmOdsVk"
+  title="Pharma Supplier Qualification: Audits, Quality Agreements, Change Control & Supply Chain Controls" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## Citation decoder
 
 | Citation / term | How to read it | What it actually requires | In our scenario |
@@ -134,6 +145,24 @@ associate shall notify the covered entity in advance of any planned infrastructu
 sentence doesn't exist in 45 CFR Part 164 because HIPAA was never written to regulate a vendor's
 own change calendar — only its handling of PHI and its duty to report when that handling goes
 wrong.
+
+## See it in one picture
+
+This module's argument drawn as one picture: the quarterly email forces a single question, whether the vendor is reporting something that already went wrong or announcing something it plans to do, and only one of the two kinds of promise is currently in writing. Lakeshore's own change control and the vendor's ISO 27001 change-management domain both sit beside the gap without filling it.
+
+```{mermaid}
+flowchart TD
+    F["The one fact: eQMS quarterly access-review control<br/>implemented and documented, first cycle not yet run<br/>(from poams-and-capas)"]
+    F --> CIO["10:00 CIO briefing<br/>operational exposure, no new cost or schedule impact,<br/>risk-register line"]
+    F --> QC["2:00 exec quality council<br/>time-bound control gap, not a nonconformance, not a CAPA,<br/>AABB/FDA audit-trail framing"]
+    CIO --> FIX
+    QC --> FIX
+    FIX["Identical in both: owner (systems administrator),<br/>date (30 days from authorization),<br/>closure rule (clean result closes it)"]
+    FIX --> CHK{"Read only owner, date, closure rule<br/>across both records: do they match?"}
+    CHK -->|Yes| OK["Same story, worded for each audience"]
+    CHK -->|No| BAD["The mismatch itself becomes the finding"]
+    FIX --> TRIG["Date missed: authorization reopened,<br/>CIO hears the same day"]
+```
 
 ## What a reviewer would actually look for
 

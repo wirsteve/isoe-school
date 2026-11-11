@@ -192,6 +192,35 @@ rule never move.** Everything above and below those rows is a legitimate differe
 audience needs emphasized. Those three rows are not a place to exercise judgment about framing —
 they're the fixed facts that make both tellings the same story.
 
+## See it in one picture
+
+The diagram below is this module's own Tuesday: one fact from the POA&M entry, two differently worded briefings, and the three fixed rows both must carry unchanged, ending in the cross-check described next.
+
+```{mermaid}
+flowchart TD
+    F["The one fact: eQMS quarterly access-review control<br/>implemented and documented, first cycle not yet run<br/>(from poams-and-capas)"]
+    F --> CIO["10:00 CIO briefing<br/>operational exposure, no new cost or schedule impact,<br/>risk-register line"]
+    F --> QC["2:00 exec quality council<br/>time-bound control gap, not a nonconformance, not a CAPA,<br/>AABB/FDA audit-trail framing"]
+    CIO --> FIX
+    QC --> FIX
+    FIX["Identical in both: owner (systems administrator),<br/>date (30 days from authorization),<br/>closure rule (clean result closes it)"]
+    FIX --> CHK{"Read only owner, date, closure rule<br/>across both records: do they match?"}
+    CHK -->|Yes| OK["Same story, worded for each audience"]
+    CHK -->|No| BAD["The mismatch itself becomes the finding"]
+    FIX --> TRIG["Date missed: authorization reopened,<br/>CIO hears the same day"]
+```
+
+## Watch it explained
+
+This short explainer from ERM Academy, a professional training channel on enterprise risk management, separates a KPI (how a process is performing) from a KRI (how exposed you are to something going wrong), which is the choosing-the-right-measure instinct behind this module's translation. It is general ERM training, not blood-specific or tied to Lakeshore's POA&M, so treat it as vocabulary support, not as a source for anything this lesson cites.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/BMuP__lM4CY"
+  title="Key Performance Indicator (KPI) and Key Risk Indicator (KRI)" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an assessor or your CIO would actually look for
 
 Here's the check that actually catches a bad translation, and it's simpler than it sounds: **put

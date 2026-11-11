@@ -291,6 +291,42 @@ following the data instead. For a vendor whose migration tooling already raised 
 handling question, this clause is exactly the kind of thing worth confirming in writing now, before
 any future migration or offboarding event creates a second one.
 
+## See it in one picture
+
+This module's whole argument runs through two questions asked in order: does Lakeshore need a BAA at all, and if so, what does the regulation say the contract must contain. The diagram below is built only from this lesson's own scenario and the two quoted CFR sections.
+
+```{mermaid}
+flowchart TD
+    F["QA pulls the contract: commercial services agreement +<br/>thin Data Protection Addendum, no mention of HIPAA"]
+    F --> Q1{"Question 1: does the vendor create, receive,<br/>maintain, or transmit PHI on Lakeshore's behalf?"}
+    Q1 -->|"Case for maybe not: configures devices,<br/>never needs to read content"| N["Comfortable answer"]
+    Q1 -->|"Case against: telemetry, migration tooling,<br/>remote lock/wipe act on the data layer"| Y["Reasoned conclusion: plausibly yes, not certainly yes<br/>counsel/compliance must confirm"]
+    N -.->|"the trap this lesson works past"| Y
+    Y --> Q2{"Question 2: does the contract contain<br/>what the regulation requires?"}
+    Q2 --> S["164.314(a)(2)(i)(A)-(C): Security Rule terms"]
+    Q2 --> P["164.504(e)(2)(ii)(A)-(J): Privacy Rule ten-item checklist"]
+    S --> C["Reporting clause: 164.314(a)(2)(i)(C) / 164.504(e)(2)(ii)(C)<br/>highest-value clause for this vendor"]
+    P --> C
+    P --> D["(D) subcontractor flow-down"]
+    P --> J["(J) return or destroy at termination"]
+    C --> M["Dated, reasoned memo + clause-by-clause walk<br/>kept in the vendor's file"]
+    D --> M
+    J --> M
+```
+
+Notice the "comfortable answer" branch loops back into the reasoned conclusion rather than ending the analysis, and that the reporting clause is the one place both CFR sections converge.
+
+## Watch it explained
+
+This is a general HIPAA Vault explainer on business associate agreements. HIPAA Vault is a commercial HIPAA-compliance and hosting company, so treat it as industry training content, not regulator guidance. It is not specific to blood centers, device-management platforms, or Lakeshore, and it won't walk the regulation clause by clause the way this lesson does.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OfVaR6VH2fQ"
+  title="Mastering Business Associate Agreements: your Complete Guide to HIPAA Compliance" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector would actually look for
 
 Nobody from HHS shows up asking to see the SOC 2 report again. What they ask for here is narrower and

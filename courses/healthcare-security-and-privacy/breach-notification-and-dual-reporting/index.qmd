@@ -374,6 +374,46 @@ credibility on. The honest answer is simpler and more useful: know both tests we
 run each one on its own facts, recognize when only one applies, and don't file something FDA
 never asked for just to look thorough.
 
+## See it in one picture
+
+This is the module's own determination, start to finish: one lost laptop, one presumption, four factors, and the two separate reporting tests it runs through.
+
+```{mermaid}
+flowchart TD
+    L["Laptop reported missing —<br/>discovery, 60-day clock starts, 164.404(a)(2)"]
+    P["Presumption of breach unless Lakeshore demonstrates<br/>low probability of compromise — 164.402(2), burden on Lakeshore 164.414(b)"]
+    L --> P
+    P --> F1["Factor 1: name + DOB + eligibility + deferral code<br/>~212 donors — weighs against"]
+    P --> F2["Factor 2: recipient unknown — does not favor"]
+    P --> F3["Factor 3: encryption status 'not reported' —<br/>unresolved, pivotal"]
+    P --> F4["Factor 4: some mitigation, device not recovered —<br/>one significant gap"]
+    F1 --> D{"Presumption rebutted today?"}
+    F2 --> D
+    F3 --> D
+    F4 --> D
+    D -->|"No — treated as reportable breach, provisionally"| N["Individuals: all ~212 donors, 164.404, 60 days from discovery"]
+    N --> M["Media 164.406: not triggered — under the threshold"]
+    N --> H["HHS 164.408(c): under-500 annual log, 60 days after calendar year end"]
+    D --> B{"606.171(b): deviation affecting a distributed product?"}
+    B -->|"No — clean donor population"| X["No BPDR filed — 45-day clock never starts"]
+```
+
+Only the HIPAA branch fires: its clock is running, and the BPDR test never engages.
+
+## Watch it explained
+
+This is legal-training content from JurisIQ Learning Center, an attorney-led presentation on the
+HIPAA Breach Notification Rule aimed at managers. No HHS or OCR video on breach notification itself
+could be found. It is general HIPAA training, not blood-specific, and it does not cover the FDA side
+of dual reporting, so the 606.171 branch in the diagram above is this lesson's own.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/JwIIP4uBiyA"
+  title="HIPAA Breach Notification Rule (for managers)" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector or reviewer would actually look for
 
 An OCR investigator reviewing this incident wouldn't start by asking whether Lakeshore

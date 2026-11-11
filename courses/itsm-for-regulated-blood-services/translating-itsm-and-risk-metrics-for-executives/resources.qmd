@@ -30,3 +30,39 @@ doesn't redevelop.
   module 4, which first showed that a self-identified, actively-managed gap grades differently
   than one a reviewer finds cold. This module's exec-quality-council translation leans directly on
   that same point.
+
+- **[Key Performance Indicator (KPI) and Key Risk Indicator (KRI)](https://www.youtube.com/watch?v=BMuP__lM4CY)**
+  (ERM Academy, from oEmbed `author_name`) — the video embedded in this lesson. A professional
+  enterprise-risk-management training channel explaining how a KPI differs from a KRI. General ERM
+  content, not blood-specific; use it to sharpen which kind of measure you are actually handing an
+  executive. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-55 Vol. 1, Measurement Guide for Information Security: Identifying and Selecting
+  Measures](https://csrc.nist.gov/pubs/sp/800/55/v1/final)** — NIST's own guidance on choosing
+  security and risk measures that support decisions. Read it when deciding which measure belongs on
+  an executive page at all, before worrying about wording. Not cited by this lesson; background
+  only. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[DORA: software delivery performance metrics](https://dora.dev/guides/dora-metrics-four-keys/)**
+  — the DORA research program's definitions of change failure rate, recovery time, and related
+  measures, the closest public relative of "change success rate" and MTTR. Read it to see how a
+  recognized body defines these terms before you report them upward. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Atlassian: Common incident management metrics](https://www.atlassian.com/incident-management/kpis/common-metrics)**
+  — a practitioner explainer showing that MTTR is used for several different intervals (repair,
+  respond, resolve), so you must define it before an executive reads it. Vendor-published, so read
+  it as industry explainer, not standard. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Atlassian: What is an SLA?](https://www.atlassian.com/itsm/service-request-management/slas)**
+  — a plain-language explainer of service level agreements, useful for separating a commitment from
+  a measurement before turning an SLA figure into an executive statement. Vendor-published
+  explainer, not a standard. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[COSO: Enterprise Risk Management](https://www.coso.org/guidance-erm)** — the Committee of
+  Sponsoring Organizations' ERM guidance page, the professional-body home for thinking about risk
+  appetite and how risk is reported to leadership. Background for why an executive wants risk
+  posture, not raw counts. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NCSC: Cyber Security Toolkit for Boards](https://www.ncsc.gov.uk/collection/board-toolkit)** — the
+  UK National Cyber Security Centre's guidance on what boards need to hear about cyber risk. UK
+  government, not U.S. regulatory; read it for the framing of what executives can act on. Verified loading via `curl` on 2026-11-11 (HTTP 200).
