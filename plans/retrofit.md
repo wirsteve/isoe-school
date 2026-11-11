@@ -99,7 +99,7 @@ In progress / Done.
 | 48 | `healthcare-security-and-privacy` | `security-rule-safeguards-and-part-11` | 97/98 | Done |
 | 49 | `healthcare-security-and-privacy` | `breach-notification-and-dual-reporting` | 99/100 | Done |
 | 50 | `healthcare-security-and-privacy` | `investigating-a-healthcare-data-incident` | 101/102 | Done |
-| 51 | `vendor-and-third-party-risk-management` | `supplier-qualification-and-risk-tiering` | 104/105 | Not started |
+| 51 | `vendor-and-third-party-risk-management` | `supplier-qualification-and-risk-tiering` | 104/105 | Done |
 | 52 | `vendor-and-third-party-risk-management` | `reading-a-soc-2-report` | 106/107 | Not started |
 | 53 | `vendor-and-third-party-risk-management` | `reading-an-iso-27001-certificate` | 108/109 | Not started |
 | 54 | `vendor-and-third-party-risk-management` | `business-associate-agreements` | 110/111 | Not started |

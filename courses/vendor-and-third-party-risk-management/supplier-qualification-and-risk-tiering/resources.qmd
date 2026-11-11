@@ -7,7 +7,7 @@ This module cites no AABB Standards text — QSE (Quality System Essential) 4 is
 themed only, the same handling this curriculum gives every AABB Standard. The links below
 are AABB's own public pages describing the framework this module's tiering scheme sits
 under, plus the internal-course link back to the incident this module's running example
-reuses. All were checked and loading at the time this page was written.
+reuses, a video, and several outside references on supplier and supply-chain risk. All were checked and loading at the time this page was written.
 
 - **[AABB: Updated Quality Systems Essentials](https://www.aabb.org/standards-accreditation/standards/about-aabb-standards/updated-quality-systems-essentials)**
   — AABB's own public page confirming the ten-element Quality System Essentials structure
@@ -30,3 +30,34 @@ reuses. All were checked and loading at the time this page was written.
   question were all first established. Read it (or re-read it) before module 2 — this
   course's SOC 2 and ISO 27001 modules assume you remember exactly what that investigation
   did and didn't resolve.
+
+- **[Risk-Based Vendor Due Diligence: Identifying the Proper Scope, Scale, and Documents Webinar](https://www.youtube.com/watch?v=e4wBnhqiS14)**
+  (Venminder, from oEmbed `author_name`) — the video embedded in this lesson. A third-party
+  risk management company's training on matching due-diligence depth to a vendor's risk. It is
+  general industry training, not blood- or FDA-specific. Verified embeddable via YouTube oEmbed
+  on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-161 Rev. 1: Cybersecurity Supply Chain Risk Management Practices for Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/161/r1/final)**
+  — NIST's publication page for its supply-chain risk guidance, covering how organizations manage
+  risk from their suppliers and the systems and services they depend on. Read it for a government-grade version of
+  the same "how much scrutiny does this supplier earn" reasoning; it is not an AABB or FDA
+  requirement. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Contract Manufacturing Arrangements for Drugs: Quality Agreements Guidance for Industry](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/contract-manufacturing-arrangements-drugs-quality-agreements)**
+  — FDA's own guidance page on written quality agreements between a manufacturer and its
+  suppliers or contractors. It is drug-focused, not blood-specific, but it is the clearest FDA
+  explanation of what a written quality agreement is for, the document the Medium tier in this
+  lesson relies on "where relevant." Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.65, Supplies and reagents](https://www.law.cornell.edu/cfr/text/21/606.65)**
+  — the blood-establishment regulation on the supplies and reagents used in collection, testing
+  and processing. Read it to see the federal text behind why a reagent supplier with no data
+  access still bears on a regulated process. It is not quoted or cited in the lesson itself, so
+  read the current text there rather than relying on this summary. Verified loading
+  via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 211.84, Testing and approval or rejection of components, drug product containers, and closures](https://www.law.cornell.edu/cfr/text/21/211.84)**
+  — a drug-GMP counterpart showing how a regulated manufacturer is expected to qualify and
+  verify what its suppliers deliver. It applies to finished-drug manufacturers, not blood
+  establishments, so use it as a comparison point only. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
