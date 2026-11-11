@@ -93,6 +93,21 @@ Five stages, in order, and skipping one breaks the ones after it — you can't a
 whose impact was never assessed, and you can't verify a change that was never actually
 approved as a defined, documented thing.
 
+The video below walks the same five-stage discipline from the broader pharmaceutical-GMP
+(current good manufacturing practice) side of the industry — request, impact and risk
+assessment, approval, implementation, and verification — rather than blood-specifically. It
+never mentions AABB, 606.100(b), or Lakeshore; watch it for the same shape this module teaches,
+argued from outside the blood-establishment lens, and notice how closely "GMP change control"
+and the regulated change discipline below line up even though one is written for drug
+manufacturing and the other for a blood center's document-control fix.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/yu9IoENaTk4"
+  title="Change Control in Pharmaceuticals | Management Of Change l GMP Change Control Explained" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 **1. Change request.** What's changing, why, and how far it reaches. For this CAPA's fix:
 *Lakeshore's document-control process for satellite-site controlled paper copies changes from
 an unverified "mail it and assume it arrived" model to a tracked distribution list, with a
@@ -158,6 +173,28 @@ signed and dated, and any site that didn't acknowledge within the expected windo
 effectiveness check from module 3 (zero sites holding a superseded revision at the next
 document-control audit). Verification proves the *mechanism* works; the CAPA's effectiveness
 check proves the *problem* is actually gone. You need both, and they check different things.
+
+## See it in one picture
+
+The same five stages above, applied to nothing but this CAPA's own fix — no new change, no
+different shape, just the request-to-verification process run start to finish on the
+document-control-distribution change your QA brought you.
+
+```{mermaid}
+flowchart TD
+    REQ["1. Change request<br/>Satellite-site document control moves from<br/>'mail it and assume it arrived' to a tracked<br/>distribution list with signed, dated<br/>acknowledgment of receipt from every site lead.<br/>Trigger: the Owen Pruitt/Brookfield CAPA.<br/>Scope: every satellite site holding a downtime binder."]
+    IMP["2. Impact and risk assessment<br/>Likelihood, severity, detectability of a missed<br/>acknowledgment. Who else must weigh in: Quality<br/>(owns the document-control process), site<br/>operations (new site-lead duty), IT (the system<br/>the distribution list runs on). Does this touch<br/>anything needing validation?"]
+    APP["3. Approval — dual, both required<br/>Quality approves as owner of the<br/>document-control process and its<br/>compliance outcome.<br/>IT (you or delegate) approves as<br/>owner of the system the mechanism runs on."]
+    IMPL["4. Implementation<br/>Every site lead receives and understands<br/>the new requirement; every current controlled<br/>document reaches every site —<br/>training and issuance complete BEFORE<br/>the change's effective date."]
+    VER["5. Verification<br/>Issue the next real document revision through<br/>the new process. Confirm, with a dated record,<br/>the distribution list generated correctly,<br/>every acknowledgment came back signed and dated,<br/>and any non-responding site was flagged —<br/>not silently missed."]
+
+    REQ --> IMP --> APP --> IMPL --> VER
+```
+
+Notice there's no fork in this one, unlike the CAPA diagram's corrective/preventive split —
+this change has one path, and each stage is a precondition for the next. A record missing any
+single box is exactly the gap an assessor reads as a change that skipped a step, not a change
+that happened to need fewer steps.
 
 ## Citation decoder
 
