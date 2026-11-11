@@ -64,7 +64,17 @@ match the ceremony to the stakes, and be able to say why you picked the level yo
 ## ICH Q9(R1)'s process, in plain English
 
 Four stages, run as a deliberate, iterative sequence — not a one-time checklist you fill out and
-file away.
+file away. The video below is a general pharma-industry walkthrough of ICH Q9(R1) itself — not
+blood-specific, and it won't mention Lakeshore or tracked distribution — but it explains this exact
+guideline revision directly. Watch it for the four-stage lifecycle and the formality point, then
+come back to see both applied to the tracked-distribution process below.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6twBwRyAZf4"
+  title="ICH Q9(R1): Quality Risk Management​" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
 
 **1. Risk Assessment**, broken into three steps:
 
@@ -234,6 +244,46 @@ impact assessment: "we talked it through" isn't an artifact an assessor can read
 document-control audit interval — the cadence module 3 set for the CAPA's own effectiveness check
 — or immediately if either flagged failure mode occurs before then. A risk assessment that never
 gets revisited is this module's own named trap, below.
+
+## See it in one picture
+
+The four-stage lifecycle above, run against this module's own worked example: the tracked-
+distribution FMEA's five failure modes don't all take the same path out of Risk Evaluation. The
+two that clear the RPN 40 threshold (60 and 50) go to risk reduction; the three that don't (30, 25,
+16) go to risk acceptance — and both paths still have to pass through Risk Communication and land
+on a Risk Review trigger, not stop once a decision is made.
+
+```{mermaid}
+flowchart TD
+    subgraph RA["1. Risk Assessment"]
+        ID["Risk Identification<br/>Name every plausible failure mode<br/>for the tracked-distribution process"]
+        AN["Risk Analysis<br/>Score likelihood x severity x detectability<br/>for each failure mode -&gt; RPN"]
+        EV["Risk Evaluation<br/>Compare each RPN against the<br/>stated threshold (here: RPN 40)"]
+        ID --> AN --> EV
+    end
+
+    REDUCE["Risk Reduction<br/>Add or strengthen a control<br/>(RPN 60: turnover, no handoff;<br/>RPN 50: binder not swapped)"]
+    ACCEPT["Risk Acceptance<br/>Documented, owned decision that<br/>residual risk is tolerable<br/>(RPN 30, 25, 16)"]
+    RCTRL["2. Risk Control"]
+    COMM["3. Risk Communication<br/>Scored table and decisions go to<br/>Quality and the system owner, in writing"]
+    REV["4. Risk Review<br/>Reassess on a defined trigger:<br/>standing audit interval, or either<br/>flagged failure mode occurring"]
+
+    EV -->|RPN at or above threshold| REDUCE
+    EV -->|RPN below threshold| ACCEPT
+    REDUCE --> RCTRL
+    ACCEPT --> RCTRL
+    RCTRL --> COMM --> REV
+    REV -.->|defined trigger: interval, new event,<br/>or process change| RA
+
+    classDef reduce fill:#fde2e2,stroke:#b33a3a,color:#7a1f1f
+    classDef accept fill:#dff5e1,stroke:#2f8f4e,color:#1f5c33
+    class REDUCE reduce
+    class ACCEPT accept
+```
+
+Same shape every time the process runs, whatever decision it's reasoning through: assess, decide
+reduce-or-accept, write it down, and come back on a real trigger — the step an informal gut call,
+like the four-minute version your QA described at your desk, almost never gets.
 
 ## A second tool for a different question: risk ranking and filtering
 
