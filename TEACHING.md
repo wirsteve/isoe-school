@@ -34,6 +34,16 @@ finish on a phone in one sitting.
    versus guidance. Favor the fuller quote over the shortest one that technically covers
    the point — this is where the learner reads the regulator's own words, so give them
    enough to actually parse the sentence structure, not just a fragment.
+   **Before writing a second or third worked example yourself to add depth, check
+   whether a trustworthy external source already covers that exact angle well** (an
+   official FAQ, a professional body's explainer, a well-regarded industry walkthrough).
+   If one exists and is verified to load, link it — in the lesson body where it's
+   relevant, not just buried in resources.qmd — instead of writing a new example from
+   scratch. The goal is a well-curated lesson that points to the best existing
+   explanation of a sub-point, not a lesson that re-derives everything itself. Write new
+   original material only for what's actually specific to Lakeshore's scenario or to
+   this curriculum's own continuity — the parts nothing else on the internet could cover
+   because they're about this fictional blood center, not generic regulatory concepts.
 6. **See it in one picture.** A diagram — built with Quarto's native Mermaid support
    (` ```{mermaid} `) — showing the specific workflow, decision, or relationship this
    lesson's rule governs, using this lesson's own scenario (not a generic textbook
@@ -73,28 +83,40 @@ finish on a phone in one sitting.
    necessarily every lesson, but don't let every question resolve to "yes, cite the rule."
 12. **Where this goes next.** One or two sentences linking forward to the next lesson.
 
-## Resources pages
+## Resources pages — the priority is curating, not authoring
 
-Each module also gets a richer `resources.qmd`: **4–8** external links, each verified to
-load (`curl` the URL, don't assume). Prefer primary sources (eCFR, FDA, AABB public pages,
-ICCBBA, NIST) but also include, where genuinely useful: the video(s) embedded in the
-lesson (with their verification method noted — see
-`.claude/course-authoring/video-sourcing.md`), a second video or reading that goes deeper
-than the lesson needed to for anyone who wants more, and links back to any prior module
-this lesson built on. Say what each link is for and when to use it — a resources page is
-a curated reading/watching list, not a bibliography dump. If a genuinely good video
-couldn't be found or verified for this module, say that plainly here too, the same way
-this curriculum already discloses an unreachable ISO catalogue page or a blocked eCFR
-mirror.
+Each module also gets a richer `resources.qmd`: **6–10** external links, each verified to
+load (`curl` the URL, don't assume). This page is where the lesson leans on the wider
+internet instead of re-explaining everything itself — treat finding good links as at
+least as much of the job as writing lesson prose, not an afterthought at the end.
+Actively search for, not just passively accept: the official primary source (eCFR, FDA,
+AABB public pages, ICCBBA, NIST), a well-regarded explainer or walkthrough from a
+professional body or recognized publication that covers a sub-topic better or in more
+depth than this lesson needs to, a practical tool or calculator if one genuinely exists
+for the topic, the video(s) embedded in the lesson (with verification method noted — see
+`.claude/course-authoring/video-sourcing.md`), and links back to any prior module this
+lesson built on. Say what each link is for and when to use it — a resources page is a
+curated reading/watching list a learner would actually work through, not a bibliography
+dump and not padding. If a genuinely good video or link couldn't be found or verified for
+this module, say that plainly, the same way this curriculum already discloses an
+unreachable ISO catalogue page or a blocked eCFR mirror — an honest gap beats a forced or
+mediocre link every time.
 
 ## Style
 
 - Write for reading on a phone. Keep paragraphs short. Put tables only where the spine
   requires them, and diagrams only where step 6 calls for one. Target length: roughly
-  **3,500–6,000 words** for the whole lesson page's prose — enough to actually teach in
-  depth, with real worked examples and more than one angle on the harder points, not so
-  much it becomes a slog. (This is prose only; diagrams, tables, and embedded video are
-  on top of this target, not counted against it.)
+  **2,500–4,500 words** for the whole lesson page's prose — enough to actually teach the
+  scenario and this curriculum's own continuity in depth, without re-deriving material a
+  good external link already covers. Don't pad toward the top of this range by writing
+  another self-invented worked example when a well-sourced link would serve the learner
+  better and cost nothing to maintain. (This is prose only; diagrams, tables, and
+  embedded video/links are on top of this target, not counted against it.)
+- Prefer linking a trustworthy existing source over writing new explanatory prose,
+  anywhere a sub-point isn't specific to Lakeshore's own scenario. The curriculum's job
+  is to teach the scenario, make the regulatory reasoning concrete, and curate the best
+  already-existing explanations of the general concepts underneath — not to be the sole
+  source of everything a learner reads.
 - Define every acronym on first use in every lesson (BECS, QSE, CAPA, GAMP…).
 - Be direct. No filler, no pep talk, no "in this lesson we will."
 - Always keep regulation, guidance, standard (AABB), and industry practice (GAMP 5)
