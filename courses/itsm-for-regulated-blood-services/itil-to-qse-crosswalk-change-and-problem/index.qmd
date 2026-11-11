@@ -169,6 +169,58 @@ AABB's framework doesn't treat "we're tracking it" as equivalent to "we proved i
 That's not ITIL being sloppy. It's two frameworks built for different stakes setting different
 finish lines, and the regulated one is the stricter of the two.
 
+## See it in one picture
+
+Both crosswalks in this lesson run on the same two scenarios, and the diagram below is just
+those scenarios and their stages laid out together: the inventory-system patch walked through
+change enablement and change control, and the recurring lockouts walked through problem
+management and CAPA. The two spots to watch are where Quality's required approval sits, and
+where CAPA's effectiveness check can send the work back to root cause analysis.
+
+```{mermaid}
+flowchart TD
+    P["Vendor security patch to the inventory-tracking system —<br/>'standard change, low risk'"]
+    P --> Q{"What does this system drive?<br/>Could it put a controlled process<br/>out of a compliant state?"}
+
+    subgraph Change["Crosswalk 1: change enablement to change control"]
+        direction TB
+        C1["RFC / change request"] --> C2["Risk and impact assessment /<br/>impact and risk assessment"]
+        C2 --> C3{"CAB authorization /<br/>approval"}
+        C3 -->|"Quality is a required approver,<br/>not one vote"| C4["Implementation —<br/>staff told before effective date"]
+        C4 --> C5["PIR / verification —<br/>dated evidence expiration-date logic,<br/>search, reporting still work"]
+    end
+
+    Q -->|"Yes: write it up as a change"| C1
+
+    L["Recurring mid-shift lockouts at one satellite site,<br/>closed each time with a password reset"]
+
+    subgraph Problem["Crosswalk 2: problem management to CAPA"]
+        direction TB
+        K1["Root cause analysis"] --> K2["Known-error record: problem,<br/>workaround, root cause (KEDB)"]
+        K2 --> K3["Corrective action + preventive action"]
+        K3 --> K4{"Effectiveness check:<br/>criterion, window, data source,<br/>failure definition set in advance"}
+        K4 -->|"Passes"| K5["Close"]
+        K4 -->|"Fails"| K1
+    end
+
+    L --> K1
+    K2 -.->|"ITIL can leave the workaround<br/>open indefinitely; CAPA cannot"| K4
+```
+
+## Watch it explained
+
+This is a short product walkthrough from Atlassian of how problem management is handled inside
+one vendor's service-management tool, so expect ITIL vocabulary and tool screens rather than
+anything blood-specific. It says nothing about CAPA or Quality's role, which is this lesson's own
+contribution; use it to see the problem-record side of the second crosswalk in practice.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/B6zA8MkJ7Ew"
+  title="Problem management features in Jira Service Management" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an assessor or your CIO would actually look for
 
 Nobody auditing Lakeshore checks whether you call this process "change enablement" or "change

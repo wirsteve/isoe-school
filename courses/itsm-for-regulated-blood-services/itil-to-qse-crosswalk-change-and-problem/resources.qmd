@@ -7,7 +7,7 @@ This module introduces no new regulation, standard, or framework, and no new sou
 fetched for it. Its entire job is crosswalking ITIL (Information Technology Infrastructure
 Library) vocabulary — the learner's own professional background, never itself cited to a
 specific AXELOS/PeopleCert publication anywhere in this curriculum — onto two mechanics
-`quality-system-essentials` already built and locked. The two links below are the direct
+`quality-system-essentials` already built and locked. The first two links below are the direct
 inputs this module maps against; read either one for the actual process mechanics and
 citations, which this module deliberately doesn't redevelop.
 
@@ -29,3 +29,43 @@ citations, which this module deliberately doesn't redevelop.
   technique (5 Whys), the four required pieces of a real effectiveness check, and the three
   possible closure outcomes (close, extend, reopen) this lesson references but doesn't
   redevelop.
+
+- **[Problem management features in Jira Service Management](https://www.youtube.com/watch?v=B6zA8MkJ7Ew)**
+  (Atlassian, from oEmbed `author_name`) — the video embedded in this lesson. A vendor's tool
+  walkthrough of problem records, useful for seeing ITIL's problem-management side of the second
+  crosswalk in practice. It is a product demo, not blood- or CAPA-specific. Verified embeddable via
+  YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[Change enablement in ITIL 4 — AWS Well-Architected, Change Enablement in the
+  Cloud](https://docs.aws.amazon.com/wellarchitected/latest/change-enablement-in-the-cloud/change-enablement-in-itil4.html)**
+  — a cloud provider's plain-language summary of the ITIL 4 change enablement practice (assessing
+  risk, authorizing, scheduling). Read it for the ITIL side of crosswalk 1 stated by someone other
+  than this lesson. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Change Enablement – Change Management in ITIL 4 (itsm.tools)](https://itsm.tools/change-enablement/)**
+  — an industry explainer on what shifted from ITIL v3's change management to ITIL 4's change
+  enablement and what that looks like day to day, including the role of the change authority. Good
+  background for the CAB-versus-required-approver contrast. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[Atlassian: What is change management in ITSM?](https://www.atlassian.com/itsm/change-management)**
+  — an industry explainer on change types and approval flows in IT service management. Read it to
+  see how an ordinary IT shop defines "standard" versus "normal" changes, the exact label this
+  lesson's systems administrator reached for. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Atlassian: Problem Management in ITIL](https://www.atlassian.com/itsm/problem-management)**
+  — an industry explainer on the problem-management process, root cause identification, and best
+  practices. Read it for the ITIL view of known errors and workarounds before comparing it with
+  CAPA's stricter closure standard. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Splunk: IT/ITIL Problem Management](https://www.splunk.com/en_us/blog/learn/problem-management.html)**
+  — a second industry explainer on problem management, incident versus problem, and the known
+  error database. Useful as an independent cross-check on the vocabulary used in crosswalk 2.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-128: Guide for Security-Focused Configuration Management of Information
+  Systems](https://csrc.nist.gov/pubs/sp/800/128/upd1/final)** — a U.S. government publication on
+  managing and controlling configuration changes to information systems with security in mind.
+  Not blood-specific and not part of this lesson's crosswalk; read it if you want a public,
+  government-authored view of change control for IT systems. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
