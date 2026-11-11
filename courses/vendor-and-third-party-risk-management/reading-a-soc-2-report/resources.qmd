@@ -6,8 +6,8 @@ order: 107
 This module cites no AICPA text — SOC 2's structure (Type I/Type II, the five Trust Services
 Criteria, CUECs, bridge letters) is named and described only, the same handling this curriculum
 gives every paid, proprietary framework (ISO 31000, ISO 19011, GAMP 5). The links below are
-AICPA's own public overview pages about the SOC 2 suite, plus the internal-course link back to
-module 1. All were checked with `curl` and returned a live page at the time this page was written;
+AICPA's own public overview pages about the SOC 2 suite, a video, several professional reading
+guides, plus the internal-course link back to module 1. All were checked with `curl` and returned a live page at the time this page was written;
 AICPA's site is a JavaScript-rendered application, so these links are verified as reachable, live
 AICPA pages about SOC 2 — not as a source of quotable text, which this curriculum has never
 fetched or read.
@@ -29,3 +29,29 @@ fetched or read.
   system criticality, access level, blast radius) this module builds directly on. Read it first
   if you haven't, or re-read it to recall exactly why this vendor earned the scrutiny a SOC 2
   report review represents.
+
+- **[AICPA & CIMA: System and Organization Controls (SOC) suite of services](https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services)**
+  — AICPA's own overview of the full SOC family (SOC 1, 2, 3 and others), useful for telling
+  which report a vendor actually handed you. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[How To Read SOC 2 TYPE 2. Vendor Assessment. SOC Reports. WorkLifeCyber](https://www.youtube.com/watch?v=GsMxisYYShA)**
+  (Worklifecyber, from oEmbed `author_name`) — the video embedded in this lesson: a practitioner
+  walkthrough of reading a Type II report during a vendor assessment. Industry training content,
+  not AICPA guidance, and not blood-industry-specific. Verified embeddable via YouTube oEmbed on
+  2026-11-11 (HTTP 200).
+
+- **[SANS Institute: An Expert's Guide to Reviewing SOC 2 Reports](https://www.sans.org/blog/expert-guide-reviewing-soc2-reports)**
+  — a well-known security-training organization's guide to what to look for when reading a vendor's
+  report. Read it for a second opinion on scope, exceptions, and the customer-side controls.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Compass IT Compliance: How to Read a SOC 2 Report, a Section-by-Section Guide](https://www.compassitc.com/blog/how-to-read-a-soc-2-report-a-section-by-section-guide)**
+  — an audit-firm walkthrough covering the auditor's opinion, system description, controls testing,
+  and CUECs in report order. Useful for the parts of a report this lesson names but doesn't
+  tour, such as how the auditor's opinion and listed exceptions relate. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[Fractional CISO: How to Read A SOC 2 Report](https://fractionalciso.com/how-to-read-a-soc-2-report/)**
+  — a practitioner explainer on key takeaways when reviewing a report as a customer. Vendor-published
+  commentary, so use it as a cross-check, not an authority. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
