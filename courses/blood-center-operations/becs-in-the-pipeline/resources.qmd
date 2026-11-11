@@ -71,3 +71,12 @@ links below use verified-loading mirrors of the same official text.)
   this lesson names but deliberately doesn't teach — that's Track 3's (`csv-and-becs`) job. Use
   this to see GAMP 5 as ISPE itself describes it, not a secondhand summary. Verified loading via
   `curl` on 2026-11-11 (HTTP 301 → 200 on the redirected URL).
+
+## Keep learning
+
+Not official sources — good places to learn more about validating and changing systems that run a blood center, and the CISSP view of change control.
+
+- **[Patching and Change Management in CISSP Domain 7: A Deep Dive](https://destcert.com/resources/patching-change-management-mindmap-cissp-domain-7/)** (Destination Certification, commercial CISSP training) — a mind-map walkthrough of change and patch management. Supports **CISSP Domain 7 (Security Operations)**; apply it to the OS-patch debate in the lesson. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Keeping Configuration Management Simple](https://www.isc2.org/insights/2025/10/keeping-configuration-management-simple)** (ISC2 Insights) — baselines, drift, and risk-based configuration control from the CISSP certifying body. Also **CISSP Domain 7**; a good vocabulary bridge between IT change control and validation. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Blood Establishment Computer Systems Must be Properly Validated, FDA Guidance Says](https://www.raps.org/resource/blood-establishment-computer-systems-must-be-prope.html)** (RAPS) — a trade-press summary of the FDA BECS validation guidance's outline: risk assessment, plan, report, revalidation after change. Secondary summary, so read the guidance itself for any requirement. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Blood Establishment archive](https://www.ofnisystems.com/tag/blood-establishment/)** (Ofni Systems, a commercial validation consultancy — vendor content) — articles on validating computer systems in blood establishments. Treat as practitioner opinion, not authority. Verified loading via `curl` on 2026-11-11 (HTTP 200).
