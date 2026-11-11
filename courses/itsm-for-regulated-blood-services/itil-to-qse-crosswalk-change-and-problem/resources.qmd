@@ -69,3 +69,14 @@ citations, which this module deliberately doesn't redevelop.
   Not blood-specific and not part of this lesson's crosswalk; read it if you want a public,
   government-authored view of change control for IT systems. Verified loading via `curl` on
   2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about change enablement, problem management and blameless learning.
+
+- **[DORA: Streamlining change approval](https://dora.dev/capabilities/streamlining-change-approval/)** (DORA / Google Cloud research program) — research-backed argument for lightweight, peer-reviewed change approval over heavy committees. A useful counterpoint when you design how much review a change really needs. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Google SRE: Blameless Postmortem for System Resilience](https://sre.google/sre-book/postmortem-culture/)** (Google SRE book) — the classic chapter on learning from failures without blaming people. Good background for the problem-management and root-cause side of this lesson. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[How to run a blameless postmortem](https://www.atlassian.com/incident-management/postmortem/blameless)** (Atlassian, vendor content) — a practical, step-by-step guide to running the review meeting and writing it up. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[What Is a CAB? Change Advisory Board Explained](https://www.atlassian.com/itsm/change-management/change-advisory-board)** (Atlassian, vendor content) — plain-English overview of what a change advisory board does and who sits on it. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CISSP Domain 7 Review / Mind Map (4 of 6) | Patching & Change Management](https://www.youtube.com/watch?v=xX4U6Lz82Bk)** (Destination Certification) — a visual CISSP review of change and patch management; supports CISSP Domain 7 (Security Operations). Verified via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
