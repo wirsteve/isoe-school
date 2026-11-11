@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #35, `fda-and-aabb-in-practice`/`fda-inspection-authority-and-outcomes`.** `data-integrity-and-records` is fully retrofitted, 6/6.
+**Next up: #46, `healthcare-security-and-privacy`/`information-governance-in-a-covered-entity`.** `fda-and-aabb-in-practice` (6/6) and `grc-frameworks-and-risk-management` (5/5) are fully retrofitted.
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -490,3 +490,12 @@ module retrofit changes a course's own module list or description.
   sales piece; no regulator video on long-term readability found; replace if a better one turns up),
   ICCBBA (ISBT 128 and traceability).
   Next: module 35, `fda-and-aabb-in-practice`/`fda-inspection-authority-and-outcomes`.
+- 2026-11-11 — `fda-and-aabb-in-practice` (6/6, #35–#40) and `grc-frameworks-and-risk-management`
+  (5/5, #41–#45) retrofitted, same pipeline and checks. Videos: FDA SBIA "Understanding FDA
+  Inspections and Data", NSF (483s/Warning Letters), FDA BPDR video EtLmHnBuNJQ **deliberately
+  reused** in `filing-a-biological-product-deviation-report` (also in `escalation-criteria`; the
+  only FDA BPDR video findable — framed as a reuse; replace if a CBER blood-BPDR video appears),
+  Blood Bank Guy with AABB's Director of Accreditation (2018), Doctor ISO (risk-based auditing),
+  FDA REdI 2020 drug inspections, Mike Chapple (RMF overview), Denise Tawwab (Categorize; Assess),
+  Enterprise Security Architecture (Authorize), Optic Cyber (POA&M).
+  Next: module 46, `healthcare-security-and-privacy`/`information-governance-in-a-covered-entity`.
