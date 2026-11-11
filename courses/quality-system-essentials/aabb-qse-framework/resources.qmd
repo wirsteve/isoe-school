@@ -60,3 +60,11 @@ Each link below was checked this session and loads.
   performance evaluation, improvement) used across multiple ISO management-system standards.
   Use this to see that harmonized structure described directly, rather than taking this
   lesson's word for it. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about quality management systems and blood-bank practice.
+
+- **[Quality management system](https://en.wikipedia.org/wiki/Quality_management_system)** (Wikipedia) — A plain-language overview of what a QMS is and how process-based systems are organized; a quick refresher on the vocabulary the framework builds on. Page title checked: "Quality management system - Wikipedia". Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Quality management](https://en.wikipedia.org/wiki/Quality_management)** (Wikipedia) — Places quality assurance, quality control and continual improvement side by side, which helps when you are sorting out how the essentials relate. Page title checked: "Quality management - Wikipedia". Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Blood Bank Guy](https://www.bbguy.org/)** (Joe Chaffin) — A long-running transfusion-medicine education site and podcast; useful for hearing how blood bankers talk about the work your systems support. Page title checked: "Blood Bank Guy - Essential Transfusion Medicine with Joe Chaffin". Verified loading via `curl` on 2026-11-11 (HTTP 200).
