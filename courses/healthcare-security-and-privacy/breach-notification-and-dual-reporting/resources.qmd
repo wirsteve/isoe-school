@@ -46,3 +46,12 @@ order: 100
 
 hhs.gov's own breach-notification pages returned HTTP 403 to automated checks, so they are not
 linked here; reach them from OCR's site in a browser.
+
+## Keep learning
+
+Not official sources — good places to learn more about breach notification and breach risk assessment.
+
+- **[The HIPAA Breach Notification Rule](https://www.hipaajournal.com/hipaa-breach-notification-rule/)** (HIPAA Journal) — an explainer on what triggers notification and who must be told. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[What are the HIPAA Breach Notification Requirements?](https://www.hipaajournal.com/hipaa-breach-notification-requirements/)** (HIPAA Journal) — a practical companion on timing, content of notices and common mistakes. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Healthcare Data Breach Statistics](https://www.hipaajournal.com/healthcare-data-breach-statistics/)** (HIPAA Journal) — trend data showing how breaches in healthcare actually happen, for grounding the lesson in real patterns. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Krebs on Security](https://www.krebsonsecurity.com/)** (Brian Krebs) — long-running investigative security journalism; browse for real breach disclosures to practice the "was it a breach?" reasoning. Verified loading via `curl` on 2026-11-11 (HTTP 200).
