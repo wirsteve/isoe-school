@@ -57,3 +57,12 @@ real Lakeshore document. All were checked and loading at the time this page was 
   — the Part 11 controls for closed systems, including the validation requirement in 11.10(a) that
   the periodic review's "is it still validated" question rests on, in Cornell's free plain-text
   mirror. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about keeping a system validated through patches, change and periodic review.
+
+- **[CISSP Domain 7: Security Operations Guide](https://destcert.com/resources/cissp-domain-7-security-operations/)** (Destination Certification, commercial CISSP training) — an overview of security operations including configuration, change and patch management. Supports **CISSP Domain 7 (Security Operations)**. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CISSP Domain 7 Summary: Security Operations](https://www.cybernous.com/resources/domain-summaries/cissp-domain-7-summary-security-operations/)** (Cybernous, commercial study site) — a concise Domain 7 summary for a second pass. Also supports **CISSP Domain 7**. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Mastering Periodic Review in GxP Environments](https://www.usdm.com/resources/blogs/mastering-periodic-review-in-gxp-environments)** (USDM, life-science consultancy blog) — how organisations plan and run periodic reviews of validated systems. Vendor content; useful for practical structure. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Computerized System Change Control and Revalidation](https://usvalidation.com/kb_article/cs-change-control-revalidation/)** (US Validation, consultancy knowledge-base article) — explains how change control decides how much re-testing a change needs. Useful for the patch-or-not discussion. Verified loading via `curl` on 2026-11-11 (HTTP 200).
