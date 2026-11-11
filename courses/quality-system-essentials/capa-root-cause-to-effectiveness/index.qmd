@@ -111,6 +111,35 @@ current" isn't wrong — it's just the *symptom*, restated as if it were the exp
 and the actual finding is uncomfortable in a more useful way: this isn't a Brookfield problem. It's
 a Lakeshore document-control problem that happens to have surfaced first at Brookfield.
 
+## See it in one picture
+
+The same five-why chain above, run start to finish, then forked into the two actions it actually
+produces and converged on the one check that can fail — nothing added beyond what the sections
+above and below already walk through.
+
+```{mermaid}
+flowchart TD
+    W1["Why 1 — Owen's donation accepted at Brookfield<br/>despite an active deferral?<br/>Printed deferred-donor list was<br/>four days stale, missing his deferral"]
+    W2["Why 2 — Why was the list stale?<br/>Binder's downtime procedure only called for a<br/>periodic refresh, not a fresh pull before downtime"]
+    W3["Why 3 — Why was that outdated<br/>refresh requirement still being followed?<br/>Brookfield's binder held a<br/>superseded revision of the downtime SOP"]
+    W4["Why 4 — Why did a superseded revision<br/>survive in active use at a live site?<br/>Document control runs satellite-site binder<br/>swaps on an honor system, not a verified handoff"]
+    W5["Why 5 — Why does document control have no<br/>verified distribution step for satellite-site copies?<br/>No review-date trigger, no required acknowledgment,<br/>no reconciliation for controlled paper copies at remote sites"]
+    ROOT["ROOT CAUSE: a document-control gap —<br/>not a Brookfield staffing or training gap.<br/>Staff followed the binder in front of them correctly."]
+    CA["Corrective action (Brookfield-specific):<br/>replace the binder's downtime SOP with the current<br/>revision now; get the site lead's signed, dated<br/>acknowledgment it's physically in place"]
+    PA["Preventive action (the broader system fix):<br/>extent-of-condition audit of every satellite binder,<br/>plus a document-control system fix — tracked distribution<br/>list with acknowledgment, or a review-date trigger —<br/>handed to formal change control"]
+    EC["Effectiveness check: at the next scheduled<br/>document-control audit (~6 months out), zero sites<br/>found holding a superseded revision or a stale<br/>deferred-donor list. Even one non-compliant site<br/>means the CAPA is NOT effective."]
+
+    W1 --> W2 --> W3 --> W4 --> W5 --> ROOT
+    ROOT --> CA
+    ROOT --> PA
+    CA --> EC
+    PA --> EC
+```
+
+Notice the fork is doing real work, not just decoration: corrective and preventive action both trace
+back to the same root cause, but only one of them is Brookfield-specific. Skip the right-hand branch
+and the diagram — like the CAPA itself — never actually touches the gap that produced the failure.
+
 **Corrective action** fixes the instance in front of you — the specific failure mode, at the
 specific site where it was found. For Brookfield: replace the binder's downtime SOP with the current
 revision immediately, and get the site lead's signed, dated acknowledgment that it's been swapped —
@@ -144,6 +173,19 @@ skill for a reason. An effectiveness check has four required pieces: a **measura
 you check, not decided afterward depending on what you find. "Confirmed the binder was replaced" is
 not an effectiveness check. It confirms *implementation* — that the action happened — which is a
 different, easier question than whether the action *worked*.
+
+The video below walks the same root-cause-to-effectiveness-check arc this lesson just taught, from
+a general QMS (quality management system) software vendor's perspective — it's a generic explainer,
+not blood-specific and not tied to 606.100(c), 606.171(f), AABB, or any of Lakeshore's facts, but the
+four-stage shape and the "effectiveness check proves it worked, not just that it happened" point land
+exactly the same way.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/5841rTtAIVs"
+  title="What Is a CAPA? From Root Cause to Effectiveness Check | Matrix Quality" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
 
 A real effectiveness check for this CAPA: **at Lakeshore's next scheduled document-control audit of
 all collection sites, roughly six months after the corrective and preventive actions are

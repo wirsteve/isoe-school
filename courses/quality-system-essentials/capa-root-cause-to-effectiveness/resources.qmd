@@ -20,10 +20,43 @@ Each link below was checked this session and loads.
   source if eCFR or Cornell is ever unreachable, or to pull an official PDF of a full CFR part for
   the record.
 
-A note on this module's fourth possible link: ASQ (American Society for Quality) publishes public
-pages on root cause analysis and the 5 Whys technique, and would otherwise be a good industry-
-practice reference for this lesson. Its site returned an HTTP 403 to this session's automated
-requests (a bot-blocking response, not a broken page — a human browser likely reaches it fine), so
-it isn't listed here. If you want a plain-language walkthrough of 5 Whys or fishbone diagrams
-beyond what this lesson covers, search "ASQ five whys" or "ASQ root cause analysis" directly in
-your own browser.
+- **[What Is a CAPA? From Root Cause to Effectiveness Check | Matrix
+  Quality](https://www.youtube.com/watch?v=5841rTtAIVs)** (Matrix One, from oEmbed `author_name`) —
+  the video embedded in this lesson. Matrix One is a QMS (quality management system) software
+  vendor producing educational content; this is a general industry explainer of the same
+  root-cause-to-effectiveness-check arc this lesson teaches, not tied to AABB, FDA, or any CFR
+  citation here — useful for hearing the same four-stage shape argued from outside the
+  blood-specific lens. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[MindTools: 5 Whys](https://www.mindtools.com/a3mi00v/5-whys)** — a well-regarded management-
+  skills publication's walkthrough of the 5 Whys technique this lesson runs on Brookfield's event,
+  including the discipline of keeping each "why" aimed at the process rather than a person. ASQ's
+  own public page on 5 Whys returned an HTTP 403 to this session's automated requests again this
+  time (a bot-blocking response, not a broken page) — this is the different source this module
+  went looking for in its place. **Verification note:** this link returned HTTP 200 on first
+  check but HTTP 403 on independent re-check — inconsistent, bot-protection-style behavior, the
+  same pattern this curriculum has already seen from eCFR, FDA, and CDC pages. Likely reachable
+  in a real browser; not reliably confirmed with an automated fetch this session.
+
+- **[TechTarget: Fishbone diagram](https://www.techtarget.com/whatis/definition/fishbone-diagram)**
+  — a technology-publication explainer on the fishbone (Ishikawa) diagram, the alternative root-
+  cause tool this lesson names for messier events with several plausible contributing branches
+  instead of Brookfield's one clean chain. Useful for seeing that tool argued on its own terms
+  before you need it on a real multi-branch CAPA. Verified loading via `curl` on 2026-11-11
+  (HTTP 200, after a redirect).
+
+- **[Pharmaceutical Online: A SMART Approach To CAPA Effectiveness
+  Checks](https://www.pharmaceuticalonline.com/doc/a-smart-approach-to-capa-effectiveness-checks-0001)**
+  — an industry publication's guest column on designing a CAPA effectiveness check that can
+  actually fail: writing the measurable criterion, time window, and data source before you check,
+  the same discipline this lesson applies to Lakeshore's six-month document-control re-audit. Use
+  this before writing a real effectiveness-check criterion of your own. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[Quality Digest: Why Do Most CAPAs
+  Fail?](https://www.qualitydigest.com/inside/qms-and-standards-article/why-do-most-capas-fail-051926.html)**
+  — an industry quality publication on the common ways a CAPA file collapses — closing on
+  implementation instead of effectiveness, "human error" standing in for root cause, no
+  independent re-check — the same traps this lesson's "Common traps" section names for Lakeshore,
+  argued from general industry experience rather than this module's own scenario. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200, after a redirect to the article's current URL).
