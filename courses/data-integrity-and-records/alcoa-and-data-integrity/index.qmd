@@ -202,6 +202,46 @@ One record. Five real tests. Two clean passes, one surface-level trap, one nuanc
 question — and that's the whole teaching point. ALCOA is something you apply to a record, not
 something you read off its surface.
 
+## See it in one picture
+
+DED-0458 is one record that produces four different answers, and the diagram below is only that
+scenario: the five ALCOA letters as separate tests, with the trap and the open item kept visibly
+apart from the passes. Notice that the contemporaneous branch is the only one with an evidence
+trail leading away from it, to what an inspector would ask the systems administrator to produce.
+
+```{mermaid}
+flowchart TD
+    R["DED-0458: BECS donor-eligibility determination<br/>(DI-0301's first test record)"]
+
+    R --> A["Attributable: unique BECS login per screener"]
+    R --> L["Legible: structured data, renders the same for anyone"]
+    R --> C["Contemporaneously recorded: timestamp comes from<br/>an unsynchronized local workstation clock"]
+    R --> O["Original or a true copy: live BECS row is the original"]
+    R --> X["Accurate: match to screening answers not yet checked"]
+
+    A --> P1["Pass"]
+    L --> P1
+    C --> T["Trap: a claim, not yet a proven one"]
+    O --> P2["Pass, with a nuance: printout question goes to<br/>predicate-rules-and-hybrid-systems"]
+    X --> Q["Open: honest still-checking finding"]
+
+    T -.->|"inspector asks for clock-sync configuration and log"| E["Evidence from the systems administrator"]
+```
+
+## Watch it explained
+
+This is a recorded session from FDA's own YouTube channel, an overview of data integrity from a
+workshop FDA hosted on clinical research (GCP) data integrity. It is not about blood
+establishments, drug CGMP, or the 2018 Q&A guidance this lesson quotes, so treat it as a second
+voice on the general idea of data integrity, not as a source for any citation above.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/BTFn9dYoz34"
+  title="Overview of Data Integrity (4of11) GCP Data Integrity Workshop" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector would actually look for
 
 An FDA investigator or AABB assessor wouldn't ask whether Lakeshore has an ALCOA policy. They'd ask
