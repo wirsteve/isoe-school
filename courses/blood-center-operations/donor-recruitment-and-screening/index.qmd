@@ -168,6 +168,61 @@ Marcus that exists whether or not Thursday's site catches him. Both things have 
 registry check that stops the second draw, and the notification that Lakeshore owed Marcus
 regardless.
 
+## See it in one picture
+
+The four-step sequence above is simple to state and easy to get wrong in exactly the way
+Thursday's visit almost did. The diagram below isn't a generic eligibility flowchart — it's
+Marcus's own Monday and Thursday visits run through those four steps, showing where the
+sequence worked as designed and where a real-world identity-matching gap is the one thing that
+could have let Thursday go differently.
+
+```{mermaid}
+flowchart TD
+    subgraph Monday["Monday — first visit, downtown drive"]
+        M1["Register"] --> M2{"Step 1: Deferral registry check — 630.10(d)(1)"}
+        M2 -->|"not yet in registry, first visit"| M3{"Step 2: Identity + donation interval — 630.10(g)(1)"}
+        M3 --> M4{"Step 3: DHQ medical history — 630.10(e)"}
+        M4 --> M5{"Step 4: Physical assessment — hemoglobin below cutoff, 630.10(f)(3)"}
+        M5 -->|"fails"| M6["Deferred, not drawn — 630.10(h)"]
+        M6 --> M7["Deferral entered in registry;<br/>630.40(a)/(c) notification clock starts"]
+    end
+
+    subgraph Thursday["Thursday — second visit, grocery-store drive"]
+        T1["Register again"] --> T2{"Step 1: Deferral registry check — 630.10(d)(1)"}
+        T2 -->|"registry correctly shows Monday's deferral"| T3["Stopped here — correct outcome"]
+        T2 -->|"name-only match fails to link<br/>Thursday's registration to Monday's record"| T4{"Step 2: Identity + interval — 630.10(g)(1)"}
+        T4 --> T5{"Step 3: DHQ"}
+        T5 --> T6{"Step 4: Physical assessment"}
+        T6 --> T7["Drawn anyway — the near-miss this module exists to prevent"]
+    end
+
+    M7 -.->|"must be visible here, at the point of registration"| T2
+```
+
+Marcus's Monday visit runs cleanly through all four steps and ends in a documented, correct
+deferral. Thursday's visit is where the module's real stakes sit: the registry check at Step 1
+either stops him immediately (the system working as designed) or — if the identity match
+underneath it is thin, per the Common Traps section above — silently fails to recognize him,
+and the same four-step sequence that correctly deferred him Monday runs again Thursday with no
+memory of what it decided three days earlier.
+
+## Watch it explained
+
+This interview covers donor-eligibility screening from a real blood-collection organization —
+the same underlying logic (a standardized history interview, objective physical criteria, a
+deferral decision) this lesson's 630.10 walkthrough covers, from the donor-facing side rather
+than Lakeshore's specific registry-and-BECS mechanics. It won't mention 630.10, BECS, or
+Lakeshore by name, and it isn't FDA or CFR-specific — watch for how closely the "why" behind
+each eligibility question matches the rule you just read, and notice what it doesn't cover: the
+system-of-record check that's the actual point of this module.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/otspGeTXqe0"
+  title="Who Can Donate Blood? Eligibility Requirements Explained | Interview with Dr. Courtney Lawrence" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector would actually look for
 
 An FDA investigator reconstructing this scenario doesn't ask Lakeshore to describe its process.
