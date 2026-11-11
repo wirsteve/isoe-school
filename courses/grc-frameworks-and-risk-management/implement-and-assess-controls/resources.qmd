@@ -58,3 +58,11 @@ were checked at the time this page was written.
   — NIST's page on worked assessment cases, showing how depth and coverage of an assessment are
   described. A deeper look than this lesson needs. Verified loading via `curl` on 2026-11-11
   (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about implementing and independently assessing controls.
+
+- **[Assessing Security Controls: Keystone of the Risk Management Framework](https://www.isaca.org/resources/isaca-journal/issues/2016/volume-6/assessing-security-controls-keystone-of-the-risk-management-framework)** (ISACA Journal, 2016) — an auditor-minded article on why controls must be tested and retested with results recorded. Dated but the logic matches this lesson's "evidence, not assertion" theme. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Security Assessment and Testing MindMap (1 of 3) | CISSP Domain 6](https://www.youtube.com/watch?v=A-aNmhB_WjM)** (Destination Certification, YouTube) — a compact overview of assessment and testing concepts: audits, scans, reviews and who should perform them. CISSP Domain 6 (Security Assessment and Testing). Verified via YouTube oEmbed on 2026-11-11 (HTTP 200).
+- **[CISSP Domain 6 Guide: Security Testing Explained](https://www.readynez.com/us/blog/beyond-vulnerability-scans-a-guide-to-cissp-domain-6/)** (Readynez, commercial training provider) — a written walk through the kinds of testing and assessment in Domain 6 and how they differ in the evidence they produce. Vendor content. Verified loading via `curl` on 2026-11-11 (HTTP 200).
