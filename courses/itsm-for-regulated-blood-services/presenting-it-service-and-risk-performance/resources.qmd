@@ -101,3 +101,13 @@ citations, and reasoning this lesson references by name but doesn't redevelop.
   — a short NIST guide on connecting cybersecurity outcomes to enterprise risk reporting. Read it
   when you need a brief, executive-friendly framing of risk communication. Verified loading via
   `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about presenting performance and risk to executives and boards.
+
+- **[storytelling with data podcast](https://www.storytellingwithdata.com/podcast)** (storytelling with data) — episodes on planning presentations and handling real-world constraints like slide limits; good for practice ideas. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[storytelling with data books](https://www.storytellingwithdata.com/books)** (storytelling with data) — the author's book pages, including the widely used guides to clear charts and presentations; check the site for sample material. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[ISACA Journal Archives](https://www.isaca.org/resources/isaca-journal/issues)** (ISACA) — back issues with practitioner articles on reporting risk to boards and executives. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[ISC2 Insights](https://www.isc2.org/Insights)** (ISC2) — security-profession articles on communicating risk; supports CISSP Domain 1 (Security and Risk Management). Verified loading via `curl` on 2026-11-11 (HTTP 200).
+

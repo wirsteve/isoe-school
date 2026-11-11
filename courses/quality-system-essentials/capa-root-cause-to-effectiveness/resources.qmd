@@ -60,3 +60,12 @@ Each link below was checked this session and loads.
   independent re-check — the same traps this lesson's "Common traps" section names for Lakeshore,
   argued from general industry experience rather than this module's own scenario. Verified
   loading via `curl` on 2026-11-11 (HTTP 200, after a redirect to the article's current URL).
+
+## Keep learning
+
+Not official sources — good places to learn more about root cause analysis and problem solving.
+
+- **[Cause and Effect Diagram](https://www.ihi.org/library/tools/cause-and-effect-diagram)** (Institute for Healthcare Improvement) — A free healthcare-quality tool page on building a fishbone with a team, with a template. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[5 Whys](https://www.lean.org/lexicon-terms/five-whys/)** (Lean Enterprise Institute) — The lean community's own explanation of the technique and its limits; worth reading to see why one chain of whys is not enough on its own. Page title checked: "5 Whys - What is it? | Lean Enterprise Institute". Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[A3 Problem-Solving: A Resource Guide](https://www.lean.org/lexicon-terms/a3-report/)** (Lean Enterprise Institute) — Shows a one-page structured problem-solving format that pairs well with a CAPA record. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Fault tree analysis](https://en.wikipedia.org/wiki/Fault_tree_analysis)** (Wikipedia) — Overview of a top-down method for tracing failures; a useful alternative when a fishbone is too loose. Verified loading via `curl` on 2026-11-11 (HTTP 200).

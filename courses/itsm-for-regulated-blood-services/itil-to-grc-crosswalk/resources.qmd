@@ -80,3 +80,13 @@ them; the last five are external sources (including this lesson's video) for goi
   — the ITIL certification body's own page for the security management practice this module
   crosswalks. It describes the practice's scope, not its copyrighted text; this curriculum still
   describes ITIL in its own words. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about governance, risk and control frameworks that sit beside ITIL.
+
+- **[CISSP Certified Information Systems Security Professional](https://www.isc2.org/certifications/cissp)** (ISC2) — the official exam outline page. Domain 1 (Security and Risk Management) is the closest match to this crosswalk's governance and risk themes. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[COBIT | Control Objectives for Information Technologies](https://www.isaca.org/resources/cobit)** (ISACA) — overview of the IT governance framework often mapped alongside ITIL; shows how governance and management objectives are separated. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CRISC Certification](https://www.isaca.org/credentialing/crisc)** (ISACA) — the risk-and-controls certification page; its domains show how IT risk practitioners organize the same ground. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[ISACA Journal](https://www.isaca.org/resources/isaca-journal)** (ISACA) — peer-written practitioner articles on IT governance, risk and service management; browse for ITIL-and-governance pieces. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+

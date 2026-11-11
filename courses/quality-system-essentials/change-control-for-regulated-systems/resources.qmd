@@ -64,3 +64,12 @@ Each link below was checked this session and loads.
   recognizes the same change-management-within-a-quality-system concept this lesson applies to
   Lakeshore under AABB's framework instead. Verified loading via `curl` on 2026-11-11 (HTTP
   200).
+
+## Keep learning
+
+Not official sources — good places to learn more about change control, including its security-operations side (CISSP Domain 7, Security Operations).
+
+- **[Patching & Change Management MindMap (4 of 6) | CISSP Domain 7](https://www.youtube.com/watch?v=yTylLQBF6CQ)** (Destination Certification, video) — A CISSP-prep mind-map walk through change requests, impact review and approval. Supports CISSP Domain 7. Verified via YouTube oEmbed on 2026-11-11 (HTTP 200); page link: [CISSP Domain 7: Patching & Change Management MindMap](https://destcert.com/resources/patching-change-management-mindmap-cissp-domain-7/) (Destination Certification, written companion). Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CCT 294: Config Management Essentials - CISSP Domain 7](https://www.buzzsprout.com/2167626/episodes/18114826-cct-294-config-management-essentials-cissp-domain-7)** (CISSP Cyber Training Podcast) — Audio on configuration management, the baseline that change control protects. Supports CISSP Domain 7. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[The ultimate guide to change control for life sciences companies](https://www.qualio.com/blog/change-control)** (Qualio, vendor content) — A practical overview of change-control steps in regulated settings. Vendor marketing, not an authority on any rule. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Change control](https://en.wikipedia.org/wiki/Change_control)** (Wikipedia) — Short cross-industry overview of change control. Page title checked: "Change control - Wikipedia". Verified loading via `curl` on 2026-11-11 (HTTP 200).
