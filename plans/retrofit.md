@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #22, `csv-and-becs`/`gamp5-and-the-v-model`.** `directing-the-quality-analyst` is fully retrofitted, 6/6.
+**Next up: #29, `data-integrity-and-records`/`alcoa-and-data-integrity`.** `csv-and-becs` is fully retrofitted, 7/7.
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -470,3 +470,16 @@ module retrofit changes a course's own module list or description.
   a related FDA PDF banner references September 2025 — re-check the CSA date against FDA's own
   page before citing it.
   Next: module 22, `csv-and-becs`/`gamp5-and-the-v-model`.
+- 2026-11-11 — `csv-and-becs` retrofitted, 7/7 (#22–#28), one commit per module, drafted by
+  Sonnet subagents in parallel and independently verified (diff additions-only apart from
+  resources-intro link-count sentences, `order:` unchanged, oEmbed title match, no reused video ID,
+  every link curl 200, diagram facts grep-checked against the pre-retrofit lesson).
+  Videos: ISPE (GAMP 5 2nd ed.), Matrix One (IQ/OQ/PQ), UW Video (SaMD talk), FDA (QMSR overview),
+  FDA (electronic systems/records/signatures webinar, clinical-investigation context), Group-IB
+  (generic patch management — weakest; no GxP periodic-review video passed oEmbed, framed honestly),
+  Sidharth Ramesh/Medblocks (HL7 v2). AABB §3.9 folded into `becs-as-a-regulated-device` and
+  `validated-state-lifecycle-and-patching` as one prose sentence + one resources entry each (themes
+  only, never quoted). CSA date question resolved: the source file's 02/03/2026 issue date is from
+  FDA's guidance database listing (docket FDA-2022-D-0795); the "September 2025" banner was on the
+  separate General Principles PDF — no conflict.
+  Next: module 29, `data-integrity-and-records`/`alcoa-and-data-integrity`.
