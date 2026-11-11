@@ -77,3 +77,11 @@ Nine external links, each checked this session for a working response.
   names for management review's "evaluate, direct, monitor" altitude, argued in full ITSM
   (IT service management) terms before this lesson maps it onto a quarterly quality-system
   review. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about internal auditing.
+
+- **[Considerations in GMP Auditing](https://ispe.org/initiatives/regulatory-resources/gmp/audit-considerations)** (ISPE) — A quick list of auditor do's, including independence and a cooperative approach; a good checklist for a first internal audit. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[What are GMP Audits and what Qualifications do GMP Auditors need to have?](https://www.gmp-compliance.org/gmp-news/what-are-gmp-audits-and-what-qualifications-do-gmp-auditors-need-to-have)** (ECA Academy) — Explains the types of audits and what makes an auditor competent; helpful when deciding who at your center should audit IT. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Quality audit](https://en.wikipedia.org/wiki/Quality_audit)** (Wikipedia) — Overview of first-, second- and third-party audits and the audit cycle. Page title checked: "Quality audit - Wikipedia". (ASQ's auditing pages returned 403 and were skipped.) Verified loading via `curl` on 2026-11-11 (HTTP 200).
