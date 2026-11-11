@@ -27,3 +27,47 @@ links below use verified-loading mirrors of the same official text.)
   U.S. Government Publishing Office's official, legally authoritative annual CFR archive. Use this
   for the official, dated, legally citable version of a specific year's text — for example, to
   confirm exactly what a section said on the date of a past inspection or a vendor change.
+
+- **[#26 Computer System Validation (CSV)](https://www.youtube.com/watch?v=QPhXYSOLgjM)** (Waters
+  Corporation, from oEmbed `author_name`) — the video embedded in this lesson. A general
+  computer-system-validation explainer from a major life-sciences/analytical-instrument company,
+  not blood-specific or BECS-specific and not tied to any CFR citation here — use it for the
+  broader "why does a regulated computer system need this much scrutiny" concept that 11.10(a)
+  states in one sentence, which this module applies specifically to BECS. Verified embeddable via
+  YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **AABB Standards, Section 3.9, "Information Systems"** — not independently link-verified this
+  session (see `sources/aabb/information-systems-section-3.9.md` for how its section number and
+  themes were cross-confirmed). This is AABB's own accreditation-side counterpart to this lesson's
+  FDA-side validated-state discussion: records/validation, backup/continuity, personnel
+  responsibility, documented change processes, and access control, checked by an AABB assessor
+  rather than an FDA investigator. Start from
+  **[AABB: Standards for Blood Banks and Transfusion
+  Services](https://www.aabb.org/standards-accreditation/standards/blood-banks-and-transfusion-services)**
+  (verified loading via `curl` on 2026-11-11, HTTP 200) for the current catalogue page; the full
+  standard text itself sits behind AABB's member/purchase access, so don't expect the free page to
+  show Section 3.9's actual requirement language.
+
+- **[FDA: Blood Establishment Computer System Validation in the User's
+  Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)**
+  — FDA/CBER's own guidance document page for the exact guidance this lesson names but couldn't
+  confirm a live link for in an earlier session; now verified loading directly. Use this to check
+  the current version and issue date before citing it in a real Lakeshore document — this module
+  deliberately stops at *why* BECS validation matters, not *how* to run it, and this is where the
+  "how" guidance actually lives. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Software as a Medical Device
+  (SaMD)](https://www.fda.gov/medical-devices/digital-health-center-excellence/software-medical-device-samd)**
+  — FDA's own Digital Health Center of Excellence page on software that meets the FD&C Act's
+  medical-device definition, the general framework behind this lesson's point that some BECS
+  products are themselves FDA-regulated medical devices, cleared through premarket review, quite
+  apart from Lakeshore's own CGMP obligations. Verified loading via `curl` on 2026-11-11 (HTTP
+  200).
+
+- **[ISPE: GAMP 5 Guide (2nd
+  Edition)](https://www.ispe.org/publications/guidance-documents/gamp-5-guide-2nd-edition)** — the
+  International Society for Pharmaceutical Engineering's own catalogue page for GAMP 5 (Good
+  Automated Manufacturing Practice), the industry-practice-tier risk-based validation framework
+  this lesson names but deliberately doesn't teach — that's Track 3's (`csv-and-becs`) job. Use
+  this to see GAMP 5 as ISPE itself describes it, not a secondhand summary. Verified loading via
+  `curl` on 2026-11-11 (HTTP 301 → 200 on the redirected URL).
