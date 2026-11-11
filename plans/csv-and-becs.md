@@ -1103,3 +1103,17 @@ fallback.
   predicate-rule doctrine in full). Closes with a genuine course-ending passage summarizing the
   whole arc.
   **`csv-and-becs` is now 7/7 published. Course complete.**
+
+- **2026-11-11 (retrofit note, not a new module)**: Per user request, researched and verified
+  AABB Standards §3.9, "Information Systems" — saved as `sources/aabb/information-systems-
+  section-3.9.md` (section number and sub-requirement themes only, never AABB's copyrighted
+  "shall" text, same discipline as `qse-framework.md`). This is the single most directly
+  on-point AABB citation for this course's own subject matter (BECS/computer-system validation,
+  backup/continuity, access control) and was not referenced anywhere in the original 7 modules.
+  **Whoever retrofits this course's modules** (per `plans/retrofit.md`) should fold §3.9 in by
+  number and theme — most naturally into `becs-as-a-regulated-device` (validation/access-control
+  themes) and `validated-state-lifecycle-and-patching` (3.9.2's backup/continuity and disaster-
+  recovery themes) — alongside the existing FDA-side citations (Part 11, the BECS validation
+  guidance, 606.60/606.100), the same way this course already pairs an FDA citation with an AABB
+  theme elsewhere. Do not quote §3.9's text verbatim; reference the section number and the
+  paraphrased themes in the source file only.

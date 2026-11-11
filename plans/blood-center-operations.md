@@ -434,3 +434,14 @@ flag it in the progress log below.
   live pain point (the ICCBBA scenario), and the one-incident-two-tracks quality/IT framing.
   `blood-center-operations` is now fully drafted end to end; next action for this course is
   publishing all five modules (or whichever remain unpublished), not further drafting.
+
+- **2026-11-11 (retrofit note, not a new module)**: Per user request, researched the NHLBI REDS
+  program ("REDS5" as the user named it). No program by that exact name was found — the current
+  confirmed phase is **REDS-IV-P**; saved as `sources/nih/reds-program.md`, with the naming
+  discrepancy flagged honestly rather than guessed at. REDS-IV-P is a research program, not a
+  regulation/guidance/standard — it doesn't belong in a citation decoder table, but it's
+  genuinely good further-reading context on where the evidence base behind donor-eligibility
+  and transfusion-safety policy actually comes from. **Whoever retrofits this course's modules**
+  (per `plans/retrofit.md`) should add it to `donor-recruitment-and-screening` or
+  `collection-and-testing`'s `resources.qmd` as a "where this evidence comes from" link,
+  described explicitly as NIH-funded research, never as a citable requirement.
