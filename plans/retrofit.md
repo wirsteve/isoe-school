@@ -66,7 +66,7 @@ In progress / Done.
 | 15 | `quality-system-essentials` | `internal-audits-and-management-review` | 25/26 | Done |
 | 16 | `directing-the-quality-analyst` | `qa-deliverables-and-ownership` | 28/29 | Done |
 | 17 | `directing-the-quality-analyst` | `reviewing-deviations-and-capas` | 30/31 | Done |
-| 18 | `directing-the-quality-analyst` | `escalation-criteria` | 32/33 | Not started |
+| 18 | `directing-the-quality-analyst` | `escalation-criteria` | 32/33 | Done |
 | 19 | `directing-the-quality-analyst` | `reviewing-validation-packages` | 34/35 | Not started |
 | 20 | `directing-the-quality-analyst` | `reviewing-vendor-risk-assessments` | 36/37 | Not started |
 | 21 | `directing-the-quality-analyst` | `coaching-and-reporting-upward` | 38/39 | Not started |

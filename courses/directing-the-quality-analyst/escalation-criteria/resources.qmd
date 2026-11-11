@@ -24,3 +24,35 @@ Each link below was checked this session and loads.
   U.S. Government Publishing Office's official, legally authoritative annual CFR archive. Use
   this when you need the officially citable text for a specific year, rather than eCFR's
   continuously updated current version.
+
+- **[An Update on Field Alert Reports (FAR) and Biological Product Deviation Reports
+  (BPDR)](https://www.youtube.com/watch?v=EtLmHnBuNJQ)** (U.S. Food and Drug Administration, from
+  oEmbed `author_name`) — an FDA presentation on how BPDRs are submitted and what the agency
+  expects, the external reporting channel behind 606.171(c). Part of it covers drug-side Field Alert
+  Reports, which this course doesn't teach. Verified embeddable via YouTube oEmbed on 2026-11-11
+  (HTTP 200).
+
+- **[FDA: Biological Product Deviations](https://www.fda.gov/vaccines-blood-biologics/report-problem-center-biologics-evaluation-research/biological-product-deviations)**
+  — FDA's own CBER page for biological product deviation reporting. Read it to see how the agency
+  describes the reporting channel behind 606.171, and to confirm current submission details,
+  which can change. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Recalls, Market Withdrawals, & Safety Alerts](https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts)**
+  — FDA's hub for public recall and safety-alert information. Useful for seeing what an outward-facing
+  recall looks like on the regulator's side; this module names recalls as a trigger category but
+  doesn't teach recall procedure. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 45 CFR 164.404 — Notification to individuals](https://www.law.cornell.edu/cfr/text/45/164.404)**
+  — the HIPAA Breach Notification Rule's individual-notice section. This module names a suspected
+  data breach only as a trigger category and defers the rules to the future
+  `healthcare-security-and-privacy` course; read this to see that a separate, notification-after-
+  breach clock exists. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Atlassian: Escalation policies for effective incident management](https://www.atlassian.com/incident-management/on-call/escalation-policies)**
+  — a practical explainer on written escalation policies and on-call paths, the IT-side version of
+  agreeing escalation criteria in daylight. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Google SRE Book: Managing Incidents](https://sre.google/sre-book/managing-incidents/)** — a
+  well-regarded engineering chapter on clear roles and handoffs during an incident, useful as a
+  contrast to this module's point that the decision owner for product safety isn't the incident
+  commander. Verified loading via `curl` on 2026-11-11 (HTTP 200).
