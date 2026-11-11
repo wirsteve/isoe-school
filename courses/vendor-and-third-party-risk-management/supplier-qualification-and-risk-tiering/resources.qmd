@@ -61,3 +61,13 @@ reuses, a video, and several outside references on supplier and supply-chain ris
   verify what its suppliers deliver. It applies to finished-drug manufacturers, not blood
   establishments, so use it as a comparison point only. Verified loading via `curl` on
   2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about vendor qualification and risk tiering.
+
+- **[Supply Chain Risk Management (SCRM): Concepts and Mitigations](https://destcert.com/resources/supply-chain-risk-management/)** (Destination Certification) — CISSP study guide page on supply chain risk, including third-party assessment, minimum requirements and monitoring; supports CISSP Domain 1 (Security and Risk Management). Commercial training site. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Certified: The CISSP Audio Course, Episode 100: Assessing Third-Party and Vendor Risk](https://share.transistor.fm/s/58b9f28c)** (Certified: The CISSP Audio Course podcast) — a short listen on why vendor relationships add risk and how to assess it; good commuting reinforcement for CISSP Domain 1. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Third-Party Assurance: Why and How?](https://www.isaca.org/resources/isaca-journal/issues/2021/volume-2/third-party-assurance)** (ISACA Journal, 2021) — ranks the kinds of vendor evidence from self-assessment to independent reports, a useful lens when deciding how much proof each Lakeshore tier deserves. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Information Sharing in Cyber Supply Chain Risk Management – A New Model](https://www.isc2.org/insights/2024/06/information-sharing-in-cyber-supply-chain-risk-management-a-new-model)** (ISC2 Insights) — a practitioner-body view of why supply chain risk can't be managed vendor by vendor in isolation; background for CISSP Domain 1. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Third-Party Risk Management for Healthcare: The 2026 HIPAA Guide](https://medcurity.com/third-party-risk-management-healthcare/)** (Medcurity — vendor/commercial content) — a healthcare-focused walk through inventorying, tiering and reviewing vendors; helpful HCISPP-style context. Treat as marketing-adjacent, not as authority. Verified loading via `curl` on 2026-11-11 (HTTP 200).
