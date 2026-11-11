@@ -27,3 +27,41 @@ links below use verified-loading mirrors of the same official text.)
   U.S. Government Publishing Office's official, legally authoritative annual CFR archive. Use
   this for the official, dated, legally citable version of a specific year's text — for example,
   to confirm exactly what 606.170 said on the date of a past reaction investigation.
+
+- **[Blood Transfusions - Medical-Surgical (Med-Surg) - Cardiovascular
+  System](https://www.youtube.com/watch?v=P6sfE4T9FvM)** (Level Up RN, from oEmbed
+  `author_name`) — the video embedded in this lesson. Nursing-education content on transfusion
+  reactions: the signs, symptoms, and immediate bedside response (stopping the transfusion) that
+  this module's regulatory chain picks up from after the fact. Not about Lakeshore, BECS, or any
+  CFR citation in this lesson — it's the clinical moment the 606.170(a) investigation requirement
+  responds to. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[AABB: Hemovigilance](https://www.aabb.org/blood-biotherapies/blood/transfusion-medicine/hemovigilance)**
+  (redirects from `aabb.org/news-resources/resources/hemovigilance`, confirmed landing page) —
+  AABB's own page on hemovigilance as a practice: tracking and reporting adverse events tied to
+  blood products and transfusions, the general framework this lesson's ITSM bridge maps onto
+  "incident reporting with an external regulator on the distribution list." Use this for the
+  standards-tier view of hemovigilance that sits alongside — not instead of — 606.170's
+  regulatory requirement. Verified loading via `curl` on 2026-11-11 (HTTP 301 → 200 on the
+  redirected URL).
+
+- **[CDC NHSN: Biovigilance Component — Hemovigilance
+  Module](https://www.cdc.gov/nhsn/biovigilance/index.html)** — the U.S. National Healthcare
+  Safety Network's own hemovigilance surveillance program, run by CDC rather than FDA: hospitals
+  and blood centers that participate report transfusion-related adverse events into this system
+  as a public-health surveillance layer that exists alongside, not instead of, the 606.170
+  reporting obligations this lesson covers. Useful for seeing hemovigilance as a field with its
+  own national infrastructure, not just a single regulation. **Verification note:** this page
+  returned HTTP 200 to a `HEAD` request but HTTP 403 to a `GET` on independent re-check — the
+  same Akamai/CDC automated-traffic bot check this curriculum has already seen block eCFR and
+  FDA pages from this build environment while a human browser reaches them fine. Treat this the
+  same way: likely reachable in a real browser, not independently confirmed with a full page
+  fetch this session.
+
+- **[TechTarget: What is a laboratory information system
+  (LIS)?](https://www.techtarget.com/searchhealthit/definition/laboratory-information-system)** —
+  a vendor-neutral healthcare-IT explainer of what an LIS actually does and how it differs from a
+  hospital's broader EHR/HIS systems — the general version of the LIS/HIS distinction this
+  lesson draws specifically for Riverside's systems. Read this for the industry-standard
+  vocabulary; the lesson's own text is what ties it to 606.165's handoff. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).

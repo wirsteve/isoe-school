@@ -209,6 +209,60 @@ lesson already covered exactly how that reportability determination works and wh
 means in that section's text. This lesson doesn't re-derive it — just flags that this is the
 door 606.170(a)'s "copies... forwarded to" clause can open.
 
+## See it in one picture
+
+Everything from Thursday's shipment to Friday night's fork in the road, in order, keyed to the
+citations above. The diagram is this module's own scenario — Lakeshore's storage and shipping,
+the handoff that crosses the LIS/HIS boundary, Riverside's compatibility testing and transfusion,
+the reaction, and the two different investigation paths depending on how serious it turns out to
+be.
+
+```{mermaid}
+flowchart TD
+    A["Lakeshore: unit in inventory since Tuesday —<br/>storage temp recorded, 606.160(b)(3)(iii)"]
+    A --> B["Thursday 3:15pm: pulled for shipment —<br/>validated container, continuous monitor,<br/>1-10°C range required, 600.15"]
+    B --> C["Thursday 4:05pm: Riverside receives unit —<br/>handoff recorded both sides, 606.165(a)-(c)"]
+
+    subgraph Boundary["LIS/HIS boundary — Lakeshore's BECS stops mattering here"]
+        C --> D["Riverside's LIS: compatibility testing —<br/>crossmatch clears unit for this patient"]
+        D --> E["Riverside's HIS: unit issued,<br/>transfusion begins 9:40pm Friday"]
+    end
+
+    E --> F["9:52pm: patient reacts —<br/>nurse stops transfusion"]
+    F --> G["Riverside investigates: thorough<br/>investigation required, 606.170(a)"]
+
+    G --> H{"Fatal complication?"}
+    H -->|"Yes"| I["7-day clock: phone/electronic report to<br/>CBER, filed by facility that performed<br/>compatibility testing — Riverside, 606.170(b)"]
+    H -->|"No"| J["Investigation + written report<br/>maintained by Riverside, 606.170(a)"]
+    J --> K{"Product found at fault?"}
+    K -->|"Yes"| L["Copy forwarded to and maintained<br/>by Lakeshore, 606.170(a) —<br/>may trigger 606.171 BPDR on Lakeshore's clock"]
+    K -->|"No"| M["Record stays with Riverside;<br/>no forwarding obligation"]
+```
+
+Notice where the box labeled "LIS/HIS boundary" sits: everything above it is Lakeshore's
+obligation, everything inside and below it is Riverside's, and the only things that cross back
+over that line are the lot number at the handoff and — only if fault is found — the forwarded
+report at the bottom. That's the whole governance question this module raises, in one picture.
+
+## Watch it explained
+
+The fork in that diagram starts the instant a nurse at the bedside recognizes a reaction and
+stops the transfusion — the clinical moment this module's regulatory chain is built to respond
+to. This video covers transfusion reactions from the nursing side: the signs and symptoms to
+watch for, and the immediate response once one is suspected.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/P6sfE4T9FvM"
+  title="Blood Transfusions - Medical-Surgical (Med-Surg) - Cardiovascular System -@LevelUpRN" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+It's nursing-education content, not Lakeshore-specific and not about BECS or any of this module's
+CFR citations — it's the bedside half of Friday night's scenario, the "why the nurse stopped the
+transfusion at 9:52 p.m." that everything in 606.170(a)'s investigation requirement responds to
+after the fact.
+
 ## What an inspector would actually look for
 
 An FDA investigator or AABB assessor reconstructing Friday night's reaction doesn't ask either

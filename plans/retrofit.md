@@ -55,7 +55,7 @@ In progress / Done.
 | 4 | `blood-center-operations` | `donor-recruitment-and-screening` | 2/3 | Done |
 | 5 | `blood-center-operations` | `collection-and-testing` | 4/5 | Done |
 | 6 | `blood-center-operations` | `component-processing-and-labeling` | 6/7 | Done |
-| 7 | `blood-center-operations` | `storage-distribution-and-hemovigilance` | 8/? | Not started |
+| 7 | `blood-center-operations` | `storage-distribution-and-hemovigilance` | 8/9 | Done |
 | 8 | `blood-center-operations` | `becs-in-the-pipeline` | 10/? | Not started |
 | 9 | `quality-system-essentials` | `aabb-qse-framework` | 13/14 | Not started |
 | 10 | `quality-system-essentials` | `deviations-and-nonconformances` | 15/16 | Not started |
@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #7, `blood-center-operations`/`storage-distribution-and-hemovigilance`.**
+**Next up: #8, `blood-center-operations`/`becs-in-the-pipeline`** — this course's final module.
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -282,3 +282,25 @@ module retrofit changes a course's own module list or description.
   non-embedded links independently re-verified at publish time, all HTTP 200 directly. Word
   count 4,396 (prose), within target. `order:` values (6, 7) confirmed unchanged.
   Next: module 7, `blood-center-operations`/`storage-distribution-and-hemovigilance`.
+
+- **2026-11-11**: Module 7, `blood-center-operations`/`storage-distribution-and-hemovigilance`
+  (`order: 8/9`), retrofitted under the rebalanced standard and published. Every original locked
+  fact confirmed unchanged: the Thursday-shipment/Friday-9:52pm scenario, the LIS/HIS
+  distinction, all five citations (600.15, 606.165(a)-(c), 606.160(b)(3)(iii), 606.170(a),
+  606.170(b)), all 3 Q&As, both traps, the 5 job bullets. Added a scenario-specific `flowchart
+  TD` Mermaid diagram (step 6, the full chain-of-custody: storage → shipment → distribution/
+  receipt handoff → the LIS/HIS boundary at Riverside → the reaction → investigation → fork on
+  fatality/fault) — syntax validated by rendering to SVG via `mermaid-cli`. Added a verified
+  video embed (step 7): "Blood Transfusions - Med-Surg..." (Level Up RN, a well-regarded nursing-
+  education channel) — independently re-verified via YouTube oEmbed (HTTP 200, title/author
+  match) at publish time, honestly framed as the clinical/bedside side, not Lakeshore-specific.
+  `resources.qmd` expanded from 4 to 8 links. **Two links needed a fix during my own independent
+  re-verification** (the drafting subagent's own curl checks had passed them, but a second
+  check caught issues): the AABB hemovigilance link 301-redirects — updated to show the actual
+  landing URL; the CDC NHSN link returned inconsistent results (200 on a HEAD request, 403 on a
+  GET, both independently re-tried) — kept, with an honest caveat added matching this
+  curriculum's established eCFR/FDA bot-blocking disclosure pattern, rather than asserting it
+  loads cleanly. All other links (4 original CFR/GovInfo mirrors, the video, the TechTarget LIS
+  explainer) confirmed clean HTTP 200. Word count 4,091 (prose), within target. `order:` values
+  (8, 9) confirmed unchanged.
+  Next: module 8, `blood-center-operations`/`becs-in-the-pipeline` — this course's final module.
