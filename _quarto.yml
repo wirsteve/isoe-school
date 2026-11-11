@@ -3,6 +3,7 @@ project:
   render:
     - "index.qmd"
     - "curriculum.qmd"
+    - "study-resources.qmd"
     - "foundations/**/*.qmd"
     - "foundations/**/*.md"
     - "courses/**/*.qmd"
@@ -19,6 +20,7 @@ website:
     contents:
       - index.qmd
       - curriculum.qmd
+      - study-resources.qmd
       - section: "Foundations"
         contents: "foundations/**"
       - section: "Courses"
