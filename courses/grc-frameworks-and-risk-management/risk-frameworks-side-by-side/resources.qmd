@@ -32,3 +32,37 @@ the time this page was written.
   — this curriculum's own module on ICH Q9(R1), the third framework this lesson compares RMF and
   ISO 31000 against. Read it for the actual four-stage process and FMEA walkthrough, which this
   lesson deliberately doesn't re-teach.
+
+- **[CertMike Explains NIST Risk Management Framework](https://www.youtube.com/watch?v=d8Z1RyhmRXg)**
+  (Mike Chapple, from oEmbed `author_name`) — the video embedded in this lesson: a plain-language
+  tour of RMF from a well-known security-certification educator. Not produced by NIST (searched for
+  an official NIST-channel RMF video; none could be found and verified), and not blood-specific.
+  Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[NIST CSRC: About the Risk Management Framework](https://csrc.nist.gov/projects/risk-management/about-rmf)**
+  — NIST's own landing page for RMF, with pages for each step including Prepare. Read it when you
+  want the authoritative, current description of the steps beyond the excerpt this lesson quotes.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST CSRC: RMF Quick Start Guides](https://csrc.nist.gov/projects/risk-management/rmf-quick-start-guides)**
+  — NIST's short, step-by-step orientation material for RMF. Useful as a plain-language companion
+  before modules 2 through 5 build each step. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-30 Rev. 1, "Guide for Conducting Risk Assessments"](https://csrc.nist.gov/pubs/sp/800/30/r1/final)**
+  — NIST's publication page for its dedicated risk-assessment guide, the closest NIST analogue to
+  the "identify and assess" part of the shared motion. Read it if you want to see how a federal
+  source treats risk assessment separately from the RMF steps. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)** — NIST's own hub for its
+  Cybersecurity Framework, a different NIST framework from RMF. Worth a look so you can tell the two
+  apart when someone says "the NIST framework." Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Q9(R1) Quality Risk Management](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/q9r1-quality-risk-management)**
+  — FDA's guidance page for ICH Q9(R1), the third framework compared here, for the official
+  version of what `quality-risk-management` teaches. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[ICH Quality Guidelines](https://www.ich.org/page/quality-guidelines)** — the harmonisation
+  body's own index of its quality guidelines, including Q9. Use it to see where Q9 sits among the
+  other quality guidelines. Verified loading via `curl` on 2026-11-11 (HTTP 200).
