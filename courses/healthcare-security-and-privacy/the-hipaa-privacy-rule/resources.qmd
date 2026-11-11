@@ -58,3 +58,12 @@ written; the later entries each note their own verification.
   provisions, useful as a sample of how the rule's text actually changes over time; a reason to
   check current eCFR text rather than a dated snapshot. Not about blood establishments. Verified
   loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about the HIPAA Privacy Rule and minimum necessary.
+
+- **[HIPAA Privacy Rule](https://www.hipaajournal.com/hipaa-privacy-rule/)** (HIPAA Journal) — an accessible overview of what the rule covers, permitted uses, and individual rights; a good companion to the CFR text in this lesson. Page title: "HIPAA Privacy Rule - Updated for 2026". Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[HIPAA Business Associate Agreement](https://www.hipaajournal.com/hipaa-business-associate-agreement/)** (HIPAA Journal) — explains how privacy obligations extend to vendors, which matters whenever an extract leaves the building. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Privacy and Security (ONC)](https://www.healthit.gov/topic/privacy-security-and-hipaa)** (Office of the National Coordinator for Health IT) — a government hub of plain-language guides and fact sheets aimed at people who run health IT, not lawyers. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CISSP: Certified Information Systems Security Professional](https://www.isc2.org/certifications/cissp)** (ISC2) — the official certification page and exam outline. Privacy, data handling and legal/regulatory obligations sit in CISSP Domain 1 (Security and Risk Management) and Domain 2 (Asset Security). Verified loading via `curl` on 2026-11-11 (HTTP 200).

@@ -53,3 +53,12 @@ session. Further external reading and a video follow them.
   — a vendor-published ITSM explainer on problem management, the discipline this lesson's bridge
   compares POA&Ms and CAPAs to. It is a commercial vendor's guide, not ITIL's own text. Verified
   loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about tracking weaknesses to closure.
+
+- **[CMS Plan of Action and Milestones (POA&M) Handbook](https://security.cms.gov/learn/cms-plan-action-and-milestones-poam-handbook)** (CMS Information Security and Privacy Program) — a practical government handbook showing how one large agency writes, tracks and closes POA&M items. Good concrete examples to set beside a CAPA. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Automating the RMF: A Necessary Evolution](https://www.isaca.org/resources/isaca-journal/issues/2025/volume-4/automating-the-rmf-a-necessary-evolution)** (ISACA Journal, 2025) — covers tooling that generates and tracks POA&Ms alongside other authorization documents. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Security Risk Assessment Methods: Quantitative & Qualitative](https://destcert.com/resources/risk-assessment-methods/)** (Destination Certification, commercial CISSP trainer) — helps you rate the risk of an open weakness so priorities and due dates are defensible. CISSP Domain 1. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Business Continuity (BCM) MindMap | CISSP Domain 7](https://destcert.com/resources/business-continuity-management-bcm-mindmap-cissp-domain-7/)** (Destination Certification, commercial CISSP trainer) — a Domain 7 view of managing risk you cannot yet eliminate, a useful companion to the idea of temporary compensating measures. CISSP Domain 7 (Security Operations). Verified loading via `curl` on 2026-11-11 (HTTP 200).

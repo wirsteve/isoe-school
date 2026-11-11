@@ -66,3 +66,14 @@ Further entries below were added later and each carries its own verification not
   **[AABB: Standards for Blood Banks and Transfusion Services](https://www.aabb.org/standards-accreditation/standards/blood-banks-and-transfusion-services)**
   (verified loading via `curl` on 2026-11-11, HTTP 200); the full standard text is paywalled behind
   AABB's member/purchase access, so the free page will not show Section 3.9's requirement language.
+
+## Keep learning
+
+Not official sources — good places to learn more about software as a medical device and acquired-software risk.
+
+- **[Software Development Security — CISSP Study Guide](https://nex-arc-learning.com/isc2/cissp/study-guide/software-development-security/)** (nex-arc-learning, commercial study guide) — covers the lifecycle, assessing software, and acquired-software security. Supports **CISSP Domain 8 (Software Development Security)**, including how to judge software you buy rather than build. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CISSP Domain 8 Study Guide: Software Security (2026)](https://www.blogthetech.com/cissp-domain-8-software-development-security-guide/)** (BlogTheTech, independent blog) — a second, shorter Domain 8 summary with exam-oriented tips. Use it to cross-check the first guide. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Software as a Medical Device (SaMD): FDA and EU Guide](https://www.greenlight.guru/blog/software-as-a-medical-device-samd)**
+  (Greenlight Guru — vendor/commercial content) — a readable primer on what makes software a
+  medical device and how manufacturers handle it, useful background for why a BECS vendor carries
+  device obligations. Verified loading via `curl` on 2026-11-11 (HTTP 200).

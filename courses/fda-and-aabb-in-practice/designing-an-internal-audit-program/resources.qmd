@@ -60,3 +60,12 @@ noted for the one link blocked by that site's own bot protection in this environ
   — the full section containing the "thorough investigation... made and recorded" sentence
   this lesson reuses, so you can read it in context and check it against amendments. Verified
   loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about building and running an internal audit program.
+
+- **[IS Audit Basics: Risk-based Audit Planning for Beginners](https://www.isaca.org/resources/isaca-journal/issues/2017/volume-2/is-audit-basics-risk-based-audit-planning-for-beginners)** (ISACA Journal) — an accessible introduction to deciding what to audit first based on risk, which is the heart of an audit schedule. Supports CISA study as well. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Internal Audit's Independence Conundrum](https://internalauditor.theiia.org/en/articles/2024/july/online-exclusive-internal-audits-independence-conundrum/)** (Internal Auditor magazine, The IIA) — a discussion of independence and objectivity pressures, a good companion to the auditor-independence question in this lesson. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[SP 800-115, Technical Guide to Information Security Testing and Assessment](https://csrc.nist.gov/pubs/sp/800/115/final)** (NIST) — a government guide to planning and reporting security assessments; its planning and reporting structure carries over to non-technical audits. Supports CISSP Domain 6. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CISSP Domain 6: Security Assessment and Testing MindMap](https://destcert.com/resources/security-assessment-and-testing-overview-mindmap-cissp-domain-6/)** (Destination Certification; commercial) — a one-page visual overview of audit and testing strategies with a video, good for review. Supports CISSP Domain 6 (Security Assessment and Testing). Verified loading via `curl` on 2026-11-11 (HTTP 200).

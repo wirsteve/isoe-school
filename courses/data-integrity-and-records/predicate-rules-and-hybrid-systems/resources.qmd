@@ -59,3 +59,11 @@ Nine places to keep handy, each checked to load before being listed here.
   authority treats records across formats. UK-regulated, so it does not govern Lakeshore; use it
   for perspective only, not as a citation for U.S. requirements. Verified loading via `curl` on
   2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about hybrid paper and electronic record systems.
+
+- **[Data Integrity Focus, Part III: What Is the Problem with Hybrid Systems?](https://www.chromatographyonline.com/view/data-integrity-focus-part-iii-what-problem-hybrid-systems)** (LCGC International) — A practitioner article on why mixing paper and electronic records is risky and how the two sets of records drift apart. Written from the laboratory perspective but the reasoning carries to any hybrid workflow. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[The Challenges of Ensuring Laboratory Data Integrity](https://www.gmp-compliance.org/gmp-news/the-challenges-of-ensuring-laboratory-data-integrity)** (ECA Academy) — Includes the problem of keeping paper and electronic records synchronized so they tell the same story. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[GAMP Guide: Records & Data Integrity](https://ispe.org/publications/guidance-documents/gamp-records-pharmaceutical-data-integrity)** (ISPE) — Catalog page for a paid guide that includes material on hybrid records; useful to see how industry practitioners frame the topic. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.

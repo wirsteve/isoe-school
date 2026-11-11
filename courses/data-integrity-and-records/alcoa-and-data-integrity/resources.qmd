@@ -53,3 +53,11 @@ real Lakeshore document. All were checked and loading at the time this page was 
   question numbers visible when you want to check the exact wording of the ALCOA, metadata, and
   systems answers quoted in this lesson against FDA's own copy. Verified loading via `curl` on
   2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about ALCOA+ and data integrity.
+
+- **[ALCOA+ and Data Integrity](https://www.pharmtech.com/view/alcoa-and-data-integrity)** (Pharmaceutical Technology) — A trade-press explainer that walks through each ALCOA+ attribute with practical examples; a readable second take on the five letters before you apply them to a real record. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[The Challenges of Ensuring Laboratory Data Integrity](https://www.gmp-compliance.org/gmp-news/the-challenges-of-ensuring-laboratory-data-integrity)** (ECA Academy) — A practitioner article showing where data-integrity problems actually arise in instrument-driven workflows, which is the kind of system the lesson's example record lives in. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[GAMP Guide: Records & Data Integrity](https://ispe.org/publications/guidance-documents/gamp-records-pharmaceutical-data-integrity)** (ISPE) — The catalog page for ISPE's records and data integrity guide. The guide itself is a paid publication; the page is worth reading for its table of contents, which shows how practitioners organize the topic. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.

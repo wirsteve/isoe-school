@@ -58,3 +58,12 @@ this session.
 - **[NIST RMF Roles and Responsibilities Crosswalk](https://csrc.nist.gov/csrc/media/Projects/risk-management/documents/Additional%20Resources/NIST%20RMF%20Roles%20and%20Responsibilities%20Crosswalk.pdf)**
   (PDF) — maps who does what across RMF steps, including the authorizing official, useful for
   naming who plays that role at Lakeshore. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about authorization decisions and continuous monitoring.
+
+- **[Information Security Continuous Monitoring: The Promise and the Challenge](https://www.isaca.org/resources/isaca-journal/issues/2015/volume-1/information-security-continuous-monitoring-the-promise-and-the-challenge)** (ISACA Journal, 2015) — explains what continuous monitoring is meant to deliver and why programs struggle to deliver it. A realistic counterweight to the tidy diagram. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Automating the RMF: A Necessary Evolution](https://www.isaca.org/resources/isaca-journal/issues/2025/volume-4/automating-the-rmf-a-necessary-evolution)** (ISACA Journal, 2025) — how tooling can keep authorization packages and monitoring current instead of rebuilding them every few years. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Incident Response MindMap (2 of 6) | CISSP Domain 7](https://www.youtube.com/watch?v=5a5ZscedRYE)** (Destination Certification, YouTube) — what happens when monitoring detects something: the response lifecycle in mind-map form. CISSP Domain 7 (Security Operations). Verified via YouTube oEmbed on 2026-11-11 (HTTP 200).
+- **[CISSP Domain 1: Security & Risk Management](https://destcert.com/resources/domain-1-security-and-risk-management/)** (Destination Certification, commercial CISSP trainer) — hub page linking study guides on governance, risk and controls, useful for the "who accepts residual risk" thread. CISSP Domain 1. Verified loading via `curl` on 2026-11-11 (HTTP 200).

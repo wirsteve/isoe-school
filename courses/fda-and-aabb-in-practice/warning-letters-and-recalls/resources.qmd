@@ -57,3 +57,12 @@ written.
   firm-initiated recall section with the nine-item list and FDA's classification sentence. Check
   here for current text. Verified loading via `curl` on 2026-11-11 (HTTP 200).
 
+
+## Keep learning
+
+Not official sources — good places to learn more about how a 483 escalates and how firms respond.
+
+- **[Don't Just Say "We'll Fix It": FDA Wants Real Investigations in Your 483 Response](https://www.thefdalawblog.com/2026/03/dont-just-say-well-fix-it-fda-wants-real-investigations-in-your-483-response/)** (FDA Law Blog, Hyman, Phelps & McNamara) — a law-firm blog post on why thin responses invite escalation. Read it to see what a credible, investigation-backed response looks like. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Responding to an FDA Form 483: A Five-Step Approach](https://bioprocessintl.com/monoclonal-antibodies/responding-to-an-fda-form-483-a-five-step-approach)** (BioProcess International, trade publication) — a step-by-step structure for the response itself. Aimed at drug manufacturers, but the sequence transfers. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[FDA drafts guidance on best practices for responding to inspection observations](https://www.raps.org/news-and-articles/news-articles/2026/3/fda-drafts-guidance-on-best-practices-for-respondi)** (RAPS, regulatory professionals' society) — a news summary of FDA's draft thinking on 483 responses. A news report, not the guidance itself; check FDA's own page before relying on details. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Two Audit Case Studies Reveal the Cost of Incomplete Corrective Actions](https://www.pharmtech.com/view/two-audit-case-studies-reveal-the-cost-of-incomplete-corrective-actions)** (Pharmaceutical Technology, trade publication) — case studies of unresolved findings that recur and escalate, which is the real mechanism behind the 483-to-Warning-Letter path. Verified loading via `curl` on 2026-11-11 (HTTP 200).

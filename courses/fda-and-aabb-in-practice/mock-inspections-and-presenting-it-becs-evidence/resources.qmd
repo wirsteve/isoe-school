@@ -60,3 +60,11 @@ materials on internal-audit program maturity are a reasonable starting point —
 industry-practice tier `designing-an-internal-audit-program` already drew on, described
 there in this curriculum's own words rather than quoted or cited to a specific
 body-of-knowledge section number.
+
+## Keep learning
+
+Not official sources — good places to learn more about running mock inspections and inspection-readiness rooms.
+
+- **[Mock BIMO Inspections: A Basic Guide to Readiness in 2026](https://www.thefdagroup.com/blog/mock-bimo-inspection)** (The FDA Group, consulting firm; vendor content) — explains how a mock inspection is staged and what it should test. Written for clinical-research inspections, but the mock-inspection mechanics carry over. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[FDA Inspection Plan - 3 Keys to Be Successful](https://www.mastercontrol.com/gxp-lifeline/three-keys-to-successful-fda-inspections-preparation-management-and-follow-up/)** (MasterControl, quality-software vendor; vendor content) — covers preparation, managing the inspection day, and follow-up, including how requests are tracked. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Mock FDA Inspections](https://www.lachmanconsultants.com/mock-fda-inspections/)** (Lachman Consultants, consultancy; vendor content) — a consultancy's description of what a mock inspection delivers; useful for seeing how professionals scope one. Marketing page, so read for ideas only. Verified loading via `curl` on 2026-11-11 (HTTP 200).

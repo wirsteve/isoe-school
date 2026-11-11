@@ -68,3 +68,11 @@ written; the rest were added later and each carries its own verification note.
   emphasizes service providers and leveraging supplier documentation, relevant to how much weight a
   vendor's claims get. The guide itself is a paid publication; this page is the description only.
   Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about audit trails, electronic records and data integrity.
+
+- **[Audit Trail Review: Regulation and Practice in GxP Environments](https://ispe.org/pharmaceutical-engineering/march-april-2026/audit-trail-review-regulation-and-practice-gxp)** (ISPE, *Pharmaceutical Engineering*) — compares what regulators expect of audit trail review with what industry actually does. Practical background for audit-trail review procedures. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[What 21 CFR Part 11 §11.10(e) Actually Requires of an Audit Trail](https://ispe.org/pharmaceutical-engineering/ispeak/what-21-cfr-part-11-ss1110e-actually-requires-audit-trail-and-why)** (ISPE, ISPEAK opinion piece) — an author's argument about where common audit trail implementations fall short. An opinion piece; treat it as a viewpoint, not authority. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[GAMP Guide: Records & Data Integrity](https://ispe.org/publications/guidance-documents/gamp-records-pharmaceutical-data-integrity)** (ISPE) — the catalogue page for ISPE's data-integrity guide, showing what it covers. The guide itself is paid. Verified loading via `curl` on 2026-11-11 (HTTP 200).

@@ -515,3 +515,13 @@ module retrofit changes a course's own module list or description.
   (generic patch management), `filing-a-biological-product-deviation-report` (deliberate reuse of
   EtLmHnBuNJQ). Several resources intros now carry a stale "no new source fetched" sentence above
   the added links (left as locked text).
+- 2026-11-11 — **Keep learning pass** (user: "find other links, doesn't have to be official, CISSP is a
+  good resource"). Every module's `resources.qmd` (all 61) now ends with `## Keep learning`: 3–5
+  non-official, curl-verified learning links (Destination Certification CISSP mind maps, ISACA
+  Journal, ISC2 Insights, SANS, HIPAA Journal, ISPE Pharmaceutical Engineering, Blood Bank Guy
+  episodes, Medblocks, DORA, storytelling with data, etc.), CISSP domains named where relevant.
+  TEACHING.md now requires this section for new modules. New top-level page `study-resources.qmd`
+  (in `_quarto.yml` render list + sidebar) covers CISSP (8 domains mapped to modules), HCISPP, CC,
+  CISA/CRISC, ASQ CQA/CMQ-OE, CHPS, CPHIMS, ITIL 4, ASCP SBB. Removed intuitionlabs.ai and
+  pharmanow.live links (AI-generated content sites). Thin spots (3 links, some Wikipedia-heavy):
+  quality-system-essentials, legacy-systems-and-part-11-gaps.

@@ -64,3 +64,13 @@ A few primary sources to keep handy, each checked to load before being listed he
   records usable over time; a deeper treatment of the archiving and migration ideas this lesson
   touches. General digital-preservation practice, not regulatory. Verified loading via `curl` on
   2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about records retention and digital preservation.
+
+- **[CISSP Domain 2: Asset Security Exam Insights](https://destcert.com/resources/domain-2-asset-security/)** (Destination Certification) — A study guide for the CISSP asset-security domain covering data lifecycle, archiving, destruction and retention policy. Supports CISSP Domain 2 (Asset Security). Commercial training company; free page. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[Asset Classification MindMap (1 of 1) | CISSP Domain 2](https://www.youtube.com/watch?v=WBlQQ6qTlGI)** (Destination Certification, YouTube) — A short mind-map video that ties classification to how long and how carefully data is kept. Verified via YouTube oEmbed on 2026-11-11 (HTTP 200).
+- **[CCSP Domain 2: DRM & Data Retention MindMap](https://destcert.com/resources/digital-rights-management-drm-data-retention-archiving-deletion-mindmap-ccsp-domain-2/)** (Destination Certification) — Written for the cloud-security certification, but its retention, archiving and deletion walk-through applies to any system. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[Levels of Digital Preservation](https://ndsa.org/publications/levels-of-digital-preservation/)** (National Digital Stewardship Alliance) — A practical maturity ladder (storage, integrity, control, metadata, content) for keeping digital records usable over time; a handy self-assessment for archives. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[Digital Preservation](https://www.digitalpreservation.gov/)** (Library of Congress) — A hub of free learning material, tools and guides on preserving digital content. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.

@@ -62,3 +62,11 @@ Each link below was checked this session and loads.
   outsourced activities. It is EU rules for medicinal products, not FDA or blood-bank law; read it
   as a worked comparison for how another regulator expects suppliers of computerized systems to be
   controlled. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about vendor and supply chain risk.
+
+- **[Supply Chain Risk Management (SCRM): Concepts and Mitigations](https://destcert.com/resources/supply-chain-risk-management/)** (Destination Certification) — CISSP study guide page on assessing and monitoring third parties. Supports CISSP Domain 1 (Security and Risk Management). Commercial training provider. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CISSP 2024 Domain 1: Applying Effective Supply Chain Risk Management](https://www.infosectrain.com/blog/cissp-domain-1-applying-effective-supply-chain-risk-management)** (InfosecTrain, training vendor) — A second CISSP Domain 1 explanation covering contracts, audits and independent assurance reports, helpful for judging what a vendor's evidence really proves. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CC Certified in Cybersecurity](https://www.isc2.org/certifications/cc)** (ISC2) — ISC2's entry-level certification page; its free self-paced course is a gentle on-ramp to risk concepts before the full CISSP material. Verified loading via `curl` on 2026-11-11 (HTTP 200).

@@ -57,3 +57,11 @@ links below use verified-loading mirrors of the same official text.)
   record). Not blood-industry-specific — use it to firm up the general MDM concept, then apply
   it to why Thursday's registry check depends on proof of identity, not a name. Verified loading
   via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about donor eligibility and why screening is risk-based.
+
+- **[080CE: Is This Donor "Safe?" with Mindy Goldman](https://www.bbguy.org/2020/02/27/080/)** (Blood Bank Guy podcast, Joe Chaffin) — a practitioner conversation on how donor eligibility questions get designed and why a deferral is a risk judgment, not a moral one. Good background for why the Donor History Questionnaire is not something IT can casually change. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[084: COVID-19 Convalescent Plasma with Pampee Young and Ralph Vassallo](https://www.bbguy.org/2020/05/04/084/)** (Blood Bank Guy podcast) — a case study in how a blood center recruits and qualifies a special donor population fast, and the operational records that depend on it. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[BBGuy Podcast Archives](https://www.bbguy.org/category/podcast/)** (Blood Bank Guy) — the full episode list with transcripts for many episodes; skim titles to build blood-banking vocabulary, and a useful starting point if you later consider the ASCP SBB (Specialist in Blood Banking) path. Verified loading via `curl` on 2026-11-11 (HTTP 200).

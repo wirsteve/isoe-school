@@ -52,3 +52,12 @@ real Lakeshore document. All ten were checked and loading at the time this page 
   — an IT-security-standards definition of the same concept, useful for seeing how your ITSM
   and security teams already describe audit trails, versus FDA's CGMP wording. Verified loading via
   `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about audit trails, logging and review.
+
+- **[Log Management as an Enabler for Data Protection and Automated Threat Detection](https://www.isaca.org/resources/isaca-journal/issues/2023/volume-4/log-management-as-an-enabler-for-data-protection-and-automated-threat-detection)** (ISACA Journal) — Why complete, protected logs matter and what gaps in logging look like; the security view of the same idea as an audit trail. Supports CISSP Domain 7 (Security Operations) and CISA study. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[The Practical Aspect: Challenges of Security Log Management](https://www.isaca.org/resources/isaca-journal/issues/2017/volume-6/the-practical-aspect-challenges-of-security-log-management)** (ISACA Journal) — A short article on building a log-management program (policy, process, tooling, upkeep) and the volume and resource problems that make audit-trail review hard in practice. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[Certified: The ISACA CISA Audio Course, Episode 56: Operational Log Management](https://share.transistor.fm/s/89d0a86d)** (Podcast) — An audio episode on operational log management from CISA exam prep; good for a commute and for learning how auditors think about log integrity and review. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[Audit trail](https://en.wikipedia.org/wiki/Audit_trail)** (Wikipedia) — A general overview of what an audit trail is across fields; useful vocabulary, not an authority for any regulation. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.

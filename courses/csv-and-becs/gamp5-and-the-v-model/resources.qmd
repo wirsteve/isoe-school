@@ -58,3 +58,12 @@ real Lakeshore document. Each was checked and loading at the time this page was 
   — the blood-specific equipment regulation that FDA's BECS guidance reads alongside 211.68 when
   it treats BECS as equipment. Read it to see the Part 606 side of the regulatory floor next to
   the 211.68 text this lesson quotes. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about GAMP, risk-based validation and the software lifecycle.
+
+- **[Computer Software Assurance and the Critical Thinking Approach](https://ispe.org/pharmaceutical-engineering/march-april-2024/computer-software-assurance-and-critical-thinking)** (ISPE, *Pharmaceutical Engineering*) — a practitioner article on how risk-based "assurance" differs from document-heavy validation. Worth reading to see why the V-model's test effort should scale with risk. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Finding the Assurance in Computer Software Assurance](https://ispe.org/index.php/pharmaceutical-engineering/september-october-2024/finding-assurance-computer-software-assurance)** (ISPE, *Pharmaceutical Engineering*) — an industry-workshop write-up on how GAMP-style thinking and the newer assurance approach fit together. Good second view after the lesson. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Emerging Leaders Editorial: What Is GAMP & Why Is It Important?](https://ispe.org/pharmaceutical-engineering/january-february-2024/emerging-leaders-editorial-what-gampr-why-it)** (ISPE, *Pharmaceutical Engineering*) — a short, plain-language introduction to what GAMP is for. A quick refresher before the software categories. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CISSP Domain 8 MindMap: Secure Software Development](https://destcert.com/resources/secure-software-development-mindmap-cissp-domain-8/)** (Destination Certification, commercial CISSP training) — a one-page map of the software development lifecycle and how security fits in, with a companion video ([Secure Software Development MindMap (1 of 2) | CISSP Domain 8](https://www.youtube.com/watch?v=t-CXqjxJn_I)). Supports **CISSP Domain 8 (Software Development Security)** and gives a second vocabulary for the same lifecycle. Page verified via `curl` (HTTP 200); video verified via YouTube oEmbed on 2026-11-11 (HTTP 200).

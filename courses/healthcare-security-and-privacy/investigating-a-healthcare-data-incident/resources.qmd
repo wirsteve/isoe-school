@@ -82,3 +82,12 @@ If a future session needs to go beyond what this course's own four modules alrea
 for example, 164.412's law-enforcement-delay mechanics, or HHS's own specified encryption
 methodology referenced in 164.402's "unsecured protected health information" definition — run
 `fetch-source` first rather than asserting anything about either one from memory.
+
+## Keep learning
+
+Not official sources — good places to learn more about healthcare incident response and investigation.
+
+- **[Incident Handler's Handbook](https://www.sans.org/white-papers/33901/)** (SANS Institute) — a free white paper walking through the incident-handling phases from preparation to lessons learned. Supports CISSP Domain 7 (Security Operations) incident management. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Health-ISAC Resources & News](https://www.health-isac.org/resources/)** (Health-ISAC) — the healthcare sector's threat-sharing community; public resources show what real healthcare incidents and threats look like. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CISSP: Certified Information Systems Security Professional](https://www.isc2.org/certifications/cissp)** (ISC2) — official outline; incident response and investigations are covered in CISSP Domain 7 (Security Operations). Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Cybersecurity Blogs](https://www.sans.org/blog/)** (SANS Institute) — regularly updated practitioner posts on forensics and incident response, useful for ongoing learning. Verified loading via `curl` on 2026-11-11 (HTTP 200).

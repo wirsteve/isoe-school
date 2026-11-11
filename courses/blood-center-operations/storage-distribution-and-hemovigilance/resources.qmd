@@ -65,3 +65,11 @@ links below use verified-loading mirrors of the same official text.)
   lesson draws specifically for Riverside's systems. Read this for the industry-standard
   vocabulary; the lesson's own text is what ties it to 606.165's handoff. Verified loading via
   `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about transfusion reactions and what hemovigilance catches.
+
+- **[069CE: Preventing TRALI with Beth Shaz](https://www.bbguy.org/2019/05/22/069/)** (Blood Bank Guy podcast) — how a serious reaction (transfusion-related acute lung injury) is investigated back to the donor and product, and how prevention changed inventory practice. Shows why traceability data matters. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[066: IgA Deficiency and Anaphylactic Reactions with Jerry Sandler](https://www.bbguy.org/2019/04/10/066/)** (Blood Bank Guy podcast) — a second reaction case study; useful for seeing what a hospital reports back to the supplier and what that implies for your records. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[BBGuy Essentials 003: septic transfusion reactions with Dr. Anne Eder (transcript, PDF)](https://www.bbguy.org/pdf/BBGE_003_Anne_Eder_Transcript.pdf)** (Blood Bank Guy podcast) — a lookback and recall example: a contaminated platelet unit and what follows. Details predate later FDA guidance. Verified loading via `curl` on 2026-11-11 (HTTP 200; PDF, no HTML title).

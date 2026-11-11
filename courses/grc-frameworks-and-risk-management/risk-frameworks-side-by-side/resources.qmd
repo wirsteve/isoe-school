@@ -66,3 +66,12 @@ the time this page was written.
 - **[ICH Quality Guidelines](https://www.ich.org/page/quality-guidelines)** — the harmonisation
   body's own index of its quality guidelines, including Q9. Use it to see where Q9 sits among the
   other quality guidelines. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about comparing risk frameworks.
+
+- **[Risk Management Frameworks | CISSP Study Guide](https://destcert.com/resources/risk-management-frameworks/)** (Destination Certification, commercial CISSP trainer) — a readable tour of the major frameworks side by side, written for exam prep, which is exactly the "same motion, different vocabulary" comparison this lesson makes. Supports CISSP Domain 1 (Security and Risk Management). Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Risk Management MindMap (3 of 3) | CISSP Domain 1](https://www.youtube.com/watch?v=_ksPu19kkCI)** (Destination Certification, YouTube) — a short mind-map video that walks asset valuation, risk analysis and treatment in order. Good for fixing the shared sequence in your head before the vocabulary differences. CISSP Domain 1. Verified via YouTube oEmbed on 2026-11-11 (HTTP 200).
+- **[NIST CSF 2.0: What Changed + Free Controls Sheet](https://www.saltycloud.com/blog/nist-csf-2-0/)** (Isora GRC, vendor blog) — a plain-language summary of how CSF 2.0 differs from 1.1, including the new Govern function. Vendor content: use it for orientation and check the details against NIST. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[NIST CSF 2.0 GOVERN Function: Complete Implementation Guide](https://www.securityscientist.net/blog/nist-csf-2-0-govern-function-complete-implementation-guide/)** (Security Scientist, practitioner blog) — digs into the Govern function and how it ties cybersecurity to enterprise risk, the bridge between the framework and your quality system. Verified loading via `curl` on 2026-11-11 (HTTP 200).

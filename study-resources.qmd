@@ -1,0 +1,211 @@
+---
+title: "Study resources and certifications"
+subtitle: "Where to keep learning beyond this curriculum"
+order: 2
+toc: true
+---
+
+This curriculum teaches you enough to ask the right question and catch a wrong answer. It is
+not exam prep. If you want to go deeper, or want a credential that other people recognize,
+this page lists the certifications that overlap with it and the best places to study.
+
+Links checked and loading on 2026-11-11. Several sites (ASQ, HIMSS, ASCP, HIPAA Journal, HHS)
+block automated checks, so they are named below without a link. Search for them by name. Many of
+the study links are commercial or community content, not official sources. They are good for
+learning, and they are never the authority for a regulatory claim. For that, go back to the
+lessons and their sources.
+
+## Certifications that map to this curriculum
+
+Honest framing: most of these are built for people who do security, audit or quality work every
+day. A Director of IT Service Operations is a strong candidate for a few of them and a stretch
+for others. Requirements and prices change, so confirm them on the issuer's page before you plan
+around one.
+
+### ISC2 CISSP (Certified Information Systems Security Professional)
+
+- **Issuer:** [ISC2](https://www.isc2.org/certifications/cissp).
+- **What it is:** a broad, management-level security certification. It tests judgment ("what
+  would a security manager do first?") more than hands-on technical skill.
+- **Eight domains:** (1) Security and Risk Management, (2) Asset Security, (3) Security
+  Architecture and Engineering, (4) Communication and Network Security, (5) Identity and Access
+  Management, (6) Security Assessment and Testing, (7) Security Operations, (8) Software
+  Development Security.
+- **Experience:** ISC2's
+  [experience requirements page](https://www.isc2.org/certifications/cissp/cissp-experience-requirements)
+  says candidates need a minimum of five years of cumulative, full-time experience in two or more
+  of the eight domains, with some credit for a relevant degree or certain other credentials. It
+  also says a candidate without the experience can pass the exam and become an Associate of ISC2,
+  then has six years to earn the experience. Check the page for the current wording.
+- **Heads-up:** ISC2's CISSP page says that effective April 15, 2027 the exam will be based on a
+  new exam outline. Study from the outline that matches your exam date.
+- **Overlap here:** [GRC frameworks and risk management](courses/grc-frameworks-and-risk-management/index.qmd),
+  [Healthcare security and privacy](courses/healthcare-security-and-privacy/index.qmd), and
+  [Vendor and third-party risk](courses/vendor-and-third-party-risk-management/index.qmd).
+- **Realistic for you?** Plausible. Years of running IT operations, access, change and incident
+  management likely touch at least two domains, but whether your history counts is ISC2's
+  call. It is the best-known credential in the field and the one to use for the study material
+  below. It is a lot of study for a credential the job does not require.
+
+### ISC2 HCISPP (HealthCare Information Security and Privacy Practitioner)
+
+- **Issuer:** [ISC2](https://www.isc2.org/certifications/hcispp).
+- **What it is:** security and privacy specifically for healthcare. ISC2 lists seven domains:
+  Healthcare Industry; Information Governance in Healthcare; Information Technologies in
+  Healthcare; Regulatory and Standards Environment; Privacy and Security in Healthcare; Risk
+  Management and Risk Assessment; and Third-Party Risk Management.
+- **Experience:** ISC2's page lists two years of required work experience. Confirm the details
+  there.
+- **Overlap here:** this curriculum borrows its structure from the same body of knowledge. See
+  [Healthcare security and privacy](courses/healthcare-security-and-privacy/index.qmd),
+  [GRC frameworks and risk management](courses/grc-frameworks-and-risk-management/index.qmd) and
+  [Vendor and third-party risk](courses/vendor-and-third-party-risk-management/index.qmd).
+- **Realistic for you?** The closest fit by subject, and the lighter experience bar. A good first
+  target if you want a credential that signals healthcare, not generic IT.
+
+### ISC2 CC (Certified in Cybersecurity)
+
+- **Issuer:** [ISC2](https://www.isc2.org/certifications/cc). Entry-level, no work experience
+  required, five domains (security principles, governance, identity and access, network and
+  cloud, operations and incident response).
+- **Free?** It used to be free through ISC2's One Million Certified in Cybersecurity program. ISC2's
+  [program page](https://www.isc2.org/landing/1mcc) now says the program has hit its goal and
+  stopped new enrollments. Check ISC2 for current cost.
+- **Realistic for you?** Probably below your level. Useful only as a cheap way to test whether you
+  like exam-style study, or as a credential for a team member.
+
+### ISACA CISA and CRISC
+
+- **Issuer:** ISACA. [CISA](https://www.isaca.org/credentialing/cisa) (Certified Information Systems
+  Auditor) is for IT audit and control. [CRISC](https://www.isaca.org/credentialing/crisc)
+  (Certified in Risk and Information Systems Control) is for IT risk management.
+- **Overlap here:** CRISC lines up with
+  [GRC frameworks and risk management](courses/grc-frameworks-and-risk-management/index.qmd).
+  CISA lines up with
+  [Designing an internal audit program](courses/fda-and-aabb-in-practice/designing-an-internal-audit-program/index.qmd)
+  and the [vendor risk course](courses/vendor-and-third-party-risk-management/index.qmd).
+- **Experience:** both have experience requirements. The ISACA pages describe them, so check the
+  current rules there.
+- **Realistic for you?** CRISC is a natural fit for someone who reports risk to executives. CISA
+  fits if you want to audit IT yourself, which is closer to the Quality Analyst's role than yours.
+
+### ASQ CQA and CMQ/OE
+
+- **Issuer:** ASQ (American Society for Quality). Its site blocked automated checks, so no link
+  here. Search "ASQ Certified Quality Auditor" and "ASQ Manager of Quality/Organizational
+  Excellence".
+- **What they are:** CQA (Certified Quality Auditor) is the standard credential for quality
+  auditing. CMQ/OE is aimed at quality managers and leaders.
+- **Overlap here:** [Quality system essentials](courses/quality-system-essentials/index.qmd),
+  [Designing an internal audit program](courses/fda-and-aabb-in-practice/designing-an-internal-audit-program/index.qmd)
+  and [Directing the Quality Analyst](courses/directing-the-quality-analyst/index.qmd).
+- **Realistic for you?** The CQA is a better goal for your Quality Analyst than for you. The
+  CMQ/OE is a stretch worth considering if you want the quality vocabulary in depth. Check ASQ's
+  current requirements.
+
+### AHIMA CHPS
+
+- **Issuer:** [AHIMA](https://www.ahima.org/certification-careers/certifications-overview/chps/)
+  (health information management). CHPS is Certified in Healthcare Privacy and Security.
+- **Experience:** AHIMA's page lists several routes that combine education with years of
+  healthcare privacy or security experience (for example, a bachelor's degree plus two years). Read
+  the page for the route that fits you.
+- **Overlap here:** [Healthcare security and privacy](courses/healthcare-security-and-privacy/index.qmd)
+  and [Data integrity and records](courses/data-integrity-and-records/index.qmd).
+- **Realistic for you?** Only if your role includes real privacy or security duties. It leans
+  toward health-records people more than IT operations.
+
+### HIMSS CPHIMS
+
+- **Issuer:** HIMSS (health information and management systems). Its site blocked automated
+  checks, so no link here. Search "HIMSS CPHIMS".
+- **What it is:** a professional credential for health IT and information management.
+- **Overlap here:** the [ITSM bridge course](courses/itsm-for-regulated-blood-services/index.qmd)
+  and general health IT context. Check HIMSS for current requirements.
+- **Realistic for you?** Fits a healthcare IT career path, but little of the exam is
+  blood-center specific. Lower priority.
+
+### ITIL 4 (PeopleCert)
+
+- **Issuer:** PeopleCert runs the ITIL exams. The framework is published by
+  [AXELOS](https://www.axelos.com/).
+- **Overlap here:** this is the vocabulary you already use, and the
+  [ITSM for regulated blood services](courses/itsm-for-regulated-blood-services/index.qmd) capstone
+  translates it into quality-system language.
+- **Realistic for you?** You probably know the content. Take a higher ITIL level only if it helps
+  your career. The more useful move is the crosswalk in that course.
+
+### ASCP SBB (Specialist in Blood Banking)
+
+- **Issuer:** ASCP Board of Certification. Its site blocked automated checks, so no link here.
+  Search "ASCP Specialist in Blood Banking SBB".
+- **What it is:** an advanced technical credential held by blood bank specialists. It is not a goal
+  for you. It is useful context for what the blood bank's own experts have studied, and
+  for how to talk to them.
+- **Overlap here:** [Blood center operations](courses/blood-center-operations/index.qmd).
+
+## CISSP domains and where this curriculum touches them
+
+This is a map, not an equivalence. The curriculum covers regulated blood-center systems, not
+exam prep. Some domains, especially network and software development security, are barely
+touched here, so use the study links to fill them.
+
+| CISSP domain | Where this curriculum touches it | One good free study link |
+|---|---|---|
+| 1. Security and Risk Management | [Risk frameworks side by side](courses/grc-frameworks-and-risk-management/risk-frameworks-side-by-side/index.qmd), [Quality risk management](courses/quality-system-essentials/quality-risk-management/index.qmd), [The HIPAA Privacy Rule](courses/healthcare-security-and-privacy/the-hipaa-privacy-rule/index.qmd) | [Destination Certification: Align Security Function to Business Strategy](https://destcert.com/resources/alignment-of-security-function-to-business-strategy-mindmap-cissp-domain-1/) (commercial company, free page) |
+| 2. Asset Security | [Retention across record types](courses/data-integrity-and-records/retention-across-record-types/index.qmd), [ALCOA and data integrity](courses/data-integrity-and-records/alcoa-and-data-integrity/index.qmd), [Information governance in a covered entity](courses/healthcare-security-and-privacy/information-governance-in-a-covered-entity/index.qmd) | [Destination Certification CISSP mindmaps](https://destcert.com/cissp-mindmaps/) (commercial) |
+| 3. Security Architecture and Engineering | [GAMP 5 and the V-model](courses/csv-and-becs/gamp5-and-the-v-model/index.qmd), [BECS as a regulated device](courses/csv-and-becs/becs-as-a-regulated-device/index.qmd) | [SANS posters and cheat sheets](https://www.sans.org/posters/) |
+| 4. Communication and Network Security | Light touch: [BECS interfaces and data integrity](courses/csv-and-becs/becs-interfaces-and-data-integrity/index.qmd) | [SANS security resources](https://www.sans.org/security-resources/) |
+| 5. Identity and Access Management | [Audit trails and e-signatures](courses/data-integrity-and-records/audit-trails-and-esignatures/index.qmd), [Security Rule safeguards and Part 11](courses/healthcare-security-and-privacy/security-rule-safeguards-and-part-11/index.qmd) | [Mike Chapple on YouTube](https://www.youtube.com/@CertMike) (security certification lessons) |
+| 6. Security Assessment and Testing | [Implement and assess controls](courses/grc-frameworks-and-risk-management/implement-and-assess-controls/index.qmd), [IQ, OQ, PQ and traceability](courses/csv-and-becs/iq-oq-pq-and-traceability/index.qmd), [Internal audits and management review](courses/quality-system-essentials/internal-audits-and-management-review/index.qmd) | [NIST Risk Management Framework](https://csrc.nist.gov/projects/risk-management/about-rmf) |
+| 7. Security Operations | [Investigating a healthcare data incident](courses/healthcare-security-and-privacy/investigating-a-healthcare-data-incident/index.qmd), [Validated state lifecycle and patching](courses/csv-and-becs/validated-state-lifecycle-and-patching/index.qmd), [Change control for regulated systems](courses/quality-system-essentials/change-control-for-regulated-systems/index.qmd) | [Inside Cloud and Security on YouTube](https://www.youtube.com/@InsideCloudAndSecurity) (commercial training channel) |
+| 8. Software Development Security | Light touch: [Vendor change notifications](courses/vendor-and-third-party-risk-management/vendor-change-notifications-and-your-own-change-control/index.qmd), [QMSR, ISO 13485 and the vendor](courses/csv-and-becs/qmsr-iso-13485-and-the-vendor/index.qmd) | [ISC2 CISSP exam outline](https://www.isc2.org/Certifications/CISSP/CISSP-Certification-Exam-Outline) (official, lists what is tested) |
+
+## Free study material
+
+- [ISC2 CISSP exam outline](https://www.isc2.org/Certifications/CISSP/CISSP-Certification-Exam-Outline).
+  Official. Start here: it says exactly what is tested.
+- [Destination Certification CISSP mindmaps](https://destcert.com/cissp-mindmaps/). Commercial
+  training company. The free mind maps give you the shape of each domain before you dig in.
+- [Kelly Handerhan at Destination Certification](https://destcert.com/kelly-handerhan/). Commercial.
+  A well-known CISSP instructor, and the page for her courses. Her advice to "think like a
+  manager" suits your role.
+- [Cybrary Podcast episode 69: A Humanizing Approach to Passing the CISSP Exam with Kelly Handerhan](https://www.cybrary.it/podcast/a-humanizing-approach-to-passing-the-cissp-exam-with-kelly-handerhan-the-cybrary-podcast-ep-69).
+  A listen-on-the-commute introduction to the exam mindset.
+- [Inside Cloud and Security on YouTube](https://www.youtube.com/@InsideCloudAndSecurity). Commercial
+  channel with long CISSP exam-cram videos that cover every domain. Check that the video you pick
+  matches the current exam outline.
+- [Mike Chapple on YouTube](https://www.youtube.com/@CertMike) and
+  [CertMike](https://certmike.com/). Commercial. Security educator with
+  free study groups and plain-English explanations (per the site).
+- [SANS posters and cheat sheets](https://www.sans.org/posters/). SANS is a commercial training
+  institute, but the posters are free, and good one-page references.
+- [SANS security resources](https://www.sans.org/security-resources/). Free reading, tools
+  and reference material.
+- [ISACA Journal](https://www.isaca.org/resources/isaca-journal). Practitioner articles on
+  governance, risk and audit. Some content is for members only.
+- [ISPE Pharmaceutical Engineering](https://www.ispe.org/pharmaceutical-engineering). Magazine from
+  the society behind GAMP. Useful for validation and data integrity in regulated manufacturing.
+- [itsm.tools](https://itsm.tools/). Commercial ITSM blog and tool reviews. Good for ITSM practice
+  and tooling context, not for regulation.
+- [NIST Risk Management Framework](https://csrc.nist.gov/projects/risk-management/about-rmf).
+  Public, free, and the backbone of the
+  [GRC course](courses/grc-frameworks-and-risk-management/index.qmd).
+- [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework). A plain-language control
+  vocabulary used across many industries.
+- [ISC2 Insights blog](https://www.isc2.org/Insights). Free reading from the CISSP issuer.
+
+## Podcasts and newsletters
+
+- [Blood Bank Guy Essentials Podcast](https://www.bbguy.org/). Interviews on transfusion medicine
+  with Joe Chaffin, MD. AABB also lists it on its [podcast page](https://www.aabb.org/bbguy).
+  Aimed at clinicians, but the best free way to hear how blood bank experts talk.
+- [Risky Business](https://risky.biz/netcasts/risky-business/). Security news podcast.
+- [Darknet Diaries](https://darknetdiaries.com/). Storytelling about real incidents. Good for
+  seeing how breaches unfold, and for your incident-response instincts.
+- [SANS NewsBites](https://www.sans.org/newsletters/newsbites/). Security news digest
+  with expert commentary.
+- [SANS OUCH! newsletter](https://www.sans.org/newsletters/ouch/). Plain-language security
+  awareness newsletter. Useful to forward to staff.
+- [ISACA newsletters](https://www.isaca.org/resources/news-and-trends/newsletters). Governance,
+  risk and audit news from the issuer of CISA and CRISC.

@@ -56,3 +56,11 @@ Eight places to keep handy, each checked to load before being listed here.
   standards landing page, where the Equipment-related Quality System Essential the lesson mentions
   (paraphrased only) is published; the standards text itself is AABB's and is not reproduced here.
   Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about living with legacy systems and compensating controls.
+
+- **[Data Integrity Focus, Part III: What Is the Problem with Hybrid Systems?](https://www.chromatographyonline.com/view/data-integrity-focus-part-iii-what-problem-hybrid-systems)** (LCGC International) — Legacy instruments often end up hybrid (electronic result, paper record); this article explains the risks and the controls practitioners reach for. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[The Practical Aspect: Challenges of Security Log Management](https://www.isaca.org/resources/isaca-journal/issues/2017/volume-6/the-practical-aspect-challenges-of-security-log-management)** (ISACA Journal) — When a system cannot log what you need, monitoring around it is the usual compensating control; this shows how to run such a program. Supports CISSP Domain 7. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[Log Management as an Enabler for Data Protection and Automated Threat Detection](https://www.isaca.org/resources/isaca-journal/issues/2023/volume-4/log-management-as-an-enabler-for-data-protection-and-automated-threat-detection)** (ISACA Journal) — Explains what is lost when logging has gaps, a good way to explain the risk of an unmodernized system to non-technical leaders. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.

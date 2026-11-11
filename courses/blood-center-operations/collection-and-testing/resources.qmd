@@ -56,3 +56,11 @@ links below use verified-loading mirrors of the same official text.)
   release gate through this lens, then notice where the blood-center version is stricter — a
   failed gate here triggers donor deferral and notification, not just a blocked deployment.
   Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about collection, quarantine, and infectious-disease testing in practice.
+
+- **[Blood Bag: The Unexpected Journey](https://stanfordbloodcenter.org/blood-bag-the-unexpected-journey/)** (Stanford Blood Center) — a readable walk from the draw through testing and release, written for the public. Use it to put the Thursday-to-Monday timeline in the lesson into a mental picture. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[What Happens to Donated Blood?](https://www.redcrossblood.org/donate-blood/blood-donation-process/what-happens-to-donated-blood)** (American Red Cross) — a short public overview of sample tubes, the testing lab, and why units wait in quarantine. Compare it against how Lakeshore's flow is described. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[BBGuy Essentials 003: septic transfusion reactions with Dr. Anne Eder (transcript, PDF)](https://www.bbguy.org/pdf/BBGE_003_Anne_Eder_Transcript.pdf)** (Blood Bank Guy podcast) — why bacterial contamination of platelets is a distinct testing problem from viral screening. The conversation predates later FDA guidance, so treat the testing details as history, not current practice. Verified loading via `curl` on 2026-11-11 (HTTP 200; PDF, no HTML title).

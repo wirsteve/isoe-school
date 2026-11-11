@@ -50,3 +50,13 @@ Each link below was checked this session and loads.
   target, the principle behind this module's rule that deviation count can never be her personal
   target. A general reference, not a regulatory or quality-standards source. Verified loading via
   `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about coaching an analyst and managing up.
+
+- **[Manager Tools' Feedback Model](https://www.rightattitudes.com/2008/02/23/manager-tools-feedback-model/)** (RightAttitudes blog, summarizing Manager Tools) — A third-party summary of the behavior-and-impact feedback model from the Manager Tools podcast, directly usable for coaching a pattern rather than a single mistake. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Three Feedback Models](https://jacobian.org/2021/apr/22/three-feedback-models/)** (Jacob Kaplan-Moss) — A seasoned engineering manager compares feedback frameworks and when each works. Software-team context, but the technique transfers. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Managing Up: A Practical Approach to Working with Your Supervisor](https://hr.umn.edu/supervising/news/Managing-Practical-Approach-Working-Your-Supervisor)** (University of Minnesota HR) — A short, practical guide to understanding what your own boss needs from your reports. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Managing Up Without Sucking Up](https://thinkers50.com/?p=4228)** (Thinkers50, based on an HBR piece by Whitney Johnson) — Frames managing up as solving problems your stakeholders need solved, a good mindset for honest reporting. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[5 Ways To Lead Your Manager (without it being icky)](https://rebelsguidetopm.com/how-to-lead-your-manager/)** (Rebel's Guide to PM, blog) — Practical tactics for bringing bad news and options upward. Verified loading via `curl` on 2026-11-11 (HTTP 200).

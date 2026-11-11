@@ -62,3 +62,11 @@ written.
   Categorize and Select. The closest thing NIST publishes to an approachable version of this
   lesson; read it before the full SP 800-37. Verified loading via `curl` on 2026-11-11
   (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about categorizing systems and choosing controls.
+
+- **[Types of Security Controls | CISSP Study Guide](https://destcert.com/resources/types-security-controls/)** (Destination Certification, commercial CISSP trainer) — administrative, technical and physical controls, and preventive, detective and corrective functions, explained the way the exam frames them. Useful vocabulary when you tailor a control set. CISSP Domain 1. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Security Risk Assessment Methods: Quantitative & Qualitative](https://destcert.com/resources/risk-assessment-methods/)** (Destination Certification, commercial CISSP trainer) — clear comparison of qualitative and quantitative approaches, which helps you reason to an impact level instead of asserting one. CISSP Domain 1. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CRISC Certification overview](https://www.isaca.org/credentialing/crisc)** (ISACA) — the outline of ISACA's risk-focused certification (risk identification, assessment, response, control monitoring). Even if you never sit the exam, the domain list is a good map of the risk-and-controls skill set. Verified loading via `curl` on 2026-11-11 (HTTP 200).

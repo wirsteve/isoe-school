@@ -62,3 +62,12 @@ links below use verified-loading mirrors of the same official text.)
   *regulation*; AABB accreditation (assessed against AABB Standards, which include labeling and
   product-identification requirements) is a separate, voluntary layer most blood centers also
   hold themselves to. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about component manufacturing and ISBT 128 labeling.
+
+- **[On-Demand Learning](https://isbt128.org/presentations)** (ICCBBA) — ICCBBA's own training videos and presentations on how ISBT 128 identifies donations and products. Free to browse; pick the introductory items first. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Glossary: ISBT 128](https://www.bbguy.org/education/glossary/gli16/)** (Blood Bank Guy) — a short plain-language definition of why every label element sits in a fixed position and every donation number is unique. A good two-minute refresher before the lesson's label walk-through. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[095CE: What is Liquid Plasma? with Chris Gresens](https://www.bbguy.org/2022/03/09/095/)** (Blood Bank Guy podcast) — shows how one product type has its own preparation, dating, and labeling consequences, which is the "one draw, many expiration dates" idea in the lesson. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[What Happens to Donated Blood?](https://www.redcrossblood.org/donate-blood/blood-donation-process/what-happens-to-donated-blood)** (American Red Cross) — public overview of centrifugation into red cells, platelets, and plasma. Verified loading via `curl` on 2026-11-11 (HTTP 200).
