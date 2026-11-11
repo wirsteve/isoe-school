@@ -69,3 +69,11 @@ Five more entries follow the original four, including the video embedded in this
   supplier documentation. The guide itself is sold, so this page is a catalogue entry, not the
   text; use it to confirm what the edition is before anyone quotes it as a requirement. Verified
   loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about supplier controls and software validation under a medical device quality system.
+
+- **[Supplier Controls in ISO 13485: How Deep Is "Sufficient"?](https://proqc.com/blog/iso-13485-supplier-controls-how-deep-is-sufficient/)** (Pro QC, quality consultancy blog) — a practitioner discussion of how much oversight a supplier needs. Helpful for thinking about proportionate vendor oversight. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Simplify Software Validation ISO 13485](https://www.sqt-training.com/2021/09/understanding-the-software-validation-requirements-of-iso-134852016/)** (SQT Training, training vendor) — explains software validation expectations in a device quality system. Vendor content; use for orientation only. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Do ISO 13485's production controls apply to SaMD?](https://www.greenlight.guru/blog/do-iso-13485s-production-controls-apply-to-samd)** (Greenlight Guru, eQMS vendor blog) — a medical-device quality-system perspective on how production-style controls map to software. Vendor viewpoint, so read it critically. Verified loading via `curl` on 2026-11-11 (HTTP 200).
