@@ -168,6 +168,20 @@ of this course's inputs run on (the tracked-distribution mechanism, BECS's recon
 process), you're one of the people this meeting expects real input and real decisions
 from — not just a seat in the room.
 
+The video below covers management review from the general ISO 9001 side — a quality-
+consulting explainer of the clause, not blood-specific and not using AABB's QSE
+(Quality System Essential) language or this module's own inputs/outputs lists. Watch it
+for why the practice exists and what a real review has to produce; then re-read the
+packet example above and ask yourself the same question the video asks about any
+management review: did this one decide anything, or did it just read numbers out loud?
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ytSn8Az6gKQ"
+  title="What Is Management Review in ISO 9001?" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## Citation decoder
 
 | Citation | How to read it aloud | What it requires | In our scenario |
@@ -206,6 +220,40 @@ AABB's Quality Systems Framework, not Part 606's text. Assessments: Internal and
 Both are binding on Lakeshore through AABB accreditation, the same tier every "this isn't
 in Part 606's words" finding in this course has landed on for CAPA, change control, and
 document control.
+
+## See it in one picture
+
+This module's central point, drawn as one picture: Fairview's binder finding doesn't get
+its own process because an internal auditor found it. It enters the exact same five-stage
+deviation machinery `deviations-and-nonconformances` built — discovery, containment,
+extent-of-condition, disposition, CAPA decision — through a different door than a routine
+reconciliation catch, a complaint, or a monitoring alarm would use to reach that same
+machinery.
+
+```{mermaid}
+flowchart TD
+    AUDIT["Internal audit opens the binder:<br/>Fairview's acknowledgment is real,<br/>the SOP revision inside is not"]
+    OTHER["Other entry points module 2 named:<br/>routine reconciliation, a complaint,<br/>a monitoring alarm, self-report"]
+
+    DISC["1. Discovery<br/>Discovery date logged —<br/>the day the auditor opened the binder"]
+    CONT["2. Containment<br/>Pull the superseded revision,<br/>confirm the current one goes in today"]
+    EXT["3. Extent-of-condition<br/>Does the same acknowledgment-without-<br/>swap gap exist at any other site —<br/>including the three that passed?"]
+    DISP["4. Disposition"]
+    CAPA["5. CAPA decision<br/>Reasoned the way module 3 taught —<br/>not waved through because 'we found<br/>it ourselves and it's already fixed'"]
+
+    AUDIT --> DISC
+    OTHER --> DISC
+    DISC --> CONT --> EXT --> DISP --> CAPA
+
+    classDef thisScenario fill:#fde2e2,stroke:#b33a3a,color:#7a1f1f
+    classDef otherEntry fill:#e2e8f5,stroke:#3a4fb3,color:#1f2f7a
+    class AUDIT thisScenario
+    class OTHER otherEntry
+```
+
+Same five boxes, same order, regardless of which arrow fed into them. That's the whole
+argument against "it's just an audit note" — the door a deviation walks through changes
+nothing about what has to happen once it's inside.
 
 ## What an inspector or assessor would actually look for
 
