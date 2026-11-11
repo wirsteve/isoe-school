@@ -93,7 +93,7 @@ In progress / Done.
 | 42 | `grc-frameworks-and-risk-management` | `categorize-and-select-controls` | 84/85 | Done |
 | 43 | `grc-frameworks-and-risk-management` | `implement-and-assess-controls` | 86/87 | Done |
 | 44 | `grc-frameworks-and-risk-management` | `authorize-and-monitor` | 88/89 | Done |
-| 45 | `grc-frameworks-and-risk-management` | `poams-and-capas` | 90/91 | Not started |
+| 45 | `grc-frameworks-and-risk-management` | `poams-and-capas` | 90/91 | Done |
 | 46 | `healthcare-security-and-privacy` | `information-governance-in-a-covered-entity` | 93/94 | Not started |
 | 47 | `healthcare-security-and-privacy` | `the-hipaa-privacy-rule` | 95/96 | Not started |
 | 48 | `healthcare-security-and-privacy` | `security-rule-safeguards-and-part-11` | 97/98 | Not started |
