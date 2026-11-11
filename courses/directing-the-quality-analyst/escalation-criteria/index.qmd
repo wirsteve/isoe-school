@@ -271,6 +271,54 @@ it under pressure. If your only route for "someone's leaning on me" runs through
 the pressure might be connected to his own chain, the control has already failed by design,
 whether or not it fails tonight.
 
+## See it in one picture
+
+The drill above is one night's sorting job, and the picture below is that same night: five events
+in the order they arrived, sorted by criteria written in advance, with the fatality call, the
+vendor notice, and the label-printer failure fanning out to different owners and the "hold off"
+request taking the independence bypass instead of the line.
+
+```{mermaid}
+flowchart TD
+    N["Tuesday night: five events reach the QA<br/>or the on-call supervisor"]
+    N --> Q{"Sort by criteria written in advance:<br/>key on suspected, not confirmed"}
+
+    Q --> E1["11:52 p.m. Possible fatality call<br/>from Riverside"]
+    Q --> E2["12:40 a.m. BECS vendor<br/>security incident notice"]
+    Q --> E4["2:50 a.m. Label-printer interface<br/>verification check failed"]
+    Q --> E5["6:10 a.m. Site lead asks QA<br/>to hold off on a write-up"]
+    Q --> E3["1:15 a.m. Donor callback<br/>a day late, unit stayed quarantined"]
+
+    E1 --> NOW["Call me now"]
+    E2 --> NOW
+    E4 --> NOW
+    E3 --> ONE["Your call, tell me at our one-on-one"]
+    E5 --> BYP["Independence bypass:<br/>straight to Quality leadership, not through the Director"]
+
+    NOW --> MD["Medical director<br/>606.170(b), 606.171(c)"]
+    NOW --> PS["Privacy/security owner,<br/>and your upward call to the CIO"]
+    NOW --> SO["You and Quality together:<br/>BECS validated state"]
+
+    MD --> DEC["Escalating informs; disposition and<br/>reportability stay with the SOP owner"]
+    PS --> DEC
+    SO --> DEC
+```
+
+## Watch it explained
+
+This is an FDA presentation on biological product deviation reports (BPDR), the 21 CFR 606.171
+reporting channel this module's "reasonably suggesting" clock belongs to. It also covers Field
+Alert Reports, which are a drug-side requirement outside this course, so treat that part as
+background. It isn't Lakeshore-specific and doesn't address internal escalation tiers; the
+tiers are this module's own design.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/EtLmHnBuNJQ"
+  title="An Update on Field Alert Reports (FAR) and Biological Product Deviation Reports (BPDR)" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector or assessor would actually look for
 
 An assessor doesn't ask whether Lakeshore has an escalation policy — most organizations can

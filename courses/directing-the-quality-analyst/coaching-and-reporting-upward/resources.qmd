@@ -21,3 +21,32 @@ Each link below was checked this session and loads.
   — the government's own dated, authenticated CFR collection. Use this when a citation needs to
   be tied to a specific published edition rather than the current rolling text Cornell's LII
   shows.
+
+- **[What is the difference between leading and lagging indicators?](https://www.youtube.com/watch?v=RwBrLCGluW4)**
+  (Bernard Marr, from oEmbed `author_name`) — the video embedded in this lesson: a short
+  explanation of leading versus lagging indicators from a widely published KPI author. Generic
+  business content, not blood-center or regulation specific. Verified embeddable via YouTube
+  oEmbed on 2026-11-11 (HTTP 200).
+
+- **[KPI Fire: Spotting and Solving Watermelon Metrics](https://www.kpifire.com/blog/watermelon_metrics/)**
+  — a KPI-consultancy explainer on metrics that report green while the underlying reality is red.
+  Read it for more examples of the pattern this module's "5 closed, 3 open" packet illustrates and
+  for the habit of breaking a headline number into its components. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[Call Centre Helper: What Are Watermelon Metrics?](https://www.callcentrehelper.com/beware-of-watermelon-metrics-205604.htm)**
+  — an industry-trade explainer of the same idea from the service-desk side, close to the ITIL
+  "watermelon SLA" bridge in this lesson. Not quality-system specific; use it to see how the
+  pattern shows up in operations reporting. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Atlassian: Continual Service Improvement (CSI) in ITIL](https://www.atlassian.com/itsm/itil/continual-service-improvement)**
+  — a vendor explainer of the ITIL CSI practice this lesson bridges from: improvement driven by
+  service-level measures kept separate from individual engineers' numbers. Read it to firm up the
+  IT-side vocabulary before applying it to quality metrics. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[Wikipedia: Goodhart's law](https://en.wikipedia.org/wiki/Goodhart%27s_law)**
+  — an encyclopedia overview of the idea that a measure stops being reliable once it becomes a
+  target, the principle behind this module's rule that deviation count can never be her personal
+  target. A general reference, not a regulatory or quality-standards source. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).

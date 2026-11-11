@@ -299,6 +299,53 @@ for your red pen instead of writing more carefully the first time. Send it back 
 - "Who signs disposition on this per our SOP, and has that person actually reviewed it?"
 - "Who owns the contract-amendment action, and by when?"
 
+## See it in one picture
+
+The packet's own gaps, laid out in the order an assessor works through it: conclusions first,
+then evidence, root cause, and effectiveness check, with the decision trail and loose ends
+alongside, and every finding sorted by gap triage before it goes back to your QA as a question.
+
+```{mermaid}
+flowchart TD
+    P["DEV-1147 / CAPA-1147-A packet<br/>'Ready to close' — ~40 units, stale ICCBBA table"]
+    P --> O["Read in assessor order: conclusions first"]
+    O --> CL["Conclusions: relabel and release;<br/>'Not reportable' — 606.171(b)"]
+    CL --> EV{"Evidence and extent:<br/>query against all 40 DINs?<br/>log covers 01:58 on, not just 02:00-06:15?"}
+    EV -->|"Supervisor's word only"| M1["Must fix: run BECS distribution query<br/>and pull print-job / table-version logs"]
+    M1 --> RS["Reasoning: 'not reportable' shows no work —<br/>prong 2, distribution, unproven"]
+    EV --> RC{"Root cause:<br/>vendor pushed without notice —<br/>or Lakeshore's change model?"}
+    RC -->|"Vendor-blame"| M2["Must fix: push treated as data refresh,<br/>not a change"]
+    M2 --> EF{"Effectiveness check:<br/>could it fail?"}
+    EF -->|"'Vendor will notify us' is a promise"| M3["Must fix: data source, window,<br/>fail definition"]
+    CL --> DT["Decision trail: disposition signed by<br/>Processing Supervisor 09/03,<br/>before Quality review 09/05 — 606.100(c)"]
+    DT --> M4["Must fix: SOP-named disposition authority"]
+    EF --> LE["Loose ends: preventive action 2,<br/>owner and date 'TBD'"]
+    LE --> F["Fix going forward"]
+    SB["Send back as questions —<br/>not a rewritten document"]
+    RS --> SB
+    M3 --> SB
+    M4 --> SB
+    F --> SB
+```
+
+Notice how many paths end in "must fix" and how few in "fix going forward": the packet is
+polished, but most of what it concludes is not yet earned.
+
+## Watch it explained
+
+This talk from PathWise, a root-cause-analysis training firm, is about the exact habit this
+module's review is built to catch: stopping at "human error" instead of asking why the system let
+the error happen. It's general quality-and-safety training, not blood- or FDA-specific, and it
+never mentions Lakeshore; watch it for the reasoning a reviewer should expect to see on the page
+before signing a CAPA like CAPA-1147-A.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/D8u5PwuHkUI"
+  title="Pushing Beyond Human Error in Root Cause Analysis" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector or assessor would actually look for
 
 An assessor pulling this same file runs a version of the review you just did, without you in the

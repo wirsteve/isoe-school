@@ -64,12 +64,12 @@ In progress / Done.
 | 13 | `quality-system-essentials` | `document-control-and-records` | 21/22 | Done |
 | 14 | `quality-system-essentials` | `quality-risk-management` | 23/24 | Done |
 | 15 | `quality-system-essentials` | `internal-audits-and-management-review` | 25/26 | Done |
-| 16 | `directing-the-quality-analyst` | `qa-deliverables-and-ownership` | 28/29 | Not started |
-| 17 | `directing-the-quality-analyst` | `reviewing-deviations-and-capas` | 30/31 | Not started |
-| 18 | `directing-the-quality-analyst` | `escalation-criteria` | 32/33 | Not started |
-| 19 | `directing-the-quality-analyst` | `reviewing-validation-packages` | 34/35 | Not started |
-| 20 | `directing-the-quality-analyst` | `reviewing-vendor-risk-assessments` | 36/37 | Not started |
-| 21 | `directing-the-quality-analyst` | `coaching-and-reporting-upward` | 38/39 | Not started |
+| 16 | `directing-the-quality-analyst` | `qa-deliverables-and-ownership` | 28/29 | Done |
+| 17 | `directing-the-quality-analyst` | `reviewing-deviations-and-capas` | 30/31 | Done |
+| 18 | `directing-the-quality-analyst` | `escalation-criteria` | 32/33 | Done |
+| 19 | `directing-the-quality-analyst` | `reviewing-validation-packages` | 34/35 | Done |
+| 20 | `directing-the-quality-analyst` | `reviewing-vendor-risk-assessments` | 36/37 | Done |
+| 21 | `directing-the-quality-analyst` | `coaching-and-reporting-upward` | 38/39 | Done |
 | 22 | `csv-and-becs` | `gamp5-and-the-v-model` | 41/42 | Not started |
 | 23 | `csv-and-becs` | `iq-oq-pq-and-traceability` | 43/44 | Not started |
 | 24 | `csv-and-becs` | `becs-as-a-regulated-device` | 45/46 | Not started |
@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #16, `directing-the-quality-analyst`/`qa-deliverables-and-ownership`.** `quality-system-essentials` is fully retrofitted, 7/7.
+**Next up: #22, `csv-and-becs`/`gamp5-and-the-v-model`.** `directing-the-quality-analyst` is fully retrofitted, 6/6.
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -451,3 +451,22 @@ module retrofit changes a course's own module list or description.
   every module keeps the identical blood-ops pattern: diagram + one verified video + link-first
   resources page, no new invented content.
   Next: module 16, `directing-the-quality-analyst`/`qa-deliverables-and-ownership`.
+
+- **2026-11-11**: Modules 16–21, all of `directing-the-quality-analyst`, retrofitted and
+  published — **completes that course, 6/6.** First course drafted as a parallel batch: one Sonnet
+  subagent per module, each following a shared brief (scratchpad `retrofit-brief.md`) that
+  restates the blood-ops pattern, and each finding and oEmbed-verifying its own video. Every module
+  then got the same independent check before publishing (scripted: diff additions-only, `order:`
+  unchanged, oEmbed re-run with title matched to the iframe, every link curl'd 200, diagram facts
+  spot-checked against the original lesson text). Videos: Pharmaguideline (QA vs QC), PathWise
+  (pushing past "human error"), **FDA's own channel** (BPDR update — escalation-criteria), GMP Detox
+  (IQ/OQ/PQ + GAMP 5), WhitehallTraining (supplier management), Bernard Marr (leading vs lagging
+  indicators). Two drafting agents had skipped the video as not authoritative enough; since the
+  user explicitly wants videos and every blood-ops module has one, I picked the most on-topic
+  verified candidate for each and replaced the "no video" notes, framed honestly as training
+  content, not regulator material. Trimmed escalation-criteria's resources from 11 to 10 entries.
+  One open question flagged for the csv-and-becs retrofit: a drafting agent noticed
+  `sources/fda-guidance/csa-production-qms-software-2026-excerpt.md` gives a 2026 issue date while
+  a related FDA PDF banner references September 2025 — re-check the CSA date against FDA's own
+  page before citing it.
+  Next: module 22, `csv-and-becs`/`gamp5-and-the-v-model`.

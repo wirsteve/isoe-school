@@ -253,6 +253,62 @@ to policy — the theme behind why a disposition box belongs to someone specific
 **Resources** (QSE 2) covers job qualifications, competence assessment, and training — the theme
 behind 606.20(b) above, formalized into an ongoing program rather than a one-time hiring bar.
 
+## See it in one picture
+
+Monday's five requests all look like "sign here," but they split into different boxes, and the
+only way through is to name the box before your hand moves. The diagram below is built only from
+this module's own scenario: the five items on your desk, the three boxes your signature can sit
+in, the disposition line that was never yours, and the cold-read test and gap triage you run on
+what you do review.
+
+```{mermaid}
+flowchart TD
+    M["Monday: five requests for your name"]
+
+    M --> A["1. Deviation packet —<br/>'Final disposition approval' line"]
+    M --> B["2. BECS patch validation<br/>impact assessment"]
+    M --> C["3. Reagent supplier<br/>annual reassessment"]
+    M --> E["4. 2 a.m. escalation question"]
+    M --> F["5. Management-review draft"]
+
+    A --> Q{"Which box am I in?<br/>Check Lakeshore's SOP first"}
+    B --> Q
+    C --> Q
+    E --> Q
+    F --> Q
+
+    Q --> S["Supervisor —<br/>supervisory review only"]
+    Q --> O["System-owner co-approver —<br/>substantive approval alongside Quality"]
+    Q --> I["Informed —<br/>no signature, read it"]
+
+    A -.->|"disposition is NOT yours:<br/>medical director or delegated quality officer"| X["Quality approval — not you"]
+    S --> CR["Cold-read test: Conclusion, Evidence,<br/>Reasoning, Criteria first,<br/>Decision trail, Loose ends"]
+    O --> CR
+    CR --> T{"Gap triage"}
+    T --> T1["Must fix before I sign"]
+    T --> T2["Fix going forward"]
+    T --> T3["Fine as is"]
+```
+
+Notice that item 1 has two exits: your supervisory read of the write-up, and a dotted line to a
+quality-approval box that belongs to someone else. That dotted line is the one the Monday stack
+almost let you cross.
+
+## Watch it explained
+
+This short explainer from Pharmaguideline, a pharmaceutical-industry education channel, covers the
+difference between quality assurance and quality control. It isn't FDA- or blood-specific and it
+doesn't mention Lakeshore, RACI, or signature boxes, so treat it as vocabulary background for the
+"QA" role this course keeps using; the lesson's own scenario goes further into who owns which
+decision.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/qu4Qz9rsryM"
+  title="Quality Assurance vs Quality Control / QA vs QC" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector or assessor would actually look for
 
 An assessor reading Lakeshore's deviation, change, and validation files doesn't ask "did the

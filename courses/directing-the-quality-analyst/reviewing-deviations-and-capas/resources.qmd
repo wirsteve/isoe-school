@@ -18,3 +18,46 @@ Each link below was checked this session and loads.
 - **[21 CFR 606.160 — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.160)**
   — paragraph (b)(7)(iii), the general-records requirement behind the deviation record itself.
   Local verbatim copy: `sources/cfr/606.160.md`.
+
+- **[Pushing Beyond Human Error in Root Cause Analysis](https://www.youtube.com/watch?v=D8u5PwuHkUI)**
+  (PathWise, from oEmbed `author_name`) — the video embedded in this lesson. A root-cause-analysis
+  training firm on why "human error" is where an investigation should start asking questions, not
+  where it should stop — the same test this lesson applies to a QA's draft. Commercial training
+  content, not a regulator or standards body, and not blood-specific. Verified embeddable via
+  YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[ECA Academy: Root Cause Analysis and CAPA — Why FDA Keeps Calling Them Out](https://www.gmp-compliance.org/gmp-news/root-cause-analysis-and-capa-why-fda-keeps-calling-them-out)**
+  — an article from the ECA Foundation's GMP news service reviewing recent FDA Warning Letters
+  where shallow investigations and corrective actions that missed systemic causes were cited.
+  Read it to see, in real citations, the "stopped at the first plausible cause" pattern this
+  module's root-cause finding is built on. Drug and device examples, not blood-specific. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[ECA Academy: When "Undetermined" is not an Answer — what two FDA Warning Letters show about root cause analysis and CAPA](https://www.gmp-compliance.org/gmp-news/when-undetermined-is-not-an-answer-what-two-fda-warning-letters-show-about-root-cause-analysis-and-capa)**
+  — two Warning Letters in which investigations were closed before the true cause was found or the
+  full product risk assessed, and FDA's conclusion that investigation quality determines CAPA
+  quality. A good companion to this module's evidence-and-extent question. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[Hogan Lovells: Closing the CAPA is not closing the loop](https://hlc.com/en/publications/closing-the-capa-is-not-closing-the-loop)**
+  — a law-firm article arguing that completing a CAPA's actions shows only implementation, and that
+  effectiveness needs predefined, objective criteria tied to the root cause. This is the written
+  version of this module's "could this check fail?" test. Device-focused. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cureus (via PubMed Central): Enhancing Pharmaceutical Product Quality With a Comprehensive CAPA Framework: From Reactive to Proactive](https://pmc.ncbi.nlm.nih.gov/articles/PMC11490658/)**
+  — a 2024 peer-reviewed review walking through the stages of a CAPA process, from risk assessment
+  and root cause analysis through effectiveness review, and the regulatory expectations behind
+  them. Read it for a vocabulary and structure check on the whole CAPA lifecycle. Verified loading
+  via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Biological Product Deviations](https://www.fda.gov/vaccines-blood-biologics/report-problem-center-biologics-evaluation-research/biological-product-deviations)**
+  — FDA's CBER page on reporting biological product deviations, the regulator's own entry point
+  for the 606.171 reportability decision this module's packet states without reasoning. Read it
+  alongside 606.171 when deciding what a defensible reportability write-up has to show. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Warning Letters](https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters)**
+  — FDA's searchable database of published Warning Letters. Search it by "investigation" or
+  "root cause" to read, in the regulator's own words, how weak investigations and unverified CAPAs
+  are actually cited. Verified loading via `curl` on 2026-11-11 (HTTP 200).

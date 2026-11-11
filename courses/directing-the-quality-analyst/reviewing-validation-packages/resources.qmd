@@ -27,3 +27,50 @@ Each link below was checked this session and loads.
   which edition's chapter titles and numbering are currently in force before citing one precisely
   in a real Lakeshore document; see `sources/aabb/qse-framework.md`'s verification notes for what's
   still unconfirmed.
+
+- **[FDA: Blood Establishment Computer System Validation in the User's Facility (guidance page)](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)**
+  — CBER's own guidance, written for exactly Lakeshore's position: the facility using a
+  commercial BECS, not the vendor. It is guidance ("should"), not regulation. Read it before
+  your next package review to see FDA's recommended validation documentation in its own words.
+  Local excerpt: `sources/fda-guidance/becs-validation-users-facility-2013.md`. Verified loading
+  via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: General Principles of Software Validation (guidance page)](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)**
+  — FDA's long-standing explanation of software validation: requirements, testing, and how
+  evidence ties back to intended use. Written for device-software contexts, so use it for the
+  reasoning behind a test plan, not as a Lakeshore-specific rule. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[FDA: Computer Software Assurance for Production and Quality Management System Software (PDF)](https://www.fda.gov/media/188844/download)**
+  — the risk-based "assurance" approach to showing a system is fit for intended use. Read its
+  scope section first: it addresses device manufacturers' production and quality software and
+  expressly excludes device software functions, so it does not govern a blood establishment's
+  validation of BECS. Useful here as a window into how FDA thinks about right-sizing test
+  effort. Local excerpt: `sources/fda-guidance/csa-production-qms-software-2026-excerpt.md`.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[ISPE: GAMP 5 Guide, 2nd Edition (publisher page)](https://ispe.org/publications/guidance-documents/gamp-5-guide-2nd-edition)**
+  — the industry body's page for the risk-based computerized-system lifecycle guide behind most
+  IQ/OQ/PQ vocabulary. The guide itself is a paid publication; this page is for knowing what it
+  is and what edition exists, ahead of `csv-and-becs`. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[European Commission: EudraLex Volume 4, Annex 11 — Computerised Systems (PDF)](https://health.ec.europa.eu/system/files/2016-11/annex11_01-2011_en_0.pdf)**
+  — a short, readable regulator document on validation, including how a validation package
+  should show a system was tested and under what controls. It is EU medicines GMP, not a US
+  blood-establishment requirement; read it as a well-written comparison, not as citable
+  authority for Lakeshore. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[AABB: Standards for Blood Banks and Transfusion Services](https://www.aabb.org/standards-accreditation/standards/blood-banks-and-transfusion-services)**
+  — the accreditation-side counterpart to the FDA sources above. AABB's Standards have a section
+  numbered 3.9, Information Systems, which addresses the same ground this module reviews (the
+  themes only; the Standards text is copyrighted and is not reproduced here). See
+  `sources/aabb/information-systems-section-3.9.md` for what was and wasn't verified. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[GMP Detox IQ OQ PQ and ISPE GAMP 5 SE](https://www.youtube.com/watch?v=gIlM-JzkoQ0)**
+  (GMP Detox, from oEmbed `author_name`) — the video embedded in this lesson. A GxP training
+  channel on IQ/OQ/PQ in the context of ISPE's GAMP 5 Second Edition: the qualification structure a
+  package like VIA-0842 is organized around. Training content, not a regulator or standards body,
+  and about how qualification is structured rather than how to review it. Verified embeddable via
+  YouTube oEmbed on 2026-11-11 (HTTP 200).
