@@ -88,3 +88,11 @@ purchase information.
   (ISMS software company) explainer of what an SoA contains and how exclusions are justified. It is
   a commercial source, so treat it as a plain-language aid and not as the standard. Verified loading
   via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about vetting a vendor's ISO 27001 certificate.
+
+- **[Reviewing an ISO 27001 certificate: a checklist](https://blog.nviso.eu/2020/06/10/reviewing-an-iso-27001-certificate-a-checklist/)** (NVISO Labs, security consultancy) — a step-by-step reading of what's printed on a certificate: scope, issuing body, dates. Written in 2020, so check any edition details against the current standard. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[How to Verify a Vendor's ISO 27001 Certificate](https://www.thoropass.com/blog/verify-vendor-iso-27001-certificate)** (Thoropass — vendor/commercial content) — practical tips on spotting scope gaps and unaccredited issuers. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Five Key Considerations for Avoiding Complacency in Third Party Security Management and Monitoring](https://www.isaca.org/resources/news-and-trends/newsletters/atisaca/2025/volume-23/five-key-considerations-for-avoiding-complacency-in-third-party-security-management-and-monitoring)** (ISACA @ISACA newsletter, 2025) — a short caution against treating a certification as the end of due diligence. Verified loading via `curl` on 2026-11-11 (HTTP 200).
