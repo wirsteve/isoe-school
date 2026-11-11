@@ -106,7 +106,7 @@ In progress / Done.
 | 55 | `vendor-and-third-party-risk-management` | `vendor-change-notifications-and-your-own-change-control` | 112/113 | Done |
 | 56 | `itsm-for-regulated-blood-services` | `itil-to-qse-crosswalk-change-and-problem` | 115/116 | Done |
 | 57 | `itsm-for-regulated-blood-services` | `itil-to-qse-crosswalk-cmdb-and-continual-improvement` | 117/118 | Done |
-| 58 | `itsm-for-regulated-blood-services` | `itil-to-grc-crosswalk` | 119/120 | Not started |
+| 58 | `itsm-for-regulated-blood-services` | `itil-to-grc-crosswalk` | 119/120 | Done |
 | 59 | `itsm-for-regulated-blood-services` | `building-an-inspection-ready-service-catalog-and-cmdb` | 121/122 | Done |
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |

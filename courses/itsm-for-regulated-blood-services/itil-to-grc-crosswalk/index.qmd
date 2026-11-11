@@ -233,6 +233,47 @@ ever asked to cover. The overlap is real and worth recognizing. The gap is just 
 pretending otherwise would be the same kind of overstatement `risk-frameworks-side-by-side` already
 warned against when it said borrowing a framework's structure isn't the same as being bound by it.
 
+## See it in one picture
+
+Everything in this module hangs off the eQMS's own two documents: the CMDB entry with its blank row, and the RMF file that already answers it. The diagram below uses only those facts: the three crosswalks, the three selected control families, and the six Annex A domain names this module reused, with the two domains that have no counterpart drawn dashed.
+
+```{mermaid}
+flowchart TD
+    A["eQMS CMDB entry (module 2):<br/>qualification/validation status blank"]
+    R["eQMS RMF file:<br/>moderate-impact, three control families"]
+    A -->|"Crosswalk 1: asset/config mgmt = Categorize/Select"| R
+
+    R --> F1["Account and identity management"]
+    R --> F2["Audit/logging"]
+    R --> F3["Physical and environmental protection"]
+
+    R --> M["Monitor: 30-day access-review check,<br/>quarterly cycle, spot-checks, standing triggers"]
+    M -->|"Crosswalk 2: continual improvement = Monitor"| CI["Continual improvement register<br/>named owner + real consequence"]
+
+    F1 ==>|"clean match"| AC["Access control"]
+    F2 -.->|"feeds several domains,<br/>no single match"| AC
+    F3 -.->|"partial fit"| AM["Asset management"]
+    SR["Supplier relationships"]:::gap
+    BC["Business continuity"]:::gap
+    X["Crosswalk 3: ISO 27001 Annex A, hypothetical only:<br/>no counterpart in the eQMS's RMF-selected controls"]
+    SR --- X
+    BC --- X
+    classDef gap stroke-dasharray: 4 3
+```
+
+Read it left to right in spirit: two crosswalks are recognition of work already done, while the third is the only one that finds real gaps.
+
+## Watch it explained
+
+This is a webinar from ICOR Education, an ITIL training provider, on ITIL 4 and risk management. It is general ITSM training, not specific to blood services, NIST RMF, or Lakeshore, so treat it as the ITIL-side vocabulary this module bridges from; the crosswalks to RMF and ISO 27001 above are this lesson's own reasoning, not the webinar's.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/WFsbK1vM_r8"
+  title="ICOR Webinar: ITIL 4 and Risk Management. September, 27 2023" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What a reviewer would actually look for
 
 No outside body is checking whether Lakeshore's CMDB entry, RMF file, and ISO 27001 reasoning agree
