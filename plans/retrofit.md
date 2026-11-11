@@ -76,7 +76,7 @@ In progress / Done.
 | 25 | `csv-and-becs` | `qmsr-iso-13485-and-the-vendor` | 47/48 | Done |
 | 26 | `csv-and-becs` | `part-11-for-validated-systems` | 49/50 | Done |
 | 27 | `csv-and-becs` | `validated-state-lifecycle-and-patching` | 51/52 | Done |
-| 28 | `csv-and-becs` | `becs-interfaces-and-data-integrity` | 53/54 | Not started |
+| 28 | `csv-and-becs` | `becs-interfaces-and-data-integrity` | 53/54 | Done |
 | 29 | `data-integrity-and-records` | `alcoa-and-data-integrity` | 56/57 | Not started |
 | 30 | `data-integrity-and-records` | `audit-trails-and-esignatures` | 58/59 | Not started |
 | 31 | `data-integrity-and-records` | `predicate-rules-and-hybrid-systems` | 60/61 | Not started |

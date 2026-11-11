@@ -23,3 +23,35 @@ order: 54
   — the full closed-system controls list, including (h), device checks, requoted briefly here
   after module 5 deferred its depth to this lesson. Use it to see (h) next to (d), (f), and (g),
   the controls module 5 built out in full.
+
+- **[HL7 Tutorial for Beginners: How to Read and Build an HL7 v2
+  Message](https://www.youtube.com/watch?v=RjIDeic78qo)** (Sidharth Ramesh, from oEmbed
+  `author_name`) — the video embedded in this lesson. General healthcare-integration training on
+  HL7 v2 message structure, not blood-center- or FDA-specific; use it to be able to read what an
+  interface error file or a malformed test message actually contains. Verified embeddable via
+  YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[FDA: Data Integrity and Compliance With Drug CGMP, Questions and
+  Answers](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/data-integrity-and-compliance-drug-cgmp-questions-and-answers)**
+  — FDA guidance (guidance tier, written for drug CGMP, not blood) on data integrity expectations for
+  computerized systems. Read it as FDA's plain-language statement of the properties this lesson
+  calls complete, correct, and on time, and as a preview of what `data-integrity-and-records` will
+  go deeper on. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Part 11, Electronic Records; Electronic Signatures, Scope and
+  Application](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/part-11-electronic-records-electronic-signatures-scope-and-application)**
+  — the 2003 guidance module 5 used for its enforcement-discretion list, which includes the device
+  checks of 11.10(h) this lesson applies to interfaces. Read it to see (h) in the context of the
+  controls FDA says it still intends to enforce. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Microsoft Learn: Service Bus dead-letter
+  queues](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues)**
+  — a vendor explainer of the dead-letter queue concept this lesson maps onto FDA's "interface
+  error file." Use it to sharpen the ITSM side of the bridge: why unprocessable messages are
+  parked and who has to look at them. It is generic cloud documentation, not a regulatory source.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[ICCBBA](https://iccbba.org/)** — the organization that maintains the product-code reference
+  tables behind boundary 3 (and DEV-1147). Use it to see what ICCBBA publishes and how
+  implementation and table updates are described by the source itself. Verified loading via `curl`
+  on 2026-11-11 (HTTP 200).
