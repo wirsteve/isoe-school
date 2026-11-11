@@ -86,7 +86,7 @@ In progress / Done.
 | 35 | `fda-and-aabb-in-practice` | `fda-inspection-authority-and-outcomes` | 69/70 | Done |
 | 36 | `fda-and-aabb-in-practice` | `warning-letters-and-recalls` | 71/72 | Done |
 | 37 | `fda-and-aabb-in-practice` | `filing-a-biological-product-deviation-report` | 73/74 | Done |
-| 38 | `fda-and-aabb-in-practice` | `the-aabb-assessment-process` | 75/76 | Not started |
+| 38 | `fda-and-aabb-in-practice` | `the-aabb-assessment-process` | 75/76 | Done |
 | 39 | `fda-and-aabb-in-practice` | `designing-an-internal-audit-program` | 77/78 | Not started |
 | 40 | `fda-and-aabb-in-practice` | `mock-inspections-and-presenting-it-becs-evidence` | 79/80 | Not started |
 | 41 | `grc-frameworks-and-risk-management` | `risk-frameworks-side-by-side` | 82/83 | Not started |

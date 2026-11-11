@@ -3,8 +3,9 @@ title: "Resources"
 order: 76
 ---
 
-Three places to go deeper than this lesson. All three were checked and loading (HTTP 200) at
-the time this page was written.
+Nine places to go deeper than this lesson. All were checked and loading (HTTP 200, or the
+oEmbed check for the video) at the time this page was written. No CMS or CLIA deemed-status page
+is linked: the one page tried returned HTTP 404, and the lesson itself does not teach it.
 
 - **[AABB, "Accreditation Process"](https://www.aabb.org/standards-accreditation/accreditation/become-accredited/accreditation-process)**
   — the page this lesson quotes directly: the two-phase self-assessment/on-site structure, APEX,
@@ -22,3 +23,33 @@ the time this page was written.
   (Equipment) and QSE 8 (Assessments: Internal and External), the two QSE themes this lesson
   names without quoting any Standards text. Use it to see the theme and scope of each QSE in
   AABB's own words; don't cite a standard number from it.
+
+- **[061CE: Better AABB Assessments with Anne Chenoweth](https://www.youtube.com/watch?v=5E5_ynnrpqo)**
+  (Blood Bank Guy (D. Joe Chaffin MD), from oEmbed `author_name`) — the video embedded in this
+  lesson. A 2018 interview with AABB's Director of Accreditation and Quality on practical
+  assessment tips and common pitfalls. General, not Lakeshore-specific, and dated, so use it for
+  the assessor's point of view, not current procedure. Verified embeddable via YouTube oEmbed on
+  2026-11-11 (HTTP 200).
+
+- **[Blood Bank Guy: episode 061CE page](https://www.bbguy.org/2018/12/12/061/)** — show notes
+  for the same interview, useful to see what it covers before you spend the time. Verified loading
+  via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Blood Bank Guy: 061CE transcript (PDF)](https://www.bbguy.org/pdf/BBGE_061_Anne-Chenoweth_Transcript.pdf)**
+  — a written transcript of the interview, faster to skim than the video if you want to scan for
+  a specific assessment pitfall. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[AABB, Accreditation Portal (APEX)](https://www.aabb.org/standards-accreditation/accreditation/accreditation-portal)**
+  — AABB's own page on APEX, the portal where Lakeshore's QA does the self-assessment this
+  lesson describes. Read it to see what the portal is for from AABB's side. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[AABB, advance notification for assessments update](https://www.aabb.org/news-resources/news/article/2025/06/18/aabb-accreditation-announces-update-to-advance-notification-for-assessments)**
+  — an AABB news item about how far ahead facilities are told of a scheduled assessment, a
+  practical contrast with an unannounced-style FDA visit. Check the page itself for current
+  details. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[AABB, "The Importance of AABB Assessors"](https://www.aabb.org/news-resources/news/aabb-news/article/october-2026/the-importance-of-aabb-assessors)**
+  — an AABB news profile of the volunteer assessors who carry out on-site assessments, useful for
+  understanding who is actually on the other side of the table. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
