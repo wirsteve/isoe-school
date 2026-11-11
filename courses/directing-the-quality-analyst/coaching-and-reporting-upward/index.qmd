@@ -351,6 +351,49 @@ aimed at your relationship instead of a metric.
   a metric would make her look worse for reporting a real problem honestly, it's the wrong
   metric.
 
+## See it in one picture
+
+Both threads of this module run from the same starting point, the three documents and Thursday's
+draft packet, and end at the same place: your own one-page report to the CIO. The diagram below
+uses only this lesson's own pieces: the coaching pattern and delegation ladder on the left side
+of the flow, the system-versus-personal measures split on the right.
+
+```{mermaid}
+flowchart TD
+    T["Three documents, one QA pattern:<br/>deviation/CAPA packet, validation impact<br/>assessment, vendor reassessment"]
+    T --> P["Name the pattern once:<br/>right conclusion, reasoning off the page;<br/>stops at the first credible source"]
+    P --> Q["Coach with questions, not rewrites;<br/>she runs the cold-read self-check"]
+    Q --> L{"Delegation ladder, moved on<br/>written evidence"}
+    L --> L1["1. I review everything"]
+    L --> L2["2. I sample"]
+    L --> L3["3. You decide, I'm informed"]
+    L1 -.->|"clean documents, in writing"| L2
+    L2 -.->|"clean documents, in writing"| L3
+    L3 -.->|"real miss: plain, undramatic narrowing"| L2
+    L --> C["Documented in her competence record<br/>606.20(b); AABB QSE 2 Resources"]
+
+    R["Thursday: draft management-review packet<br/>= counts only, a watermelon"]
+    R --> B["Coach her to add trend, aging,<br/>effectiveness-pass rate"]
+    B --> S["System measures (reported upward)<br/>vs her performance measures<br/>(rework, on-time, findings per document)"]
+    S --> G["Never share a line: deviation count<br/>is never her personal target"]
+    G --> K["Your one-page CIO report:<br/>trend and aging, leading + lagging,<br/>one decision asked (review-date trigger)"]
+    C --> K
+```
+
+## Watch it explained
+
+This short explainer from Bernard Marr, a well-known author and speaker on performance
+measurement, covers the leading-versus-lagging distinction used in thread two. It is generic
+business KPI teaching, not blood-establishment-specific and not tied to any regulation, so treat
+it as vocabulary for the idea, not as guidance on what Lakeshore must measure.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/RwBrLCGluW4"
+  title="What is the difference between leading and lagging indicators?" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## Check your understanding
 
 ::: {.callout-tip collapse="true"}

@@ -69,7 +69,7 @@ In progress / Done.
 | 18 | `directing-the-quality-analyst` | `escalation-criteria` | 32/33 | Done |
 | 19 | `directing-the-quality-analyst` | `reviewing-validation-packages` | 34/35 | Done |
 | 20 | `directing-the-quality-analyst` | `reviewing-vendor-risk-assessments` | 36/37 | Done |
-| 21 | `directing-the-quality-analyst` | `coaching-and-reporting-upward` | 38/39 | Not started |
+| 21 | `directing-the-quality-analyst` | `coaching-and-reporting-upward` | 38/39 | Done |
 | 22 | `csv-and-becs` | `gamp5-and-the-v-model` | 41/42 | Not started |
 | 23 | `csv-and-becs` | `iq-oq-pq-and-traceability` | 43/44 | Not started |
 | 24 | `csv-and-becs` | `becs-as-a-regulated-device` | 45/46 | Not started |
