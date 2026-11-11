@@ -77,3 +77,13 @@ redevelop.
   FDA thinks about validation evidence; it is guidance, not a regulation, and this lesson makes
   no claim about how it applies to the eQMS specifically. Verified loading via `curl` on
   2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about service catalogs and configuration records.
+
+- **[IT Service Catalogs: Best Practices and Integration Tips](https://www.atlassian.com/itsm/service-request-management/service-catalog)** (Atlassian, vendor content) — practical guidance on what to put in a catalog entry and how to keep it useful. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[IT Asset Management (ITAM): Process & Benefits](https://www.atlassian.com/itsm/it-asset-management)** (Atlassian, vendor content) — how asset inventories and configuration records complement each other. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Configuration management database](https://en.wikipedia.org/wiki/Configuration_management_database)** (Wikipedia) — neutral overview of CMDB structure and the common pitfalls of federated data. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Patching & Change Management MindMap (4 of 6) | CISSP Domain 7](https://www.youtube.com/watch?v=yTylLQBF6CQ)** (Destination Certification) — visual CISSP review of how configuration and change records interact; supports CISSP Domain 7 (Security Operations). Verified via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
