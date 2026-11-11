@@ -45,6 +45,19 @@ that updated structure. The number of QSEs has stayed at **ten** across that upd
 chapter titles have shifted slightly in wording edition to edition, but the ten themes
 haven't.
 
+That wording drift is worth hearing discussed directly rather than taking this lesson's
+word for it. The interview below won't use the term "QSE framework" by that exact name
+or mention Lakeshore, but it's a real, AABB-credentialed conversation about how AABB
+Standards actually change edition to edition — the same underlying point this lesson
+just made about chapter titles shifting while the ten themes hold.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6TRJwvdU6d0"
+  title="046: Top 5 Changes in the NEW AABB Standards with Pat Ooley" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 Here's the bridge, and it's a genuinely close one, not a stretch: **a QSE framework is
 functionally the same move as ITIL's service value chain and practices.** You already
 run a set of interlocking practices — incident, problem, change enablement,
@@ -86,6 +99,52 @@ Hold those loosely for now. Every later module in this course opens by naming wh
 it lives in, and by the time you've been through all of them, these pairings will be
 concrete instead of abstract. This lesson's job is narrower: give you the map, not the
 tour.
+
+## See it in one picture
+
+Six of the ten QSEs line up with an ITIL practice you already run, drawn below exactly
+as this lesson pairs them — nothing added. The dotted line is Q2 from the Check Your
+Understanding section below: a single change event that legitimately crosses two
+drawers, Process Control and Documents and Records, rather than sitting in just one.
+
+```{mermaid}
+flowchart LR
+    subgraph QSE["AABB's ten QSEs"]
+        Q1["1. Organization"]
+        Q2["2. Resources"]
+        Q3["3. Equipment"]
+        Q4["4. Supplier and<br/>Customer Issues"]
+        Q5["5. Process Control<br/>(change control lives here)"]
+        Q6["6. Documents<br/>and Records"]
+        Q7["7. Deviations, Nonconformances,<br/>and Adverse Events"]
+        Q8["8. Assessments:<br/>Internal and External"]
+        Q9["9. Process<br/>Improvement"]
+        Q10["10. Facilities<br/>and Safety"]
+    end
+
+    subgraph ITSM["ITIL practices you already run"]
+        I5["Change enablement"]
+        I6["Knowledge management /<br/>configuration management"]
+        I7["Incident management"]
+        I8["Internal audits /<br/>service reviews"]
+        I9["Problem management<br/>(root cause, permanent fix)"]
+        I4["Supplier management"]
+    end
+
+    Q5 --- I5
+    Q6 --- I6
+    Q7 --- I7
+    Q8 --- I8
+    Q9 --- I9
+    Q4 --- I4
+
+    Q5 -.->|"Q2: one change event,<br/>cross-referenced under both"| Q6
+```
+
+Four QSEs — Organization, Resources, Equipment, and Facilities and Safety — have no line
+drawn to them here. That's not an oversight; this lesson draws only the six pairings it
+actually makes in the text above, and those four matter without mapping cleanly onto a
+single ITIL practice the way the other six do.
 
 ## The framework in plain English
 

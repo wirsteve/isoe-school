@@ -27,3 +27,36 @@ Each link below was checked this session and loads.
   — the U.S. Government Publishing Office's official CFR collection, useful as a fallback
   primary source if a specific eCFR page is ever unreachable, and for pulling an official
   PDF of a full CFR part when you need one for the record.
+
+- **[046: Top 5 Changes in the NEW AABB Standards with Pat
+  Ooley](https://www.youtube.com/watch?v=6TRJwvdU6d0)** (Blood Bank Guy (D. Joe Chaffin MD),
+  from oEmbed `author_name`) — the video embedded in this lesson. Blood Bank Guy is a real
+  transfusion-medicine educational podcast run by Dr. D. Joe Chaffin, a transfusion medicine
+  educator at Loma Linda University; AABB itself partners with the channel and offers CE
+  credit for episodes (see `aabb.org/bbguy`). This specific episode discusses AABB Standards
+  changes directly with a guest — it won't name the QSE framework by that exact term or
+  mention Lakeshore, but it's a genuinely authoritative, AABB-credentialed voice on exactly
+  the point this lesson makes about QSE wording drifting edition to edition. Verified
+  embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[BSI: ISO 9001 Certification — A Path to Improved
+  Quality](https://www.bsigroup.com/en-US/products-and-services/standards/iso-9001-quality-management-systems/)**
+  — a quality-management-standards body's own explainer on ISO 9001 generally, the standard
+  this lesson uses as the strongest version of the AABB/ITIL bridge. Useful for seeing ISO
+  9001's own clause structure described directly, independent of this lesson's blood-industry
+  framing. Verified loading via `curl` on 2026-11-11 (HTTP 200, after a redirect to BSI's
+  current URL for the page).
+
+- **[ITSM.tools: ITIL 4 Service Value Chain — Model, Activities, and
+  Examples](https://itsm.tools/itil-4-service-value-chain/)** — a well-regarded ITSM
+  publication's walkthrough of the ITIL service value chain and practices this lesson invokes
+  as the other half of the AABB/ITIL bridge (change enablement, incident management, problem
+  management, and the rest). Useful if any of those practice names feel rusty before you map
+  them onto a QSE. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Wikipedia: ISO/IEC 20000](https://en.wikipedia.org/wiki/ISO/IEC_20000)** — background on
+  the IT service management standard this lesson pairs with ISO 9001 under the shared
+  "Annex SL" harmonized clause structure (context, leadership, planning, support, operation,
+  performance evaluation, improvement) used across multiple ISO management-system standards.
+  Use this to see that harmonized structure described directly, rather than taking this
+  lesson's word for it. Verified loading via `curl` on 2026-11-11 (HTTP 200).
