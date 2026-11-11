@@ -28,6 +28,32 @@ sources this module doesn't need.
   never quoted (e) in full itself; read it here if you want the actual regulatory floor
   behind Lakeshore's own weekly decision, not just this module's paraphrase of it.
 
+Four more places go further than this lesson needs to, including the video embedded above.
+
+- **[FDA Drug Manufacturing Inspections - REdI 2020](https://www.youtube.com/watch?v=1-z4NCmXEV8)**
+  (U.S. Food and Drug Administration, from oEmbed `author_name`) — the video embedded in this
+  lesson. FDA's own training session on how its drug-manufacturing inspections run and how a
+  firm prepares for, hosts, and responds to one. Drug CGMP, not blood-establishment or
+  21 CFR 606 specific, so use it for the investigator's-eye view of the room, not for
+  blood-specific requirements. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[FDA: Inspection Observations](https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/inspection-references/inspection-observations)**
+  — FDA's own public page on inspectional observations and Form 483, the document a mock
+  session's closing meeting rehearses. Read it before running a mock, so your findings log is
+  shaped like what a real investigator hands over. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[FDA: Data Integrity and Compliance With Drug CGMP: Questions and Answers](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/data-integrity-and-compliance-drug-cgmp-questions-and-answers)**
+  — the FDA data-integrity Q&A behind ALCOA's "accurate" element, the test DED-0458's fifth
+  letter was run against. Drug-CGMP guidance, so read it for how FDA thinks about data
+  integrity, not as a blood-specific rule. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[FDA: Blood Guidances](https://www.fda.gov/vaccines-blood-biologics/biologics-guidances/blood-guidances)**
+  — CBER's index of its blood-specific guidance documents. When a mock reviewer asks "where
+  does FDA say that for blood establishments," start here instead of a drug or device source.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
 If you want the general, non-regulatory background on how a mock inspection or mock audit
 is typically run in a regulated industry, ASQ's (American Society for Quality) own public
 materials on internal-audit program maturity are a reasonable starting point — the same
