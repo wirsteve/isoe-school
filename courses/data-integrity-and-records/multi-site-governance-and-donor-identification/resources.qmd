@@ -52,3 +52,13 @@ Nine places to look further, each checked to load before being listed here.
   — FDA's CBER landing page for blood-establishment guidance and regulations, for finding current
   agency material beyond the CFR sections quoted here. Verified loading via `curl` on 2026-11-11
   (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about patient and donor identity matching and master data.
+
+- **[A Realistic Approach to Achieving a 1% Duplicate Record Error Rate](https://ahima.org/media/m1pldevh/ahima-pim-whitepaper.pdf)** (AHIMA, PDF white paper) — Explains duplicates, overlays and overlaps in a master patient index and how organizations manage them; directly parallel to donor-record matching across sites. Verified loading via `curl` on 2026-11-11 (HTTP 200); first page read.
+- **[Patient Identification Challenges](https://www.fortherecordmag.com/archives/Summer23p18.shtml)** (For The Record magazine) — A health-information-management trade article on why patient matching fails in practice and what helps. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[Patient Identification and Matching Final Report](https://www.healthit.gov/topic/patient-identification)** (ONC, HealthIT.gov) — A federal health-IT report on patient-matching approaches; a good overview of matching methods and their trade-offs. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[Record linkage](https://en.wikipedia.org/wiki/Record_linkage)** (Wikipedia) — A clear overview of deterministic versus probabilistic matching, the core technique behind master data matching. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
+- **[Identity Lifecycle Management: Access & Provisioning](https://destcert.com/resources/identity-lifecycle-management/)** (Destination Certification) — CISSP-oriented guide to the joiner/mover/leaver identity lifecycle. Supports CISSP Domain 5 (Identity and Access Management). Commercial training company. Verified loading via `curl` on 2026-11-11 (HTTP 200). Page title checked.
