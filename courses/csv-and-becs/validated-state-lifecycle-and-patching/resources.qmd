@@ -3,8 +3,8 @@ title: "Resources"
 order: 52
 ---
 
-Three places to go deeper than this lesson, or to check a citation yourself before it goes in a
-real Lakeshore document. All three were checked and loading at the time this page was written.
+Several places to go deeper than this lesson, or to check a citation yourself before it goes in a
+real Lakeshore document. All were checked and loading at the time this page was written.
 
 - **[21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)**
   — the regulatory floor this lesson's patch VIAs and periodic reviews both answer to, in Cornell's
@@ -23,3 +23,37 @@ real Lakeshore document. All three were checked and loading at the time this pag
   before deployment. It isn't written for FDA-regulated systems and doesn't mention validation or
   regression analysis — read it as the general ITSM backdrop this lesson's "patch classes with
   pre-analyzed regression plans" idea sits on top of, not as a source for anything BECS-specific.
+
+- **[Patch Management, explained](https://www.youtube.com/watch?v=0lo3sTdf4eA)** (Group-IB, from
+  oEmbed `author_name`) — a short general-IT training explainer on the patch management cycle.
+  Industry cybersecurity content, not regulator-authored, and not blood- or validation-specific;
+  watch it for the ITSM vocabulary only. Verified embeddable via YouTube oEmbed on 2026-11-11
+  (HTTP 200).
+
+- **AABB Standards, Section 3.9, "Information Systems"** — not independently link-verified this
+  session (see `sources/aabb/information-systems-section-3.9.md` for how its section number and
+  themes were cross-confirmed). AABB's accreditation-side counterpart to this lesson's
+  validated-state discussion, notably backup/continuity and disaster recovery (3.9.2) and documented
+  change processes, checked by an AABB assessor rather than an FDA investigator. Start from
+  **[AABB: Standards for Blood Banks and Transfusion
+  Services](https://www.aabb.org/standards-accreditation/standards/blood-banks-and-transfusion-services)**
+  (verified loading via `curl` on 2026-11-11, HTTP 200) for the catalogue page; the full standard
+  text sits behind AABB's member/purchase access, so the free page won't show Section 3.9's actual
+  requirement language.
+
+- **[NIST SP 800-128, Guide for Security-Focused Configuration Management of Information
+  Systems](https://csrc.nist.gov/pubs/sp/800/128/final)** — free NIST guidance on establishing a
+  baseline configuration and controlling changes to it, the general-IT version of this lesson's
+  configuration-drift check against the validated baseline. Security-focused and not written for
+  FDA-regulated systems. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[ISPE: GAMP 5 Guide, 2nd Edition](https://ispe.org/publications/guidance-documents/gamp-5-guide-2nd-edition)**
+  — the publisher's catalogue page for the industry guide behind this lesson's periodic-review
+  concept (named and paraphrased here, never quoted; the guide itself is copyrighted and
+  purchase-only, so the page describes it rather than reproducing it). Verified loading via `curl`
+  on 2026-11-11 (HTTP 200).
+
+- **[21 CFR 11.10, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.10)**
+  — the Part 11 controls for closed systems, including the validation requirement in 11.10(a) that
+  the periodic review's "is it still validated" question rests on, in Cornell's free plain-text
+  mirror. Verified loading via `curl` on 2026-11-11 (HTTP 200).
