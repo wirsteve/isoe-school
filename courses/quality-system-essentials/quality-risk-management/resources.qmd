@@ -63,3 +63,11 @@ Eight links, each checked this session and confirmed to load.
   named lifecycle (assess, control, communicate, review) instead of a spreadsheet updated when
   someone remembers — argued in full ITIL terms before mapping it onto ICH Q9(R1)'s own four
   stages. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about quality risk management and FMEA.
+
+- **[ICH Q9 Quality Risk Management](https://www.gmp-compliance.org/guidelines/gmp-guideline/ich-q9-quality-risk-management)** (ECA Academy) — A commentary-style hub on the guideline and its revision, useful as a second explanation next to the primary text. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Failure mode and effects analysis](https://en.wikipedia.org/wiki/Failure_mode_and_effects_analysis)** (Wikipedia) — Clear overview of severity, occurrence and detection scoring and the risk priority number, with worked tables. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Risk management](https://en.wikipedia.org/wiki/Risk_management)** (Wikipedia) — General background on identifying, assessing and treating risk across industries; also underlies CISSP Domain 1 (Security and Risk Management) thinking. Verified loading via `curl` on 2026-11-11 (HTTP 200).
