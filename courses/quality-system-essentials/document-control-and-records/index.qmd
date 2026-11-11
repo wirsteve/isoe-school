@@ -129,6 +129,19 @@ was being controlled — controlled in name, uncontrolled in practice. The same 
 **external documents** — a vendor's equipment manual, the AABB Standards themselves — which also
 need a current-version control, in one sentence, not built out further here.
 
+The video below covers this exact distinction — controlled versus uncontrolled documents — from
+the general GMP (good manufacturing practice) side of the industry, not blood-specifically and not
+tied to Lakeshore or AABB's language for it. Watch it for the mechanics of the distinction itself;
+map "controlled copy" and "uncontrolled copy" onto Brookfield's binder as you watch, since that's
+exactly the swap this course's whole story turns on.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/viRq4F_6LnU"
+  title="What Is The Difference In Controlled & Uncontrolled Documents? |InstantGMP" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 Last thing, in one sentence, because it matters and this module doesn't own it: Friday night's
 paper downtime transactions, once filled in, are records — later transcribed into BECS (Blood
 Establishment Computer Software) during Monday's reconciliation, which is exactly the hybrid
@@ -136,6 +149,42 @@ paper-to-electronic handoff that caught Owen Pruitt's deferral in the first plac
 `data-integrity-and-records`, covers what makes that transcription itself trustworthy (ALCOA+,
 audit trails, Part 11) — this module just needed you to see where the paper record's story
 continues.
+
+## See it in one picture
+
+The same six stages above, run as one cycle — and the two moments in this story that actually
+landed on it: Brookfield's binder stuck inside the issue stage six months ago, with no
+distribution step to force the old revision out, and the departed-site-lead catch two weeks ago,
+caught inside that same issue stage because a distribution step now exists to flag it.
+
+```{mermaid}
+flowchart TD
+    DRAFT["1. Draft<br/>Procedure written or revised.<br/>No controlling authority yet."]
+    REVIEW["2. Review and approval<br/>Quality reviews and signs off,<br/>with a dated signature."]
+    ISSUE["3. Issue, with effective date<br/>Version number assigned.<br/>Tracked distribution to every site;<br/>signed, dated acknowledgment required<br/>from every site lead."]
+    PERIODIC["4. Periodic review<br/>Defined interval check:<br/>still accurate, still matches practice."]
+    REVISION["5. Revision<br/>Regulatory update, process<br/>improvement, or CAPA fix<br/>sends it back to draft."]
+    RETIRE["6. Retirement and obsolescence<br/>Superseded version physically removed<br/>or unmistakably marked obsolete<br/>at every point of use."]
+
+    DRAFT --> REVIEW --> ISSUE --> PERIODIC --> REVISION
+    REVISION -->|new revision re-enters the cycle| DRAFT
+    REVISION -->|superseded version| RETIRE
+
+    BROOKFIELD["Six months ago: Brookfield's binder<br/>stuck right here — an old issued revision,<br/>never confirmed retired, because no<br/>distribution step verified anything had changed"]
+    CATCH["Two weeks ago: a departed site lead's<br/>acknowledgment never came back —<br/>flagged overdue after 72 hours,<br/>fixed before the new revision's effective date"]
+
+    ISSUE -.-> BROOKFIELD
+    ISSUE -.-> CATCH
+
+    classDef fail fill:#fde2e2,stroke:#b33a3a,color:#7a1f1f
+    classDef catch fill:#dff5e1,stroke:#2f8f4e,color:#1f5c33
+    class BROOKFIELD fail
+    class CATCH catch
+```
+
+Same stage, two outcomes, one difference: whether the issue stage had a distribution-and-
+acknowledgment mechanism built into it that could actually fail loudly, instead of failing
+silently.
 
 ## Citation decoder
 
