@@ -56,3 +56,11 @@ Each link below was checked this session and loads.
   the root cause itself needs deeper generic-cause analysis). Useful for seeing the concept argued
   on its own terms, independent of this lesson's blood-industry framing. Verified loading via `curl`
   on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about handling deviations and investigating them.
+
+- **[Deviation Management Process In GMP](https://gmpinsiders.com/deviation-management-process/)** (GMP Insiders, practitioner site) — Walks through logging, classifying, investigating and closing deviations, including the common trap of stopping at 'operator error'. Any timelines it quotes are one site's example, not a rule. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Corrective and preventive action](https://en.wikipedia.org/wiki/Corrective_and_preventive_action)** (Wikipedia) — A neutral overview of how deviations feed into CAPA, useful as a bridge to the next module. Page title checked: "Corrective and preventive action - Wikipedia". Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[5 Whys: Finding the Root Cause](https://www.ihi.org/library/tools/5-whys-finding-root-cause)** (Institute for Healthcare Improvement) — A free healthcare-quality tool page with a worked example; good for practising the investigation habit on a deviation. Verified loading via `curl` on 2026-11-11 (HTTP 200).
