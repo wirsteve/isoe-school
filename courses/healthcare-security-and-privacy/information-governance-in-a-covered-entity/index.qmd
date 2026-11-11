@@ -228,6 +228,50 @@ the information identifies the person outright, or there's merely a reasonable b
 it could. A donor ID, a date of birth, and a donation history, taken together, can clear bar
 (ii) even without a name attached.
 
+## See it in one picture
+
+The whole module is one chain of reasoning, and the diagram below is just that chain drawn out:
+the lost laptop forces the covered-entity question, 160.103's three doors narrow it to one, and
+the answer (a reasoned premise, not a verified fact) is what makes the extract's contents PHI and
+sets up the locked incident facts the next module picks up.
+
+```{mermaid}
+flowchart TD
+    L["Brookfield laptop lost in a shared ride —<br/>~212-donor BECS extract on board"]
+    L --> Q{"First question: is Lakeshore a<br/>HIPAA covered entity? — 45 CFR 160.103"}
+    Q --> D1["Door 1: health plan — no"]
+    Q --> D2["Door 2: clearinghouse — no"]
+    Q --> D3["Door 3: health care provider who transmits<br/>health information electronically in connection<br/>with a covered transaction — clause (3)"]
+    D3 --> P1["Part 1: 'furnishes, bills, or is paid for<br/>health care in the normal course of business' — yes"]
+    D3 --> P2["Part 2: bills hospitals/health plans<br/>electronically — plausibly yes"]
+    P1 --> R["Reasoned interpretation, not verified by counsel"]
+    P2 --> R
+    R --> W["Working premise for the course:<br/>Lakeshore is a covered entity"]
+    W --> PHI["BECS donor-eligibility data = IIHI, maintained<br/>electronically, so PHI — 160.103"]
+    PHI --> F["Locked incident facts: six fields (three beyond need),<br/>encryption status unresolved, no quality-event link"]
+    F --> N["Next: the-hipaa-privacy-rule"]
+```
+
+Notice that only door three does any work: the first two close immediately, and everything after
+the "reasoned interpretation" node is built on a premise this lesson has been explicit about not
+having had confirmed.
+
+## Watch it explained
+
+This is a video from the U.S. Department of Health and Human Services' own Office for Civil
+Rights (OCR), the agency that enforces the HIPAA rules, on how the Security Rule's risk
+management requirement works for covered entities. It isn't about covered-entity status or
+Lakeshore's blood-center facts, and it is a Security Rule topic you'll meet properly in
+`security-rule-safeguards-and-part-11`; watch it here as a preview of what being a covered
+entity obligates an organization to do once the premise this lesson sets is accepted.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/kDyrj-fJzhw"
+  title="Risk Management Under the HIPAA Security Rule" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector or a reviewer would actually look for
 
 Nobody from HHS has knocked on Lakeshore's door yet in this scenario, and this module isn't

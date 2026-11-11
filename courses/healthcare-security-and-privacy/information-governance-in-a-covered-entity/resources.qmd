@@ -3,8 +3,8 @@ title: "Resources"
 order: 94
 ---
 
-Three places to check this module's reasoning yourself, or go deeper on the definitions it
-leans on. All three were checked and loading (via `curl`) at the time this page was written.
+Nine places to check this module's reasoning yourself, or go deeper on the definitions it
+leans on. All were checked and loading (via `curl`) at the time this page was written.
 
 - **[45 CFR 160.103, eCFR](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-160/subpart-A/section-160.103)**
   — the current, official text of the section this entire module is built on: covered entity,
@@ -23,3 +23,38 @@ leans on. All three were checked and loading (via `curl`) at the time this page 
   — a secondary, independently maintained mirror of the same section, useful for a fast
   cross-check or a plain-text copy to search, the same way this curriculum has used Cornell's
   mirrors for CFR sections since `csv-and-becs`.
+
+- **[Risk Management Under the HIPAA Security Rule](https://www.youtube.com/watch?v=kDyrj-fJzhw)**
+  (USGovHHSOCR, from oEmbed `author_name`) — the video embedded in this lesson, from HHS's
+  Office for Civil Rights, the HIPAA enforcement agency. Covers the Security Rule's risk
+  management requirement for covered entities; it is not about covered-entity status or blood
+  centers, so read it as a preview of what covered-entity status obligates, not as an answer to
+  this lesson's question. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[CMS: Covered Entity? (includes the Covered Entity Decision Tool)](https://www.cms.gov/priorities/key-initiatives/burden-reduction/administrative-simplification/hipaa/covered-entities)**
+  — the federal agency's own page for "Not sure if you're a covered entity?", with a decision
+  tool. This is the closest official counterpart to the reasoning this lesson does by hand from
+  160.103; use it when someone asks how an organization would actually check its own status.
+  Verified loading via  on 2026-11-11 (HTTP 200).
+
+- **[45 CFR 162.923, Requirements for covered entities (Cornell LII)](https://www.law.cornell.edu/cfr/text/45/162.923)**
+  — the section of the transaction-standards rules that states what covered entities must do when
+  conducting a covered transaction electronically. This lesson says "covered transaction" lives
+  outside 160.103; this is one place to start reading that side. Not quoted in the lesson.
+  Verified loading via  on 2026-11-11 (HTTP 200).
+
+- **[45 CFR 164.530, Administrative requirements (Cornell LII)](https://www.law.cornell.edu/cfr/text/45/164.530)**
+  — among other things, requires a covered entity to designate a privacy official and a contact
+  person for complaints, and to train its workforce. Read it for the Privacy Rule's governance
+  roles, which this lesson does not teach. Verified loading via  on 2026-11-11 (HTTP 200).
+
+- **[45 CFR 164.308, Administrative safeguards (eCFR)](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.308)**
+  — includes the "assigned security responsibility" standard: a covered entity must identify the
+  security official responsible for its Security Rule policies and procedures. The Security Rule
+  counterpart to the privacy official above; taught in full in `security-rule-safeguards-and-part-11`.
+  Verified loading via  on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-66 Rev. 2: Implementing the HIPAA Security Rule — A Cybersecurity Resource Guide](https://csrc.nist.gov/pubs/sp/800/66/r2/final)**
+  — NIST's practical guide for putting the Security Rule into practice, for readers who want to
+  see how a covered entity organizes security work beyond what the rule's text says. Verified
+  loading via  on 2026-11-11 (HTTP 200).
