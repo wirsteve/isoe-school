@@ -58,3 +58,12 @@ leans on. All were checked and loading (via `curl`) at the time this page was wr
   — NIST's practical guide for putting the Security Rule into practice, for readers who want to
   see how a covered entity organizes security work beyond what the rule's text says. Verified
   loading via  on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about covered entities, PHI, and information governance.
+
+- **[What Are Covered Entities Under HIPAA?](https://www.hipaajournal.com/hipaa-covered-entities/)** (HIPAA Journal) — a plain-language walkthrough of who is and isn't a covered entity, a good second explanation of the question this lesson opens with. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[What is Protected Health Information?](https://www.hipaajournal.com/what-is-protected-health-information/)** (HIPAA Journal) — a readable explainer on what makes data PHI, with the identifier list laid out in examples. Page title: "What is Protected Health Information? 2026 Update". Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[HCISPP: HealthCare Information Security and Privacy Practitioner](https://www.isc2.org/certifications/hcispp)** (ISC2) — the official page for the healthcare security and privacy certification, with the domain outline. Useful as a map of what this whole course family is building toward; also supports CISSP Domain 1 (Security and Risk Management) and Domain 2 (Asset Security) thinking about data classification and ownership. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Information governance](https://en.wikipedia.org/wiki/Information_governance)** (Wikipedia) — a general overview of information governance as a discipline: ownership, retention, risk and value of information. Included only as a vocabulary primer, not as authority. Verified loading via `curl` on 2026-11-11 (HTTP 200).
