@@ -43,3 +43,34 @@ The regulation text quoted in this lesson comes straight from eCFR's public API 
   version of the likelihood/severity/detectability math before adapting it for a quality council
   packet — remember ICH Q9 itself doesn't mandate this specific formula or scale; this is an
   industry-practice source behind the illustrative method, not a regulatory or AABB citation.
+
+## Keep learning
+
+Not official sources — good places to learn more about risk and controls vocabulary.
+
+- **[CISSP Domain 1: Security & Risk Management](https://destcert.com/resources/domain-1-security-and-risk-management/)**
+  (Destination Certification, commercial CISSP training company) — a free written overview of
+  Domain 1 that defines threat, vulnerability and risk and expresses risk as likelihood times
+  impact. A good bridge from this lesson's vocabulary to how security certification study frames
+  it. Supports CISSP Domain 1 (Security and Risk Management). Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[Risk Management Concepts for CISSP: Threats, Vulnerabilities & Risk Analysis Explained](https://www.youtube.com/watch?v=yRO7QGCKQnE)**
+  (CyberSec Academy) — a video walk-through of how threats and vulnerabilities combine into risk.
+  A community-made study video, so treat it as a study aid and check it against the lesson.
+  Supports CISSP Domain 1. Verified via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[CISSP Domain 1: Risk Assessment & the ALE Formula](https://www.youtube.com/watch?v=kEYgBZDhbpc)**
+  (DD214 HQ, a small independent channel) — shows how likelihood and impact can be turned into a dollar figure (annualized
+  loss expectancy), a quantitative contrast to this lesson's ranked-score example. Supports
+  CISSP Domain 1. Verified via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[Security Controls — CompTIA Security+ SY0-701](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/security-controls-sy0-701/)**
+  (Professor Messer) — free, short video lesson on control categories and types (preventive,
+  detective, corrective and others). Reinforces this lesson's controls taxonomy with a second
+  teacher. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST CSRC Glossary: security control](https://csrc.nist.gov/glossary/term/security_control)**
+  (NIST) — the standard glossary definition of a security control, with the sources it is drawn
+  from. Handy for checking vocabulary precision. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).

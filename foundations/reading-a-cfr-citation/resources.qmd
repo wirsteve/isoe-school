@@ -40,3 +40,28 @@ verified-loading mirrors of the same official text.)
   Part 606 — watch it for the mechanics of locating a citation, not for anything about blood
   establishments. Verified embeddable via YouTube oEmbed (HTTP 200, title and channel name
   confirmed) on 2026-11-11.
+
+## Keep learning
+
+Not official sources — good places to learn more about how federal regulations are organized and read.
+
+- **[About the Code of Federal Regulations](https://www.archives.gov/federal-register/cfr/about.html)**
+  (US National Archives) — a short, plain-language explainer of what the CFR is, how its 50 titles
+  are organized, and how it is updated each year. Worth five minutes as a companion to the
+  citation decoder in this lesson. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII Wex: Code of Federal Regulations](https://www.law.cornell.edu/wex/code_of_federal_regulations)**
+  (Cornell Legal Information Institute) — a legal-dictionary entry that explains the CFR's
+  relationship to statutes and the Federal Register, with links onward. Good for the "where does
+  a regulation come from" background behind a citation. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[Cornell LII Wex: Rulemaking](https://www.law.cornell.edu/wex/rulemaking)** (Cornell Legal
+  Information Institute) — explains how an agency turns a statute into a codified rule, which
+  tells you why a citation like the ones in this lesson can change over time. Verified loading
+  via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Blood Bank Guy: Education](https://www.bbguy.org/education/)** (Joe Chaffin, bbguy.org) —
+  a practitioner-run hub of transfusion medicine teaching material. Not about CFR mechanics, but
+  useful for seeing the blood-banking context in which the regulations you are learning to cite
+  are applied. Verified loading via `curl` on 2026-11-11 (HTTP 200).
