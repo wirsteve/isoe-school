@@ -63,7 +63,7 @@ In progress / Done.
 | 12 | `quality-system-essentials` | `change-control-for-regulated-systems` | 19/20 | Done |
 | 13 | `quality-system-essentials` | `document-control-and-records` | 21/22 | Done |
 | 14 | `quality-system-essentials` | `quality-risk-management` | 23/24 | Done |
-| 15 | `quality-system-essentials` | `internal-audits-and-management-review` | 25/26 | Not started |
+| 15 | `quality-system-essentials` | `internal-audits-and-management-review` | 25/26 | Done |
 | 16 | `directing-the-quality-analyst` | `qa-deliverables-and-ownership` | 28/29 | Not started |
 | 17 | `directing-the-quality-analyst` | `reviewing-deviations-and-capas` | 30/31 | Not started |
 | 18 | `directing-the-quality-analyst` | `escalation-criteria` | 32/33 | Not started |
@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #15, `quality-system-essentials`/`internal-audits-and-management-review`.**
+**Next up: #16, `directing-the-quality-analyst`/`qa-deliverables-and-ownership`.** `quality-system-essentials` is fully retrofitted, 7/7.
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -435,3 +435,19 @@ module retrofit changes a course's own module list or description.
   values (23, 24) confirmed unchanged.
   Next: module 15, `quality-system-essentials`/`internal-audits-and-management-review` — the
   final module of this course.
+
+- **2026-11-11**: Module 15, `quality-system-essentials`/`internal-audits-and-management-review`
+  (`order: 25/26`), retrofitted and published — **completes `quality-system-essentials`, 7/7.**
+  All locked content unchanged (index.qmd diff purely additive). Added a `flowchart TD` diagram
+  showing Fairview's audit finding and module 2's other discovery channels converging on the same
+  five-stage deviation process (rendered to SVG via `mermaid-cli`), and a verified video embed:
+  "What Is Management Review in ISO 9001?" (Standarity), oEmbed re-verified at publish time.
+  `resources.qmd` expanded from 4 to 9 links (ISO 9001 clause 9.2 explainer, a PMC peer-reviewed
+  blood-centre audit study, AABB Press's audit book page, an ITIL/COBIT governance explainer);
+  all 8 non-video links independently re-verified HTTP 200. Word count 3,844.
+  **Model note (user request, 2026-11-11):** the user switched the main session to Opus 5.5 and
+  asked that the rest of the retrofit keep the same model as blood-center-operations. From here,
+  drafting subagents are pinned to `model: sonnet` (blood-ops modules were drafted on Sonnet), and
+  every module keeps the identical blood-ops pattern: diagram + one verified video + link-first
+  resources page, no new invented content.
+  Next: module 16, `directing-the-quality-analyst`/`qa-deliverables-and-ownership`.

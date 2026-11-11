@@ -3,31 +3,77 @@ title: "Resources: Internal audits and management review"
 order: 26
 ---
 
-Four external links, each checked this session for a working response.
+Nine external links, each checked this session for a working response.
 
 - **[21 CFR 606.100, Standard operating procedures — Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)**
   The full text of the section behind this module's one citation — paragraph (c)'s
   "thorough investigation... conclusions and followup" requirement, the same regulatory
   floor under every deviation this course has covered, including one discovered through
   internal audit. Use this when you want the regulation's exact wording without the
-  eCFR site's own navigation chrome.
+  eCFR site's own navigation chrome. Verified loading via `curl` on 2026-11-11 (HTTP 200).
 
 - **[GovInfo: Code of Federal Regulations collection](https://www.govinfo.gov/app/collection/CFR)**
   The U.S. Government Publishing Office's official CFR collection — the fallback source
   when eCFR itself is unreachable, and the version courts and agencies treat as the
   authoritative annual compilation. Use it to browse Title 21 by year or confirm a
-  citation against the official printed edition.
+  citation against the official printed edition. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
 
 - **[AABB: Updated Quality Systems Essentials](https://www.aabb.org/standards-accreditation/standards/about-aabb-standards/updated-quality-systems-essentials)**
   AABB's own public page describing the 2023 update to the QSE (Quality System Essential)
   template — the framework this module's two QSEs, Assessments: Internal and External and
   Organization, come from. Use it for the plain-language description of why and how the
   template changed; it doesn't list the ten QSE titles itself (see the framework PDF
-  below for that).
+  below for that). Verified loading via `curl` on 2026-11-11 (HTTP 200).
 
 - **[AABB: PROPOSED Quality Systems Framework (2021 discussion draft PDF)](https://www.aabb.org/docs/default-source/default-document-library/standards/aabb-quality-systems-framework-2021.pdf?sfvrsn=a11081d1_2)**
   The public document `sources/aabb/qse-framework.md` was built from — spells out all ten
   QSEs, including QSE 8 (Assessments: Internal and External) and QSE 1 (Organization,
   which names management review), each with a short "Key Concepts" description. Read it
   for the structure and themes only; it's a proposed discussion draft, so don't cite a
-  standard number from it as current or adopted.
+  standard number from it as current or adopted. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[What Is Management Review in ISO 9001?](https://www.youtube.com/watch?v=ytSn8Az6gKQ)**
+  (Standarity, from oEmbed `author_name`) — the video embedded in this lesson. A
+  quality-consulting educational channel explaining ISO 9001's management review clause
+  generally — not blood-specific, not written in AABB's QSE language, and it never
+  mentions Lakeshore's packet or inputs/outputs lists. Watch it for why the practice
+  exists and what a real review has to produce, then map that onto this lesson's own
+  "status update meeting" trap. Verified embeddable via YouTube oEmbed on 2026-11-11
+  (HTTP 200).
+
+- **[ISO 9001, Clause 9.2, Internal Audit — ISMS.online](https://www.isms.online/iso-9001/clause-9-2-internal-audit/)**
+  A plain-language walkthrough of ISO 9001's internal-audit clause itself — planned
+  intervals, an audit programme, auditor objectivity and impartiality, and records of
+  results — the general-QMS (quality management system) version of the "planned,
+  periodic, independent" structure this module teaches for AABB's QSE 8. Pairs with the
+  management-review video above: one clause covers the audit half of this module, the
+  other covers the review half. Not AABB-specific and not written for blood
+  establishments. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[PMC: A Study of the Utility of Vertical Quality Audits in a Blood Transfusion Centre as a Quality Improvement Tool](https://pmc.ncbi.nlm.nih.gov/articles/PMC9375896)**
+  A peer-reviewed study, run inside an actual hospital blood transfusion centre, comparing
+  two audit shapes it calls "vertical" and "horizontal" — not this lesson's "tracer" and
+  "system/process" terms, but the same underlying distinction: one audit that follows a
+  single case or specimen deep through every step, versus one that sweeps across a
+  process at many points. Real nonconformity data, from a real blood bank, for the exact
+  system-audit-versus-tracer-audit distinction this module draws without its own worked
+  numbers. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[AABB: Auditing for Success in Blood Centers, Transfusion Services, and Cellular Therapy Laboratories](https://www.aabb.org/aabb-store/product/auditing-for-success-in-blood-centers-transfusion-services-and-cellular-therapy-laboratories-print-18237602)**
+  AABB Press's own 2024 publication on building and running an audit program —
+  auditor selection and training, planning and preparation, performing audits,
+  documenting and reporting results. This is the real resource for exactly the part
+  this module names and deliberately leaves alone: *how* Lakeshore builds and staffs an
+  independent audit program, not just the fact that independence is required. A paid
+  AABB Press title (description page only, not full text); use it to know the resource
+  exists before `fda-and-aabb-in-practice` builds that course out. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[Purple Griffon: An Introduction to ITIL Governance](https://www.purplegriffon.com/blog/itil-governance)**
+  An ITIL-training provider's explainer of IT governance frameworks, including COBIT's
+  "Evaluate, Direct, Monitor" model — the exact three-word loop this module's ITIL bridge
+  names for management review's "evaluate, direct, monitor" altitude, argued in full ITSM
+  (IT service management) terms before this lesson maps it onto a quarterly quality-system
+  review. Verified loading via `curl` on 2026-11-11 (HTTP 200).
