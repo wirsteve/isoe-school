@@ -31,3 +31,28 @@ links below use verified-loading mirrors of the same official text.)
   this for the official, dated, legally citable version of a specific year's text — for example,
   to confirm exactly what 610.40 said on the date of a past inspection or a reactive-result
   investigation.
+
+- **[The Journey of Blood: What happens after you give blood | NHS Give
+  Blood](https://www.youtube.com/watch?v=Q55LrC7vijM)** (NHS Blood Donation, from oEmbed
+  `author_name`) — the video embedded in this lesson. The UK's national blood service walking
+  through component separation, parallel testing, and holding until results clear. UK-regulated,
+  not FDA/CFR, so don't treat any specific number or procedure it shows as governed by 606/610 —
+  the operational shape (split fast, test in parallel, hold until clear) is what maps onto this
+  lesson. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[AABB: Circular of Information for the Use of Human Blood and
+  Components](https://www.aabb.org/news-resources/resources/circular-of-information)** — the
+  official joint AABB/American Red Cross/America's Blood Centers reference that actually states
+  each component's shelf life, storage temperature, and indications for use: what red cells,
+  plasma, and platelets each need once they're split apart Tuesday afternoon, the detail this
+  lesson names ("very different shelf lives") but doesn't itself spell out. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[Microsoft Learn: Deployment gates concepts — Azure
+  Pipelines](https://learn.microsoft.com/en-us/azure/devops/pipelines/release/approvals/gates)**
+  — a concrete, non-blood-industry explainer of the exact ITSM concept this lesson's bridge
+  leans on: a gate that automatically checks required conditions before anything is allowed to
+  release, independent of how far along the pipeline already is. Read 610.40(g)/(h)(1)'s
+  release gate through this lens, then notice where the blood-center version is stricter — a
+  failed gate here triggers donor deferral and notification, not just a blocked deployment.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).

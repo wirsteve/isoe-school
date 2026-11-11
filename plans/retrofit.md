@@ -53,7 +53,7 @@ In progress / Done.
 | 2 | Foundations | `regulatory-landscape-orientation` | 3/4 | Done |
 | 3 | Foundations | `risk-and-controls-vocabulary` | 5/6 | Done |
 | 4 | `blood-center-operations` | `donor-recruitment-and-screening` | 2/3 | Done |
-| 5 | `blood-center-operations` | `collection-and-testing` | 4/? | Not started |
+| 5 | `blood-center-operations` | `collection-and-testing` | 4/5 | Done |
 | 6 | `blood-center-operations` | `component-processing-and-labeling` | 6/? | Not started |
 | 7 | `blood-center-operations` | `storage-distribution-and-hemovigilance` | 8/? | Not started |
 | 8 | `blood-center-operations` | `becs-in-the-pipeline` | 10/? | Not started |
@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #5, `blood-center-operations`/`collection-and-testing`.**
+**Next up: #6, `blood-center-operations`/`component-processing-and-labeling`.**
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -244,3 +244,23 @@ module retrofit changes a course's own module list or description.
   to `ibm.com/think/topics/...`, confirmed 200 on follow). `order:` values (2, 3) confirmed
   unchanged.
   Next: module 5, `blood-center-operations`/`collection-and-testing`.
+
+- **2026-11-11**: Module 5, `blood-center-operations`/`collection-and-testing` (`order: 4/5`),
+  retrofitted under the rebalanced standard and published. Every original locked fact confirmed
+  unchanged on independent re-read: the Tuesday donation/Wednesday reactive-result scenario, the
+  single-donor-number framing, all six CFR quotes (606.160(c), 606.160(b)(1)(iii),
+  610.40(a)(1)-(2), 606.40(a)(3)/(4)/(6), 610.40(g), 610.40(h)(1)), all 3 Q&As, both traps, the 5
+  job bullets. Only two insertions into index.qmd: a Tuesday/Wednesday-scenario-specific
+  `flowchart TD` Mermaid diagram (step 6, the physical component-separation path and the testing
+  path both converging on one release-gate node) — the drafting agent validated syntax by
+  actually rendering it to SVG with `mermaid-cli`, not just parsing — and a verified video embed
+  (step 7): "The Journey of Blood... | NHS Give Blood" (NHS Blood Donation) — independently
+  re-verified via YouTube oEmbed (HTTP 200, title/author match) at publish time, honestly framed
+  as UK-regulated, not FDA/CFR-specific. No new invented scenario or narrative content was added.
+  `resources.qmd` expanded from 4 to 7 links: kept all 4 original, added the video, an AABB
+  Circular of Information link (component shelf-life/storage detail), and a Microsoft Learn
+  "deployment gates" explainer backing the lesson's own release-gate ITSM bridge. All 5
+  non-embedded links independently re-verified at publish time (4 direct HTTP 200, the Microsoft
+  Learn link 301-redirects to a locale-qualified URL, confirmed 200 on follow). Word count 4,010
+  (prose), within target. `order:` values (4, 5) confirmed unchanged.
+  Next: module 6, `blood-center-operations`/`component-processing-and-labeling`.

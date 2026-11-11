@@ -197,6 +197,63 @@ hadn't been processed yet. The text later cross-references § 610.41 as the regu
 the donor's own deferral once a reactive result is confirmed — the donor side of Wednesday's
 consequence, running alongside the product side.
 
+## See it in one picture
+
+Tuesday's donation splits into two tracks the moment it's drawn, and both tracks only ever
+resolve back into one decision. The diagram below is this module's own scenario, not a generic
+blood-processing flowchart: the whole-blood unit's physical path into three separate storage
+locations, alongside the sample tubes' path into the testing panel, both keyed to the single
+donor number 606.160(c) requires, converging on the one release gate 610.40(g) and (h)(1)
+actually govern.
+
+```{mermaid}
+flowchart TD
+    D["Tuesday: donation drawn —<br/>one donor number assigned, 606.160(c)"]
+
+    D --> C0["Whole blood unit"]
+    D --> S0["Sample tubes"]
+
+    subgraph Physical["Component separation — Tuesday afternoon"]
+        C0 --> C1["Red cells to refrigerator"]
+        C0 --> C2["Plasma to freezer"]
+        C0 --> C3["Platelets to room-temp agitator"]
+    end
+
+    subgraph Testing["Testing panel — Tuesday into Wednesday"]
+        S0 --> T1["Infectious-disease panel — 610.40(a)(1)-(2)"]
+        S0 --> T2["ABO/Rh typing + antibody screen"]
+    end
+
+    C1 --> G{"Release gate, same donation number —<br/>610.40(g)/(h)(1): all required results in and passing?"}
+    C2 --> G
+    C3 --> G
+    T1 --> G
+    T2 --> G
+
+    G -->|"Wednesday: one result reactive"| H["All three products quarantined or destroyed,<br/>wherever they physically sit — 610.40(h)(1)"]
+    G -->|"all results pass"| R["Released to inventory"]
+```
+
+Notice the gate has exactly five inputs — three storage locations, two test results — and it
+only opens if every one of them clears. Wednesday's reactive result closes it for all three
+products at once, no matter which of the five branches it came from.
+
+## Watch it explained
+
+This walkthrough comes from NHS Blood and Transplant, the UK's national blood service, showing
+what happens to a donated unit after collection. It isn't FDA- or CFR-specific — the UK runs a
+different regulatory system than the 606/610 sections this lesson quotes — so don't read any
+number or procedure it shows as governed by the regulations above. But the operational shape it's
+showing is exactly Tuesday and Wednesday's shape: split into components fast, test in parallel,
+and hold everything until the result comes back clear.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Q55LrC7vijM"
+  title="The Journey of Blood: What happens after you give blood | NHS Give Blood" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector would actually look for
 
 An FDA investigator reconstructing Wednesday's reactive result doesn't ask Lakeshore to describe
