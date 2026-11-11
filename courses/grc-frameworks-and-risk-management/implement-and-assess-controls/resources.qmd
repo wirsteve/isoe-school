@@ -5,8 +5,8 @@ order: 87
 
 This module applies the same saved NIST excerpt the first two modules introduced — no new
 source was independently fetched, since the new content here is application (building the
-selected control families and assessing them independently), not new citation. The link below
-was checked at the time this page was written.
+selected control families and assessing them independently), not new citation. The links below
+were checked at the time this page was written.
 
 - **[NIST SP 800-37 Rev. 2, "Risk Management Framework for Information Systems and
   Organizations"](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf)**
@@ -23,3 +23,38 @@ was checked at the time this page was written.
   the module that first established, in Lakeshore's own worded rule, that an auditor can't check
   their own work. This module applies that same independence principle to an RMF control
   assessment instead of an internal audit.
+
+- **[The 6 Tasks in the ASSESS Step of the NIST RMF](https://www.youtube.com/watch?v=NiUDG8f6M1g)**
+  (Denise Tawwab, from oEmbed `author_name`) — the video embedded in this lesson. An independent
+  RMF educator walking through the Assess step's tasks. Third-party training content, not NIST, and
+  federal-focused rather than blood-establishment-specific. Verified embeddable via YouTube oEmbed
+  on 2026-11-11 (HTTP 200).
+
+- **[NIST RMF: Assess Step](https://csrc.nist.gov/projects/risk-management/about-rmf/assess-step)**
+  — NIST's own overview page for the step this lesson's second half applies, including its
+  pointers to SP 800-53A. Read it to see the step described by its author. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST RMF: Implement Step](https://csrc.nist.gov/projects/risk-management/about-rmf/implement-step)**
+  — the matching official page for Implement, including the documentation half this lesson stresses.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-53A Rev. 5, publication page](https://csrc.nist.gov/pubs/sp/800/53/a/r5/final)**
+  — the NIST guide on how controls are assessed (assessment procedures and methods). Not quoted in
+  this lesson; read it to see what a formal assessor's procedures look like beyond the one-line
+  Assess action. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-53A Rev. 5 (PDF)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53Ar5.pdf)**
+  — the full text of the same guide, for anyone who wants the procedures themselves. Not saved
+  under `sources/`, so nothing in the lesson depends on it. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[NIST RMF Quick Start Guide: Assess Step FAQs](https://csrc.nist.gov/CSRC/media/Projects/risk-management/documents/05-Assess%20Step/NIST%20RMF%20Assess%20Step-FAQs.pdf)**
+  — a short NIST FAQ on what gets assessed, when, and what follows, including the assessment
+  report. Useful as a plain-language companion to the Quality Analyst's assessment. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST RMF: Assessment Cases overview](https://csrc.nist.gov/projects/risk-management/about-rmf/assess-step/assessment-cases-overview)**
+  — NIST's page on worked assessment cases, showing how depth and coverage of an assessment are
+  described. A deeper look than this lesson needs. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).

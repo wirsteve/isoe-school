@@ -203,6 +203,46 @@ scheme itself: NAI, VAI, and OAI are FDA-wide classifications, used the same way
 every inspection program FDA runs, CGMP inspections of blood establishments included. The
 label is general. The slide's own examples are not.
 
+## See it in one picture
+
+This is today's inspection from the investigator's arrival to the three possible classifications,
+using only what this lesson already established: the statutory reach and its carve-out, the
+written report, Lakeshore's two observations, and the open question of which outcome follows.
+
+```{mermaid}
+flowchart TD
+    A["Routine inspection: investigator presents credentials<br/>and written notice — 21 U.S.C. 374(a)(1)"]
+    A --> B["May inspect facility, equipment, labeling,<br/>records, files, processes, controls<br/>(BECS records, LAB-07 maintenance log, SOPs, training files)"]
+    A --> X["Off-limits: financial, pricing, sales (other than shipment),<br/>research data, personnel data<br/>(except staff qualifications) — 374(a)(1)"]
+    B --> C["Before leaving: written report of observations — 374(b)(1)<br/>FDA's form for it: Form FDA 483"]
+    C --> O1["Observation 1: no documented periodic<br/>fitness-for-use review (LAB-07's shape)"]
+    C --> O2["Observation 2: SOP revision implemented<br/>before final approval signature dated"]
+    O1 --> R["Lakeshore's written response<br/>and further FDA review"]
+    O2 --> R
+    R --> D{"Classification — FDA's call"}
+    D --> N["NAI: no violations identified"]
+    D --> V["VAI: violations, below the OAI threshold<br/>Director's working hypothesis: probably VAI"]
+    D --> OA["OAI: serious, repeated or deliberate noncompliance"]
+```
+
+Notice that the 483 sits in the middle of the picture, not at the end: the classification comes
+only after Lakeshore's response and further FDA review.
+
+## Watch it explained
+
+This is an FDA webinar in which FDA staff explain how drug-manufacturing (CGMP) inspections work,
+what a Form 483 is and is not, and how FDA reviews inspectional findings and classifies them. It
+is about drug manufacturing, not blood establishments, so it doesn't mention Lakeshore, BECS, or
+the 606/610 sections; the inspection-and-483 mechanics it explains are the same FDA-wide process
+this lesson describes.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Y-qkNfMze9c"
+  title="Understanding FDA Inspections and Data" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What the Director should have ready, going in
 
 The subject of today's inspection is Lakeshore, not you personally — but you're the one who

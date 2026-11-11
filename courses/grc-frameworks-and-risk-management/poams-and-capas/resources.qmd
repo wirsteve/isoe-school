@@ -7,7 +7,7 @@ This module's only new regulatory content is the POA&M (plan of action and miles
 itself, drawn from the same saved excerpt the first four modules already used — no new source was
 independently fetched. The two internal links below are the direct inputs this module builds on
 and the parallel it draws against; both were followed and confirmed to load correctly from this
-session.
+session. Further external reading and a video follow them.
 
 - **[NIST SP 800-37 Rev. 2, "Risk Management Framework for Information Systems and
   Organizations"](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf)**
@@ -26,3 +26,30 @@ session.
   `quality-system-essentials` module this lesson places its POA&M entry next to. Read it for the
   actual CAPA mechanics (root cause analysis, corrective and preventive action, the effectiveness
   check) this lesson references by name but deliberately doesn't redevelop.
+
+- **[Plan of Action & Milestones (POA&M) Overview](https://www.youtube.com/watch?v=DX9C0VlrwYE)**
+  (Optic Cyber, from oEmbed `author_name`) — the video embedded in this lesson. A cybersecurity
+  consulting firm's overview of what a POA&M is and contains. Industry training content, not a
+  NIST publication and not blood-specific. Verified embeddable via YouTube oEmbed on 2026-11-11
+  (HTTP 200).
+
+- **[NIST CSRC: Risk Management Framework](https://csrc.nist.gov/projects/risk-management/about-rmf)**
+  — NIST's own landing page for the RMF, with links to SP 800-37 and related publications. Read it
+  to see where the Authorize and Monitor steps sit in the framework's current official
+  presentation. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST CSRC Glossary: plan of action and milestones](https://csrc.nist.gov/glossary/term/plan_of_action_and_milestones)**
+  — NIST's short official definitions of the term, collected from its publications. Read it for a
+  one-line, authoritative restatement of what the Task A-6 passage describes. Verified loading
+  via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Q9(R1) Quality Risk Management](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/q9r1-quality-risk-management)**
+  — FDA's page for the ICH Q9(R1) guidance, the quality-side risk framework this course compares
+  RMF against in module 1. Read it when you want the primary source behind the CAPA-side
+  vocabulary, rather than this curriculum's summary of it. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[Atlassian: Problem Management in ITIL](https://www.atlassian.com/itsm/problem-management)**
+  — a vendor-published ITSM explainer on problem management, the discipline this lesson's bridge
+  compares POA&Ms and CAPAs to. It is a commercial vendor's guide, not ITIL's own text. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).

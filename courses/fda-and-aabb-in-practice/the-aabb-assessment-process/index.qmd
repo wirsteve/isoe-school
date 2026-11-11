@@ -118,6 +118,37 @@ this curriculum keeps surfacing, in a new context now. An AABB assessor isn't tr
 by a well-written binder. The assessor is trained to ask for the binder *and* the evidence it's
 being followed, and treat the second part as the real test.
 
+## See it in one picture
+
+This is Lakeshore's own reassessment cycle from this module, start to finish: the APEX self-assessment that rediscovers LAB-07, AABB's approval, the on-site assessor's two-part test, and the resolution step that has to happen before accreditation continues.
+
+```{mermaid}
+flowchart TD
+    A["Reassessment cycle opens —<br/>two-year cycle"] --> B["Self-assessment phase in APEX:<br/>QA works through each activity"]
+    B --> C["Equipment section surfaces LAB-07's<br/>missing fitness-for-use documentation<br/>(already found by DI-0301)"]
+    C --> D["AABB reviews and approves<br/>the self-assessment"]
+    D --> E["On-site assessment phase"]
+    E --> F{"Assessor's two-part test:<br/>1. Does a PPP address the Standard?<br/>2. Is the PPP followed as written?"}
+    F -->|"LAB-07: PPP exists, dated evidence missing"| G["One minor nonconformance"]
+    F -->|"Deferred-donor record:<br/>floor met, cadence under internal review"| H["Understood, not a nonconformance"]
+    G --> I["Lakeshore submits dated qualification<br/>review in the resolution window"]
+    I --> J["Nonconformance closes —<br/>accreditation continues another two years"]
+    H --> J
+```
+
+Notice that the gate is the on-site phase, not the self-assessment: a good APEX result makes the visit more confirmatory, but accreditation continues only once the nonconformance is resolved.
+
+## Watch it explained
+
+This is a podcast interview from the Blood Bank Guy channel, run by a physician blood-banking educator, with AABB's own Director of Accreditation and Quality, covering practical advice for getting through an AABB assessment and common pitfalls. It is a general conversation recorded in 2018, not about Lakeshore, APEX as it exists today, or this cycle's specifics, so treat it as an assessor-side perspective on the same "PPPs followed as written" test, not as a current AABB procedure.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/5E5_ynnrpqo"
+  title="061CE: Better AABB Assessments with Anne Chenoweth" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## Citation decoder
 
 Every row below cites `sources/aabb/accreditation-process.md`, AABB's own public page describing its

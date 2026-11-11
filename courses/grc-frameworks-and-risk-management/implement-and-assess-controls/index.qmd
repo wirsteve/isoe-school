@@ -165,6 +165,40 @@ process failing; the whole reason an independent assessment happens before an au
 decision is so a gap like this surfaces here; carrying it forward honestly, not hiding it, is
 this module's actual job.
 
+## See it in one picture
+
+This lesson's whole scenario in one path: the three control families Select chose get built, then
+checked by someone who didn't build them, and the assessment's three questions sort them into two
+that clear and one that carries a named gap forward.
+
+```{mermaid}
+flowchart TD
+    E["Plasma-labeling event: BECS reference-table error,<br/>FFP printed as PF24, caught in label reconciliation"]
+    E --> R["Recall track — 7.46(a), module 2<br/>correct or remove the mislabeled product"]
+    E --> B["BPDR track — 606.171<br/>report the deviation to CBER"]
+    E --> I["Internal investigation — 606.171(f)<br/>Parts 211, 606, 820, whether or not reportable"]
+    B --> Q["Who: Lakeshore as the establishment, through Quality — 606.171(a)<br/>QA drafts, Quality signs and submits"]
+    Q --> F["How: Form FDA-3486 — 606.171(d)"]
+    F --> W{"Where: CBER — 606.171(e)"}
+    W -->|"(e)(2) electronic: CBER web-based application<br/>(this course's recommended default)"| X["BPD-0512 filed"]
+    W -->|"(e)(1) paper: CBER Document Control Center,<br/>envelope marked BPDR enclosed"| X
+    X --> C["Inside the 45-day clock — 606.171(c)"]
+```
+
+## Watch it explained
+
+This walkthrough of the Assess step's tasks comes from an independent cybersecurity educator, not
+from NIST, so treat it as training content. It is written for federal RMF practice and isn't
+specific to blood establishments or to Lakeshore's eQMS; use it to see how a formal assessment is
+planned and reported, then map it back onto the Quality Analyst's check above.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/NiUDG8f6M1g"
+  title="The 6 Tasks in the ASSESS Step of the NIST RMF" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What a reviewer would actually look for
 
 What a competent reviewer — your CIO, your QA acting as assessor, or you yourself revisiting

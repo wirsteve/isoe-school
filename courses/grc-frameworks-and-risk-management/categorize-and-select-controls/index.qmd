@@ -190,6 +190,66 @@ this family earn their cost, and which would be theater? That tailoring conversa
 checklist copied from a lower-stakes system, and not a maximum-security build the eQMS doesn't
 need — is Select's real output.
 
+## See it in one picture
+
+The diagram below is this module's own scenario, nothing more: the three questions from the
+follow-up meeting feed Categorize's impact judgment, which lands on moderate-impact, which in turn
+drives which control families Select chooses and tailors. Solid arrows show the flow; dotted arrows
+show which failure each family answers.
+
+```{mermaid}
+flowchart TD
+    Q["Three questions from the follow-up meeting"]
+    Q --> I["Integrity: closed CAPA record<br/>altered, undetected"]
+    Q --> C["Confidentiality: open CAPA visible<br/>across sites before it is ready"]
+    Q --> A["Availability: eQMS or audit log<br/>unreachable during an AABB assessment"]
+
+    subgraph Cat["Categorize: NIST SP 800-37 Rev. 2"]
+        J["Judge how bad each failure is, separately"]
+        M["Moderate-impact: serious regulatory and<br/>reputational exposure, not loss of life"]
+        J --> M
+    end
+
+    I --> J
+    C --> J
+    A --> J
+
+    subgraph Sel["Select: choose an initial set, then tailor"]
+        F1["Audit logging family"]
+        F2["Account and identity management family"]
+        F3["Physical and environmental protection family"]
+    end
+
+    M --> F1
+    M --> F2
+    M --> F3
+    I -.-> F1
+    C -.-> F2
+    A -.-> F3
+
+    F1 --> T["Tailor: keep controls that earn their cost,<br/>drop the theater"]
+    F2 --> T
+    F3 --> T
+    T --> N["Next module: implement and assess"]
+
+    R["Revisit upward if the eQMS becomes<br/>the sole system of record"] -.-> M
+```
+
+## Watch it explained
+
+This is a third-party training video, not a NIST production, from an RMF educator walking through
+the tasks inside the Categorize step of SP 800-37. It's written for federal-system practitioners,
+so it knows nothing about Lakeshore or the eQMS; use it for the mechanics of Categorize, and keep
+this lesson's own reasoning (three named failure modes, moderate-impact, tailoring) as the
+Lakeshore-specific version.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/hNrV2VuLeh8"
+  title="The 3 Tasks in the CATEGORIZE Step of the NIST RMF" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What a reviewer would actually look for
 
 No external body audits Lakeshore against RMF, the same honest note the last module made. What a

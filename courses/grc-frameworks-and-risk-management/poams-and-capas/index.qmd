@@ -214,6 +214,45 @@ to work, not because any instrument requires it. Say that to your CIO exactly th
 POA&M and a CAPA are the same motion in two vocabularies, with one real difference in emphasis
 worth naming rather than glossing over.
 
+## See it in one picture
+
+The diagram below is this module's own scenario: the one gap Assess found, the authorization that
+accepted it, the POA&M entry that finally tracks it, and the three ways the 30-day milestone can
+resolve under the closure rule above, with the CAPA parallel marked alongside.
+
+```{mermaid}
+flowchart TD
+    A["Module 3: Assess finds one gap —<br/>quarterly access review implemented,<br/>not yet run on first cycle"]
+    B["Module 4: Director authorizes eQMS now (Option B),<br/>accepting the gap as a named, time-bound risk"]
+    C["Four days later: commitment lives only<br/>in meeting minutes"]
+    D["POA&M entry written (Task A-6):<br/>finding, action, resources, owner,<br/>30-day milestone, Director review"]
+    E["Systems administrator runs the first<br/>quarterly access review across all three sites"]
+    F{"Result within 30 days?"}
+    G["Clean: acceptance closes"]
+    H["Finding, e.g. stale account:<br/>new, immediate finding on its own record"]
+    I["No review run by day 30:<br/>authorization itself reopens"]
+    J["Same motion as a CAPA:<br/>finding, action, owner, date, sign-off"]
+    A --> B --> C --> D --> E --> F
+    F -->|clean| G
+    F -->|finding| H
+    F -->|nothing run| I
+    D -.-> J
+```
+
+## Watch it explained
+
+This short overview from Optic Cyber, a cybersecurity consulting firm, covers what a plan of
+action and milestones is and what goes into one. It is industry training content, not a NIST
+production, and it isn't specific to blood centers or to Lakeshore's eQMS, so treat Task A-6's
+quoted text above as the authority and the video as a second voice on the same instrument.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DX9C0VlrwYE"
+  title="Plan of Action & Milestones (POA&M) Overview" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What a reviewer would actually look for
 
 What a competent reviewer wants — your CIO, an AABB assessor who happens to ask about the eQMS

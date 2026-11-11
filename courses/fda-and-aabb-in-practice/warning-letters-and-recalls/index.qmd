@@ -283,6 +283,45 @@ unaddressed would be genuinely unsafe, not merely cosmetic. This is Lakeshore QA
 reasoned recommendation going into FDA — not the final word. FDA still reviews the submission
 and assigns the actual class.
 
+## See it in one picture
+
+Lakeshore's two threads this week run on separate tracks and never merge: the 483 response
+either de-escalates or can escalate toward a Warning Letter, while the plasma lot gets sorted
+by two questions, then a six-factor walk, then FDA's own classification. The diagram below is
+only this module's own scenario and citations, nothing new.
+
+```{mermaid}
+flowchart TD
+    A["Routine inspection ends in a two-observation 483;<br/>Lakeshore sends its written response"]
+    A --> B{"FDA reviews the response:<br/>problems promptly and adequately addressed?"}
+    B -->|"Yes, solid response, 'probably VAI'"| C["Corrective action documented, typically ends here"]
+    B -->|"No: OAI, or VAI with an inadequate response"| D["Warning Letter: public, informal and advisory,<br/>not seizure, injunction, or criminal referral"]
+
+    P["Separate event: plasma lot mislabeled PF24 instead of FFP,<br/>already shipped from Fairview to one hospital"]
+    P --> Q{"Did it ever leave the firm's direct control?"}
+    Q -->|"No"| S["Stock recovery, 7.3(k)"]
+    Q -->|"Yes"| R{"Real violation FDA would act on?"}
+    R -->|"Minor or none"| M["Market withdrawal, 7.3(j)"]
+    R -->|"Yes: wrong component identity"| RC["Recall, 7.3(g)"]
+    RC --> H["Six-factor health hazard walk, 7.41"]
+    H --> L["Lakeshore QA recommends Class II;<br/>submits the nine 7.46(a) items"]
+    L --> F["FDA assigns the actual class, 7.46(b)"]
+```
+
+## Watch it explained
+
+This is a training webinar from NSF, a recognized industry standards and training organization,
+on responding to FDA 483s so they do not escalate into Warning Letters. It speaks to the
+first thread only (the 483-to-Warning-Letter path), and it is not blood-establishment-specific
+and not about Part 7 recalls, so nothing in it replaces the regulation text quoted above.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/xnadb4-ANiQ"
+  title="Inspection Readiness: How to Respond to FDA 483s and Avoid Warning Letters" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What FDA's own review process actually looks for
 
 When Lakeshore notifies FDA of this firm-initiated recall, FDA isn't looking for a firm that

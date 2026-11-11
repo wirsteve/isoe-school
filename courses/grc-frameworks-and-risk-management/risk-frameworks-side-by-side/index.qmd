@@ -237,6 +237,43 @@ that question with more precision, this early in its own process, than either IS
 "risk assessment" theme or ICH Q9's "Risk Identification" step does — not because the other two are
 worse, but because RMF was built, specifically, around information systems.
 
+## See it in one picture
+
+The planning meeting's two disconnected risk conversations are the starting point, and the comparison
+this module just ran is what turns them into one decision: borrow RMF's structure, voluntarily, for
+the eQMS. The diagram uses only this lesson's own scenario and the seven steps as SP 800-37 Rev. 2
+names them.
+
+```{mermaid}
+flowchart TD
+    A["Routine inspection: investigator presents credentials<br/>and written notice — 21 U.S.C. 374(a)(1)"]
+    A --> B["May inspect facility, equipment, labeling,<br/>records, files, processes, controls<br/>(BECS records, LAB-07 maintenance log, SOPs, training files)"]
+    A --> X["Off-limits: financial, pricing, sales (other than shipment),<br/>research data, personnel data<br/>(except staff qualifications) — 374(a)(1)"]
+    B --> C["Before leaving: written report of observations — 374(b)(1)<br/>FDA's form for it: Form FDA 483"]
+    C --> O1["Observation 1: no documented periodic<br/>fitness-for-use review (LAB-07's shape)"]
+    C --> O2["Observation 2: SOP revision implemented<br/>before final approval signature dated"]
+    O1 --> R["Lakeshore's written response<br/>and further FDA review"]
+    O2 --> R
+    R --> D{"Classification — FDA's call"}
+    D --> N["NAI: no violations identified"]
+    D --> V["VAI: violations, below the OAI threshold<br/>Director's working hypothesis: probably VAI"]
+    D --> OA["OAI: serious, repeated or deliberate noncompliance"]
+```
+
+## Watch it explained
+
+This is a general-audience overview of NIST's Risk Management Framework from Mike Chapple (a
+well-known cybersecurity certification educator), not a NIST-produced video. It's about federal-style
+information systems, not blood establishments or the eQMS, so treat it as a second explanation of
+RMF's shape, and rely on the lesson's quoted NIST text for what the steps actually say.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/d8Z1RyhmRXg"
+  title="CertMike Explains NIST Risk Management Framework" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What a reviewer would actually look for
 
 No external body audits Lakeshore against RMF — it isn't a regulation, an AABB Standard, or

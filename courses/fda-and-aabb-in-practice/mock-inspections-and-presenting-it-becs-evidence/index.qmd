@@ -223,6 +223,41 @@ ready: a Minor finding from Fairview's own paper-file sampling, caught inside th
 sampling discipline's first real cycle, logged, and resolved inside its 90-day clock — proof
 the program is finding things now, not just re-grading history.
 
+## See it in one picture
+
+Here is the whole day as one map: two lenses, the evidence each one pulled, and the single
+connected story that has to hold up under both.
+
+```{mermaid}
+flowchart TD
+    A["Mock Inspection / Mock Assessment day<br/>contracted consultant plays both roles"] --> B["Morning: FDA-style lens<br/>21 U.S.C. 374(a)(1), (b)(1)"]
+    A --> C["Afternoon: AABB-style lens<br/>PPPs followed as written"]
+    B --> D["DED-0458 'accurate' letter<br/>independent manual re-derivation, dated record: CLOSED"]
+    B --> E["483 response file and BPD-0512 filing record<br/>606.171(d), (e): inside 45 days"]
+    C --> F["Deferred-donor cadence<br/>monthly floor 606.160(e)(3) to weekly, dated decision memo"]
+    C --> G["LAB-07 closed nonconformance<br/>stays closed"]
+    G --> H["New Critical/Major/Minor audit log<br/>Fairview paper-file Minor caught by new program"]
+    D --> I["One connected evidence story<br/>holds up under both lenses"]
+    E --> I
+    F --> I
+    H --> I
+    I --> J["Still open by design: donor-record retention clock,<br/>BECS audit-trail review frequency"]
+```
+
+## Watch it explained
+
+This is FDA's own training session on how its drug-manufacturing inspections run, and what a
+firm should do to prepare for, host, and respond to one. It is not blood-specific and it is
+not about Lakeshore, so treat it as the investigator's-eye view of the room your mock
+morning session rehearses, not as blood-establishment guidance.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1-z4NCmXEV8"
+  title="FDA Drug Manufacturing Inspections - REdI 2020" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## Common traps
 
 **"A mock session that finds nothing means the program is solid."** Not necessarily, and

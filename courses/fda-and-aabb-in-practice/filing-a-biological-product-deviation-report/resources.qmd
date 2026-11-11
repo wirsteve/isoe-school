@@ -3,8 +3,8 @@ title: "Resources"
 order: 74
 ---
 
-Four places to go deeper than this lesson, or to check a citation yourself before it goes
-into a real Lakeshore filing. All four were checked and loading at the time this page was
+Ten places to go deeper than this lesson, or to check a citation yourself before it goes
+into a real Lakeshore filing. All ten were checked and loading at the time this page was
 written.
 
 - **[21 CFR 606.171, eCFR](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-F/part-606/subpart-F/section-606.171)**
@@ -25,3 +25,37 @@ written.
   — FDA's own instructions for the electronic filing channel 606.171(e)(2) describes as
   "CBER's electronic Web-based application." Worth reading before recommending electronic
   filing to a team that's never used it.
+
+- **[FDA, Biological Product Deviations](https://www.fda.gov/vaccines-blood-biologics/report-problem-center-biologics-evaluation-research/biological-product-deviations)**
+  — CBER's own landing page for the BPDR program: the starting point linking the form, the
+  electronic system, the code lists, and CBER's contact points. Read it first when you need to
+  confirm what CBER currently publishes. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA, Electronic Submission of Biological Product Deviation Reports (eBPDR)](https://www.fda.gov/vaccines-blood-biologics/report-problem-center-biologics-evaluation-research/electronic-submission-biological-product-deviation-reports-ebpdr)**
+  — FDA's page on the electronic channel itself, the one 606.171(e)(2) calls CBER's web-based
+  application. Pair it with the eBPDR instructions above before recommending electronic filing
+  to a team that has never used it. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA, Biological Product Deviation Reporting and HCT/P Deviation Reporting: Deviation Codes](https://www.fda.gov/vaccines-blood-biologics/report-problem-center-biologics-evaluation-research/biological-product-deviation-reporting-and-hctp-deviation-reporting-deviation-codes)**
+  — FDA's published list of the deviation codes used when completing a report. Useful when your
+  QA classifies a deviation like BPD-0512 and you want to see the code vocabulary CBER itself
+  uses; the lesson deliberately does not reproduce it. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[AABB, Ask the FDA and CMS/CLIA, 2020 Virtual Annual Meeting (transcript, PDF)](https://www.aabb.org/docs/default-source/default-document-library/regulatory/2020-ask-the-fda-and-clia-transcript.pdf)**
+  — a transcript of an FDA question-and-answer session at AABB's annual meeting that includes
+  CBER discussion of BPDR reporting, in the blood-establishment setting. A transcript, not a
+  video, and dated 2020, so confirm any specifics against the current FDA pages above. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[An Update on Field Alert Reports (FAR) and Biological Product Deviation Reports (BPDR)](https://www.youtube.com/watch?v=EtLmHnBuNJQ)**
+  (U.S. Food and Drug Administration, from oEmbed `author_name`) — the video embedded in this
+  lesson, also used in `escalation-criteria`; the only FDA video on BPDRs that could be found and
+  verified. Part of it covers drug-side Field Alert Reports, outside this course. Verified
+  embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[FDA guidance: Biological Product Deviation Reporting for Blood and Plasma Establishments](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/biological-product-deviation-reporting-blood-and-plasma-establishments)**
+  — CBER's guidance written specifically for blood and plasma establishments filing under
+  606.171. It is guidance ("should"), not regulation; read it for FDA's recommendations on what
+  is and isn't reportable before Lakeshore's next borderline call. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).

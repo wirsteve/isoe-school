@@ -210,6 +210,38 @@ floor regardless of which tier this module's own grading scale assigns it. A **M
 finding still gets a recorded investigation. It just doesn't get the same clock or the
 same escalation path a **Critical** one does.
 
+## See it in one picture
+
+The diagram below follows this lesson's own debrief: the Director's question at the top, the four design pieces Lakeshore builds in answer to it, and the three-tier grading scale every finding then runs through, with the one regulatory floor (606.100(c)) underneath all three tiers.
+
+```{mermaid}
+flowchart TD
+    Q["Debrief: why didn't our internal audit find LAB-07's gap first?"]
+    Q --> P1["1. Independence rule — can't audit a process you perform,<br/>a site you manage, or a record you signed or configured"]
+    P1 --> P2["2. Competency record — process knowledge<br/>plus audit-technique training, checked before assignment"]
+    P2 --> P3["3. Risk-based calendar — Fairview's paper files and<br/>legacy equipment like LAB-07 audited more often"]
+    P3 --> P4["4. Sampling plan written before the audit —<br/>how many records, selected how, from what population"]
+    P4 --> F["Finding graded"]
+    F --> C["Critical: same-day containment, immediate escalation"]
+    F --> M["Major: 30 days to disposition, CAPA if systemic"]
+    F --> N["Minor: 90 days, logged and trended"]
+    N -->|"3 Minors, same process, within a year"| M
+    C --> R["606.100(c): thorough investigation made and recorded — every tier"]
+    M --> R
+    N --> R
+```
+
+## Watch it explained
+
+This video is a consultancy's training explainer on risk-based auditing under ISO 19011, the international audit-programme guideline. It isn't blood-establishment-specific and says nothing about Lakeshore, LAB-07, or Fairview, and I could only verify its title and channel, not its full content, so treat it as general background on the risk-based-scheduling idea rather than as a source for any detail above.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/8SDyLVpwju4"
+  title="Risk Based Auditing I For ISO Auditors | ISO 19011" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an assessor or inspector would actually look for
 
 Not whether Lakeshore's internal audit program exists — that part is easy to confirm.
