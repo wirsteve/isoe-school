@@ -95,7 +95,7 @@ In progress / Done.
 | 44 | `grc-frameworks-and-risk-management` | `authorize-and-monitor` | 88/89 | Done |
 | 45 | `grc-frameworks-and-risk-management` | `poams-and-capas` | 90/91 | Done |
 | 46 | `healthcare-security-and-privacy` | `information-governance-in-a-covered-entity` | 93/94 | Done |
-| 47 | `healthcare-security-and-privacy` | `the-hipaa-privacy-rule` | 95/96 | Not started |
+| 47 | `healthcare-security-and-privacy` | `the-hipaa-privacy-rule` | 95/96 | Done |
 | 48 | `healthcare-security-and-privacy` | `security-rule-safeguards-and-part-11` | 97/98 | Not started |
 | 49 | `healthcare-security-and-privacy` | `breach-notification-and-dual-reporting` | 99/100 | Not started |
 | 50 | `healthcare-security-and-privacy` | `investigating-a-healthcare-data-incident` | 101/102 | Not started |
