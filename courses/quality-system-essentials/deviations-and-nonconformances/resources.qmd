@@ -24,3 +24,35 @@ Each link below was checked this session and loads.
   — the U.S. Government Publishing Office's official CFR collection, useful as a fallback primary
   source if a specific eCFR or Cornell page is ever unreachable, and for pulling an official PDF of
   a full CFR part when you need one for the record.
+
+- **[Deviation Investigation in the Pharmaceutical Industry](https://www.youtube.com/watch?v=ukeUUiZ0Sc8)**
+  (GMP-SOP Videos, from oEmbed `author_name`) — the video embedded in this lesson. A GMP/pharma-
+  industry educational channel walking through deviation investigation generally: discovery,
+  containment, root cause, disposition, closure. It won't name 606.171, 630.10(h), or Lakeshore's
+  facts — it's the broader pharmaceutical-GMP version of the exact five-stage process this lesson
+  teaches for blood establishments specifically, worth seeing once from outside the blood-specific
+  lens. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[Quality-One: RCA — Root Cause Analysis](https://quality-one.com/rca/)** — a quality-engineering
+  consultancy's explainer on root-cause-analysis methods generally, including 5 Why and the
+  Fishbone (Ishikawa) diagram, the two tools stage 3's impact assessment draws on without this
+  lesson re-deriving them. Use this before running a real root-cause session on a CAPA-bound
+  deviation like Owen Pruitt's. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[ICH Q9: Quality Risk Management](https://database.ich.org/sites/default/files/Q9_Guideline.pdf)**
+  — the International Council for Harmonisation's guideline on quality risk management (this is the
+  original Step 4 text dated 9 November 2005, not ICH's 2023 Q9(R1) revision — no verified-loading
+  link to the R1 text was found this session), the industry-standard framework behind the
+  likelihood/severity/detectability reasoning this lesson's stage 3 applies (and the
+  `risk-and-controls-vocabulary` foundation first taught). ICH Q9 is guidance adopted across FDA,
+  EMA, and other regulators — not an FDA regulation and not an AABB Standard, so label it
+  accordingly if it comes up in a real document. Verified loading via `curl` on 2026-11-11
+  (HTTP 200, confirmed as a 23-page PDF).
+
+- **[TapRooT: Root Cause Analysis Tip — Extent of Cause … Extent of
+  Condition](https://taproot.com/?p=105731)** — a root-cause-analysis training firm's explainer on
+  extent-of-condition specifically: the "what else does this touch" question stage 3 asks about
+  Brookfield's other donors and other satellite sites, distinguished from extent-of-cause (whether
+  the root cause itself needs deeper generic-cause analysis). Useful for seeing the concept argued
+  on its own terms, independent of this lesson's blood-industry framing. Verified loading via `curl`
+  on 2026-11-11 (HTTP 200).

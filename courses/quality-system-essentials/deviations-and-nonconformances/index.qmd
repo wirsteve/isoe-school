@@ -93,6 +93,20 @@ and applies them consistently.
 
 Five stages, and Owen Pruitt's donation runs through all five.
 
+The investigator in this video walks through the same discipline from the broader
+pharmaceutical-GMP side — discovery, containment, root cause, disposition, closure —
+rather than blood establishments specifically. It won't use 606.171, 630.10(h), or
+Lakeshore's facts, but the underlying shape of a deviation investigation is the same one
+this module teaches, worth seeing once from outside the blood-specific lens before
+Owen Pruitt's donation runs through it below.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ukeUUiZ0Sc8"
+  title="Deviation Investigation in the Pharmaceutical Industry" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 **1. Discovery.** However it's found — routine reconciliation, an audit, a complaint, a monitoring
 alarm, self-report — the clock (both the internal investigation clock and, potentially, 606.171's
 45-day clock) starts here, at the moment of discovery, not when the deviation record gets opened
@@ -170,6 +184,27 @@ medical director's approval) is the controlled cousin of what just happened at B
 one wasn't planned or approved by anyone, which is exactly what makes it reportable instead of
 routine. Planned deviations get their real treatment in the change-control module later in this
 course.
+
+## See it in one picture
+
+The five stages plus the sixth question, run against Owen Pruitt's donation specifically — nothing
+added beyond what the sections above already walked through.
+
+```{mermaid}
+flowchart TD
+    A["1. Discovery — Monday a.m. reconciliation entry:<br/>BECS flags Owen Pruitt as deferred, active, reason on file"]
+    A --> B["2. Immediate containment &amp; correction —<br/>quarantine any remaining component from this donation;<br/>notify Riverside General, same day, to hold the shipped unit"]
+    B --> C["3. Impact &amp; extent-of-condition assessment —<br/>other components from this donation? other donors checked<br/>against Friday's stale list? other sites running the same<br/>superseded downtime binder right now?"]
+    C --> D["4. Product disposition — documented decision by medical<br/>director / delegated quality officer: unit stays quarantined,<br/>does not get transfused"]
+    D --> E["5. Documented reportability determination — 606.171(b)(1)(i)<br/>deviation from 630.10(h) may affect safety/purity/potency,<br/>and (b)(3) distributed product — both met → REPORTABLE.<br/>45-day clock runs from Monday's discovery, not from closure"]
+    E --> F{"6. CAPA decision — does this reveal why the<br/>system let it happen, not just what happened?"}
+    F -->|"NO — a small, well-understood,<br/>one-off event"| G["Short cause statement on the<br/>deviation form; closes with no formal CAPA"]
+    F -->|"YES — this event"| H["Proximate cause: a superseded SOP revision<br/>sitting in the downtime binder — a document-control<br/>gap plausibly live at other satellite sites too<br/>→ CAPA opens (next module)"]
+```
+
+Notice the fork at the bottom isn't rhetorical — plenty of real deviations legitimately take the
+left branch. Owen Pruitt's doesn't, for the reason stage 6 above already gave: the proximate cause
+is a document-control gap, not an isolated staff mistake, and that's what sends it right.
 
 ## Citation decoder
 
