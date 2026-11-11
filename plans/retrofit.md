@@ -71,7 +71,7 @@ In progress / Done.
 | 20 | `directing-the-quality-analyst` | `reviewing-vendor-risk-assessments` | 36/37 | Done |
 | 21 | `directing-the-quality-analyst` | `coaching-and-reporting-upward` | 38/39 | Done |
 | 22 | `csv-and-becs` | `gamp5-and-the-v-model` | 41/42 | Done |
-| 23 | `csv-and-becs` | `iq-oq-pq-and-traceability` | 43/44 | Not started |
+| 23 | `csv-and-becs` | `iq-oq-pq-and-traceability` | 43/44 | Done |
 | 24 | `csv-and-becs` | `becs-as-a-regulated-device` | 45/46 | Not started |
 | 25 | `csv-and-becs` | `qmsr-iso-13485-and-the-vendor` | 47/48 | Not started |
 | 26 | `csv-and-becs` | `part-11-for-validated-systems` | 49/50 | Not started |
