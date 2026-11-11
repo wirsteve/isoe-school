@@ -53,3 +53,11 @@ is linked: the one page tried returned HTTP 404, and the lesson itself does not 
   — an AABB news profile of the volunteer assessors who carry out on-site assessments, useful for
   understanding who is actually on the other side of the table. Verified loading via `curl` on
   2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about preparing for and living through an accreditation assessment.
+
+- **[5 Tips for a Low-Stress Assessment](https://blog.helmerinc.com/5-tips-for-a-low-stress-assessment)** (Helmer Scientific, equipment vendor; vendor content) — short, practical preparation tips from a blood-bank equipment maker. Read it as a friendly checklist, not as AABB guidance. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CISSP Domain 6: Security Assessment & Testing Guide](https://destcert.com/resources/cissp-domain-6-security-assessment-and-testing/)** (Destination Certification, CISSP training company; commercial) — explains internal, external and third-party assessment strategies, a helpful parallel for how an outside assessor differs from an inspector. Supports CISSP Domain 6 (Security Assessment and Testing). Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Blood Bank Guy Essentials Podcast](https://www.bbguy.org/podcast/)** (Blood Bank Guy, Joe Chaffin, MD) — an episode index from a well-known transfusion-medicine educator; browse for quality-system and regulatory episodes to round out the assessor's-eye view. Verified loading via `curl` on 2026-11-11 (HTTP 200).
