@@ -238,6 +238,62 @@ and can prove exactly why each one came up empty. That file is what 164.414(b)'s
 actually demands, and it's a materially stronger position than "we don't know" ever was, even
 though the bottom-line determination is identical.
 
+## See it in one picture
+
+This is the whole investigation on one page, built only from the four leads, the wipe-command thread, and the determination you just read: every lead feeds the same unresolved factor 3, and the unresolved factor is exactly why the presumption stands.
+
+```{mermaid}
+flowchart TD
+    P["Module 4's provisional determination:<br/>164.402(2) presumption of breach not rebutted"]
+    P --> Q["Open question: was full-disk encryption<br/>actually active when the laptop went missing?"]
+
+    subgraph Leads["Four leads"]
+        L1["1. Enrollment and policy-push logs:<br/>device was told to encrypt, not proof it did"]
+        L2["2. Raw check-in history:<br/>two check-ins, no completed attestation"]
+        L3["3. Vendor escalation:<br/>migration defect class; old export purged"]
+        L4["4. Network log and staff interview:<br/>visitor segment runs no posture checks; no recollection"]
+    end
+
+    Q --> L1
+    Q --> L2
+    Q --> L3
+    Q --> L4
+
+    L1 --> U["Factor 3 stays unresolved:<br/>a documented, permanent unknown"]
+    L2 --> U
+    L3 --> U
+    L4 --> U
+
+    Q --> W["Remote wipe command:<br/>confirmed issued, never confirmed delivered"]
+    W --> F4["Factor 4: slightly stronger,<br/>never the deciding factor"]
+
+    U --> D{"164.402(2) presumption rebutted?"}
+    F4 --> D
+    D -->|"No"| FD["Final determination: breach.<br/>164.404 clock runs from the day the loss was reported;<br/>164.408(c) annual-log pathway; 164.406 not triggered"]
+    FD --> B["164.414(b): file shows Lakeshore looked,<br/>and why each lead came up empty"]
+
+    FD --> RC["Root causes, ranked:<br/>physical handling (trigger),<br/>deployment sequencing (why it can never close),<br/>minimum necessary (severity multiplier)"]
+```
+
+Notice that the wipe command takes a different path than the four leads: it closes an open
+action item and nudges factor 4, but it never touches the pivotal factor.
+
+## Watch it explained
+
+This is a presentation from the U.S. Department of Health and Human Services on how the HIPAA
+Security Rule helps defend against cyber-attacks. HHS describes it as covering ransomware, what
+covered entities and business associates should do if their systems are infected, and HIPAA breach
+reporting requirements. It is general guidance, not about a lost laptop or Lakeshore. Watch it for
+how the regulator expects an investigation to move from containment to a reportability decision,
+which is the path this module walks.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VnbBxxyZLc8"
+  title="How the HIPAA Security Rule Can Help Defend Against Cyber-Attacks | October 23, 2023" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector or reviewer would actually look for
 
 An OCR investigator, or an AABB (the Association for the Advancement of Blood & Biotherapies)
