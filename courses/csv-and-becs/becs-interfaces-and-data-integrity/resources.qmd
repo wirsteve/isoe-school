@@ -55,3 +55,12 @@ order: 54
   tables behind boundary 3 (and DEV-1147). Use it to see what ICCBBA publishes and how
   implementation and table updates are described by the source itself. Verified loading via `curl`
   on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about HL7 interfaces and message handling.
+
+- **[What is HL7? Understanding the Standard Behind Healthcare Data Exchange](https://medblocks.com/blog/what-is-hl7)** (Medblocks) — a friendly overview of HL7 and the common v2 message types (admissions, orders, results). Good first stop before reading real messages. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[A History of HL7: From Terminals to APIs](https://medblocks.com/blog/a-history-of-hl7-from-terminals-to-apis)** (Medblocks) — explains why v2 messages look the way they do and why custom fields are common. Helps explain interface quirks. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[HL7 V2 - Interactive Tutorial](https://www.saravanansubramanian.com/tutorials/hl7-v2/)** (Saravanan Subramanian, independent author) — a multi-section tutorial with quizzes on message structure, validation and transport. Code examples are Java-based; skim those, keep the concepts. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[HL7 Tutorial: Understanding HL7 Message Structure](https://www.integrationsoup.com/hl7tutorialunderstandinghl7messagestructure.html)** (Integration Soup, interface-engine vendor) — a clear walk through segments, fields and separators. Vendor content, but useful when reading a raw message. Verified loading via `curl` on 2026-11-11 (HTTP 200).
