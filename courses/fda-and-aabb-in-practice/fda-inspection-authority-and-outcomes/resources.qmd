@@ -3,8 +3,8 @@ title: "Resources"
 order: 70
 ---
 
-Three places to go deeper than this lesson, or to check a citation yourself before it goes
-into a real Lakeshore document. All three were checked and loading at the time this page was
+Nine places to go deeper than this lesson, or to check a citation yourself before it goes
+into a real Lakeshore document. All nine were checked and loading at the time this page was
 written.
 
 - **[21 U.S.C. 374, Cornell Legal Information Institute](https://www.law.cornell.edu/uscode/text/21/374)**
@@ -25,3 +25,40 @@ written.
   blood-collection facility. Only its general three-outcome classification scheme (NAI, VAI,
   OAI) applies beyond that context — its clinical-trial-specific examples and statistics do
   not.
+
+- **[Understanding FDA Inspections and Data](https://www.youtube.com/watch?v=Y-qkNfMze9c)**
+  (U.S. Food and Drug Administration, from oEmbed `author_name`) — the video embedded in this
+  lesson: FDA's own 2023 webinar on how CGMP inspections work, what a 483 is and is not, and how
+  FDA reviews inspectional findings. It is drug-manufacturing-focused, so treat its examples as
+  context, not as blood-establishment rules. Verified embeddable via YouTube oEmbed on 2026-11-11
+  (HTTP 200).
+
+- **[FDA, Understanding FDA Inspections and Data (event page and slides)](https://www.fda.gov/drugs/news-events-human-drugs/understanding-fda-inspections-and-data-09062023)**
+  — the FDA event page for that webinar, listing its speakers and the downloadable slide deck
+  (including a section on understanding CGMP inspections and 483s). Read the slides when you want
+  the same material faster than the video, with the same drug-manufacturing scope. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA, Form 483 Frequently Asked Questions](https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/inspection-references/fda-form-483-frequently-asked-questions)**
+  — FDA's own plain-language Q&A on the 483, including that it is not a final Agency
+  determination and that it is considered together with the Establishment Inspection Report,
+  on-site evidence, and the company's response. Read it before briefing your QA on what a 483
+  does and doesn't mean. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA, Investigations Operations Manual](https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/inspection-references/investigations-operations-manual)**
+  — the internal reference FDA investigators and field staff work from, published so regulated
+  industry can understand FDA operations. Chapter 5 covers inspections. Skim it to see the
+  investigator's side of the process this lesson describes from Lakeshore's side. Verified loading
+  via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA, Inspection Classification Database](https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/inspection-references/inspection-classification-database)**
+  — FDA's page on how it shares inspection classification information with the public, pointing
+  to the FDA Data Dashboard and the database's FAQs. Useful for seeing that NAI, VAI, and OAI are
+  real, published classifications rather than just slide vocabulary. Verified loading via `curl`
+  on 2026-11-11 (HTTP 200).
+
+- **[FDA, Inspections Yield Valuable Results, Regardless of Classification](https://www.fda.gov/about-fda/regulatory-news-stories-and-features/inspections-yield-valuable-results-regardless-classification)**
+  — an FDA feature explaining how the Establishment Inspection Report can serve as an
+  educational tool for firms and why inspections matter even when no violations are found. Read
+  it for FDA's own framing of what a well-run inspection looks like from the firm's side.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
