@@ -52,7 +52,7 @@ In progress / Done.
 | 1 | Foundations | `reading-a-cfr-citation` | 1/2 | Done |
 | 2 | Foundations | `regulatory-landscape-orientation` | 3/4 | Done |
 | 3 | Foundations | `risk-and-controls-vocabulary` | 5/6 | Done |
-| 4 | `blood-center-operations` | `donor-recruitment-and-screening` | 2/? | Not started |
+| 4 | `blood-center-operations` | `donor-recruitment-and-screening` | 2/3 | Done |
 | 5 | `blood-center-operations` | `collection-and-testing` | 4/? | Not started |
 | 6 | `blood-center-operations` | `component-processing-and-labeling` | 6/? | Not started |
 | 7 | `blood-center-operations` | `storage-distribution-and-hemovigilance` | 8/? | Not started |
@@ -111,8 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #4, `blood-center-operations`/`donor-recruitment-and-screening`.** All 3 foundations
-modules are now retrofitted — the production standard carries into Track 1 next.
+**Next up: #5, `blood-center-operations`/`collection-and-testing`.**
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -223,3 +222,25 @@ module retrofit changes a course's own module list or description.
   isn't specific to Lakeshore's own scenario, write original material only for what's actually
   scenario-specific or this curriculum's own continuity.
   Next: module 4, `blood-center-operations`/`donor-recruitment-and-screening`.
+
+- **2026-11-11**: Module 4, `blood-center-operations`/`donor-recruitment-and-screening`
+  (`order: 2/3`), retrofitted under the REBALANCED standard and published — first module built
+  with the new link-first balance, and noticeably leaner on self-authored additions than modules
+  1-3. Every original locked fact confirmed unchanged on independent re-read: the Marcus Webb
+  scenario (Monday hemoglobin deferral, Thursday second attempt at a different site), all six
+  630.10/630.40 quotes, all 3 Q&As, both traps, the 5 job bullets. Only two insertions into
+  index.qmd, nothing else touched: a Marcus-specific `flowchart TD` Mermaid diagram (step 6,
+  walking his actual Monday and Thursday visits through the four-step sequence, syntax-validated
+  by the drafting agent via a real `mermaid.parse()` run, not just eyeballed) and a verified
+  video embed (step 7): "Who Can Donate Blood? Eligibility Requirements Explained | Interview
+  with Dr. Courtney Lawrence" (American Red Cross) — independently re-verified via YouTube
+  oEmbed (HTTP 200, title/author match) at publish time. No new invented scenario, numeric
+  example, or narrative content was added — consistent with the rebalanced standard.
+  `resources.qmd` expanded from 4 to 8 links: kept all 4 original, added the video, the
+  `sources/nih/reds-program.md`-backed REDS-IV-P link (framed honestly as research context, not
+  a citable requirement), an AABB Standards overview link, and a general master-data-management
+  explainer backing the lesson's own CMDB/identity-matching bridge. All 7 non-embedded links
+  independently re-verified at publish time (6 direct HTTP 200, the IBM MDM link 301-redirects
+  to `ibm.com/think/topics/...`, confirmed 200 on follow). `order:` values (2, 3) confirmed
+  unchanged.
+  Next: module 5, `blood-center-operations`/`collection-and-testing`.
