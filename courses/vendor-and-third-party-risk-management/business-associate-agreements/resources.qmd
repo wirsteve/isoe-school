@@ -86,3 +86,12 @@ HHS's own pages (the sample BAA provisions and the business-associates fact shee
 returned HTTP 403 to plain `curl` from this environment on 2026-11-11, so they are deliberately not
 linked as verified; search hhs.gov for "sample business associate agreement provisions" in a normal
 browser.
+
+## Keep learning
+
+Not official sources — good places to learn more about business associate agreements and healthcare vendor risk.
+
+- **[HIPAA Business Associate Agreement](https://www.hipaajournal.com/hipaa-business-associate-agreement/)** (HIPAA Journal) — a long-running independent HIPAA news and guidance site explaining what a BAA is, who needs one and common mistakes; a plain-English companion to the lesson. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[The Complicated Nature of BA Compliance](https://www.hipaajournal.com/baa-compliance/)** (HIPAA Journal) — why BAA compliance is harder than signing a form, including when the business associate isn't the only party at fault. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Vendor Management Guidance](https://www.in.gov/cybersecurity/government/best-practices-standards-and-resources/healthcare-vendor-management-guidance-helps-ensure-patient-safety-information-security/vendor-management-guidance)** (Indiana Cybersecurity Hub, state government) — a healthcare-focused vendor management guide, useful for HCISPP-style thinking about contracts, subcontractors and oversight. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[The Complete Guide to Healthcare Third-Party Risk Management](https://www.censinet.com/perspectives/the-complete-guide-to-healthcare-third-party-risk-management-from-basics-to-advanced-strategies)** (Censinet — vendor/commercial content) — a broad healthcare TPRM overview that places the BAA inside a full vendor lifecycle; supports HCISPP third-party risk study. Verified loading via `curl` on 2026-11-11 (HTTP 200).
