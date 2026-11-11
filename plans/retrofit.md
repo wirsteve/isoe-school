@@ -209,3 +209,17 @@ module retrofit changes a course's own module list or description.
   Word count 5,231 (prose), within target. `order:` values (5, 6) confirmed unchanged.
   Next: module 4, `blood-center-operations`/`donor-recruitment-and-screening` — the retrofit's
   first Track 1 course module.
+
+- **2026-11-11**: User feedback after modules 1-3: too much of the added depth was original
+  prose I wrote myself (a second/third invented worked example per module) rather than linking
+  out to trustworthy existing material. Adjusted `TEACHING.md`: word-count target lowered from
+  3,500–6,000 to 2,500–4,500 (prose only), step 5 and the Style section now explicitly say to
+  check for a trustworthy external explainer before writing a new self-authored worked example,
+  and the Resources section is rewritten to make curating links (6–10 now, up from 4–8) at least
+  as much of the job as writing lesson prose — official sources, professional-body explainers,
+  practical tools/calculators, not just the embedded video. Modules 1-3 (already published) are
+  accurate and not being redone solely for this — they're left as-is — but every module from
+  here forward follows the adjusted balance: lean on real external links wherever a sub-point
+  isn't specific to Lakeshore's own scenario, write original material only for what's actually
+  scenario-specific or this curriculum's own continuity.
+  Next: module 4, `blood-center-operations`/`donor-recruitment-and-screening`.
