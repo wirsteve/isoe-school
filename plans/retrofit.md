@@ -59,7 +59,7 @@ In progress / Done.
 | 8 | `blood-center-operations` | `becs-in-the-pipeline` | 10/11 | Done |
 | 9 | `quality-system-essentials` | `aabb-qse-framework` | 13/14 | Done |
 | 10 | `quality-system-essentials` | `deviations-and-nonconformances` | 15/16 | Done |
-| 11 | `quality-system-essentials` | `capa-root-cause-to-effectiveness` | 17/18 | Not started |
+| 11 | `quality-system-essentials` | `capa-root-cause-to-effectiveness` | 17/18 | Done |
 | 12 | `quality-system-essentials` | `change-control-for-regulated-systems` | 19/20 | Not started |
 | 13 | `quality-system-essentials` | `document-control-and-records` | 21/22 | Not started |
 | 14 | `quality-system-essentials` | `quality-risk-management` | 23/24 | Not started |
@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #11, `quality-system-essentials`/`capa-root-cause-to-effectiveness`.**
+**Next up: #12, `quality-system-essentials`/`change-control-for-regulated-systems`.**
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -365,3 +365,22 @@ module retrofit changes a course's own module list or description.
   200 on follow). Word count 3,990 (prose), within target. `order:` values (15, 16) confirmed
   unchanged.
   Next: module 11, `quality-system-essentials`/`capa-root-cause-to-effectiveness`.
+
+- **2026-11-11**: Module 11, `quality-system-essentials`/`capa-root-cause-to-effectiveness`
+  (`order: 17/18`), retrofitted under the rebalanced standard and published. Every original
+  locked fact confirmed unchanged: the Owen Pruitt/Brookfield CAPA write-up, the full 5-Whys
+  chain, the four-part CAPA process, the effectiveness check's four required pieces, both
+  citations (606.100(c), 606.171(f)), all 3 Q&As, all 3 traps, the 5 job bullets. Added a
+  `flowchart TD` Mermaid diagram (step 6, the lesson's own 5-Whys chain forking into corrective/
+  preventive action and converging on the effectiveness check) — syntax validated by rendering
+  to SVG via `mermaid-cli`. Added a verified video embed (step 7): "What Is a CAPA? From Root
+  Cause to Effectiveness Check" (Matrix One) — independently re-verified via YouTube oEmbed (HTTP
+  200, title/author match) at publish time. `resources.qmd` expanded from 3 to 8 links: kept all
+  3 original, added the video, a fishbone-diagram explainer, a CAPA-effectiveness-check design
+  piece, and a "why CAPAs fail" industry piece — all independently re-verified HTTP 200. **One
+  link needed a fix during independent re-verification**: the MindTools 5-Whys link returned 200
+  on the subagent's own check but 403 on my independent re-check — added an honest caveat noting
+  the inconsistent, bot-protection-style behavior rather than asserting it loads cleanly, matching
+  this curriculum's established eCFR/FDA/CDC disclosure pattern. Word count 4,065 (prose), within
+  target. `order:` values (17, 18) confirmed unchanged.
+  Next: module 12, `quality-system-essentials`/`change-control-for-regulated-systems`.
