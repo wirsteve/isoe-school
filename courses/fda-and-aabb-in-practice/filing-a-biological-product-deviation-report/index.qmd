@@ -107,6 +107,42 @@ put the wrong clotting-factor information in a clinician's hands, on a lot that 
 Fairview's control and reached a hospital — and the clock on (c) started the day Lakeshore's
 label reconciliation caught it, which is where this module's own timeline picks up.
 
+## See it in one picture
+
+BPD-0512 is one event feeding three separate tracks, and only one of them is this module's job. The diagram below is this lesson's own scenario: the recall and the internal investigation run alongside, while the BPDR track walks 606.171's own lettered steps, who, how, where, and the clock.
+
+```{mermaid}
+flowchart TD
+    E["Plasma-labeling event: BECS reference-table error,<br/>FFP printed as PF24, caught in label reconciliation"]
+    E --> R["Recall track — 7.46(a), module 2<br/>correct or remove the mislabeled product"]
+    E --> B["BPDR track — 606.171<br/>report the deviation to CBER"]
+    E --> I["Internal investigation — 606.171(f)<br/>Parts 211, 606, 820, whether or not reportable"]
+    B --> Q["Who: Lakeshore as the establishment, through Quality — 606.171(a)<br/>QA drafts, Quality signs and submits"]
+    Q --> F["How: Form FDA-3486 — 606.171(d)"]
+    F --> W{"Where: CBER — 606.171(e)"}
+    W -->|"(e)(2) electronic: CBER web-based application<br/>(this course's recommended default)"| X["BPD-0512 filed"]
+    W -->|"(e)(1) paper: CBER Document Control Center,<br/>envelope marked BPDR enclosed"| X
+    X --> C["Inside the 45-day clock — 606.171(c)"]
+```
+
+Notice that nothing on the recall track or the investigation track feeds the BPDR track's "filed" box. Each has to be completed on its own.
+
+## Watch it explained
+
+This is an FDA presentation on biological product deviation reports (BPDR), the 21 CFR 606.171
+channel this module files through. It is the same video embedded in
+[Escalation criteria](../../directing-the-quality-analyst/escalation-criteria/index.qmd), reused here
+because no other FDA or CBER video on BPDR filing could be found and verified. This time, watch it
+for what FDA expects to see in a filed report. Part of it covers drug-side Field Alert Reports,
+which this course doesn't teach, and it isn't Lakeshore-specific.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/EtLmHnBuNJQ"
+  title="An Update on Field Alert Reports (FAR) and Biological Product Deviation Reports (BPDR)" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## Citation decoder
 
 | Citation | How to read it aloud | What it requires | In our scenario |
