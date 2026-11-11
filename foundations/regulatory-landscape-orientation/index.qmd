@@ -152,6 +152,102 @@ That's Section 351 of the PHS Act (42 U.S.C. § 262) — the statute that create
 licensing authority in the first place. You don't cite it in a deviation report. You recognize it
 when a regulation cites it, and you know it's the legal bedrock everything else sits on.
 
+## A second worked example: sorting 606.171
+
+The four-question test above works on any citation, not just 606.100 — including one that
+complicates its own best-known shortcut. 21 CFR 606.171 requires blood establishments to report
+certain product deviations to FDA, on Form FDA-3486, within a fixed window. Quoting verbatim from
+`sources/cfr/606.171.md`:
+
+> (c) *When do I report under this section?* You should report a biological product deviation as
+> soon as possible but you must report at a date not to exceed 45-calendar days from the date you,
+> your agent, or another person who performs a manufacturing, holding, or distribution step under
+> your control, acquire information reasonably suggesting that a reportable event has occurred.
+
+Run it through the four questions. Was it enacted by Congress? No — this is a CFR section, not a
+U.S. Code title. Is it in the CFR, with "shall"/"must" language? Yes — 606.171 sits in Part 606,
+Subpart F, same as 606.100, codified through formal rulemaking. That answers the test: 606.171 is
+an FDA regulation, full stop, binding on every covered establishment regardless of accreditation.
+
+Now look back at the sentence you just quoted. It contains the word "should." If you were sorting
+by word-spotting alone — "should" means guidance, "shall"/"must" means regulation — you'd get this
+one wrong. Read the whole clause instead of the one verb: "should report... as soon as possible"
+sets an aspirational target, but "must report... not to exceed 45-calendar days" sets the actual,
+enforceable deadline. The forgiving verb describes the goal; the controlling verb sets the floor.
+606.171 doesn't stop being a binding regulation because one internal clause happens to use
+guidance's favorite word — it's still 606.171, still Part 606, still codified. The tier is decided
+by where a rule lives and how it was made, not by scanning for a single word in isolation. (This
+comes back as its own trap below, because it's a genuinely common way to mis-sort a citation.)
+
+One more detail worth noticing in 606.171(b)(1)(i), because it's the regulation naming this
+lesson's own framework without meaning to: the rule defines a reportable deviation partly as one
+that "[r]epresents a deviation from current good manufacturing practice, applicable regulations,
+applicable standards, or established specifications." FDA's own drafters, writing binding
+regulatory text, still found it useful to list "regulations" and "standards" as separate nouns.
+That's not a coincidence — it's the same distinction this lesson teaches, showing up inside the
+very text that's an example of one of its own tiers.
+
+## See it in one picture
+
+The four questions from "The distinction, in plain English" are a decision path, not a checklist
+you run in any order — each "no" sends you to the next, narrower question, and three of the four
+"yes" answers land you on a tier that chains back to the one before it (Congress authorizes FDA's
+rulemaking; FDA's regulations get explained by FDA's guidance). AABB Standards are the one branch
+that doesn't chain to anything federal at all — accreditation is a track Lakeshore opted into,
+running on its own clock, next to the federal one rather than inside it.
+
+```{mermaid}
+flowchart TD
+    Start(["A claim lands on your desk:<br/>'This is required.'"]) --> Q1
+    Q1{"Was it enacted<br/>by Congress?"} -- Yes --> Statute["STATUTE<br/>e.g. PHS Act Section 351<br/>Legal foundation.<br/>Rarely cited directly."]
+    Q1 -- No --> Q2
+    Q2{"Is it in the CFR,<br/>written 'shall' / 'must'?"} -- Yes --> Reg["FDA REGULATION<br/>e.g. 21 CFR 606.100(b)(22)<br/>Binding federal law.<br/>Enforced by FDA inspection, citable on a 483."]
+    Q2 -- No --> Q3
+    Q3{"Is it an FDA document titled<br/>'Guidance for Industry,'<br/>written 'should'?"} -- Yes --> Guide["FDA GUIDANCE<br/>e.g. Bacterial Risk Control<br/>Strategies for Platelets<br/>FDA's recommended path.<br/>Deviate only with a documented rationale."]
+    Q3 -- No --> Q4
+    Q4{"Is it published by AABB,<br/>cited by standard number,<br/>tied to accreditation?"} -- Yes --> AABBStd["AABB STANDARD<br/>Binding only if accredited.<br/>Enforced by assessment: a nonconformance,<br/>not a federal citation."]
+    Q4 -- No --> Neither["NOT AN EXTERNAL MANDATE<br/>Internal practice or a vendor claim,<br/>dressed up as a requirement.<br/>Ask who's actually citing it."]
+
+    Statute -.->|Congress delegates rulemaking authority| Reg
+    Reg -.->|FDA explains how to comply| Guide
+
+    classDef statute fill:#dbeafe,stroke:#1e40af,stroke-width:2px;
+    classDef reg fill:#fde68a,stroke:#b45309,stroke-width:2px;
+    classDef guide fill:#fef3c7,stroke:#b45309,stroke-width:1px;
+    classDef aabb fill:#dcfce7,stroke:#15803d,stroke-width:2px;
+    classDef neither fill:#fee2e2,stroke:#b91c1c,stroke-width:1px;
+
+    class Statute statute;
+    class Reg reg;
+    class Guide guide;
+    class AABBStd aabb;
+    class Neither neither;
+```
+
+AABB's box sits off the federal chain on purpose — the dotted arrows only connect Statute, FDA
+Regulation, and FDA Guidance, because those three really do build on each other. AABB Standards
+come from a completely separate question (Q4), with its own separate enforcement path, which is
+exactly why Lakeshore can be fully compliant on the federal chain and still fail an AABB
+assessment, or vice versa.
+
+## Watch it explained
+
+The video below isn't about blood, FDA, or AABB at all — it's a general legal-education discussion
+of whether an agency's rule (a regulation) is legally different from a statute Congress passed,
+featuring a law professor working through the statute-versus-regulation distinction in the
+abstract. Watch it for the Q1-versus-Q2 line in the decision flowchart above — *why* a regulation
+has legal force at all, and how that traces back to Congress delegating authority to an agency —
+not for anything about guidance or AABB Standards; the video never touches either of those tiers,
+and Lakeshore's name obviously never comes up. The rest of this lesson, not the video, is where the
+guidance and AABB layers get worked out.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/bDy25B1OTyQ"
+  title="Is There a Legal Difference Between Statutes and Rules? [No. 86]" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector or assessor would actually look for
 
 These two oversight bodies show up differently, and knowing which one is asking changes what
@@ -173,9 +269,53 @@ nonconformance in the assessment report, which Lakeshore has to close out to kee
 accreditation. The consequence isn't a federal enforcement action; it's losing the accreditation
 that most of Lakeshore's hospital customers require as a condition of doing business.
 
+That assessment cycle has real procedural shape, worth knowing before you're the one explaining it
+to your CIO. AABB accreditation runs in two phases, per AABB's own public description of the
+process: a self-assessment phase, where Lakeshore evaluates its own policies, processes, and
+procedures (PPPs) against every applicable standard through AABB's online accreditation portal,
+APEX, followed by an on-site assessment phase once AABB reviews and approves that self-assessment.
+The expectation on-site isn't just that a PPP exists for every standard — AABB explicitly checks
+that each PPP is actually followed as written, which is exactly the "the SOP and the practice have
+to match" discipline the Lakeshore CAB meeting in this scenario is trying to get right before
+go-live. Once accredited, Lakeshore goes through the on-site phase again every two years, and any
+nonconformance an assessor raises has to be resolved before (re)accreditation is granted. None of
+this touches FDA at any point in the cycle — it's a privately run, contractual-adjacent process
+Lakeshore opted into, which is exactly why the earlier comparison to holding an ISO 27001
+certificate holds up: you get assessed against it on a fixed schedule, you close findings to keep
+it, and you lose it if you stop meeting it, entirely independent of anything FDA does or doesn't
+do. (Source: AABB's public "Accreditation Process" page, `sources/aabb/accreditation-process.md`
+— a description of AABB's own program mechanics, not AABB Standards text itself.)
+
 Different owner, different document, different consequence — same underlying SOP. Get the CAB
 approval wrong here and you're not managing one risk, you're managing two, on two different
 clocks.
+
+## A third oversight body hiding in plain sight: CLIA
+
+FDA and AABB aren't the only two bodies with a claim on Lakeshore's BECS validation. The testing
+side of blood banking — infectious disease testing, compatibility testing, the kind of result
+that feeds directly into a release decision — runs through a laboratory, and laboratories in the
+United States that test human specimens are generally subject to CLIA (the Clinical Laboratory
+Improvement Amendments), a federal certification program for laboratory testing quality. CLIA is
+administered by CMS (the Centers for Medicare & Medicaid Services) — a different federal agency
+from FDA, with its own certificate, its own inspection cycle, and its own focus: whether the lab is
+competent to run the test accurately, not whether the blood product itself meets FDA's
+manufacturing or labeling rules.
+
+This lesson isn't going to hand you a CLIA citation the way it hands you a CFR section — no CLIA
+regulation text is sourced in this curriculum yet, and inventing a clause number here would break
+the same discipline this lesson has been teaching about FDA regulation and guidance. What's safe
+to say, generically: CLIA certification is a real, separate federal requirement for lab testing,
+run by a different agency than the one that wrote 606.100 and 606.171, and it sits alongside — not
+underneath — the FDA/AABB framework this lesson covers. A single piece of lab equipment at
+Lakeshore, like the platelet bacterial detection instrument in this lesson's scenario, can
+realistically answer to three separate authorities for the same test result: an FDA regulation
+governing the testing requirement itself (for example, 21 CFR 610.40's infectious disease testing
+requirements, a separate section of Title 21 this lesson doesn't walk in detail), an AABB Standard
+covering the same activity because Lakeshore is accredited for it, and CLIA certification covering
+the laboratory's competence to run the test at all. Three bodies, three certificates, three
+inspection or assessment cycles — and "we're FDA- and AABB-compliant" answers only two of the
+three questions a validation package needs to close.
 
 ## Common traps
 
@@ -203,6 +343,15 @@ to your CAB. For a hospital-facing blood center, losing accreditation is often a
 business risk than a single 483 observation, because it can end customer contracts outright. Not
 federally binding is not the same as not serious.
 
+**"If the word is 'should,' the document must be guidance."** 606.171(c), quoted above, is a
+counterexample sitting inside a bona fide federal regulation: "You should report... as soon as
+possible but you must report... not to exceed 45-calendar days." The forgiving verb describes an
+aspirational timeline; the controlling verb sets the actual, enforceable deadline. The presence of
+one "should" doesn't downgrade 606.171 to guidance status — the document's format (codified in
+the CFR through formal rulemaking, carrying independent legal force) decides the tier, not a
+single word scanned in isolation. Treat "should" inside a numbered CFR section as a signal to read
+the whole sentence carefully, not as proof you're looking at guidance.
+
 ## What this means for your job
 
 - **When a document cites "per FDA regulation, guidance, and AABB Standards" as one bundle, make
@@ -223,6 +372,17 @@ federally binding is not the same as not serious.
 - **A regulation citation with no section number, or a guidance citation with a CFR-style number,
   is a red flag that someone mislabeled their source.** Catch it before it goes in a written
   response to FDA or AABB — that's not the place to discover the citation was wrong.
+- **Don't let one verb decide a document's tier.** A regulation can contain a "should" clause
+  (606.171(c)'s reporting-timeline language is the example this lesson used) without becoming
+  guidance, and the reverse mistake is just as common in casual conversation — calling an actual
+  CFR requirement "just guidance" because it sounds informal when someone describes it out loud.
+  Check where a document is published and how it was made before you classify it, not just the
+  verb or the tone in the sentence someone quoted you.
+- **Ask "which of three bodies is this test for" before you scope a validation or a vendor
+  contract.** The same testing instrument can be in scope for an FDA test regulation, an AABB
+  accreditation standard, and CLIA laboratory certification at the same time — three different
+  audiences for one validation package, not one. Missing the third means a system that looks
+  fully compliant on your CAB's checklist can still fail a CLIA inspection nobody scoped for.
 
 ## Check your understanding
 
