@@ -32,3 +32,33 @@ links below use verified-loading mirrors of the same official text.)
   this for the official, dated, legally citable version of a specific year's text — for example,
   to confirm exactly what 606.121 said on the date of a past inspection or a labeling deviation
   investigation.
+
+- **[Overview of the ISBT 128 Standard](https://www.youtube.com/watch?v=rv--jZOBDIs)** (ICCBBA,
+  from oEmbed `author_name`) — the video embedded in this lesson. ICCBBA's own explainer of the
+  standard it governs, complementing the generic ICCBBA site link above with a direct, narrated
+  walkthrough — this is ICCBBA talking about ICCBBA's own standard, about as close to a primary
+  source as a video gets for this module. Verified embeddable via YouTube oEmbed on 2026-11-11
+  (HTTP 200; title and channel confirmed verbatim in the response).
+
+- **[BarcodeFAQ: Code 128/GS1-128 Barcode FAQ & Tutorial](https://www.barcodefaq.com/1d/code-128/)**
+  — a well-regarded, vendor-neutral technical explainer of the Code 128 barcode symbology ISBT
+  128 is built on (the lesson explains where the name comes from; this explains how the symbology
+  itself actually encodes characters into bars). Use this if you want the mechanics underneath
+  "machine-readable," one layer below what this lesson needs to teach. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[Atlassian: What Is a CMDB? Configuration Management
+  Database](https://www.atlassian.com/itsm/it-asset-management/cmdb)** — a general ITSM explainer
+  on configuration management databases and naming/tagging conventions, the exact concept this
+  lesson's ITSM bridge invokes ("ISBT 128 is what a CMDB naming convention would look like if an
+  international registration authority enforced it"). Not blood-industry-specific — use it to
+  firm up the CMDB-naming-drift analogy, then re-read why a governed product code table is a
+  stricter version of the same problem. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[AABB: About AABB Accreditation](https://www.aabb.org/standards-accreditation/accreditation)**
+  — AABB's own public page on what its accreditation program covers and how the assessment
+  process works, for facilities performing blood collection, transfusion services, and related
+  activities. Useful for keeping this lesson's four-tier distinction straight: 606.121 is FDA
+  *regulation*; AABB accreditation (assessed against AABB Standards, which include labeling and
+  product-identification requirements) is a separate, voluntary layer most blood centers also
+  hold themselves to. Verified loading via `curl` on 2026-11-11 (HTTP 200).

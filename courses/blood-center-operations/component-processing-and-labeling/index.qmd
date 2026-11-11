@@ -251,6 +251,63 @@ record for donor eligibility (module 1), gate for quarantine release (module 2),
 **it controls whether a final label can print** — exactly the control this morning's forty units
 passed through, using data that had drifted without anyone treating the drift as a change.
 
+## See it in one picture
+
+Five steps, one donation, and exactly one of them is where this morning's forty units are
+actually stuck. The diagram below is Tuesday's donation run through the release-eligibility
+sequence from "The rule, in plain English" above — steps 1 through 3 clean, step 4 carrying the
+drifted product code, and step 5 blocked as a direct result.
+
+```{mermaid}
+flowchart TD
+    subgraph Separation["Step 1 — Separation (clean)"]
+        A1["Tuesday's donation split:<br/>red cells, plasma, platelets"] --> A2["Each physically correct,<br/>no issue found"]
+    end
+
+    subgraph Modifications["Step 2 — Modifications (clean)"]
+        B1["Leukoreduction, irradiation, pooling<br/>applied as ordered"] --> B2["Modifications correctly<br/>performed and documented"]
+    end
+
+    subgraph Dating["Step 3 — Expiration dating (clean)"]
+        C1["610.53(b) dating table applied<br/>per product and modification"] --> C2["Correct clock assigned<br/>to each component"]
+    end
+
+    subgraph Label["Step 4 — Container label (the problem)"]
+        D1["2:00 a.m.: ICCBBA product-code<br/>table update lands in BECS,<br/>unreviewed by Quality"] --> D2["2:00–6:15 a.m.: ~40 units print<br/>final labels — barcode's product-code<br/>element now one revision behind,<br/>606.121(c)(13)(iii)(C)"]
+        D2 --> D3{"Does the printed code still<br/>match the CURRENT table?"}
+    end
+
+    subgraph Release["Step 5 — Release-eligibility"]
+        E1["Blocked until D3 resolves —<br/>606.121(c)(13) requires the correct<br/>code, not just the correct product"]
+    end
+
+    A2 --> B1
+    B2 --> C1
+    C2 --> D1
+    D3 -->|"unknown as of 6:40 a.m. shift handoff"| E1
+```
+
+Nothing about the physical product moved backward through this sequence — separation,
+modifications, and dating all completed cleanly. The break sits entirely inside step 4, in the
+one data element (the product code) that depends on a table Lakeshore doesn't control, and it's
+exactly that break that leaves step 5 an open question instead of a settled "yes."
+
+## Watch it explained
+
+ICCBBA — the standards organization this lesson's "ISBT 128, in full" section above covers in
+depth — publishes its own explainer of the standard it governs. Unlike most videos this
+curriculum embeds, this one needs no "doesn't quite match the scenario" caveat: it's the actual
+standards body talking about the actual standard behind this morning's product-code drift.
+Watch for how it frames the DIN and the product code as two pieces of one continuously governed
+system — the same system that moved one revision ahead of Lakeshore's label printer overnight.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/rv--jZOBDIs"
+  title="Overview of the ISBT 128 Standard" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector would actually look for
 
 An FDA investigator or AABB assessor reconstructing this morning's forty units doesn't ask
