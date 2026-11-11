@@ -102,6 +102,17 @@ this module, say that plainly, the same way this curriculum already discloses an
 unreachable ISO catalogue page or a blocked eCFR mirror — an honest gap beats a forced or
 mediocre link every time.
 
+**Keep learning (added 2026-11-11 at the user's request).** Below the 6–10 curated links, every
+`resources.qmd` ends with a `## Keep learning` section of **3–5 extra learning links that don't
+have to be official** — just genuinely good for learning: well-regarded educators, professional-
+body explainers (ISC2, ISACA, ASQ, AHIMA, HIMSS, ISPE), certification study material (CISSP,
+HCISPP, CISA, CRISC, CQA, ITIL), podcasts, free courses, and practitioner blogs with real depth.
+Each still gets a one-line "why it's worth your time" and a verification note (curl 200, or
+oEmbed for a video), and the same honesty rules apply: label vendor or commercial content as
+such, never quote it as authority for a regulatory claim. These links don't count toward the
+6–10. The site-wide [Study resources](study-resources.qmd) page collects the certifications
+that map to this curriculum.
+
 ## Style
 
 - Write for reading on a phone. Keep paragraphs short. Put tables only where the spine
