@@ -58,7 +58,7 @@ In progress / Done.
 | 7 | `blood-center-operations` | `storage-distribution-and-hemovigilance` | 8/9 | Done |
 | 8 | `blood-center-operations` | `becs-in-the-pipeline` | 10/11 | Done |
 | 9 | `quality-system-essentials` | `aabb-qse-framework` | 13/14 | Done |
-| 10 | `quality-system-essentials` | `deviations-and-nonconformances` | 15/16 | Not started |
+| 10 | `quality-system-essentials` | `deviations-and-nonconformances` | 15/16 | Done |
 | 11 | `quality-system-essentials` | `capa-root-cause-to-effectiveness` | 17/18 | Not started |
 | 12 | `quality-system-essentials` | `change-control-for-regulated-systems` | 19/20 | Not started |
 | 13 | `quality-system-essentials` | `document-control-and-records` | 21/22 | Not started |
@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #10, `quality-system-essentials`/`deviations-and-nonconformances`.**
+**Next up: #11, `quality-system-essentials`/`capa-root-cause-to-effectiveness`.**
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -346,3 +346,22 @@ module retrofit changes a course's own module list or description.
   SL claim. All 7 non-embedded links independently re-verified at publish time, all HTTP 200.
   Word count 3,306 (prose), within target. `order:` values (13, 14) confirmed unchanged.
   Next: module 10, `quality-system-essentials`/`deviations-and-nonconformances`.
+
+- **2026-11-11**: Module 10, `quality-system-essentials`/`deviations-and-nonconformances`
+  (`order: 15/16`), retrofitted under the rebalanced standard and published. Every original
+  locked fact confirmed unchanged: the Owen Pruitt/Brookfield downtime-binder scenario, the
+  vocabulary-check section, all five citations (606.100(b), 630.10(e)(2)(iii), 630.10(h),
+  606.171(b)(1)(i)/(b)(3), 606.160(b)(7)(iii)), all 3 Q&As, all 3 traps, the 5 job bullets. Added
+  a `flowchart TD` Mermaid diagram (step 6, the lesson's own five stages applied to Owen Pruitt's
+  donation, ending in the "sixth question" CAPA-decision fork) — syntax validated by rendering to
+  SVG via `mermaid-cli`. Added a verified video embed (step 7): "Deviation Investigation in the
+  Pharmaceutical Industry" (GMP-SOP Videos) — independently re-verified via YouTube oEmbed (HTTP
+  200, title/author match) at publish time, honestly framed as the broader pharma-GMP version of
+  the same five-stage discipline. `resources.qmd` expanded from 4 to 8 links: kept all 4 original,
+  added the video, a root-cause-analysis (5-Why/Fishbone) explainer, ICH Q9's original guideline
+  PDF (honestly noting it's the 2005 text, not the 2023 Q9(R1) revision — no verified link to R1
+  was found), and a TapRooT explainer on extent-of-condition specifically. All 7 non-embedded
+  links independently re-verified at publish time, all HTTP 200 (TapRooT's redirects, confirmed
+  200 on follow). Word count 3,990 (prose), within target. `order:` values (15, 16) confirmed
+  unchanged.
+  Next: module 11, `quality-system-essentials`/`capa-root-cause-to-effectiveness`.
