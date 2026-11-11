@@ -311,6 +311,46 @@ continuously, not granted once and forgotten.
   proprietary export file nobody can open without obsolete software usually isn't — and that's worth
   knowing before an investigator asks, not after.
 
+## See it in one picture
+
+The diagram below is this module's own scenario: LAB-07 run through FDA's four-part legacy-system
+test, with criterion 4 as the one genuine gap, and the instrument's two output modes, each with the
+kind of copy it can and can't hand an inspector.
+
+```{mermaid}
+flowchart TD
+    A["Asset LAB-07 — benchtop analyzer<br/>older than Part 11 (August 20, 1997)"]
+    A --> T{"FDA 2003 guidance, III.C.3:<br/>four-part legacy-system test"}
+
+    T --> C1["1. Operational before the effective date<br/>Yes: purchase order, asset tag, early logbook"]
+    T --> C2["2. Met predicate rules before the effective date<br/>Yes, supportable: logbook pages"]
+    T --> C3["3. Currently meets predicate rules<br/>Yes: two print-head swaps did not change<br/>the measurement method"]
+    T --> C4["4. Documented evidence of fitness for use<br/>Genuinely uncertain: no document found"]
+
+    C4 --> GAP["Finding: a gap in evidence, not a proven violation.<br/>Fix: dated qualification review"]
+
+    A --> O{"Two output modes"}
+    O --> P["Daily QC printout<br/>pH-meter case: the strip is the original record"]
+    O --> E["Dormant export / reprocessing mode<br/>FT-IR-like: dynamic record"]
+    P --> CP["Copy: scan to PDF<br/>(common portable format, III.C.4)"]
+    E --> CE["Copy: proprietary trace file,<br/>no conversion to a common format"]
+    E --> FIX["Document the printout as record of record;<br/>prohibit export for QC or treat as its own dynamic record"]
+```
+
+## Watch it explained
+
+This is a recorded online-course session on FDA's 2003 *Scope and Application* guidance, the source
+of this module's four-part test. It is general pharmaceutical/GxP training, not blood-specific and
+not about Lakeshore; I could not confirm from the video page how much of it covers the legacy-systems
+section, so treat it as background on the guidance and rely on the quoted text above for the test itself.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1JIh8e7wC0E"
+  title="21 CFR Part 11 – 2003 Guidance - Online Course" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## Check your understanding
 
 ::: {.callout-tip collapse="true"}
