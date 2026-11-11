@@ -56,7 +56,7 @@ In progress / Done.
 | 5 | `blood-center-operations` | `collection-and-testing` | 4/5 | Done |
 | 6 | `blood-center-operations` | `component-processing-and-labeling` | 6/7 | Done |
 | 7 | `blood-center-operations` | `storage-distribution-and-hemovigilance` | 8/9 | Done |
-| 8 | `blood-center-operations` | `becs-in-the-pipeline` | 10/? | Not started |
+| 8 | `blood-center-operations` | `becs-in-the-pipeline` | 10/11 | Done |
 | 9 | `quality-system-essentials` | `aabb-qse-framework` | 13/14 | Not started |
 | 10 | `quality-system-essentials` | `deviations-and-nonconformances` | 15/16 | Not started |
 | 11 | `quality-system-essentials` | `capa-root-cause-to-effectiveness` | 17/18 | Not started |
@@ -111,7 +111,8 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #8, `blood-center-operations`/`becs-in-the-pipeline`** — this course's final module.
+**Next up: #9, `quality-system-essentials`/`aabb-qse-framework`.** `blood-center-operations`
+(Track 1) is now fully retrofitted, 8/8.
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -304,3 +305,26 @@ module retrofit changes a course's own module list or description.
   explainer) confirmed clean HTTP 200. Word count 4,091 (prose), within target. `order:` values
   (8, 9) confirmed unchanged.
   Next: module 8, `blood-center-operations`/`becs-in-the-pipeline` — this course's final module.
+
+- **2026-11-11**: Module 8, `blood-center-operations`/`becs-in-the-pipeline` (`order: 10/11`),
+  retrofitted under the rebalanced standard and published — **completes Track 1
+  (`blood-center-operations`), 8/8.** Every original locked fact confirmed unchanged: the Friday
+  3:40pm OS-patch scenario, the four-module BECS recap, the CGMP/device-law dual footing, all
+  three citations (606.100(b), 11.10(a), 606.171(b)(1)(ii)), all 3 Q&As, all 3 traps, the 5 job
+  bullets. Added the AABB §3.9 "Information Systems" research from earlier this session: one
+  prose sentence (no new citation-decoder row, no AABB text quoted) noting the accreditation-
+  side counterpart to this lesson's FDA-side validated-state discussion. Added a scenario-
+  specific `flowchart TD` Mermaid diagram (step 6, the "one incident, two tracks" concept forking
+  into the IT-restore track and the Quality/606.171 deviation track, with an explicit dotted
+  non-connection showing the IT ticket's closure doesn't close the quality track) — syntax
+  validated by rendering to SVG via `mermaid-cli`. Added a verified video embed (step 7): "#26
+  Computer System Validation (CSV)" (Waters Corporation) — independently re-verified via YouTube
+  oEmbed (HTTP 200, title/author match) at publish time. `resources.qmd` expanded from 4 to 9
+  links: kept all 4 original, added the video, the AABB §3.9 entry (honestly noting the full
+  standard text sits behind AABB's paywall), FDA's own BECS validation guidance page, FDA's SaMD
+  page, and ISPE's GAMP 5 guide page. All 7 non-embedded links independently re-verified at
+  publish time, all HTTP 200 (ISPE's redirects, confirmed 200 on follow) — notably, the fda.gov
+  pages this session's drafting agent found were reachable loaded cleanly on independent re-check
+  too, an improvement over earlier sessions' fda.gov bot-blocking. Word count 4,105 (prose),
+  within target. `order:` values (10, 11) confirmed unchanged.
+  Next: module 9, `quality-system-essentials`/`aabb-qse-framework` — the start of Track 2.

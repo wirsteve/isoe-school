@@ -181,6 +181,26 @@ an unreviewed OS patch puts at risk, whether or not the patch itself is dangerou
 is as deep as this module goes into Part 11; the full electronic-records framework built on top of
 it is Track 3's job.
 
+Separately, from the accreditation side rather than the FDA regulatory side, AABB's own Standards
+for Blood Banks and Transfusion Services address information-systems governance directly in Section
+3.9 — covering records and validation, backup and continuity, personnel responsibility, documented
+change processes, and access control — the same validated-state discipline this module has just
+walked through from 11.10(a), checked independently by an AABB assessor rather than an FDA
+investigator.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/QPhXYSOLgjM"
+  title="#26 Computer System Validation (CSV)" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+This is a general computer-system-validation explainer from Waters Corporation, a major
+life-sciences and analytical-instrument company — not blood-specific, not BECS-specific, and it
+never mentions a CFR citation in this lesson. Watch it for the broader "why does a regulated
+computer system need this much scrutiny" concept that 11.10(a) states in one sentence above; it's
+the general case this module applies specifically to BECS and to Friday's OS patch.
+
 And the reportability standard, quoted verbatim from `sources/cfr/606.171.md` — already the full
 subject of the `risk-and-controls-vocabulary` foundation lesson, worth one more read with BECS
 specifically in mind:
@@ -190,6 +210,34 @@ specifically in mind:
 
 A mislabeled bag and a software defect that mis-executes a labeling decision "may affect" a product
 the same way, on the same regulatory test. The medium is different; the reportability test isn't.
+
+## See it in one picture
+
+One BECS malfunction, two separate response tracks, running in parallel from the moment it's
+detected — the "one incident, two tracks" idea from earlier in this module, drawn out with its own
+clock and closure criteria on each side.
+
+```{mermaid}
+flowchart TD
+    A["BECS malfunction detected —<br/>e.g. a timing bug briefly shows<br/>quarantine status 'released' before<br/>all required results are in"]
+    A --> B["IT incident track"]
+    A --> C["Quality/deviation track"]
+
+    B --> B1["Restore BECS to known-good state"]
+    B1 --> B2["Incident ticket closes —<br/>clock: time to restore service"]
+
+    C --> C1["606.171(b)(1)(ii) reportability check:<br/>did this 'may affect' safety, purity, or<br/>potency of a distributed product?"]
+    C1 --> C2{"Quality documents<br/>a determination"}
+    C2 -->|"Not reportable"| C3["Deviation record closes —<br/>documented, not assumed"]
+    C2 -->|"Reportable"| C4["BPDR filed with FDA"]
+
+    B2 -.->|"ticket closing does not<br/>close the quality track"| C1
+```
+
+Notice the dotted line: it isn't a handoff, it's a deliberate non-connection. The IT track's closure
+has no bearing on whether the quality track is done — that's the entire point of running them as two
+tracks instead of one, and it's exactly the gap your job is to make sure nobody quietly treats as
+closed just because the ticket is.
 
 ## What an inspector would actually look for
 
