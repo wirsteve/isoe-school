@@ -21,3 +21,46 @@ Each link below was checked this session and loads.
   — the U.S. Government Publishing Office's official CFR collection. Use it as a fallback
   primary source if eCFR or Cornell is ever unreachable, or to pull an official PDF of a full
   CFR part for the record.
+
+- **[Change Control in Pharmaceuticals | Management Of Change l GMP Change Control
+  Explained](https://www.youtube.com/watch?v=yu9IoENaTk4)** (PharmaZonner- Pharmaceutical
+  Knowledge, from oEmbed `author_name`) — the video embedded in this lesson. A
+  pharmaceutical-industry educational channel walking the same five-stage request → impact/risk
+  assessment → approval → implementation → verification shape this lesson teaches, argued from
+  GMP (current good manufacturing practice) drug manufacturing generally rather than blood
+  establishments specifically — not AABB-specific, not tied to 606.100(b), and it never mentions
+  Lakeshore. Use it to see the same change-control discipline argued from outside the
+  blood-specific lens. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[Atlassian ITSM: IT Change Management — ITIL Framework & Best
+  Practices](https://www.atlassian.com/itsm/change-management)** — a well-regarded ITSM
+  vendor's explainer on ITIL 4's change enablement practice (the practice this lesson's "CAB
+  under a validated state" bridge is built on), including why ITIL 4 renamed change management
+  to change enablement. Use it to see the practice argued in full on its own terms before
+  applying the regulated-change overlay this lesson adds on top. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[Atlassian ITSM: What Is a CAB? Change Advisory Board
+  Explained](https://www.atlassian.com/itsm/change-management/change-advisory-board)** — the
+  same publisher's dedicated explainer on change advisory boards generally: who sits on one,
+  what it reviews, and how it scores risk in an ordinary (non-regulated) change process. Read
+  this first, then re-read this lesson's point that a regulated CAB has to score a second axis —
+  compliance state, not just service risk — that a generic CAB was never built to catch.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[ICH Q10: Pharmaceutical Quality System (official guideline
+  PDF)](https://database.ich.org/sites/default/files/Q10%20Guideline.pdf)** — the International
+  Council for Harmonisation's own guideline text, Step 4 version, dated 4 June 2008. ICH Q10 is
+  the pharmaceutical-industry quality-system framework (built, like AABB's QSEs, around a
+  structured change management system as one of its core elements) that the GMP video above
+  draws on — a guidance-tier, cross-industry counterpart to AABB's Process Control QSE, not
+  AABB-specific and not binding on Lakeshore directly, but the same underlying "change under a
+  quality system" logic. Verified loading via `curl` on 2026-11-11 (HTTP 200; a genuine 21-page
+  PDF, confirmed by extracting its text).
+
+- **[FDA: Q10 Pharmaceutical Quality System](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/q10-pharmaceutical-quality-system)**
+  — FDA's own guidance-document page confirming its adoption of the ICH Q10 guideline above.
+  Use this to see how a non-AABB regulatory body (FDA, for drug manufacturers) formally
+  recognizes the same change-management-within-a-quality-system concept this lesson applies to
+  Lakeshore under AABB's framework instead. Verified loading via `curl` on 2026-11-11 (HTTP
+  200).

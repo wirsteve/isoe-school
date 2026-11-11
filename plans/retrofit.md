@@ -60,7 +60,7 @@ In progress / Done.
 | 9 | `quality-system-essentials` | `aabb-qse-framework` | 13/14 | Done |
 | 10 | `quality-system-essentials` | `deviations-and-nonconformances` | 15/16 | Done |
 | 11 | `quality-system-essentials` | `capa-root-cause-to-effectiveness` | 17/18 | Done |
-| 12 | `quality-system-essentials` | `change-control-for-regulated-systems` | 19/20 | Not started |
+| 12 | `quality-system-essentials` | `change-control-for-regulated-systems` | 19/20 | Done |
 | 13 | `quality-system-essentials` | `document-control-and-records` | 21/22 | Not started |
 | 14 | `quality-system-essentials` | `quality-risk-management` | 23/24 | Not started |
 | 15 | `quality-system-essentials` | `internal-audits-and-management-review` | 25/26 | Not started |
@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #12, `quality-system-essentials`/`change-control-for-regulated-systems`.**
+**Next up: #13, `quality-system-essentials`/`document-control-and-records`.**
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -384,3 +384,19 @@ module retrofit changes a course's own module list or description.
   this curriculum's established eCFR/FDA/CDC disclosure pattern. Word count 4,065 (prose), within
   target. `order:` values (17, 18) confirmed unchanged.
   Next: module 12, `quality-system-essentials`/`change-control-for-regulated-systems`.
+
+- **2026-11-11**: Module 12, `quality-system-essentials`/`change-control-for-regulated-systems`
+  (`order: 19/20`), retrofitted under the rebalanced standard and published. Every original
+  locked fact confirmed unchanged: the "email it and call it done" scenario, the five-stage
+  change process, the standard-change/planned-deviation mapping, the dual Quality+IT approval
+  requirement, both 606.100(b) quotes, all 3 Q&As, all 3 traps, the 5 job bullets. Added a linear
+  `flowchart TD` Mermaid diagram (step 6, the lesson's own five stages applied to the document-
+  control-distribution fix, no fork since this lesson's process has none) — syntax validated by
+  rendering to SVG via `mermaid-cli`. Added a verified video embed (step 7): "Change Control in
+  Pharmaceuticals..." (PharmaZonner) — independently re-verified via YouTube oEmbed (HTTP 200,
+  title/author match) at publish time. `resources.qmd` expanded from 3 to 9 links: kept all 3
+  original, added the video, two Atlassian ITSM explainers (change enablement, CAB), ICH Q10's
+  official guideline PDF, and FDA's own Q10 adoption page. All 6 non-embedded links independently
+  re-verified at publish time, all HTTP 200. Word count 3,991 (prose), within target. `order:`
+  values (19, 20) confirmed unchanged.
+  Next: module 13, `quality-system-essentials`/`document-control-and-records`.
