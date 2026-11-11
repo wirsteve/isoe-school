@@ -412,6 +412,41 @@ PHI involved) this module doesn't have and isn't trying to reason through. `brea
 and-dual-reporting` picks that up next, carrying this exact, narrow finding forward as one input
 among several, not as a predetermined verdict.
 
+## See it in one picture
+
+The diagram traces the Brookfield laptop's encryption question from classification to finding, using only the steps and citations above.
+
+```{mermaid}
+flowchart TD
+    L["Brookfield laptop holding e-PHI goes missing"]
+    C{"164.312(a)(2)(iv) encryption:<br/>Required or Addressable?"}
+    A["Addressable — 164.306(d)(3):<br/>assess, then implement or document an alternative"]
+    P["Lakeshore's assessment: full-disk encryption,<br/>auto-enforced at enrollment — policy is sound"]
+    V{"Can anyone confirm encryption was active<br/>on this device? Status field: not reported"}
+    G["Verification gap under 164.308(a)(1)(ii)(D):<br/>Security Rule finding, not a policy failure"]
+    B["Breach question: separate, 164.402 four-factor test<br/>(next module)"]
+
+    L --> C
+    C -->|"Addressable"| A
+    A --> P
+    P --> V
+    V -->|"No"| G
+    G -.->|"one input, not a verdict"| B
+```
+
+Notice the finding stops at the Security Rule: the dotted line to the breach test is an input, not a conclusion.
+
+## Watch it explained
+
+This is the HHS Office for Civil Rights' own video on the HIPAA Security Rule. It is general, not Lakeshore- or blood-specific, so use it for the rule's overall shape rather than for this lesson's Part 11 comparison or the Brookfield facts.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/QWRn2r5R7ts"
+  title="HHS OCR - HIPAA Security Rule" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector or reviewer would actually look for
 
 An OCR (Office for Civil Rights) investigator wouldn't ask "do you have an encryption policy" —

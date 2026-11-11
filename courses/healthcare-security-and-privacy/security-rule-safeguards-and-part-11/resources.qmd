@@ -3,7 +3,7 @@ title: "Resources"
 order: 98
 ---
 
-Four primary-source pages, plus one internal link back to this curriculum's Part 11 depth. All
+Four primary-source pages, one internal link back to this curriculum's Part 11 depth, and six further resources (video, guidance, and tools). All
 four eCFR links were curl-verified (`curl -s -o /dev/null -w "%{http_code}" -L <url>`) and
 returned `200` at the time this page was written.
 
@@ -31,3 +31,30 @@ returned `200` at the time this page was written.
   (11.100), execution (11.200), and credential-control (11.300) requirements are quoted and
   taught in full. Read it if you want the complete Part 11 text behind the comparison table above
   — none of it is re-quoted at length in this module.
+
+- **[HHS OCR - HIPAA Security Rule](https://www.youtube.com/watch?v=QWRn2r5R7ts)** (USGovHHSOCR,
+  from oEmbed `author_name`) — the video embedded in this lesson, from the HIPAA regulator's own
+  YouTube channel. A general overview of the Security Rule, not specific to blood establishments or
+  Part 11. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-66 Rev. 2: Implementing the HIPAA Security Rule](https://csrc.nist.gov/pubs/sp/800/66/r2/final)**
+  — NIST's cybersecurity resource guide mapping each Security Rule standard to practical
+  implementation steps. Read it when you want to see how a control such as encryption or activity
+  review is actually put into practice. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Part 11, Electronic Records; Electronic Signatures — Scope and Application](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/part-11-electronic-records-electronic-signatures-scope-and-application)**
+  — FDA's guidance page on how it applies Part 11, including its enforcement-discretion approach.
+  Read it for the Part 11 side of this lesson's comparison. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 21 CFR Part 11](https://www.law.cornell.edu/cfr/text/21/part-11)** — a
+  readable mirror of the full Part 11 text, for checking the sections the comparison table
+  references. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[eCFR: 45 CFR Part 164, Subpart C (Security Standards)](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C)**
+  — the whole Security Rule subpart on one page, including 164.314 and 164.316, which this lesson
+  names but does not quote. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[HealthIT.gov: Security Risk Assessment Tool](https://www.healthit.gov/topic/privacy-security-and-hipaa/security-risk-assessment-tool)**
+  — the federal tool page for the 164.308(a)(1)(ii)(A) risk analysis this lesson says an
+  investigator would ask for first. Verified loading via `curl` on 2026-11-11 (HTTP 200).
