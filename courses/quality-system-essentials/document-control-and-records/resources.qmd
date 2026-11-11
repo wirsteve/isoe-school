@@ -23,3 +23,37 @@ Each link below was checked this session and loads.
   — the U.S. Government Publishing Office's official CFR collection. Use it as a fallback primary
   source if eCFR or Cornell is ever unreachable, or to pull an official PDF of a full CFR part for
   the record.
+
+- **[What Is The Difference In Controlled & Uncontrolled Documents?](https://www.youtube.com/watch?v=viRq4F_6LnU)**
+  (InstantGMP , Inc., from oEmbed `author_name`) — the video embedded in this lesson. InstantGMP is
+  a GMP (good manufacturing practice) software and compliance company; this video walks the
+  controlled-versus-uncontrolled-document distinction in general GMP terms, not blood-specifically
+  and without any AABB or 606.100(b) language — use it for the mechanics of the distinction itself,
+  then map it onto Brookfield's binder. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP
+  200).
+
+- **[Atlassian: 4 ways knowledge management assists your IT service
+  practice](https://www.atlassian.com/itsm/knowledge-management/ITIL)** — a practical explainer on
+  ITIL's knowledge management practice, the ITSM (IT service management) practice this module
+  bridges document control to. Use it to see knowledge management argued in full on its own ITIL
+  terms, then re-read this module's point that document control adds a requirement a knowledge base
+  usually doesn't: the current version has to be the *only* version physically present at the point
+  of use, not just the newest one findable centrally. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[Red Hat: What is a configuration management database
+  (CMDB)?](https://www.redhat.com/en/topics/automation/what-is-a-configuration-management-database-cmdb)**
+  — a vendor-neutral-enough explainer on CMDBs and configuration items (CIs), backing this module's
+  one-paragraph bridge that a controlled document is itself a versioned CI with a defined baseline,
+  and Quality's master document list is functionally Lakeshore's CMDB for procedures. Use it to see
+  the CI/CMDB concept argued in full IT terms before applying it to a paper binder at a satellite
+  site. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Pharmaguideline: Requirements for Good Documentation Practice
+  (GDP)](https://www.pharmaguideline.com/2014/07/requirements-for-good-documentation-practice-gdp.html)**
+  — an industry explainer on Good Documentation Practice generally (contemporaneous entries,
+  legible and indelible records, dated signatures, no backdating, a proper single-line-strikeout
+  correction method) — the same discipline this module's 606.160(a)(1) citation demands of a
+  document-control record like a site lead's acknowledgment, argued in the fuller, general-GMP form
+  that 606.160(a)(1) itself doesn't spell out step by step. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).

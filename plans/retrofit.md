@@ -61,7 +61,7 @@ In progress / Done.
 | 10 | `quality-system-essentials` | `deviations-and-nonconformances` | 15/16 | Done |
 | 11 | `quality-system-essentials` | `capa-root-cause-to-effectiveness` | 17/18 | Done |
 | 12 | `quality-system-essentials` | `change-control-for-regulated-systems` | 19/20 | Done |
-| 13 | `quality-system-essentials` | `document-control-and-records` | 21/22 | Not started |
+| 13 | `quality-system-essentials` | `document-control-and-records` | 21/22 | Done |
 | 14 | `quality-system-essentials` | `quality-risk-management` | 23/24 | Not started |
 | 15 | `quality-system-essentials` | `internal-audits-and-management-review` | 25/26 | Not started |
 | 16 | `directing-the-quality-analyst` | `qa-deliverables-and-ownership` | 28/29 | Not started |
@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #13, `quality-system-essentials`/`document-control-and-records`.**
+**Next up: #14, `quality-system-essentials`/`quality-risk-management`.**
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -400,3 +400,20 @@ module retrofit changes a course's own module list or description.
   re-verified at publish time, all HTTP 200. Word count 3,991 (prose), within target. `order:`
   values (19, 20) confirmed unchanged.
   Next: module 13, `quality-system-essentials`/`document-control-and-records`.
+
+- **2026-11-11**: Module 13, `quality-system-essentials`/`document-control-and-records`
+  (`order: 21/22`), retrofitted under the rebalanced standard and published. Every original
+  locked fact confirmed unchanged: the six-months-later audit scenario, the departed-site-lead
+  near-catch, the document-vs-record distinction, the six-stage lifecycle, the controlled/
+  uncontrolled-copy distinction, all four citations (606.100(b), 606.160(a)(1), 606.120(b)(2),
+  606.160(d)), all 3 Q&As, all 3 traps, the 5 job bullets. Added a `flowchart TD` Mermaid diagram
+  (step 6, the lesson's own six-stage lifecycle with Brookfield's binder and the departed-site-
+  lead catch annotated at the Issue stage) — syntax validated by rendering to SVG via
+  `mermaid-cli`. Added a verified video embed (step 7): "What Is The Difference In Controlled &
+  Uncontrolled Documents?" (InstantGMP) — independently re-verified via YouTube oEmbed (HTTP 200,
+  title/author match) at publish time. `resources.qmd` expanded from 4 to 8 links: kept all 4
+  original, added the video, an Atlassian ITIL knowledge-management explainer, a Red Hat CMDB
+  explainer, and a Pharmaguideline Good Documentation Practice piece. All 7 non-embedded links
+  independently re-verified at publish time, all HTTP 200. Word count 4,108 (prose), within
+  target. `order:` values (21, 22) confirmed unchanged.
+  Next: module 14, `quality-system-essentials`/`quality-risk-management`.
