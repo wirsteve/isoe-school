@@ -77,3 +77,12 @@ If a future session wants to verify this module's reasoning against a real AICPA
 in modules 2–4's own `resources.qmd` files and in this course's plan file
 (`plans/vendor-and-third-party-risk-management.md`) — nothing further was fetched for this closing
 module.
+
+## Keep learning
+
+Not official sources — good places to learn more about vendor change notification and fourth-party risk.
+
+- **[How Do You Handle Fourth Parties at Your Critical Vendors?](https://venminder.com/blog/handle-critical-vendors-fourth-parties)** (Venminder — vendor/commercial content) — short guidance on monitoring your vendor's vendors and asking for notice in contracts. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Fourth-party risk management: What you need to know](https://www.vanta.com/resources/how-to-manage-fourth-party-risk)** (Vanta — vendor/commercial content) — explains fourth-party exposure and which changes (subprocessors, regions) are worth being told about. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Reassessing Risk: The Move to Third-Party Management](https://www.isaca.org/resources/isaca-journal/issues/2024/volume-6/reassessing-risk)** (ISACA Journal, 2024) — argues that point-in-time reviews miss change and makes the case for ongoing, risk-based monitoring. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Supply Chain Risk Management (SCRM): Concepts and Mitigations](https://destcert.com/resources/supply-chain-risk-management/)** (Destination Certification) — CISSP study page covering ongoing supplier monitoring and contractual requirements; supports CISSP Domain 1 (and touches Domain 7 on change management). Commercial training site. Verified loading via `curl` on 2026-11-11 (HTTP 200).
