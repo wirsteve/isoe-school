@@ -25,3 +25,34 @@ Each link below was checked this session and loads.
   (Organization) and QSE 2 (Resources), the two this module draws on for executive responsibility
   and competence. Use it to see the theme and scope of each QSE in AABB's own words; don't cite a
   standard number from it — see `sources/aabb/qse-framework.md` for why.
+
+- **[Quality Assurance vs Quality Control / QA vs QC](https://www.youtube.com/watch?v=qu4Qz9rsryM)**
+  (Pharmaguideline, from oEmbed `author_name`) — the video embedded in this lesson: a short
+  industry-education explainer on the QA versus QC distinction. Pharmaceutical-industry
+  background, not FDA-issued and not blood-specific; use it for vocabulary, not for any
+  regulatory claim. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[FDA: Quality Systems Approach to Pharmaceutical Current Good Manufacturing Practice
+  Regulations](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/quality-systems-approach-pharmaceutical-current-good-manufacturing-practice-regulations)**
+  — FDA's own guidance page on the quality unit's role in a quality system. It is written for
+  drug manufacturers (21 CFR Parts 210/211), not blood establishments, so read it as the
+  regulator's clearest statement of what an independent quality unit is for, not as a rule that
+  binds Lakeshore. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[ECA Academy: Responsibilities of Quality Assurance — FDA
+  Perspective](https://www.gmp-compliance.org/gmp-news/responsibilities-of-quality-assurance-fda-perspective)**
+  — a professional-association explainer on how FDA expects QA and QC duties to be divided and
+  owned. Drug-GMP framing, but useful when you want to see the role split spelled out beyond
+  this lesson's eight-item list. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Atlassian: RACI chart — what it is and how to use it](https://www.atlassian.com/work-management/project-management/raci-chart)**
+  — a plain-language explainer of the responsible/accountable/consulted/informed framework the
+  lesson's ITIL bridge leans on. Read it to sharpen the RACI vocabulary you already use, then
+  apply it to the three signature boxes; it is general project management, not a quality-system
+  source. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 21 CFR Part 606 — Current Good Manufacturing Practice for Blood and Blood
+  Components](https://www.law.cornell.edu/cfr/text/21/part-606)** — the whole part that the
+  lesson's 606.20, 606.100, and 606.160 citations come from, for browsing neighboring sections
+  (for example, the organization and personnel provisions near 606.20) when a question goes
+  beyond the quoted paragraphs. Verified loading via `curl` on 2026-11-11 (HTTP 200).
