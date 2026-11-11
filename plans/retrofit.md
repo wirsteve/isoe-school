@@ -101,7 +101,7 @@ In progress / Done.
 | 50 | `healthcare-security-and-privacy` | `investigating-a-healthcare-data-incident` | 101/102 | Done |
 | 51 | `vendor-and-third-party-risk-management` | `supplier-qualification-and-risk-tiering` | 104/105 | Done |
 | 52 | `vendor-and-third-party-risk-management` | `reading-a-soc-2-report` | 106/107 | Done |
-| 53 | `vendor-and-third-party-risk-management` | `reading-an-iso-27001-certificate` | 108/109 | Not started |
+| 53 | `vendor-and-third-party-risk-management` | `reading-an-iso-27001-certificate` | 108/109 | Done |
 | 54 | `vendor-and-third-party-risk-management` | `business-associate-agreements` | 110/111 | Not started |
 | 55 | `vendor-and-third-party-risk-management` | `vendor-change-notifications-and-your-own-change-control` | 112/113 | Not started |
 | 56 | `itsm-for-regulated-blood-services` | `itil-to-qse-crosswalk-change-and-problem` | 115/116 | Not started |

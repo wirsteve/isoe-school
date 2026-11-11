@@ -193,6 +193,41 @@ management domain, read and confirmed *before* an incident, is a real signal wor
 and its absence, or an unexplained exclusion, would have been a real warning sign worth escalating
 on its own, well before any migration ever ran.
 
+## See it in one picture
+
+The four questions from "the rule in plain English," applied to this vendor's certificate in the
+order a careful reader checks them. The scope check is the one that can stop the whole read.
+
+```{mermaid}
+flowchart TD
+    A["Two-page certificate arrives from the<br/>device-management platform vendor"]
+    A --> Q1["1. What was certified?<br/>An ISMS: the management process,<br/>not every control, not zero incidents"]
+    Q1 --> Q2{"2. Does the stated scope name the<br/>product and environment Lakeshore uses?"}
+    Q2 -->|"No or vague"| X["Certified for something else:<br/>certificate does not cover this file"]
+    Q2 -->|"Yes"| Q3["3. Ask for the Statement of Applicability:<br/>implemented vs. excluded, with reasons"]
+    Q3 --> D1["Change management"]
+    Q3 --> D2["Supplier relationships"]
+    Q3 --> D3["Asset management"]
+    D1 --> Q4["4. Check validity dates and<br/>surveillance-audit cycle"]
+    D2 --> Q4
+    D3 --> Q4
+    Q4 --> R["Risk reduction, not risk elimination:<br/>would not have guaranteed Brookfield never happened"]
+```
+
+## Watch it explained
+
+This is a certification body's own explainer on the Statement of Applicability, the document the
+lesson says to ask for by name. It is general ISO 27001 training content, not specific to blood
+establishments or to Lakeshore, and it speaks in the standard's own terms, which this lesson
+deliberately doesn't quote.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/jSVbrqZ6c-Q"
+  title="Part 1: ISO 27001 Statement of Applicability (SoA) Explained" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector — or your own internal reviewer — would actually look for
 
 Nobody from the certification body shows up at Lakeshore's door. The people who will actually ask
