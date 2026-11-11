@@ -50,3 +50,12 @@ real Lakeshore document. All were checked and loading at the time this page was 
   module, but it is the document module 5 uses to explain why validation is enforced through
   predicate rules; read it ahead if a matrix row references a Part 11 control. Verified loading
   via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about qualification protocols and requirements traceability.
+
+- **[A Basic Guide to IQ, OQ, PQ in FDA-Regulated Industries](https://www.thefdagroup.com/blog/a-basic-guide-to-iq-oq-pq-in-fda-regulated-industries)** (The FDA Group, consultancy blog) — a plain-language walk through the three qualification stages. Useful as a second explanation of what each stage proves. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[IQ, OQ, PQ: what's needed for equipment validation in life sciences?](https://www.cognidox.com/blog/iq-oq-pq-equipment-validation)** (Cognidox, vendor blog) — covers the stages and the evidence each one produces. Vendor content, so use it for orientation, not as authority. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Requirements Traceability Matrix (Trace Matrix, RTM, TM)](https://www.ofnisystems.com/services/validation/traceability-matrix/)** (Ofni Systems, validation-software vendor) — a short explainer on linking requirements to tests, with examples of forward and backward tracing. Helps when you build or review a matrix row. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Understanding the Basics: What is a Traceability Matrix?](https://community.atlassian.com/forums/App-Central-articles/Understanding-the-Basics-What-is-a-Traceability-Matrix/ba-p/3284149)** (Atlassian Community, vendor article) — a general (not life-science-specific) primer on traceability matrices and gap-finding. Good for the concept; map the vocabulary to the lesson yourself. Verified loading via `curl` on 2026-11-11 (HTTP 200).
