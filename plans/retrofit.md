@@ -109,7 +109,7 @@ In progress / Done.
 | 58 | `itsm-for-regulated-blood-services` | `itil-to-grc-crosswalk` | 119/120 | Done |
 | 59 | `itsm-for-regulated-blood-services` | `building-an-inspection-ready-service-catalog-and-cmdb` | 121/122 | Done |
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Done |
-| 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
+| 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Done |
 
 **Next up: #46, `healthcare-security-and-privacy`/`information-governance-in-a-covered-entity`.** `fda-and-aabb-in-practice` (6/6) and `grc-frameworks-and-risk-management` (5/5) are fully retrofitted.
 
