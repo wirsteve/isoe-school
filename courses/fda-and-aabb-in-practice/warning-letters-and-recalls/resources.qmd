@@ -3,8 +3,8 @@ title: "Resources"
 order: 72
 ---
 
-Four places to go deeper than this lesson, or to check a citation yourself before it goes
-into a real Lakeshore document. All four were checked and loading at the time this page was
+Nine places to go deeper than this lesson, or to check a citation yourself before it goes
+into a real Lakeshore document. All nine were checked and loading at the time this page was
 written.
 
 - **[21 CFR Part 7, Subpart A, Section 7.3, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/7.3)**
@@ -30,3 +30,30 @@ written.
   it regulates. Useful for seeing what a real recall classification and public notice actually
   look like in practice, without treating any single listed recall as a stand-in for
   Lakeshore's fictional scenario.
+
+- **[Inspection Readiness: How to Respond to FDA 483s and Avoid Warning
+  Letters](https://www.youtube.com/watch?v=xnadb4-ANiQ)** (NSF, from oEmbed `author_name`) — the
+  video embedded in this lesson. An industry training webinar on answering a 483 so it does not
+  escalate; it covers the Warning Letter thread only, is not blood-specific, and says nothing
+  authoritative about Part 7 recalls. Verified embeddable via YouTube oEmbed on 2026-11-11
+  (HTTP 200).
+
+- **[FDA, Warning Letters](https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters)**
+  — FDA's own landing page for issued Warning Letters. Read it to see the instrument as FDA
+  presents it publicly; do not treat any listed letter as a stand-in for Lakeshore's fictional
+  situation. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA, Regulatory Procedures Manual](https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-manuals/regulatory-procedures-manual)**
+  — FDA's internal-procedures manual for its own staff, published publicly; its chapters cover
+  how the agency handles advisory actions and recalls. Useful when you want FDA's own process
+  rather than a law firm's summary. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA guidance: Initiation of Voluntary Recalls Under 21 CFR Part 7, Subpart C](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/initiation-voluntary-recalls-under-21-cfr-part-7-subpart-c)**
+  — FDA's own (non-binding) guidance on being ready to start a voluntary recall and working with
+  FDA through one. This is where to go for how firms are expected to prepare, beyond what the
+  regulation text itself says. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[21 CFR 7.46, Cornell LII](https://www.law.cornell.edu/cfr/text/21/7.46)** — the
+  firm-initiated recall section with the nine-item list and FDA's classification sentence. Check
+  here for current text. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
