@@ -105,3 +105,13 @@ page this course's own prior module relied on.
   of system configuration. It bridges this module's CMDB crosswalk toward module 3's RMF
   material. Read it for the government's version of "know exactly what you have and how it is
   configured." Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about configuration management, the CMDB and continual improvement.
+
+- **[What is the ITIL 4 Continual Improvement Practice?](https://www.youtube.com/watch?v=J3jEcuzD-to)** (Beyond20) — a short explainer of continual improvement as ITIL 4 frames it; helpful for the improvement half of this lesson. Verified via YouTube oEmbed on 2026-11-11 (HTTP 200).
+- **[CCT 294: Config Management Essentials - CISSP Domain 7](https://www.buzzsprout.com/2167626/episodes/18114826-cct-294-config-management-essentials-cissp-domain-7)** (CISSP Cyber Training Podcast) — audio episode on configuration management basics, from asset discovery to baselines. Supports CISSP Domain 7 (Security Operations). Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[IT Asset Management (ITAM): Process & Benefits](https://www.atlassian.com/itsm/it-asset-management)** (Atlassian, vendor content) — explains how asset records relate to configuration records, a distinction that trips up many CMDB projects. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Configuration management database](https://en.wikipedia.org/wiki/Configuration_management_database)** (Wikipedia) — a neutral overview of CMDB concepts and terms, useful for vocabulary. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
