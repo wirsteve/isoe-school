@@ -57,7 +57,7 @@ In progress / Done.
 | 6 | `blood-center-operations` | `component-processing-and-labeling` | 6/7 | Done |
 | 7 | `blood-center-operations` | `storage-distribution-and-hemovigilance` | 8/9 | Done |
 | 8 | `blood-center-operations` | `becs-in-the-pipeline` | 10/11 | Done |
-| 9 | `quality-system-essentials` | `aabb-qse-framework` | 13/14 | Not started |
+| 9 | `quality-system-essentials` | `aabb-qse-framework` | 13/14 | Done |
 | 10 | `quality-system-essentials` | `deviations-and-nonconformances` | 15/16 | Not started |
 | 11 | `quality-system-essentials` | `capa-root-cause-to-effectiveness` | 17/18 | Not started |
 | 12 | `quality-system-essentials` | `change-control-for-regulated-systems` | 19/20 | Not started |
@@ -111,8 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #9, `quality-system-essentials`/`aabb-qse-framework`.** `blood-center-operations`
-(Track 1) is now fully retrofitted, 8/8.
+**Next up: #10, `quality-system-essentials`/`deviations-and-nonconformances`.**
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -328,3 +327,22 @@ module retrofit changes a course's own module list or description.
   too, an improvement over earlier sessions' fda.gov bot-blocking. Word count 4,105 (prose),
   within target. `order:` values (10, 11) confirmed unchanged.
   Next: module 9, `quality-system-essentials`/`aabb-qse-framework` — the start of Track 2.
+
+- **2026-11-11**: Module 9, `quality-system-essentials`/`aabb-qse-framework` (`order: 13/14`),
+  retrofitted under the rebalanced standard and published. Every original locked fact confirmed
+  unchanged: the new-QA/org-chart/AABB-assessor scenario, the quality-system-vs-quality-control
+  distinction, the ISO 9001/ITIL and ISO 9001/ISO 20000-1 bridges, the full ten-QSE list, the
+  six concrete ITIL pairings, the 606.100(d) quote, all 3 Q&As, both traps, the 5 job bullets.
+  Added a `flowchart LR` Mermaid diagram (step 6) drawing exactly the lesson's own six existing
+  pairings (QSEs on one side, ITIL practices on the other) plus the Q2 cross-reference case as a
+  dotted edge — deliberately leaves the other four QSEs unconnected since the lesson itself never
+  pairs them — syntax validated by rendering to SVG via `mermaid-cli`. Added a verified video
+  embed (step 7): "046: Top 5 Changes in the NEW AABB Standards with Pat Ooley" (Blood Bank Guy /
+  Dr. D. Joe Chaffin MD — a real, AABB-credentialed transfusion-medicine educational podcast;
+  AABB itself partners with the channel for CE credit) — independently re-verified via YouTube
+  oEmbed (HTTP 200, title/author match) at publish time. `resources.qmd` expanded from 4 to 8
+  links: kept all 4 original, added the video, a BSI ISO 9001 explainer, an ITSM.tools ITIL 4
+  service value chain walkthrough, and a Wikipedia ISO/IEC 20000 page backing the lesson's Annex
+  SL claim. All 7 non-embedded links independently re-verified at publish time, all HTTP 200.
+  Word count 3,306 (prose), within target. `order:` values (13, 14) confirmed unchanged.
+  Next: module 10, `quality-system-essentials`/`deviations-and-nonconformances`.
