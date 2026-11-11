@@ -297,6 +297,49 @@ with nobody driving it isn't a corrective action, it's a wish.
 - "Who owns the contract-amendment recommendation, by when, and where does it link back to
   CAPA-1147-A?"
 
+## See it in one picture
+
+This is VRA-0219 as the reveal above worked it: one assessment, five claims on the page plus a
+signature problem, each checked and triaged. The diagram uses only this lesson's own findings, not
+a generic vendor-review flowchart.
+
+```{mermaid}
+flowchart TD
+    A["CAPA-1147-A, preventive action 1:<br/>reassess the BECS vendor on change notification"]
+    A --> B["VRA-0219 routed for sign-off<br/>single Quality Analyst signature"]
+
+    B --> C1["Change notification claim:<br/>vendor says it notifies in advance"]
+    B --> C2["Security review:<br/>SOC 2, clean opinion"]
+    B --> C3["Risk tier: Low<br/>established vendor, large installed base"]
+    B --> C4["Residual risk: Accepted<br/>no named owner"]
+    B --> C5["Contract amendment recommended<br/>no owner, no date, no CAPA link"]
+
+    C1 --> X1["Checked against DEV-1147:<br/>01:58 a.m. push, no notice<br/>MUST FIX before sign"]
+    C2 --> X2["Covers which services and period?<br/>Does it address change notice?<br/>Cannot tell"]
+    C3 --> X3["Tier follows reputation, not function<br/>BECS gates eligibility, release,<br/>labeling, disposition<br/>MUST FIX before sign"]
+    C4 --> X4["Needs a named, authorized owner<br/>MUST FIX before sign"]
+    C5 --> X5["FIX GOING FORWARD"]
+    B --> X6["One signature covers quality and<br/>remote-access security<br/>MUST FIX before sign"]
+
+    X1 & X2 & X3 & X4 & X5 & X6 --> R["Send back with questions, not a rewrite"]
+```
+
+## Watch it explained
+
+This is a general GxP training video on supplier management and cloud systems for regulated
+computerized systems, from a UK-based GxP training provider. It is not blood-specific and not
+Lakeshore-specific, and it isn't an FDA or AABB source, so treat it as background on why and how
+regulated companies assess IT suppliers, not as a statement of what 21 CFR requires of a blood
+establishment. The lesson's own scenario (a vendor's self-attestation contradicted by your own
+deviation record) goes further than a general overview would.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/rQC-Wqzxvhc"
+  title="09 Module 9 Supplier Management and Cloud Systems" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector or assessor would actually look for
 
 An assessor pulling this file runs the same cross-check you just did, without you there to prompt
