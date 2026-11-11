@@ -6,7 +6,7 @@ order: 89
 This module applies the same saved NIST excerpt the first three modules introduced — no new
 source was independently fetched, since the new content here (the Authorize decision, the
 authorization-to-operate glossary definition, and the Monitor plan) all comes from material
-already saved in `sources/nist/sp-800-37r2-excerpt.md`. The link below was checked directly from
+already saved in `sources/nist/sp-800-37r2-excerpt.md`. The links below were checked directly from
 this session.
 
 - **[NIST SP 800-37 Rev. 2, "Risk Management Framework for Information Systems and
@@ -28,3 +28,33 @@ this session.
   Validation Lead's sign-off to move a validated system to production, followed by periodic
   review, is the same underlying motion as today's authorization decision and its ongoing
   monitoring plan, in a different vocabulary.
+
+- **[NIST RMF Authorize Step: ATO, ATU and the Authorization Package](https://www.youtube.com/watch?v=9fLG2ccPSmI)**
+  (Enterprise Security Architecture, from oEmbed `author_name`) — the video embedded in this
+  lesson. An independent training channel (not NIST) explaining the Authorize step and what an
+  authorizing official reviews. Federal-oriented, so use it for the shape of the decision, not
+  for anything binding on Lakeshore. Verified embeddable via YouTube oEmbed on 2026-11-11
+  (HTTP 200).
+
+- **[NIST CSRC: Risk Management Framework, Authorize step](https://csrc.nist.gov/projects/risk-management/about-rmf/authorize-step)**
+  — NIST's own project page for the Authorize step, the official companion to the one-line
+  action quoted here. Read it to see the step's purpose in NIST's current wording. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST CSRC: Risk Management Framework, Monitor step](https://csrc.nist.gov/projects/risk-management/about-rmf/monitor-step)**
+  — the same page family for Monitor, matching this lesson's ongoing monitoring plan. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-137, Information Security Continuous Monitoring (ISCM) for Federal Information
+  Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/137/final)** — the publication
+  behind the "continuous monitoring" idea: how to define a monitoring strategy, what to
+  measure, and how often. Go here when you want to design the monitoring plan more rigorously
+  than this lesson does. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-137A, Assessing ISCM Programs](https://csrc.nist.gov/pubs/sp/800/137/a/final)**
+  — NIST's companion on checking whether a monitoring program itself is working, a useful
+  question to ask a year after go-live. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST RMF Roles and Responsibilities Crosswalk](https://csrc.nist.gov/csrc/media/Projects/risk-management/documents/Additional%20Resources/NIST%20RMF%20Roles%20and%20Responsibilities%20Crosswalk.pdf)**
+  (PDF) — maps who does what across RMF steps, including the authorizing official, useful for
+  naming who plays that role at Lakeshore. Verified loading via `curl` on 2026-11-11 (HTTP 200).

@@ -223,6 +223,42 @@ vocabulary, different originating framework, same shape of decision, made by the
 accountable person, for the same underlying reason: nothing proven once stays proven forever
 without somebody committing to keep checking.
 
+## See it in one picture
+
+The whole meeting fits on one page: two inputs from Assess flow into the Director's single
+decision, and Option B's authorization immediately becomes the Monitor plan this module just
+built. The diagram uses only this lesson's own scenario and its 30-day remediation commitment.
+
+```{mermaid}
+flowchart TD
+    A["Assess results handed over:<br/>audit/logging and physical/environmental<br/>protection confirmed"]
+    B["One open item: quarterly access-review<br/>control, implemented and documented,<br/>not yet exercised on its first cycle"]
+    A --> D
+    B --> D
+    D{"Director decides<br/>(Authorize)"}
+    D -->|"Option A"| H["Hold go-live until the<br/>review runs"]
+    D -->|"Option B (chosen)"| G["Authorize eQMS for production,<br/>all three sites, on the record:<br/>named residual risk accepted"]
+    G --> M["Monitor: first access review<br/>completed and reported within 30 days"]
+    M -->|"Clean result"| C["Acceptance closes;<br/>quarterly cycle continues"]
+    M -->|"Finding, or 30 days pass<br/>with no review run"| R["New immediate finding /<br/>authorization reopened"]
+    G -.->|"also monitored"| S["Audit/logging spot-checks;<br/>fresh look on material change"]
+```
+
+## Watch it explained
+
+This is a general NIST RMF walkthrough of the Authorize step, covering the authorization decision
+(ATO) and the authorization package a decision-maker reviews. It is a training video from an
+independent security-architecture channel, not a NIST or FDA production, and it is written for
+federal-style systems, not blood establishments or Lakeshore's eQMS. Take the shape of the
+decision from it, and keep this lesson's reminder that Lakeshore only borrows that shape.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9fLG2ccPSmI"
+  title="NIST RMF Authorize Step: ATO, ATU and the Authorization Package" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What a reviewer would actually look for
 
 What a competent reviewer — your CIO, an AABB assessor who happens to ask about the eQMS, or you
