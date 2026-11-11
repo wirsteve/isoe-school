@@ -46,3 +46,43 @@ republishes), each directly curl-verified this session:
 - **[Reading an ISO 27001 Certificate](../reading-an-iso-27001-certificate/index.qmd)** — module 3.
   Its change-management and supplier-relationships Statement of Applicability findings are the other
   half of that same safeguards-and-subcontractor-flow-down evidence picture.
+
+**More sources (added in the production upgrade):**
+
+- **[Mastering Business Associate Agreements: your Complete Guide to HIPAA Compliance](https://www.youtube.com/watch?v=OfVaR6VH2fQ)**
+  (HIPAA Vault, from oEmbed `author_name`) — the video embedded in this lesson. A commercial
+  HIPAA-compliance vendor's general BAA explainer; industry training content, not regulator
+  guidance, and not specific to Lakeshore. Verified embeddable via YouTube oEmbed on 2026-11-11
+  (HTTP 200). No HHS OCR video squarely on BAAs was found: OCR's own channel has a "Risk
+  Management Under the HIPAA Security Rule" video, but it is about risk management, not
+  business associate contracts, so it was not embedded.
+- **[Cornell LII: 45 CFR 164.504, current text](https://www.law.cornell.edu/cfr/text/45/164.504)**
+  — a readable mirror of the Privacy Rule section quoted in this lesson, useful for checking
+  current text against the dated snapshot. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Cornell LII: 45 CFR 164.314, current text](https://www.law.cornell.edu/cfr/text/45/164.314)**
+  — the Security Rule side of the same contract checklist. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+- **[Cornell LII: 45 CFR 164.502](https://www.law.cornell.edu/cfr/text/45/164.502)** — the section
+  (paragraph (e)) that 164.504(e)(1) cross-references for when a BAA is required at all. This
+  lesson names it only; read it here if you want the actual rule behind question 1. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Cornell LII: 45 CFR 164.308](https://www.law.cornell.edu/cfr/text/45/164.308)** — contains
+  paragraph (b), which 164.314(a)(1) cross-references for the Security Rule's business associate
+  contract requirement. Named only in this lesson. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+- **[Cornell LII: 45 CFR 164.410](https://www.law.cornell.edu/cfr/text/45/164.410)** — the
+  business-associate breach-notification section the reporting clauses cross-reference. Named
+  only in this lesson. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Cornell LII: 45 CFR 160.103, definitions](https://www.law.cornell.edu/cfr/text/45/160.103)**
+  — where "business associate" itself is defined, including who counts as a subcontractor. Read
+  it alongside question 1. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Federal Register: Omnibus Rule, January 25, 2013](https://www.federalregister.gov/documents/2013/01/25/2013-01073/modifications-to-the-hipaa-privacy-security-enforcement-and-breach-notification-rules-under-the)**
+  — the final rule that extended HIPAA obligations to business associates and their
+  subcontractors; the primary-source explanation of why the flow-down clauses exist. Long; read
+  the preamble sections on business associates. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+HHS's own pages (the sample BAA provisions and the business-associates fact sheet on hhs.gov)
+returned HTTP 403 to plain `curl` from this environment on 2026-11-11, so they are deliberately not
+linked as verified; search hhs.gov for "sample business associate agreement provisions" in a normal
+browser.
