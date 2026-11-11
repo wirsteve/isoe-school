@@ -79,7 +79,7 @@ In progress / Done.
 | 28 | `csv-and-becs` | `becs-interfaces-and-data-integrity` | 53/54 | Done |
 | 29 | `data-integrity-and-records` | `alcoa-and-data-integrity` | 56/57 | Done |
 | 30 | `data-integrity-and-records` | `audit-trails-and-esignatures` | 58/59 | Done |
-| 31 | `data-integrity-and-records` | `predicate-rules-and-hybrid-systems` | 60/61 | Not started |
+| 31 | `data-integrity-and-records` | `predicate-rules-and-hybrid-systems` | 60/61 | Done |
 | 32 | `data-integrity-and-records` | `legacy-systems-and-part-11-gaps` | 62/63 | Not started |
 | 33 | `data-integrity-and-records` | `retention-across-record-types` | 64/65 | Not started |
 | 34 | `data-integrity-and-records` | `multi-site-governance-and-donor-identification` | 66/67 | Not started |
