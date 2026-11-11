@@ -5,7 +5,7 @@ order: 85
 
 This module applies the same saved NIST excerpt the last module introduced — no new source was
 independently fetched, since the new content here is application (categorizing and selecting
-controls for the eQMS), not new citation. The link below was checked at the time this page was
+controls for the eQMS), not new citation. The links below were checked at the time this page was
 written.
 
 - **[NIST SP 800-37 Rev. 2, "Risk Management Framework for Information Systems and
@@ -23,3 +23,42 @@ written.
   numbered controls. Not independently fetched or quoted anywhere in this curriculum; mentioned
   here only so you know where the real catalog lives if Lakeshore ever needs more than the family
   names this module uses.
+
+- **[The 3 Tasks in the CATEGORIZE Step of the NIST RMF](https://www.youtube.com/watch?v=hNrV2VuLeh8)**
+  (Denise Tawwab, from oEmbed `author_name`) — the video embedded in this lesson. A third-party
+  RMF training walkthrough of the tasks inside Categorize, aimed at federal practitioners; NIST
+  itself does not appear to publish a video on this step. Verified embeddable via YouTube oEmbed
+  on 2026-11-11 (HTTP 200).
+
+- **[NIST FIPS 199, "Standards for Security Categorization of Federal Information and Information
+  Systems"](https://csrc.nist.gov/pubs/fips/199/final)** — NIST's catalog page for the standard
+  that defines the low/moderate/high impact framing across confidentiality, integrity, and
+  availability. Read it if you want the source of the vocabulary behind this lesson's
+  "moderate-impact" label; Lakeshore's use is voluntary and borrowed, not a FIPS compliance
+  claim. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-60 Vol. 1 Rev. 1, "Guide for Mapping Types of Information and Information Systems
+  to Security Categories"](https://csrc.nist.gov/pubs/sp/800/60/v1/r1/final)** — NIST's guide to
+  working out an impact level from the types of information a system holds, the practical
+  companion to Categorize. Read it when you want to see how a federal agency would structure the
+  reasoning this lesson does informally for the eQMS. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[NIST SP 800-53B, "Control Baselines for Information Systems and
+  Organizations"](https://csrc.nist.gov/pubs/sp/800/53/b/upd1/final)** — the NIST publication
+  that pairs the low, moderate, and high impact levels with starting control baselines, which is
+  what the lesson's "initial set of controls" refers to. Not quoted anywhere in this curriculum;
+  linked so you know where the real baselines live. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[NIST SP 800-53 Rev. 5 (with Update 1), "Security and Privacy Controls for Information
+  Systems and Organizations"](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)** — NIST's
+  catalog page for the control catalog itself, with the control families this lesson names as
+  concepts. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 1314, "NIST Risk Management Framework (RMF) Small Enterprise Quick Start
+  Guide"](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.1314.pdf)** — a short,
+  plain-language NIST guide written for small organizations that walks the RMF steps, including
+  Categorize and Select. The closest thing NIST publishes to an approachable version of this
+  lesson; read it before the full SP 800-37. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).

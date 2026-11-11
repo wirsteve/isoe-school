@@ -90,7 +90,7 @@ In progress / Done.
 | 39 | `fda-and-aabb-in-practice` | `designing-an-internal-audit-program` | 77/78 | Done |
 | 40 | `fda-and-aabb-in-practice` | `mock-inspections-and-presenting-it-becs-evidence` | 79/80 | Done |
 | 41 | `grc-frameworks-and-risk-management` | `risk-frameworks-side-by-side` | 82/83 | Done |
-| 42 | `grc-frameworks-and-risk-management` | `categorize-and-select-controls` | 84/85 | Not started |
+| 42 | `grc-frameworks-and-risk-management` | `categorize-and-select-controls` | 84/85 | Done |
 | 43 | `grc-frameworks-and-risk-management` | `implement-and-assess-controls` | 86/87 | Not started |
 | 44 | `grc-frameworks-and-risk-management` | `authorize-and-monitor` | 88/89 | Not started |
 | 45 | `grc-frameworks-and-risk-management` | `poams-and-capas` | 90/91 | Not started |
