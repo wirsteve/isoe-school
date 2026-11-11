@@ -23,3 +23,44 @@ A few primary sources to keep handy, each checked to load before being listed he
   from twice: the donor-records list in paragraph (b)(1), developed here in depth for the first
   time, and paragraph (d), the product-record retention clock already fully taught in
   `reading-a-cfr-citation` and referenced here only in passing.
+
+- **[Arkivum Trust for long term data management in pharmaceuticals and life sciences organisations](https://www.youtube.com/watch?v=9t9B6_GS82A)**
+  (Arkivum, from oEmbed `author_name`) — the video embedded in this lesson. A
+  digital-preservation vendor's overview of its own archiving product: a sales piece, useful only
+  for how it frames the problem of keeping regulated data readable for decades. Not blood-specific
+  and not FDA guidance; for neutral depth, use the Digital Preservation Coalition handbook below. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 21 CFR § 211.180](https://www.law.cornell.edu/cfr/text/21/211.180)** — the
+  general records-retention section the 2018 guidance's Question 1e points to ("record retention
+  period (e.g., § 211.180)") and Question 9 cites for true copies. Read it to see where the
+  guidance's "retention period" language comes from. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[Cornell LII: 45 CFR § 164.316 (HIPAA Security Rule, policies and documentation)](https://www.law.cornell.edu/cfr/text/45/164.316)**
+  — the HIPAA Security Rule's own documentation requirement, a separate retention question from
+  the FDA records covered in this lesson. Read it when you need to ask what HIPAA asks Lakeshore
+  to keep about its security policies; the privacy and security detail itself belongs to
+  `healthcare-security-and-privacy`. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Part 11, Electronic Records; Electronic Signatures — Scope and Application](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/part-11-electronic-records-electronic-signatures-scope-and-application)**
+  — FDA's 2003 guidance page, the source behind this course's predicate-rule and copies-of-records
+  material that this lesson's "which copy is the record" thread builds on. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-34 Rev. 1: Contingency Planning Guide for Federal Information Systems](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final)**
+  — a public, widely used IT reference for backup, recovery objectives, and contingency planning.
+  Useful for the disaster-recovery side of this lesson's distinction (the RPO/RTO snapshot);
+  it is a federal IT guide, not a blood-establishment or FDA source. Verified loading via `curl`
+  on 2026-11-11 (HTTP 200).
+
+- **[Library of Congress: Digital Formats](https://www.loc.gov/preservation/digital/formats/)**
+  — an archive-community reference on how long-term readability of digital formats is judged
+  (sustainability factors such as disclosure and adoption). Read it for the readability-over-time
+  question of whether a format can still be opened years later. Not FDA guidance. Verified loading
+  via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Digital Preservation Coalition: Digital Preservation Handbook](https://www.dpconline.org/handbook)**
+  — a professional-body handbook covering preservation planning, migration, and keeping digital
+  records usable over time; a deeper treatment of the archiving and migration ideas this lesson
+  touches. General digital-preservation practice, not regulatory. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).

@@ -315,6 +315,49 @@ interact with it, is a different and lesser thing than the record 211.68(b) and 
 require Lakeshore to retain.
 :::
 
+## See it in one picture
+
+DI-0301's two threads start from one question and end in two different kinds of finding: one
+about what "backup" means, one about a clock the text doesn't settle. The diagram below uses only
+this module's own scenario and citations.
+
+```{mermaid}
+flowchart TD
+    Q["DI-0301 question:<br/>could Lakeshore get DED-0458 back?"]
+
+    Q --> T1["Thread 1: nightly BECS snapshot,<br/>deleted after 30 days"]
+    Q --> T2["Thread 2: cumulative donor record,<br/>606.160(b)(1)(vii)"]
+
+    T1 --> DR["Sound as disaster recovery:<br/>RPO / RTO choice"]
+    T1 --> REG["211.68(b) backup: true copy kept<br/>throughout retention period<br/>(2018 guidance, Q1e)"]
+    DR --> GAP{"Same thing?"}
+    REG --> GAP
+    GAP -->|"No: temporary crash-recovery copy<br/>does not satisfy 211.68(b)"| F1["Finding: do not call the snapshot<br/>'the backup' in quality documents"]
+
+    F1 --> TC["Retained copy must keep metadata and<br/>static or dynamic nature (Q9)"]
+    TC --> DYN["DED-0458 is dynamic: keep it queryable,<br/>with a suitable reader available"]
+
+    T2 --> CLK["606.160(d) ties its clock to<br/>'the blood or blood component'"]
+    CLK --> OPEN{"Which unit's dates<br/>start the donor record's clock?"}
+    OPEN -->|"Text does not say"| F2["Finding: open policy question,<br/>route to document control"]
+```
+
+## Watch it explained
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9t9B6_GS82A"
+  title="Arkivum Trust for long term data management in pharmaceuticals and life sciences organisations" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+This is a digital-preservation vendor's overview of its own long-term archiving product for
+life-sciences organizations, so it is a sales piece, not neutral training. Watch it for the problem
+it describes, keeping regulated data readable over long periods (the "readable over time" half of
+this lesson), not for the product. It is not blood-specific, not Lakeshore-specific, and not FDA
+material, so it is not a source for any citation here. No regulator or standards-body video on
+long-term record readability could be found and verified.
+
 ## Where this goes next
 
 DI-0301 now has a real, worked finding on both threads: Lakeshore's nightly snapshot does genuine,

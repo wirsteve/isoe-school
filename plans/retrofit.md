@@ -81,7 +81,7 @@ In progress / Done.
 | 30 | `data-integrity-and-records` | `audit-trails-and-esignatures` | 58/59 | Done |
 | 31 | `data-integrity-and-records` | `predicate-rules-and-hybrid-systems` | 60/61 | Done |
 | 32 | `data-integrity-and-records` | `legacy-systems-and-part-11-gaps` | 62/63 | Done |
-| 33 | `data-integrity-and-records` | `retention-across-record-types` | 64/65 | Not started |
+| 33 | `data-integrity-and-records` | `retention-across-record-types` | 64/65 | Done |
 | 34 | `data-integrity-and-records` | `multi-site-governance-and-donor-identification` | 66/67 | Not started |
 | 35 | `fda-and-aabb-in-practice` | `fda-inspection-authority-and-outcomes` | 69/70 | Not started |
 | 36 | `fda-and-aabb-in-practice` | `warning-letters-and-recalls` | 71/72 | Not started |
