@@ -25,3 +25,18 @@ verified-loading mirrors of the same official text.)
   and XML, by year). This is where you go if you ever need the official, dated, legally citable
   version of a specific year's CFR text — for example, to confirm exactly what a regulation said
   on the date of a past inspection.
+
+- **[Cornell LII: 21 CFR 11.10, current text](https://www.law.cornell.edu/cfr/text/21/11.10)**
+  — the live, current version of the second worked-example citation used in this lesson
+  (Controls for closed systems, Part 11). Useful for the same reason as the 606.160 mirror
+  above: a current check against the dated snapshot in this repo's `sources/` folder, and a
+  preview of the Part 11 citation this curriculum returns to in the data-integrity module.
+  Verified loading via direct request (HTTP 200) on the date this page was updated.
+
+- **[Master the CFR: Researching the Code of Federal Regulations](https://www.youtube.com/watch?v=AYIEYSyMWtU)**
+  (US National Archives) — a general tutorial on navigating the CFR system: the same
+  Title/Chapter/Part/Subpart/Section/Paragraph structure this lesson's decoder table walks
+  through, taught independent of any single regulation. Not blood-specific and doesn't mention
+  Part 606 — watch it for the mechanics of locating a citation, not for anything about blood
+  establishments. Verified embeddable via YouTube oEmbed (HTTP 200, title and channel name
+  confirmed) on 2026-11-11.

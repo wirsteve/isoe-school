@@ -49,7 +49,7 @@ In progress / Done.
 
 | # | Course | Slug | `order:` | Status |
 |---|---|---|---|---|
-| 1 | Foundations | `reading-a-cfr-citation` | 1/2 | Not started |
+| 1 | Foundations | `reading-a-cfr-citation` | 1/2 | Done |
 | 2 | Foundations | `regulatory-landscape-orientation` | 3/4 | Not started |
 | 3 | Foundations | `risk-and-controls-vocabulary` | 5/6 | Not started |
 | 4 | `blood-center-operations` | `donor-recruitment-and-screening` | 2/? | Not started |
@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #1, foundations/`reading-a-cfr-citation`.**
+**Next up: #2, foundations/`regulatory-landscape-orientation`.**
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -134,3 +134,25 @@ module retrofit changes a course's own module list or description.
   format. This table lists all 61 modules in original build order; retrofit proceeds in
   the same order. No module retrofit has started yet.
   Next: module 1, foundations/`reading-a-cfr-citation`.
+
+- **2026-11-11**: Module 1, foundations/`reading-a-cfr-citation` (`order: 1/2`), retrofitted
+  and published. Every original locked fact confirmed unchanged on independent re-read: the
+  606.160(b)(3) and 606.160(d) quotes, the Quality Analyst/temperature-excursion scenario, the
+  original decoder table, the CMDB/ITSM bridge, the "Part vs section" trap, all three original
+  Q&A questions, and the original 4 job-bullets (now 6, with 2 new ones appended, not replacing
+  the originals). New depth added, nothing invented: a four-level structural walk of
+  606.160(b)(3)(iii) — independently cross-checked against `sources/cfr/606.160.md`'s own
+  7-category list under (b) and 5-item list under (3), both confirmed to match exactly — and a
+  second full worked example, 21 CFR 11.10(e), quoted verbatim and independently re-verified
+  character-for-character against `sources/cfr/11.10.md`. Added a `flowchart TD` Mermaid diagram
+  (step 6) walking Title 21 → Chapter I → Subchapter F → Part 606 → Subpart D → Section 606.160 →
+  (b) → (3) → (iii), highlighting the final node. Added a verified video embed (step 7): "Master
+  the CFR: Researching the Code of Federal Regulations" (US National Archives) — independently
+  re-verified via YouTube oEmbed (HTTP 200, title/author match) both when sourced and again at
+  publish time; framing is honest that it's a general CFR-navigation tutorial, not blood-specific.
+  `resources.qmd` expanded from 3 to 5 links (3 original + the video + one new Cornell 11.10
+  mirror); all 5 independently curl-verified HTTP 200 at publish time. Word count 3,789 (prose),
+  within the new 3,500–6,000 target. `order:` values (1, 2) confirmed unchanged. `quarto` is
+  unavailable in this cloud session — Mermaid syntax reviewed by hand, not locally rendered; the
+  GitHub Action renders on push.
+  Next: module 2, foundations/`regulatory-landscape-orientation`.
