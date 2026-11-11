@@ -89,6 +89,40 @@ credentials behind it are managed so that no single person acting alone could mi
 Meet all five, and FDA's own guidance says the electronic signature can stand in for a handwritten
 one on any CGMP record. Miss one, and it can't — no matter how official the system looks.
 
+## See it in one picture
+
+DI-0301's two threads run in parallel against the same BECS record, and each one ends in a finding. The diagram below uses only this module's own scenario and citations.
+
+```{mermaid}
+flowchart TD
+    A["DI-0301: QA samples BECS record DED-0458"]
+    A --> T1["Thread one: audit trail"]
+    A --> T2["Thread two: BECS Quality sign-off"]
+    T1 --> R1["Audit trail exists and is switched on<br/>(11.10(e); FDA 2018 Q&amp;A 1.c)"]
+    R1 --> Q1["Has the record reviewer actually read it?<br/>(FDA 2018 Q&amp;A Question 7)"]
+    Q1 --> Q2["How often? CGMP frequency if one exists,<br/>otherwise risk assessment (Question 8)"]
+    Q2 --> F1["Finding: no frequency ever decided<br/>(a gap, not a wrong default)"]
+    T2 --> S1["11.50: name, date/time, meaning"]
+    S1 --> S2["11.70: signature linked to its record"]
+    S2 --> S3["11.100: unique to one person"]
+    S3 --> S4["11.200: two components, two-person collaboration"]
+    S4 --> S5["11.300: password controls"]
+    S5 --> F2["Finding: 11.300(b) periodic revision<br/>documented but unenforced"]
+    S4 --> P["Pass: 11.100 and 11.200 hold"]
+    F2 --> Z["Replace handwritten signature only if<br/>all five clear (Question 11, 11.2(a))"]
+```
+
+## Watch it explained
+
+This is an FDA workshop session on using audit trails, from the agency's own channel. It comes from a clinical-trial (GCP) data-integrity workshop, so it isn't blood-establishment or Part 606 specific, but the audit-trail review questions it raises map directly onto thread one.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DYWC8jHp7ro"
+  title="Effective Use of Audit Trails (10of11) GCP Data Integrity Workshop" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## Citation decoder
 
 | Citation | How to read it aloud | What it requires | In our scenario |
