@@ -61,3 +61,11 @@ Each link below was checked this session and loads.
   — FDA's searchable database of published Warning Letters. Search it by "investigation" or
   "root cause" to read, in the regulator's own words, how weak investigations and unverified CAPAs
   are actually cited. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about reviewing investigations, root cause and CAPA.
+
+- **[Corrective and Preventive Action (CAPA): The Definitive Guide](https://thefdagroup.com/blog/definitive-guide-to-capa)** (The FDA Group, consultancy) — A step-by-step walk through the CAPA lifecycle, ending in effectiveness verification. Consultancy marketing content, but a clear checklist for what a complete write-up contains. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Two Audit Case Studies Reveal the Cost of Incomplete Corrective Actions](https://www.pharmtech.com/view/two-audit-case-studies-reveal-the-cost-of-incomplete-corrective-actions)** (Pharmaceutical Technology) — Trade-press case studies of corrective actions that were closed but not completed. Good concrete examples for reviewing the "did it actually work" part of a CAPA. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Five whys](https://en.wikipedia.org/wiki/Five_whys)** (Wikipedia) — A quick overview of the technique, including its limitations, so you can judge whether an analyst's "why chain" is genuinely causal. Verified loading via `curl` on 2026-11-11 (HTTP 200).
