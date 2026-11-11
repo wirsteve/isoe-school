@@ -3,8 +3,8 @@ title: "Resources"
 order: 59
 ---
 
-Four places to go deeper than this lesson, or to check a citation yourself before it goes in a
-real Lakeshore document. All four were checked and loading at the time this page was written.
+Ten places to go deeper than this lesson, or to check a citation yourself before it goes in a
+real Lakeshore document. All ten were checked and loading at the time this page was written.
 
 - **[FDA guidance page: Data Integrity and Compliance With Drug CGMP — Questions and Answers](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/data-integrity-and-compliance-drug-cgmp-questions-and-answers)**
   — the same December 2018 guidance module 1 used, reused here for Questions 7, 8, and 11. Worth
@@ -22,3 +22,33 @@ real Lakeshore document. All four were checked and loading at the time this page
 - **[21 CFR 11.70, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.70)**
   — the signature/record linking requirement, short enough to reread in full in under a minute, and
   easy to misquote from memory if you don't check it here first.
+
+- **[Effective Use of Audit Trails (10of11) GCP Data Integrity Workshop](https://www.youtube.com/watch?v=DYWC8jHp7ro)**
+  (U.S. Food and Drug Administration, from oEmbed `author_name`) — the video embedded in this
+  lesson. FDA's own workshop session on using audit trails; it's from a clinical-trial (GCP)
+  context, not blood establishments, so take the review logic and not the specific rules. Verified
+  embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[21 CFR 11.50, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.50)**
+  — signature manifestations (printed name, date/time, meaning), the first of the five controls and
+  the one a screen demonstration can check fastest. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[21 CFR 11.300, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.300)**
+  — controls for identification codes and passwords, including the periodic-revision paragraph
+  behind DI-0301's gap. Read it before asking the systems administrator for evidence. Verified
+  loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[21 CFR 11.10, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.10)**
+  — the full controls-for-closed-systems section, including paragraph (e), the audit-trail clause
+  this lesson names but doesn't quote in full. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Part 11, Electronic Records; Electronic Signatures — Scope and Application](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/part-11-electronic-records-electronic-signatures-scope-and-application)**
+  — the 2003 guidance page behind the enforcement-discretion list this lesson reconciles against
+  the predicate rule. Read it to see exactly what FDA did and didn't say about audit trails.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[NIST CSRC Glossary: audit trail](https://csrc.nist.gov/glossary/term/audit_trail)**
+  — an IT-security-standards definition of the same concept, useful for seeing how your ITSM
+  and security teams already describe audit trails, versus FDA's CGMP wording. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).

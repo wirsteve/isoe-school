@@ -3,7 +3,7 @@ title: "Resources"
 order: 67
 ---
 
-A few primary sources to keep handy, each checked to load before being listed here.
+Nine places to look further, each checked to load before being listed here.
 
 - **Cornell Legal Information Institute (LII): 21 CFR § 606.160** —
   <https://www.law.cornell.edu/cfr/text/21/606.160>. The full records section this module quotes
@@ -23,3 +23,32 @@ A few primary sources to keep handy, each checked to load before being listed he
   requirement 606.160(e)(2) and (e)(3) cite for the reactive results that trigger a 610.41 deferral.
   Useful background reading on what "tested reactive" actually refers to, not required to complete
   this module.
+
+- **[ISBT 128 and traceability](https://www.youtube.com/watch?v=asOWfwczSOY)** (ICCBBA, from oEmbed
+  `author_name`) — the video embedded in this lesson. The standards body that manages ISBT 128
+  explaining how its identifiers support traceability. General to ISBT 128, not FDA- or
+  Lakeshore-specific. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[ISBT 128 FAQs](https://www.isbt128.org/faqs)** — ICCBBA's own frequently-asked-questions page.
+  Read it for the standards body's plain-language answers on how the identifiers are assigned and
+  used, a better source than this lesson for anything specific to ISBT 128. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[ICCBBA home page](https://iccbba.org/)** — the organization behind ISBT 128. Start here for its
+  technical documents and implementation guidance on the Donation Identification Number; the lesson
+  doesn't reproduce any of that detail. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 630.10, General donor eligibility requirements](https://www.law.cornell.edu/cfr/text/21/630.10)**
+  — the donor-eligibility rule sitting alongside the deferral recordkeeping this lesson develops.
+  Not quoted in this lesson; read it for the eligibility side of the question 606.160(e)'s records
+  exist to support. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Review on Master Patient Index (arXiv)](https://arxiv.org/abs/1803.05994)** — a paper on the
+  master patient index, the healthcare-IT version of the "one person, many records" problem behind
+  this lesson's donor-identification question. Not blood-specific; a general-informatics read on
+  matching and duplicate records. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Blood and Blood Products](https://www.fda.gov/vaccines-blood-biologics/blood-blood-products)**
+  — FDA's CBER landing page for blood-establishment guidance and regulations, for finding current
+  agency material beyond the CFR sections quoted here. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).

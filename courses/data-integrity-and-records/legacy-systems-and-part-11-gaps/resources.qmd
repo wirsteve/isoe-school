@@ -3,7 +3,7 @@ title: "Resources"
 order: 63
 ---
 
-A few primary sources to keep handy, each checked to load before being listed here.
+Eight places to keep handy, each checked to load before being listed here.
 
 - **FDA guidance: *Part 11, Electronic Records; Electronic Signatures — Scope and Application*
   (2003)** — <https://www.fda.gov/regulatory-information/search-fda-guidance-documents/part-11-electronic-records-electronic-signatures-scope-and-application>.
@@ -24,3 +24,35 @@ A few primary sources to keep handy, each checked to load before being listed he
   closed-systems control list, including paragraph (b) (the copy-generation requirement this
   module's "Copies of Records" section names, but doesn't re-quote in full) and paragraph (e) (the
   audit-trail requirement module 2 already reconciled with the predicate rule underneath it).
+
+- **[21 CFR Part 11 – 2003 Guidance - Online Course](https://www.youtube.com/watch?v=1JIh8e7wC0E)**
+  (Learnaboutgmp Online Training, from oEmbed `author_name`) — the video embedded in this lesson. A
+  commercial training-channel walk-through of the 2003 *Scope and Application* guidance. General
+  GxP training, not blood-specific; it is background, not a regulator statement. Verified embeddable
+  via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[FDA: Part 11 Scope and Application guidance, full PDF](https://www.fda.gov/media/75414/download)**
+  — the complete 2003 guidance as a single document. Read it when you want the Legacy Systems and
+  Copies of Records sections in the surrounding context of the other enforcement-discretion
+  sections (validation, audit trails, record retention). Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[FDA: General Principles of Software Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)**
+  — FDA's own risk-based framing of how much validation evidence software warrants. Written for
+  device software, so read it for the fitness-for-use reasoning behind criterion 4, not as a
+  blood-establishment requirement. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 21 CFR § 11.1 (scope)](https://www.law.cornell.edu/cfr/text/21/11.1)** — the
+  regulation-tier statement of what Part 11 covers, which is the rule the legacy-system
+  enforcement-discretion policy sits on top of. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[Cornell LII: 21 CFR § 606.160](https://www.law.cornell.edu/cfr/text/21/606.160)** — the
+  blood-establishment records regulation: the predicate rule that keeps applying to LAB-07's
+  records whatever Part 11's enforcement status is. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[AABB: Standards](https://www.aabb.org/standards-accreditation/standards)** — AABB's official
+  standards landing page, where the Equipment-related Quality System Essential the lesson mentions
+  (paraphrased only) is published; the standards text itself is AABB's and is not reproduced here.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).

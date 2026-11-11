@@ -77,12 +77,12 @@ In progress / Done.
 | 26 | `csv-and-becs` | `part-11-for-validated-systems` | 49/50 | Done |
 | 27 | `csv-and-becs` | `validated-state-lifecycle-and-patching` | 51/52 | Done |
 | 28 | `csv-and-becs` | `becs-interfaces-and-data-integrity` | 53/54 | Done |
-| 29 | `data-integrity-and-records` | `alcoa-and-data-integrity` | 56/57 | Not started |
-| 30 | `data-integrity-and-records` | `audit-trails-and-esignatures` | 58/59 | Not started |
-| 31 | `data-integrity-and-records` | `predicate-rules-and-hybrid-systems` | 60/61 | Not started |
-| 32 | `data-integrity-and-records` | `legacy-systems-and-part-11-gaps` | 62/63 | Not started |
-| 33 | `data-integrity-and-records` | `retention-across-record-types` | 64/65 | Not started |
-| 34 | `data-integrity-and-records` | `multi-site-governance-and-donor-identification` | 66/67 | Not started |
+| 29 | `data-integrity-and-records` | `alcoa-and-data-integrity` | 56/57 | Done |
+| 30 | `data-integrity-and-records` | `audit-trails-and-esignatures` | 58/59 | Done |
+| 31 | `data-integrity-and-records` | `predicate-rules-and-hybrid-systems` | 60/61 | Done |
+| 32 | `data-integrity-and-records` | `legacy-systems-and-part-11-gaps` | 62/63 | Done |
+| 33 | `data-integrity-and-records` | `retention-across-record-types` | 64/65 | Done |
+| 34 | `data-integrity-and-records` | `multi-site-governance-and-donor-identification` | 66/67 | Done |
 | 35 | `fda-and-aabb-in-practice` | `fda-inspection-authority-and-outcomes` | 69/70 | Not started |
 | 36 | `fda-and-aabb-in-practice` | `warning-letters-and-recalls` | 71/72 | Not started |
 | 37 | `fda-and-aabb-in-practice` | `filing-a-biological-product-deviation-report` | 73/74 | Not started |
@@ -111,7 +111,7 @@ In progress / Done.
 | 60 | `itsm-for-regulated-blood-services` | `translating-itsm-and-risk-metrics-for-executives` | 123/124 | Not started |
 | 61 | `itsm-for-regulated-blood-services` | `presenting-it-service-and-risk-performance` | 125/126 | Not started |
 
-**Next up: #29, `data-integrity-and-records`/`alcoa-and-data-integrity`.** `csv-and-becs` is fully retrofitted, 7/7.
+**Next up: #35, `fda-and-aabb-in-practice`/`fda-inspection-authority-and-outcomes`.** `data-integrity-and-records` is fully retrofitted, 6/6.
 
 Course index pages (`courses/<slug>/index.qmd`) and the two top-level pages
 (`index.qmd`, `curriculum.qmd`) are not in this table — they're short syllabus/landing
@@ -483,3 +483,10 @@ module retrofit changes a course's own module list or description.
   FDA's guidance database listing (docket FDA-2022-D-0795); the "September 2025" banner was on the
   separate General Principles PDF — no conflict.
   Next: module 29, `data-integrity-and-records`/`alcoa-and-data-integrity`.
+- 2026-11-11 — `data-integrity-and-records` retrofitted, 6/6 (#29–#34), same pipeline and checks.
+  Videos: FDA GCP Data Integrity Workshop parts 4 and 10 (ALCOA overview; audit trails — clinical
+  context, framed as such), Pharma Best Practices (2003 Part 11 scope/narrow interpretation),
+  Learnaboutgmp (2003 guidance course), Arkivum (vendor product overview — reframed explicitly as a
+  sales piece; no regulator video on long-term readability found; replace if a better one turns up),
+  ICCBBA (ISBT 128 and traceability).
+  Next: module 35, `fda-and-aabb-in-practice`/`fda-inspection-authority-and-outcomes`.

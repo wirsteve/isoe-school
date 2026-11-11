@@ -3,7 +3,7 @@ title: "Resources"
 order: 61
 ---
 
-A few primary sources to keep handy, each checked to load before being listed here.
+Nine places to keep handy, each checked to load before being listed here.
 
 - **FDA guidance: *Part 11, Electronic Records; Electronic Signatures — Scope and Application*
   (2003)** — <https://www.fda.gov/regulatory-information/search-fda-guidance-documents/part-11-electronic-records-electronic-signatures-scope-and-application>.
@@ -22,3 +22,40 @@ A few primary sources to keep handy, each checked to load before being listed he
   <https://www.law.cornell.edu/cfr/text/21/11.2>. A clean, citable, non-FDA rendering of the exact
   regulation quoted in full above — useful to hand a colleague who wants to read 11.2 on its own,
   outside this course's framing.
+
+- **[Video 15 of 35 : FDA's 2003 Part 11 Guidance — Scope and Narrow
+  Interpretation](https://www.youtube.com/watch?v=nM8soKskDGo)** (Pharma Best Practices, from
+  oEmbed `author_name`) — the video embedded in this lesson. An industry training channel's
+  walkthrough of the 2003 scope guidance and its narrow interpretation; not FDA's own and not
+  blood-specific, so use it as a second explanation and check anything it says against the
+  guidance text quoted in the lesson. Verified embeddable via YouTube oEmbed on 2026-11-11
+  (HTTP 200).
+
+- **[Cornell LII: 21 CFR § 606.160, Records](https://www.law.cornell.edu/cfr/text/21/606.160)** —
+  the blood-establishment predicate rule this module names for DED-0458 and Fairview's donor file.
+  Read the whole section, not just the paragraph a lesson quotes, to see every record type it
+  requires Lakeshore to keep. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: 21 CFR § 606.100, Standard operating
+  procedures](https://www.law.cornell.edu/cfr/text/21/606.100)** — the second predicate rule named
+  in the lesson, and the natural home for the SOP line Fairview was missing. Verified loading via
+  `curl` on 2026-11-11 (HTTP 200).
+
+- **[Cornell LII: Title 21, Part 11 browse index](https://www.law.cornell.edu/cfr/text/21/part-11)**
+  — all of Part 11 in one place, so you can see § 11.2's neighbors (scope, definitions, controls,
+  signatures) in context. Handy for seeing how little of Part 11 says anything about *which*
+  records are required, which is the predicate rules' job. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[Federal Register: Electronic Records; Electronic Signatures (the original Part 11 final
+  rule)](https://www.federalregister.gov/documents/1997/03/20/97-6833/electronic-records-electronic-signatures)**
+  — the rulemaking document that established Part 11, including FDA's own explanation of what the
+  rule is for. Read it when you want the regulator's reasoning behind § 11.2's "in lieu of paper"
+  framing, in FDA's words rather than a trainer's. Verified loading via `curl` on 2026-11-11
+  (HTTP 200).
+
+- **[UK MHRA: Guidance on GxP data integrity](https://www.gov.uk/government/publications/guidance-on-gxp-data-integrity)**
+  — a non-FDA regulator's data-integrity guidance, useful as a comparison read on how another
+  authority treats records across formats. UK-regulated, so it does not govern Lakeshore; use it
+  for perspective only, not as a citation for U.S. requirements. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).

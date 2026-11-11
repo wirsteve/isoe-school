@@ -242,6 +242,35 @@ much of that worst-case window you're willing to tolerate. Her job was to surfac
 clearly enough that you can actually make that call. That's exactly what a good self-assessment
 recommendation looks like: a real finding, an honest cost, and a decision left where it belongs.
 
+## See it in one picture
+
+The Fairview timeline has two tracks that start together and only one of them reaches the other sites on its own schedule. The diagram below is this module's own scenario: the local deferral record Fairview keeps the same day, and the cumulative record 606.160(e)(2) and (e)(3) require across all locations.
+
+```{mermaid}
+flowchart TD
+    A["Fairview: unit tests reactive,<br/>610.40(a)(1) or (a)(2)"] --> B["Deferral under 610.41"]
+    B --> L["Fairview's own local record<br/>606.160(e)(1) — same day"]
+    B --> K["Cumulative record across all locations<br/>606.160(e)(2) — updated at least monthly, (e)(3)"]
+    L --> F["Donor returns to Fairview:<br/>front-desk check catches the deferral"]
+    K --> W{"Has the next cumulative<br/>update run yet?"}
+    W -->|"No: worst case, just under a month"| G["Donor tries Brookfield or the central site:<br/>nothing in the cumulative record stops them.<br/>Compliant with (e)(3), still a real gap"]
+    W -->|"Yes"| H["Brookfield and the central site<br/>can see the deferral"]
+    G --> R["DI-0301 recommendation: consider updating<br/>faster than the floor — a risk-based choice, not a mandate"]
+```
+
+Notice the gap sits entirely on the cumulative-record branch: Fairview's own check never depended on it.
+
+## Watch it explained
+
+This is ICCBBA, the organization that manages the ISBT 128 standard, explaining how ISBT 128 supports traceability. It is not FDA- or CFR-specific and does not cover Lakeshore's deferral-record scenario, but it speaks to the unique-identifier side of this module: why a unit and its donor have to be tied together by identifiers that don't collide across facilities.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/asOWfwczSOY"
+  title="ISBT 128 and traceability" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector would actually look for
 
 An FDA investigator or AABB (Association for the Advancement of Blood & Biotherapies) assessor

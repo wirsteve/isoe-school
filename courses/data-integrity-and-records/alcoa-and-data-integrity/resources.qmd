@@ -3,8 +3,8 @@ title: "Resources"
 order: 57
 ---
 
-Three places to go deeper than this lesson, or to check a citation yourself before it goes in a
-real Lakeshore document. All three were checked and loading at the time this page was written.
+Eight places to go deeper than this lesson, or to check a citation yourself before it goes in a
+real Lakeshore document. All were checked and loading at the time this page was written.
 
 - **[FDA guidance page: Data Integrity and Compliance With Drug CGMP — Questions and Answers](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/data-integrity-and-compliance-drug-cgmp-questions-and-answers)**
   — FDA's own December 2018 guidance page for the source this whole module is built on. Read the
@@ -22,3 +22,34 @@ real Lakeshore document. All three were checked and loading at the time this pag
   establishment's own records at all. Already the subject of its own full lesson in
   `gamp5-and-the-v-model`; this page is here so you can check the exact text yourself without
   re-deriving it.
+
+- **[Overview of Data Integrity (4of11) GCP Data Integrity Workshop](https://www.youtube.com/watch?v=BTFn9dYoz34)**
+  (U.S. Food and Drug Administration, from oEmbed `author_name`) — the video embedded in this
+  lesson, from FDA's own channel. It comes from a clinical-research (GCP) workshop, not blood
+  establishments or drug CGMP, so use it for the general idea of data integrity rather than for any
+  citation here. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[PIC/S PI 041-1: Good Practices for Data Management and Integrity in Regulated GMP/GDP Environments](https://picscheme.org/docview/4234)**
+  — the international inspectorates' guidance (a 63-page PDF dated 1 July 2021 on its cover). This
+  is the kind of international-regulator source the "ALCOA+" vocabulary comes from. Read its
+  data-integrity definition and attribute list to see the industry-and-international practice this
+  lesson keeps separate from FDA's five-letter ALCOA, and don't mistake it for FDA guidance.
+  Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[MHRA (UK): GxP data integrity guidance](https://www.gov.uk/government/publications/guidance-on-gxp-data-integrity)**
+  — the UK regulator's own publication page for its GxP data-integrity guidance. This is the
+  MHRA this lesson refers to generally; it is a UK document, so read it for how another regulator
+  frames the same problem, not as something that binds Lakeshore. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
+
+- **[WHO Technical Report Series No. 1033, Annex 4: Guideline on data integrity](https://cdn.who.int/media/docs/default-source/medicines/norms-and-standards/guidelines/inspections/trs1033-annex4-guideline-on-data-integrity.pdf)**
+  — the World Health Organization's data-integrity guideline (a PDF whose first page says it
+  replaces the earlier WHO Annex 5 on good data and record management practices). A third
+  international voice to compare with FDA's and PIC/S's, and useful if a vendor or auditor cites
+  "WHO expectations." Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: Data Integrity and Compliance With Drug CGMP Questions and Answers (guidance PDF)](https://www.fda.gov/media/119267/download)**
+  — the guidance itself as a PDF, rather than the landing page listed above. Read it with the
+  question numbers visible when you want to check the exact wording of the ALCOA, metadata, and
+  systems answers quoted in this lesson against FDA's own copy. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).

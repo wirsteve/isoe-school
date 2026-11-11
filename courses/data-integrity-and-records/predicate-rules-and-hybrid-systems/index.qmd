@@ -287,6 +287,44 @@ One honest flag, for the choice that was logged: this module uses **Fairview** a
 running a paper donor file, by the drafter's own choice, consistent with (and not contradicting)
 Fairview's and Brookfield's prior light appearances elsewhere in this curriculum.
 
+## See it in one picture
+
+Both of DI-0301's threads run through the same fork, and both end at the same written decision.
+The diagram below uses only this module's own scenario and citations.
+
+```{mermaid}
+flowchart TD
+    Q["DI-0301: a record exists in two forms —<br/>which one counts?"]
+    P["Predicate rule first: 606.160 / 606.100<br/>already require the record"]
+    Q --> P
+    P --> N{"Narrow interpretation, 11.2(a):<br/>which format do people rely on<br/>to do the regulated work?"}
+
+    N -->|"live BECS record relied on"| B["DED-0458: a Part 11 record"]
+    N -->|"paper file relied on"| F["Fairview donor file:<br/>paper is the record of record"]
+
+    B --> S1{"Static or dynamic?"}
+    S1 -->|"BECS record is dynamic"| B2["Live BECS record stays the original;<br/>any printout is a convenience copy only"]
+
+    F --> S2["BECS re-entry: documented reporting copy only"]
+
+    B2 --> W["Write the decision in the SOP, in advance"]
+    S2 --> W
+```
+
+## Watch it explained
+
+This is a training video from Pharma Best Practices, an industry educational channel (not FDA, and
+not blood-specific), covering FDA's 2003 Part 11 scope guidance and its narrow interpretation,
+the same passage this module applies to DED-0458 and Fairview. Treat it as a second explanation
+of the reliance test; the quoted guidance text above remains the authority.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/nM8soKskDGo"
+  title="Video 15 of 35 : FDA's 2003 Part 11 Guidance — Scope and Narrow Interpretation" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector would actually look for
 
 An FDA investigator or AABB (Association for the Advancement of Blood & Biotherapies) assessor
