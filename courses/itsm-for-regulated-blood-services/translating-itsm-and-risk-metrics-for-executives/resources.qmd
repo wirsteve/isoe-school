@@ -66,3 +66,13 @@ doesn't redevelop.
 - **[NCSC: Cyber Security Toolkit for Boards](https://www.ncsc.gov.uk/collection/board-toolkit)** — the
   UK National Cyber Security Centre's guidance on what boards need to hear about cyber risk. UK
   government, not U.S. regulatory; read it for the framing of what executives can act on. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about IT metrics and talking about risk with executives.
+
+- **[DORA research](https://dora.dev/research/)** (DORA / Google Cloud) — the long-running research program behind the delivery-performance metrics; useful for seeing how metrics were validated against outcomes. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[storytelling with data blog](https://www.storytellingwithdata.com/blog)** (storytelling with data) — a deep archive of posts on turning numbers into clear messages for non-technical audiences. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[ISACA Podcasts](https://www.isaca.org/resources/news-and-trends/isaca-podcast-library)** (ISACA) — short audio episodes on risk, governance and communicating with leadership; browse for metrics and board topics. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[ISC2 Insights](https://www.isc2.org/Insights)** (ISC2) — articles and opinion from the security profession on risk reporting; supports CISSP Domain 1 (Security and Risk Management). Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
