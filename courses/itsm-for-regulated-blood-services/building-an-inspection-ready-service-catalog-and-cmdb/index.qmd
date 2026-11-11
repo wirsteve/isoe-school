@@ -212,6 +212,50 @@ separate document built just for them. For "does this system meet a full ISMS-gr
 review," the same artifact is strong partial evidence, not a complete answer — and saying so
 plainly is worth more than a confident claim that wouldn't survive a specific follow-up question.
 
+## See it in one picture
+
+The diagram below is this meeting's own path: two gaps in, one reconciled artifact out, then
+the three reviewers reading that single artifact. It adds nothing new, only the order in which
+the pieces above fit together.
+
+```{mermaid}
+flowchart TD
+    A["Two records, one gap each"]
+    A --> B["CMDB entry:<br/>qualification/validation<br/>field blank"]
+    A --> C["Service catalog says document control<br/>at all three sites; scope statement<br/>says central site and Brookfield only"]
+
+    B --> B1["Fill with a pointer to the RMF file:<br/>categorize-and-select-controls and<br/>authorize-and-monitor<br/>(no new validation exercise)"]
+    C --> C1["Correct the catalog wording<br/>to match the scope statement"]
+    C --> C2["Dated action item: migrate Fairview<br/>document control — owner: systems administrator,<br/>within two quarters"]
+
+    B1 --> R["One reconciled CMDB-and-catalog artifact"]
+    C1 --> R
+    C2 --> R
+
+    R --> F["FDA investigator:<br/>records agree, system under control"]
+    R --> Q["AABB assessor:<br/>self-identified gap, named, dated, owned"]
+    R --> S["Security assessor:<br/>strong partial evidence — access control matches;<br/>supplier relationships and business continuity<br/>have no counterpart"]
+
+    F --> Y["Satisfied"]
+    Q --> Y
+    S --> N["Named boundary, not full coverage"]
+```
+
+## Watch it explained
+
+This short tutorial from InvGate, a commercial IT service management software vendor, walks
+through how to build a service catalog step by step. It's vendor training content, not
+regulator material, and it knows nothing about GxP, validated status, or Lakeshore; use it for
+the general mechanics of what a catalog entry contains, then notice how much more this
+module's entry has to prove.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/lZQlWPxYe8s"
+  title="How to Build a Service Catalog in 5 Easy Steps" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## Common traps
 
 **"Filling in the qualification field means we need to go run a validation exercise on the
