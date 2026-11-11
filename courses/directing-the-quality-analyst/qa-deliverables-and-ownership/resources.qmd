@@ -56,3 +56,11 @@ Each link below was checked this session and loads.
   lesson's 606.20, 606.100, and 606.160 citations come from, for browsing neighboring sections
   (for example, the organization and personnel provisions near 606.20) when a question goes
   beyond the quoted paragraphs. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about who owns what on a quality team.
+
+- **[Responsibility assignment matrix](https://en.wikipedia.org/wiki/Responsibility_assignment_matrix)** (Wikipedia) — A neutral overview of RACI and its variants, including the common failure of tasks with no single accountable owner. Good for turning this lesson's ownership questions into a table you can hand your analyst. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Atlassian Team Playbook](https://www.atlassian.com/team-playbook)** (Atlassian, vendor) — A library of short team "plays" for clarifying roles and working agreements. Commercial content; use it for facilitation ideas, not as authority. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Review the ISC2 CISSP Certification Exam Outline](https://www.isc2.org/certifications/cissp/cissp-certification-exam-outline)** (ISC2) — The official CISSP outline; its Domain 1 (Security and Risk Management) covers governance, roles and accountability, a useful frame for who owns a control versus who operates it. Verified loading via `curl` on 2026-11-11 (HTTP 200).
