@@ -94,6 +94,73 @@ Here's the decoder applied to two specific clauses this lesson uses:
 | 21 CFR 606.160(b)(3) | "Six-oh-six point one-six-oh, paragraph b, sub-three" | Storage and distribution records, including storage temperature with initialed temperature recorder charts | The four-hour excursion has to show up in the unit's storage record, temperature-charted and initialed — not just described in a deviation narrative |
 | 21 CFR 606.160(d) | "Six-oh-six point one-six-oh, paragraph d" | Retention: individual product records kept at least 10 years after processing, or 6 months past the latest expiration date, whichever is later | Whatever record gets generated from this deviation has a retention clock attached to it, not a "keep it a while" expectation |
 
+### Going one level deeper: 606.160(b)(3)(iii)
+
+"606.160(b)(3)" already narrows things down a lot, but the full citation this lesson keeps
+coming back to has a fourth level: 606.160(b)(3)**(iii)**. Walk it all the way down, because
+it's not three stray characters tacked onto a section number — it's four separate hops, each
+one narrowing the search:
+
+- **606.160** — the section. "Records." The whole rule, all seven top-level record categories
+  in paragraph (b) plus the general requirements in (a), the donor-number rule in (c), and
+  retention in (d).
+- **(b)** — the top-level paragraph. "Records shall be maintained that include, but are not
+  limited to, the following when applicable." A top-level paragraph marks off one entire scope
+  of sub-requirements — here, the enumerated record categories (paragraph (a), by contrast,
+  covers the general duty to record concurrently; paragraph (d) covers retention).
+- **(3)** — the subparagraph, a number nested inside (b). This is where the section tells you
+  *which* category. There are seven numbered categories inside (b): donor records (1),
+  processing records (2), storage and distribution records (3), compatibility test records (4),
+  quality control records (5), transfusion reaction reports (6), and general records (7). "(3)"
+  picks exactly one of those seven.
+- **(iii)** — the sub-subparagraph, a lowercase roman numeral nested inside (3). This is the
+  actual line item. There are five roman-numeral items inside (3): distribution and disposition
+  (i), visual inspection (ii), storage temperature (iii), reissue (iv), and emergency release
+  (v). The four-hour excursion at Lakeshore lands on exactly one of those five — (iii) — not the
+  other four.
+
+That's the whole address: section, then a letter, then a number, then a roman numeral, each one
+narrowing from "the records rule" down to "this one line about temperature charts." Cite it
+informally — "it's in 606.160, the storage records part" — and you've told a Quality Analyst
+roughly where to look. Cite all four levels — "606.160(b)(3)(iii)" — and you've told them
+exactly which sentence to pull up, with nothing left to hunt for.
+
+### A second worked example: 21 CFR 11.10(e)
+
+The decoder table above walks 606.160 because it's this lesson's citation, but the same method
+works on any CFR citation — including one from a completely different part of Title 21 that
+this curriculum comes back to later: 21 CFR 11.10(e), one of the controls for electronic
+recordkeeping systems in Part 11 (Electronic Records; Electronic Signatures). Walking it top to
+bottom surfaces something the 606.160 example alone can hide: not every citation passes through
+every level the same way.
+
+| Level | Value here | What it means |
+|---|---|---|
+| Title | 21 | Same title as before — Food and Drugs, FDA's entire regulatory footprint. |
+| Chapter | I | Same chapter — FDA. |
+| Subchapter | *(none)* | Part 11 sits directly under Chapter I, with no subchapter in between. Not every part in the CFR nests under a named subchapter — some general-purpose parts, ones that cut across every FDA-regulated product rather than just blood, sit one level higher in the tree. |
+| Part | 11 | Electronic Records; Electronic Signatures — the rule for any FDA-regulated recordkeeping done electronically, with nothing blood-specific about it at all. |
+| Subpart | B | "Electronic Records" — the subpart covering closed and open systems. |
+| Section | 11.10 | "Controls for closed systems" — the specific rule. |
+| Paragraph | (e) | A single top-level paragraph, with no numbered or roman-numeral sub-level underneath it — not every paragraph nests three deep the way 606.160(b)(3)(iii) does. |
+
+Quoting 11.10(e) verbatim (source: `sources/cfr/11.10.md`, retrieved from eCFR):
+
+> (e) Use of secure, computer-generated, time-stamped audit trails to independently record the
+> date and time of operator entries and actions that create, modify, or delete electronic
+> records. Record changes shall not obscure previously recorded information. Such audit trail
+> documentation shall be retained for a period at least as long as that required for the subject
+> electronic records and shall be available for agency review and copying.
+
+Notice the shape: one letter, no number, no roman numeral. The decoder method doesn't force
+every citation into the same depth — it just tells you how far down you need to go to find the
+specific requirement, and 11.10(e) happens to bottom out one level earlier than
+606.160(b)(3)(iii) does. This section comes back by name later in the curriculum, in the lesson
+on Part 11 and data integrity. For now, the point worth locking in is that the decoder travels:
+a citation from a completely different part of Title 21, governing software audit trails
+instead of blood storage, breaks down with exactly the same six-level logic — minus whichever
+levels that particular citation doesn't use.
+
 ## The actual text
 
 Quoting 606.160(b)(3) verbatim, from the storage and distribution records list (source:
@@ -132,6 +199,49 @@ recently, in plain-language style) and "shall" in others, but within Part 606 bo
 binding force. That's different from FDA *guidance* documents, which use "should" — a signal
 this lesson's traps section comes back to.
 
+## See it in one picture
+
+Here's the same six-hop walk from the decoder table, drawn as a path from the whole Code of
+Federal Regulations down to the single clause that governs Lakeshore's missing temperature-chart
+initial — using this lesson's own numbers, not a generic example:
+
+```{mermaid}
+flowchart TD
+    A["Title 21<br/>Food and Drugs"] --> B["Chapter I<br/>FDA"]
+    B --> C["Subchapter F<br/>Biologics"]
+    C --> D["Part 606<br/>CGMP for Blood and Blood Components"]
+    D --> E["Subpart D<br/>Records and Reports"]
+    E --> F["Section 606.160<br/>Records"]
+    F --> G["Paragraph (b)<br/>Records that must be maintained"]
+    G --> H["Subparagraph (3)<br/>Storage and distribution records"]
+    H --> I["Sub-subparagraph (iii)<br/>Storage temperature, including<br/>initialed temperature recorder charts"]
+
+    classDef target fill:#fde68a,stroke:#b45309,stroke-width:2px;
+    class I target;
+```
+
+Six hops, each one narrowing the scope, ending at the one sentence that actually matters to the
+deviation report on your desk. Everything above the highlighted box tells you *where* the rule
+lives; only the highlighted box tells you *what it requires* — which is exactly why "retrain
+staff on 606.160," with no paragraph attached, stops two or three levels short of the actual
+requirement.
+
+## Watch it explained
+
+The video below is a general tutorial on researching the Code of Federal Regulations as a
+system — it won't mention Part 606, blood establishments, or Lakeshore at all. Watch it for the
+mechanics of locating and reading a citation inside the actual CFR (the same
+Title/Chapter/Part/Section structure the decoder table above just walked you through), not for
+anything blood-specific — that part of the job is what the rest of this lesson, and this
+curriculum, covers.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AYIEYSyMWtU"
+  title="Master the CFR: Researching the Code of Federal Regulations" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
 ## What an inspector would actually look for
 
 An FDA investigator doesn't ask "do you have a records policy." They ask for the record. For
@@ -160,6 +270,20 @@ eligibility and testing requirements live largely in Part 630 and Part 610 — y
 610.40 and 630.40 cited inside 606.160 itself, cross-referencing those parts. Part 606 is
 specifically about *manufacturing practice* — the CGMP program. A citation to "606" doesn't
 tell you the topic; you need the section.
+
+There's a sharper version of this trap that matters more once you're the one making system
+decisions, not just reading a deviation report: a single blood establishment computer system can
+be in scope for *several different Parts at once*, and none of them subsumes the others. A BECS
+(blood establishment computer software) platform that stores storage-temperature data is in
+scope for 606.160(b)(3) because that's a storage record. If that same platform is also where
+staff enter and electronically sign off on the record, it's separately in scope for Part 11 —
+11.10(e)'s audit-trail requirement, the one this lesson's second worked example walked above.
+Part 606 and Part 11 aren't competing for jurisdiction over that system; they both apply, to the
+same software, for different reasons. "We're compliant with 606" tells a director nothing about
+whether that same system's audit trail satisfies 11.10(e). Knowing which Part governs which
+concern — and that one piece of software can sit inside more than one Part's scope at the same
+time — is the version of this trap that actually changes how you scope a validation project,
+not just how carefully you talk in a meeting.
 
 **"If it's on FDA's website and sounds authoritative, it's a regulation."** FDA publishes
 guidance documents constantly — recommendations on how to comply, written in "should" language,
@@ -196,6 +320,16 @@ or vice versa, reads as not understanding the difference. The next foundation le
   temperature chart has a data point. One who finds that your process doesn't reliably produce
   a chart at all has a systemic finding — and systemic findings are what turn into consent
   decrees, not just 483 observations.
+- **When scoping a system requirement, demand a citation with as many levels as the requirement
+  actually needs.** A requirements traceability matrix that lists "606.160" as the basis for a
+  storage-temperature field, but never gets down to (b)(3)(iii), hasn't actually traced
+  anything — it's cited the chapter of a book, not the sentence. Push validation documentation
+  to the same four-level precision this lesson's decoder table uses.
+- **Expect more than one Part to govern the same system, and ask which ones before you accept a
+  one-Part answer.** A BECS platform that touches storage records, donor records, and electronic
+  signoffs can be in scope for Part 606, Part 610, Part 630, and Part 11 simultaneously — this
+  lesson's second worked example showed exactly that with 11.10(e). "It's 606-compliant" is
+  never the whole answer for a system that also signs records electronically.
 
 ## Check your understanding
 
