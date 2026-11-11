@@ -56,3 +56,12 @@ Each link below was checked this session and loads.
   well-regarded engineering chapter on clear roles and handoffs during an incident, useful as a
   contrast to this module's point that the decision owner for product safety isn't the incident
   commander. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about deciding when and how fast to escalate.
+
+- **[Incident Response Guide](https://response.pagerduty.com/)** (PagerDuty, vendor) — An open-source incident-response playbook covering roles, severity and when to bring in more people. Vendor content from the engineering world; adapt the ideas, not the thresholds. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Recognizing a Business Incident](https://business-response.pagerduty.com/declaring/)** (PagerDuty, vendor) — Shows how a non-technical business team decides to formally declare an incident, a useful parallel for deciding "this one has to reach me now." Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Incidents](https://handbook.gitlab.com/handbook/security/customer-support-operations/incidents/)** (GitLab Handbook) — A real organization's public severity definitions and who gets notified at each level; a worked example of written escalation criteria. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Review the ISC2 CISSP Certification Exam Outline](https://www.isc2.org/certifications/cissp/cissp-certification-exam-outline)** (ISC2) — Official outline; Domain 7 (Security Operations) covers incident management, the CISSP side of this lesson's escalation drill. Verified loading via `curl` on 2026-11-11 (HTTP 200).
