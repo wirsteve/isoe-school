@@ -55,3 +55,13 @@ fetched or read.
   — a practitioner explainer on key takeaways when reviewing a report as a customer. Vendor-published
   commentary, so use it as a cross-check, not an authority. Verified loading via `curl` on
   2026-11-11 (HTTP 200).
+
+## Keep learning
+
+Not official sources — good places to learn more about reading SOC reports and third-party assurance.
+
+- **[Subservice Organization Management — IT Controls for Peace of Mind](https://www.isaca.org/resources/isaca-journal/issues/2023/volume-4/subservice-organization-management-it-controls-for-peace-of-mind)** (ISACA Journal, 2023) — explains how a vendor's own vendors show up in SOC reports and what to do about them; pairs well with the scope and carve-out questions in this lesson. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Third-Party Risk Management: SOC Reporting](https://hbkcpa.com/insights/third-party-risk-management-soc-reporting/)** (HBK, CPA firm) — a practitioner's explanation of the report types and what a reader should look for; written by an audit firm, so a view from the preparer's side of the table. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[Leveraging SOC Reports for Effective Third-Party Risk Management](https://www.forvismazars.us/forsights/2025/06/leveraging-soc-reports-for-effective-third-party-risk-management)** (Forvis Mazars US, CPA firm) — how to turn a SOC report into follow-up questions and monitoring rather than a filed PDF. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[The Assurance Gap: Five Questions to Ask Before Relying on an Assurance Report](https://hitrustalliance.net/blog/the-assurance-gap-five-questions-to-ask-before-relying-on-an-assurance-report)** (HITRUST — an assurance-framework vendor, so read with that in mind) — a skeptical checklist for what a report does and doesn't tell you. Verified loading via `curl` on 2026-11-11 (HTTP 200).
+- **[CCT 364: Third Party Risk Management - How One Vendor Breach Exposed 119,000 Users](https://cisspcybertrainingpodcast.buzzsprout.com/2167626/episodes/19586550-cct-364-third-party-risk-management-how-one-vendor-breach-exposed-119-000-users)** (CISSP Cyber Training Podcast) — a CISSP-prep episode on a vendor breach and third-party risk; supports CISSP Domain 1 (and Domain 6 on assessment and audit strategy). Verified loading via `curl` on 2026-11-11 (HTTP 200).
