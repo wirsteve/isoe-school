@@ -55,3 +55,25 @@ redevelop.
   in a SOC 2 or ISO 27001-style review. This module's honest conclusion — that the reconciled
   artifact is strong partial evidence for this reviewer, not a complete answer — leans directly on
   the domain gaps these two modules and `itil-to-grc-crosswalk` already found.
+
+- **[How to Build a Service Catalog in 5 Easy
+  Steps](https://www.youtube.com/watch?v=lZQlWPxYe8s)** (InvGate, from oEmbed `author_name`) —
+  the video embedded in this lesson. A software vendor's training walkthrough of building a
+  service catalog: what goes in an entry, who it's offered to, and how requests route. Generic
+  ITSM, not regulated-industry or blood-specific, so it shows the baseline this module's entry
+  goes beyond. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+
+- **[NIST SP 800-128: Guide for Security-Focused Configuration Management of Information
+  Systems](https://csrc.nist.gov/pubs/sp/800/128/upd1/final)** — NIST's own publication on
+  keeping an authoritative baseline of what a system is and changing it under control, the
+  security-side cousin of a CMDB. Read it when your security assessor asks how configuration
+  records support security, beyond what this lesson's single artifact covers. Verified loading
+  via `curl` on 2026-11-11 (HTTP 200).
+
+- **[FDA: General Principles of Software
+  Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)**
+  — FDA's own guidance page on software validation, the regulator's framing of what "validated
+  status" means for the qualification field this lesson fills with a pointer. Read it for how
+  FDA thinks about validation evidence; it is guidance, not a regulation, and this lesson makes
+  no claim about how it applies to the eQMS specifically. Verified loading via `curl` on
+  2026-11-11 (HTTP 200).
