@@ -1,0 +1,31 @@
+---
+title: "Resources"
+order: 180
+---
+
+External links for this lesson. Every link below was loaded with `curl` on 2026-11-13. eCFR's own site returns a "Request Access" page to automated requests in this repo's environment, so the regulation links use Cornell's Legal Information Institute mirror. HRSA's program pages returned 403 and were not retried (see the course plan's gaps).
+
+## Official sources
+
+- **[Cornell LII: 21 CFR 1271.290, Tracking](https://www.law.cornell.edu/cfr/text/21/1271.290)** (page title "21 CFR § 1271.290 - Tracking.") — the distinct identification code, new-to-old code procedures, and both tracking directions. Use it to check current text against the dated snapshot in `sources/`. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Cornell LII: 21 CFR 1271.270, Records](https://www.law.cornell.edu/cfr/text/21/1271.270)** — records, records management system, retention methods and the ten-year clocks. Use it when writing the retention schedule. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Cornell LII: 21 CFR 1271.55, Accompanying records and retention](https://www.law.cornell.edu/cfr/text/21/1271.55)** — what accompanies a unit, the no-name/SSN/MRN code rule on the donor-eligibility side, and the retention paragraphs including "readily retrieved ... by electronic means." Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Cornell LII: 21 CFR 1271.250, Labeling controls](https://www.law.cornell.edu/cfr/text/21/1271.250)** — labeling procedures and label verification. Use it when writing the label test cases. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Cornell LII: 42 U.S.C. 274k, National Program](https://www.law.cornell.edu/uscode/text/42/274k)** — the statute behind the "qualified cord blood bank" definition, including (d)(4)(D) and (F). Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[FDA: Cord Blood Banking, Information for Consumers](https://www.fda.gov/vaccines-blood-biologics/consumers-biologics/cord-blood-banking-information-consumers)** — FDA's plain-language page on cord blood banking. Use it for how FDA describes the product to the public. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[FDA: Cellular & Gene Therapy Guidances](https://www.fda.gov/vaccines-blood-biologics/biologics-guidances/cellular-gene-therapy-guidances)** — FDA's list of guidance documents for cell and gene therapy products. I did not review each listed guidance, so check it with Regulatory Affairs for any guidance that bears on tracking or records. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[NIST SP 800-53 Rev. 5, Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)** — a general-purpose control catalog, with access control and audit logging families. Use it as a vocabulary source for the restricted maternal-linkage store. It is not a cord blood requirement. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[ISBT 128 (home)](https://isbt128.org/)** — the site for the labeling standard taught in the component processing module. Use it to see what the standard covers. This lesson does not claim cord blood units must use it. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **Video: [Inside an Umbilical-Cord-Blood Bank](https://www.youtube.com/watch?v=c38INeIVLHg)** (The Wall Street Journal, from oEmbed `author_name`). A news segment embedded in the lesson.
+  Title checked via YouTube oEmbed on 2026-11-13; content not reviewed. It is not about codes, tracking or records.
+
+Earlier modules this lesson builds on: [HRSA and the cell transplant program](../hrsa-and-the-cell-transplant-program/index.qmd), [Deployment, cutover and rollback](../../release-management-and-sdlc/deployment-cutover-and-rollback/index.qmd), [Retention across record types](../../data-integrity-and-records/retention-across-record-types/index.qmd), [ALCOA and data integrity](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd), [Component processing and labeling](../../blood-center-operations/component-processing-and-labeling/index.qmd). Module 2, [Registry donor data and confidentiality](../registry-donor-data-and-confidentiality/index.qmd), covers the registry side.
+
+## Keep learning
+
+These are not official sources and are never authority for a regulatory claim.
+
+- **[ISACA Journal: IS Audit Basics, What Every IT Auditor Should Know About Computer-Generated Reports](https://www.isaca.org/resources/isaca-journal/past-issues/2014/is-audit-basics-what-every-it-auditor-should-know-about-computer-generated-reports)** (ISACA, professional body) — the audit principle of testing a report's completeness and accuracy against independent data, which is the idea behind not trusting record counts alone in a migration. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[GAMP 5 Guide, 2nd Edition](https://ispe.org/publications/guidance-documents/gamp-5-guide-2nd-edition)** (ISPE, professional body; the guide itself is a paid publication) — the industry practice behind risk-based validation of computerized systems. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[How to Mitigate the Risks and Challenges in Data Migration](https://ankura.com/insights/how-to-mitigate-the-risks-and-challenges-in-data-migration)** (Ankura, a consulting firm; vendor content) — a practitioner view of migration risk and reconciliation. General, not blood- or cord-blood-specific. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Data Migration Validation for GxP Systems: Strategy and Checklist](https://govalidation.com/blog/data-migration-validation-gxp/)** (vendor blog; commercial) — a checklist-style walkthrough of migration validation in regulated systems. Treat it as a prompt for your own test plan. Verified loading via `curl` on 2026-11-13 (HTTP 200).

@@ -145,7 +145,7 @@ No calendar years.
 | — | (syllabus) | — | 174 | Published |
 | 1 | `hrsa-and-the-cell-transplant-program` | Say what HRSA's C.W. Bill Young program is (274k/274l, run by contract), how a blood center plugs in (donor center, cord blood bank, outcomes data), and which other regulators ride along (FDA 1271/BLA, CLIA for HLA). Put the registry and cord blood systems on the compliance map. | 175/176 | Published |
 | 2 | `registry-donor-data-and-confidentiality` | Apply 274k's confidentiality, disclosure-purpose and penalty provisions to a registry donor database and its interfaces, and decide a data-reuse request. | 177/178 | Published |
-| 3 | `cord-blood-identification-records-and-tracking` | Direct IT's part in 1271.290 tracking (distinct ID codes, code mapping, two-way tracking), 1271.270/1271.55 records and retention, and confidential maternal linkage during a CBB system replacement. | 179/180 | Not started |
+| 3 | `cord-blood-identification-records-and-tracking` | Direct IT's part in 1271.290 tracking (distinct ID codes, code mapping, two-way tracking), 1271.270/1271.55 records and retention, and confidential maternal linkage during a CBB system replacement. | 179/180 | Published |
 | 4 | `program-data-feeds-and-reporting` | Run a data feed into the program like a regulated interface: standardized data duties, reconciliation, change control and the right reporting path when it fails. | 181/182 | Not started |
 
 ## Progress log
@@ -183,3 +183,22 @@ No calendar years.
   described in subparagraph (A)" undefined → every registry field treated in scope as a posture (not a
   legal conclusion). (n) fine amounts (title 18) not in sources — none given. PHI question = privacy
   officer. No CLIA/HLA claim made. (d)(4)(D)/(F) left to module 3.
+- 2026-11-13 — Module 3 `cord-blood-identification-records-and-tracking` published (verified; prose ~4,790
+  words). Video: WSJ "Inside an Umbilical-Cord-Blood Bank" (c38INeIVLHg; title-only; main session replaced
+  the drafter's pick because it came from a real blood center's channel — rule: no videos from real blood
+  centers' own channels). **Locked:** CBC-031 vendor default = maternal hospital MRN + collection date →
+  breaks 1271.290(c); maternal link in a table every CBB user can read → against 274k(d)(4)(D)/(F).
+  Decisions (Director, cord blood bank's medical director, Quality Analyst): Lakeshore-generated codes from
+  nothing identifying (vendor default off); existing units keep codes or get new ones under a documented,
+  owned old-to-new mapping procedure; mapping must resolve old codes held by pre-cutover consignees;
+  maternal linkage in restricted store with logged access; retention per 1271.270(d)/1271.55(d)(4) (≥10
+  years from administration, else from distribution/disposition/expiration, whichever latest), modelled as
+  date fields + approved purge date; related records (mapping table, label history, maternal-link access
+  log, migration audit trail) retained with the unit's records = lesson's own reading, Quality/RA to
+  confirm; stored unit with no expiration → retention end open (1271.260(c) "where appropriate"; Quality's
+  call). Migration validation: consignee→donor (d), donor→consignee/final disposition (e) timed for
+  "prompt", consignee information (f), label (1271.250), maternal-link access, record fidelity, legacy
+  retrieval; failed tracking test = no-go for cutover; legacy archive retrievable and read-only after
+  decommissioning (1271.55(d)(3), 1271.270(c)). 1271.160(d) software validation incl. changes. Note
+  §2(c)(1) "10 years" = program participation, not records clock. One-way MRN transformation question →
+  Regulatory Affairs. No coding standard asserted for cord blood.

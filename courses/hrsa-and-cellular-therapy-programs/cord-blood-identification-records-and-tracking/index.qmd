@@ -1,0 +1,322 @@
+---
+title: "Cord Blood Identification, Records and Tracking"
+order: 179
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can say what IT owns when a cord blood bank (CBB) system is replaced: the distinct identification code on each unit and how old codes map to new ones (21 CFR 1271.290), two-way tracking, records and their retention (1271.270, 1271.55), and the confidential link between a unit and the mother (42 U.S.C. 274k(d)(4)).
+- **The punchline:** change record CBC-031 shows the new vendor's default unit ID is built from the maternal hospital medical record number plus the collection date. That breaks 1271.290(c), which says the code "may not include an individual's name, social security number, or medical record number." The same design also stores the maternal link in a table every user can read.
+- **The rule in one line:** each unit gets a code made for tracking, with no identifying number inside it. Any code change needs a documented old-to-new mapping, and tracking must work from the donor to the consignee and back.
+- **Ask on Monday:** "Show me one distributed unit traced from the consignee back to the donor, and one unit traced from the donor forward to where it went, in the new system, using only the code."
+- **The trap:** treating "the vendor's default" as a design given. The code format is the bank's decision, within 1271.290(c). Nothing in the sources used here requires a particular coding standard for cord blood.
+:::
+
+## The change record that built a code out of a mother's chart number
+
+The CBB system replacement has been in flight for weeks. It is a validated system separate from BECS (Blood Establishment Computer Software), and its change records carry the prefix CBC. Today the Quality Analyst has CBC-031 open in the vendor design review.
+
+The vendor's solutions engineer is sharing a screen. "Unit identification is configured out of the box. The default scheme concatenates the maternal hospital MRN and the collection date. Staff like it, because they can look at a unit and know where it came from."
+
+The Quality Analyst doesn't say anything for a moment. Then: "That's a medical record number in the unit ID."
+
+"It's a configurable default," he says.
+
+She turns to you. "Look at the next tab. The mother-to-unit link is a plain table in the main database. Every role that can open a unit can open that table."
+
+The cord blood bank's medical director joins the call late and listens to the summary. "So a freezer technician can pull the mother's chart number off the label, and a report writer can join it to her name?"
+
+"In the default design, yes," the Quality Analyst says.
+
+The systems administrator, on mute until now, offers the practical point: "The old system's codes are already on thousands of stored units. If we change the scheme, the labels in the tanks don't change."
+
+That is the real work of this lesson. Nobody mislabeled a unit. The risk is in a design decision made at configuration time, which will be copied onto every unit the system labels from here on. Your job is to see it in the design review, not in an inspection.
+
+## Why the rule exists, and the ITSM bridge
+
+Cord blood is stored for years and shipped to a transplant center on short notice. If a recipient later falls ill with something that may have come from the unit, someone has to answer two questions fast: which donor and which records does this unit belong to, and who else received material from that donor? FDA's own words for the purpose are in 1271.290(a): tracking is "to facilitate the investigation of actual or suspected transmission of communicable disease and take appropriate and timely corrective action."
+
+Two failure modes follow. In the first, tracking breaks. A code that doesn't resolve to one donor and one record set, or a distribution record that doesn't capture the code, leaves a gap exactly where the investigation needs a straight line. In the second, privacy breaks. A code that carries a mother's chart number turns every label and shipping manifest into a disclosure of identity. The rule wants a code that is built for tracking, and nothing else.
+
+The ITSM bridge is two ideas you already own.
+
+- **A configuration item identifier is not a business attribute.** A CMDB (configuration management database) record is a stable CI ID that doesn't change when the server is renamed, moved or re-owned. If your CI IDs were built out of hostnames, every rename would be a data-integrity event. The unit code is the CI ID for a physical product that will outlive the system that issued it.
+- **A system replacement is a change with a data migration inside it.** Old identifiers have to survive the move, and the mapping between old and new is a controlled artifact, the way a decommissioned application's ID crosswalk is in a service transition. [Deployment, cutover and rollback](../../release-management-and-sdlc/deployment-cutover-and-rollback/index.qmd) covers the cutover mechanics. This lesson is about what the regulation adds to the data.
+
+There is a third idea in the privacy half: **least privilege with logging**. The maternal link is a sensitive attribute, so it lives in a store with a short access list, and every read is recorded.
+
+## The rule in plain English
+
+Four duties meet in CBC-031.
+
+1. **Distinct code.** Each unit Lakeshore manufactures is assigned and labeled with a distinct identification code that relates it to the donor and to all of its records. Lakeshore must create the code specifically for tracking. It may not include a name, a social security number or a medical record number. (1271.290(c))
+2. **Code changes.** Lakeshore may adopt a code that another establishment assigned or assign a new one. If it assigns a new one, it must "establish and maintain procedures for relating the new code to the old code." (1271.290(c))
+3. **Tracking both ways.** Lakeshore needs a method to record the code and type of each unit distributed, so the consignee leads back to the donor (1271.290(d)). It also needs a method to document each unit's disposition, so the donor leads forward to the consignee or final disposition (1271.290(e)). Lakeshore must also tell the consignee in writing about the tracking requirements and the system, at or before distribution (1271.290(f)).
+4. **Records.** Records must be accurate, indelible and legible, kept in a system that lets someone review a unit's history, and retained for the period in 1271.270(d). Electronic records must be backed up, and records "readily retrieved from another location by electronic means are considered 'retained'." (1271.270, 1271.55(d))
+
+Layered over those are the statute's provisions on privacy. A "qualified cord blood bank" under 274k(d)(4) is one that "has established a system of strict confidentiality to protect the identity and privacy of patients and donors" (D) and "has established a system to confidentially maintain linkage between a cord blood unit and a maternal donor" (F). Module 1 introduced those two paragraphs; [the first lesson of this course](../hrsa-and-the-cell-transplant-program/index.qmd) has the decoder rows. They are the reason the maternal link can't sit in an open table.
+
+One scope sentence, because module 1 carries the detail: Lakeshore's licensed units are section 351 biological products, and under 1271.1(b)(2) they follow subparts C and D of Part 1271, which is where tracking and records live.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 1271.290(a) | "twelve seventy-one point two-ninety, paragraph a" | Track each unit you handle, to support investigation of suspected disease transmission and timely corrective action. | The purpose behind every design choice in CBC-031. |
+| 21 CFR 1271.290(b)(1) | "paragraph b, subparagraph 1" | A tracking system that works from donor to consignee or final disposition, and from consignee or final disposition to donor. | Both directions are validated in migration. |
+| 21 CFR 1271.290(c) | "paragraph c" | Distinct code, made for tracking, with no name, SSN or MRN; mapping procedure if a new code is assigned. | The vendor default fails; the decisions fix it. |
+| 21 CFR 1271.290(d) | "paragraph d" | Record the code and type of each unit distributed, to track consignee to donor. | Migration test 1. |
+| 21 CFR 1271.290(e) | "paragraph e" | Document each unit's disposition, to track donor to consignee or final disposition; permit prompt identification of the consignee. | Migration test 2. |
+| 21 CFR 1271.290(f) | "paragraph f" | Inform the consignee in writing of the tracking requirements and system at or before distribution. | Documents and labels shipped with units after cutover. |
+| 21 CFR 1271.55(a)(1), (c) | "twelve seventy-one point fifty-five, paragraph a-1; paragraph c" | The code accompanies the unit and, apart from the listed exceptions, has no name, SSN or MRN; accompanying records must not contain the donor's name or other identifying personal information. | The same line as 1271.290(c), reached from the donor-eligibility side. |
+| 21 CFR 1271.270(a)-(c) | "paragraph a through c" | Concurrent, accurate, indelible, legible records; a records management system; electronic records permitted if backed up. | Migration and the new system's record design. |
+| 21 CFR 1271.270(d) | "paragraph d" | Ten years after creation, and for a unit's records at least ten years after administration (or, if unknown, after distribution, disposition or expiration, whichever is latest). | The retention rule set in the decisions below. |
+| 21 CFR 1271.55(d)(2)-(4) | "paragraph d, subparagraphs 2 through 4" | Records accurate, indelible and legible; records readily retrievable from another location by electronic means count as retained; the unit-record clock (same as 1271.270(d)). | The legacy archive question. |
+| 21 CFR 1271.250 | "twelve seventy-one point two-fifty" | Labeling procedures that ensure proper identification and prevent mix-ups; verify label accuracy, legibility and integrity. | The unit label carries the new code correctly. |
+| 21 CFR 1271.160(d) | "paragraph d" | Validate software (and changes to it) that you rely on for core CGTP requirements; verify other software. | Why the CBB system and its migration are validated, not just loaded. |
+| 42 U.S.C. 274k(d)(4)(D), (F) | "two seventy-four K, subsection d, paragraph 4, clauses D and F" | A system of strict confidentiality, and a system to confidentially maintain the link between a cord blood unit and a maternal donor. | Maternal linkage moves to a restricted store with logged access. |
+| Pub. L. 109-129 § 2(b)(1) (note under 274k) | "section 2, subsection b, paragraph 1" | Contract recipients acquire, tissue-type, test, cryopreserve and store donated units with the donor's informed consent, in a manner that complies with applicable Federal and State regulations. | Why the bank's data handling is part of its inventory contract. |
+
+## The actual text
+
+All quotations below are verbatim from `sources/cfr/21-1271-hctp-excerpt.md` or `sources/usc/42-usc-274k-274l.md`.
+
+### 1271.290(c): the distinct identification code
+
+> (c) Distinct identification code. As part of your tracking system, you must ensure: That each HCT/P that you manufacture is assigned and labeled with a distinct identification code, e.g., alphanumeric, that relates the HCT/P to the donor and to all records pertaining to the HCT/P; and that labeling includes information designed to facilitate effective tracking, using the distinct identification code, from the donor to the recipient and from the recipient to the donor. Except as described in § 1271.55(a)(1), you must create such a code specifically for tracking, and it may not include an individual's name, social security number, or medical record number. You may adopt a distinct identification code assigned by another establishment engaged in the manufacturing process, or you may assign a new code. If you assign a new code to an HCT/P, you must establish and maintain procedures for relating the new code to the old code.
+
+Clause by clause:
+
+- **"relates the HCT/P to the donor and to all records pertaining to the HCT/P."** The code is a key. It must resolve to one donor and to every record about the unit. That is a join, not a description.
+- **"specifically for tracking."** The code's job is tracking, so it isn't a repurposed chart number, hospital accession number or other identifier made for another purpose. A vendor default that builds the code from the MRN and a date fails on this clause and on the next one.
+- **"may not include an individual's name, social security number, or medical record number."** The word is *include*. A code that has the MRN embedded in it, even with a date attached, includes it. Whether some one-way transformation of an MRN would count is not something the text settles, so this lesson doesn't decide it. That is a Regulatory Affairs question, and the way to avoid it is a code that is generated from nothing identifying at all. That is Lakeshore's decision below.
+- **"Except as described in § 1271.55(a)(1)."** That cross-reference points to a narrow set of exceptions: autologous donations, directed reproductive donations, and donations by first-degree or second-degree blood relatives. A public bank's unrelated-donor unit is not what those exceptions describe. Don't lean on them for the design, and if a directed unit ever turns up, take it to Regulatory Affairs.
+- **"assign a new code ... procedures for relating the new code to the old code."** This is the clause that makes the migration a regulated activity. It gives you the permission and the duty in one sentence.
+
+### 1271.290(b), (d), (e), (f): the tracking system
+
+> (b) System of HCT/P tracking. (1) You must establish and maintain a system of HCT/P tracking that enables the tracking of all HCT/Ps from:
+>
+> (i) The donor to the consignee or final disposition; and
+>
+> (ii) The consignee or final disposition to the donor.
+
+> (d) Tracking from consignee to donor. As part of your tracking system, you must establish and maintain a method for recording the distinct identification code and type of each HCT/P distributed to a consignee to enable tracking from the consignee to the donor.
+>
+> (e) Tracking from donor to consignee or final disposition. As part of your tracking system, you must establish and maintain a method for documenting the disposition of each of your HCT/Ps, to enable tracking from the donor to the consignee or final disposition. The information you maintain must permit the prompt identification of the consignee of the HCT/P, if any.
+>
+> (f) Consignees. At or before the time of distribution of an HCT/P to a consignee, you must inform the consignee in writing of the requirements in this section and of the tracking system that you have established and are maintaining to comply with these requirements.
+
+Read (d) and (e) as two separate data requirements. (d) is a record written at distribution: the code and the type. (e) is a record of disposition for every unit, including units that were never distributed. "Final disposition" is how a discarded or expired unit stays traceable. "Prompt" is a time requirement that a slow export can fail. And (f) is a document the consignee receives, so after cutover the shipping packet generated by the new system has to still contain it.
+
+### 1271.270 and 1271.55(d): records and retention
+
+> (a) General. You must maintain records concurrently with the performance of each step required in this subpart and subpart C of this part. Any requirement in this part that an action be documented involves the creation of a record, which is subject to the requirements of this section. All records must be accurate, indelible, and legible. The records must identify the person performing the work and the dates of the various entries, and must be as detailed as necessary to provide a complete history of the work performed and to relate the records to the particular HCT/P involved.
+>
+> (b) Records management system. You must establish and maintain a records management system relating to core CGTP requirements. Under this system, records pertaining to a particular HCT/P must be maintained in such a way as to facilitate review of the HCT/Ps history before making it available for distribution and, if necessary, subsequent to the HCT/Ps release as part of a followup evaluation or investigation. Records pertinent to the manufacture of HCT/Ps (e.g., labeling and packaging procedures, and equipment logs) must also be maintained and organized under the records management system. If records are maintained in more than one location, then the records management system must be designed to ensure prompt identification, location, and retrieval of all records.
+>
+> (c) Methods of retention. You may maintain records required under this subpart electronically, as original paper records, or as true copies such as photocopies, microfiche, or microfilm. Equipment that is necessary to make the records available and legible, such as computer and reader equipment, must be readily available. Records stored in electronic systems must be backed up.
+>
+> (d) Length of retention. You must retain all records for 10 years after their creation, unless stated otherwise in this part. However, you must retain the records pertaining to a particular HCT/P at least 10 years after the date of its administration, or if the date of administration is not known, then at least 10 years after the date of the HCT/Ps distribution, disposition, or expiration, whichever is latest. You must retain records for archived specimens of dura mater for 10 years after the appropriate disposition of the specimens.
+
+Then the donor-eligibility side of the same duty:
+
+> (2) All records must be accurate, indelible, and legible. Information on the identity and relevant medical records of the donor, as defined in § 1271.3(s), must be in English or, if in another language, must be retained and translated to English and accompanied by a statement of authenticity by the translator that specifically identifies the translated document.
+>
+> (3) You must retain required records and make them available for authorized inspection by or upon request from FDA. Records that can be readily retrieved from another location by electronic means are considered "retained."
+
+The same paragraph then sets the clock for a unit's records:
+
+> (4) You must retain the records pertaining to a particular HCT/P at least 10 years after the date of its administration, or if the date of administration is not known, then at least 10 years after the date of the HCT/P's distribution, disposition, or expiration, whichever is latest.
+
+(Those are 1271.55(d)(2), (3) and (4). Paragraph (d)(1), omitted here, lists the testing, screening and eligibility documentation that must be maintained.)
+
+What each part means for a system replacement:
+
+- **(a) "accurate, indelible, and legible"** overlaps with the ALCOA attributes (attributable, legible, contemporaneous, original, accurate) in [ALCOA and data integrity](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd). "Indelible" means a migrated record cannot be silently overwritten or lose its entry history. "The dates of the various entries" and "the person performing the work" are the audit-trail fields.
+- **(b)** The records management system has to find all records for one unit, even when they live in more than one place. After a migration, "more than one place" is the normal case: the new system and the legacy archive.
+- **(c)** "Equipment that is necessary to make the records available and legible ... must be readily available." If the legacy records are kept in the old application, the old application's ability to display them is now a retained control. "Must be backed up" applies to both systems.
+- **(d)** The clock is "at least 10 years" and it is **measured from the last event that matters**: administration to a recipient, or, if administration isn't known, the latest of distribution, disposition or expiration.
+- **55(d)(3)** gives you the architectural freedom: a legacy archive can be a read-only copy elsewhere, and its records count as "retained" if they can be readily retrieved electronically.
+
+### The statute, for the confidential link
+
+From 42 U.S.C. 274k(d)(4):
+
+> (D) has established a system of strict confidentiality to protect the identity and privacy of patients and donors in accordance with existing Federal and State law;
+>
+> (F) has established a system to confidentially maintain linkage between a cord blood unit and a maternal donor.
+
+The statute says *a system*. It does not say a role list, a table design or an encryption method. Those are Lakeshore's design decisions. The statute only requires that the system exist and keep the linkage confidential.
+
+The Cord Blood Inventory note, which the bank's contract rests on, adds this in its section 2(b)(1):
+
+> “(1) to acquire, tissue-type, test, cryopreserve, and store donated units of cord blood acquired with the informed consent of the donor, as determined by the Secretary pursuant to section 379(c) of the Public Health Service Act [ 42 U.S.C. 274k(c) ], in a manner that complies with applicable Federal and State regulations;
+
+That ties the bank's day-to-day handling, including its records, to "applicable Federal and State regulations," which here includes Part 1271. The note's data duties under (b)(5) and (b)(6) belong to module 4.
+
+### Labeling
+
+> (a) General. You must establish and maintain procedures to control the labeling of HCT/Ps. You must design these procedures to ensure proper HCT/P identification and to prevent mix-ups.
+>
+> (b) Verification. Procedures must include verification of label accuracy, legibility, and integrity.
+
+1271.250(c) adds that labeling must meet "all applicable labeling requirements, including those in §§ 1271.55, 1271.60, 1271.65, 1271.90, 1271.290, and 1271.370." For CBC-031 that means the label template, the code and the print process are validated as one path, and a changed code format means a changed label.
+
+**What the sources do not say.** Nothing in the local sources names a required coding standard for cord blood unit codes. ISBT 128 is the labeling standard the blood world uses for blood components, and [component processing and labeling](../../blood-center-operations/component-processing-and-labeling/index.qmd) teaches it. It is a standard, not an FDA regulation. This lesson does not claim that cord blood units must use it, or any other specific scheme. What the regulation requires is the properties in 1271.290(c): distinct, tied to the donor and all records, made for tracking, free of a name, SSN or MRN. The format is Lakeshore's decision within those limits. If an accreditation standard or the program agreement adds a format, read it in the contract file and with Quality. Those texts aren't in `sources/` and this lesson won't describe them.
+
+## The decisions
+
+The Director, the cord blood bank's medical director and the Quality Analyst met after the design review and settled these. They are recorded against CBC-031.
+
+1. **Lakeshore generates its own distinct codes.** The CBB system is configured to issue a code that Lakeshore's own procedure defines, drawn from nothing identifying: no MRN, name, SSN, or a date or hospital field that a reader could use to find a mother. The vendor's default scheme is turned off, not configured around.
+2. **Existing units keep their codes, or get new ones, and either way the mapping procedure is documented.** Relabeling thousands of frozen units has its own handling risk, so the medical director and Quality decide which route each group of units takes. Where a unit gets a new code, the old-to-new mapping is a controlled record under 1271.290(c), with an owner, a procedure and a review. Where a unit keeps its code, the new system must still accept and resolve it.
+3. **Maternal linkage moves to a restricted store with logged access.** The code-to-mother link is separated from the unit record. A short, named access list can read it, and every read is logged. That is Lakeshore's design for 274k(d)(4)(D) and (F). The statute asks for the system, not this particular design.
+4. **Retention is set from 1271.270(d) and 1271.55(d)(4).** At least ten years, measured from administration, or from distribution, disposition or expiration if administration is unknown, whichever is latest.
+5. **Migration validation tests tracking both ways.** Consignee to donor, per 1271.290(d), and donor to consignee or final disposition, per 1271.290(e). The test set also covers the consignee-information duty in (f) and the label, per 1271.250.
+6. **Records are accurate, indelible and legible, and records retrievable by electronic means count as retained.** That is how the legacy system's records are treated after cutover.
+
+## See it in one picture
+
+This diagram shows the replacement in CBC-031. Old codes flow through a controlled mapping into the new system's distinct codes. The two migration tests run in opposite directions, and the maternal link is held apart in a restricted store.
+
+```{mermaid}
+flowchart LR
+    OLD["Legacy CBB system<br/>old unit codes"] -->|"migrated, mapping procedure<br/>1271.290(c)"| MAP["Old-to-new code map<br/>(controlled record)"]
+    MAP --> NEW["New CBB system<br/>Lakeshore-generated distinct code"]
+    NEW --> LBL["Unit label<br/>carries the code only<br/>1271.250, 1271.290(c)"]
+    NEW --> DISP["Distribution / disposition record<br/>code + type + consignee<br/>1271.290(d), (e)"]
+    NEW -.->|"code to maternal link<br/>restricted, logged access<br/>274k(d)(4)(D), (F)"| MAT[("Restricted maternal<br/>linkage store")]
+    DISP --> CON["Consignee<br/>(transplant center)"]
+    CON -->|"Test 1: consignee to donor<br/>1271.290(d)"| DISP
+    NEW -->|"Test 2: donor to consignee<br/>or final disposition<br/>1271.290(e)"| DISP
+    CON -.->|"may hold the old code:<br/>map resolves it"| MAP
+```
+
+Two reading notes. The last dashed edge matters most for IT: a transplant center that received a unit before cutover holds the *old* code, so a query from the consignee side lands on the mapping before it can reach the donor. And the maternal store has no arrow to the label or the distribution record. That separation is the point of the design.
+
+## Watch it explained
+
+This is a news segment from The Wall Street Journal, titled as a look inside an umbilical-cord-blood bank. I checked only its title and channel through YouTube's oEmbed record, not a transcript, so I can't say which bank it shows or whether that bank is public or private. Watch it to picture the physical chain your records have to follow: the bag, the label, the freezer position and the shipment. It isn't about unit codes, tracking rules or records, and nothing in it describes a regulation.
+
+::: {.video-embed}
+<iframe src="https://www.youtube-nocookie.com/embed/c38INeIVLHg" title="Inside an Umbilical-Cord-Blood Bank" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+*The Wall Street Journal, on YouTube. Title checked against YouTube's oEmbed record on 2026-11-13.*
+
+## Migration validation: what "tracks both ways" means in a test plan
+
+Validation basics are in [BECS as a regulated device](../../csv-and-becs/becs-as-a-regulated-device/index.qmd) and [IQ, OQ, PQ and the traceability matrix](../../csv-and-becs/iq-oq-pq-and-traceability/index.qmd). I won't repeat them. What is specific here is what the tests have to prove, because 1271.160(d) requires validation of software you rely on for core CGTP requirements, "and the performance of any changes to that software." A migration is a change. These are the cases the Quality Analyst's protocol should contain.
+
+- **Code integrity.** Every migrated unit has exactly one active code. No two units share a code. No code is blank. No migrated code contains a pattern that looks like an MRN, name or SSN. (The last check is a screening test on Lakeshore's own data, not a regulatory phrase.)
+- **Mapping completeness.** Every old code that is in use, on a label, in a distribution record or in a consignee's file, resolves to exactly one new code, and the reverse. Units that kept their old code resolve to themselves.
+- **Test 1, consignee to donor.** Pick units already distributed. Start from the consignee's record and the code on the paperwork the consignee holds, which may be the old code. Reach the donor's record and all records for the unit. This tests 1271.290(d) and the mapping together.
+- **Test 2, donor to consignee or final disposition.** Pick donors with units that were distributed, discarded or expired, and some with units still in storage. Start from the donor and reach the consignee, the final disposition or the current storage location. This tests 1271.290(e). Time it: "prompt" is part of the text.
+- **Consignee information.** The documents that go with a new shipment include the written information in 1271.290(f). Test the output, not the template.
+- **Label.** A label printed from the new system is accurate, legible and intact, and the code on it is the code in the record (1271.250(a)-(b)).
+- **Maternal linkage.** The link is not visible through the roles and reports that can see units. The restricted store's access list is as designed, and a read produces a log entry. Test a denied read, too.
+- **Record fidelity.** Migrated records keep their entry dates and the identity of who performed each step, so they remain "indelible" and attributable, and nothing was silently corrected in transit. Compare against the legacy source for a sample, and compare totals for the whole population. Reconciliation by counts alone can hide a mapping error that preserves the count.
+- **Legacy retrieval.** For whatever remains in the legacy archive, prove that a given unit's records can be found and displayed electronically, and that the equipment needed to read them is available and backed up (1271.270(c)).
+
+Gate the cutover on these in the way [deployment, cutover and rollback](../../release-management-and-sdlc/deployment-cutover-and-rollback/index.qmd) describes for go/no-go criteria. A failed tracking test is a no-go. It isn't a defect to fix after launch.
+
+## Setting the retention rule
+
+For a records retention design, the useful move is to write the rule as a formula that a system can apply, not as a number.
+
+For a unit's records, retention ends at the latest of three or four dates, plus ten years: administration if known; otherwise the latest of distribution, disposition or expiration. The text says "at least," so ten years is a floor.
+
+Three consequences for IT:
+
+1. **The clock can't be set on creation date.** A flat "ten years from creation" rule, which is the default for "all records" in 1271.270(d), is the wrong answer for unit records. The system needs the administration, distribution, disposition and expiration dates as data fields, and a calculated "earliest purge date" that a person must approve.
+2. **A unit still in storage has no end date yet.** The clock only starts when one of those events occurs. Nothing in this lesson's sources says what to do for a unit with no assigned expiration. 1271.260(c) says an expiration date is assigned "where appropriate." Quality decides, and the answer is written into the retention schedule.
+3. **Related records need a rule too.** The mapping table, the label history, the access log for the maternal link and the audit trail of the migration are records that relate to particular units. The text of 1271.270(a) and (b) points at relating records to the particular HCT/P, and that argues for retaining them as long as the unit's records. That is this lesson's reading, not a quoted requirement. Confirm it with Quality and Regulatory Affairs and write it down.
+
+[Retention across record types](../../data-integrity-and-records/retention-across-record-types/index.qmd) takes the same problem for blood records and is worth reading next to this one. It shows how different record types need different clocks.
+
+Do not confuse the 1271.270(d) clock with another ten years in the sources. The Cord Blood Inventory note says a contracting bank "will participate in the C.W. Bill Young Cell Transplantation Program for a period of at least 10 years beginning on the last date on which the recipient of a contract under this section receives Federal funds under this section." That is a participation term in the contract's application requirements. It is not a retention rule for unit records, and it is measured from a different event.
+
+## What an inspector or assessor would actually look for
+
+**The unit code scheme, on paper.** The procedure that defines how codes are generated, and the evidence the scheme excludes name, SSN and MRN. A bad answer: "The system generates it." The good answer is a procedure and a validation record that show the generation logic.
+
+**The mapping procedure and its records.** A controlled old-to-new mapping with an owner, a version and review history. A bad answer: "The vendor has a spreadsheet." Under 1271.290(c) the procedure is Lakeshore's to establish and maintain.
+
+**A live trace in each direction.** An investigator can pick a unit and ask you to trace it. A bad answer is a trace that works one way, or takes a day, or needs the vendor on the phone. The validation protocol and its results are your evidence that both directions worked before go-live.
+
+**Retention and retrieval.** The retention schedule, the legacy-system disposition decision and a demonstration that a record from the old system can be found and displayed. A bad answer: "We turned the old server off after the migration."
+
+**Access to the maternal link.** The access list, the review of that list, and the log. A bad answer is any role list that includes "all CBB users." Module 2 describes the same controls for registry data, which is a separate system and a separate set of rules.
+
+I can't tell you from the local sources what FDA's investigators ask in an inspection or how the accreditation assessors read these provisions. Ask Regulatory Affairs for the inspection history, and read the accreditation standards you hold under their license, without quoting them outside your organization.
+
+## Common traps
+
+**"The vendor's default is industry standard, so it's fine."** A default is a configuration choice. 1271.290(c) says the code "may not include an individual's name, social security number, or medical record number." Nothing in the sources here lets a vendor default override that.
+
+**"We'll scramble the MRN and call it distinct."** The text prohibits including the MRN. This lesson does not decide whether a transformation counts. It is a Regulatory Affairs question. The simplest way to avoid it is a code that is never derived from an identifier.
+
+**"The new code means the old one is gone."** The text says the opposite. If you assign a new code you must keep procedures for "relating the new code to the old code." Consignees and old labels carry the old one for as long as the unit exists.
+
+**"Tracking is the label's job."** The label carries the code. 1271.290(d) and (e) are about records: what was distributed, to whom, and what happened to the unit. A perfect label on a system that doesn't record the consignee fails (d) and (e).
+
+**"Backed-up means retained."** 1271.270(c) wants electronic records backed up, and 1271.270(d) wants them retained for a period. Those are separate requirements. A nightly backup that rolls off after a few weeks does not meet a ten-year retention clock.
+
+**"Confidential means encrypted."** The statute asks for "a system." Encryption can be part of it, but so are role design, a short access list and a log. A table that every user can read is not confidential, however it is encrypted at rest.
+
+## What this means for your job
+
+- **Put unit-ID and maternal-linkage design on the CBB system's requirements list before configuration, not at validation.** Ask the Quality Analyst to add "no name, SSN or MRN in the code" and "link in a restricted store" as user requirements with test cases, traced to 1271.290(c) and 274k(d)(4).
+- **Ask for the mapping procedure as a named, owned record.** If the answer is a file on the vendor's side, it isn't yet Lakeshore's procedure.
+- **Make tracking a go/no-go criterion.** Both directions, pre-cutover units, timed. A migration plan that tests only record counts is incomplete.
+- **Write the retention rule as a formula and put the dates in the data model.** Then ask who approves a purge and where the legacy system's records live after decommission.
+- **Treat vendor defaults as proposals.** Any default that touches identification, labeling, access or retention gets a documented decision in the change record, as CBC-031 does.
+- **Escalate to the cord blood bank's medical director and Quality** whenever a design choice would change what is on a label or what a consignee receives, and to the privacy officer for any proposal to widen who can see the maternal link. Classification and reporting questions stay with Regulatory Affairs.
+
+## Check your understanding
+
+**Q1.** The vendor says their default code includes only the maternal MRN and the collection date, "not her name or SSN." Is that compliant?
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+No. 1271.290(c) lists the medical record number alongside name and SSN: the code "may not include an individual's name, social security number, or medical record number." The code also has to be created "specifically for tracking," and an MRN-and-date scheme repurposes an identifier made for something else. The 1271.55(a)(1) exceptions (autologous, directed reproductive, first- or second-degree relatives) don't describe a public bank's unrelated-donor units.
+:::
+
+**Q2.** A transplant center calls about a unit it received before cutover and quotes the old code. What must the new system be able to do?
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+Resolve the old code to the unit and then to the donor and all its records. That is what the mapping procedure in 1271.290(c) is for, and it is migration test 1 (consignee to donor, 1271.290(d)). It must work promptly, and it must work whether the unit got a new code or kept its old one.
+:::
+
+**Q3.** Is it a regulatory requirement that Lakeshore's cord blood unit codes follow ISBT 128?
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+Not on the sources this curriculum holds. ISBT 128 is a labeling standard used for blood components, not a Part 1271 requirement. 1271.290(c) sets the properties of the code and leaves the format to the bank. If the program agreement or an accreditation standard adds a format, that is a separate source to read with Quality.
+:::
+
+**Q4.** Lakeshore decommissions the legacy system after migration. Do its records still count as retained?
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+Only if they can be retrieved. 1271.55(d)(3) says records that can be "readily retrieved from another location by electronic means are considered 'retained'," and 1271.270(c) says the equipment needed to make records available and legible "must be readily available," with electronic records backed up. A decommissioned server with no way to read the records fails; a read-only archive that is tested for retrieval can pass. The retention clock itself runs from administration, or from distribution, disposition or expiration, whichever is latest (1271.270(d)).
+:::
+
+**Q5.** Explain the maternal-linkage change to the CIO in two sentences.
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+"The law says a licensed cord blood bank must keep the link between a baby's cord blood unit and the mother confidential, and the vendor's design put that link where every user could read it. We're moving it to a locked-down store with a short access list and a log, and generating our own unit codes so no chart number rides on the label."
+:::
+
+## Where this goes next
+
+The cord blood bank system now identifies, tracks and retains units in a way you can defend. Module 4, *Program data feeds and reporting*, follows those units outward: the data the bank sends to the program, and what happens when a feed silently stops telling the program that a unit is gone. For the registry side, see [Registry donor data and confidentiality](../registry-donor-data-and-confidentiality/index.qmd).
