@@ -100,7 +100,7 @@ depth but keep index.qmd prose ≤ 5,000 words; "Keep learning" section in resou
 | 1 | `reds-structure-contracts-and-governance` | Explain who governs REDS today (NHLBI/NICHD, executive and steering committees, monitoring board, hubs, DCC, CTLS), how the 2026 contract round is structured, what "REDS V" does and doesn't mean in the records, and what a contributing blood center commits to. | 151/152 | Published |
 | 2 | `the-vein-to-vein-database-and-research-extracts` | Design and govern a recurring research extract from BECS (EXT-21): scope, read-only source, linkage keys, transformation, secure transfer, QC, and change control — without touching regulated records. | 153/154 | Published |
 | 3 | `human-subjects-hipaa-and-certificates-of-confidentiality` | Explain the Common Rule, single-IRB waiver, HIPAA research pathways, and Certificates of Confidentiality well enough to know what the privacy officer and IRB must confirm before EXT-21 runs, and what CoC means for IT. | 155/156 | Not started |
-| 4 | `nih-data-management-and-sharing` | Explain NIH's Data Management and Sharing policy (including its reach through contracts), where shared data ends up, and what a contributing blood center's IT must support (retention, provenance, de-identification before sharing). | 157/158 | Not started |
+| 4 | `nih-data-management-and-sharing` | Explain NIH's Data Management and Sharing policy (including its reach through contracts), where shared data ends up, and what a contributing blood center's IT must support (retention, provenance, de-identification before sharing). | 157/158 | Published |
 | 5 | `security-expectations-for-research-data` | Set security controls for research data leaving Lakeshore (encryption, key handling, access, logging, incident handling) and apply NIH's controlled-access genomic-data expectations only where they genuinely apply. | 159/160 | Not started |
 | 6 | `running-research-data-alongside-regulated-operations` | Handle a BECS release that breaks EXT-21 and a rapid-response study request in the same week, keeping research obligations and regulated records cleanly separated. | 161/162 | Not started |
 
@@ -146,3 +146,22 @@ depth but keep index.qmd prose ≤ 5,000 words; "Keep learning" section in resou
   value stops the run rather than defaulting. Open: who does the OMOP mapping; whether the hub has a
   test endpoint; how late source changes are handled (restate/flag/full snapshot — data spec decides).
   Whether the extract file is a record under any regulation left to Quality/regulatory affairs.
+- 2026-11-13 — Module 4 `nih-data-management-and-sharing` published (verified; published before module 3,
+  which was still drafting). Video: NIH Funding "The NIH Final Policy for Data Management and Sharing is
+  in Effect: Planning for Success!" (UbtWG_kjPfw; NIH's own channel). **Locked:** DMS is a funding policy
+  binding the funded hubs/DCC/CTLS; Lakeshore exposed only through what its agreement passes down;
+  whether DMS covers the current REDS contracts isn't shown in sources (effective date keys on proposal
+  submission date) — Director asks the hub in writing for the approved DMS plan, what will be shared,
+  where, when, and the program's de-identification process. Director's decision (RSH-0107): repository
+  sharing accepted only for data the program has further de-identified under its own process; the
+  limited data set is not accepted for repository sharing; coded key and crosswalk never are. DUA terms
+  per 164.514(e)(4) (named recipients; no further disclosure; same restrictions on agents; no
+  re-identification or contact; report misuse) + retention and destruction terms. EXT-21 transfer
+  ledger + provenance record built before the first transfer, under change control; ledger fields: run
+  ID/date, file, spec version, mapping version, row counts, checksum + algorithm, recipient + method,
+  receipt reference, supersedes/superseded-by. Retention: BECS records under 606.160(d); sent files,
+  ledger, provenance per the DUA; crosswalk kept as long as the program may need corrections/re-linking;
+  destroying the crosswalk is an irreversible privacy decision with the privacy officer; destruction ends
+  Lakeshore's copies, not the CoC-based confidentiality treatment. Corrections fixed in BECS → new run →
+  superseding ledger row; Lakeshore notifies the hub; program propagates. Only documented repository =
+  BioLINCC (REDS-III public-use data, per the paper).

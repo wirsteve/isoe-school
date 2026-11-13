@@ -1,0 +1,91 @@
+---
+title: "Resources: NIH data management and sharing"
+order: 158
+---
+
+Every link below was loaded with `curl` on 2026-11-13 (HTTP 200) and its page title checked, unless
+noted. Official sources come first.
+
+## Curated links
+
+- **[NOT-OD-21-013: Final NIH Policy for Data Management and Sharing](https://grants.nih.gov/grants/guide/notice-files/NOT-OD-21-013.html)**
+  (NIH Guide) — the policy itself. Use it to read Sections II, III, V, VII and VIII in full and to
+  check any quote in the lesson. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Data Management & Sharing Policy Overview](https://sharing.nih.gov/data-management-and-sharing-policy/about-data-management-and-sharing-policies/data-management-and-sharing-policy-overview)**
+  (NIH, sharing.nih.gov) — NIH's own plain-language overview. Start here when explaining the policy
+  to the CIO. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Writing a Data Management and Sharing Plan](https://sharing.nih.gov/data-management-and-sharing-policy/planning-and-budgeting-for-data-management-and-sharing/writing-a-data-management-and-sharing-plan)**
+  (NIH) — what a plan contains. Use it to know what the hub's plan will ask contributors to
+  support. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Selecting a Data Repository](https://sharing.nih.gov/data-management-and-sharing-policy/sharing-scientific-data/selecting-a-data-repository)**
+  (NIH) — how investigators choose where data goes. Use it to understand the "NIH-designated
+  repository" idea behind the clause. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Open Domain-Specific Data Sharing Repositories](https://www.nlm.nih.gov/NIHbmic/domain_specific_repositories.html)**
+  (NIH/NLM) — a list of NIH-supported repositories, the one the policy's own footnote points to. Use
+  it to see what kinds of repositories exist. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[BioLINCC](https://biolincc.nhlbi.nih.gov/home/)** (NHLBI) — the repository the 2022 paper says
+  served the REDS-III public-use data. Use it to see how requesting shared NHLBI data works. Verified
+  loading via `curl` on 2026-11-13 (HTTP 200; the page returned an empty `<title>` to `curl`).
+
+- **[45 CFR 164.514, Other requirements relating to uses and disclosures of protected health information](https://www.law.cornell.edu/cfr/text/45/164.514)**
+  (Cornell LII) — paragraph (e) is the limited data set and DUA text; (a) and (b) are the
+  de-identification standard the lesson names but doesn't quote. Verified loading via `curl` on
+  2026-11-13 (HTTP 200).
+
+- **[21 CFR 606.160, Records](https://www.law.cornell.edu/cfr/text/21/606.160)** (Cornell LII) —
+  the BECS record retention rule, paragraph (d), for contrast with the extract. Verified loading via
+  `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST IR 8053, De-Identification of Personal Information](https://csrc.nist.gov/pubs/ir/8053/final)**
+  (NIST CSRC) — a technical survey of de-identification techniques and their limits. Useful
+  background for the conversation about "further de-identified." It is general, not HIPAA guidance.
+  Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIH Video: The NIH Final Policy for Data Management and Sharing is in Effect: Planning for Success!](https://www.youtube.com/watch?v=UbtWG_kjPfw)**
+  (NIH Funding, from oEmbed `author_name`; exact oEmbed title as shown) — the video embedded in the
+  lesson. A general explainer for funded investigators, not specific to blood centers or contracts.
+  Verified embeddable via YouTube oEmbed on 2026-11-13; the title also matches NIH's own
+  grants.nih.gov video page, which loaded with HTTP 200.
+
+Not listed: HHS's HIPAA de-identification and research pages, which returned 403 (access denied) to
+`curl` today. They were not retried. The PubMed Central page for the 2022 paper returned a bot-check
+to `curl` earlier (see modules 1 and 2), so module 1's resources page links it instead.
+
+## Prior modules
+
+- [REDS structure, contracts and governance](../reds-structure-contracts-and-governance/index.qmd)
+- [The vein-to-vein database and research extracts](../the-vein-to-vein-database-and-research-extracts/index.qmd)
+- [Human subjects, HIPAA and Certificates of Confidentiality](../human-subjects-hipaa-and-certificates-of-confidentiality/index.qmd)
+- [Retention across record types](../../data-integrity-and-records/retention-across-record-types/index.qmd)
+- [ALCOA and data integrity](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd)
+
+## Keep learning
+
+Not official sources, and not authority for any regulatory claim.
+
+- **[FAIR Principles](https://www.go-fair.org/fair-principles/)** (GO FAIR Foundation) — the
+  community home of the principles (findable, accessible, interoperable, reusable) the DMS policy
+  says it encourages. Good vocabulary for talking about provenance and metadata. Verified loading
+  via `curl` on 2026-11-13 (HTTP 200; title "FAIR | GO FAIR Foundation").
+
+- **[The FAIR Guiding Principles for scientific data management and stewardship](https://www.nature.com/articles/sdata201618)**
+  (Wilkinson et al., *Scientific Data*) — the original paper the policy cites. Verified loading via
+  `curl` on 2026-11-13 (HTTP 200; title matches).
+
+- **[PROV-Overview](https://www.w3.org/TR/prov-overview/)** (W3C) — an overview of a standard
+  vocabulary for describing where data came from and what happened to it. Heavier than Lakeshore
+  needs, but it sharpens what "provenance" can mean. Verified loading via `curl` on 2026-11-13
+  (HTTP 200; title "PROV-Overview").
+
+- **[UCI GRT Hub: NIH Data Management and Sharing Policy](https://www.youtube.com/watch?v=m1Y_8r3Lv90)**
+  (a university research-support group, not NIH) — a second, shorter-form explainer from a research
+  institution's perspective. I have not watched it in full. Verified via YouTube oEmbed on 2026-11-13.
+
+- **[FAIR Data and Resources](https://datascience.nih.gov/data-ecosystem)** (NIH Office of Data
+  Science Strategy) — NIH's data-ecosystem page, a good launch point for how NIH thinks about
+  discoverable, reusable data. Verified loading via `curl` on 2026-11-13 (HTTP 200).
