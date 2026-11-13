@@ -99,7 +99,7 @@ depth but keep index.qmd prose ≤ 5,000 words; "Keep learning" section in resou
 | — | (syllabus) | — | 150 | Published |
 | 1 | `reds-structure-contracts-and-governance` | Explain who governs REDS today (NHLBI/NICHD, executive and steering committees, monitoring board, hubs, DCC, CTLS), how the 2026 contract round is structured, what "REDS V" does and doesn't mean in the records, and what a contributing blood center commits to. | 151/152 | Published |
 | 2 | `the-vein-to-vein-database-and-research-extracts` | Design and govern a recurring research extract from BECS (EXT-21): scope, read-only source, linkage keys, transformation, secure transfer, QC, and change control — without touching regulated records. | 153/154 | Published |
-| 3 | `human-subjects-hipaa-and-certificates-of-confidentiality` | Explain the Common Rule, single-IRB waiver, HIPAA research pathways, and Certificates of Confidentiality well enough to know what the privacy officer and IRB must confirm before EXT-21 runs, and what CoC means for IT. | 155/156 | Not started |
+| 3 | `human-subjects-hipaa-and-certificates-of-confidentiality` | Explain the Common Rule, single-IRB waiver, HIPAA research pathways, and Certificates of Confidentiality well enough to know what the privacy officer and IRB must confirm before EXT-21 runs, and what CoC means for IT. | 155/156 | Published |
 | 4 | `nih-data-management-and-sharing` | Explain NIH's Data Management and Sharing policy (including its reach through contracts), where shared data ends up, and what a contributing blood center's IT must support (retention, provenance, de-identification before sharing). | 157/158 | Published |
 | 5 | `security-expectations-for-research-data` | Set security controls for research data leaving Lakeshore (encryption, key handling, access, logging, incident handling) and apply NIH's controlled-access genomic-data expectations only where they genuinely apply. | 159/160 | Not started |
 | 6 | `running-research-data-alongside-regulated-operations` | Handle a BECS release that breaks EXT-21 and a rapid-response study request in the same week, keeping research obligations and regulated records cleanly separated. | 161/162 | Not started |
@@ -165,3 +165,24 @@ depth but keep index.qmd prose ≤ 5,000 words; "Keep learning" section in resou
   Lakeshore's copies, not the CoC-based confidentiality treatment. Corrections fixed in BECS → new run →
   superseding ledger row; Lakeshore notifies the hub; program propagates. Only documented repository =
   BioLINCC (REDS-III public-use data, per the paper).
+- 2026-11-13 — Module 3 `human-subjects-hipaa-and-certificates-of-confidentiality` published (verified;
+  ~7,500 words incl. quoted regulation). Video: FDA "Certificates of Confidentiality Part 1: General
+  Overview" (wRgwdnHiuQE; added by main session; framed as background — FDA issues CoCs for research it
+  regulates, NIH's policy covers NIH-funded research). **Locked:** privacy officer's written
+  determination has three layers — (1) Common Rule: the program's single-IRB consent waiver,
+  documentation from the IRB itself (not the paper) filed in RSH-0107, not Lakeshore's HIPAA basis; (2)
+  Lakeshore's own basis = limited data set under a DUA (164.514(e)); 164.512(i) waiver path open but not
+  chosen; (3) Certificate decision is organizational. RSH-0107 condition 1 clears when the file holds:
+  IRB documentation; field-by-field LDS review of the spec (no free-text fields in v1); signed DUA naming
+  which entities may hold the data; key design note (option B); written Certificate decision. Transfers
+  still not approved until condition 3 (data agreement + security terms). Open item: written reliance
+  arrangement for Lakeshore on the program's IRB (whether Lakeshore is "engaged" not covered by
+  sources). Option B final (random, stable, crosswalk never leaves) — the DUA's "not identify or
+  contact" term is the reason; coded ≠ de-identified; HIPAA de-identification not applied in this
+  course. Certificate IT controls: inventory every copy in the CMDB (incl. backups, test copies,
+  row-level logs); legal requests → counsel with a one-page service-desk runbook (preservation is not
+  disclosure); never use data/crosswalk for operations; retention/destruction per DUA ("perpetuity" =
+  copies stay protected, not keep everything); log access to crosswalk, output files, transfers; keep
+  transfers pausable (164.514(e)(4)(iii) cure-or-stop duty). Whether a donation ID/donor number is a
+  listed identifier = privacy officer's field-by-field call. A Certificate leaves FDA access to BECS
+  unchanged — for counsel to confirm.
