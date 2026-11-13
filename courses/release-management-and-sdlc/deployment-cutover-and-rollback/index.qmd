@@ -1,0 +1,334 @@
+---
+title: "Deployment, Cutover and Rollback"
+order: 144
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** plan a go-live with go/no-go criteria, BECS downtime procedures, post-deployment verification, and a rollback you have actually rehearsed.
+- **The punchline:** Release C's rollback rehearsal in the validation environment worked, but it took longer than the entire downtime window. The Director did not accept "we will not need it." The plan changed: an earlier point-of-no-return checkpoint, a pre-staged restore, a longer window agreed with distribution and the site leads, then a second rehearsal. The real go-live fit inside the window.
+- **The rule in one line:** a rollback plan is a measured duration and a named decision time, not a paragraph. Decide by the moment when window end minus rehearsed rollback minus margin runs out.
+- **Monday question:** "What is the last minute at which we can still roll back and be live on the old release when the window closes, and who decides at that minute?"
+- **The trap:** treating the downtime as an IT event. BECS downtime means paper at three sites, and the paper has to be reconciled back into BECS accurately. That reconciliation is a data-integrity risk, not clerical cleanup.
+:::
+
+**Before you start:** this module builds on [release management, deployment and change control](../release-management-deployment-and-change-control/index.qmd) (its readiness checklist, row 9: "rollback plan exists and names who decides"), [vendor release intake for BECS](../vendor-release-intake-for-becs/index.qmd) (Release C and its conditional go-live) and [CI/CD pipelines under GxP](../ci-cd-pipelines-under-gxp/index.qmd) (archived artifacts). For the validation vocabulary it leans on [IQ, OQ, PQ and traceability](../../csv-and-becs/iq-oq-pq-and-traceability/index.qmd) and [staying validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd). It does not re-teach them.
+
+## The starting condition
+
+Release C (validation record VAL-1418) is ready to go live in production, in the first post-freeze window that [module 4](../release-management-deployment-and-change-control/index.qmd) set aside. The conditions [module 5](../vendor-release-intake-for-becs/index.qmd) made binding are met: the label reprint tests LR-1 to LR-6 passed at central, Brookfield and Fairview, and the regression tiers passed, including the HOP-to-BECS interface cases (TC-32a/b/c, TC-34, TC-35). If any of that were not true, this module would not start; Release C would be waiting for the vendor's fix.
+
+Passing the tests answered "does Release C work?" It did not answer "how do we get it in, and how do we get out if we have to?" This module is that second question.
+
+## The rehearsal that did not fit
+
+HOP 3.0 was easy to deploy in one respect: HOP can be off for an hour and hospitals phone in their orders. BECS cannot. When BECS goes down, collections, testing, labeling and distribution all continue, on paper, under the downtime (manual or backup) procedures at all three sites, and everything captured on paper is entered into BECS afterward.
+
+The systems administrator ran the rollback rehearsal in the validation environment, which holds a de-identified copy of production at production size ([module 3](../environments-baselines-and-test-data/index.qmd)). The scenario: Release C is installed, something goes wrong, restore Release B. He presents the numbers at the Monday meeting.
+
+"The rollback works. Data came back, the interface reconnected, the labels printed. It took nine hours."
+
+The head of distribution does not need the next slide. "The window we pencilled in is six hours. You are telling me that if we cut over and have to go back, we would still be down three hours after we told the hospitals we would be back."
+
+"Even if we started the rollback the moment the window opened," the systems administrator says. "The restore media comes out of the offsite archive, the Release B installation has to be rebuilt on the server, then the database restore, then the interface and printer configuration, then verification."
+
+The vendor's implementation consultant offers the comfort the room is looking for: "In our experience, you will not need to roll back."
+
+The Quality Analyst answers first. "That is a forecast. I need a procedure that fits the window, and I need the window to be honest."
+
+The CIO asks what the Director would do. You know the answer has three parts. Decide where the point of no return is. Make the rollback shorter. Agree a longer window with the people who live in it. Then rehearse again. First, the vocabulary and the rules.
+
+## Why this rule exists, and the ITSM bridge
+
+Three failures sit behind this module.
+
+**A rollback nobody has run.** An untested rollback is a hope. It tends to fail for ordinary reasons: the backup was not restorable, the old installation media is in the wrong place, the restore takes longer than anyone estimated. You find out when production is down.
+
+**A point of no return that nobody named.** Before the database conversion runs, backing out is cheap: stop and reopen on Release B. After conversion, rollback means restore. After production transactions are recorded in Release C, rolling back means restoring a backup that predates those transactions and re-entering whatever happened since. Every hour past a checkpoint changes what "undo" costs. If the decision point is implicit, the decision gets made late, by whoever is most tired.
+
+**Downtime paper that does not make it back accurately.** The risk specific to blood is that manual records are the only record for the period when BECS is unavailable. A transposed donation identification number, a status change entered in the wrong order, or a unit distributed on paper and never entered can leave BECS wrong about a product. Nobody sees it until a hospital call or an inspector's sample.
+
+The ITSM bridge: this is **deployment management with a backout plan**, plus **IT service continuity**, held to regulated standards. Your change records already carry a backout section. Here the backout is rehearsed, timed, and has a named decision owner and a clock, and the continuity procedure for the downtime is a controlled document that clinical staff execute, not an IT runbook.
+
+## The rule in plain English
+
+1. **Plan the cutover as a timed sequence with owners.** Every step has a named person, a planned duration, and a record.
+2. **Decide go/no-go on criteria written in advance,** at defined moments, by named decision makers. Quality blocks on labeling; the Director co-approves; neither overrides the other's block.
+3. **Run BECS downtime under the written downtime procedures,** and treat everything captured manually as a record that must be reconciled into BECS under control.
+4. **Verify the installation in production,** with the checks that production can safely support, and be explicit about what cannot be tested there.
+5. **Name the point of no return** and make the rollback decision explicit before it, with a clock.
+6. **Rehearse the rollback,** time it, and fit the plan to the measured time. Re-rehearse after any plan change.
+7. **Keep the prior baseline restorable:** archived, identified, and checked to be restorable.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 211.68(b) | "Title 21, part 211, section 211.68, paragraph (b)" | Controls over computer systems; input and output checked for accuracy; a backup file of data entered shall be maintained, with alternative systems designed so backup data are exact, complete and secure (regulation: *shall*). | The pre-window backup, the restore, and the reconciliation checks. |
+| 21 CFR 606.100(b) | "...section 606.100, paragraph (b)" | Establish, maintain and follow written SOPs for steps including distribution and recordkeeping (regulation: *must*). | The downtime procedure and the cutover plan, as written and followed. Whether the cutover plan itself is an SOP is Quality's call. |
+| 21 CFR 606.160(a)(1) | "...section 606.160, paragraph (a)(1)" | Records maintained concurrently with each significant step, legible and indelible, identifying the person and dates (regulation: *shall*). | The paper captured during downtime. |
+| BECS guidance III.G | "Section III, subsection G of the 2013 user's-facility guidance" | Validate in test, move what you validated, validate interfaces, train, monitor after installation, validate data conversion (guidance: *should*, with *must* where it cites regulation). | Installation in production and the monitoring that follows. |
+| GPSV 5.2.6 | "General Principles of Software Validation, section 5.2.6, user site testing" | Evidence that hardware and software are installed and configured as specified; records of performance and failures (FDA device-maker guidance; general thinking, not binding on Lakeshore). | Installation verification. |
+| NIST SP 800-53 CM-2 | "Control CM-2, baseline configuration" | A current baseline under configuration control, updated when components are installed or upgraded (voluntary federal catalog). | The baseline that rollback restores, and the new one recorded after go-live. |
+| AABB Standards 3.9.2 (theme only) | "AABB Information Systems, backup and continuity" | Theme: a manual or computer-based alternate system ready if the computerized system fails, tested at defined intervals. Not quoted; verify numbering in the current edition. | The downtime procedure and why its readiness gets tested. |
+
+## The actual text
+
+**What no source says.** None of the sources in this course prescribes go/no-go criteria, the content of a downtime procedure, a cutover sequence, or a rollback method. Those are Lakeshore's decisions. What the sources supply is the evidence expectations around them.
+
+The backup rule is the closest regulatory text to rollback readiness:
+
+> A backup file of data entered into the computer or related system shall be maintained except where certain data, such as calculations performed in connection with laboratory analysis, are eliminated by computerization or other automated processes. [...] Hard copy or alternative systems, such as duplicates, tapes, or microfilm, designed to assure that backup data are exact and complete and that it is secure from alteration, inadvertent erasures, or loss shall be maintained.
+> — 21 CFR 211.68(b) (backup sentences; full text in `sources/cfr/211.68.md`)
+
+Reading it for a cutover: **"exact and complete"** is the test for the pre-window backup, and it is why "the backup job ran" is not evidence. A backup counts when you have shown it restores. **"Shall be maintained"** also covers the rollback's raw material: the data as they stood before cutover. (211.68 is a drug cGMP section; FDA's BECS guidance cites it for blood establishment system records, which is how it reaches Lakeshore's BECS thinking.)
+
+The downtime paper falls under the records rule:
+
+> (a)(1) Records shall be maintained concurrently with the performance of each significant step in the collection, processing, compatibility testing, storage and distribution of each unit of blood and blood components so that all steps can be clearly traced. All records shall be legible and indelible, and shall identify the person performing the work, include dates of the various entries, show test results as well as the interpretation of the results, show the expiration date assigned to specific products, and be as detailed as necessary to provide a complete history of the work performed.
+> — 21 CFR 606.160(a)(1) (full text in `sources/cfr/606.160.md`)
+
+Reading it: **"concurrently"** is why paper is filled in at the moment of the step, not reconstructed at the end of the shift. **"legible and indelible"** and **"identify the person"** are why downtime forms are pen-and-ink, signed or initialed. **"so that all steps can be clearly traced"** is the standard the reconciliation has to meet: after it, the BECS history of each unit must trace through the downtime without a gap.
+
+The procedures rule (606.100(b), quoted in [module 4](../release-management-deployment-and-change-control/index.qmd)) supplies "establish, maintain, and follow." The downtime procedure and the cutover plan are only as good as the extent to which staff follow them, which is why training and rehearsal belong here.
+
+The blood-specific guidance on installation, in the bullets of III.G that matter at go-live:
+
+> We recommend that you closely monitor the system for a period of time after installation of the new or upgraded software in the production environment to detect any discrepancies that were not identified by the test cases.
+> — FDA, *Blood Establishment Computer System Validation in the User's Facility*, III.G
+
+> You should evaluate your personnel's ability to perform system maintenance procedures, such as backups, and their ability to respond in an appropriate and timely manner to all alarms, warnings and error messages.
+> — same guidance, III.G (training bullet, second sentence)
+
+> Although not a function of your system, we recommend that you validate the data conversion from your legacy system to your new system to avoid problems such as duplicate donor records and deferral codes.
+> — same guidance, III.G (last bullet)
+
+Reading them: the monitoring sentence says the production environment is where some discrepancies first appear. The training sentence names **backups** as something staff must demonstrably be able to do; a rollback rehearsal is how you show it. The last bullet is written for migrating from a legacy system, not for a vendor upgrade, and it is guidance, not regulation. Release C's database conversion is a lesser cousin of that situation, and the same worry, duplicates and lost deferral codes, applies to how you check the conversion's result.
+
+For installation itself, FDA's general guidance (written for device makers, general thinking for Lakeshore):
+
+> There should be evidence that hardware and software are installed and configured as specified. Measures should ensure that all system components are exercised during the testing and that the versions of these components are those specified.
+> — FDA, *General Principles of Software Validation*, 5.2.6
+
+> During user site testing, records should be maintained of both proper system performance and any system failures that are encountered. The revision of the system to compensate for faults detected during this user site testing should follow the same procedures and controls as for any other software change.
+> — same guidance, 5.2.6
+
+Reading them: **"installed and configured as specified"** is installation verification in the [IQ sense](../../csv-and-becs/iq-oq-pq-and-traceability/index.qmd): version, configuration and baseline match the validated record. **"records ... of any system failures"** means a failed go-live check is recorded, not quietly rerun. The second paragraph is the cutover-night rule: a fix during the window is a change with its own record, not a hallway adjustment.
+
+NIST's baseline control gives the vocabulary for the thing rollback restores:
+
+> a. Develop, document, and maintain under configuration control, a current baseline configuration of the system; and
+> b. Review and update the baseline configuration of the system: [...] 3. When system components are installed or upgraded.
+> — NIST SP 800-53 Rev. 5, CM-2 (voluntary here; `sources/nist/sp-800-53r5-cm-sa-excerpt.md`)
+
+Release B's baseline is the rollback target; Release C's becomes the new baseline when go-live is confirmed. Both are baseline records, not memories.
+
+AABB's Standards address backup and continuity in section 3.9 (3.9.2 in the structure verified in `sources/aabb/information-systems-section-3.9.md`). This course names the theme, an alternate system ready for continuous operation and tested at defined intervals, and never quotes AABB text. Check the current edition's numbering before citing it in a real document.
+
+## The cutover plan
+
+The cutover plan is a timed script. The readiness checklist from module 4 asked whether you are ready; this document says what happens, in what order, by whom. Times below are illustrative hours from window open, the shape of a plan, not a benchmark.
+
+| When | Step | Owner | Evidence |
+|---|---|---|---|
+| Days before | Hospitals and sites notified; downtime binders at all three sites checked for current procedure and a freshly printed deferred-donor list | Head of distribution; site leads | Notice sent; binder check record |
+| Day before | **Go/no-go 1** against the written criteria | Quality blocks; Director co-approves; head of distribution consulted | Signed decision in the release record |
+| Hour 0 | Window opens. Downtime procedures start at central, Brookfield, Fairview. HOP status message posted | Site leads; development lead (HOP message) | Downtime start time logged per site |
+| Hour 0 to 1 | Final BECS backup; restore-check on the pre-staged target; baseline record for Release B confirmed | Systems administrator | Backup identifier; restore check result |
+| Hour 1 | **Go/no-go 2**: confirm criteria still hold with the window open | Systems administrator, Quality, Director | Recorded confirmation |
+| Hours 1 to 3 | Install Release C; run database conversion. **Point of no return begins** | Systems administrator, vendor consultant | Installation log; conversion result |
+| Hours 3 to 4 | Post-deployment verification | Systems administrator; Quality witnesses | Verification record |
+| Hour 4 | **Checkpoint: continue or roll back** (explained below) | Director, Quality | Recorded decision |
+| After hour 4 | Reopen BECS; first production transactions; begin reconciliation of downtime paper | Site leads, distribution | Reopen time per site; reconciliation log |
+| After reconciliation | Monitoring period begins; baseline record updated | Systems administrator | Baseline record; monitoring plan |
+
+Honest caveat: the hour-4 checkpoint above is the *result* of the rehearsal below. The first draft of the plan did not have one.
+
+**Communications.** Three audiences, each with a different need.
+
+- **Sites** (central, Brookfield, Fairview) need the start time, the expected end, what to do if the window runs long, and a phone bridge with a named lead. Each site confirms in writing that its downtime binder is current before the window opens. The earlier [CAPA module](../../quality-system-essentials/capa-root-cause-to-effectiveness/index.qmd) showed what a stale deferred-donor list in a binder does.
+- **Hospitals** are told through HOP's status messaging, with a phone number for orders. HOP's design already protects against stale information: it shows only BECS-read status with the read time (HOP-R34) and marks stale proposals (HOP-R35), both from [module 2](../requirements-backlogs-and-traceability-in-agile/index.qmd). During the window the status message is an additional control and an honest one, but the plan should not depend on it. If HOP supports a controlled switch to hide auto-allocation proposals, using it is a recorded step in the plan; if it does not, the banner and the stale-marking carry the load, and that gap is a reason to ask the development lead now.
+- **Distribution staff** are told that orders placed through HOP during the window are fulfilled by phone-and-paper procedures, and that on reopening, orders are worked from BECS only after the reconciliation of anything handled manually.
+
+## Go/no-go: criteria and deciders
+
+A go/no-go decision made in the room, under pressure, on optimism, is the failure. The fix is written criteria agreed before the window, with the right people able to say no.
+
+| # | Criterion | Evidence | No-go if |
+|---|---|---|---|
+| 1 | Release readiness checklist met, rollback row included | Module 4 checklist; module 9 additions | Any line met without a document |
+| 2 | LR-1 to LR-6 passed at all three sites; reprint SOP revised; staff trained | VAL-1418 results; training records | Any fails or any site untrained |
+| 3 | Tier 1 and Tier 2 regression results reviewed | VAL-1418 report in draft with Quality review | Open failure without a recorded risk decision |
+| 4 | Backup of production taken and **restore tested** | Backup and restore-test records | Restore not demonstrated |
+| 5 | Rollback rehearsed within the window, with the checkpoint time agreed | Rehearsal record | Rollback longer than the window allows |
+| 6 | Downtime procedures current at every site; staff briefed | Binder check; briefing record | Any site cannot start downtime |
+| 7 | No other interface-touching release in the window | Calendar | Collision |
+| 8 | Staff on hand: systems administrator, vendor consultant, Quality, site leads, decision-maker reachable | Roster | Anyone required unreachable |
+| 9 | No operational condition making downtime unsafe (unusual demand, an incident open on the order path) | Head of distribution's confirmation | Distribution says no |
+
+**Who decides.** Per [module 5](../vendor-release-intake-for-becs/index.qmd), Quality can block go-live on a labeling question and the Director does not override it; the Director co-approves as system owner, as with VAL-1203. A no-go from distribution on operational grounds (row 9) has the same weight; the freeze rule's head of distribution is a named voice. The vendor's consultant advises and does not decide. The CIO is informed, and a CIO's preference does not substitute for a criterion.
+
+**A no-go is a normal outcome.** If go/no-go 1 fails, Release B stays in production, the window is released, and the release record says why. That is the procedure working. The cost of the next window is smaller than the cost of a forced go.
+
+## BECS downtime and the reconciliation risk
+
+Lakeshore's downtime procedures already exist, in the binders at each site, owned and controlled by Quality ([document control](../../quality-system-essentials/document-control-and-records/index.qmd)). This module does not write them. What the cutover adds is a **planned** downtime, which is easier than a failure in one respect: you can prepare. Preparing means:
+
+- print a fresh deferred-donor list and current product status lists immediately before the window, the lesson of the Brookfield event in the CAPA module;
+- confirm label stock and the pre-numbered downtime forms are at each site;
+- confirm who at each site is authorized to authorize the manual steps;
+- walk through the procedure with staff who have not used it recently, because the training sentence in III.G is about performing, not signing a read-and-understood sheet.
+
+**Reconciliation** is the part that produces the data-integrity risk. Every manual entry is transcribed into BECS at a later time by a person, from a record made by another person. The questions an assessor asks track the ALCOA ideas in the [data integrity course](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd) and the paper-to-electronic handoff in [predicate rules and hybrid systems](../../data-integrity-and-records/predicate-rules-and-hybrid-systems/index.qmd): is the entry attributable, does it show when the event really happened rather than when it was keyed, is the paper preserved as the original, is it accurate.
+
+A reconciliation procedure worth having:
+
+1. **Paper is the original; it is retained.** Transcription creates the electronic record, and the paper stays linked to it.
+2. **Entries carry the event time,** not just the keying time, and are marked as downtime entries, so the record shows the gap honestly. Whether BECS accepts back-timed entries, and how, is something to confirm with the vendor and test, not assume.
+3. **Order of entry follows risk.** Anything that affects whether a unit can be released or distributed (quarantine and status changes, deferrals, distributions) is reconciled first, and BECS is not used for release decisions on affected units until it is.
+4. **A second person verifies each entry against the paper,** against a sample sized by risk at minimum and in full for status and distribution entries. This is a Lakeshore control, in the spirit of 211.68(b)'s input-and-output checking.
+5. **Counts reconcile.** Units and forms in equals records in BECS; unmatched items are investigated, not adjusted.
+6. **Exceptions are deviations.** A missing form, a duplicate, or an illegible unit number goes into the deviation process ([deviations and nonconformances](../../quality-system-essentials/deviations-and-nonconformances/index.qmd)), and a unit whose history cannot be traced is handled by Quality.
+
+Reconciliation is also the last step of the cutover plan; the go-live is not closed until it is complete and reviewed.
+
+## The point of no return, and what rollback means
+
+Rollback is not one thing. It depends on how far you have gone.
+
+| Stage | What has happened | What backing out means | Cost |
+|---|---|---|---|
+| **Before installation** | Backup taken; downtime running | Stop, reopen BECS on Release B, reconcile paper | Low. Minutes to an hour |
+| **During install, before conversion completes** | Release C files in place; database converted partly or not | Reinstall or revert to Release B; may need database restore | Moderate |
+| **After conversion, before reopening** | Database converted; nothing recorded in Release C | Restore Release B and the pre-window data; reopen | High, but no data lost: the downtime paper bridges the gap |
+| **After reopening** | Real transactions recorded in Release C | Restore a pre-cutover backup, then re-enter everything since, or fix forward | Very high, and a data-integrity exposure |
+
+So the decision point has to come **before reopening BECS to users**, while "restore" still loses nothing that the downtime paper does not already hold. That is the plan's point of no return in the sense that matters: the moment after which rollback stops being a clean restore. The plan makes it explicit and puts the decision before it.
+
+The deciding arithmetic is simple. **Latest rollback decision time = window end, minus the rehearsed rollback duration, minus a margin.** If rollback takes five hours, the margin is one hour and the window is ten, the decision must be made by hour four. If verification is not finished by then, or something unresolved is open, the answer is rollback, even if the problem might turn out to be small. The checkpoint exists to take the choice out of the moment.
+
+Two terms to keep distinct: **rollback** returns to the prior release; **roll forward** fixes the problem in the new release. Roll forward is attractive and often right in software, but it is a *change*: it needs its own evidence under the same rules, and in the middle of a downtime window it is the hallway adjustment 5.2.6 warns about. The plan should say when roll forward is acceptable at all (for instance, configuration corrections that are already in the validated plan) and who approves it.
+
+**What rollback restores, and where it lives.** The prior baseline: Release B's installation media or package, its configuration and interface settings, the label templates, and the verified backup of the data as they stood before the window. [Module 7](../ci-cd-pipelines-under-gxp/index.qmd)'s archived artifact gives the same property for HOP: HOP's prior build is stored, identified and checksum-verified, so HOP rollback is a deployment of a known artifact. BECS is installed by the vendor's tools, not through HOP's pipeline, so the control is documentary and physical: Release B's baseline record (CM-2) lists every component and its location, the media is identified and checked, and the restore is something the systems administrator has done recently, not once at the original installation.
+
+## The rehearsal, and what the Director changed
+
+The rehearsal exists to produce a number. Nine hours was the number. The Director's decision, written into the plan before anything else:
+
+**1. An earlier checkpoint.** The decision point moves from "when it looks bad" to a fixed time before reopening, computed by the formula above, with Quality and the Director deciding together and a rule that an unresolved verification item at the checkpoint means rollback.
+
+**2. A pre-staged restore.** The nine hours were mostly setup: media from the offsite archive, rebuilding the Release B installation, then the restore. In the plan, the Release B installation environment is staged and checked in advance, and the pre-window backup is restored to a staging target as part of go/no-go 2, which also proves the backup (211.68(b): "exact and complete"). In this scenario, the rehearsed rollback falls to five hours. Those are the rehearsal's figures, not a general expectation.
+
+**3. A longer window, agreed with distribution and the site leads.** Six hours was a guess made before the rehearsal. With a five-hour rollback, one hour of margin and the forward path taking four hours, the window agreed with the head of distribution and the site leads is ten hours, placed where demand is lowest. That means ten hours of downtime procedures at three sites, so the sites confirm they can staff it, and hospitals are told the longer time up front. The Director owns the trade: a longer planned window against the risk of a rollback that cannot finish.
+
+**4. Rehearse again.** The plan changed, so the evidence is stale. The second rehearsal, with a timekeeper recording start and end of each step, restores Release B within five hours and shows the reopen working. Quality reviews the record. The rehearsal record is a document, retained in VAL-1418's file.
+
+The first rehearsal's result is not a deviation: it did its job. If the plan had been *executed* on those numbers and the window overrun, the overrun would be a deviation. Finding the problem in rehearsal is the cheapest place to find it.
+
+None of this guarantees the real rollback would work. The rehearsal ran in a copy of production, with production-sized data and no real-world surprises. What it gives is a measured duration, a procedure the people have followed once, and a plan whose arithmetic closes.
+
+## Post-deployment verification
+
+What can be tested in production, and what cannot, is a distinction BECS guidance makes implicitly: validation happens in the test environment (III.G), and production gets the validated configuration moved in. Production verification therefore answers a narrower question: **is what is running the thing we validated, and is it connected correctly?** It is not a repeat of OQ-style functional testing.
+
+**What production verification can do:**
+
+- **Installation verification:** Release C's version and build identifiers, installed components, and configuration compared with the validated baseline: the "installed and configured as specified" evidence of 5.2.6, recorded against Release C's baseline.
+- **Configuration checks:** the alternate reprint layout is configured; interface accounts and permissions are as in TC-32b; site-specific settings for each of the three locations are as specified.
+- **Connectivity and interface checks:** the HOP-to-BECS interface connects, reads inventory with a current read time, and the interface error files (III.G) are empty or explained.
+- **Data conversion checks:** record counts and a sample of converted records compared before and after, with extra attention to donor records and deferral codes, which is the III.G worry about conversions.
+- **A narrow labeling smoke check** under Quality's control: an alternate-layout reprint on a unit Quality designates, with the second-person check and an entry in the reprint log. Whether any write transaction in production is acceptable as a smoke check is Quality's judgment; module 3's rule that real donor data stays out of non-production has a mirror: invented records do not go into production.
+
+**What it cannot do:** run destructive or abnormal tests, such as an LR-4-style deliberate wrong-layout print, which belongs in validation; stress and peak-load tests, which belong in a test environment sized for them; or prove performance across the range of conditions, which only monitoring over time can show.
+
+That last point is why the plan ends with a monitoring period, per III.G, rather than a sign-off. Failures found in the checks are recorded (5.2.6) and are decision inputs for the checkpoint, not retried silently.
+
+In this scenario the real go-live ran inside the window. Installation and conversion finished at about the planned time, verification passed at all three sites, and at the checkpoint the Director and Quality recorded "continue." BECS reopened, the first production labels printed correctly, and the monitoring plan took over. Reconciliation of the downtime paper began that day and closed after the second-person review. How the first days go belongs to [module 11](../post-release-review-and-delivery-metrics/index.qmd); this module ends when the monitoring period begins.
+
+## See it in one picture
+
+The sequence with its decision points. The checkpoint's position is computed, not chosen by feel.
+
+```{mermaid}
+flowchart TD
+    G1{"Go/no-go 1, day before:<br/>criteria met? Quality labeling check,<br/>Director co-approves"} -->|"No-go"| WAIT["Release C stays out<br/>Release B remains in production"]
+    G1 -->|"Go"| DT["Window opens: BECS downtime procedures start<br/>HOP status message posted<br/>final backup taken and restore-checked"]
+    DT --> G2{"Go/no-go 2, window open:<br/>backup verified, restore staged,<br/>sites on paper, staff present"}
+    G2 -->|"No-go"| ABORT["Abort before any change<br/>Reopen BECS on Release B<br/>Reconcile paper"]
+    G2 -->|"Go"| INST["Install Release C and run database conversion<br/>(point of no return begins)"]
+    INST --> PV["Post-deployment verification<br/>version and baseline, configuration,<br/>interface, labeling smoke check"]
+    PV --> G3{"Checkpoint at the latest-rollback time:<br/>window end minus rehearsed rollback<br/>minus margin"}
+    G3 -->|"Fail or unresolved"| RB["Rollback: restore pre-staged Release B baseline<br/>and data, verify, reopen"]
+    G3 -->|"Pass"| REOPEN["Reopen BECS to users on Release C<br/>First production transactions recorded<br/>Rollback now means restore and re-enter"]
+    REOPEN --> REC["Reconcile downtime paper into BECS<br/>second-person verification"]
+    RB --> REC
+    ABORT --> REC
+    REC --> MON["Monitoring period starts<br/>(hypercare: module 11)"]
+```
+
+## Watch it explained
+
+This TechTalk from Microsoft's Dynamics 365 community channel walks through defining a cutover strategy, preparing for it and executing it, including go/no-go and rehearsal. It's about business-application go-lives, not regulated blood systems, and it's a software vendor's own guidance. Watch it for the shape of a timed cutover plan; the regulated pieces in this lesson (downtime procedures, reconciliation, Quality's labeling block) are Lakeshore's own.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/UKmTRdNsSdg"
+  title="Dynamics 365 Cutover and Remote Go Live Strategy - TechTalk" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## What an inspector or assessor would look for
+
+| They ask | A good answer | A bad answer |
+|---|---|---|
+| Show me how Release C went into production. | The change record, the cutover plan with timed steps, deployment record and the baseline update. | "The vendor installed it." |
+| How did you decide to go? | Written criteria, two recorded go/no-go decisions with names, and Quality's review. | "Everyone agreed in the meeting." |
+| What happened to records during the downtime? | Paper forms retained, a reconciliation log, second-person verification, exceptions routed to deviations. | "We entered them afterward." |
+| Could you have rolled back? | A rehearsal record with times, a checkpoint rule, a restore-tested backup. | "The vendor told us it was unlikely." |
+| How do you know production matches what you validated? | Installation verification against the baseline, with identifiers. | "It said installed successfully." |
+| What did you do about the downtime binders? | Binder check records and briefing records before the window. | "They are in the binder." |
+
+## Common traps
+
+**"The vendor installs it, so the vendor owns the cutover."** The vendor's consultant is an important participant. Authorization, the go/no-go decision, the downtime, the reconciliation and the rollback decision remain Lakeshore's (BECS guidance III.I: "you are ultimately responsible").
+
+**"We took a backup, so we have a rollback."** 211.68(b) wants backup data "exact and complete." Only a restore proves it, and only a timed rehearsal tells you whether the restore fits the window.
+
+**"A longer window fixes it."** A longer window changes the arithmetic, but it also changes what the sites carry. Downtime hours are a cost distribution and the three sites bear them. The window is an agreement with operations, not an IT preference.
+
+**"Reconciliation is data entry."** Transcribing downtime paper is where a regulated record is created from another record. Unchecked, it is where wrong status and missing distributions come from.
+
+## What this means for your job
+
+- **Ask for the rollback time, not the rollback plan.** "How long did the last rehearsal take, and what is the latest minute we can still use it?"
+- **Make the checkpoint a rule with a name on it.** If nobody is named, the decision defaults to the person with the most to lose from admitting it.
+- **Treat the downtime binders as part of the release.** The deferred-donor list in the binder is as much a go/no-go item as the installer.
+- **Insist on a restore test of the backup** before the window opens, not after.
+- **Give Quality the labeling block in writing,** and do not let a schedule argument reopen it.
+- **Escalate** if the rehearsal shows rollback longer than the window, if a site cannot staff the downtime, or if go/no-go criteria are being relaxed because the date was announced.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The vendor's consultant says rollback is unlikely to be needed, so a rehearsal is a waste of a day. Your answer?
+The rehearsal is not a prediction of need; it measures how long recovery takes and whether the procedure works. Here the first rehearsal showed rollback longer than the whole window, which no forecast would have revealed. No source says a rehearsal is a regulatory requirement; it is Lakeshore's way of meeting its own plan, the backup expectation of 211.68(b), and the guidance's expectation that staff can perform maintenance procedures such as backups (III.G).
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Production verification passes at hour three. Rollback takes five hours and the window ends at hour ten. A discrepancy appears at hour five in an interface error file nobody can explain. What do the rules say?
+The latest rollback decision time was hour four (10 minus 5 minus 1 for margin). At hour five the plan's checkpoint has passed: the Director and Quality are no longer deciding between "continue" and "clean rollback," and the plan must have said in advance what happens now (a recorded risk decision to continue on monitoring, or rollback that is expected to overrun). The lesson is why the checkpoint is earlier than the moment you would feel sure. Whatever is chosen is recorded; an unexplained interface error is something III.G specifically says to watch.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Is it a regulatory requirement to have a go/no-go meeting, a ten-hour window or a rehearsed rollback?
+No. These are Lakeshore's decisions grounded in risk. The regulation and guidance in this module require controlled changes, accurate and traceable records (606.160(a)(1)), backups that are exact and complete (211.68(b)), followed procedures (606.100(b)) and, as guidance, monitoring after installation (III.G). The go/no-go structure and the window length are how Lakeshore meets them.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Explain to your CIO in two sentences why the downtime paper matters more than the install.
+"During the window our blood records exist only on paper, and every one of them has to be entered back into BECS correctly, because those records are what show a unit's history to a hospital and an inspector. A wrong entry there is a product-record error, not an IT glitch, so we check each one with a second person and treat the exceptions as deviations."
+:::
+
+## Where this goes next
+
+Release C is live and the monitoring period is running, but a normal release is not the only way to change production. [Emergency changes and hotfixes](../emergency-changes-and-hotfixes/index.qmd) takes CHG-2207, the critical framework vulnerability in HOP, through the path that has to be fast without leaving a validation gap.
