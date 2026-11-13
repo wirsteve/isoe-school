@@ -13,7 +13,7 @@ samples, incl. the referral prohibition), 493.1105 (retention), 493.1231 (confid
 493.1232 (specimen identification and integrity), 493.1251 (procedure manual), 493.1253
 (establishment and verification of performance specifications), 493.1281 (comparison of test
 results), 493.1283 (test records), 493.1291 (test report — paragraph (a) is the core "manual or
-electronic system(s)" / interfaced-systems requirement), 493.1299 (postanalytic QA).
+electronic system(s)" / interfaced-systems requirement), 493.1299 (postanalytic QA); added the same day: 493.1230 (general laboratory systems condition), 493.1236 (evaluation of proficiency testing performance), 493.1239 (general laboratory systems QA), 493.1252 (test systems, equipment, instruments, reagents, materials, and supplies), 493.1290 (postanalytic systems condition).
 XML converted to text; citation footers removed; italics shown as *...*. Scope note for drafters:
 whether and how CLIA applies to a given blood-center laboratory (donor testing vs. patient
 testing, reference immunohematology) must be taught from 493.3 and 493.2 exactly as written —
@@ -550,3 +550,65 @@ The laboratory must establish and follow written policies and procedures that en
 (b) The postanalytic systems quality assessment must include a review of the effectiveness of corrective actions taken to resolve problems, revision of policies and procedures necessary to prevent recurrence of problems, and discussion of postanalytic systems quality assessment reviews with appropriate staff.
 
 (c) The laboratory must document all postanalytic systems quality assessment activities.
+
+## § 493.1236 Standard: Evaluation of proficiency testing performance.
+
+(a) The laboratory must review and evaluate the results obtained on proficiency testing performed as specified in subpart H of this part.
+
+(b) The laboratory must verify the accuracy of the following:
+
+(1) Any analyte or subspecialty without analytes listed in subpart I of this part that is not evaluated or scored by a CMS-approved proficiency testing program.
+
+(2) Any analyte, specialty or subspecialty assigned a proficiency testing score that does not reflect laboratory test performance (that is, when the proficiency testing program does not obtain the agreement required for scoring as specified in subpart I of this part, or the laboratory receives a zero score for nonparticipation, or late return of results).
+
+(c) At least twice annually, the laboratory must verify the accuracy of the following:
+
+(1) Any test or procedure it performs that is not included in subpart I of this part.
+
+(2) Any test or procedure listed in subpart I of this part for which compatible proficiency testing samples are not offered by a CMS-approved proficiency testing program.
+
+(d) All proficiency testing evaluation and verification activities must be documented.
+
+## § 493.1239 Standard: General laboratory systems quality assessment.
+
+(a) The laboratory must establish and follow written policies and procedures for an ongoing mechanism to monitor, assess, and, when indicated, correct problems identified in the general laboratory systems requirements specified at §§ 493.1231 through 493.1236.
+
+(b) The general laboratory systems quality assessment must include a review of the effectiveness of corrective actions taken to resolve problems, revision of policies and procedures necessary to prevent recurrence of problems, and discussion of general laboratory systems quality assessment reviews with appropriate staff.
+
+(c) The laboratory must document all general laboratory systems quality assessment activities.
+
+## § 493.1230 Condition: General laboratory systems.
+
+Each laboratory that performs nonwaived testing must meet the applicable general laboratory systems requirements in §§ 493.1231 through 493.1236, unless HHS approves a procedure, specified in Appendix C of the State Operations Manual (CMS Pub. 7), that provides equivalent quality testing. The laboratory must monitor and evaluate the overall quality of the general laboratory systems and correct identified problems as specified in § 493.1239 for each specialty and subspecialty of testing performed.
+
+## § 493.1290 Condition: Postanalytic systems.
+
+Each laboratory that performs nonwaived testing must meet the applicable postanalytic systems requirements in § 493.1291 unless HHS approves a procedure, specified in Appendix C of the State Operations Manual (CMS Pub. 7) that provides equivalent quality testing. The laboratory must monitor and evaluate the overall quality of the postanalytic systems and correct identified problems as specified in § 493.1299 for each specialty and subspecialty of testing performed.
+
+## § 493.1252 Standard: Test systems, equipment, instruments, reagents, materials, and supplies.
+
+(a) Test systems must be selected by the laboratory. The testing must be performed following the manufacturer's instructions and in a manner that provides test results within the laboratory's stated performance specifications for each test system as determined under § 493.1253.
+
+(b) The laboratory must define criteria for those conditions that are essential for proper storage of reagents and specimens, accurate and reliable test system operation, and test result reporting. The criteria must be consistent with the manufacturer's instructions, if provided. These conditions must be monitored and documented and, if applicable, include the following:
+
+(1) Water quality.
+
+(2) Temperature.
+
+(3) Humidity.
+
+(4) Protection of equipment and instruments from fluctuations and interruptions in electrical current that adversely affect patient test results and test reports.
+
+(c) Reagents, solutions, culture media, control materials, calibration materials, and other supplies, as appropriate, must be labeled to indicate the following:
+
+(1) Identity and when significant, titer, strength or concentration.
+
+(2) Storage requirements.
+
+(3) Preparation and expiration dates.
+
+(4) Other pertinent information required for proper use.
+
+(d) Reagents, solutions, culture media, control materials, calibration materials, and other supplies must not be used when they have exceeded their expiration date, have deteriorated, or are of substandard quality.
+
+(e) Components of reagent kits of different lot numbers must not be interchanged unless otherwise specified by the manufacturer.
