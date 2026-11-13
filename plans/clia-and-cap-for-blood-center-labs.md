@@ -61,7 +61,7 @@ learning section. No narration.
 | — | (syllabus) | — | 163 | Published |
 | 1 | `where-clia-and-cap-reach-a-blood-center` | Say which of Lakeshore's tests CLIA covers (per 493.2/493.3 and CMS QSO-25-18), how CAP's deemed accreditation fits, and how FDA, CMS/CAP and AABB oversight overlap without replacing each other. | 164/165 | Published |
 | 2 | `the-lis-and-the-test-report` | Apply 493.1291 (incl. 1291(a)'s electronic-transmission requirement), 493.1283, 493.1105 and 493.1231 to the LIS, the LIS-to-BECS interface and reference-lab reports, including corrected reports. | 166/167 | Published |
-| 3 | `instruments-middleware-and-performance-verification` | Direct IT's part in 493.1252/493.1253/493.1281: instrument and middleware interfaces, rule changes, and the verification evidence a change needs. | 168/169 | Not started |
+| 3 | `instruments-middleware-and-performance-verification` | Direct IT's part in 493.1252/493.1253/493.1281: instrument and middleware interfaces, rule changes, and the verification evidence a change needs. | 168/169 | Published |
 | 4 | `proficiency-testing-and-the-lis` | Keep PT samples handled like patient samples but never referred out (493.801) and never mistaken for donations in BECS. | 170/171 | Not started |
 | 5 | `the-cap-inspection-from-it` | Prepare IT for a biennial CAP inspection — LIS validation, interfaces, downtime, access, retention, change control — and line it up with FDA and AABB. | 172/173 | Not started |
 
@@ -101,3 +101,20 @@ learning section. No narration.
   reconciliation method (Lakeshore's control). Hooks: module 3 — message-handling rules are regulated
   configuration; test line "does this change handle corrections, cancellations and duplicates?";
   module 5 — reconciliation report and LCR-014 as inspection evidence.
+- 2026-11-13 — Module 3 `instruments-middleware-and-performance-verification` published (verified). Video: CDC
+  "Life of a Test Method: Validation, Verification, and Managing Quality" (wdRzi3h5V-E; added by main
+  session; general lifecycle, not middleware-specific). **Locked:** a middleware autoverification rule
+  change (instrument flag believed "cosmetic") shipped on an IT ticket without lab verification, before the
+  laboratory-director-approval rule was in force (it is why that rule exists); Quality Analyst found it in
+  routine review; reverted under an emergency lab change; lab reviewing all results released under the
+  rule; no harm/reportability asserted; Quality decides any FDA deviation (links BPDR module). Director's
+  decisions: every middleware/autoverification rule change is an LCR-0xx record with laboratory director
+  approval (or documented delegate); an IT ticket alone cannot change a lab rule (becomes a child of the
+  LCR); evidence = test cases per flag/condition, expected written before the run, expected vs actual;
+  rule inventory under configuration control, edit access restricted and logged, builder ≠ approver.
+  Lakeshore's documented position (not a quote): middleware/autoverification rules are part of the test
+  system and procedure for the tests they touch; strongest hook 493.1251(d) (director approves procedure
+  changes before use). 493.1253 triggers quoted precisely (introduce/modify/no manufacturer specs) — text
+  doesn't mention rule changes; sufficiency is the laboratory director's call. 493.1281(a) not stretched
+  to donor screening. 493.1105(a)(3)(i) retention for performance-spec records. CLSI AUTO10 existence
+  pointer only. No specific LCR number assigned in module 3.
