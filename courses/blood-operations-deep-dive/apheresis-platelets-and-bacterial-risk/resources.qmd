@@ -1,0 +1,58 @@
+---
+title: "Resources"
+order: 185
+---
+
+External links for this lesson. Each was loaded with `curl` on 2026-11-13 and the page title checked. (eCFR's own site, `ecfr.gov`, and PubMed Central's article pages both return a bot check from this repo's build environment, even though a human browser reaches them. The regulation text quoted in the lesson comes from the local copies in `sources/`, and the links below use Cornell's Legal Information Institute mirror of the same official text. No circumvention was attempted.)
+
+## Primary sources
+
+- **[FDA: Bacterial Risk Control Strategies for Blood Collection Establishments and Transfusion Services to Enhance the Safety and Availability of Platelets for Transfusion](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/bacterial-risk-control-strategies-blood-collection-establishments-and-transfusion-services-enhance)**
+  — FDA's landing page for the guidance this lesson quotes (sections I, II, III.A and III.B.1). Use it to download the full PDF. The lesson's local copy is an excerpt, and the parts it does not include (including other strategies, reporting changes and implementation dates) are not described here, so read them on this page. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA: Important Information for Blood Establishments and Transfusion Services Regarding Bacterial Contamination of Platelets for Transfusion](https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/important-information-blood-establishments-and-transfusion-services-regarding-bacterial)**
+  — an FDA notice page. The version retrieved describes an update on septic transfusion reactions from contaminated apheresis platelets and asks establishments to report suspected reactions. Use it as a reminder that real cases drive the guidance, and check the page for the current date and text before relying on it. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.145, Control of bacterial contamination of platelets](https://www.law.cornell.edu/cfr/text/21/606.145)**
+  — the four paragraphs the lesson is built around. Use it to check for amendments against the dated copy in `sources/`. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.100, Standard operating procedures](https://www.law.cornell.edu/cfr/text/21/606.100)**
+  — paragraph (b)(22) is the platelet bacterial-risk procedure requirement and 606.145(d) points to it. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 640 Subpart C, Platelets](https://www.law.cornell.edu/cfr/text/21/part-640/subpart-C)**
+  — 640.20 through 640.25, including donor platelet counts, frequency limits and the container-identification sentence in 640.24(e). Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.110, Plateletpheresis, leukapheresis, and plasmapheresis](https://www.law.cornell.edu/cfr/text/21/606.110)**
+  — the specific-recipient variance. Short enough to read in full. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 610.53, Dating periods for Whole Blood and blood components](https://www.law.cornell.edu/cfr/text/21/610.53)**
+  — the table that fixes the 5-day platelet dating period unless the device instructions say otherwise. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.165, Distribution and receipt](https://www.law.cornell.edu/cfr/text/21/606.165)**
+  — the distribution record requirement the alert path relies on to find every consignee. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+## The ITSM bridge
+
+- **[Microsoft Learn: Deployment gates concepts, Azure Pipelines](https://learn.microsoft.com/en-us/azure/devops/pipelines/release/approvals/gates)**
+  — a non-blood explainer of an automatic gate that blocks release until required checks pass. Read BECS's release gate through it, then note the difference: the gate here must refuse to accept a status that does not come from a record. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+## The video
+
+No video embed for this module. A search for a video on platelet bacterial contamination or transfusion sepsis returned vendor-sponsored webinars (commercial pathogen-reduction company pages) and written articles, and no public YouTube video from a regulator, professional society or academic channel that was specific to the topic and passed an oEmbed check. Nothing was embedded.
+
+## Earlier lessons this one builds on
+
+- [Component processing and labeling](../../blood-center-operations/component-processing-and-labeling/index.qmd)
+- [Storage, distribution and hemovigilance](../../blood-center-operations/storage-distribution-and-hemovigilance/index.qmd)
+- [Risk-based testing and regression](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd)
+- [Emergency changes and hotfixes](../../release-management-and-sdlc/emergency-changes-and-hotfixes/index.qmd)
+- [Staying validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd)
+- [Filing a biological product deviation report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd)
+
+## Keep learning
+
+Not official regulatory sources. Good places to hear how practitioners think about platelet bacterial risk.
+
+- **[003: Septic Reactions with Anne Eder (Blood Bank Guy podcast)](https://www.bbguy.org/2016/04/11/003/)** — a blood-bank educator talks with a physician with long experience in transfusion safety about septic reactions and apheresis platelets. It predates the 2019 guidance and its 2020 update, so treat any testing detail as history and use it for the clinical picture. (This course's [collection and testing](../../blood-center-operations/collection-and-testing/resources.qmd) page links the same episode's transcript.) Verified loading via `curl` on 2026-11-13 (HTTP 200; page title "003: Septic Reactions with Anne Eder - Blood Bank Guy" read from the page's `og:title`).
+- **[AABB Association Bulletin #14-04: Clinical Recognition and Investigation of Suspected Bacterial Contamination of Platelets](https://www.aabb.org/docs/default-source/default-document-library/resources/association-bulletins/ab14-04.pdf)** (AABB, 2014) — a professional society's bulletin on recognizing and investigating a suspected septic reaction. It is old and predates the current FDA guidance, so use it for the clinical-recognition side, which is Riverside's side of the alert path. Verified loading via `curl` on 2026-11-13 (HTTP 200; PDF, no HTML title; first page read to confirm the title and date).
+- **[Pathogen Reduction in Platelets: A Review of the Proposed Draft Guidance](https://clsjournal.ascls.org/content/ascls/30/4/263.full.pdf)** (Clinical Laboratory Science, American Society for Clinical Laboratory Science) — a laboratory-science journal's review written around the *draft* version of FDA's platelet guidance. It is a dated reading of a draft, so use it to see how laboratory professionals first received the topic, not as a statement of current recommendations. Verified loading via `curl` on 2026-11-13 (HTTP 200; page title as above).
