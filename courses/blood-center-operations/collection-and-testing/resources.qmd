@@ -32,17 +32,16 @@ links below use verified-loading mirrors of the same official text.)
   to confirm exactly what 610.40 said on the date of a past inspection or a reactive-result
   investigation.
 
-- **[The Journey of Blood: What happens after you give blood | NHS Give
-  Blood](https://www.youtube.com/watch?v=Q55LrC7vijM)** (NHS Blood Donation, from oEmbed
-  `author_name`) — the video embedded in this lesson. The UK's national blood service walking
-  through component separation, parallel testing, and holding until results clear. UK-regulated,
-  not FDA/CFR, so don't treat any specific number or procedure it shows as governed by 606/610 —
-  the operational shape (split fast, test in parallel, hold until clear) is what maps onto this
-  lesson. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+- **[What Really Happens to Your Blood After You
+  Donate?](https://www.youtube.com/watch?v=oZwtv9IJH6A)** (Seeker, from oEmbed `author_name`). This is
+  the science-education explainer embedded in the lesson. It isn't FDA/CFR-specific, so don't treat any
+  number or procedure it shows as governed by 606/610. The operational shape (split fast, test in
+  parallel, hold until clear) is what maps onto this lesson. Verified embeddable via YouTube oEmbed on
+  2026-11-13 (HTTP 200).
 
 - **[AABB: Circular of Information for the Use of Human Blood and
   Components](https://www.aabb.org/news-resources/resources/circular-of-information)** — the
-  official joint AABB/American Red Cross/America's Blood Centers reference that actually states
+  official joint blood-community reference (published through AABB) that actually states
   each component's shelf life, storage temperature, and indications for use: what red cells,
   plasma, and platelets each need once they're split apart Tuesday afternoon, the detail this
   lesson names ("very different shelf lives") but doesn't itself spell out. Verified loading via
@@ -61,6 +60,4 @@ links below use verified-loading mirrors of the same official text.)
 
 Not official sources — good places to learn more about collection, quarantine, and infectious-disease testing in practice.
 
-- **[Blood Bag: The Unexpected Journey](https://stanfordbloodcenter.org/blood-bag-the-unexpected-journey/)** (Stanford Blood Center) — a readable walk from the draw through testing and release, written for the public. Use it to put the Thursday-to-Monday timeline in the lesson into a mental picture. Verified loading via `curl` on 2026-11-11 (HTTP 200).
-- **[What Happens to Donated Blood?](https://www.redcrossblood.org/donate-blood/blood-donation-process/what-happens-to-donated-blood)** (American Red Cross) — a short public overview of sample tubes, the testing lab, and why units wait in quarantine. Compare it against how Lakeshore's flow is described. Verified loading via `curl` on 2026-11-11 (HTTP 200).
 - **[BBGuy Essentials 003: septic transfusion reactions with Dr. Anne Eder (transcript, PDF)](https://www.bbguy.org/pdf/BBGE_003_Anne_Eder_Transcript.pdf)** (Blood Bank Guy podcast) — why bacterial contamination of platelets is a distinct testing problem from viral screening. The conversation predates later FDA guidance, so treat the testing details as history, not current practice. Verified loading via `curl` on 2026-11-11 (HTTP 200; PDF, no HTML title).

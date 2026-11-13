@@ -240,19 +240,17 @@ products at once, no matter which of the five branches it came from.
 
 ## Watch it explained
 
-This walkthrough comes from NHS Blood and Transplant, the UK's national blood service, showing
-what happens to a donated unit after collection. It isn't FDA- or CFR-specific — the UK runs a
-different regulatory system than the 606/610 sections this lesson quotes — so don't read any
-number or procedure it shows as governed by the regulations above. But the operational shape it's
-showing is exactly Tuesday and Wednesday's shape: split into components fast, test in parallel,
+This explainer from Seeker, a science-education channel, follows a donation after the donor leaves. It
+isn't FDA- or CFR-specific, and I checked only its title and channel through YouTube's oEmbed record,
+not a transcript, so don't read any number or procedure in it as governed by the regulations above.
+Watch for the operational shape this lesson describes: split into components fast, test in parallel,
 and hold everything until the result comes back clear.
 
 ::: {.video-embed}
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Q55LrC7vijM"
-  title="The Journey of Blood: What happens after you give blood | NHS Give Blood" frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/oZwtv9IJH6A" title="What Really Happens to Your Blood After You Donate?" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 :::
+
+*Seeker, on YouTube. Title checked against YouTube's oEmbed record on 2026-11-13.*
 
 ## What an inspector would actually look for
 
