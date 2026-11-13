@@ -3,6 +3,16 @@ title: "Collection and testing"
 order: 4
 ---
 
+<!-- listen-block:start -->
+::: {.callout-note appearance="simple" icon=false}
+## Listen: audio briefing (6 min)
+
+<audio controls preload="none" style="width:100%" src="../../../audio/blood-center-operations/collection-and-testing.mp3"></audio>
+
+Short on time? This narrated briefing covers the lesson's key points. Subscribe to every briefing in your podcast app from the [Listen](../../../listen.qmd) page.
+:::
+<!-- listen-block:end -->
+
 ## The ticket
 
 A whole blood unit is drawn from a donor at a Lakeshore Blood Center mobile site Tuesday
