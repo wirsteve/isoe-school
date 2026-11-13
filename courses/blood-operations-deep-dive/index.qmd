@@ -1,0 +1,65 @@
+---
+title: "Blood Operations Deep Dive"
+order: 183
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- This course goes one level deeper than *Blood Center Operations*, into five operations where
+  the system, not a person, decides whether a rule is met.
+- **Platelets:** FDA requires blood centers to control bacterial contamination of platelets. The
+  system has to know each unit's testing status, its timing and who to alert.
+- **Antigen-negative blood:** a claim that a unit lacks an antigen is only as good as the record
+  behind it.
+- **Returns, mobile drives and lookback:** a returned unit, an offline laptop at a mobile drive,
+  and a duplicate donor record are each a place where the data can quietly stop matching reality.
+- Each module ends with the configuration, test and evidence that keep it true.
+:::
+
+## The finish line
+
+By the end of this course you can explain five blood operations IT carries, each deeper than in
+*Blood Center Operations*:
+
+- apheresis platelets and their bacterial-risk controls
+- immunohematology reference work and antigen-negative inventory
+- inventory integrity across returns and reissue
+- mobile collections on offline systems
+- HIV/HCV lookback with consignee notification
+
+For each one, you can say what the regulation or guidance asks, where BECS and its neighbors make it
+true or false, and what evidence proves it.
+
+## Why this course exists
+
+The first course in this curriculum walked a unit from donor to hospital once, in a straight line.
+Real operations branch:
+
+- A platelet collection is split in two.
+- A hospital sends a unit back.
+- A drive runs in a church hall with no network.
+- A donor turns out to have two records.
+
+Every branch is a place where a rule that held on the straight path can quietly fail. Most of those
+places are in software.
+
+## Before you start
+
+- All five modules of [Blood Center Operations](../blood-center-operations/index.qmd).
+- [BECS interfaces and data integrity](../csv-and-becs/becs-interfaces-and-data-integrity/index.qmd).
+- [Multi-site governance and donor identification](../data-integrity-and-records/multi-site-governance-and-donor-identification/index.qmd),
+  for module 5.
+- [Release management & the SDLC](../release-management-and-sdlc/index.qmd), whose change discipline
+  every fix here follows.
+
+## The five modules
+
+1. **Apheresis platelets and bacterial risk.** Splits, sampling, timing and the alert when a shipped
+   platelet turns positive.
+2. **Immunohematology reference work and antigen-negative inventory.** Where an antigen type came
+   from, and when it is good enough to label.
+3. **Inventory: returns, reissue and reconciliation.** Keeping BECS's count true when units come back.
+4. **Mobile collections and offline systems.** Deferral lists, sync checks and audit trails away from
+   the network.
+5. **Lookback and consignee notification.** The query, the clock, the notices and the records. This
+   is the capstone, and the end of Track 7.
