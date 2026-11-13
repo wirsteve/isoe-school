@@ -292,12 +292,12 @@ has no `plans/<slug>.md` file until its first session.
 | `vendor-and-third-party-risk-management` | 5 / 5 | Done |
 | `itsm-for-regulated-blood-services` | 6 / 6 | Done |
 | `release-management-and-sdlc` | 11 / 11 | Done |
-| `research-programs-reds-and-nih` | 4 / 6 | In progress (plan: `plans/research-programs-reds-and-nih.md`) |
+| `research-programs-reds-and-nih` | 5 / 6 | In progress (plan: `plans/research-programs-reds-and-nih.md`) |
 | `clia-and-cap-for-blood-center-labs` | 0 / 5 | Scoped 2026-11-13 (plan: `plans/clia-and-cap-for-blood-center-labs.md`) |
 | `hrsa-and-cellular-therapy-programs` | 0 / ? | Not started |
 | `blood-operations-deep-dive` | 0 / ? | Not started |
 
-**Next up: `research-programs-reds-and-nih` module 5, `security-expectations-for-research-data` (drafting), then 6.**
+**Next up: `research-programs-reds-and-nih` module 6, `running-research-data-alongside-regulated-operations`; CLIA module 1 drafting in parallel.**
 Track 7 order: release-management-and-sdlc → research-programs-reds-and-nih →
 clia-and-cap-for-blood-center-labs → hrsa-and-cellular-therapy-programs →
 blood-operations-deep-dive. (The paragraph below describing the original curriculum as complete

@@ -101,7 +101,7 @@ depth but keep index.qmd prose ≤ 5,000 words; "Keep learning" section in resou
 | 2 | `the-vein-to-vein-database-and-research-extracts` | Design and govern a recurring research extract from BECS (EXT-21): scope, read-only source, linkage keys, transformation, secure transfer, QC, and change control — without touching regulated records. | 153/154 | Published |
 | 3 | `human-subjects-hipaa-and-certificates-of-confidentiality` | Explain the Common Rule, single-IRB waiver, HIPAA research pathways, and Certificates of Confidentiality well enough to know what the privacy officer and IRB must confirm before EXT-21 runs, and what CoC means for IT. | 155/156 | Published |
 | 4 | `nih-data-management-and-sharing` | Explain NIH's Data Management and Sharing policy (including its reach through contracts), where shared data ends up, and what a contributing blood center's IT must support (retention, provenance, de-identification before sharing). | 157/158 | Published |
-| 5 | `security-expectations-for-research-data` | Set security controls for research data leaving Lakeshore (encryption, key handling, access, logging, incident handling) and apply NIH's controlled-access genomic-data expectations only where they genuinely apply. | 159/160 | Not started |
+| 5 | `security-expectations-for-research-data` | Set security controls for research data leaving Lakeshore (encryption, key handling, access, logging, incident handling) and apply NIH's controlled-access genomic-data expectations only where they genuinely apply. | 159/160 | Published |
 | 6 | `running-research-data-alongside-regulated-operations` | Handle a BECS release that breaks EXT-21 and a rapid-response study request in the same week, keeping research obligations and regulated records cleanly separated. | 161/162 | Not started |
 
 ## Progress log
@@ -186,3 +186,28 @@ depth but keep index.qmd prose ≤ 5,000 words; "Keep learning" section in resou
   transfers pausable (164.514(e)(4)(iii) cure-or-stop duty). Whether a donation ID/donor number is a
   listed identifier = privacy officer's field-by-field call. A Certificate leaves FDA access to BECS
   unchanged — for counsel to confirm.
+- 2026-11-13 — Module 5 `security-expectations-for-research-data` published (verified). No video
+  (government candidates already embedded elsewhere; nothing on-topic for the genomic notice). **Locked:**
+  EXT-21 control set approved as RSH-0107's security condition: source access (read-only service account,
+  single view, no external logins); crosswalk (separate store + key, named access list, logged, never
+  transferred, backed up with tested restore, destroyed only on the privacy officer's decision);
+  encryption in transit (agreement-named sFTP channel) and at rest with a documented assessment;
+  integrity (ledger checksum compared with hub receipt; ledger write-restricted); keys (generated at
+  Lakeshore; named owner = systems administrator + backup, security official reviews; secrets store; hub
+  host-key fingerprint checked out of band; scheduled rotation, interval set by the security official;
+  rotate on staff change or suspected exposure; separate keys for transfer, at-rest data, crosswalk);
+  logging with recorded review; copies inventory in the CMDB (incl. backups, de-identified validation
+  copy, synthetic test files); change control over job, mapping, permissions, keys; incident plan naming
+  EXT-21. Questionnaire answer: Lakeshore does not attest to NIST SP 800-171 for EXT-21 — NOT-OD-24-157
+  covers Approved Users of controlled-access human genomic data; EXT-21 has no genomic data and Lakeshore
+  has no Approved Users; Lakeshore applies HIPAA-based controls and asks the hub to cite any clause
+  saying otherwise. Misdirected-file incident = four tracks: HIPAA breach assessment (privacy officer);
+  DUA terms (privacy officer + counsel); CoC treatment (counsel + privacy officer); FDA question (Quality
+  confirms, on the Director's reasoning that no BECS record was altered); IT owns containment, evidence,
+  incident record. Genomic data requests by the medical director's team = separate project needing an
+  institutional NIST SP 800-171 attestation, third-party platform attestations, Data Use Certification
+  terms. Open asks to the hub: mutual notice-and-deletion DUA term; test endpoint?; what standard the hub
+  says applies to contributing sites; whether the DCC is bound by NOT-OD-24-157. Sequence: Quality +
+  security official verify controls against evidence → first test transfer (synthetic content only) to
+  the hub's test endpoint if one exists → no production data until module 3's written pathway and the
+  signed agreement are complete.
