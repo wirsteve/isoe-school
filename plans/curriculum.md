@@ -204,7 +204,7 @@ for now (to be considered later as a site-wide "turn on narration" accessibility
 | `research-programs-reds-and-nih` | Explain how the NHLBI REDS program is governed and contracted (hubs, data coordinating center, laboratory center; the September 2026 contract round), what NIH policies (data management and sharing, controlled-access data security, certificates of confidentiality, human-subjects rules) reach a participating blood center, and exactly where IT touches each (to be scoped) |
 | `clia-and-cap-for-blood-center-labs` | Explain where CLIA (42 CFR 493, CMS) and CAP accreditation apply to a blood center's testing and reference laboratories, and what they expect of the LIS, interfaces, result reports, record retention and proficiency testing (to be scoped) |
 | `hrsa-and-cellular-therapy-programs` | Explain which HRSA programs touch a blood center (C.W. Bill Young Cell Transplantation Program and its registry, cord blood) and where IT data flows and obligations sit (4 modules; plan: `plans/hrsa-and-cellular-therapy-programs.md`) |
-| `blood-operations-deep-dive` | Go deeper on blood operations IT touches: apheresis and platelets, immunohematology reference work, inventory and hospital distribution, mobile collections, lookback and consignee notification (to be scoped) |
+| `blood-operations-deep-dive` | Go deeper on blood operations IT touches: apheresis and platelets, immunohematology reference work, inventory and hospital distribution, mobile collections, lookback and consignee notification (5 modules; plan: `plans/blood-operations-deep-dive.md`) |
 
 ## Prerequisite order
 
@@ -294,10 +294,10 @@ has no `plans/<slug>.md` file until its first session.
 | `release-management-and-sdlc` | 11 / 11 | Done |
 | `research-programs-reds-and-nih` | 6 / 6 | Done (plan: `plans/research-programs-reds-and-nih.md`) |
 | `clia-and-cap-for-blood-center-labs` | 5 / 5 | Done (plan: `plans/clia-and-cap-for-blood-center-labs.md`) |
-| `hrsa-and-cellular-therapy-programs` | 0 / 4 | Scoped (plan: `plans/hrsa-and-cellular-therapy-programs.md`) |
-| `blood-operations-deep-dive` | 0 / ? | Not started |
+| `hrsa-and-cellular-therapy-programs` | 1 / 4 | In progress (plan: `plans/hrsa-and-cellular-therapy-programs.md`) |
+| `blood-operations-deep-dive` | 0 / 5 | Scoped (plan: `plans/blood-operations-deep-dive.md`) |
 
-**Next up: `hrsa-and-cellular-therapy-programs` module 1 (drafting), then 2–4; then `blood-operations-deep-dive` (to be scoped; sources for it being saved).**
+**Next up: `hrsa-and-cellular-therapy-programs` module 2 (drafting), then 3–4; then `blood-operations-deep-dive` modules 1–5 (scoped).**
 Track 7 order: release-management-and-sdlc → research-programs-reds-and-nih →
 clia-and-cap-for-blood-center-labs → hrsa-and-cellular-therapy-programs →
 blood-operations-deep-dive. (The paragraph below describing the original curriculum as complete

@@ -12,7 +12,8 @@ order: 174
 - A blood center can sit inside that program in three ways: as a donor center recruiting and
   collecting registry donors, as a cord blood bank listing units for search, and as a source of data.
 - Other rules ride along. FDA's 21 CFR Part 1271 and, for licensed cord blood, a biologics license
-  apply. So does CLIA for HLA typing. The statute itself requires strict confidentiality and makes
+  apply. So does CLIA for donor infectious-disease testing (though not, per CMS, for HLA identity
+  typing of cells). The statute itself requires strict confidentiality and makes
   improper disclosure of donor records a crime.
 - IT carries most of this. That means the registry donor database, the cord blood bank system,
   unit identification and tracking, and the data feeds into the program. This course puts those
@@ -24,7 +25,7 @@ order: 174
 By the end of this course you can explain which HRSA program touches a blood center (the C.W. Bill
 Young Cell Transplantation Program, with its donor registry, cord blood inventory and outcomes
 database) and which other rules ride along with it: FDA's 21 CFR 1271 and biologics licensing for
-cord blood, and CLIA for HLA testing. You can also say exactly where IT carries the obligations:
+cord blood, and CLIA for donor testing. You can also say exactly where IT carries the obligations:
 
 - registry donor data and its confidentiality
 - cord blood unit identification, records and tracking

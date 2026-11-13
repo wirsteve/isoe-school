@@ -1,0 +1,309 @@
+---
+title: "HRSA and the Cell Transplant Program"
+order: 175
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can say what the C.W. Bill Young Cell Transplantation Program is (42 U.S.C. 274k and 274l, run through contracts), how a blood center plugs into it, and which other regulators ride along (FDA under 21 CFR Part 1271 and a biologics license, CLIA for lab testing). Then you can put the registry and cord blood systems on the compliance map.
+- **The punchline:** the CIO's compliance-system inventory lists BECS and the LIS and leaves out the registry donor database and the cord blood bank (CBB) system, because "HRSA doesn't inspect us." HRSA doesn't. The statute, the program's agreements and FDA still reach those systems.
+- **The rule in one line:** the program reaches Lakeshore through agreements, not through an HRSA inspection, and the systems that hold its data are in scope whether or not anyone listed them.
+- **Ask on Monday:** "Which systems hold registry donor records or cord blood unit records, who owns each one, and where is the list of requirements each one answers to?"
+- **The trap:** reading "no inspection" as "no obligation." The inspector is one source of obligation. The statute, the contract and FDA's rules are others.
+:::
+
+## The inventory that was missing two systems
+
+The CIO's office has circulated the annual compliance-system inventory. It is a clean one-page table. BECS (Blood Establishment Computer Software) is on it. So is the LIS (laboratory information system). Each has an owner, a validation status and a review date.
+
+The Quality Analyst has the page open when she stops at your desk.
+
+"Where's the registry donor database?"
+
+"Not on it."
+
+"And the cord blood bank system?"
+
+"Not on it either." You pull up the footnote. It reads: *Registry and cord blood systems excluded; HRSA does not inspect Lakeshore.*
+
+"That's true," she says. "HRSA doesn't. But the cord blood bank holds a license from FDA. The registry database holds records on thousands of people who signed up to be stem-cell donors. I'm not sure 'nobody inspects it' is the same as 'nothing applies to it.'"
+
+You agree, and you notice you can't yet say which rules apply. That is the real gap. The footnote is wrong, but you can't replace it yet, because you haven't drawn the map. The registry program manager and the cord blood bank's medical director each know their own world well. Neither has seen the other's list of obligations, and the privacy officer has seen only part of it.
+
+So you build the map. By the end of this lesson you will have one, and both systems will be on the inventory with a named business owner, a named IT owner and a list of where their requirements come from.
+
+## Why the rule exists, and the ITSM bridge
+
+The failure mode is quiet. A system holds regulated data. It never lands on the compliance inventory. So it never gets the controls the inventory triggers: validation, change control, access review, a named owner, a place on the audit calendar. Years later, a change goes through with no Quality review, or an access list grows, or a vendor default exposes something. Nobody did anything reckless. The system just wasn't in the program.
+
+You know this shape from ITSM. It is a **configuration management** failure: a configuration item (CI) missing from the CMDB. Everything that depends on the CMDB (change impact analysis, incident routing, service mapping) silently skips that CI. In a blood center the CMDB question has a regulatory twist: the inventory of systems is also the list of what must be controlled, so an omission becomes a gap in the compliance program.
+
+There is a second bridge. In ITIL terms, a requirement can come from many places: a law, a contract, a customer's SLA, an internal policy. A good service owner keeps a register of them and knows which are enforced by inspection and which by agreement. This lesson builds that register for the stem-cell side of Lakeshore. Think of it as the **requirements register** for two CIs.
+
+## The rule in plain English
+
+Start with what the program is. Congress wrote it into the Public Health Service Act. The law says the Secretary of Health and Human Services, acting through the Administrator of the Health Resources and Services Administration (HRSA), shall **by one or more contracts** establish and maintain a national program for matching patients to biologically unrelated donors of bone marrow and cord blood. It is named for the late Representative C.W. Bill Young and is the successor to the National Bone Marrow Donor Registry.
+
+Notice the word *contracts*. HRSA doesn't run a registry itself. It buys the work. Public statements from the contract holders themselves say who does what. NMDP says it is under contract to operate the program. CIBMTR says it holds the contract for the Stem Cell Therapeutic Outcomes Database (SCTOD).
+
+The program has three pieces that matter to a blood center:
+
+1. **The donor registry and matching system.** The statute directs the program to operate a system for identifying and matching bone marrow donors and cord blood units to patients, with electronic search through a single point of access. The registry can only match donors it knows about, so blood centers act as donor centers that recruit donors and later work up and collect the matched ones.
+2. **The cord blood inventory.** Public cord blood banks collect and store units and make them available for search through the same system. A bank that wants to take part has to be a "qualified cord blood bank," which the statute defines.
+3. **The outcomes database.** Section 274l requires a scientific database of patients who received a stem cell therapeutic product from a donor, maintained by contract, with information in a standardized electronic format.
+
+Lakeshore has all three touchpoints. It recruits and collects registry donors. It runs a public cord blood bank with a license for its units. And data from both flow toward the program's systems. HLA (human leukocyte antigen) typing for matching comes from a contracted histocompatibility laboratory outside Lakeshore.
+
+Now the sentence that matters most for your job: **Lakeshore's duties to the program arise through its agreements with the program's operator, and the agreements' terms are not public.** This course never invents them. When a lesson says "the agreement says what data, in what format, by when," the next step is yours: read your own contract file, with Contracts and Quality.
+
+### Which program rules come from the statute and which from the contract
+
+Be careful about the line. The statute sets out what the program must do and some standards it must enforce, such as strict confidentiality for donor and patient records. It says who the Secretary contracts with. It does not give Lakeshore a data dictionary, a file layout or a deadline. Those live in the agreements. When someone says "the program requires X," ask: is X in the statute, or in our agreement? You can check the first yourself in this lesson. You need the contract file for the second.
+
+### A word about reauthorization
+
+The program's authorizing law has a time limit. The advocacy page of NMDP states that the TRANSPLANT Act of 2021 "is set to expire Sept. 30, 2026," and that a 2025 bill to renew the program had been introduced.
+
+**This course's local sources do not show whether the program was reauthorized after Sept. 30, 2026.** This lesson doesn't say it lapsed and doesn't say it was renewed. Check current status before you rely on any statement about the program's funding or structure. The structure of your obligations (confidentiality, FDA's rules, CLIA) doesn't depend on that answer, but your contracts and timelines might.
+
+## Who else rides along
+
+The program is one layer. Four other layers sit on Lakeshore's stem-cell work, and each looks at different things.
+
+### FDA: 21 CFR Part 1271 and the biologics license
+
+Part 1271 is FDA's rule set for human cells, tissues, and cellular and tissue-based products, abbreviated **HCT/Ps**. The definition is in 1271.3(d). It names hematopoietic stem/progenitor cells derived from peripheral and cord blood as examples of HCT/Ps. It also lists what is *not* an HCT/P, including whole blood and blood components, and minimally manipulated bone marrow for homologous use that isn't combined with another article.
+
+Read that carefully, because it is easy to over-read. The definition tells you that HPCs (hematopoietic progenitor cells) from peripheral and cord blood are on the HCT/P list, and that minimally manipulated bone marrow (homologous use, no combination) is carved out. **It does not tell you how any given collection at Lakeshore is classified.** Whether a particular registry collection, say peripheral blood stem cells collected for an unrelated recipient, is a 361 HCT/P, a 351 product, or neither is a question for Quality and Regulatory Affairs. This lesson does not decide it, and you shouldn't either.
+
+Then there are two pathways, which 1271.1(b) lays out:
+
+- **Section 361 HCT/Ps** are those regulated solely under section 361 of the Public Health Service Act (PHS Act). Establishments register and list with FDA and follow all of Part 1271.
+- **Section 351 products** are regulated as drugs, devices or biological products, which here means a licensed product. Establishments register and list under the drug or device rules, and other parts of the CFR require them to follow Part 1271's **donor eligibility** procedures (subpart C) and **current good tissue practice** (CGTP) procedures (subpart D), on top of everything else that applies.
+
+For Lakeshore's licensed cord blood, that means the BLA (biologics license application) is the license, subparts C and D apply, and the biologics rules apply as well. FDA's public list of approved cellular and gene therapy products includes several HPC, Cord Blood products, and some of their holders are community blood centers, so a blood center's IT can sit under biologics licensing. The lesson doesn't name any listed organization, and the list is on FDA's page.
+
+One more piece, brief for now because module 4 uses it. **Section 1271.330** says subpart E (the reporting subpart, whose reporting section is 1271.350) is implemented for 361 HCT/Ps, and that products regulated as biological products under section 351 are not subject to it. So the reporting path for a licensed cord blood unit isn't 1271.350. Deviation reporting for licensed biological products falls under 21 CFR 600.14, which is **not** in this curriculum's `sources/`. This lesson doesn't describe it. Flag it and read it with Regulatory Affairs when module 4 needs it.
+
+FDA does inspect the cord blood bank as a licensed establishment. How an inspection runs and what an investigator asks is outside what this lesson's sources support, so this lesson stops at that sentence.
+
+### CLIA: the lab behind the HLA typing
+
+Matching needs HLA typing, and Lakeshore sends that to a contracted histocompatibility laboratory. CLIA (the Clinical Laboratory Improvement Amendments, administered by CMS) applies to a facility that examines material derived from the human body for health information. The lab holds the CLIA certificate, not Lakeshore. For the general map, see [where CLIA and CAP reach a blood center](../../clia-and-cap-for-blood-center-labs/where-clia-and-cap-reach-a-blood-center/index.qmd).
+
+CMS's memo QSO-25-18-CLIA has three applicability tables, and the HLA rows differ between them. The **blood** table marks "HLA testing" as **Yes**. The **organs** table marks "Histocompatibility Testing (tissue typing)" as **Yes**. The **cells/tissue** table, which is the one for HPCs, lists "Identity testing (ABO/Rh, HLA)" as **No**, while "FDA-required testing for communicable diseases" for cells/tissue is **Yes**.
+
+So don't assume "HLA equals CLIA." The right statement is narrower. The memo's applicability follows the CLIA definition of a laboratory, and the contracted lab's own certificate and director define what that lab does under CLIA. Your job is not to rule on it. Your job is to make sure the contract file has the lab's CLIA certificate and that whatever data flows from the lab into Lakeshore's registry or CBB systems is on the map. If someone tells you "HLA is covered by CLIA" or "HLA is exempt," ask which table row and which test they mean.
+
+### Accreditation
+
+Subsection 274k(b) says the Secretary "shall, through a public process, recognize one or more accreditation entities for the accreditation of cord blood banks." A "qualified cord blood bank" under 274k(d)(4)(C) is one accredited by an entity the Secretary has recognized. This lesson does not name any accreditation entity, because no local source does. Whatever Lakeshore's accreditation is, it is another source of requirements, and your assessor-facing materials should list it.
+
+### The program, the agreements, and the inspection that isn't
+
+Put the pieces together and you get a table of who looks at what. The program-side row is the one the CIO's footnote got half right.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 42 U.S.C. 274k(a) | "Forty-two U.S.C. two seventy-four K, subsection a" | The Secretary, acting through HRSA's Administrator, establishes and maintains the program by one or more contracts. | Why the program reaches Lakeshore through agreements with the operator. |
+| 42 U.S.C. 274k(b) | "two seventy-four K, subsection b" | The Secretary recognizes accreditation entities for cord blood banks through a public process. | The accreditation row on the map; no entity named here. |
+| 42 U.S.C. 274k(d)(3) | "subsection d, paragraph 3" | Single point of electronic access; all contract recipients make a standard dataset available in a standardized electronic format. | Why data format discipline matters later (module 4). |
+| 42 U.S.C. 274k(d)(4) | "subsection d, paragraph 4" | Defines "qualified cord blood bank," including licenses and FDA registrations, accreditation, strict confidentiality and confidential maternal linkage. | The CBB system must support (D) and (F). Module 3. |
+| 42 U.S.C. 274k(f)(5) | "subsection f, paragraph 5" | Standards requiring strict confidentiality and prescribing the purposes and extent of disclosure of records. | The registry database. Module 2. |
+| 42 U.S.C. 274k(n) | "subsection n" | Criminal penalty for disclosing covered records without prior written consent or in violation of the disclosure standards. | Why "just copy it to the CRM" is not a casual request. Module 2. |
+| 42 U.S.C. 274l(a), (b) | "two seventy-four L, subsections a and b" | Outcomes database by contract; information in a standardized electronic format. | The outcomes data path. |
+| 21 CFR 1271.1(b) | "twelve seventy-one point one, paragraph b" | 361 HCT/Ps follow all of Part 1271; 351 products follow subparts C and D in addition to other rules. | Why licensed units sit under both 1271 and biologics rules. |
+| 21 CFR 1271.3(d) | "twelve seventy-one point three, paragraph d" | Defines HCT/Ps, with HPCs from peripheral and cord blood as examples, and lists exclusions. | The definition behind the classification question that Quality owns. |
+| 21 CFR 1271.330 | "twelve seventy-one point three-thirty" | Subpart E does not apply to biological products under section 351. | Why 1271.350 reporting is not the path for licensed units. |
+| CMS QSO-25-18-CLIA | "Q-S-O twenty-five dash eighteen" | CMS policy memo on where CLIA applies to blood, cell/tissue and organ testing. Guidance, not regulation. | The CLIA row for HLA and donor testing. |
+
+## The actual text
+
+Read the statute's own words. First, how the program is created, from `sources/usc/42-usc-274k-274l.md`:
+
+> (a) Establishment The Secretary , acting through the Administrator of the Health Resources and Services Administration , shall by one or more contracts establish and maintain a C.W. Bill Young Cell Transplantation Program (referred to in this section as the "Program" ), successor to the National Bone Marrow Donor Registry, that has the purpose of increasing the number of transplants for recipients suitably matched to biologically unrelated donors of bone marrow and cord blood, and that meets the requirements of this section.
+
+"Shall by one or more contracts" is the sentence behind the whole lesson. The duty is on the Secretary, and the means is contracts. Nothing here creates a Lakeshore-facing HRSA inspection regime.
+
+Next, the accreditation provision:
+
+> (b) Accreditation The Secretary shall, through a public process, recognize one or more accreditation entities for the accreditation of cord blood banks.
+
+Then the definition of a qualified cord blood bank, which is where the CBB system gets pulled in:
+
+> (4) Definition The term " qualified cord blood bank " means a cord blood bank that—
+> (A) has obtained all applicable Federal and State licenses, certifications, registrations (including pursuant to the regulations of the Food and Drug Administration ), and other authorizations required to operate and maintain a cord blood bank;
+> (B) has implemented donor screening, cord blood collection practices, and processing methods intended to protect the health and safety of donors and transplant recipients to improve transplant outcomes, including with respect to the transmission of potentially harmful infections and other diseases;
+> (C) is accredited by an accreditation entity recognized by the Secretary under subsection (b);
+> (D) has established a system of strict confidentiality to protect the identity and privacy of patients and donors in accordance with existing Federal and State law;
+> (E) has established a system for encouraging donation by a genetically diverse group of donors; and
+> (F) has established a system to confidentially maintain linkage between a cord blood unit and a maternal donor.
+
+Map each clause to Lakeshore. (A) is FDA licensing and registration, so the CBB system sits under the BLA and Part 1271. (C) is accreditation. (D) and (F) are system design requirements: confidentiality, and a protected link between a unit and the mother who donated it. Those two are IT requirements in plain sight. Module 3 returns to (F).
+
+Then the registry side. Subsection (f) lists standards the Secretary enforces for participating entities, "including the Program, individual marrow donor centers, marrow donor registries" and others. Two paragraphs matter here:
+
+> (5) standards that—
+> (A) require the establishment of a system of strict confidentiality to protect the identity and privacy of patients and donors in accordance with Federal and State law; and
+> (B) prescribe the purposes for which the records described in subparagraph (A) may be disclosed, and the circumstances and extent of the disclosure; and
+> (6) in the case of a marrow donor center or marrow donor registry participating in the program , procedures to ensure the establishment of a method for integrating donor files, searches, and general procedures of the center or registry with the Program .
+
+Paragraph (6) is why the registry donor database is not an island. It has to integrate with the program, which means interfaces. Paragraph (5) is why those interfaces carry confidentiality duties. The criminal-penalty provision is in subsection (n):
+
+> (n) Penalties for disclosure Any person who discloses the content of any record referred to in subsection (d)(4)(D) or (f)(5)(A) without the prior written consent of the donor or potential donor with respect to whom the record is maintained, or in violation of the standards described in subsection (f)(5)(B), shall be imprisoned for not more than 2 years or fined in accordance with title 18, or both.
+
+Note "any person." That includes someone at Lakeshore. Module 2 applies this to a data-reuse request.
+
+Next, the standard-data duty, which sets up module 4:
+
+> (B) Standard data The Secretary shall require all recipients of contracts under this section to make available a standard dataset for purposes of subparagraph (A) in a standardized electronic format that enables transplant physicians to compare among and between bone marrow donors and cord blood units to ensure the best possible match for the patient.
+
+And the outcomes database, from the same source:
+
+> (a) Establishment The Secretary shall by contract establish and maintain a scientific database of information relating to patients who have been recipients of a stem cell therapeutics product (including bone marrow , cord blood, or other such product) from a donor.
+
+Now FDA's text, from `sources/cfr/21-1271-hctp-excerpt.md`. The scope paragraph:
+
+> (2) If you are an establishment that manufactures HCT/P's that are regulated as drugs, devices and/or biological products under section 351 of the PHS Act and/or the Federal Food, Drug, and Cosmetic Act, §§ 207.9(a)(5) and 807.20(d) of this chapter require you to register and list your HCT/P's following the procedures in part 207 (if a drug and/or biological product) of this chapter or part 807 (if a device) of this chapter. Sections 210.1(c), 210.2, 211.1(b), and 820.1(a) of this chapter require you to comply with the donor-eligibility procedures in subpart C of this part and the current good tissue practice procedures in subpart D of this part, in addition to all other applicable regulations.
+
+That is 1271.1(b)(2). For licensed cord blood it says: Part 1271's subparts C and D, plus everything else. The definition, 1271.3(d), in part:
+
+> (d) Human cells, tissues, or cellular or tissue-based products (HCT/Ps) means articles containing or consisting of human cells or tissues that are intended for implantation, transplantation, infusion, or transfer into a human recipient. Examples of HCT/Ps include, but are not limited to, bone, ligament, skin, dura mater, heart valve, cornea, hematopoietic stem/progenitor cells derived from peripheral and cord blood, manipulated autologous chondrocytes, epithelial cells on a synthetic matrix, and semen or other reproductive tissue. The following articles are not considered HCT/Ps:
+>
+> (2) Whole blood or blood components or blood derivative products subject to listing under parts 607 and 207 of this chapter, respectively;
+>
+> (4) Minimally manipulated bone marrow for homologous use and not combined with another article (except for water, crystalloids, or a sterilizing, preserving, or storage agent, if the addition of the agent does not raise new clinical safety concerns with respect to the bone marrow);
+
+(The quote skips paragraphs (1), (3) and (5) through (8) of the exclusions list.) Again: this is a definition, not a classification of any Lakeshore collection. And the applicability section:
+
+> The provisions set forth in this subpart are being implemented for nonreproductive HCT/Ps described in § 1271.10 and regulated solely under section 361 of the Public Health Service Act and the regulations in this part, and for the establishments that manufacture those HCT/Ps. HCT/Ps that are drugs or devices regulated under the act, or are biological products regulated under section 351 of the Public Health Service Act, are not subject to the regulations set forth in this subpart.
+
+That is 1271.330: subpart E reporting does not apply to 351 products.
+
+Finally, the CLIA memo's cells/tissue table row, quoted as it appears in `sources/cms/qso-25-18-clia-applicability-2025.md` (guidance, not regulation):
+
+> Identity testing (ABO/Rh, HLA)                     No
+
+The same memo's blood table has "HLA testing  Yes" and its organs table has "Histocompatibility Testing (tissue typing)  Yes". Read all three before you say anything about HLA and CLIA.
+
+### What the local source does not contain
+
+Two honest gaps. First, the statute file's "Cord Blood Inventory" note (the National Cord Blood Inventory contracts under Pub. L. 109-129 § 2) has its heading in the local copy but **not its body text**. This lesson therefore can't quote it or describe its paragraphs. What the local copy does show is the statute's reference, in 274k(d)(2)(A)(iv), to "cord blood banks receiving a contract under the National Cord Blood Inventory program." That confirms that banks can hold such contracts. The note's specifics are flagged for a fresh fetch. Second, 21 CFR 600.14 isn't in `sources/`, and HRSA's own program site and the program operators' agreement terms aren't either.
+
+## The "who looks at what" table
+
+| Who | What they hold Lakeshore to | Source tier | How they reach Lakeshore | Systems in play |
+|---|---|---|---|---|
+| Congress, through the program statute | Confidentiality standards, disclosure limits, penalty, standard electronic data, qualified-bank definition | Statute (274k, 274l) | Through the contracts and the standards the Secretary enforces | Registry donor database; CBB system |
+| The program operator and outcomes-database contract holder | Whatever the agreements say: data, format, timing, access | Contract (not public) | Agreements with Lakeshore | Interfaces and data feeds |
+| FDA | Part 1271 subparts C and D for licensed cord blood; the BLA; registration and listing | Regulation and license | Inspection of the licensed establishment, and submissions | CBB system, and wherever unit records live |
+| CMS (CLIA) | Laboratory certification for covered testing | Regulation; CMS memo for applicability | Through the laboratory that holds the certificate | The contracted lab's results as they reach Lakeshore |
+| Accreditation entity recognized under 274k(b) | Accreditation standards for cord blood banks | Accreditation (entity not named here) | Assessment | CBB system |
+| Lakeshore's own Quality and Regulatory Affairs | Classification decisions; internal procedures | Internal | Quality system | All of the above |
+
+**The program reaches Lakeshore through agreements, not through an HRSA inspection.** That's the true half of "HRSA doesn't inspect us." The false half is the inference that nothing reaches those systems. FDA does inspect the cord blood bank as a licensed establishment; the specifics of what it examines are not something this lesson's sources support, so ask Regulatory Affairs for the inspection history instead of guessing.
+
+## See it in one picture
+
+This is the obligations map the Director builds for Lakeshore. It runs tier by tier, from statute to contracts to FDA to CLIA to accreditation, and ends at the compliance inventory where both systems now sit.
+
+```{mermaid}
+flowchart TD
+    S["Statute: 42 USC 274k and 274l<br/>HRSA runs the program by contract"]
+    S --> A["Program agreements<br/>NMDP operates the program; CIBMTR holds the outcomes-database contract<br/>(terms: read your contract file)"]
+    A --> R["Registry donor database<br/>(Lakeshore as donor center)"]
+    A --> C["Cord blood bank system<br/>(Lakeshore Cord Blood Bank)"]
+    A --> O["Data sent toward the outcomes database"]
+    C --> F["FDA: 21 CFR 1271 subparts C and D<br/>plus the BLA for licensed units"]
+    R -.->|"classification is a Quality /<br/>Regulatory Affairs call"| F
+    R --> L["CLIA question: HLA typing by the contracted<br/>lab (QSO-25-18 tables differ)"]
+    C --> L
+    C --> X["Accreditation: 274k(b)<br/>Secretary recognizes entities"]
+    R --> I["Compliance inventory<br/>named business owner + IT owner<br/>+ listed requirement sources"]
+    C --> I
+```
+
+Read it top to bottom. The dotted line from the registry database to FDA is deliberate. Whether a given registry collection falls under Part 1271 as a 361 HCT/P, as a 351 product, or neither is a Quality and Regulatory Affairs decision. Until they make it, the map shows the question, not an answer. Both systems end at the inventory, which is the Director's decision.
+
+## Watch it explained
+
+This short video comes from NMDP's own channel, the program operator named in this lesson. By its title it explains how the donor search happens. I could read only its title and channel through YouTube's oEmbed check, not its description or transcript, so I can't promise how much detail it carries. Watch it for the patient-side picture of a search, the process your registry and cord blood data ultimately feed. It is a public-facing explainer from the operator, not Lakeshore's own process and not a statement of any contract term.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/F5wSZ3ICxPA"
+  title="How does the donor search happen?" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## What an inspector or assessor would actually look for
+
+Different readers want different documents. Here is what proves the map.
+
+**The compliance-system inventory itself.** An FDA investigator or an accreditation assessor reviewing the cord blood bank will ask what computerized systems hold unit records, who owns them and how they are controlled. A bad answer sounds like: "Those aren't on the main list because they aren't BECS." The good answer is a row in the inventory with a business owner, an IT owner and requirement sources.
+
+**The requirements register for each system.** For the CBB system, that means the 1271 subparts C and D requirements, the biologics license conditions, the accreditation standards and the program agreement terms. For the registry database, it means the statute's confidentiality provisions and the agreement terms. A bad answer: "Quality knows the rules." A good answer: a list, with sources, that IT can see.
+
+**The contract file.** For the program, the "inspection" is mostly the operator checking Lakeshore against the agreement. You can only be ready for that if IT has read the data, format and timing terms. A bad answer: "The registry team handles the program." That is not a control.
+
+**The contracted lab's CLIA certificate**, held in the contract file, with the interface or data path from that lab documented.
+
+## Common traps
+
+**"HRSA doesn't inspect us, so the program doesn't apply to our systems."** The statute requires strict confidentiality of donor records (274k(f)(5)), makes improper disclosure a crime (274k(n)), and requires standard electronic data from contract recipients (274k(d)(3)). Whether anyone walks in and inspects is a separate question from whether the requirement exists.
+
+**"Cord blood is a blood product, so BECS rules cover it."** Part 1271.3(d)(2) excludes whole blood and blood components from the HCT/P definition, but HPCs from cord blood are named as examples of HCT/Ps. Licensed cord blood is a 351 biological product that also follows 1271 subparts C and D (1271.1(b)(2)). It has its own system, its own records and its own license.
+
+**"HLA testing is under CLIA, so we're covered."** The memo's three tables don't agree on HLA, and the contracted lab's certificate is the lab's, not Lakeshore's. Covered or not, the data that comes back from the lab is Lakeshore's to protect and track.
+
+**"The program was reauthorized, so we're fine."** Or the opposite. This course's sources don't say either, and the confidentiality and FDA obligations don't wait on the answer.
+
+## What this means for your job
+
+- **Replace the footnote.** Put the registry donor database and the CBB system on the inventory, each with a named business owner (the registry program manager; the cord blood bank's medical director) and a named IT owner. List the requirement sources for each, as in the map.
+- **Ask for the contract file early.** The agreements are where data, format and timing duties live. Read them with Contracts and Quality, and look at how the [vendor risk course](../../vendor-and-third-party-risk-management/supplier-qualification-and-risk-tiering/index.qmd) treats a contract as a requirement source; the habit is the same even though this isn't a vendor contract in that sense.
+- **Don't answer classification questions.** If someone asks whether a registry collection is a 361 HCT/P, say that's Quality and Regulatory Affairs' call and get it in writing.
+- **Check reauthorization status** before you quote anything about the program's funding or term, and note the date you checked.
+- **Hold the line on confidentiality from day one.** Registry and maternal-linkage data should not sit in general-purpose tables or be copied to other systems because it is convenient. Module 2 and module 3 take that apart.
+- **Know your place in the stack.** Your [foundations map of the regulatory landscape](../../../foundations/regulatory-landscape-orientation/index.qmd) and the [collection and testing module](../../blood-center-operations/collection-and-testing/index.qmd) cover the blood side. This course covers the stem-cell side that sits next to it.
+
+## Check your understanding
+
+**Q1.** The CIO's footnote says the registry and cord blood systems are excluded because HRSA doesn't inspect Lakeshore. Give a two-sentence reply a CIO would accept.
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+"The program reaches us through agreements, and the statute still requires strict confidentiality of registry records and makes improper disclosure a crime. Separately, FDA inspects the cord blood bank as a licensed establishment, so both systems answer to requirements whether or not HRSA ever visits." The point is that "no inspection" describes one enforcement path, not the set of requirements.
+:::
+
+**Q2.** A colleague says, "Under 1271.3(d), the peripheral blood stem cells we collect for registry recipients are HCT/Ps, so they're 361 products." What is wrong?
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+The definition lists HPCs derived from peripheral and cord blood as examples of HCT/Ps, but being an HCT/P doesn't settle whether a product is regulated solely under section 361 or as a 351 product (1271.1(b), 1271.10). And minimally manipulated bone marrow for homologous use is excluded altogether by 1271.3(d)(4). Classification of any registry collection is Quality and Regulatory Affairs' decision, not IT's.
+:::
+
+**Q3.** Does 21 CFR 1271.350 reporting apply to Lakeshore's licensed cord blood units?
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+No. 1271.330 says subpart E, which includes 1271.350, doesn't apply to biological products regulated under section 351. Deviation reporting for licensed biological products falls under 21 CFR 600.14, which isn't in this curriculum's `sources/`, so confirm it with Regulatory Affairs. Module 4 returns to this.
+:::
+
+**Q4.** True or false: the QSO-25-18 memo says HLA testing is covered by CLIA, so Lakeshore's contracted lab is covered for registry typing.
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+Not as stated. This is guidance, not regulation, and its tables differ. HLA testing is "Yes" in the blood table and histocompatibility testing is "Yes" in the organs table, but "Identity testing (ABO/Rh, HLA)" is "No" in the cells/tissue table. Which row fits a given test is for the contracted lab's director and your Regulatory Affairs team. IT's job is to make sure the certificate is in the contract file and the data path is on the map.
+:::
+
+## Where this goes next
+
+Module 2, *Registry donor data and confidentiality*, takes the statute's confidentiality and penalty provisions into the registry donor database and decides a real data-reuse request from Recruitment Marketing.

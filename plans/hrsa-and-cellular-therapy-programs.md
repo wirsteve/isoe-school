@@ -10,7 +10,7 @@ course 4.
 
 Explain which HRSA program touches a blood center (the C.W. Bill Young Cell Transplantation Program:
 its donor registry, cord blood inventory and outcomes database) and which other rules ride along with
-it (FDA's 21 CFR 1271 and biologics licensing for cord blood; CLIA for HLA testing). Then say exactly
+it (FDA's 21 CFR 1271 and biologics licensing for cord blood; CLIA for the donor infectious-disease testing, with HLA identity testing on cells/tissue outside CLIA). Then say exactly
 where IT carries the obligations: registry donor data and its confidentiality, cord blood unit
 identification, records and tracking, and the data feeds a blood center sends into the program. That
 is enough to put these systems under the same control as BECS and to answer a regulator's or the
@@ -24,7 +24,7 @@ program's questions about them.
 | `sources/hrsa/cw-bill-young-program-operators.md` | Contract holders' own pages | CIBMTR holds the SCTOD contract; NMDP operates the program; TRANSPLANT Act set to expire Sept. 30, 2026, with a 2025 reauthorization bill introduced (advocacy page) |
 | `sources/cfr/21-1271-hctp-excerpt.md` | Regulation | 1271.1 scope (361 vs 351 HCT/Ps); 1271.3(d) HCT/P definition incl. HPCs from peripheral and cord blood, and **exclusions: blood components (d)(2), minimally manipulated bone marrow (d)(4)**; 1271.10, 1271.15; donor eligibility 1271.45/.47/.50/.55; CGTP 1271.150/.160; 1271.250 labeling; 1271.260 storage; **1271.270 records** (10-year retention); **1271.290 tracking** (distinct identification code: no name/SSN/MRN; new-code mapping procedure; tracking both directions); **1271.330** (subpart E reporting does **not** apply to 351 biological products); 1271.350 reporting (361 HCT/Ps only) |
 | `sources/fda-web/approved-hpc-cord-blood-products.md` | FDA information page | licensed HPC, Cord Blood products exist and some holders are community blood centers. **Never name any listed organization in a lesson.** |
-| `sources/cms/qso-25-18-clia-applicability-2025.md` | CMS policy memo | CLIA applicability for cells/tissue: histocompatibility (HLA) testing and donor infectious-disease testing = Yes; purity/potency = No |
+| `sources/cms/qso-25-18-clia-applicability-2025.md` | CMS policy memo | CLIA applicability. **Cells/tissue table: "Identity testing (ABO/Rh, HLA)" = No**; FDA-required communicable-disease testing = Yes; emerging infectious disease = Yes; sterility with donor-notification policies (e.g., stem cells) = Yes; purity/potency (TNC, CD34, viability) = No. (Blood table: HLA testing = Yes; organs table: histocompatibility = Yes.) **Never say HLA typing for HPCs/cord blood is CLIA "Yes".** |
 | `sources/cfr/606.171.md` and the BPDR module | Regulation | the blood-side deviation report, as an analogy only |
 
 **Gaps (say so in lessons; never quote or describe their text):**
@@ -73,8 +73,10 @@ Lakeshore Blood Center (fictional) has three program-related roles:
    (fictional) BLA for HPC, Cord Blood and a (fictional) National Cord Blood Inventory contract. Units
    are listed for search through the program. Its records live in the **cord blood bank system** (CBB
    system), a validated system separate from BECS.
-3. **HLA typing** comes from a contracted, CLIA-certified histocompatibility laboratory (outside
-   Lakeshore; QSO-25-18: histocompatibility testing = Yes).
+3. **HLA typing** comes from a contracted histocompatibility laboratory outside Lakeshore. QSO-25-18's
+   cells/tissue table lists HLA identity testing as **not** CLIA-applicable. The lab's certificate,
+   accreditation and director are recorded in the contract file. Donor infectious-disease testing for
+   HPCs/cord blood **is** CLIA-applicable.
 
 **Characters:**
 
@@ -93,7 +95,7 @@ No calendar years.
 
 1. **The map.** The CIO's compliance-system inventory lists BECS and the LIS but leaves out the
    registry donor database and the CBB system ("HRSA doesn't inspect us"). The Director builds an
-   obligations map: statute → program contracts → FDA (1271 and the BLA) → CLIA (HLA, contracted) →
+   obligations map: statute → program contracts → FDA (1271 and the BLA) → CLIA (donor infectious-disease testing; HLA identity testing on cells/tissue = No per QSO-25-18) →
    accreditation (themes only). Both systems join the inventory with named owners and listed
    requirement sources.
 2. **Registry data and confidentiality.** Recruitment marketing asks (**RDR-003**) to copy registry
@@ -141,7 +143,7 @@ No calendar years.
 | # | Slug | Finish line | `order:` | Status |
 |---|---|---|---|---|
 | — | (syllabus) | — | 174 | Published |
-| 1 | `hrsa-and-the-cell-transplant-program` | Say what HRSA's C.W. Bill Young program is (274k/274l, run by contract), how a blood center plugs in (donor center, cord blood bank, outcomes data), and which other regulators ride along (FDA 1271/BLA, CLIA for HLA). Put the registry and cord blood systems on the compliance map. | 175/176 | Not started |
+| 1 | `hrsa-and-the-cell-transplant-program` | Say what HRSA's C.W. Bill Young program is (274k/274l, run by contract), how a blood center plugs in (donor center, cord blood bank, outcomes data), and which other regulators ride along (FDA 1271/BLA, CLIA for HLA). Put the registry and cord blood systems on the compliance map. | 175/176 | Published |
 | 2 | `registry-donor-data-and-confidentiality` | Apply 274k's confidentiality, disclosure-purpose and penalty provisions to a registry donor database and its interfaces, and decide a data-reuse request. | 177/178 | Not started |
 | 3 | `cord-blood-identification-records-and-tracking` | Direct IT's part in 1271.290 tracking (distinct ID codes, code mapping, two-way tracking), 1271.270/1271.55 records and retention, and confidential maternal linkage during a CBB system replacement. | 179/180 | Not started |
 | 4 | `program-data-feeds-and-reporting` | Run a data feed into the program like a regulated interface: standardized data duties, reconciliation, change control and the right reporting path when it fails. | 181/182 | Not started |
@@ -151,3 +153,20 @@ No calendar years.
 - 2026-11-13 — Course scoped (Phase 2). Sources saved: 42 USC 274k/274l (+ Cord Blood Inventory
   note), 21 CFR 1271 excerpt (incl. 1271.330), FDA HPC Cord Blood list, program operators' statements.
   Syllabus `order:` 174; modules 175–182 (next unused: **183**).
+- 2026-11-13 — Corrections after module 1's drafter flagged them: (1) QSO-25-18 cells/tissue table says HLA
+  identity testing = **No** (plan previously said Yes; fixed above). (2) The Cord Blood Inventory note text
+  was missing from the 274k source (extraction bug); re-extracted, now present verbatim.
+- 2026-11-13 — Module 1 `hrsa-and-the-cell-transplant-program` published (verified; prose ~3,930 words).
+  Video: NMDP "How does the donor search happen?" (F5wSZ3ICxPA; title-only claim). **Locked:** the program
+  reaches Lakeshore through agreements, not an HRSA inspection; FDA inspects the CBB as a licensed
+  establishment (one sentence, no specifics). Compliance inventory now includes the registry donor
+  database (business owner: registry program manager) and the CBB system (business owner: the cord blood
+  bank's medical director), each with an IT owner and listed requirement sources. Map tiers: statute →
+  program agreements → FDA (1271 subparts C/D + BLA) → CLIA (contracted lab; QSO-25-18 tables differ on
+  HLA — cells/tissue "Identity testing (ABO/Rh, HLA)" = No; the contracted lab's certificate and director
+  define its scope; certificate kept in the contract file) → accreditation (274k(b), no entity named).
+  1271.3(d) taught as definition only; registry-collection classification = Quality/Regulatory Affairs
+  (dotted edge). 1271.1(b)(2) → licensed units follow subparts C and D; 1271.330 → subpart E/1271.350 do
+  not apply to 351 products; 600.14 named as the path but not in sources. Decoder rows/quotes for 274k(a),
+  (b), (d)(3), (d)(4), (f)(5), (f)(6), (n) live here — modules 2–3 link back. Module 1 did not use the
+  Cord Blood Inventory note (it was missing at drafting time); module 4 may now quote it.

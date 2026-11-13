@@ -1,0 +1,49 @@
+---
+title: "Resources"
+order: 176
+---
+
+External links for this lesson. Each was checked to load from a plain request on 2026-11-13. HRSA's own program site (bloodstemcell.hrsa.gov) returned HTTP 403 to automated retrieval, so it is not linked as verified; the statute itself is the primary source for the program.
+
+- **[Cornell LII: 42 U.S.C. 274k, National Program](https://www.law.cornell.edu/uscode/text/42/274k)**
+  — the statute behind the whole course: contracts, accreditation, qualified cord blood bank, confidentiality, penalty. Use it to check current text against the dated copy in this repo's `sources/`. Page title: "42 U.S. Code § 274k - National Program". Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 42 U.S.C. 274l, Stem cell therapeutic outcomes database](https://www.law.cornell.edu/uscode/text/42/274l)**
+  — the outcomes database provision. Use it when a question is about the data going toward the outcomes database. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 1271.3, definitions](https://www.law.cornell.edu/cfr/text/21/1271.3)**
+  — the HCT/P definition and its exclusions, including the peripheral and cord blood HPC example and the bone marrow carve-out. Use it to re-read the exact wording before anyone talks about classification. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 1271.330, applicability of subpart E](https://www.law.cornell.edu/cfr/text/21/1271.330)**
+  — the one-paragraph rule that keeps 351 biological products out of the subpart E reporting rules. Module 4 depends on it. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR Part 1271 index](https://www.law.cornell.edu/cfr/text/21/part-1271)**
+  — the whole part, including subparts C (donor eligibility) and D (current good tissue practice) used in later modules. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA: Approved Cellular and Gene Therapy Products](https://www.fda.gov/vaccines-blood-biologics/cellular-gene-therapy-products/approved-cellular-and-gene-therapy-products)**
+  — FDA's list of licensed products, including HPC, Cord Blood entries. Use it to see that licensed cord blood exists and who holds licenses; this course names no holder. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[CMS QSO-25-18-CLIA (PDF)](https://www.cms.gov/files/document/qso-25-18-clia.pdf)**
+  — the policy memo with the blood, cells/tissue and organs applicability tables. Read all three HLA-related rows before stating anything about HLA and CLIA. Guidance, not regulation. Verified loading via `curl` on 2026-11-13 (HTTP 200; PDF, no HTML title).
+
+- **[CIBMTR: SCTOD](https://cibmtr.org/CIBMTR/About/Our-Impact/SCTOD)**
+  — CIBMTR's own statement that it holds the contract for the Stem Cell Therapeutic Outcomes Database. Page title "SCTOD". Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NMDP: Act Now, C.W. Bill Young Cell Transplantation Program](https://www.nmdp.org/get-involved/advocate/public-policy/protecting-federal-funding)**
+  — an advocacy page by the program operator; source for the expiry statement and the 2025 reauthorization bill. It is advocacy, not law, and does not tell you the current status. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[How does the donor search happen?](https://www.youtube.com/watch?v=F5wSZ3ICxPA)** (NMDP, from oEmbed `author_name`)
+  — the video embedded in the lesson. A public explainer from the program operator's channel. Only its title and channel were verified; its description and transcript could not be read, so the lesson makes no claim about its contents beyond the title. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200).
+
+Also see [NMDP: Legal documents and resources](https://www.nmdp.org/what-we-do/about-us/legal) (page title "Legal documents and resources | NMDP"; the operator's footer statement is the source for "under contract to operate" the program; verified loading via `curl` on 2026-11-13, HTTP 200).
+
+## Keep learning
+
+Not official sources. Good for background. Never cite these as authority for a regulatory claim.
+
+- **[NMDP: Find cord blood banks and donation hospitals](https://www.nmdp.org/what-we-do/partnerships/global-transplant-network/cord-blood-banks-and-hospitals)** (NMDP, the program operator; public-facing) — shows the cord blood side as the public sees it. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Umbilical Cord Blood: A Guide for Primary Care Physicians](https://www.aafp.org/pubs/afp/issues/2011/0915/p661.html)** (American Family Physician) — a clinician-oriented overview of cord blood donation and banking; dated 2011, so use it for concepts, not current rules. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Cord Blood: Establishing a National Hematopoietic Stem Cell Bank Program, online report](https://www.nationalacademies.org/read/11269/chapter/9)** (National Academies, 2005) — background on why a national cord blood inventory was proposed. The page opened at a chapter titled "Recommended Structure of a National Program". Historical context, not current law. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[FDA: Cord Blood Banking, Information for Consumers](https://www.fda.gov/vaccines-blood-biologics/consumers-biologics/cord-blood-banking-information-consumers)** (FDA) — a plain-language FDA page on cord blood banking, useful for how licensed banks are described to the public. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+Prior modules this lesson builds on: [Regulatory landscape orientation](../../../foundations/regulatory-landscape-orientation/index.qmd), [Where CLIA and CAP reach a blood center](../../clia-and-cap-for-blood-center-labs/where-clia-and-cap-reach-a-blood-center/index.qmd), [Collection and testing](../../blood-center-operations/collection-and-testing/index.qmd), [Supplier qualification and risk tiering](../../vendor-and-third-party-risk-management/supplier-qualification-and-risk-tiering/index.qmd).
