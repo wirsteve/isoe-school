@@ -1,0 +1,34 @@
+---
+title: "Resources"
+order: 137
+---
+
+Places to go deeper on taking a vendor's BECS release from release notes to a validation decision, or to check a citation before it goes into a real Lakeshore document. Every link below was checked with `curl` and loaded; the page title was read to confirm it is the page named. The vendor-side 510(k) decision itself is not taught here and is not in this course's `sources/`; the FDA manufacturer guidance linked below is for orientation only.
+
+- **[21 CFR 864.9165, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/864.9165)** — what makes software a BECS and the special controls on its manufacturer, including (b)(3)(ii) unresolved anomalies with an impact annotation and (b)(3)(iii) revision history. Use it when reading what a vendor's release package is required to contain. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 606.121, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.121)** — container label content, including proper name with modifiers and attributes, expiration, ABO/Rh and the machine-readable requirements in (c)(13). Use it when deciding what a label defect could touch. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 606.120, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.120)** — labeling general requirements: labeling controls in (b) and "clear and legible" in (c). Use it with 606.121 when writing a labeling risk assessment. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 606.60, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.60)** — equipment "shall perform in the manner for which it was designed"; the guidance applies it to blood establishment computer systems, though its own table is written for physical equipment. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)** — III.A (cleared list and upgrades), III.D (scope and location-specific validation), III.E (risk), III.G (activities) and III.I (validation after a change). The lesson's main source. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA: 510(k) Blood Establishment Computer Software list](https://www.fda.gov/vaccines-blood-biologics/substantially-equivalent-510k-device-information/510k-blood-establishment-computer-software-2025)** — the page title reads "510(k) Blood Establishment Computer Software - 2025"; FDA publishes the cleared list by period, so look on FDA's site for the current listing as well. Use it to see what version received clearance, remembering III.A's caution that a later upgrade may not have needed a new 510(k). Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Deciding When to Submit a 510(k) for a Software Change to an Existing Device](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/deciding-when-submit-510k-software-change-existing-device)** — FDA's guidance for manufacturers on whether a software change needs a new 510(k). It is not in this course's `sources/`, nothing in the lesson relies on its content, and it does not govern Lakeshore; read it to understand the vendor's side of the "no new 510(k)" sentence. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: General Principles of Software Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)** — 2002 guidance for device manufacturers; general thinking only for Lakeshore. Section 4.7 (validation after a change) and 5.2.6 (user site testing) support the regression and on-site testing logic. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[How to Reuse Validated Test Cases Across System Upgrades and Releases | Matrix Validate](https://www.youtube.com/watch?v=IFJ8dYFpVWo)** (Matrix One, from oEmbed `author_name`) — the video embedded in the lesson: vendor-produced, general computer system validation, not blood-specific. Only the title, channel and embeddability were verified, not the claims. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200).
+
+Earlier modules this one builds on: [release management, deployment and change control](../release-management-deployment-and-change-control/index.qmd), [environments, baselines and test data](../environments-baselines-and-test-data/index.qmd), [requirements, backlogs and traceability](../requirements-backlogs-and-traceability-in-agile/index.qmd), [BECS as a regulated device](../../csv-and-becs/becs-as-a-regulated-device/index.qmd), [QMSR, ISO 13485 and the vendor](../../csv-and-becs/qmsr-iso-13485-and-the-vendor/index.qmd), [staying validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd), [vendor change notifications](../../vendor-and-third-party-risk-management/vendor-change-notifications-and-your-own-change-control/index.qmd) and [reviewing validation packages](../../directing-the-quality-analyst/reviewing-validation-packages/index.qmd).
+
+## Keep learning
+
+Not official sources. Good places to keep learning; none is authority for a regulatory claim.
+
+- **[The Practical Test Pyramid, Martin Fowler's site](https://martinfowler.com/articles/practical-test-pyramid.html)** — a practitioner's long-form article on how many tests of which kind to keep; good background for deciding which tests are cheap to re-run at every release. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[ISTQB, official software testing certifications](https://istqb.org/)** — the body behind widely used tester certifications; its syllabi cover impact analysis and regression (maintenance) testing as standard topics. Certification body; the page is a starting point, not the syllabus. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[iSpeak, ISPE](https://www.ispe.org/pharmaceutical-engineering/ispeak)** — the pharmaceutical engineering society's blog, where computerized system validation and data integrity topics appear regularly; mostly pharma-oriented, so translate to blood establishments. Verified loading via `curl` on 2026-11-13 (HTTP 200).

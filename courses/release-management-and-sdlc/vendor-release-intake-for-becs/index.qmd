@@ -1,0 +1,389 @@
+---
+title: "Vendor Release Intake for BECS"
+order: 136
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** take the vendor's BECS Release C (validation record VAL-1418) from release notes to a decision about validating it in Lakeshore's own facility: 510(k) status, anomaly lists, impact assessment, regression scope.
+- **The punchline:** the vendor says Release C needed no new 510(k) and lists two resolved anomalies and one new known anomaly in label reprint formatting. None of that shortens Lakeshore's validation. The Director and Quality decide that Release C proceeds after the freeze, with VAL-1418 scoped by Lakeshore's own impact analysis. The reprint anomaly is accepted only conditionally: a documented workaround, a procedural control and specific test cases, with go-live depending on those tests passing. If they fail, Lakeshore waits for the vendor's fix.
+- **The rule in one line:** the vendor's paperwork is an input to your analysis, never a substitute for it. You remain "ultimately responsible for assuring that the system used in your establishment has been validated for use in your establishment" (BECS guidance III.I).
+- **Monday question:** "Show me our written impact assessment of the vendor's release notes against our configuration, and the test case behind every anomaly that touches something we use."
+- **The trap:** reading "no new 510(k)" as "nothing significant changed," and "resolved" as "proven fixed here."
+:::
+
+**Before you start:** this module builds on [release management, deployment and change control](../release-management-deployment-and-change-control/index.qmd) (which put Release C after the freeze and set its scope rule), [BECS as a regulated device](../../csv-and-becs/becs-as-a-regulated-device/index.qmd) (what 510(k) clearance does and does not tell you), [QMSR, ISO 13485 and the vendor](../../csv-and-becs/qmsr-iso-13485-and-the-vendor/index.qmd) (the vendor's anomaly list as a regulated deliverable), [staying validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd) (regression analysis before regression testing), [vendor change notifications and your own change control](../../vendor-and-third-party-risk-management/vendor-change-notifications-and-your-own-change-control/index.qmd) and [reviewing validation packages](../../directing-the-quality-analyst/reviewing-validation-packages/index.qmd). It does not re-teach them.
+
+## The package arrives
+
+The vendor's formal Release C package lands on a Tuesday. The Quality Analyst opens it first and forwards it to you with one line: "Three things you will want to read before the meeting."
+
+The package holds release notes, a revision history, an updated hardware and peripheral specification, and the vendor's list of unresolved anomalies. The cover letter, from the account manager, has one sentence you read twice: "Release C did not require a new 510(k) clearance."
+
+The release notes list two anomalies as resolved:
+
+- the label-reprint edge case from Release B, where a reprint requested in the same second a unit's quarantine status changed could briefly carry the old status text (the vendor had told Lakeshore at Release B that a patch was scheduled; see [QMSR, ISO 13485 and the vendor](../../csv-and-becs/qmsr-iso-13485-and-the-vendor/index.qmd));
+- a summary count on an inventory screen that could briefly disagree with the unit-level list while many units changed status at once.
+
+And one is new on the unresolved list: a **label reprint formatting** anomaly. When a product's name line carries several modifiers and attributes, a *reprint* can wrap that line onto a second line and push the text down toward the machine-readable code. The vendor's note rates the impact "cosmetic," says scanning was unaffected in the vendor's testing, and gives a workaround: use an alternate reprint layout.
+
+The systems administrator reads it over your shoulder. "Two fixes, one cosmetic issue, and it did not even need new clearance. Sounds like a point release. Can we just put it on the test server and push it?"
+
+The Quality Validation Lead, who wrote VAL-1203's plan, is more careful. "The vendor can tell us what it tested. It cannot tell us what happens on our label printers, at both satellite sites, with our product codes, next to an order portal it has never seen."
+
+The head of distribution asks the question that matters most to him. "That reprint thing. Brookfield and Fairview reprint labels all the time. If a label comes out wrong, who catches it?"
+
+That is the Release C intake in one table: a regulatory sentence, three anomalies and a calendar. Module 4 already decided *when* Release C may go in: after the freeze, as an interface-touching release, with VAL-1418's scope including regression of the HOP-to-BECS interface. This module decides *what has to be true before it does.*
+
+## Why this rule exists, and the ITSM bridge
+
+The failure here is quiet. A customer accepts a vendor's release on the strength of the vendor's own paperwork, and the paperwork was never written about the customer's configuration. The vendor knows its code; Lakeshore knows its label templates, printers, product codes, interfaces, staff and calendar. A defect that is cosmetic in the vendor's test lab can be a labeling problem at a satellite site. A fix that is correct in the vendor's lab can change behavior that a Lakeshore interface depends on.
+
+The BECS guidance names this directly: "a seemingly small local change (e.g., software, hardware, peripherals, or infrastructure) may have a significant global system effect" (III.I). For BECS, the consequence side is labeling and release decisions, which sit on the path to a transfusion.
+
+You already own the ITSM vocabulary. This is **supplier release management meeting change enablement**. When a platform vendor ships a new version you do not just install it: you read the release notes and known-error list, assess the impact on your configuration items, decide what to regression test, and schedule against the change calendar. The **known error database** is the ITIL idea behind the vendor's anomaly list. The new element is that two parts of your normal practice become regulated artifacts: the vendor's known-error list is a labeling requirement on a Class II device manufacturer (864.9165(b)(3)(ii)), and Lakeshore's use of that list is part of the validation evidence an inspector will ask for.
+
+(ITIL 4 is paid material. Here, as elsewhere in this course, only the practice names are used, not the wording.)
+
+## The rule in plain English
+
+Six steps, in order. The same six steps structure the rest of the module.
+
+1. **Regulatory status.** Ask what "no new 510(k)" is based on, in writing, and understand what it does and does not mean. It never reduces Lakeshore's own validation.
+2. **Read the notes against Lakeshore.** Every resolved and new anomaly is read against Lakeshore's configuration and workflows. A resolved anomaly gets a verification test; a new one gets a risk assessment.
+3. **Treat the labeling anomaly as high-risk.** Assess it, decide (accept with workaround and procedural control, or wait for a fix) and write test cases that prove the workaround works.
+4. **Impact assessment.** Walk configuration, interfaces, SOPs, training and reports, location by location.
+5. **Regression scope by risk.** Regression analysis first, then regression testing sized to it.
+6. **Write VAL-1418 and decide.** Approved plan, then execution, then an accept-or-defer decision recorded with names and dates.
+
+All six are Lakeshore's work. The vendor contributes inputs and, under its own obligations, test evidence. The FDA guidance says the same of validation generally: "Equipment vendors may provide assistance for equipment qualification and consultants may provide assistance with the validation project. However, you are ultimately responsible for validation of your system in your facility" (III.D).
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| BECS guidance III.A | "Section III, subsection A of the 2013 user's-facility guidance" | Evaluate your BECS; monitor adverse-event and recall reports; note that the cleared list shows the cleared version and a later upgrade may not have needed a new 510(k) (guidance: *recommend*, *should*). | "No new 510(k)" is an expected situation, not a red flag and not a comfort. |
+| 21 CFR 864.9165(b)(2)-(5) | "Title 21, part 864, section 864.9165, paragraph (b), subparagraphs 2 to 5" | Special controls on the device manufacturer: validation and hazard analysis, labeling including unresolved anomalies with impact annotation and revision history, traceability matrix, performance testing (regulation, on the vendor). | The release package's anomaly list and revision history are regulated vendor deliverables. |
+| BECS guidance III.B | "...subsection B" | Maintain current system documentation, including records of software changes and problem reports (*must maintain*; contents *recommended*). | After Release C, the system file must show it. |
+| BECS guidance III.D | "...subsection D" | Validate at your location with the same software, hardware, SOPs and personnel; each location has its own plan; assess the manufacturer's test cases; include worst-case scenarios (guidance). | Brookfield and Fairview each need location-specific label tests. |
+| BECS guidance III.E | "...subsection E" | Risk assessment early; test highest-risk functions more comprehensively; consider most hazards to have a high probability of occurrence (guidance). | The label anomaly cannot be argued down by "rare." |
+| BECS guidance III.G | "...subsection G" | Validate in the test partition, move what you validated, validate interfaces, train, monitor after installation (guidance, with *must* where it cites regulation). | Execution, training and the monitoring period. |
+| BECS guidance III.I | "...subsection I" | Manufacturer should tell you what else a change might affect; regression analysis, then regression testing sized to it (guidance). | The core of steps 4 and 5. |
+| 21 CFR 606.120(b)(3), (c) | "Title 21, part 606, section 606.120, paragraphs (b)(3) and (c)" | Labeling controls to prevent errors in translating test results to labels; labeling must be clear and legible (regulation: *shall*). | Why the reprint anomaly is a labeling risk. |
+| 21 CFR 606.121(c) | "Title 21, part 606, section 606.121, paragraph (c)" | Required container label content, including proper name with modifiers and attributes, expiration, ABO/Rh, and machine-readable information (regulation: *must*). | Which label elements a wrapped line could crowd. |
+| 21 CFR 606.60(a); 211.68(a), (b) | "...606.60 paragraph (a); 211.68 paragraphs (a) and (b)" | Equipment must perform in the manner designed; computer systems checked under a written program; controlled changes; input/output checked (regulation). The BECS guidance says BECS systems fall under both. | The regulatory root of validating the release at all. |
+| GPSV 4.7 and 5.2.6 | "General Principles of Software Validation, sections 4.7 and 5.2.6" | Validation status re-established after any change; user site testing on the actual hardware and software (FDA general thinking for device makers; not binding on Lakeshore). | Supports regression analysis and testing at Lakeshore's site. |
+
+## The actual text
+
+### Step 1 source: the cleared list and the upgrade that needed no new clearance
+
+> While not strictly part of system validation, we recommend that you evaluate and compare the available BECS with the needs of your blood establishment and select a BECS that meets your requirements. We further recommend that you monitor reports of adverse events and recalls applicable to your BECS (Refs. 5 through 9).
+>
+> We provide a list of 510(k) cleared BECS on our web site (Ref. 9). You should note that the version number listed is the version that received clearance; however, the manufacturer may have released an upgrade that did not require a new 510(k) clearance. You also should note that the list on our website is cumulative and may include BECS that may no longer be available or supported by the original manufacturer.
+> — FDA, *Blood Establishment Computer System Validation in the User's Facility*, III.A (`sources/fda-guidance/becs-validation-users-facility-2013.md`)
+
+Reading it against Release C: the second paragraph describes exactly the sentence in the cover letter. The guidance does not tell you to doubt it, and it does not tell you it lowers your burden. It tells you *to note* that the cleared version and the release you install may differ. The first paragraph adds a habit people skip: monitoring adverse-event and recall reports for your BECS. That belongs in the intake checklist.
+
+The guidance's introduction also marks the edge of what it covers: it "does not address the software manufacturer's validation responsibilities, or the submission of a 510(k) premarket notification for BECS." Whether a particular change needs a new 510(k) is a manufacturer's determination under premarket rules that are **not in this course's `sources/`**. This lesson therefore does not say what the test is or whether the vendor applied it correctly. It tells you what to ask for.
+
+### Step 2 source: the vendor's anomaly list is a regulated deliverable
+
+> (b) Classification. Class II (special controls). The special controls for these devices are:
+>
+> (1) Software performance and functional requirements including detailed design specifications (e.g., algorithms or control characteristics, alarms, device limitations, and safety requirements).
+>
+> (2) Verification and validation testing and hazard analysis must be performed.
+>
+> (3) Labeling must include:
+>
+> (i) Software limitations;
+>
+> (ii) Unresolved anomalies, annotated with an explanation of the impact on safety or effectiveness;
+>
+> (iii) Revision history; and
+>
+> (iv) Hardware and peripheral specifications.
+>
+> (4) Traceability matrix must be performed.
+> — 21 CFR 864.9165(b)(1) to (4) (full text, including (5) performance testing, in `sources/cfr/864.9165.md`)
+
+Against the package on your desk: the **anomaly list** is (3)(ii); the **revision history** is (3)(iii); the **updated hardware and peripheral specification** is (3)(iv). The phrase "annotated with an explanation of the impact on safety or effectiveness" tells you what to look for on the new reprint anomaly: the vendor's impact annotation. It is the vendor's explanation, written without knowing your label stock, printers or product mix. Use it, and test it. These controls bind the manufacturer; none of them tells Lakeshore what to do with the list. That comes from the guidance.
+
+### Step 3 source: risk assessment, and what labeling touches
+
+> The level of confidence and, therefore, the level of validation effort needed, varies depending upon the potential hazards posed by the automated functions of the system. Your test plan and test cases should be developed based on a risk assessment. [...] The highest risk functions of the system should be tested more comprehensively. [...]
+>
+> Because of the complexity of software, especially BECS, it is difficult to predict the probability of a hazard occurrence. Therefore, when you conduct your risk assessment, we recommend you consider most hazards to have a high probability of occurrence.
+> — BECS guidance III.E (opening and last sentences)
+
+The second paragraph removes the usual escape hatch. The vendor's note says the anomaly appears "only on reprints of multi-attribute products." That describes frequency. Lakeshore's assessment is told to treat most hazards as likely, so the risk is judged on *severity* and on the *controls*. Severity for labeling is high; the labeling rules explain why.
+
+> (b) The labeling operation shall include the following labeling controls: [...] (3) All necessary checks in labeling procedures shall be utilized to prevent errors in translating test results to container labels.
+>
+> (c) All labeling shall be clear and legible.
+> — 21 CFR 606.120(b)(3) and (c)
+
+> (c) The container label must include the following information, as well as other specialized information as required in this section for specific products:
+>
+> (1) The proper name of the product in a prominent position, with any appropriate modifiers and attributes. [...]
+> — 21 CFR 606.121(c)(1) (opening and first item)
+
+> (iv) [...] The machine-readable information must: (A) Be unique to the blood or blood component; (B) Be surrounded by sufficient blank space so that the machine-readable information can be scanned correctly; and (C) Remain intact under normal conditions of use.
+> — 21 CFR 606.121(c)(13)(iv)
+
+Read these as the *map of what the anomaly could touch*. The wrapped line is the proper name with its modifiers and attributes, (c)(1). The text could push toward the machine-readable region, whose blank space is itself a regulatory requirement, (c)(13)(iv)(B). Legibility is (c) of 606.120. The "checks" language in 606.120(b)(3) is about translating test results to labels; it is the closest the regulation comes to saying that labeling procedures need checks, and whether and how it applies to reprints of an existing label is for Quality and regulatory affairs to judge. Likewise, 606.120(b)(1) speaks of labels "held upon receipt" for proofing against approved final copy, which is about label stock, not reprint output. This lesson does not claim either paragraph requires a particular reprint check. It claims the *risk* is real and the controls have to be designed by Lakeshore.
+
+### Step 4 and 5 source: change, regression, and the whole system
+
+> When the BECS manufacturer modifies the software, the manufacturer should inform you of other functions that might be affected. We recommend that your contract with a software manufacturer specifically address this issue. However, you are ultimately responsible for assuring that the system used in your establishment has been validated for use in your establishment.
+>
+> Due to the complexity of systems and BECS, a seemingly small local change (e.g., software, hardware, peripherals, or infrastructure) may have a significant global system effect. When any change (even a small change) is made to the software on the system, a software regression analysis should be conducted, not just for validation of the individual change, but also to determine the extent and impact of that change on the entire system. Based on the analysis, you should then conduct an appropriate level of software regression testing to show that unchanged but vulnerable portions of the system have not been adversely affected. [...] We recommend that you perform regression testing, when indicated by your analysis, by re-running test cases that previously passed.
+> — BECS guidance III.I
+
+Three sentences carry the lesson. "**The manufacturer should inform you of other functions that might be affected**" is a question to send to the vendor, in writing, for Release C. "**You are ultimately responsible**" is why the answer is an input. "**The entire system**" is why the HOP-to-BECS interface is in VAL-1418 even though HOP itself did not change: it is an "unchanged but vulnerable portion."
+
+And for where the testing happens, plus how it is run:
+
+> This testing should take place at a user's site with the actual hardware and software that will be part of the installed system configuration. The testing is accomplished through either actual or simulated use of the software being tested within the context in which it is intended to function.
+> — FDA, *General Principles of Software Validation*, 5.2.6 (user site testing; general thinking for device makers, not binding on Lakeshore; excerpt in `sources/fda-guidance/general-principles-software-validation-2002-excerpt.md`)
+
+That sentence is the general-guidance version of what BECS guidance III.D says about validating "using the same software, hardware, SOPs, and personnel who will use the system after it is formally implemented." The vendor's lab does not have Lakeshore's printers.
+
+Finally, the regulatory roots under all of it. The BECS guidance says: "Systems also are regulated as equipment under 21 CFR Part 606 [...] specifically 21 CFR 606.60, and as automated or electronic equipment under 21 CFR Part 211, Subpart D (Equipment), specifically 21 CFR 211.68" (II.A). 211.68(a) requires a written program "designed to assure proper performance" and 211.68(b) controls so that changes to records are made only by authorized personnel and that input and output are checked for accuracy ([module 4](../release-management-deployment-and-change-control/index.qmd) quotes both). 606.60(a) adds that equipment "shall perform in the manner for which it was designed." Note, as [module 3 of the CSV course](../../csv-and-becs/becs-as-a-regulated-device/index.qmd) does, that 606.60's own table is written for physical lab equipment; the guidance is what carries it to software.
+
+## Step 1 in practice: what "no new 510(k)" does and does not mean
+
+**What it can tell you.** The vendor concluded the change did not need a new premarket clearance, and the FDA guidance says this happens. Nothing in the sources suggests it is improper. The cleared list is "cumulative" and shows "the version that received clearance," so do not be alarmed when Release C is not on it.
+
+**What it cannot tell you.**
+
+- *That little changed.* The release notes and revision history say what changed, and Lakeshore reads those regardless.
+- *That the release is low-risk at Lakeshore.* The sources here do not describe how the vendor's clearance question is decided, so do not infer Lakeshore's risk from it. Lakeshore's risk lives in its own configuration and workflows.
+- *That Lakeshore's validation is covered.* Module 3 of the CSV course made this point for Release B: never confuse the vendor's clearance with your validation. III.D and III.I, quoted above, say the same.
+- *That the anomaly list is complete.* The special controls require the vendor to label unresolved anomalies. Lakeshore still monitors recall and adverse-event reports (III.A) and its own problem records.
+
+**What Lakeshore does about it, in order:**
+
+1. **Ask in writing** for the regulatory basis for "no new 510(k)": who at the vendor made the determination, when, and what the vendor's regulatory function is prepared to state. Do not demand the vendor's confidential submission files; a written statement from the vendor's regulatory or quality function is the realistic ask.
+2. **File the answer** in the system documentation (III.B) and route it to Lakeshore's regulatory affairs, who decide whether anything in it needs follow-up. This module does not give a verdict on the vendor's decision, because the sources do not support one.
+3. **Treat a refusal to explain, or an inconsistent answer, as a vendor-risk finding**, not a validation shortcut in either direction. That goes to the vendor risk process taught in the [vendor risk course](../../vendor-and-third-party-risk-management/index.qmd).
+4. **Check recalls and adverse-event reports** for the BECS (III.A) and put the date checked on the intake record.
+
+A useful outside reference, which this lesson does not rely on because it is not in `sources/`: FDA publishes a guidance for manufacturers on deciding when a software change needs a new 510(k). It is linked from the resources page for orientation only.
+
+## Step 2 in practice: reading the notes against Lakeshore
+
+Release notes are written for every customer. Intake translates them into *Lakeshore's* configuration items and workflows. For each line, ask three questions: **Do we use that function? Where, and at which sites? What else sits next to it?**
+
+| Item in the package | Question for Lakeshore | What the intake does |
+|---|---|---|
+| Resolved: reprint carried prior quarantine status text for a few seconds | Do reprints at Brookfield and Fairview run on this path? Did the fix change how status reaches the label? | Verification test at the exact boundary (a reprint requested as status changes), at both sites. "Resolved" means *claimed fixed*; Lakeshore proves it. |
+| Resolved: summary inventory count disagreed with unit-level list during bulk status changes | Which Lakeshore reports and screens show that count? Does the HOP-to-BECS interface compute availability the same way? | Ask the vendor, in writing, whether the interface's inventory read shares that logic; if yes or unknown, TC-34 and TC-35 are in scope on their face. |
+| New, unresolved: reprint formatting on multi-attribute products | Which of our products have multi-attribute names, on which templates and printers, and who reprints? | Step 3 below. |
+| Revision history lines not in the headline notes | What else changed? | Read all of it; list every changed function with a "touches us / does not / unknown" mark. Unknown becomes a question to the vendor. |
+| Hardware and peripheral specification | Do our label printers, scanners and clients meet it? | Check against Lakeshore's recorded configuration at both satellite sites and central. |
+
+Two habits make this work. **First, mark "unknown" honestly.** An "unknown" is not a pass; it is an open question, and it either gets answered in writing or gets treated as touching. **Second, send the questions the guidance implies**: what other functions might be affected (III.I), which interfaces or message formats changed, whether the permission model for interface accounts changed, which vendor test cases cover the changed code, and what the installation and back-out procedure involves. As a preview only, add the supply-chain questions: does the package come with an inventory of its software components, how can Lakeshore confirm the package is the vendor's and unaltered, and what is the vendor's process for vulnerabilities in its components? [Module 8](../secure-sdlc-and-software-supply-chain/index.qmd) teaches what good answers look like; module 5 only makes sure the questions go out with the rest.
+
+Also assess the vendor's own test evidence. III.D says to "carefully assess the software manufacturer's test cases, consider your own intended use of the software, your internal policies and procedures, and add or change test plans as appropriate." The vendor's tests are a starting library.
+
+## Step 3 in practice: the label reprint anomaly
+
+Labeling is where a BECS error turns into a physical product carrying wrong or unreadable information, which is why the Director treats this anomaly as high-risk even though the vendor calls it "cosmetic."
+
+### The risk assessment
+
+Per III.E, write down what can go wrong and treat probability as high:
+
+| What could go wrong | Which requirement it touches | Existing barrier | Residual concern |
+|---|---|---|---|
+| Wrapped name line is cut off or overlaps other text | Legibility, 606.120(c); proper name with modifiers and attributes, 606.121(c)(1) | Visual check by staff | Staff may not notice a misplaced line on a routine reprint |
+| Wrapped text crowds the blank space around the machine-readable code | 606.121(c)(13)(iv)(B) | Scanning at downstream steps | A label that scans on one printer may not on another; Lakeshore's printers and scanners differ from the vendor's |
+| Reprinted label differs from the first print, so staff see two versions for one unit | Accuracy and identity of the label | Comparison with the unit record | Only works if someone compares |
+| Operator uses the standard layout out of habit instead of the workaround layout | Workaround failure | None yet | This is the control Lakeshore has to design |
+
+### The decision: accept with controls, or wait
+
+You have two real options and each is defensible if it is documented.
+
+**Option 1: accept the anomaly with a workaround and a procedural control.**
+
+- **Workaround:** use the vendor's alternate reprint layout for affected products (configuration change; goes in the configuration baseline).
+- **Procedural control:** a Lakeshore-owned step in the reprint procedure that does not depend on the software being right. For example: a second person checks every reprinted label against the unit record, confirms the proper name, expiration and ABO/Rh are complete and legible, and scans the machine-readable code before the label is applied; reprints are logged. Quality owns the wording; the labeling SOP is revised, and affected staff at all locations are trained before go-live (III.G requires training on system procedures; assessing understanding is part of it).
+- **Proof:** test cases showing the workaround works and the control catches the failure it is there for.
+
+**Option 2: wait for the vendor's fix.** Release C then does not go live; VAL-1418 stays open, and Release B remains in production. This is the right option if the controls cannot be shown to work, or if the risk assessment says the residual risk is not acceptable.
+
+The decision rule the Director sets: **go-live is conditional on the workaround test cases passing at both sites.** If they pass, accept. If they fail, wait. This is a conditional decision, not a promise that Release C will install.
+
+### The test cases that prove the workaround
+
+Keep the numbering simple and distinct from HOP's TC series: LR-1 to LR-6 (label reprint).
+
+| ID | What it proves | Design notes (III.G test design) |
+|---|---|---|
+| LR-1 | Alternate layout reprint of the longest-named product is complete and legible | Boundary value: longest product name, maximum number of modifiers and attributes |
+| LR-2 | Machine-readable code on the alternate-layout reprint scans with Lakeshore's scanners | Run on the actual printers and scanners at **central, Brookfield and Fairview**; blank space around the code is checked (606.121(c)(13)(iv)(B)) |
+| LR-3 | Reprint matches first print for the same unit | Normal, abnormal (a name just over the line length) and "absurd" inputs per III.G |
+| LR-4 | The procedural control catches a standard-layout reprint | Deliberately print with the standard layout; the second-person check must flag it. This tests the *control*, not the software |
+| LR-5 | Reprint requested as a unit's quarantine status changes shows the correct status | Verifies the "resolved" Release B anomaly at its boundary |
+| LR-6 | Reprint under peak load behaves as at normal load | Worst-case scenario per III.D; echoes the label-print timing concern from VIA-0842 |
+
+Test records carry the fields the guidance lists for each executed case: input, expected output, actual output, acceptance criteria, pass or fail, who performed it and when (III.G), plus the environment fields from [module 3](../environments-baselines-and-test-data/index.qmd). Testers must be the people and equipment who will actually reprint labels (III.D).
+
+## Step 4 in practice: the impact assessment
+
+The impact assessment answers one question for each part of Lakeshore's operation: **does Release C change something this part depends on?** It is Lakeshore's document, authored by the Quality Validation Lead with IT and (as for VAL-1203) the vendor's implementation consultant, and it feeds the regression analysis.
+
+| Area | What to examine | Release C intake finding (illustrative; confirm against vendor answers) |
+|---|---|---|
+| **Configuration** | Label templates, product code tables, user roles, interface settings, site-specific settings at each location | Alternate reprint layout is a new configuration item; confirm no other setting resets in the upgrade; baseline updated (module 3) |
+| **Interfaces: HOP to BECS** | Message formats, interface account permissions, how availability and status are returned | Interface-touching by definition (module 4). Whether the inventory-count fix touches availability is a written question to the vendor |
+| **Interfaces: label printers** | Printer drivers, templates, supported models in the updated hardware and peripheral specification | In scope: this is where the anomaly lives |
+| **Interfaces: instruments and the testing lab** | The inbound path, including Lakeshore's in-house translation script that reformats lab results for BECS | Ask whether input formats or validation rules changed; if the vendor says no, record that answer and keep a smoke-level check |
+| **Interfaces: ICCBBA reference tables, Riverside shipment data, central-to-satellite** | Table loads, outbound shipment records (606.165), site synchronization | Sampled by risk; central-to-satellite is in scope because the satellites run the reprint tests |
+| **SOPs** | Labeling and reprint procedure, release procedure, downtime procedure, change control | Reprint SOP revised for the procedural control |
+| **Training** | Who reprints labels, who confirms HOP proposals in BECS, who deploys | Label staff at all three locations; confirm distribution staff's HOP workflow is unchanged |
+| **Reports** | Inventory and distribution reports, HOP's order status | Reports affected by the inventory-count fix identified and spot-checked |
+| **System documentation** | The records III.B lists: software change record with date, interface list, problem reports | Updated at close-out |
+
+The impact assessment also settles an easy-to-miss point: **the validated pair.** Module 4 recorded that HOP 3.0 was validated against a specific BECS baseline. After Release C, the pair is the same HOP build and a *new* BECS baseline, and nobody has evidence about that pair yet. VAL-1418 produces it.
+
+The environment sequencing follows module 3: do not move the validation environment's BECS instance to the Release C candidate baseline until HOP 3.0 has been deployed and its monitoring period has finished, because while that instance holds Release C it is no longer production-equivalent for HOP evidence. That sequencing is a Lakeshore scheduling decision, not a regulatory one. Production deployment waits for the window after the freeze, under its own change record and monitoring period, and never shares a window with another interface-touching release.
+
+## Step 5 in practice: regression scope by risk
+
+The guidance sequence is **analysis, then testing sized to the analysis.** The regression analysis for Release C is a short written document that lists each changed function and each adjacent function, says whether it is in scope, and says why. This module shows the logic; [module 6](../risk-based-testing-and-regression/index.qmd) teaches sizing in depth.
+
+A workable three-tier scope for VAL-1418:
+
+- **Tier 1: re-run or newly run, because the change is there or adjacent and the consequence is high.** The label reprint tests (LR-1 to LR-6). The HOP-to-BECS interface tests that depend on BECS's behavior: TC-32a (each HOP role attempts a commit), TC-32b (inspect interface account permissions in BECS), TC-32c (leave a proposal unconfirmed for twenty-four hours), TC-34 (HOP shows only BECS's suitability status) and TC-35 (stale proposals after a BECS status change). These were module 4's first candidates, and the impact assessment confirms or adjusts them. The tests are re-run by re-running cases that previously passed, as III.I recommends.
+- **Tier 2: targeted checks, sized by the vendor's answers.** Central-to-satellite synchronization, instrument and lab-result inbound path, ICCBBA table load, Riverside shipment records, HOP read of inventory. Sampled, with a recorded reason for each sample.
+- **Tier 3: not re-run, with a documented rationale.** Functions the vendor states are unchanged, that are not adjacent to anything that changed, and whose failure would be caught by Tier 1 or 2. The rationale cites the vendor's written statement as an *input* and says what Lakeshore did to check it was reasonable. TC-31, which is HOP-only, stays here unless the analysis finds a reason to pull it in.
+
+**What moves a test up a tier:** a vendor answer of "unknown" or "yes"; a failure in an earlier tier; a change in a function that sits on a patient-safety path (labeling, release decisions, the HOP-to-BECS interface); or evidence that a related deviation has happened before. This is exactly how [the earlier VIA-0842 review](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd) judged a vendor-supplied characterization: as an input, not a conclusion.
+
+Independence applies as in module 2: for high-risk requirements, the person who executes a test is not the person who built the thing under test. For Release C the development lead's team does not change HOP code (if the interface contract is unchanged), but they should not be the people who sign off interface evidence either. Quality reviews.
+
+## Step 6 in practice: the VAL-1418 plan and the decision
+
+The VAL-1418 plan, written before testing starts (211.68(a) and III.C: "Before you start user validation, you must define and control how you will validate the system through the use of a written plan"), contains:
+
+- scope and rationale: the impact assessment and regression analysis attached;
+- the regulatory-status statement and the vendor's written answers, filed;
+- the risk assessment, including the label anomaly and its accepted controls;
+- test cases and acceptance criteria (LR series and the Tier 1 and Tier 2 sets), with the locations that execute them;
+- environment and baseline requirements, and the sequencing decision above;
+- training and procedure changes completed before go-live;
+- the conditions for go-live, and for deferral;
+- monitoring plan after installation, including interface error files and the first reprints (III.G);
+- approvers: as with VAL-1203, Quality blocking, the Director co-approving as system owner.
+
+After execution, the validation report (III.H) records results, variances, plan amendments, evaluation and dated management approvals.
+
+### The Director's decision
+
+**1.** Release C proceeds, after the freeze, in its own window, with VAL-1418's scope set by Lakeshore's impact analysis, not by the vendor's release notes. The vendor's statement that no new 510(k) was needed is recorded, its basis requested, and it changes nothing in the scope.
+
+**2.** The reprint anomaly is accepted **conditionally**, with the alternate layout as workaround, a second-person check as procedural control, and LR-1 to LR-6 as proof. If LR-1 to LR-6 pass at all locations and the control is in the revised SOP with staff trained, Release C goes live. If they fail, Release C does not go live and Lakeshore waits for the vendor's fix. Quality can block at that point; it is a documented risk decision, and the Director does not override a Quality block on a labeling question.
+
+**3.** Resolved anomalies are retested, not assumed. The reprint-status fix is verified by LR-5; the inventory-count fix is a question to the vendor and a spot-check.
+
+**4.** The two vendor questions about other affected functions and interface changes must be answered in writing before the plan is approved. If the answers materially widen the scope, the plan changes before testing, not after.
+
+What this does *not* promise: that Release C will go live. It promises that the decision will be made on Lakeshore's evidence, and that the person who asks "who catches a wrong label?" will get an answer with a procedure and a test behind it.
+
+## See it in one picture
+
+```{mermaid}
+flowchart TD
+    A["Vendor sends Release C package:<br/>release notes, anomaly list,<br/>revision history, 'no new 510(k)' statement"] --> T["Trigger: change authority convenes<br/>Release C flagged interface-touching,<br/>placed in window 2 (after the freeze)"]
+    T --> S["1. Regulatory status<br/>ask vendor for written basis;<br/>Lakeshore still validates (III.A, III.D)"]
+    T --> N["2. Read the notes against Lakeshore's<br/>configuration: 2 resolved anomalies,<br/>1 new known anomaly"]
+    S --> I["4. Impact assessment<br/>configuration, interfaces, SOPs,<br/>training, reports, per location"]
+    N --> I
+    N --> L["3. Label reprint anomaly<br/>risk assessment (606.120, 606.121)"]
+    L --> D{"Accept with workaround<br/>and procedural control?"}
+    D -->|"Yes, conditionally"| LT["Workaround test cases LR-1 to LR-6<br/>both satellite sites"]
+    D -->|"No"| W["Wait for vendor fix"]
+    I --> R["5. Regression analysis then scope by risk<br/>TC-32a/b/c, TC-34, TC-35 first candidates"]
+    R --> P["6. VAL-1418 plan approved<br/>Quality blocking, Director co-approves"]
+    LT --> P
+    P --> X{"Execution: interface regression<br/>and LR tests all pass?"}
+    X -->|"Yes"| G["Go-live in window 2<br/>own change record and monitoring"]
+    X -->|"LR tests fail"| W
+    X -->|"Other failure"| F["Deviation, fix, re-run<br/>or defer Release C"]
+```
+
+## Watch it explained
+
+This is a short vendor-produced video from a validation-software company, on reusing validated test cases when a system is upgraded. The title suggests it covers the regression question in step 5: which existing tests carry forward to a new release. Only the title and channel were verified, not the content. It is general computer system validation framing, not blood-specific, and it does not mention 510(k) status, BECS guidance or labeling, so treat it as background on the regression idea and nothing more. The vendor sells validation software; nothing here depends on the product.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/IFJ8dYFpVWo"
+  title="How to Reuse Validated Test Cases Across System Upgrades and Releases | Matrix Validate" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## What an inspector or assessor would look for
+
+- **The intake record for the release:** the package as received, dated; the vendor's written answers; the regulatory-status statement and who reviewed it. A bad answer: "the vendor said it was fine," with nothing written.
+- **The impact assessment and regression analysis,** written before the test plan, naming what was ruled in and out and why. A bad answer: a test list with no analysis behind it (the VIA-0842 finding, repeated).
+- **Evidence the anomaly list was used:** a risk assessment entry for each anomaly that touches a Lakeshore function, with a test case or a stated reason there is none.
+- **The labeling procedure and its training records,** revised for the reprint control, and a log showing it is followed.
+- **Location-specific evidence** from each site that reprints labels (III.D), on the printers actually in use there.
+- **Validation report with dated approvals** (III.H), including any failed tests and what happened next.
+- **Timeline integrity:** plan approved before testing; testing complete before production install; the baseline and system documentation updated afterward.
+
+## Common traps
+
+**"No new 510(k) means it's a minor release."** The 510(k) question belongs to the vendor and is not in this course's sources, and it says nothing about Lakeshore's configuration. Intake classifies Release C by what it changes in Lakeshore's environment.
+
+**"Resolved means fixed here."** A resolved anomaly is a vendor claim about the vendor's test conditions. Lakeshore retests the boundary where it used the function.
+
+**"Cosmetic" means low risk.** On a label, a formatting defect can become a legibility or scanning problem. The guidance tells you to treat most hazards as likely, so you judge the severity and the controls, and you do not argue from rarity.
+
+**"The workaround solves it."** A workaround that depends on an operator remembering to use a different layout is a procedure, and a procedure has to be written, trained, checked and tested. LR-4 exists to prove the check catches the failure, because the software no longer does.
+
+**"The vendor's test cases cover us."** III.D says to assess them and add your own. The vendor has not run them on your printers, at your satellites, next to your order portal.
+
+## What this means for your job
+
+- **Convene the change authority on the announcement,** not on the install date: classify the release, flag it interface-touching, and pencil it on the calendar before the account manager proposes a date.
+- **Send the written question list the day the package arrives:** regulatory basis, other affected functions (III.I), interface and permission changes, test cases, install and back-out procedure, and the supply-chain previews.
+- **Ask Quality for the impact assessment before the test plan,** and send back any test plan that has no analysis behind it.
+- **Make every anomaly that touches a function Lakeshore uses show up as a named test case or a written reason.** Review that traceability yourself; it is the cheapest inspection question to pre-empt.
+- **Insist that go-live conditions are written and could fail.** If the conditional decision cannot say what failing looks like, it is a hope. A conditional approval with a clear "wait for the fix" branch is the strongest position to hold in front of a CIO.
+- **Explain it to the CIO in two sentences:** "The vendor tested its own software; we have to prove it works in our building with our printers and our ordering portal, and one known label problem needs a workaround we can show works. If the workaround tests pass, Release C goes in after the freeze; if not, we wait for the vendor's fix."
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The vendor writes that Release C needed no new 510(k). The Quality Analyst proposes cutting VAL-1418's scope accordingly. Right?
+
+No. The 510(k) decision is the vendor's, under premarket rules, and the BECS guidance itself says it "does not address ... the submission of a 510(k) premarket notification." For Lakeshore, III.D ("you are ultimately responsible for validation of your system in your facility") and III.I (regression analysis for any change, "even a small change") determine scope. Ask for the basis in writing and file it; do not let it shrink the analysis.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is the vendor's unresolved-anomalies list a regulatory requirement on Lakeshore?
+
+The list itself is a regulatory requirement on the *vendor*: 864.9165(b)(3)(ii) makes "unresolved anomalies, annotated with an explanation of the impact on safety or effectiveness" part of the device's labeling. What Lakeshore does with it is mostly guidance: III.E recommends basing test plans on risk assessment, and III.D recommends adding to the vendor's tests. No regulation says "write one test per vendor anomaly." The obligation Lakeshore cannot skip is validation under 211.68; using the list is how you do it defensibly.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: LR-4 fails at Fairview: a standard-layout reprint passed the second-person check. What happens to Release C?
+
+The workaround's control is not shown to work, so the go-live condition is not met. Release C does not go live. Options are to redesign and retest the control (change to the procedure, retrain, re-run LR-4 and its neighbors) or to wait for the vendor's fix; either way the result and the decision go in the validation report as a variance. Do not accept the anomaly on the argument that the failure was only at one site, because III.D asks for location-specific validation.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: The release notes say the inventory-count fix "does not affect interfaces." Can TC-34 and TC-35 be dropped from Tier 1?
+
+Not on that sentence alone. It is an input from a vendor who has never seen HOP's use of BECS, and III.I treats the HOP-to-BECS interface as "unchanged but vulnerable." Ask what the vendor means, whether the interface's availability read shares the changed logic, and what test supports the statement. If the answer is specific and credible, the tests may move to Tier 2 with the reason written down. It does not stand in for the analysis.
+:::
+
+## Where this goes next
+
+VAL-1418 now has a scope and a conditional decision, but "sized by risk" has been shown, not taught. [Risk-based testing and regression](../risk-based-testing-and-regression/index.qmd) takes the same Tier 1 to 3 logic and teaches how to size a test effort, decide regression scope from an impact analysis, and what the evidence must look like.

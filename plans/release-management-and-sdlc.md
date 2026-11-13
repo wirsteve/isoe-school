@@ -111,7 +111,7 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
 | 2 | `requirements-backlogs-and-traceability-in-agile` | Turn user stories into requirements an inspector can trace to tests, write a definition of done that includes validation evidence, and record the regulatory-affairs decision on auto-allocation. | 130/131 | Published |
 | 3 | `environments-baselines-and-test-data` | Design dev/test/validation/production environments, keep a configuration baseline (CM-2), and keep real donor data out of non-production. | 132/133 | Published |
 | 4 | `release-management-deployment-and-change-control` | Tell ITIL release management, deployment management and change enablement apart, classify release types, and set a release calendar and freeze windows that respect blood operations. | 134/135 | Published |
-| 5 | `vendor-release-intake-for-becs` | Take a vendor's BECS release (Release C) from release notes to a validation-in-your-facility decision: 510(k) status, anomaly lists, impact assessment, regression scope. | 136/137 | Not started |
+| 5 | `vendor-release-intake-for-becs` | Take a vendor's BECS release (Release C) from release notes to a validation-in-your-facility decision: 510(k) status, anomaly lists, impact assessment, regression scope. | 136/137 | Published |
 | 6 | `risk-based-testing-and-regression` | Size a test effort by risk, decide regression scope from an impact analysis, and know what test evidence must look like. | 138/139 | Not started |
 | 7 | `ci-cd-pipelines-under-gxp` | Run HOP through an automated pipeline without breaking segregation of duties, tool assurance, or the audit trail of who deployed what. | 140/141 | Not started |
 | 8 | `secure-sdlc-and-software-supply-chain` | Apply the SSDF's four practice groups to HOP, and ask a vendor the right supply-chain questions (component inventories, release integrity, vulnerability response). | 142/143 | Not started |
@@ -205,3 +205,23 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
   holding the Release C candidate baseline, so no HOP evidence then. Rule: never two releases
   touching the HOP–BECS interface in the same window (slot + monitoring period). QA reviews one
   package at a time.
+- 2026-11-13 — Module 5 `vendor-release-intake-for-becs` published (verified; ~7,200 words incl.
+  quotes). Video: Matrix One "How to Reuse Validated Test Cases Across System Upgrades and Releases |
+  Matrix Validate" (IFJ8dYFpVWo; vendor, framed as background). **Locked:** Release C's two resolved
+  anomalies = (1) the Release B reprint-with-prior-quarantine-status edge case (boundary-retested by
+  LR-5); (2) an inventory summary count that could briefly disagree with the unit-level list during
+  bulk status changes (written vendor question whether the HOP–BECS availability read shares that
+  logic; until answered TC-34/TC-35 stay in scope). New anomaly: on a reprint of a multi-attribute
+  product name the line can wrap and crowd the machine-readable code; vendor rates it "cosmetic",
+  workaround = alternate reprint layout. "No new 510(k)" basis not judged by Lakeshore — asked in
+  writing. Decision: Release C proceeds after the freeze in its own window, VAL-1418 scoped by
+  Lakeshore's impact analysis; anomaly accepted only conditionally (alternate layout + second-person
+  check with a reprint log + tests LR-1…LR-6 at central, Brookfield, Fairview); if they fail, Release
+  C does not go live and Lakeshore waits for the vendor fix. Quality can block go-live on a labeling
+  question and the Director does not override it (approvers follow VAL-1203's pattern: Quality
+  blocking, Director co-approving). Regression tiers: Tier 1 = LR-1…LR-6 + TC-32a/b/c, TC-34, TC-35;
+  Tier 2 = targeted checks on central-to-satellite sync, instrument/lab inbound path, ICCBBA table
+  load, Riverside shipment records, HOP's inventory read; Tier 3 = documented rationale (incl. TC-31,
+  HOP-only). Validated pair after Release C = same HOP build + new BECS baseline (VAL-1418 evidence).
+  Validation env's BECS moves to the Release C baseline only after HOP 3.0 deploys and its monitoring
+  period ends; production install waits for the post-freeze window.
