@@ -113,7 +113,7 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
 | 4 | `release-management-deployment-and-change-control` | Tell ITIL release management, deployment management and change enablement apart, classify release types, and set a release calendar and freeze windows that respect blood operations. | 134/135 | Published |
 | 5 | `vendor-release-intake-for-becs` | Take a vendor's BECS release (Release C) from release notes to a validation-in-your-facility decision: 510(k) status, anomaly lists, impact assessment, regression scope. | 136/137 | Published |
 | 6 | `risk-based-testing-and-regression` | Size a test effort by risk, decide regression scope from an impact analysis, and know what test evidence must look like. | 138/139 | Published |
-| 7 | `ci-cd-pipelines-under-gxp` | Run HOP through an automated pipeline without breaking segregation of duties, tool assurance, or the audit trail of who deployed what. | 140/141 | Not started |
+| 7 | `ci-cd-pipelines-under-gxp` | Run HOP through an automated pipeline without breaking segregation of duties, tool assurance, or the audit trail of who deployed what. | 140/141 | Published |
 | 8 | `secure-sdlc-and-software-supply-chain` | Apply the SSDF's four practice groups to HOP, and ask a vendor the right supply-chain questions (component inventories, release integrity, vulnerability response). | 142/143 | Not started |
 | 9 | `deployment-cutover-and-rollback` | Plan a go-live with go/no-go criteria, BECS downtime procedures, post-deployment verification, and a rollback you've actually rehearsed. | 144/145 | Not started |
 | 10 | `emergency-changes-and-hotfixes` | Ship CHG-2207 fast without leaving a validation gap: emergency change path, retrospective documentation, and when an emergency becomes a deviation. | 146/147 | Not started |
@@ -250,3 +250,28 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
   recorded, results retained and independently reviewed. Boundary cases: LR-1 longest name; LR-5
   reprint in the same second as a status change ±1 s; HOP-R35 proposal at/just under/just over age
   limit. CSA "scripted/unscripted" not characterized from the excerpt (not in it).
+- 2026-11-13 — Module 7 `ci-cd-pipelines-under-gxp` published (verified; very long, ~8,500 words incl.
+  tables — future modules capped harder). Video: Modern Software Engineering "Continuous Deployment or
+  Continuous Delivery? | When To Release" (mBzDPRgue6s). **Locked:** green build auto-deploys to
+  development and test; validation deploy on demand, triggered by the release role (systems
+  administrator), with an automated drift check against production's baseline; production promotion
+  accepts only an artifact already validated (matched by artifact ID + checksum), needs an authorized
+  change record and recorded Quality + release-role approvals (requester and change author excluded);
+  pipeline also checks the freeze calendar and interface collisions, re-runs drift check at gate time,
+  re-verifies checksum on arrival. Continuous deployment to production rejected for HOP; "the tests
+  are the approval" declined (tests are evidence, not authorization; module 4 checklist rows 5, 10, 11,
+  14 not test-measurable; GPSV 4.9 independence). Pipeline deployment identity holds validation and
+  production credentials — no developer does; pipeline definition and gate rules under change control
+  with review outside the dev team, Quality informed of gate changes; platform administered by the
+  systems administrator; the other developer reviews code but isn't a production approver; no bypass
+  accounts (break-glass = module 10). Artifact built once, write-once store, pipeline-recorded
+  checksum re-verified at each deployment and cited in test evidence and deployment record; signing
+  named as stronger option, deferred to module 8; archived releases also serve module 9's rollback.
+  Tool assurance: documented risk-based assurance before HOP's next release uses the pipeline (manual
+  path until then); risk ratings — gate/promotion high, artifact store + checksum high-medium, test
+  runner/reporting high-medium, drift check medium, build lower, notifications low; nine-attempt
+  bypass challenge-test table is the assurance evidence, repeated after any gate/platform change.
+  Deployment-record fields defined; exported to REL-0311 at close-out; run-history retention checked
+  against the release record's. Pipeline-log/approval-click Part 11 status = documented Quality and
+  regulatory-affairs judgment; lesson recommends approving once in the controlled change record,
+  which the pipeline reads.
