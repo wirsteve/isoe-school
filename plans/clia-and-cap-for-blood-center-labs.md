@@ -59,7 +59,7 @@ learning section. No narration.
 | # | Slug | Finish line | `order:` | Status |
 |---|---|---|---|---|
 | — | (syllabus) | — | 163 | Published |
-| 1 | `where-clia-and-cap-reach-a-blood-center` | Say which of Lakeshore's tests CLIA covers (per 493.2/493.3 and CMS QSO-25-18), how CAP's deemed accreditation fits, and how FDA, CMS/CAP and AABB oversight overlap without replacing each other. | 164/165 | Not started |
+| 1 | `where-clia-and-cap-reach-a-blood-center` | Say which of Lakeshore's tests CLIA covers (per 493.2/493.3 and CMS QSO-25-18), how CAP's deemed accreditation fits, and how FDA, CMS/CAP and AABB oversight overlap without replacing each other. | 164/165 | Published |
 | 2 | `the-lis-and-the-test-report` | Apply 493.1291 (incl. 1291(a)'s electronic-transmission requirement), 493.1283, 493.1105 and 493.1231 to the LIS, the LIS-to-BECS interface and reference-lab reports, including corrected reports. | 166/167 | Not started |
 | 3 | `instruments-middleware-and-performance-verification` | Direct IT's part in 493.1252/493.1253/493.1281: instrument and middleware interfaces, rule changes, and the verification evidence a change needs. | 168/169 | Not started |
 | 4 | `proficiency-testing-and-the-lis` | Keep PT samples handled like patient samples but never referred out (493.801) and never mistaken for donations in BECS. | 170/171 | Not started |
@@ -69,3 +69,16 @@ learning section. No narration.
 
 - 2026-11-13 — Course scoped (Phase 2). Sources: 42 CFR 493 excerpt (expanded), CMS QSO-25-18, CMS
   CLIA landing page, CAP public pages. `order:` 163–173 (next unused: **174**).
+- 2026-11-13 — Module 1 `where-clia-and-cap-reach-a-blood-center` published (verified). Video: ACILmedia
+  "2020 04 14 ACIL Clinical Laboratory Improvement Amendments CLIA Certification Process Webinar"
+  (xUyNGY-VVX4; trade-association training, added by main session). **Locked:** scenario = CIO "lab
+  systems consolidation" proposal assumed the donor lab is "FDA only" and CLIA is "a hospital thing";
+  laboratory director corrected it. Director's decision: proposal paused until its requirements include
+  CLIA/CAP obligations for the LIS and interfaces; laboratory director is a required approver for any
+  lab-system change (Lakeshore's own rule — no source requires it). "Who looks at what": CMS (inspecting
+  through CAP) covers both labs plus result path, records, reports; FDA covers donor testing and BECS
+  records/release; AABB covers blood-bank activities and information systems. 21 CFR 610.40(f): required
+  donor testing by a part 607-registered lab that's CLIA-certified or CMS-equivalent. QSO-25-18: purity/
+  potency = "No"; pre-transfusion patient testing subject to CLIA → reference lab's hospital work in
+  scope. Hooks: module 4 — 493.61(b)(1) PT samples treated like patient samples; module 2 — reference
+  lab's patient reports to hospitals. CMS-116 form change on CMS page is time-sensitive (mentioned only).

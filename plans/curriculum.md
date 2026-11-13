@@ -293,7 +293,7 @@ has no `plans/<slug>.md` file until its first session.
 | `itsm-for-regulated-blood-services` | 6 / 6 | Done |
 | `release-management-and-sdlc` | 11 / 11 | Done |
 | `research-programs-reds-and-nih` | 5 / 6 | In progress (plan: `plans/research-programs-reds-and-nih.md`) |
-| `clia-and-cap-for-blood-center-labs` | 0 / 5 | Scoped 2026-11-13 (plan: `plans/clia-and-cap-for-blood-center-labs.md`) |
+| `clia-and-cap-for-blood-center-labs` | 1 / 5 | In progress (plan: `plans/clia-and-cap-for-blood-center-labs.md`) |
 | `hrsa-and-cellular-therapy-programs` | 0 / ? | Not started |
 | `blood-operations-deep-dive` | 0 / ? | Not started |
 

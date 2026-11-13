@@ -1,0 +1,271 @@
+---
+title: "Where CLIA and CAP Reach a Blood Center"
+order: 164
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can say which of Lakeshore's tests CLIA covers (from 42 CFR 493.2, 493.3 and CMS's QSO-25-18 memo), how CAP's deemed accreditation fits, and how FDA, CMS/CAP and AABB overlap without replacing each other.
+- **The punchline:** a consolidation proposal assumed the donor testing lab was "FDA only" and CLIA "a hospital thing." Wrong on both counts. Both Lakeshore labs are CLIA laboratories, and FDA's own testing rule (21 CFR 610.40(f)) points straight at CLIA.
+- **The rule in one line:** CLIA applies to any facility that examines material derived from the human body for health information, and CMS's memo marks nearly every blood-center test as covered; purity and potency tests are the "No" row.
+- **CAP is the inspector, not a fourth regulator:** CAP holds CMS deeming authority, so its inspection stands in for a CMS inspection. FDA and AABB still look at the same work for their own reasons.
+- **Ask on Monday:** "For each lab system change on the roadmap, who is the laboratory director's delegate, and where is the CLIA/CAP impact written down?"
+- **The trap:** treating "we are FDA- and AABB-compliant" as the whole answer. It answers two of three questions.
+:::
+
+## The proposal
+
+The CIO's "lab systems consolidation" proposal lands in your inbox with a two-page summary and a tidy savings number. Merge the LIS (laboratory information system), fold the instrument middleware into it, and retire the custom interface to BECS (Blood Establishment Computer Software) in favor of a vendor module. Section 2 of the summary, "Regulatory context," says one thing: *the donor testing lab is FDA-regulated only, so requirements are limited to BECS validation. CLIA is a hospital thing.*
+
+You bring it to the Thursday quality huddle. The laboratory director, who is the person CLIA names as responsible for the lab, reads section 2 and puts the page down.
+
+"Two corrections. Both of our labs hold CLIA certificates. Donor testing and reference immunohematology. Neither of them is a hospital. And the certificates are certificates of accreditation, which means CAP inspects us on CMS's behalf."
+
+The Quality Analyst has been taking notes. "So when someone inspects the LIS, which inspector is that?"
+
+"All of them can," the laboratory director says. "Different reasons, different questions. If this proposal changes how a result gets from an instrument into BECS, I'm one of the people who has to approve it, and so are you."
+
+Nobody has to be embarrassed. The proposal's author did what most IT people do: read the blood-center rulebook as FDA and AABB (the blood-banking accreditor) and stopped. This module fills in the third leg, and draws the map you will use for the rest of the course.
+
+## Why the rule exists, and the ITSM bridge
+
+A blood-center test result is a clinical fact. A donor's infectious-disease screen decides whether a unit can ever reach a patient. An antibody identification in the reference lab tells a hospital which units are safe for a patient who already has a problem. If the instrument reads correctly but the result lands on the wrong specimen, gets lost between systems, or goes out in a report nobody can reproduce, the patient bears the harm. CLIA (the Clinical Laboratory Improvement Amendments of 1988) exists so that laboratory results are accurate, reliable and timely wherever the laboratory sits. CMS's own program page says exactly that: the objective of CLIA is to ensure quality laboratory testing, so that all patient test results are accurate, reliable and timely.
+
+The ITSM bridge: **CLIA is the service-level and quality contract for the lab as a service, and it applies to the lab by what the lab does, not by who owns it.** You already know that a regulated service doesn't stop being regulated because a different team runs it. Think of it as scope definition in a CMDB: the question is not "which department is this CI in?" but "what does this CI do?" CLIA's answer is functional. If you examine human-derived material to produce health information, you are a laboratory. The rest follows.
+
+And the oversight structure is a pattern you know from audits: one underlying control objective, several assurance providers. FDA, CMS (through CAP) and AABB each assess a slice of the same activity. None of them certifies "the lab" on behalf of the others. What this means for IT is that one change to the LIS can create evidence for three different assessors, or a gap in front of three.
+
+## The rule in plain English
+
+Four statements, which the rest of the lesson sources one by one.
+
+1. **CLIA is decided by function.** A facility is a laboratory if it performs examinations of material derived from the human body to give information about health. A facility that only collects specimens, or only mails them, is not.
+2. **A laboratory needs the right certificate.** CMS (the Centers for Medicare & Medicaid Services) administers CLIA. A lab without a current certificate of the right kind is out of compliance. Lakeshore's certificate type is the certificate of accreditation, issued on the basis of accreditation by a CMS-approved organization.
+3. **CAP is such an organization.** CMS granted CAP's Laboratory Accreditation Program deeming authority, so a CAP inspection takes the place of a CMS inspection. A lab on that certificate must comply with the accreditor's requirements.
+4. **FDA and AABB are not displaced.** FDA regulates the same donor testing as part of manufacturing blood. AABB accredits blood-bank activities against its own standards. CLIA adds a laboratory-quality layer; it removes nothing.
+
+## Which Lakeshore tests does CLIA cover?
+
+Start with what each lab does, then match it against CMS's own table.
+
+**Donor testing laboratory:** infectious-disease screening on every donation, donor ABO/Rh typing, and antibody screening. **Reference immunohematology laboratory:** antibody identification and antigen typing, including work for hospital patients sent in by transfusion services (the hospital-side blood banks).
+
+CMS answered the blood-center question directly in memo QSO-25-18-CLIA (revised May 30, 2025). It is a policy memo to State Survey Agency directors, so treat it as CMS's current interpretation, not regulation. Its blood table (the memo's "Blood and Blood Components Intended for Transfusion" table) reads, row by row:
+
+| Test (as CMS words it) | CLIA applicability | Lakeshore example |
+|---|---|---|
+| Immunohematology Testing (ABO/Rh, antibody screen, antibody identification, antigen typing) | Yes | Donor ABO/Rh and antibody screen; the reference lab's antibody identification and antigen typing |
+| FDA-required testing for communicable diseases, e.g., HIV, hepatitis | Yes | The infectious-disease panel on every donation |
+| Additional testing for emerging infectious diseases | Yes | Any test Lakeshore adds before FDA requires it. CMS's comment: "New tests may be implemented by the blood banking industry before FDA requires such testing." |
+| CMV, Hemoglobin S | Yes | Marked "CHANGE IN CURRENT POLICY" in the memo |
+| Sterility testing | Yes | Where a lab performs it |
+| Purity and potency tests, e.g., cell counts, pH, factor assays | **No** | Component quality control of that kind is outside CLIA, per the memo |
+| HLA testing | Yes | Where a lab performs it |
+
+Notice what the table does *not* say. It does not say "donor testing is exempt because FDA covers it." It says the opposite for FDA-required communicable-disease testing: Yes.
+
+### The reason underneath the table
+
+The memo does not hand out coverage by test name or by regulator. It states the principle in one sentence:
+
+> CLIA applicability is keyed to the definition of a "laboratory" in the CLIA regulations. If the entity conducting the testing in question qualifies as a laboratory under the CLIA definition at the time the testing in question is being conducted, the testing is subject to CLIA.
+
+So the table is applying 42 CFR 493.2. If a lab ran a new test tomorrow that is not on the table, you do not look for an exemption. You ask whether it is an examination of material derived from the human body for health information. That is the question to put to any new test the proposal's "consolidated" system will carry.
+
+### The reference lab and hospital patients
+
+The memo adds a limit and a pointer that matter for Lakeshore's reference laboratory:
+
+> Please note that this document does not address testing performed on patients or recipients of these donation types. Pre-transfusion or pre-transplantation testing of patients is subject to CLIA regulation.
+
+The table covers donor-side testing. Hospital-patient work sent to the reference lab is a different category, and the memo says pre-transfusion patient testing is subject to CLIA. This is why "CLIA is a hospital thing" fails twice: the donor lab is covered, and the reference lab does the hospital's own kind of work. The reference lab also issues patient reports to hospitals, a thread module 2 pulls.
+
+One more boundary, from 493.2 itself: mobile collection sites and the phlebotomy team are not the laboratory. 493.2 says facilities "only collecting or preparing specimens (or both) or only serving as a mailing service and not performing testing are not considered laboratories."
+
+## CAP: how deemed accreditation fits
+
+A CLIA certificate can be earned by a CMS inspection or, for accredited labs, by accreditation. This is CAP's public description of its role:
+
+> The Centers for Medicare & Medicaid Services (CMS) granted the CAP Laboratory Accreditation Program deeming authority, which allows for a CAP inspection in lieu of a CMS inspection.
+
+Public CAP pages also say that on-site inspections occur every two years, that the inspection teams are trained, practicing laboratory professionals (peer inspection), that the program publishes 21 discipline-specific checklists updated annually, and that CAP creates a custom checklist for each laboratory's test menu before inspection, so that "you and the inspection team both know what's being inspected."
+
+Two cautions about CAP and your role as the IT owner:
+
+- **CAP checklists are not public.** CAP offers them to participating labs (through its e-LAB Solutions Suite, per its page) and sells them to others. This course never quotes checklist text or cites checklist requirement numbers. It teaches the *themes* the CLIA regulation and the course sources support, and the laboratory director or lab quality staff holds the actual checklist. Your first move on any CAP question is to ask for the lab's custom checklist items that touch the LIS and interfaces.
+- **CAP is not CMS.** CAP says its requirements "commonly exceed the standards" of CLIA, FDA and OSHA. That is CAP's claim about its own program, and it means a CAP finding can be stricter than the regulation. It does not mean the regulation is the same as the checklist.
+
+### What the certificate type tells you
+
+493.2 defines the certificate of accreditation as "a certificate issued on the basis of the laboratory's accreditation by an accreditation organization approved by CMS (indicating that the laboratory is deemed to meet applicable CLIA requirements)." And 493.61(b) lists what a lab holding one must do, including to treat proficiency testing samples like patient samples, comply with "the requirements of the approved accreditation program," permit random sample validation and complaint inspections, and authorize its accreditation program to release inspection findings and submit proficiency-testing results to HHS. In practice: the accreditor's checklist becomes the lab's operating standard, and CMS keeps a back door. "CAP handles it" is true for the routine inspection and not true for the legal responsibility.
+
+CMS's CLIA page adds a practical point: accredited laboratories should contact their accreditation organization for guidance, and State Survey Agencies are authorized to set and enforce CLIA standards. CMS's own tip is to include the laboratory's name and CLIA ID when contacting either one.
+
+## FDA, CMS/CAP and AABB: overlapping, not replacing
+
+FDA regulates the same donor testing as a manufacturing step. 21 CFR 610.40(a) requires testing each donation for the listed infections, (b) requires FDA-licensed, approved or cleared screening tests used per manufacturer instructions, and 606.160(a)(1) requires records that "show test results as well as the interpretation of the results." That is FDA's lens: is the blood product suitable, are the right tests done, is the record complete?
+
+The link between FDA and CLIA is written into FDA's own text:
+
+> (f) *Testing responsibility.* Required testing under this section, must be performed by a laboratory registered in accordance with part 607 of this chapter and either certified to perform such testing on human specimens under the Clinical Laboratory Improvement Amendments of 1988 (42 U.S.C. 263a) under 42 CFR part 493 or has met equivalent requirements as determined by the Centers for Medicare and Medicaid Services in accordance with those provisions.
+
+Read the structure. FDA says the required testing must be done by a lab that is registered with FDA (part 607) *and* CLIA-certified. So a lapse in the lab's CLIA standing is not only a CMS problem. It undermines the condition FDA attaches to the very testing it requires. "FDA only" is wrong inside FDA's own regulation.
+
+AABB's role is the third lens. Its public process description says an accredited facility goes through the on-site assessment phase every two years and that the assessment expects all standards to be addressed in policies, processes and procedures (PPPs) that are followed as written. How that works for Lakeshore is in [The AABB Assessment Process](../../fda-and-aabb-in-practice/the-aabb-assessment-process/index.qmd), and FDA's authority and outcomes are in [FDA Inspection Authority and Outcomes](../../fda-and-aabb-in-practice/fda-inspection-authority-and-outcomes/index.qmd). AABB also has a standards section for information systems; this curriculum treats it by theme only, in the existing modules. **This lesson makes no claim about AABB's status with CMS.** None of the sources in this repo shows one, and Lakeshore's CLIA route in this scenario is CAP.
+
+The [regulatory landscape orientation](../../../foundations/regulatory-landscape-orientation/index.qmd) introduced CLIA as a third oversight body in general terms and deliberately held back citations. This module supplies them.
+
+## Citation decoder
+
+For how to read citation anatomy, see [Reading a CFR citation](../../../foundations/reading-a-cfr-citation/index.qmd).
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 42 CFR 493.2 ("Laboratory," "Certificate of accreditation," "Accredited laboratory") | "Forty-two CFR four-ninety-three point two" | Defines who counts as a laboratory and what a certificate of accreditation is | The test of whether Lakeshore's two labs are in scope |
+| 42 CFR 493.3(a) | "Four-ninety-three point three, paragraph a" | A laboratory will be cited as out of compliance unless it has a current certificate applicable to its examinations, or is CLIA-exempt | Why both labs must keep their certificates current, and why "a hospital thing" is not an exception |
+| 42 CFR 493.61(b) | "Four-ninety-three point sixty-one, paragraph b" | What a lab holding a certificate of accreditation must do | CAP's checklist becomes binding; CMS keeps validation and complaint inspections |
+| CMS QSO-25-18-CLIA, blood table | "QSO twenty-five dash eighteen" (memo, not regulation) | CMS's current view of which blood-center tests CLIA covers | The table you use to scope the consolidation |
+| 21 CFR 610.40(f) | "Six-ten point four-oh, paragraph f" | Required donor testing must be done by a part 607-registered lab that is CLIA-certified or CMS-equivalent | FDA depends on CLIA for the donor testing lab |
+| 21 CFR 606.160(a)(1) | "Six-oh-six point one-six-oh, paragraph a-one" | Records show test results and their interpretation, concurrent with each significant step | The FDA record expectation that sits beside CLIA's test-record rules (module 2) |
+
+## The actual text
+
+All quotes below come from `sources/`.
+
+**42 CFR 493.2, "Laboratory" (verbatim):**
+
+> *Laboratory* means a facility for the biological, microbiological, serological, chemical, immunohematological, hematological, biophysical, cytological, pathological, or other examination of materials derived from the human body for the purpose of providing information for the diagnosis, prevention, or treatment of any disease or impairment of, or the assessment of the health of, human beings. These examinations also include procedures to determine, measure, or otherwise describe the presence or absence of various substances or organisms in the body. Facilities only collecting or preparing specimens (or both) or only serving as a mailing service and not performing testing are not considered laboratories.
+
+Clause by clause: "immunohematological" is named in the definition, so blood-typing work is inside it by name. "Materials derived from the human body" covers a donor's blood sample. "Diagnosis, prevention, or treatment of any disease... or the assessment of the health of" is broad; infectious-disease screening of a donor falls under prevention and assessment of health. The last sentence is what keeps collection sites outside.
+
+**42 CFR 493.3(a), "Basic rule" (verbatim):**
+
+> Except as specified in paragraph (b) of this section, a laboratory will be cited as out of compliance with section 353 of the Public Health Service Act unless it—
+>
+> (1) Has a current, unrevoked or unsuspended certificate of waiver, registration certificate, certificate of compliance, certificate for PPM procedures, or certificate of accreditation issued by HHS applicable to the category of examinations or procedures performed by the laboratory; or
+>
+> (2) Is CLIA-exempt.
+
+The exceptions in 493.3(b) are forensic-only testing, research laboratories that don't report patient-specific results, and certain SAMHSA-certified drug testing. None describes Lakeshore. Note "applicable to the category of examinations or procedures performed": a certificate that does not match the lab's test menu is a gap. That is one reason the test menu must be kept accurate when a consolidated system adds or moves tests.
+
+**42 CFR 493.61(b), selected paragraphs (verbatim):**
+
+> (b) Laboratories issued a certificate of accreditation must—
+>
+> (1) Treat proficiency testing samples in the same manner as patient samples;
+>
+> ...
+>
+> (3) Comply with the requirements of the approved accreditation program;
+>
+> (4) Permit random sample validation and complaint inspections as required in subpart Q of this part;
+>
+> ...
+>
+> (7) Authorize its accreditation program to submit to HHS the results of the laboratory's proficiency testing.
+
+Paragraph (b)(1) is the thread that becomes module 4. Paragraph (b)(3) is why a CAP checklist item is an obligation for Lakeshore, not a suggestion.
+
+**The equivalency idea (493.2, "Equivalency," quoted in part):** an accreditation organization's requirements "taken as a whole, are equal to or more stringent than the CLIA requirements established by CMS, taken as whole." So the accreditor can organize things differently, and the lab answers to the whole.
+
+**FDA's side:** 21 CFR 610.40(f), quoted above, and 606.160(a)(1) from `sources/cfr/606.160.md`: "Records shall be maintained concurrently with the performance of each significant step in the collection, processing, compatibility testing, storage and distribution of each unit of blood and blood components so that all steps can be clearly traced. All records shall be legible and indelible... show test results as well as the interpretation of the results..."
+
+## See it in one picture
+
+This map is Lakeshore's, not a generic one: the two labs, the five systems the result passes through, and which oversight body's attention lands where. Dotted lines are "can look at this"; the labels are the reason.
+
+```{mermaid}
+flowchart TD
+    subgraph Labs["Lakeshore central site: two CLIA-certified laboratories"]
+        DT["Donor testing lab<br/>infectious-disease screening, donor ABO/Rh, antibody screen"]
+        RL["Reference immunohematology lab<br/>antibody ID, antigen typing, hospital-patient work"]
+    end
+    subgraph IT["Systems carrying the results"]
+        INS["Instruments"] --> MW["Middleware"] --> LIS["LIS"] --> IF["LIS-to-BECS interface"] --> BECS["BECS"]
+    end
+    DT --> INS
+    RL --> INS
+    LIS --> RPT["Patient reports to hospitals"]
+    RL --> RPT
+    CMS["CMS: CLIA, 42 CFR 493<br/>inspection done by CAP under deeming"]
+    FDA["FDA: 21 CFR 610.40, 606.160<br/>donor testing as manufacturing"]
+    AABB["AABB: accreditation of the blood bank<br/>assessment, separate from both"]
+    CMS -.->|"both labs, their test systems and reports"| Labs
+    CMS -.->|"result path, records, reports"| IT
+    FDA -.->|"donor testing, BECS records and release"| DT
+    FDA -.->|"BECS, interface"| BECS
+    AABB -.->|"blood bank activities, information systems"| IT
+```
+
+Read it left to right in time: a sample is tested on an instrument, the result passes through middleware into the LIS, crosses the interface into BECS (which drives donor suitability and release), and, from the reference lab, goes out as a report. Every box in the IT subgraph is touched by CLIA through the lab; FDA's attention concentrates on the donor path and BECS; AABB looks at information systems as part of the blood bank. The overlap in the IT subgraph is the point.
+
+## Watch it explained
+
+This webinar from the American Council of Independent Laboratories, a laboratory trade association, walks through how CLIA certification works: certificate types, the application, and what follows. It's aimed at independent labs in general, not blood centers, and it's a trade association's training rather than CMS guidance, so use it for the shape of the certificate process and take the rules from 42 CFR 493 and CMS.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/xUyNGY-VVX4"
+  title="2020 04 14 ACIL Clinical Laboratory Improvement Amendments CLIA Certification Process Webinar" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## What an inspector or assessor would look for
+
+For this module's question, "do you know what you are accountable to," each assessor asks a different first thing.
+
+- **CAP inspector (for CMS):** the lab's CLIA certificate, its test menu, and the lab director's responsibility. For IT, expect questions on how the LIS and interfaces are controlled. The detailed list is for modules 2 to 5. The record that proves you know your scope is a current inventory that maps each lab test to its instrument, middleware rule set, LIS build and BECS interface.
+- **FDA investigator:** that required donor testing was done by a registered, CLIA-certified laboratory (610.40(f)), the tests used were the right licensed ones (610.40(b)), and the records show results and interpretation (606.160(a)(1)). The record is BECS plus the LIS feed behind it.
+- **AABB assessor:** policies, processes and procedures covering the standards, followed as written, including for information systems.
+
+A bad answer to "which of your systems are in CLIA scope?" sounds like "the lab's, so you'd have to ask them" or "BECS, because that's what FDA looks at." A good answer is a one-page map like the one above, with named owners.
+
+## Common traps
+
+**"The donor lab is FDA-only."** FDA's own 610.40(f) requires CLIA certification (or CMS-equivalent) for the required testing, and CMS's memo marks FDA-required communicable-disease testing "Yes." Two regulators, one test.
+
+**"CLIA is for patient testing, and donors aren't patients."** The definition in 493.2 is about examining material derived from the human body for health information, with no patient-versus-donor line, and the memo's blood table applies it to donor-side testing. The memo separately confirms that pre-transfusion patient testing is subject to CLIA, which is the reference lab's hospital work.
+
+**"CAP accreditation means CAP is the regulator."** CAP is an accreditation organization CMS approved. The legal framework stays CLIA, 493.61(b)(4) preserves CMS validation and complaint inspections, and FDA's authority is untouched.
+
+**"If CLIA doesn't list a test as covered, the lab doesn't need to worry."** The memo's "No" is for purity and potency tests such as cell counts, pH and factor assays. That is not a declaration that FDA or AABB expectations fall away, and a lab doing other tests still needs the right certificate for what it performs (493.3(a)(1)).
+
+## What this means for your job
+
+- **Draw the map before approving anything.** Make the one-page "who looks at what" for both labs and the five systems the standing artifact for lab-system work. If a proposal can't be placed on it, it isn't scoped.
+- **Put CLIA/CAP in the requirements.** Any lab-system proposal needs a section on CLIA and CAP obligations for the LIS and interfaces, not only BECS validation. Ask the laboratory director to name the items from the lab's own custom CAP checklist that touch IT. Do not paraphrase checklist text into your documents.
+- **Make the laboratory director a required approver.** Any change to a lab system or interface routes through change control with the laboratory director's approval, alongside the Quality Analyst. The [release management and change control module](../../release-management-and-sdlc/release-management-deployment-and-change-control/index.qmd) gives you the mechanism, and the [emergency changes and hotfixes module](../../release-management-and-sdlc/emergency-changes-and-hotfixes/index.qmd) shows where the exception path must keep that approval.
+- **Keep the test menu synchronized.** A new or moved test is a certificate-scope question (493.3(a)(1)) as well as a build item. Make the LIS analyst's intake ask "is this a new test?"
+- **Don't claim more than the sources say.** Particularly about CAP checklist wording and about AABB's CMS standing. If someone asserts either, ask for the source.
+- **Watch CMS and CAP changes.** The CMS CLIA page carries time-sensitive notices (for example, a revised application form). Re-check before relying on a date.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: In two sentences for the CIO, why isn't the donor testing lab "FDA only"?
+
+FDA's own rule, 21 CFR 610.40(f), requires the required donor testing to be done by a registered lab that is CLIA-certified under 42 CFR part 493 (or CMS-equivalent). And CMS's memo QSO-25-18 marks FDA-required communicable-disease testing as covered by CLIA, so one test sits under two regulators, plus AABB if Lakeshore is accredited for it. That means the consolidation's requirements have to include the CLIA side of the LIS and the interface, not only BECS validation.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Lakeshore's processing area runs a pH check and a cell count on a component for quality control. Does the CMS memo put that under CLIA?
+
+Per the memo's blood table, "Purity and potency tests, e.g., cell counts, pH, factor assays" are marked No. That answers CLIA applicability only, and it is CMS policy rather than regulation. It says nothing that relieves Lakeshore of FDA's record and quality expectations or AABB's, so it is not a "skip the controls" ticket. Check with the laboratory director and Quality before treating any particular test as out of scope.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Is it a regulatory requirement that Lakeshore's laboratory director approve every LIS change?
+
+The Director's decision in this scenario makes it a Lakeshore requirement, and it is good practice, but this module has not shown any regulation that says "the laboratory director must approve every LIS change." What the sources do show is that the laboratory is accountable under CLIA and that the lab must comply with its accreditor's requirements (493.61(b)(3)). Later modules take up the specific CLIA sections on test systems, performance specifications and test reports. Don't cite a rule for the approval requirement that you can't find.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: The Quality Analyst asks which inspector looks at the LIS. What do you tell her?
+
+All three can, for different reasons. A CAP inspector, acting under CMS deeming authority, looks at the LIS as part of the CLIA laboratory's systems and test reports. An FDA investigator looks at the records and testing that feed BECS release decisions. An AABB assessor looks at it as an information system within the blood bank's quality system. The map keeps the three questions straight and assigns an owner to each.
+:::
+
+## Where this goes next
+
+You now know which labs and tests are in scope and who looks at them. The next module, `the-lis-and-the-test-report`, takes the first IT-heavy CLIA topic: how the test report requirement treats the LIS and the LIS-to-BECS interface, and what happens when a corrected report from the reference lab never reaches the hospital's system. Modules 3 to 5 follow the same map into instruments and middleware, proficiency testing, and the biennial CAP inspection.
