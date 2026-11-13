@@ -292,7 +292,7 @@ has no `plans/<slug>.md` file until its first session.
 | `vendor-and-third-party-risk-management` | 5 / 5 | Done |
 | `itsm-for-regulated-blood-services` | 6 / 6 | Done |
 | `release-management-and-sdlc` | 10 / 11 | In progress |
-| `research-programs-reds-and-nih` | 0 / 6 | Scoped 2026-11-13 (plan: `plans/research-programs-reds-and-nih.md`) |
+| `research-programs-reds-and-nih` | 1 / 6 | In progress (plan: `plans/research-programs-reds-and-nih.md`) |
 | `clia-and-cap-for-blood-center-labs` | 0 / ? | Not started |
 | `hrsa-and-cellular-therapy-programs` | 0 / ? | Not started |
 | `blood-operations-deep-dive` | 0 / ? | Not started |

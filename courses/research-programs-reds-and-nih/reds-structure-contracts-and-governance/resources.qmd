@@ -1,0 +1,74 @@
+---
+title: "Resources"
+order: 152
+---
+
+External links for this lesson, checked to load on 2026-11-13. Quoted regulatory and program text in
+the lesson comes from the local copies in `sources/`, not from these pages.
+
+- **[Recipient Epidemiology and Donor Evaluation Study (REDS) Program | NHLBI, NIH](https://www.nhlbi.nih.gov/science/recipient-epidemiology-and-donor-evaluation-study-reds-program)**
+  — NHLBI's own page for the program. Use it first when anyone mentions a "new" REDS phase: check
+  here for any later phase name before relying on one. Verified loading via `curl` on 2026-11-13
+  (HTTP 200). This lesson cites its facts only from the sources listed below, not from this page.
+
+- **[Josephson et al., REDS-IV-P program paper (PubMed Central full text)](https://pmc.ncbi.nlm.nih.gov/articles/PMC9353062/)**
+  — the peer-reviewed description of the program: lineage, governance bodies, hubs, DCC, CTLS and
+  the V2V database. Read Sections 1 to 3. It is research description, not regulation. Verified
+  loading via `curl` on 2026-11-13 (HTTP 200; the page returned an empty `<title>` to `curl`).
+
+- **[NIH RePORTER](https://reporter.nih.gov/)** — search "Recipient Epidemiology and Donor
+  Evaluation Study" to see the 2026 contract records yourself and re-check who holds what.
+  Verified loading via `curl` on 2026-11-13 (HTTP 200; title "RePORT ⟩ RePORTER").
+
+- **[NIH Data Management and Sharing Policy](https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms)**
+  — NIH's landing page for the policy whose Section III scope names contracts. Module 4 goes deep.
+  Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 45 CFR Part 46, Protection of Human Subjects](https://www.law.cornell.edu/cfr/text/45/part-46)**
+  — the Common Rule, current text. Use it to see that human-subjects rules exist and where the
+  definitions live before module 3. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Acquisition.GOV: FAR Part 35, Research and Development Contracting](https://www.acquisition.gov/far/part-35)**
+  — general federal rules for how the government buys research and development by contract. Use it
+  for the contract-versus-grant idea only. It is not a description of any REDS contract's terms.
+  Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[BioLINCC: RADAR study page](https://biolincc.nhlbi.nih.gov/studies/radar)** — NHLBI's biospecimen
+  and data repository, the kind of place the paper says earlier REDS data were shared through. Use
+  it to see what downstream sharing looks like (module 4). Verified loading via `curl` on
+  2026-11-13 (HTTP 200; empty `<title>` to `curl`). I did not confirm that this particular study
+  is a REDS-III record.
+
+- **[Regulatory landscape orientation](../../../foundations/regulatory-landscape-orientation/index.qmd)**
+  and **[BECS in the pipeline](../../blood-center-operations/becs-in-the-pipeline/index.qmd)** — the
+  earlier lessons this one builds on: the tiers, and the BECS records the extract must not touch.
+
+- **[NIH VideoCast: NHLBI and OASH State of the Science in Transfusion Medicine Symposium 2022 (Day 2)](https://videocast.nih.gov/watch=46109)**
+  — NIH's own recording of an NHLBI symposium on transfusion-medicine research priorities, the field
+  REDS works in. A long symposium, not a REDS explainer, and not embeddable here; no YouTube video on
+  REDS governance was found. Verified loading via `curl` on 2026-11-13 (HTTP 200; page title checked).
+
+## Keep learning
+
+Not official sources, and not authority for any regulatory claim.
+
+- **[BBGuy Essentials 098: Kleinman and Josephson on REDS-IV-P (transcript, PDF)](https://bbguy.org/pdf/BBGE_098_Kleinman-Josephson_Transcript.pdf)**
+  (Blood Bank Guy podcast) — a conversation with a program leader on the REDS-IV-P program. Good
+  for the scientific motivation your medical director will describe. The search result that
+  surfaced it described it as an interview with Steve Kleinman and Cassandra Josephson; I have not
+  read the transcript in full. Verified loading via `curl` on 2026-11-13 (HTTP 200; PDF, no HTML
+  title).
+
+- **[Blood Bank Guy podcast home](https://www.bbguy.org/)** (Blood Bank Guy, Joe Chaffin) — an
+  ongoing transfusion-medicine podcast; browse it for episodes on research programs and
+  transfusion-safety studies. Verified loading via `curl` on 2026-11-13 (HTTP 200; title "Blood Bank
+  Guy - Essential Transfusion Medicine with Joe Chaffin").
+
+- **[NIH Grants & Funding: Human Subjects Research](https://grants.nih.gov/policy-and-compliance/policy-topics/human-subjects)**
+  (NIH, official but a policy-topic overview rather than regulation) — a plain-language starting
+  point on how NIH treats human-subjects research, before module 3. Verified loading via `curl` on
+  2026-11-13 (HTTP 200).
+
+- **[BioLINCC home](https://biolincc.nhlbi.nih.gov/home/)** (NHLBI) — the repository's front door,
+  for seeing how requesting shared NHLBI study data works. Verified loading via `curl` on
+  2026-11-13 (HTTP 200; empty `<title>` to `curl`).
