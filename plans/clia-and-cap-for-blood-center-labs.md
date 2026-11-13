@@ -60,7 +60,7 @@ learning section. No narration.
 |---|---|---|---|---|
 | — | (syllabus) | — | 163 | Published |
 | 1 | `where-clia-and-cap-reach-a-blood-center` | Say which of Lakeshore's tests CLIA covers (per 493.2/493.3 and CMS QSO-25-18), how CAP's deemed accreditation fits, and how FDA, CMS/CAP and AABB oversight overlap without replacing each other. | 164/165 | Published |
-| 2 | `the-lis-and-the-test-report` | Apply 493.1291 (incl. 1291(a)'s electronic-transmission requirement), 493.1283, 493.1105 and 493.1231 to the LIS, the LIS-to-BECS interface and reference-lab reports, including corrected reports. | 166/167 | Not started |
+| 2 | `the-lis-and-the-test-report` | Apply 493.1291 (incl. 1291(a)'s electronic-transmission requirement), 493.1283, 493.1105 and 493.1231 to the LIS, the LIS-to-BECS interface and reference-lab reports, including corrected reports. | 166/167 | Published |
 | 3 | `instruments-middleware-and-performance-verification` | Direct IT's part in 493.1252/493.1253/493.1281: instrument and middleware interfaces, rule changes, and the verification evidence a change needs. | 168/169 | Not started |
 | 4 | `proficiency-testing-and-the-lis` | Keep PT samples handled like patient samples but never referred out (493.801) and never mistaken for donations in BECS. | 170/171 | Not started |
 | 5 | `the-cap-inspection-from-it` | Prepare IT for a biennial CAP inspection — LIS validation, interfaces, downtime, access, retention, change control — and line it up with FDA and AABB. | 172/173 | Not started |
@@ -82,3 +82,22 @@ learning section. No narration.
   potency = "No"; pre-transfusion patient testing subject to CLIA → reference lab's hospital work in
   scope. Hooks: module 4 — 493.61(b)(1) PT samples treated like patient samples; module 2 — reference
   lab's patient reports to hospitals. CMS-116 form change on CMS page is time-sensitive (mentioned only).
+- 2026-11-13 — Module 2 `the-lis-and-the-test-report` published (verified; no on-topic video found).
+  **Locked:** the reference lab's LIS-generated corrected antibody ID was released in the LIS but
+  suppressed by the outbound hospital interface as a "duplicate" (same patient, order, accession keys),
+  no error raised; hospital learned by phone two days later. Decisions: **LCR-014** — message-handling
+  rule changed so corrected reports are never deduplicated; verification evidence = same-keys original +
+  correction (correction delivered), a true duplicate (still suppressed), interface log showing both;
+  sent-vs-acknowledged reconciliation of corrected reports (exceptions worked by the LIS analyst, visible
+  to the laboratory director; acknowledgment window lab-defined); event handled in the quality system
+  under 493.1299; laboratory director decides any notification beyond the hospital (no outside reporting
+  requirement asserted); LIS analyst reviews the LIS-to-BECS interface for suppression/dedup/"latest
+  wins" logic under LCR-014 scope — **finding left open**. Lakeshore rule: laboratory director approves
+  message-handling and interface rule changes under lab change control. Regulatory anchors: 493.1291(a)
+  "final report destination" = the recipient system, not "released in the LIS"; 493.1291(k) = three
+  duties (notify promptly; issue corrected report promptly; keep duplicates of original and corrected
+  reports); 493.1105(a)(6) = at least 2 years after reporting, expressly incl. corrected reports;
+  immunohematology reports point to 606.160(d) (mapping is a lab decision); CLIA prescribes no
+  reconciliation method (Lakeshore's control). Hooks: module 3 — message-handling rules are regulated
+  configuration; test line "does this change handle corrections, cancellations and duplicates?";
+  module 5 — reconciliation report and LCR-014 as inspection evidence.

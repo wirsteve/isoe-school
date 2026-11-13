@@ -1,0 +1,24 @@
+---
+title: "Resources"
+order: 167
+---
+
+External links for this lesson. Every link below was checked with `curl` on 2026-11-13 (HTTP 200) and the page title confirmed. The regulation text quoted in the lesson comes from this repo's `sources/` copies; the Cornell links are verified-loading mirrors for checking current text. No video embed for this module: searched for a CLIA test-report and LIS-interface-validation explainer on YouTube and found nothing both specific enough and independently verifiable as embeddable, so none is used.
+
+- **[Cornell LII: 42 CFR 493.1291, Standard: Test report](https://www.law.cornell.edu/cfr/text/42/493.1291)** — the full test report standard: (a) electronic transmission, (c) report content, (k) corrected reports. Use it to re-check current wording before quoting. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Cornell LII: 42 CFR 493.1283, Standard: Test records](https://www.law.cornell.edu/cfr/text/42/493.1283)** — what the lab's information or record system must contain. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Cornell LII: 42 CFR 493.1105, Standard: Retention requirements](https://www.law.cornell.edu/cfr/text/42/493.1105)** — retention periods, including the cross-reference to 21 CFR 606.160(d) for immunohematology. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Cornell LII: 42 CFR 493.1231, Standard: Confidentiality of patient information](https://www.law.cornell.edu/cfr/text/42/493.1231)** — the one-sentence confidentiality standard. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Cornell LII: 21 CFR 606.160, Records](https://www.law.cornell.edu/cfr/text/21/606.160)** — FDA's blood-establishment records rule, including the (d) retention interval. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Cornell LII: 21 CFR 11.10, Controls for closed systems](https://www.law.cornell.edu/cfr/text/21/11.10)** — validation, record protection and audit-trail controls for electronic records. Use with the audit trails module. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[FDA: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)** — FDA's guidance page, source of the "validate all interfaces" and "monitoring of interface error files" recommendations. Guidance, not regulation. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+Earlier modules this lesson builds on: [Where CLIA and CAP Reach a Blood Center](../where-clia-and-cap-reach-a-blood-center/index.qmd), [BECS Interfaces and Data Integrity](../../csv-and-becs/becs-interfaces-and-data-integrity/index.qmd), [Audit Trails and Electronic Signatures](../../data-integrity-and-records/audit-trails-and-esignatures/index.qmd), [Retention Across Record Types](../../data-integrity-and-records/retention-across-record-types/index.qmd).
+
+## Keep learning
+
+Not official sources, and not authority for any regulatory claim. These are practitioner and trade-publication pieces; I confirmed that each page loads and its title, and skimmed only titles and search summaries, so read them as background and check any detail against the current regulation and your lab's own CAP checklist.
+
+- **[Interface validation: abort, retry, succeed](https://www.captodayonline.com/interface-validation-abort-retry-succeed/2/)** (CAP TODAY, a CAP publication) — a practitioner-oriented piece on validating laboratory interfaces; useful for how an accredited lab thinks about the problem. Verified loading via `curl` on 2026-11-13 (HTTP 200; title "Interface validation: abort, retry, succeed - CAP TODAY").
+- **[Lab Interface Validations: How to Get to the Finish Line](https://myadlm.org/community/medical-laboratory-scientists/education-resources/lab-interface-validations-how-to-get-to-the-finish-line)** (ADLM, the clinical laboratory professional association) — an education-resource page on interface validation. Verified loading via `curl` on 2026-11-13 (HTTP 200; title "Lab Interface Validations: How to Get to the Finish Line | myadlm.org").
+- **[The inspection-ready lab includes IT](https://www.mlo-online.com/information-technology/lis/article/13009283/the-inspectionready-lab-includes-it)** (MLO Online, trade publication) — why IT belongs in inspection preparation for the LIS. Verified loading via `curl` on 2026-11-13 (HTTP 200; title "The inspection-ready lab includes IT | MLO Online").
