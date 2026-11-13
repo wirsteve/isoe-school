@@ -1,0 +1,37 @@
+---
+title: "Resources"
+order: 145
+---
+
+Places to go deeper on cutover, downtime and rollback, or to check a citation before it goes into a real Lakeshore document. Every link below was checked with `curl` and loaded; the page title was read to confirm it is the page named. None of these sources tells Lakeshore how to run a BECS cutover or what a downtime procedure must contain; the lesson says so plainly. These pages supply the regulatory and guidance text the plan leans on.
+
+- **[21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)** — automatic, mechanical and electronic equipment; paragraph (b) holds the backup and input/output checking sentences. Use it when writing what "restore-tested backup" has to show. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 606.160, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.160)** — blood establishment records; (a)(1) is the "concurrently," "legible and indelible" and "clearly traced" language behind downtime paper. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 606.100, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)** — written SOPs, established, maintained and followed. Use it for the downtime procedure and the cutover plan. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 606.165, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.165)** — distribution and receipt records; relevant to units distributed on paper during downtime and then reconciled. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)** — III.G on installation in production, interface error-file monitoring, backups in training and data conversion; III.I on validation after a change. Nonbinding guidance. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: General Principles of Software Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)** — section 5.2.6 on user site testing and installation evidence. Written for device makers; general thinking for Lakeshore, not binding. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-53 Rev. 5, CSRC](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)** — the catalog behind CM-2 baseline configuration. Voluntary federal catalog; used here as vocabulary for the baseline rollback restores. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Transition to new solutions successfully with the cutover process, Microsoft Learn](https://learn.microsoft.com/dynamics365/guidance/implementation-guide/prepare-go-live-cutover-strategy)** — a vendor's general guidance on cutover plans, go/no-go and rehearsal for business-application go-lives. Not regulated-industry material and not about BECS; useful for the structure of a timed cutover plan. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Dynamics 365 Cutover and Remote Go Live Strategy - TechTalk](https://www.youtube.com/watch?v=UKmTRdNsSdg)** (Microsoft Dynamics 365 Community, from oEmbed `author_name`) — the video embedded in this lesson, the companion to the Microsoft Learn cutover guide above: defining, preparing and executing a cutover. Vendor guidance for business applications, not regulated-industry material. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200).
+
+**AABB note:** AABB's Standards section 3.9 (information systems, including backup and continuity as a theme) is paid material and is named only as a theme in the lesson; confirm numbering in the current edition. The AABB standards landing page loaded but returned no readable page title, so it is not linked here.
+
+Earlier modules this one builds on: [release management, deployment and change control](../release-management-deployment-and-change-control/index.qmd), [vendor release intake for BECS](../vendor-release-intake-for-becs/index.qmd), [CI/CD pipelines under GxP](../ci-cd-pipelines-under-gxp/index.qmd), [IQ, OQ, PQ and traceability](../../csv-and-becs/iq-oq-pq-and-traceability/index.qmd), [staying validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd), [BECS in the pipeline](../../blood-center-operations/becs-in-the-pipeline/index.qmd), [deviations and nonconformances](../../quality-system-essentials/deviations-and-nonconformances/index.qmd) and [ALCOA and data integrity](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd).
+
+## Keep learning
+
+Not official sources. Good places to keep learning; none is authority for a regulatory claim.
+
+- **[Rollbacks, Octopus Deploy documentation](https://octopus.com/docs/deployments/patterns/rollbacks)** — a practical discussion of when rollback is easy, when database changes make it hard and when to roll forward. Vendor documentation for a deployment tool; read it for the reasoning. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Blue Green Deployment, Martin Fowler's site](https://martinfowler.com/bliki/BlueGreenDeployment.html)** — a short practitioner explanation of keeping the old environment ready to switch back to. Most BECS installations cannot do this, which is itself a useful contrast. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Canary Release: Deployment Safety and Efficiency, Google SRE Workbook](https://sre.google/workbook/canarying-releases/)** — how a large operator thinks about limiting blast radius and deciding to roll back. Large-scale web context; translate carefully to a blood center. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[iSpeak, ISPE](https://www.ispe.org/pharmaceutical-engineering/ispeak)** — the pharmaceutical engineering society's blog, where computerized system validation and cutover topics appear regularly; pharma-oriented, so translate. Verified loading via `curl` on 2026-11-13 (HTTP 200).

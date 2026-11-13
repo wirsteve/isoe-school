@@ -115,7 +115,7 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
 | 6 | `risk-based-testing-and-regression` | Size a test effort by risk, decide regression scope from an impact analysis, and know what test evidence must look like. | 138/139 | Published |
 | 7 | `ci-cd-pipelines-under-gxp` | Run HOP through an automated pipeline without breaking segregation of duties, tool assurance, or the audit trail of who deployed what. | 140/141 | Published |
 | 8 | `secure-sdlc-and-software-supply-chain` | Apply the SSDF's four practice groups to HOP, and ask a vendor the right supply-chain questions (component inventories, release integrity, vulnerability response). | 142/143 | Not started |
-| 9 | `deployment-cutover-and-rollback` | Plan a go-live with go/no-go criteria, BECS downtime procedures, post-deployment verification, and a rollback you've actually rehearsed. | 144/145 | Not started |
+| 9 | `deployment-cutover-and-rollback` | Plan a go-live with go/no-go criteria, BECS downtime procedures, post-deployment verification, and a rollback you've actually rehearsed. | 144/145 | Published |
 | 10 | `emergency-changes-and-hotfixes` | Ship CHG-2207 fast without leaving a validation gap: emergency change path, retrospective documentation, and when an emergency becomes a deviation. | 146/147 | Not started |
 | 11 | `post-release-review-and-delivery-metrics` | Close the loop: hypercare, post-implementation review, delivery metrics (DORA's software delivery performance metrics — DORA now describes five, not four; use what dora.dev says on the day) and how to report release health upward. | 148/149 | Not started |
 
@@ -275,3 +275,29 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
   against the release record's. Pipeline-log/approval-click Part 11 status = documented Quality and
   regulatory-affairs judgment; lesson recommends approving once in the controlled change record,
   which the pipeline reads.
+- 2026-11-13 — Module 9 `deployment-cutover-and-rollback` published (verified; published before
+  module 8, which was still drafting). Video: Microsoft Dynamics 365 Community "Dynamics 365 Cutover and
+  Remote Go Live Strategy - TechTalk" (UKmTRdNsSdg; added by main session, vendor guidance framed as
+  such). **Locked:** starting condition LR-1…LR-6 passed at central, Brookfield, Fairview + regression
+  tiers passed. First rollback rehearsal took 9 h vs a pencilled 6 h window (restore media in offsite
+  archive; Release B install had to be rebuilt). Plan changes: earlier point-of-no-return checkpoint
+  (window end − rehearsed rollback − margin = hour 4 of 10); pre-staged Release B install + restore-
+  tested pre-window backup at go/no-go 2 (rehearsed rollback cut to 5 h); 10-hour window agreed with
+  distribution and site leads; second timed rehearsal reviewed by Quality. Real go-live fit the window;
+  checkpoint recorded "continue"; BECS reopened; first labels printed correctly; reconciliation and
+  monitoring began (module 11 owns hypercare); first rehearsal is not itself a deviation. Two go/no-go
+  points (day before; hour 1 with window open) + rollback checkpoint; Quality blocks on labeling,
+  Director co-approves without override; distribution can no-go on operational grounds; vendor
+  consultant advises only; a no-go leaves Release B in production and is normal. Rollback stages:
+  before install (cheap), mid-install, after conversion before reopen (restore, no data loss — paper
+  bridges), after reopen (restore + re-enter, or roll forward — roll forward needs its own change
+  record). Downtime binders at all three sites incl. fresh deferred-donor list checked before window;
+  paper stays the retained original; entries carry event time + downtime marker; status, deferral,
+  distribution reconciled first; second-person verification; counts reconcile; exceptions → deviation
+  process; hospitals informed via HOP status messaging. Production verification: installation vs
+  validated baseline, config, interface/error-file checks, conversion counts and samples, narrow
+  Quality-controlled labeling smoke check; destructive/abnormal tests stay in validation or
+  monitoring. Rollback restores Release B's baseline record (media, config, templates, verified
+  backup); HOP rollback uses module 7's archived artifact. Open questions left to the right owners:
+  HOP switch to hide proposals during downtime (development lead); BECS back-timed entries (vendor);
+  write transactions as labeling smoke check (Quality).
