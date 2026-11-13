@@ -185,7 +185,7 @@ course's LCR-0xx records stay with lab systems.
 |---|---|---|---|---|
 | — | (syllabus) | — | 183 | Published |
 | 1 | `apheresis-platelets-and-bacterial-risk` | Explain 606.110, 640 subpart C and 606.145 with FDA's platelet bacterial-risk guidance, and make BECS enforce sampling linkage, timing conventions, testing-status traceability and the positive-after-distribution alert. | 184/185 | Not started |
-| 2 | `immunohematology-reference-and-antigen-negative-inventory` | Keep antigen-negative claims honest: lineage of antigen types, historical versus confirmed attributes, and the reference-lab-to-BECS path, under 606.151 and CLIA. | 186/187 | Not started |
+| 2 | `immunohematology-reference-and-antigen-negative-inventory` | Keep antigen-negative claims honest: lineage of antigen types, historical versus confirmed attributes, and the reference-lab-to-BECS path, under 606.151 and CLIA. | 186/187 | Published |
 | 3 | `inventory-returns-reissue-and-reconciliation` | Keep BECS inventory true across returns, reissue and discards: 606.165 traceability, temperature evidence, and reconciliation. | 188/189 | Not started |
 | 4 | `mobile-collections-and-offline-systems` | Run offline collection systems so deferral, suitability and audit-trail requirements still hold: freshness, sync checks, quarantine and evidence. | 190/191 | Not started |
 | 5 | `lookback-and-consignee-notification` | Run an HIV/HCV lookback under 610.46/610.47 end to end from IT's side: the query, the clock, consignee notification and the records. | 192/193 | Not started |
@@ -196,3 +196,20 @@ course's LCR-0xx records stay with lab systems.
   - Sources saved: 606.110, 606.145, 606.151, 610.41, 610.46, 610.47, 630.15, 630.30, 640.20–640.25,
     and FDA's platelet bacterial-risk guidance (excerpt).
   - Syllabus `order:` 183; modules 184–193. Next unused: **194**.
+- 2026-11-13 — Module 2 `immunohematology-reference-and-antigen-negative-inventory` published (verified;
+  prose ~4,450 words; published ahead of module 1, links modules 1 and 3 by slug). Video: Blood Bank Guy
+  "Antibody ID: The Basics (Part 1)" (mvGC5M0ICCs; general antibody-ID explainer). **Locked:** change
+  record **BOC-015** (laboratory director approver — Lakeshore rule, not regulation). BECS carries separate
+  "historical" and "confirmed" antigen attributes; lineage fields = source, method, date, performing lab,
+  import batch, unit/donation link; claim gate reads only "confirmed" unless the laboratory director's
+  documented policy says otherwise. Laboratory director + medical director own acceptable-history and
+  confirmation-typing rules; IT owns fields, gate, LIS-to-BECS interface tests and the one-time review of
+  units flagged antigen-negative on historical data only; Quality decides deviation reporting; consignee
+  follow-up for shipped units = lab director/medical director/Quality. 606.151 = Riverside's duty, which
+  the reference lab supports (whether 606.151 applies to the reference lab's own patient testing left to
+  Quality). CLIA covers antigen typing (QSO-25-18 blood table). No FDA regulation in sources defines
+  antigen-negative claims (606.121(c)(1) neither authorizes nor forbids; 606.160(b)(4)(ii) names
+  confirmatory-testing records but not when required). Interface tests: complete result → confirmed;
+  missing lineage → rejected/queued, never confirmed; corrected result updates, not deduped; disagreeing
+  retype surfaces to the lab. Caught by a reference-lab technologist before shipping; no harm. Module 3
+  uses **BOC-018**.

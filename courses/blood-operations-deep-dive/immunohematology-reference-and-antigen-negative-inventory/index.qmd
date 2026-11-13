@@ -1,0 +1,311 @@
+---
+title: "Immunohematology Reference and Antigen-Negative Inventory"
+order: 186
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can keep an "antigen-negative" claim honest: know where each antigen type came from, keep historical and confirmed types apart in BECS, and trace the path from the reference lab's LIS to the label.
+- **The punchline:** BECS showed units as antigen-negative because an earlier donation from the same donor had a recorded type. The current unit was never typed, and the old type came from a legacy import with no method record. A reference lab technologist questioned it before shipping. No harm is asserted.
+- **The rule in one line:** compatibility testing is the hospital's duty under 21 CFR 606.151. Lakeshore's reference work supports it, and CLIA covers the antigen typing. No FDA regulation in this course's sources defines an "antigen-negative" label claim, so the claim is a laboratory and Quality decision.
+- **IT's part:** lineage fields, separate "historical" and "confirmed" attributes, a claim gate that reads only "confirmed," the LIS-to-BECS interface, and a one-time review. The laboratory director approves the change.
+- **Ask on Monday:** "For any unit BECS calls antigen-negative, can we show who typed it, by what method, on what date, in which lab, and that it was this unit?"
+- **The trap:** a flag that is true of the donor is not the same as a result that is true of the unit.
+:::
+
+## The request
+
+Riverside General Hospital's transfusion service calls the reference immunohematology laboratory late on a Tuesday. A patient has several red cell antibodies. The hospital needs units that lack the matching antigens, and it asks Lakeshore what it has.
+
+The BECS (Blood Establishment Computer Software) analyst runs the inventory search. A dozen units come back flagged "antigen-negative" for the antigens in question. The search is fast and the list looks tidy.
+
+A reference lab technologist is pulling the units for the shipment. She opens the first unit's record to copy the antigen types into the paperwork and stops.
+
+"This one says negative, but there is no typing event for this donation. It's carried forward from a donor type."
+
+She opens a second unit and a third. Same pattern. She clicks through to the source of the donor-level type and finds a date and an import batch ID, and nothing else. No method, no performing lab, no reagent record.
+
+She calls the laboratory director, who tells her not to ship anything on that list until the typing is confirmed. Then the laboratory director calls you.
+
+"I'm not saying the types are wrong," they say. "I'm saying I can't tell you how they were determined, and nobody can tell me this unit was ever tested. The screen shows a fact. The record behind it is a claim."
+
+The Quality Analyst has the list by the end of the day. Several of the flagged units have no typing event on their own donation. They rest on a donor-level history, and some of that history is the legacy import.
+
+No unit left Lakeshore on that basis. Nobody is asserting harm. What you have is a configuration question with a patient on the other end of it: what does the word "negative" in BECS actually promise?
+
+## Why the rule exists, and the ITSM bridge
+
+A patient who has made multiple red cell antibodies has few safe units. Each additional antibody removes more of the inventory. The hospital's blood bank looks for units that lack the antigens the patient's antibodies target, then crossmatches them. If a unit is said to lack an antigen and actually has it, the hospital may discover that at crossmatch, which costs time. In the worse case it does not, and a patient who already has antibodies is exposed to a transfusion that could cause a reaction.
+
+So the claim is a safety input. It saves the hospital time only if it is true. A claim that is usually true, with no way to tell which ones are not, has no value to a hospital that has to verify everything anyway.
+
+The ITSM bridge is **configuration item data quality, with a CMDB accuracy problem and a provenance problem on top.** You know what happens when a CMDB shows a server as "patched" because a record was copied from the last audit. The field says yes. Nobody can say when, by whom, or whether it was this server. A CMDB with unreliable attributes teaches the whole organization to stop trusting the CMDB.
+
+Antigen types are the same shape. A donor's red cell antigen type is a property of the person, and in principle it does not change from one donation to the next. That is exactly why carrying it forward feels safe, and it is the reason the question is hard. Whether a prior result can stand in for a test on this unit depends on how the prior result was made, how reliably it was attached to this donor, and what the laboratory's policy allows. Those are laboratory and medical judgments. They are not IT judgments, and they are not defaults a data model should make silently.
+
+The second bridge is **change enablement for a data model.** Adding a "carry-forward" feature, or importing legacy results into a field that downstream logic treats as authoritative, is a change with a patient-safety consequence. It deserves the same discipline as a code change. This is the point where the course on [release management and change control](../../release-management-and-sdlc/release-management-deployment-and-change-control/index.qmd) meets the laboratory.
+
+## The rule in plain English
+
+Five statements. The lesson sources each one below.
+
+1. **Compatibility testing is the hospital's duty.** 21 CFR 606.151 sets what a facility's standard operating procedures for compatibility testing must include. In this scenario, that facility is Riverside's transfusion service. Lakeshore's reference lab supports it: it identifies antibodies, types units and supplies units. Lakeshore does not take over the hospital's procedure.
+2. **CLIA applies to the typing.** CMS's memo marks immunohematology testing, including antigen typing by serologic and by molecular methods, as covered by CLIA. The reference lab is a CLIA laboratory, and a typing result is a laboratory result.
+3. **Records have to let you trace each step.** 21 CFR 606.160 requires records made concurrently with each significant step, identifying who did the work, with dates, and showing test results and their interpretation. A result with no method and no performing lab is hard to defend against that language.
+4. **No regulation in this course's sources defines an antigen-negative label claim.** There is no FDA rule here that says what evidence makes a unit "antigen-negative," or what the label must say. So the standard is the laboratory's and Quality's. The medical director weighs in on the clinical question. Lakeshore's documented policy is the standard, and the system must enforce that policy exactly.
+5. **IT makes the policy enforceable.** IT decides nothing about what counts as an acceptable antigen history. IT makes sure the system can say where each type came from and refuses to make a claim the policy does not allow.
+
+## Who decides what
+
+| Question | Owner | IT's part |
+|---|---|---|
+| What counts as an acceptable antigen history (which sources, methods, ages and import batches may support a claim)? | Laboratory director, with the medical director | Record the answer as data rules and show the rule is what ran |
+| Is confirmation typing required before an antigen-negative claim, and for which antigens? | Laboratory director and the medical director | Gate the claim on a confirmed result unless the documented policy says otherwise |
+| Does the typing method meet CLIA expectations? | Laboratory director | Carry method and performing lab so the question can be answered |
+| Is a past event a deviation to report? | Quality | Supply the review list and the timeline |
+| What does the interface carry, and how is it tested? | IT, with laboratory director approval | Design, test, monitor |
+
+Lakeshore's own rule from the [CLIA module](../../clia-and-cap-for-blood-center-labs/where-clia-and-cap-reach-a-blood-center/index.qmd) applies: any change to a laboratory system or interface routes through change control with the laboratory director as approver. That is Lakeshore's rule, not a regulation. This change runs as **BOC-015** under Lakeshore's blood-operations change control, with the laboratory director as approver.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.151 | "Six-oh-six point one-five-one" | SOPs for compatibility testing must include the listed elements, including procedures to demonstrate incompatibility between the donor's cell type and the recipient's serum or plasma type | Riverside's duty. Lakeshore's reference lab supports it, so Lakeshore's antigen information must not undermine it |
+| 21 CFR 606.160(a)(1) | "Six-oh-six point one-six-oh, paragraph a, sub-one" | Records made concurrently with each significant step, identifying the person, with dates, test results and interpretation | The typing event: who, when, what result, what it means |
+| 21 CFR 606.160(a)(2) | "Paragraph a, sub-two" | Records from which to determine lot numbers of supplies and reagents used for specific lots or units | A reference to the reagent lot behind a unit's typing, where the lab records it |
+| 21 CFR 606.160(b)(4) | "Paragraph b, sub-four" | Compatibility test records, including antibody screening and identification and results of confirmatory testing | The reference lab's antibody identification for the patient, and any confirmation typing |
+| 21 CFR 606.121 | "Six-oh-six point one-two-one" | Container label requirements, including the proper name of the product with "any appropriate modifiers and attributes" | Where a claim, if Lakeshore labels one, would appear. The text does not mention antigen-negative claims |
+| 21 CFR 606.100(b) | "Paragraph b" | Written SOPs for all steps in compatibility testing and recordkeeping, including all tests and repeat tests | The SOP that states what supports a claim. That SOP is the laboratory's, and Quality controls it |
+| CMS QSO-25-18-CLIA, blood table | "The CMS memo, blood table" | Marks immunohematology testing, including antigen typing, as CLIA-covered. Guidance, not regulation | The reference lab's typing |
+| 42 CFR 493.1291(a) | "Four-ninety-three point twelve-ninety-one, paragraph a" | An adequate manual or electronic system so results are accurately and reliably sent from data entry to the final report destination | The LIS-to-BECS antigen-result interface as one path a result travels |
+
+## The actual text
+
+### 21 CFR 606.151: the transfusion-service frame
+
+From `sources/cfr/606.151.md`:
+
+> Standard operating procedures for compatibility testing shall include the following:
+>
+> (a) A method of collecting and identifying the blood samples of recipients to ensure positive identification.
+>
+> (b) The use of fresh recipient serum or plasma samples less than 3 days old for all pretransfusion testing if the recipient has been pregnant or transfused within the previous 3 months.
+>
+> (c) Procedures to demonstrate incompatibility between the donor's cell type and the recipient's serum or plasma type.
+
+Paragraphs (d) and (e) (the minor crossmatch provision and the emergency-transfusion procedures) are in the same section and are not the point here.
+
+How to read it in this scenario:
+
+- **"Standard operating procedures for compatibility testing shall include..."** This is a requirement about procedures, and "shall" makes it regulation. It does not mention antigen typing, phenotype matching or antigen-negative units at all.
+- **(a) and (b)** are the recipient-side steps. They belong to the hospital that draws the recipient's sample. Lakeshore's systems never touch them.
+- **(c) "Procedures to demonstrate incompatibility between the donor's cell type and the recipient's serum or plasma type."** This is the crossmatch idea in the regulation's own words. The hospital's procedure has to demonstrate incompatibility. An antigen-negative claim from a supplier is information that helps the hospital choose which units to test. It does not replace the hospital's own demonstration.
+
+Say this plainly to your team: **606.151 is the hospital's duty. Lakeshore's reference work supports it.** A blood center that ships a claim is not performing the hospital's compatibility testing, and a hospital that treats the claim as the test has skipped its own step. For a reference lab that also performs patient testing, the lab's own procedures matter and Quality decides which frame applies to which service. This lesson does not resolve that for Lakeshore.
+
+### CMS memo QSO-25-18-CLIA: CLIA covers the typing
+
+From `sources/cms/qso-25-18-clia-applicability-2025.md`, the memo's table headed "Blood and Blood Components Intended for Transfusion." The table has three columns (Test, CLIA Applicability, Comments). The first row's test reads:
+
+> Immunohematology Testing (ABO/Rh, antibody screen, antibody identification, antigen typing)
+
+Its CLIA Applicability column reads "Yes," and its Comments column reads:
+
+> CLIA applies to antigen typing for phenotype (serologic methods) and genotype (molecular methods).
+
+The memo is CMS guidance for State Survey Agencies. It is not itself a regulation. It is CMS's current statement of how it applies CLIA, and for Lakeshore's purposes it is clear: typing a unit's red cells for an antigen is a CLIA laboratory test. That matters for your design. The record of a typing event is a laboratory result, with a laboratory director over it. The [CLIA module](../../clia-and-cap-for-blood-center-labs/where-clia-and-cap-reach-a-blood-center/index.qmd) covers how CLIA reaches Lakeshore, and [The LIS and the test report](../../clia-and-cap-for-blood-center-labs/the-lis-and-the-test-report/index.qmd) covers the LIS and its interfaces. This lesson does not repeat either.
+
+One of the CLIA text's expectations is worth borrowing as a design target. 42 CFR 493.1291(a), from `sources/cfr/42-493-clia-excerpt.md`:
+
+> (a) The laboratory must have an adequate manual or electronic system(s) in place to ensure test results and other patient-specific data are accurately and reliably sent from the point of data entry (whether interfaced or entered manually) to final report destination, in a timely manner.
+
+That paragraph is written about results reported to patients' providers. Whether and how it maps onto a result that travels from the reference LIS into BECS to support an inventory claim is a question for the laboratory director and Quality. It is still a fair statement of the engineering goal: a result that leaves the LIS should arrive in BECS accurately, completely and with its identity intact.
+
+### 21 CFR 606.160: records
+
+From `sources/cfr/606.160.md`:
+
+> (a)(1) Records shall be maintained concurrently with the performance of each significant step in the collection, processing, compatibility testing, storage and distribution of each unit of blood and blood components so that all steps can be clearly traced. All records shall be legible and indelible, and shall identify the person performing the work, include dates of the various entries, show test results as well as the interpretation of the results, show the expiration date assigned to specific products, and be as detailed as necessary to provide a complete history of the work performed.
+>
+> (2) Appropriate records shall be available from which to determine lot numbers of supplies and reagents used for specific lots or units of the final product.
+
+And from paragraph (b)(4):
+
+> (4) Compatibility test records:
+>
+> (i) Results of all compatibility tests, including crossmatching, testing of patient samples, antibody screening and identification.
+>
+> (ii) Results of confirmatory testing.
+
+How each clause maps to the design:
+
+- **"concurrently with the performance of each significant step ... so that all steps can be clearly traced."** The typing event should be recorded when it happens, against the unit. A type attached to a donor years later with no event behind it is the opposite of concurrent and traceable.
+- **"identify the person performing the work, include dates of the various entries."** Your lineage fields have to carry who (or which performing lab) and when. An import batch ID and a date do not say who did the work.
+- **"show test results as well as the interpretation of the results."** The system should keep the raw reaction or genotype result and the interpretation ("negative for antigen X") as distinct data. If only the interpretation survives, nobody can re-review it.
+- **"be as detailed as necessary to provide a complete history of the work performed."** This is a "complete history" standard. A legacy import that preserves the conclusion and discards the method fails it for any record that is meant to be the history.
+- **(a)(2)** points at reagent lot traceability. If the lab records the reagent lot for a typing, the interface should be able to carry or reference it.
+- **(b)(4)(ii) "Results of confirmatory testing."** The regulation names confirmatory testing as a record category in the compatibility testing group. It does not say when confirmatory testing is required before a claim. Taking its vocabulary for the "confirmed" attribute is natural. Treating it as a mandate for a particular confirmation rule would overstate it.
+
+### 21 CFR 606.121 and 606.100: labeling and procedures
+
+From `sources/cfr/606.121.md`, paragraph (c)(1):
+
+> (c) The container label must include the following information, as well as other specialized information as required in this section for specific products:
+>
+> (1) The proper name of the product in a prominent position, with any appropriate modifiers and attributes.
+
+From `sources/cfr/606.100.md`, the opening of paragraph (b), and (b)(7):
+
+> (b) Establishments must establish, maintain, and follow written standard operating procedures for all steps in the collection, processing, compatibility testing, storage, and distribution of blood and blood components for allogeneic transfusion, autologous transfusion, and further manufacturing purposes; ...
+>
+> (7) All tests and repeat tests performed on blood and blood components during manufacturing.
+
+Read these narrowly:
+
+- 606.121(c)(1) says the proper name may carry "appropriate modifiers and attributes." It does not say which attributes are appropriate, and it does not mention antigen types. It is not authority that a particular antigen claim may be placed on a label, and it is not authority that it may not. What it does support is a general point: whatever Lakeshore puts on a label, in a shipping document or in a BECS label template is a statement about the product, so it must be accurate.
+- 606.100(b) requires written SOPs, followed, including for "all tests and repeat tests." That is where the lab's rule for what supports a claim should live: an SOP, controlled by Quality, approved by the laboratory director and medical director as appropriate.
+
+**The gap, stated plainly:** no regulation in this course's `sources/` defines what an "antigen-negative" claim means, what evidence supports one, or how one is labeled. AABB Standards are not quoted in this course, so no AABB standard number or wording is cited here. Treat the claim as a laboratory and Quality decision, written into a controlled procedure, and enforced by the system.
+
+## Lineage: what each antigen type has to carry
+
+Think of an antigen result as a small chain of facts. A "type" with no chain behind it is a claim without evidence.
+
+| Lineage field | What it answers | Why it matters |
+|---|---|---|
+| Source | Was this typed on this unit's sample, on a prior donation, or imported from outside? | Separates a test of this unit from an inference |
+| Method | Serologic or molecular, and which procedure | CLIA applies to both, and the laboratory's policy may treat them differently |
+| Date | When the test was performed, not when the record was entered | The laboratory director's policy may limit how old a type can be |
+| Performing lab | Which laboratory did it | Whose director owns the result |
+| Import batch | If the type came from a legacy load, which batch | Lets you find and review every record from one unreliable source at once |
+| Unit or donation link | Which donation the typing sample came from | Ties the result to this unit and not just the donor |
+
+Two design rules follow.
+
+**Historical and confirmed are different attributes, not different values of one field.** A single "antigen type" field with a flag invites a query that forgets the flag. Two separate attributes, each with its own lineage, make the question "which one is this?" unavoidable. "Historical" holds what an earlier donation or a legacy import says. "Confirmed" holds results that meet the laboratory's policy for this unit. Searches and the reference lab's working screens can show both, labeled. The claim logic uses only one.
+
+**The claim gate reads only "confirmed."** BECS release and labeling logic, and anything that prints, sends or displays an "antigen-negative" claim to a hospital, uses only the confirmed attribute, unless the laboratory director's documented policy says otherwise. The exception lives in the policy and in controlled configuration, with the director's approval. It is not a developer default.
+
+A few honest complications for the laboratory director's policy, which IT should raise and not decide:
+
+- **Is the donor the same donor?** A carried-forward type rests on the assumption that the earlier donation belongs to the same person. A duplicate or imperfectly merged donor record breaks that assumption quietly. The [multi-site governance and donor identification module](../../data-integrity-and-records/multi-site-governance-and-donor-identification/index.qmd) covers how that happens. Lookback, the last module in this course, meets the same problem from another angle.
+- **Which antigens, which methods?** The laboratory may accept a prior type for some antigens or methods and not others. That is a clinical and technical judgment. IT's design should let the policy be expressed per antigen and per method, so the answer does not have to be "all or nothing."
+- **What does the legacy import prove?** Possibly something. The point is that nobody can tell, because the method record is missing. The [legacy systems module](../../data-integrity-and-records/legacy-systems-and-part-11-gaps/index.qmd) is about exactly this: data that came from an older system and cannot show its own history. The honest default for a legacy value is "historical, unverified," and the laboratory director decides whether any of it can be promoted.
+
+For the ALCOA attributes (attributable, legible, contemporaneous, original, accurate), the [ALCOA module](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd) gives the vocabulary. An imported type that cannot say who made it or how is not attributable, and one that cannot say when is not contemporaneous. You do not need to re-learn the framework to see the gap. It is the same gap, now with a patient attached.
+
+## See it in one picture
+
+The diagram follows two ways an antigen type can reach BECS: the legacy import (historical) and the reference lab's own typing through the LIS (confirmed). Both land in BECS, but only one can pass the label claim gate.
+
+```{mermaid}
+flowchart TD
+  A["Legacy import<br/>no method record<br/>(historical antigen type)"] --> H["BECS attribute:<br/>HISTORICAL<br/>source, date, import batch"]
+  B["Reference lab typing<br/>on this unit's segment<br/>(method, date, performing lab)"] --> L["LIS result:<br/>released and reviewed"]
+  L --> I["LIS-to-BECS<br/>antigen-result interface"]
+  I --> C["BECS attribute:<br/>CONFIRMED<br/>full lineage fields"]
+  H --> S["Search and selection<br/>(can show as 'historical, unconfirmed')"]
+  C --> S
+  S --> G{"Label claim gate:<br/>is there a CONFIRMED result<br/>for this unit and antigen?"}
+  G -- "Yes" --> OK["Claim allowed<br/>on label and in<br/>shipping documents"]
+  G -- "No" --> NO["Claim blocked:<br/>send for confirmation typing<br/>or ship without the claim"]
+  P["Laboratory director's<br/>documented policy"] -. "only way historical<br/>data can pass" .-> G
+```
+
+Notice what the picture does not do. It does not forbid showing historical data. A technologist searching for candidates can and should see it, labeled for what it is. It only stops historical data from turning into a claim by itself. The dotted line is the one exception: a policy the laboratory director has documented and approved, which the configuration then follows.
+
+## Watch it explained
+
+This video comes from the "Blood Bank Guy" channel of a transfusion medicine physician and educator. It teaches antibody identification: how a technologist works out which antibodies a patient has. That is the step that creates the request for antigen-negative units. It is general teaching, not about antigen typing of inventory, not about BECS and not about U.S. regulation, so do not read any procedure in it as Lakeshore's. Watch it for the background on how a patient's antibodies are worked out, which is what sends the request for antigen-negative units to the reference lab.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/mvGC5M0ICCs"
+  title="Antibody ID: The Basics (Part 1)" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## The change, step by step
+
+The steps that come out of the laboratory director's call, in the order the Director runs them. The laboratory director and the medical director own the policy decisions. IT owns the build and the evidence.
+
+1. **Freeze the claim.** Until the gate exists, BECS stops showing "antigen-negative" as a shipping claim on units whose only support is historical data. This is an interim control, applied under BOC-015 with the laboratory director's approval. It changes what the claim shows. It does not delete any data.
+2. **Add lineage and split the attributes.** Source, method, date, performing lab, and import batch are added as fields. "Historical" and "confirmed" become separate attributes. Existing legacy values are mapped to "historical" and tagged with their import batch. None are promoted. Promotion needs a confirmed result or an explicit decision under the laboratory director's policy.
+3. **Rewire the claim logic.** BECS release and labeling logic reads only the confirmed attribute for an antigen-negative claim, unless the laboratory director's documented policy says otherwise. The policy exception is a controlled configuration item: it names the antigens and sources covered, who approved it and when.
+4. **Build and test the interface.** The LIS-to-BECS antigen-result interface carries the lineage fields with each result. The test set includes:
+   - a typing result that arrives complete, so it lands as "confirmed" with full lineage;
+   - a result missing a required lineage field, which is rejected or routed to an exception queue and never silently stored as "confirmed";
+   - a corrected typing result, which must update the unit's confirmed attribute and must not be dropped as a duplicate (the same trap the [LIS module](../../clia-and-cap-for-blood-center-labs/the-lis-and-the-test-report/index.qmd) describes for corrected reports);
+   - a retyping that disagrees with a historical value, where the confirmed value wins and the disagreement is surfaced to the laboratory.
+
+   Interface validation and monitoring follow [BECS interfaces and data integrity](../../csv-and-becs/becs-interfaces-and-data-integrity/index.qmd), including FDA's guidance to validate interfaces and keep watching error files.
+5. **One-time review.** IT runs a query for every unit currently flagged antigen-negative on historical data only. The list goes to the laboratory director and the Quality Analyst. For each unit the laboratory decides: confirm by typing, hold, or release without the claim. The review also asks whether any such unit has already been shipped to a consignee. If it has, the laboratory director, medical director and Quality decide what follows, including whether a deviation report is warranted. That is Quality's call, using the [BPDR module](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd). IT supplies the list and the timeline.
+
+The evidence package attached to BOC-015: the approved policy text, the field specification, the configuration diff for the gate, the interface test results, the one-time review list with the laboratory's disposition for each unit, and the laboratory director's approval.
+
+## What an inspector or assessor would actually look for
+
+**The record.** For any unit that carried an antigen-negative claim: the typing event, with who, method, date and performing lab, and a link to this unit. This is the 606.160(a)(1) "complete history" question. The owner is the reference lab, and the system must make the record retrievable.
+
+**The procedure.** The written SOP stating what supports a claim (606.100(b)). Owner: laboratory director and Quality. A bad answer sounds like "the system has always done it that way."
+
+**The configuration.** Proof that BECS logic follows the procedure. Owner: IT. Expect to show the gate's rule, its test and its change record. A bad answer is a flag that no one can trace to a rule.
+
+**The interface.** How results move from LIS to BECS, how failures are caught, and how corrections propagate. Owner: IT, with the laboratory director's approval. A bad answer is "it works, nobody's complained."
+
+**The review.** What happened to the units that carried historical-only claims. Owner: laboratory director and Quality. A bad answer is an unanswered question about units already shipped.
+
+What a bad answer looks like in total: "It was in the database from before our time." An assessor will hear that as "we do not know where this came from," and a result you cannot source is a result you cannot rely on.
+
+## Common traps
+
+**"The donor's type doesn't change, so a carried-forward type is as good as a new test."** The biology may support reuse for some antigens. The record still has to show how the earlier type was determined and that it belongs to the same person. Whether that is enough is the laboratory director's and medical director's policy. The system must not decide it by default.
+
+**"Compatibility testing is Lakeshore's, so antigen-negative is Lakeshore's whole responsibility."** Under 606.151, compatibility testing procedures are the transfusion service's. Lakeshore's reference lab supports them. Lakeshore remains fully responsible for the accuracy of what it tells the hospital and for the records of its own typing.
+
+**"FDA defines antigen-negative labeling, so we just follow the rule."** No FDA regulation in this course's sources does. The claim is a laboratory and Quality decision, written into a procedure. If someone cites a regulation for what the claim must say, ask for the citation and check it against the source text.
+
+**"We'll just hide historical data."** Hiding it throws away information the technologists may rightly use to prioritize which units to type first. Keep it, label it, and keep it out of the claim.
+
+**"CLIA is for patients, not inventory."** CMS's memo marks antigen typing as CLIA-covered in the blood table. A typing result on a donor unit is a laboratory result.
+
+## What this means for your job
+
+- **Ask the BECS analyst for the lineage, not the flag.** "Show me one antigen-negative unit and where its type came from." If the answer ends at a flag, you have found the gap.
+- **Treat any legacy import as a source with an expiry date on its trust.** Every imported attribute should carry its batch ID, and every downstream rule should know whether it is allowed to rely on imported data.
+- **Never let a developer decide what counts as acceptable history.** Route it to the laboratory director and the medical director, record the answer, and implement it as configuration under change control.
+- **Make the exception loud.** If the laboratory director's policy allows a historical type to support a claim for certain antigens, the configuration should name the antigens, the sources and the approval, and any claim that rests on the exception should say so in the record.
+- **Test the interface for the boring failures.** Missing fields, duplicates, corrections and retypings are where lineage silently breaks.
+- **Escalate when a claim has left the building.** If a unit has been shipped on a claim that cannot be supported, the laboratory director, medical director and Quality decide the consignee conversation. You provide the facts quickly and do not make the call yourself.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Riverside's transfusion service says, "Your BECS says these units are antigen-negative, so we can skip our own crossmatch." Whose duty is compatibility testing, and what does 606.151 say about it?
+
+It is the transfusion service's duty. 606.151 states what a facility's SOPs for compatibility testing "shall include," including procedures to demonstrate incompatibility between the donor's cell type and the recipient's serum or plasma type (606.151(c)). Lakeshore's reference work supports that duty, and an antigen-negative claim is an input to the hospital's selection. It does not replace the hospital's own demonstration. Lakeshore should say so plainly if a hospital asks, because a false sense of certainty on either side is the risk.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A colleague says, "FDA requires that antigen-negative units be confirmed by typing before they are labeled." Is that a regulatory requirement?
+
+Not on the sources this course holds. No FDA regulation in `sources/` defines an "antigen-negative" label claim or the evidence for it. 606.160(b)(4)(ii) lists "results of confirmatory testing" as a compatibility test record, and 606.121(c)(1) allows "appropriate modifiers and attributes" on a label, but neither says what must confirm a claim. The requirement to confirm is a laboratory and Quality decision, set by the laboratory director and the medical director, written in an SOP, and enforced by BECS. That is a policy Lakeshore can and should hold. It is not a rule to attribute to FDA.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The one-time review finds a unit flagged antigen-negative on historical data only, and it already shipped to a hospital last month. What does IT do, and what does IT not do?
+
+IT produces the facts immediately: the unit, the claim as it was shown, the source of the historical type, the consignee and the dates. IT does not decide whether the claim was acceptable, whether to contact the hospital or whether the event is reportable. The laboratory director and medical director decide the clinical and laboratory response, and Quality decides deviation reporting (see the BPDR module). IT's second job is to make sure the same path is closed by the gate.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Explain this to your CIO in two sentences.
+
+"BECS was telling hospitals a unit lacked a blood-group antigen based on a record copied from an old donation, with no way to show how or whether it was ever tested. We are separating 'what an old record says' from 'what the lab confirmed on this unit,' letting only the confirmed result support the claim unless the laboratory director's written policy says otherwise, and reviewing every unit that rested on the old data."
+:::
+
+## Where this goes next
+
+Antigen types are one attribute that has to stay true as a unit moves. The next module, [Inventory: returns, reissue and reconciliation](../inventory-returns-reissue-and-reconciliation/index.qmd), follows a different kind of drift: a unit that came back from the hospital, was reissued to another, and shows in BECS as something it no longer is. The earlier module on [apheresis platelets and bacterial risk](../apheresis-platelets-and-bacterial-risk/index.qmd) took the same lens to testing status and splits.
