@@ -1,0 +1,342 @@
+---
+title: "Proficiency Testing and the LIS"
+order: 170
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can keep proficiency testing (PT) samples handled like patient samples, but never referred out (42 CFR 493.801) and never mistaken for donations in BECS (Blood Establishment Computer Software).
+- **The punchline:** a review found two IT-made hazards. In the reference lab, an LIS (laboratory information system) reflex rule would have created a send-out order to an outside lab for a PT sample. In the donor lab, a PT sample accessioned with donation-style identifiers could have posted a PT result to BECS as if it were a donation.
+- **The rule in one line:** test PT samples "in the same manner as patients' specimens" (493.801, 493.61(b)(1)), but never send PT samples or portions of them to another laboratory for analysis the lab is certified to perform (493.801(b)(5)).
+- **The fix:** a PT accession type in the LIS that runs the same analytic path but blocks reflex send-outs and blocks the BECS outbound interface, verified by test cases under a laboratory change record (LCR-021), approved by the laboratory director.
+- **Ask on Monday:** "Which automatic rules in the LIS can send a specimen, a result or a message somewhere else, and what do they do with a PT sample?"
+- **The trap:** reading "treat like patients" as "let the PT sample trigger everything a patient sample would."
+:::
+
+## The review
+
+The laboratory director has asked for a walk-through of how PT samples move through the LIS. It is a small meeting: the laboratory director, the Quality Analyst, the LIS analyst, and you. The Quality Analyst has the lab's PT procedure open. The LIS analyst has a screen share.
+
+"We enter PT samples like patient samples," the Quality Analyst says. "That's what the rule says, and our bench staff do it that way."
+
+The laboratory director nods, then asks the LIS analyst to open the reference immunohematology lab's reflex rules. "There's one I've been wondering about. Antibody identification comes back inconclusive. What happens?"
+
+The LIS analyst scrolls. "The rule creates a send-out order to an outside reference laboratory automatically. Nobody has to click anything. It's there so inconclusive patient workups don't sit."
+
+Nobody speaks for a moment. "And a PT challenge sample entered like a patient sample, if it comes out inconclusive?"
+
+"Same rule. It would fire."
+
+The laboratory director says only: "Then our own procedure for handling PT samples would have us breaking the PT referral rule, and the system would do it for us."
+
+The Quality Analyst has been thinking about the other lab. "While we're here. Donor testing runs PT through the same path as donations. Instrument, middleware, LIS, BECS. How do we accession them?"
+
+The LIS analyst's answer is honest and uncomfortable. "Bench staff enter them with a number that looks like any other donation number, so the instruments and middleware accept it. The LIS doesn't know the difference. The interface to BECS wouldn't either."
+
+Both hazards came out of the same review. Neither had happened that anyone knew of. Both were made by IT configuration, and neither would have shown up in a bench-level check. This lesson is about why they matter, what the regulation actually says, and how to build a system that satisfies "treat like patients" and "never refer out" and "never post to BECS" at the same time.
+
+## Why the rule exists, and the ITSM bridge
+
+PT is an external check on the lab. A PT program, approved by the federal government, sends the lab samples whose expected answers it knows. The lab tests them and reports its results, and the program scores them against its peers. The point is an honest comparison: if the lab's routine process produces the wrong answer, the score shows it.
+
+That comparison only means something if the sample goes through the *routine* process. A lab that gives the PT sample to its best technologist, tests it five times, or sends it to a bigger lab for a second opinion would get a good score, but the score would describe the special handling, not the lab. Two ideas therefore sit side by side in the regulation: treat the sample the way you treat patients, and don't hand it to anyone else. The second protects the first. A sample sent to another lab is that other lab's result reported as yours.
+
+Patients are the reason the comparison matters. The lab's routine process produces the results hospitals and the blood supply rely on. A PT score that is flattering because of special handling hides a process that might be failing.
+
+The ITSM bridge: this is **test data in a production system, with a regulator defining the rules.** You already know the hazards of synthetic transactions in a live service. A test order that triggers a real fulfillment, a test record that lands in the production reporting database, a monitoring probe that pages a real customer. The usual answer is a marker on the transaction that downstream automation respects, and the same answer applies here. The twist is that the marker cannot change the routine path. A fully separate "test lane" would fail the same-manner rule. So the design is: **same path through the analytic steps, hard stops at the doors out.**
+
+The second bridge is **change enablement**. The reflex rule and the donation-style numbering convention were each reasonable when made. Each carried an unstated assumption that every specimen that enters the LIS is a patient's or a donor's. PT samples broke the assumption, and nobody owned it. A regulated lab needs an owner for "what kinds of things enter this system," not just "what the system does with them."
+
+## The rule in plain English
+
+Four obligations, then how they fit together.
+
+1. **Enroll in an approved PT program** for each specialty and subspecialty the lab is certified for (493.801, introductory paragraph and (a)).
+2. **Test PT samples in the same manner as patients' specimens.** Same people, same methods, same regular workload, same number of repeats as patient testing (493.801 and (b)(1), (b)(2); for accredited labs, also 493.61(b)(1)).
+3. **Never send PT samples, or portions, to another laboratory for any analysis the lab is certified to perform.** And don't discuss PT results with other labs until after the reporting deadline (493.801(b)(4), (b)(5)).
+4. **Document every step and keep the records,** including the attestation signed by the analyst and the laboratory director (493.801(b)(6)). Review and evaluate PT performance and document it (493.1236).
+
+How they fit: when patient testing would normally continue at another laboratory, the regulation does not ask the lab to pretend. It says to test the PT sample "as it would a patient specimen up until the point it would refer a patient specimen to a second laboratory." The routine path is followed *to the door*. The door stays shut.
+
+For IT, that translates into two engineering requirements for any automation in the path. Automation must not alter the *routine* handling, and automation must not *carry the PT sample out of the lab* by any route: a send-out order, an interface message, a result transmission.
+
+What the rules do not do: they don't mention LIS accession types, interface blocks, or how to identify a PT sample electronically. The control design belongs to Lakeshore, and the lab has to be able to show it works.
+
+## Where this lands in Lakeshore's systems
+
+Lakeshore's path from earlier modules: instruments, then middleware, then the LIS, then an interface to BECS, with the reference lab also sending patient reports to hospitals. For PT, look at every place the path can leave the lab or change meaning.
+
+**In the reference immunohematology lab:**
+
+- The **reflex send-out rule**: automatic send-out order to an outside reference lab on inconclusive antibody identification. A send-out order is the first step of a referral, and the LIS can generate it with no human decision.
+- The **hospital report interface** ([module 2](../the-lis-and-the-test-report/index.qmd)): PT results are not patient results for any hospital. A PT result sent to a hospital as if it were a report would be a communication problem as well as a data one.
+- **Inbound and outbound lab-to-lab traffic** generally: any rule that routes specimens or results to another laboratory.
+
+**In the donor testing lab:**
+
+- The **donation-style identifier**. Donation numbers identify units collected from donors, and BECS ties them to donor records (see [Multi-Site Governance and Donor Identification](../../data-integrity-and-records/multi-site-governance-and-donor-identification/index.qmd)). A PT sample that borrows that format can match a rule built for donations.
+- The **LIS-to-BECS interface** ([module 2](../the-lis-and-the-test-report/index.qmd)): BECS uses incoming donor results for suitability and release decisions. A PT result arriving there would be a record of a test that never happened to a unit that doesn't exist, or worse, a result attached to a real donation number. Donor testing is covered in [Collection and testing](../../blood-center-operations/collection-and-testing/index.qmd).
+
+**Both labs:** the **PT records**. Documentation of every step, kept as retrievable records, belongs to the lab's record system, and the LIS is where much of it lives.
+
+## Citation decoder
+
+For citation anatomy, see [Reading a CFR citation](../../../foundations/reading-a-cfr-citation/index.qmd).
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 42 CFR 493.801 (intro) | "Four-ninety-three point eight-oh-one" | Enroll in an approved PT program; test samples in the same manner as patients' specimens | The routine-path requirement |
+| 42 CFR 493.801(b) | "...paragraph b" | Test PT as patient specimens, up until the point of referral | Reflex rule: run it to the door, not through it |
+| 42 CFR 493.801(b)(1), (b)(2) | "...b-one; b-two" | Regular workload, routine personnel and methods, attested by tester and laboratory director; same number of tests as patients | The PT accession type must not create a separate lane |
+| 42 CFR 493.801(b)(4) | "...b-four" | No inter-laboratory communication on PT results until after the reporting date, including across a lab's own sites | LIS views, dashboards and shared worklists |
+| 42 CFR 493.801(b)(5) | "...b-five" | No sending PT samples or portions to another laboratory for any analysis the lab is certified to perform; intentional-referral and improper-referral consequences; receiving labs must notify CMS | The reflex send-out rule |
+| 42 CFR 493.801(b)(6) | "...b-six" | Document each step of handling and reporting; keep records, including the signed attestation, at least two years from the PT event | PT records in the LIS |
+| 42 CFR 493.61(b)(1) | "...sixty-one, paragraph b-one" | Accredited labs must treat PT samples in the same manner as patient samples | Lakeshore holds certificates of accreditation (module 1) |
+| 42 CFR 493.1236 | "...twelve-thirty-six" | Review and evaluate PT results; verify accuracy where PT isn't scored; document all PT evaluation | The lab's PT review, and the records that support it |
+| 42 CFR 493.1251 | "...twelve-fifty-one" | Written procedure manual; changes approved, signed and dated by the laboratory director before use | PT handling goes into the manual |
+| 21 CFR 606.160(b)(5)(v) | "Six-oh-six point one-sixty, b-five-roman-five" | FDA's list of blood-establishment records includes proficiency test results | The FDA side of the same record |
+
+## The actual text
+
+All text below is verbatim from the local copies in `sources/`.
+
+### 493.801: enrollment and testing of samples
+
+The opening of the condition:
+
+> Each laboratory must enroll in a proficiency testing (PT) program that meets the criteria in subpart I of this part and is approved by HHS. The laboratory must enroll in an approved program or programs for each of the specialties and subspecialties for which it seeks certification. The laboratory must test the samples in the same manner as patients' specimens.
+
+"Must test the samples in the same manner as patients' specimens" is the sentence the rest builds on. It sits in the *condition* itself, ahead of the paragraphs beneath it.
+
+Paragraph (b), the standard on testing:
+
+> (b) *Standard: Testing of proficiency testing samples.* The laboratory must examine or test, as applicable, the proficiency testing samples it receives from the proficiency testing program in the same manner as it tests patient specimens. This testing must be conducted in conformance with paragraph (b)(4) of this section. If the laboratory's patient specimen testing procedures would normally require reflex, distributive, or confirmatory testing at another laboratory, the laboratory should test the proficiency testing sample as it would a patient specimen up until the point it would refer a patient specimen to a second laboratory for any form of further testing.
+
+Read the last sentence carefully. It says "should," and it describes exactly the Lakeshore reflex rule: the lab's patient procedures "would normally require reflex ... testing at another laboratory." The lab tests the PT sample *up until the point it would refer*. The send-out order is that point. Everything before it is routine. The order itself is the one thing that must not happen. Notice, too, that the text isn't asking IT to invent a new process. It asks that the process stop at a specific place, and the LIS is what decides where an automatic process stops.
+
+> (1) The samples must be examined or tested with the laboratory's regular patient workload by personnel who routinely perform the testing in the laboratory, using the laboratory's routine methods. The individual testing or examining the samples and the laboratory director must attest to the routine integration of the samples into the patient workload using the laboratory's routine methods.
+>
+> (2) The laboratory must test samples the same number of times that it routinely tests patient samples.
+
+(b)(1) is the constraint on the *design*. A PT accession type that put samples in a separate queue, on a separate instrument, or under special middleware rules would undermine the attestation the tester and the laboratory director sign. The same-manner path is a design requirement for your configuration, not just a bench behavior. (b)(2) means no LIS or middleware setting should cause a PT sample to be repeated more, or less, than a patient sample would be.
+
+> (4) Laboratories that perform tests on proficiency testing samples must not engage in any inter-laboratory communications pertaining to the results of proficiency testing sample(s) until after the date by which the laboratory must report proficiency testing results to the program for the testing event in which the samples were sent. Laboratories with multiple testing sites or separate locations must not participate in any communications or discussions across sites/locations concerning proficiency testing sample results until after the date by which the laboratory must report proficiency testing results to the program.
+
+This is the communication prohibition. The text speaks of "communications" and "discussions," so the people comparing notes are the obvious target. For IT the question is whether *systems* can do the communicating for them: a shared worklist, a dashboard, or a cross-lab report that shows both labs' PT results before the deadline. Lakeshore's two labs share an LIS, and this lesson does not decide whether they count as "separate locations" under the text. That judgment belongs with the laboratory director. The conservative design is to treat PT results as visible only to the testing lab until the reporting date.
+
+> (5) The laboratory must not send proficiency testing samples or portions of proficiency testing samples to another laboratory for any analysis for which it is certified to perform in its own laboratory. Any laboratory that CMS determines intentionally referred a proficiency testing sample to another laboratory for analysis may have its certification revoked for at least 1 year. If CMS determines that a proficiency testing sample was referred to another laboratory for analysis, but the requested testing was limited to reflex, distributive, or confirmatory testing that, if the sample were a patient specimen, would have been in full conformance with written, legally accurate and adequate standard operating procedures for the laboratory's testing of patient specimens, and if the proficiency testing referral is not a repeat proficiency testing referral, CMS will consider the referral to be improper and subject to alternative sanctions in accordance with § 493.1804(c), but not intentional. Any laboratory that receives a proficiency testing sample from another laboratory for testing must notify CMS of the receipt of that sample regardless of whether the referral was made for reflex or confirmatory testing, or any other reason.
+
+Four things to take from the paragraph, with the text's own limits:
+
+- **The prohibition is flat.** "Must not send ... samples or portions ... to another laboratory for any analysis for which it is certified to perform in its own laboratory." Nothing in the sentence makes an exception for reflex rules, automatic orders or a hands-off system.
+- **The text distinguishes intentional from improper referrals.** An intentional referral "may have its certification revoked for at least 1 year." A referral limited to reflex, distributive or confirmatory testing that "would have been in full conformance with written, legally accurate and adequate standard operating procedures" for patient specimens, and that is not a repeat, is "improper and subject to alternative sanctions ... but not intentional." The lesson adds no penalties beyond these. The sanctions provision the text points to (493.1804(c)) is not in this course's `sources/`, so its content is not described here.
+- **"Not a repeat" matters.** An automatic rule that fires every PT event is a repeat waiting to happen. The mitigation the text offers for a first, reflex-type referral does not stretch to a rule that keeps firing.
+- **The receiving lab has its own duty.** A lab that receives a PT sample from another lab "must notify CMS of the receipt of that sample." That is the reason an outside reference lab would likely recognize what happened, whether or not Lakeshore does.
+
+The last two lines of the text are the records requirement:
+
+> (6) The laboratory must document the handling, preparation, processing, examination, and each step in the testing and reporting of results for all proficiency testing samples. The laboratory must maintain a copy of all records, including a copy of the proficiency testing program report forms used by the laboratory to record proficiency testing results including the attestation statement provided by the PT program, signed by the analyst and the laboratory director, documenting that proficiency testing samples were tested in the same manner as patient specimens, for a minimum of two years from the date of the proficiency testing event.
+
+"Each step in the testing and reporting of results" is broad enough to include what the LIS did, including which rules ran and which were blocked. "A minimum of two years" is a floor, not a schedule. Whether FDA's record rules lengthen the interval for any PT record is a question for the laboratory director and Quality: 606.160(b)(5)(v) lists "Proficiency test results" among blood-establishment records, and this lesson does not map the retention interval onto it.
+
+### 493.61(b)(1): the accreditation hook
+
+From module 1: Lakeshore's labs hold certificates of accreditation. The same duty appears there:
+
+> (b) Laboratories issued a certificate of accreditation must—
+>
+> (1) Treat proficiency testing samples in the same manner as patient samples;
+
+So the same-manner duty reaches Lakeshore through two doors, the PT condition in subpart H and the accreditation requirements. The wording differs ("samples" versus "specimens"). The only IT-relevant point is that being CAP-accredited does not soften it. Accreditation is how the lab meets CLIA, not a substitute for it (module 1).
+
+### 493.1236: evaluating PT performance
+
+> (a) The laboratory must review and evaluate the results obtained on proficiency testing performed as specified in subpart H of this part.
+>
+> (b) The laboratory must verify the accuracy of the following:
+>
+> (1) Any analyte or subspecialty without analytes listed in subpart I of this part that is not evaluated or scored by a CMS-approved proficiency testing program.
+>
+> (2) Any analyte, specialty or subspecialty assigned a proficiency testing score that does not reflect laboratory test performance (that is, when the proficiency testing program does not obtain the agreement required for scoring as specified in subpart I of this part, or the laboratory receives a zero score for nonparticipation, or late return of results).
+>
+> (c) At least twice annually, the laboratory must verify the accuracy of the following:
+>
+> (1) Any test or procedure it performs that is not included in subpart I of this part.
+>
+> (2) Any test or procedure listed in subpart I of this part for which compatible proficiency testing samples are not offered by a CMS-approved proficiency testing program.
+>
+> (d) All proficiency testing evaluation and verification activities must be documented.
+
+Two IT points. First, (b)(2) names "late return of results" as a case where the score does not reflect performance. A PT sample stuck in a blocked state, with no one noticing, is a route to a late return. The blocks must make the sample visible, not make it disappear. Second, (d) "all ... evaluation and verification activities must be documented": the lab will want to pull PT results and the evaluation record together, so the LIS retrieval of PT records matters. Which tests Lakeshore performs fall into (c) is a laboratory director decision. CLIA's PT rules are tied to subpart I's list of regulated analytes, and this lesson does not map Lakeshore's menu to that list.
+
+### 493.1251: the procedure manual
+
+Two pieces matter here.
+
+> (a) A written procedure manual for all tests, assays, and examinations performed by the laboratory must be available to, and followed by, laboratory personnel.
+
+> (d) Procedures and changes in procedures must be approved, signed, and dated by the current laboratory director before use.
+
+And among the contents the manual must include "when applicable":
+
+> (1) Requirements for patient preparation; specimen collection, labeling, storage, preservation, transportation, processing, and referral; and criteria for specimen acceptability and rejection as described in § 493.1242.
+
+> (13) The laboratory's system for entering results in the patient record and reporting patient results including, when appropriate, the protocol for reporting imminently life-threatening results, or panic, or alert values.
+
+(b)(1) names "referral" and (b)(13) names the entry of results. PT handling is not named. It is the lab's call whether it appears in each test procedure or a general PT procedure, but if "how PT samples are entered and what the LIS does with them" lives only in someone's head, the manual is not what is "followed." Because (d) requires the laboratory director's approval of changes before use, the manual change and the LIS change land on the laboratory director's desk together.
+
+## See it in one picture
+
+This is Lakeshore's PT path, not a generic one. The two blocks are at the doors out of the lab, not at the bench.
+
+```{mermaid}
+flowchart TD
+    A["PT shipment arrives from the PT program"] --> B["LIS: accession as PT accession type<br/>(not a donation, not a patient)"]
+    B --> C["Regular workload: same instrument,<br/>middleware, procedure, personnel"]
+    C --> D{"Result inconclusive?<br/>Reference lab: reflex rule fires"}
+    D -- "Patient specimen" --> E["Send-out order to outside<br/>reference laboratory"]
+    D -- "PT accession type" --> F["BLOCK 1: no send-out created.<br/>Tech worklist flag: PT, stop here"]
+    C --> G{"Donor lab: result ready<br/>for outbound interface"}
+    G -- "Donation accession type" --> H["LIS-to-BECS interface posts result"]
+    G -- "PT accession type" --> I["BLOCK 2: BECS interface does not send"]
+    F --> J["Lab reports PT result to PT program<br/>(same-number-of-tests, same-manner attestation)"]
+    I --> J
+    J --> K["PT records kept and retrievable;<br/>evaluation documented (493.1236)"]
+```
+
+The path from B to C is untouched, which is what satisfies "same manner." The blocks sit at D and G, the two places an automatic action would carry the PT sample or its result out of the lab's own control.
+
+## Watch it explained
+
+The CDC's presentation on the CLIA proficiency-testing final rule (CMS-3355-F) explains how PT works under CLIA and what that rule changed. It is mostly about which analytes are graded and how. It does not go deep on referral, and nothing in it is about LIS design. Watch it for the PT vocabulary your laboratory director uses. The regulation text quoted in this lesson comes from the current eCFR copy in `sources/`, not from the video.
+
+::: {.video-embed}
+<iframe src="https://www.youtube-nocookie.com/embed/7qKGYH6w3Nw" title="CLIA Proficiency Testing (PT) Final Rule, CMS-3355-F" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+*Centers for Disease Control and Prevention (CDC), on YouTube. Title checked against YouTube's oEmbed record on 2026-11-13.*
+
+## The Director's decisions
+
+The review ends with a list, and the laboratory director owns the approvals.
+
+**1. Create a PT accession type in the LIS, with two blocks.**
+
+*The decision:* PT samples are entered as a distinct accession type that is neither a patient specimen nor a donation. The type runs through the same instruments, middleware and analytic steps. It (a) **blocks reflex send-out rules**, and (b) **blocks the BECS outbound interface**. For the reference lab it also blocks the hospital report interface, because a PT result is not a hospital patient's result. That last block is Lakeshore's choice and not a requirement quoted from the text.
+
+*Why:* it keeps the lane the same and shuts the doors. A separate lane would fail 493.801(b)(1). Doors left open would risk 493.801(b)(5) and BECS integrity. The blocks work by **allow-list**: the BECS interface sends only accession types explicitly marked as donations. A deny-list on "PT" fails the day somebody creates a second kind of non-donation sample.
+
+*Identifiers:* PT accessions get identifiers from their own namespace that cannot be confused with a donation number, and the LIS rejects a PT type carrying a donation-format identifier. The exact identifier design is for the LIS analyst and Quality, and BECS-side identifier rules are covered in the donor identification module linked above.
+
+**2. Implement and verify it under a lab change record, LCR-021, approved by the laboratory director.**
+
+*The decision:* the accession type, both blocks and the identifier rule go through lab change control as **LCR-021**. The laboratory director approves (Lakeshore's own rule from module 1; no source requires that approver). Rule changes in the LIS and middleware belong under the same control. Module 3, `instruments-middleware-and-performance-verification`, covers what verification evidence a rule change needs; this module supplies the PT-specific test cases.
+
+*Why:* the blocks are regulated configuration. Without a record, a future rule change can quietly remove one.
+
+**3. Inventory every reflex and send-out rule.**
+
+*The decision:* the LIS analyst lists every rule that can create a send-out order, route a specimen or message to another lab, or post to an outside system, in both labs, and records what each does with a PT accession. This is part of LCR-021.
+
+*Why:* the reflex rule that started the review was found by accident, in a walk-through. The inventory is how the next one is found on purpose.
+
+**4. Add PT handling to the procedure manual, written by the lab.**
+
+*The decision:* the laboratory writes PT handling into its procedure manual under 493.1251: how PT samples are accessioned, what the LIS blocks and why, what staff do when a reflex rule would have fired, and how results go to the PT program. The laboratory director approves, signs and dates it before use (493.1251(d)). IT supplies the system facts. IT does not write the lab's procedure.
+
+*Why:* the regulation puts procedures with the lab and the laboratory director. IT's job is to make the system do what the procedure says, and to say so when it can't.
+
+**5. Check that no PT result has ever posted to BECS.**
+
+*The decision:* the LIS analyst, with Quality, searched BECS for any result originating from a PT accession, using the PT identifiers recorded in the lab's PT records and the interface logs, across the retention period for those logs. **Outcome: none found.** The search method, its scope and the results are attached to LCR-021. Had one been found, it would have been handled as a quality event and a BECS data-correction matter for the laboratory director and Quality, not quietly cleaned up.
+
+*Why:* the new blocks protect the future. The check addresses the past. "None found" is only as good as the stated scope, and an inspector will ask what was searched. Note the limit: the check can find PT results that are *recognizable* as PT. If a PT sample had been entered with a real donation number, the search above might not find it, so Quality also compared PT accession records with interface logs for matching identifiers. The check is as thorough as the records allow.
+
+## Testing the blocks
+
+The blocks are only controls if they are tested, and tested again after changes. This is [risk-based testing and regression](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd) applied to a regulated rule: the test list comes from the failure modes, and it is rerun when anything nearby changes.
+
+| # | Test | Expected result |
+|---|---|---|
+| 1 | Enter a PT sample in the reference lab; run it through to an inconclusive antibody identification | Result entered by routine path; **no send-out order exists**; worklist shows the PT flag |
+| 2 | Enter an ordinary patient specimen with the same inconclusive result | Reflex rule still fires (the block must not break patient testing) |
+| 3 | Enter a PT sample in the donor lab; complete testing | Result recorded in the LIS; **nothing queued or sent to the BECS interface**; interface log shows no message |
+| 4 | Enter an ordinary donation in the donor lab | Result still reaches BECS (the allow-list still passes donations) |
+| 5 | Try to accession a PT type with a donation-format identifier | LIS rejects it |
+| 6 | Try to create a send-out manually for a PT accession | System warns or blocks per the lab's procedure; the attempt is logged |
+| 7 | Run a PT sample and a patient sample on the same instrument and middleware | Same rules applied; same repeat behavior (493.801(b)(2)) |
+| 8 | Retrieve the PT accession, its audit trail and the block events after the run | All retrievable, with who, what and when |
+| 9 | Change something nearby (a new reflex rule, an interface update); rerun tests 1 to 4 | Still pass. Regression rerun is part of LCR approval for such changes |
+
+Tests 2 and 4 are easy to skip and are the ones that matter most for patients and donors. A block that stops everything is a different outage.
+
+## What an inspector or assessor would look for
+
+**A CAP inspector, acting for CMS:**
+
+- *The records:* the PT procedure in the manual, the signed PT attestations, PT results and their evaluation (493.1236), and, for the system side, the evidence that the LIS handles PT as the procedure says.
+- *Who owns it:* the laboratory director owns the procedure and the attestation. IT owns the configuration and verification evidence. Quality owns the change record and the PT review. CAP's checklists are not quoted here; ask the lab for its custom checklist items on PT and the LIS. This lesson makes no claim about what any item says.
+- *A bad answer:* "Our techs treat PT like patient samples, so the system just handles it." Or, worse, "We don't think any PT has ever left the building."
+- *A good answer:* "Here is the PT procedure; here is LCR-021 with the test cases, including the one that shows no send-out is created; here is the reflex-rule inventory; here is the check that no PT result has posted to BECS, with its scope."
+
+**An FDA investigator** at the donor lab cares about BECS records. A PT result posted to BECS is a bad record in a system FDA inspects. The allow-list and the BECS check are the evidence.
+
+**An AABB assessor** will want the PT handling under the quality system. AABB's standards text is not quoted in this course.
+
+## Common traps
+
+**"Same manner means everything a patient sample would do."** The text says the opposite at the edge: test it "up until the point it would refer a patient specimen." Automation that completes the referral isn't same-manner, it's a violation.
+
+**"It was only a reflex test, so it's fine."** The reflex carve-out in 493.801(b)(5) doesn't make the referral permitted. It reclassifies it as "improper ... but not intentional," subject to alternative sanctions, and only if the referral conformed to written procedures and wasn't a repeat. A standing rule that sends out every inconclusive PT sample doesn't fit that description.
+
+**"PT is a bench matter, not an IT matter."** Bench staff can follow the procedure perfectly and still be defeated by an automatic rule they never see fire. The two hazards in this lesson were both IT-made and both invisible at the bench.
+
+**"A PT flag in the free-text field is enough."** If the block depends on someone typing the right words, it will fail on the busiest day. The type has to be structured, and the blocks have to key on it.
+
+**"We'd see a PT result in BECS if it got there."** Maybe, if it carried a PT label. A PT result under a donation-style number looks like a donation result. That's why the check compares accession records to interface logs.
+
+## What this means for your job
+
+- **Ask for the reflex and routing rule inventory.** Every automatic send-out, reroute, auto-post and auto-release, per lab, with an owner and what it does with a PT accession. If the answer takes a week, that is the finding.
+- **Make "what does this do to a PT sample?" a standing test line** on every LIS, middleware and interface change, next to the "corrections, cancellations and duplicates" line from module 2.
+- **Use allow-lists at the doors.** The BECS interface should send what it is told to send, not everything except what it is told to hold back.
+- **Keep PT records retrievable and complete.** After an upgrade, pull a PT accession from an old event and confirm the audit trail and block events still come back.
+- **Treat any PT result in BECS, or any PT-related send-out, as an escalation.** Page the laboratory director and Quality. What the lab reports to anyone outside, if anything, is the laboratory director's decision under the lab's procedure. Don't guess at a duty the text doesn't state.
+- **Don't write the lab's procedure for it.** Offer system facts and test evidence. Let the lab own the words in the manual.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: In two sentences for the CIO, why can't the LIS just treat PT samples exactly like patient samples all the way through?
+
+Because the regulation asks for same-manner testing *and* forbids sending PT samples to another laboratory for analysis the lab can perform itself (493.801(b)(5)). A patient-style reflex rule would send the sample out, so the system has to follow the routine path up to the referral point and stop there, and it must also keep PT results out of BECS.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A reflex rule fires once on a PT sample, sending a confirmatory test to an outside lab. Is that automatically an "intentional" referral under 493.801(b)(5)?
+
+No. The text separates the two. Intentional referral "may" lead to revocation for at least 1 year. A referral limited to reflex, distributive or confirmatory testing that conformed to written, adequate procedures and isn't a repeat is "improper" and "not intentional," subject to alternative sanctions. Whether a given event meets that description is for CMS to determine, and the lab should not assume it will be classified favorably. The lesson adds nothing beyond the text.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Does CLIA require a "PT accession type" in the LIS, with blocks on send-outs and the BECS interface?
+
+No. That is not a regulatory requirement as written. 493.801 requires same-manner testing and prohibits referral, and says nothing about LIS design. The accession type and blocks are Lakeshore's chosen controls. They are justified because they are how the lab can show it meets both requirements and keeps PT out of BECS (an FDA-side record concern). Cite 493.801(b) and (b)(5) as the requirements served, not as the source of the design.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: The "no PT result ever posted to BECS" check came back with nothing found. What would make an inspector doubt that answer?
+
+An unstated scope. If the check searched only for PT-labeled results, a PT sample entered under a donation-style number would not appear. A credible answer says what was searched, over what period, by what identifiers, and how PT accession records were compared with interface logs. The check is evidence of what the records show, and its limits belong in the record.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q5: Who approves the PT section of the procedure manual?
+
+The laboratory director: 493.1251(d) requires procedures and changes in procedures to be "approved, signed, and dated by the current laboratory director before use." The lab writes the procedure, IT supplies the system facts, and the laboratory director's approval of the LIS change (LCR-021) is Lakeshore's own rule, not a regulation.
+:::
+
+## Where this goes next
+
+The final module, `the-cap-inspection-from-it`, pulls the course together: preparing IT for a biennial CAP inspection, with LCR-014, LCR-021 and the module 3 verification evidence as the exhibits, and lining the inspection up with what FDA and AABB look at.
