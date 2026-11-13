@@ -1,0 +1,60 @@
+---
+title: "Research Programs: REDS & NIH"
+order: 150
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- REDS is NHLBI's long-running blood-safety research program. Blood centers contribute donor,
+  donation and component data that's linked "vein to vein" to hospital transfusion records.
+- A new round of REDS contracts started on September 30, 2026: four regional hubs, a data
+  coordinating center, a transfusion laboratory center and a Brazil program. The official records
+  still call the program REDS-IV-P "phase 3"; nothing in them uses the name "REDS-V."
+- For IT, participation means a recurring research extract from BECS, secure transfer, linkage,
+  quality checks and change control, plus NIH and human-subjects rules on privacy, confidentiality,
+  data sharing and security.
+- This course takes Lakeshore from "should we join?" to running research data safely alongside
+  regulated operations.
+:::
+
+## The finish line
+
+By the end of this course you can explain how NHLBI's REDS program is structured, contracted and
+governed today, what NIH and human-subjects rules reach a blood center that contributes data to it,
+and exactly where IT touches each: the research data extract, its transfer and linkage, privacy and
+confidentiality protections, data sharing, and security. That's enough to say yes to participating
+without creating a compliance or data-integrity problem.
+
+## Why this course exists
+
+Research looks like someone else's job until the request lands in IT: "Can you send us every
+donation, component and deferral for the last year, monthly, linked by donation number?" A research
+extract is not a regulated BECS record, but it comes out of one. The rules that govern it come from
+a different direction than FDA and AABB: NIH's funding policies, the Common Rule, HIPAA's research
+provisions, and a federal statute that protects research subjects' information "for perpetuity."
+This course places all of it, and shows where each rule becomes an IT task.
+
+## Before you start
+
+- [Regulatory landscape orientation](../../foundations/regulatory-landscape-orientation/index.qmd)
+  (research evidence is not a regulation).
+- [BECS in the pipeline](../blood-center-operations/becs-in-the-pipeline/index.qmd).
+- [Information governance in a covered entity](../healthcare-security-and-privacy/information-governance-in-a-covered-entity/index.qmd)
+  and [The HIPAA Privacy Rule](../healthcare-security-and-privacy/the-hipaa-privacy-rule/index.qmd).
+- [Release management & the SDLC](../release-management-and-sdlc/index.qmd), whose BECS Release C
+  returns in this course's final module.
+
+## The six modules
+
+1. **REDS structure, contracts and governance.** Who governs REDS today, how the 2026 contract
+   round is structured, and what a contributing blood center commits to.
+2. **The vein-to-vein database and research extracts.** Designing and governing a recurring extract
+   from BECS without touching regulated records.
+3. **Human subjects, HIPAA and Certificates of Confidentiality.** What the IRB and privacy officer
+   must confirm, and what a Certificate of Confidentiality means for IT.
+4. **NIH data management and sharing.** NIH's policy, its reach through contracts, and what IT must
+   support.
+5. **Security expectations for research data.** Encryption, keys, access, logging and incidents,
+   plus NIH's genomic controlled-access rules where they apply.
+6. **Running research data alongside regulated operations.** A BECS release breaks the extract and a
+   rapid-response study arrives the same week.
