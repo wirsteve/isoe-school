@@ -117,7 +117,7 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
 | 8 | `secure-sdlc-and-software-supply-chain` | Apply the SSDF's four practice groups to HOP, and ask a vendor the right supply-chain questions (component inventories, release integrity, vulnerability response). | 142/143 | Published |
 | 9 | `deployment-cutover-and-rollback` | Plan a go-live with go/no-go criteria, BECS downtime procedures, post-deployment verification, and a rollback you've actually rehearsed. | 144/145 | Published |
 | 10 | `emergency-changes-and-hotfixes` | Ship CHG-2207 fast without leaving a validation gap: emergency change path, retrospective documentation, and when an emergency becomes a deviation. | 146/147 | Published |
-| 11 | `post-release-review-and-delivery-metrics` | Close the loop: hypercare, post-implementation review, delivery metrics (DORA's software delivery performance metrics — DORA now describes five, not four; use what dora.dev says on the day) and how to report release health upward. | 148/149 | Not started |
+| 11 | `post-release-review-and-delivery-metrics` | Close the loop: hypercare, post-implementation review, delivery metrics (DORA's software delivery performance metrics — DORA now describes five, not four; use what dora.dev says on the day) and how to report release health upward. | 148/149 | Published |
 
 ## Progress log
 
@@ -364,3 +364,33 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
   recorded it not reportable on its face under 606.171 (no distributed product or product record
   involved); Director informed, not the decider. Three-way line: correct emergency change ≠
   deviation; deviation = departure from procedure; reportable event = separate 606.171 determination.
+- 2026-11-13 — Module 11 `post-release-review-and-delivery-metrics` published (verified). **Course
+  complete, 11/11.** Video: DX "Introduction to DORA Metrics | Nathen Harvey | Engineering Enablement
+  Podcast" (TSi5V_T2hB8; vendor podcast; may use the older four-metric framing — dora.dev is the
+  authority). DORA as verified on dora.dev/guides/dora-metrics (page updated 2026-01-05): five metrics
+  in two groups — throughput (change lead time, deployment frequency, failed deployment recovery
+  time) and instability (change fail rate, deployment rework rate); no benchmark numbers used.
+  **Locked:** monitoring ends on seven written exit criteria set before go-live (minimum span by risk;
+  reconciliation closed and reviewed; interface error files clean or explained; reprint log reviewed
+  by Quality; no open high-severity item without a risk decision; validated pair and baseline
+  confirmed; support handed back); Director proposes, Quality concurs (blocking on labeling releases),
+  head of distribution confirms normal volume, vendor advises; a change inside an open monitoring
+  period is recorded against it and Quality decides in writing whether the clock restarts. PIR for
+  every release in proportion, complete before the next release's plan is approved; four sections
+  (went well; didn't; evidence completeness incl. late/reconstructed records; open items with owners);
+  findings route to deviation/CAPA, control-gap CAPA, improvement register, change request/backlog,
+  or risk register (CAPA isn't the default); one cross-release register tagged by cause. Counts from
+  the course record: 3 releases (HOP 3.0, Release C, HOP 3.0.1); 2 HOP production builds + 1 BECS
+  install (filter rule counted separately as edge config change); 0 rollbacks executed; 2 rehearsals;
+  1 emergency change (CHG-2207); 1 named waiver; 2 deviations (HOP 3.0 environment parity; HOP 3.0.1
+  hospital-notice logging; none for Release C); 1 reconstructed record; notice CAPA effectiveness
+  check still pending. Lakeshore's own metrics (proposals): evidence completeness at the gate,
+  deviations per release tagged by detector, rollback/rehearsal/emergency/waiver counts, vendor
+  release → validated production in segments, open-item age; Quality owns evidence definitions;
+  guardrails: pair speed with evidence, no targets on counts, segment lead time, show events not
+  rates at low volume; rehearsed rollback time (9 h → 5 h) is not a recovery time. Release-health page
+  = four blocks (state; evidence and quality; delivery; decisions and risks), same facts for CIO and
+  exec quality council, feeds management review. Open items: HOP-531 pending regulatory affairs; the
+  vendor's written questions; conditional label acceptance; module 9's three open questions; notice
+  CAPA effectiveness check. Course closes with "The course in one passage" — thread: "Fast is a result
+  of having the evidence ready, never a substitute for it."

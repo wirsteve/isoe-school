@@ -1,0 +1,37 @@
+---
+title: "Resources"
+order: 149
+---
+
+Places to go deeper on post-release review and delivery metrics, or to check a citation before it goes into a real Lakeshore document. Every link below was checked with `curl` and loaded, and the page title was read to confirm it is the page named. No source here prescribes a monitoring period's length, a post-implementation review, a delivery-metric set or a report format for Lakeshore; the lesson says so plainly. DORA is a research program, not a standard or a regulator.
+
+- **[DORA's software delivery performance metrics, dora.dev](https://dora.dev/guides/dora-metrics/)** — the guide the lesson describes: five metrics (change lead time, deployment frequency, failed deployment recovery time, change fail rate, deployment rework rate), the throughput and instability grouping, and the pitfalls list including Goodhart's law and "industry as a shield." Use it as the authority on what the metrics are today; re-read it before presenting, because it is updated. Verified loading via `curl` on 2026-11-13 (HTTP 200; page title "DORA | DORA's software delivery performance metrics").
+
+- **[A history of DORA's software delivery metrics, dora.dev](https://dora.dev/insights/dora-metrics-history/)** — linked from the guide; explains the move from the original four keys to five. Use it before quoting any older write-up that still says "four." This lesson did not rely on its contents beyond the guide's own summary. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Choosing measurement frameworks to fit your organizational goals, dora.dev](https://dora.dev/insights/measurement-frameworks/)** — linked from the guide's pitfall about one metric to rule them all. Use it when deciding what to add beside the five. Not read in depth for this lesson. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 606.100, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)** — written SOPs including recordkeeping (b), and review of records with investigation of unexplained discrepancies (c). Use it for the monitoring plan as a followed procedure and for hypercare discrepancies. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 211.100, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.100)** — procedures followed and documented at the time of performance; deviations recorded and justified. The reason a review cannot create missing evidence. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)** — III.G (monitoring after installation, interface error files), III.H (validation report with variances) and III.I (validation after a change). Guidance, not regulation. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: General Principles of Software Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)** — section 5.2.7 on anomaly evaluation, problem tracking and trending. Device-maker guidance, general thinking for Lakeshore. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-53 Rev. 5, CSRC](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)** — the control catalog behind CM-3(f), monitor and review configuration-controlled changes. Voluntary for Lakeshore. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-218, Secure Software Development Framework (SSDF) Version 1.1, CSRC](https://csrc.nist.gov/pubs/sp/800/218/final)** — RV.3, analyze vulnerabilities to identify root causes. Voluntary framework. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Introduction to DORA Metrics | Nathen Harvey | Engineering Enablement Podcast](https://www.youtube.com/watch?v=TSi5V_T2hB8)** (DX, from oEmbed `author_name`) — the video embedded in the lesson. DX is a software-engineering-analytics vendor; the guest is named in the title and dora.dev lists Nathen Harvey as the author of the metrics guide. Only title, channel and embeddability were verified. The content was not checked, and it may use the older four-metric framing, so treat the dora.dev guide as the authority. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200).
+
+Earlier modules and courses this one builds on: [deployment, cutover and rollback](../deployment-cutover-and-rollback/index.qmd), [emergency changes and hotfixes](../emergency-changes-and-hotfixes/index.qmd), [release management, deployment and change control](../release-management-deployment-and-change-control/index.qmd), [CAPA: root cause to effectiveness](../../quality-system-essentials/capa-root-cause-to-effectiveness/index.qmd), [internal audits and management review](../../quality-system-essentials/internal-audits-and-management-review/index.qmd), [translating ITSM and risk metrics for executives](../../itsm-for-regulated-blood-services/translating-itsm-and-risk-metrics-for-executives/index.qmd), [presenting IT service and risk performance](../../itsm-for-regulated-blood-services/presenting-it-service-and-risk-performance/index.qmd) and [staying validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd).
+
+## Keep learning
+
+Not official sources. Good places to keep learning; none is authority for a regulatory claim.
+
+- **[Postmortem Culture: Learning from Failure, Google SRE book](https://sre.google/sre-book/postmortem-culture/)** — the clearest short account of blameless review, the method the post-implementation review borrows. Verified loading via `curl` on 2026-11-13 (HTTP 200; page title "Google SRE - Blameless Postmortem for System Resilience").
+- **[Incident Postmortem: Process & Best Practices, Atlassian](https://www.atlassian.com/incident-management/postmortem)** — a practical walk-through of running a review and tracking actions to closure. Atlassian is a commercial software vendor; read it as practice, not authority. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Goodhart's law, Wikipedia](https://en.wikipedia.org/wiki/Goodhart%27s_law)** — the principle DORA's page cites when it warns against metrics as goals. A general encyclopedia article. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[iSpeak, ISPE](https://www.ispe.org/pharmaceutical-engineering/ispeak)** — the pharmaceutical engineering society's blog, where computerized-system lifecycle and periodic-review topics appear regularly; mostly pharma-oriented, so translate to blood establishments. Verified loading via `curl` on 2026-11-13 (HTTP 200).
