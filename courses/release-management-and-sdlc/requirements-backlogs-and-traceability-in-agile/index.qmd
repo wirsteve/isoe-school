@@ -1,0 +1,355 @@
+---
+title: "Requirements, Backlogs and Traceability in Agile"
+order: 130
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** turn user stories into requirements an inspector can trace to tests, write a definition of done that includes validation evidence, and record regulatory affairs' decision on auto-allocation.
+- **The punchline:** regulatory affairs answers in writing: auto-allocation may ship only as a *proposal* that distribution staff confirm in BECS. That sentence is only useful once it becomes requirements with acceptance criteria that can fail, and tests behind each one.
+- **The rule in one line:** a requirement is a need written so a test can fail it; a story is how the team plans and discusses it. Keep both, and link them to tests, results and defects.
+- **Monday question:** "Pick any HOP 3.0 requirement. Show me the story, the test, the result, and the defect if it failed."
+- **The trap:** "allocation works well" is not a requirement. If nobody can write a test that fails it, it is a wish, and no amount of tracker discipline fixes that.
+:::
+
+**Before you start:** this module builds on [IQ, OQ, PQ, and the Traceability Matrix](../../csv-and-becs/iq-oq-pq-and-traceability/index.qmd) (how a matrix is read in both directions), [GAMP 5 and the V-Model](../../csv-and-becs/gamp5-and-the-v-model/index.qmd) (URS, FRS, "a requirement that cannot fail") and [BECS as a Regulated Device](../../csv-and-becs/becs-as-a-regulated-device/index.qmd). It picks up the story from [SDLC Models in a Regulated Blood Center](../sdlc-models-in-a-regulated-blood-center/index.qmd). It does not re-teach them.
+
+## The answer arrives, and the Quality Analyst finds a problem
+
+Two things land in your inbox on the same morning.
+
+The first is regulatory affairs' written answer on auto-allocation, the question you routed in the last module. It is short, and it is the kind of answer you want: a decision with a reason and a tripwire.
+
+> **To:** Director, IT Service Operations. **From:** Regulatory Affairs. **Re:** REL-0311 (HOP 3.0), auto-allocation, determination.
+> Auto-allocation may ship as a *proposal* only. HOP may propose specific units, by donation identification number, to fill an order. Distribution staff must confirm each allocation in BECS. BECS performs every suitability check and records the distribution. On that design, HOP continues to make no suitability, labeling or release decision, and HOP remains not a BECS. The rationale is re-documented in the HOP file with this memo.
+> **Trigger:** any future feature that lets HOP commit an allocation without a BECS step reopens this determination before that feature is scheduled.
+
+The second is a note from the Quality Analyst, who has spent the morning reading the HOP 3.0 backlog the way an inspector would. She forwards one story with a single line of her own.
+
+> **HOP-482. As a hospital transfusion service user, I want auto-allocation to work well, so that my orders are filled faster.**
+> *Acceptance criteria:* Allocation works well. Users are satisfied with the results.
+
+"I can approve a plan for this story," she says when you call. "I cannot approve a test for it. Show me what a failing result looks like."
+
+You try. A hospital user is satisfied with a proposal that includes an expired unit. Does "works well" fail? Nobody can say. She is right, and she is about to be right about something larger: regulatory affairs just gave you a decision that is perfectly testable, and if you let HOP-482 stand, none of it will ever reach a test.
+
+So this module has two jobs. One is to show how a regulatory decision becomes requirements and stories that can fail. The other is to show how the trail from requirement to test to result to defect is kept in a backlog tool, under change control, and defended in front of someone who asks for it.
+
+## Why the rule exists, and the ITSM bridge
+
+A validation case is a chain. Someone needs something, the need is written down, the thing is built, a test shows the thing does what was written, and the record of that test survives. Every link can break. The most common break in software is at the very start: the need was never written down in a form anything could be checked against.
+
+FDA's general software validation guidance puts it bluntly: "A documented software requirements specification provides a baseline for both validation and verification. The software validation process cannot be completed without an established software requirements specification" (4.1). That guidance is written for device manufacturers, so read it as FDA's general thinking about validation rather than a rule that binds Lakeshore. The point holds regardless: you cannot prove a system does what it should if "what it should" was never stated.
+
+The ITSM bridge is one you already own. Your CMDB has configuration items and relationships; change records link to CIs, incidents link to problems, and a good service desk can walk from a customer complaint to the change that caused it. Traceability is the same idea aimed at requirements: **requirement, story, test, result, defect** are records with relationships, and the relationships are the evidence. A backlog tool is simply the place those records and links live, the way the ITSM platform is where your incident-to-problem links live.
+
+The regulated-blood twist is the same as in the last module: the links are not a nicety. An inspector will ask you to walk one, live.
+
+## The rule in plain English
+
+Four ideas, each tied back to the morning's two messages.
+
+1. **Requirements must exist, be written down, and be checkable.** Regulatory affairs' decision is a regulatory constraint. It has to become something HOP is *required* to do or not do, in words a test can fail.
+2. **Stories and requirements are different things.** A story is a planning and conversation device ("as a ... I want ... so that ..."). A requirement is the controlled statement that a test is written against. The same sentence can serve both, but it often should not, and the difference matters when stories get split, reworded or dropped mid-sprint.
+3. **Every requirement is traced to at least one test, and every test back to a requirement.** Forward and backward, as the [traceability module](../../csv-and-becs/iq-oq-pq-and-traceability/index.qmd) taught you to read a matrix. In a backlog, "the matrix" is a view of linked records, not necessarily a spreadsheet.
+4. **Changing a requirement is a controlled change.** Agile expects stories to change. Validated systems expect the *requirement* to change only through a recorded, reviewed, authorized route, with its tests updated to match.
+
+## User story, URS, FRS: the vocabulary
+
+The earlier [GAMP 5 module](../../csv-and-becs/gamp5-and-the-v-model/index.qmd) gave you the V-model vocabulary. In industry practice (not regulation), a **URS** (user requirements specification) states in business language what Lakeshore needs; an **FRS** (functional requirements specification) states how the system will behave to meet each URS row. Agile tooling uses different words for the same layers. A rough, labeled mapping for this course:
+
+| Agile word | V-model word | What it is | Example in HOP 3.0 |
+|---|---|---|---|
+| Epic / theme | URS section | A need, large and fuzzy | "Auto-allocation as a proposal" |
+| Requirement (a controlled item in the tracker) | URS or FRS row | A testable statement of need or behavior, with an ID, a risk rank, and a source | HOP-R31: "HOP shall not commit an allocation" |
+| User story | Often an FRS row, sometimes a slice of one | A planned increment of behavior, built in a sprint | HOP-482b: the proposal screen |
+| Acceptance criteria | Pass/fail conditions of a requirement | The checks a story must pass to count as done | Given / When / Then lines |
+| Test case | OQ or PQ step | A scripted or exploratory check with recorded evidence | TC-31 |
+
+This mapping is course shorthand, not an official standard. Different teams draw the lines differently, and that is fine as long as one thing is true: **somewhere in the tracker there is a controlled statement of each need, with an ID, that a test points at.**
+
+FDA's general guidance defines the vocabulary more loosely and more usefully than most textbooks do:
+
+> A requirement can be any need or expectation for a system or for its software. Requirements reflect the stated or implied needs of the customer, and may be market-based, contractual, or statutory, as well as an organization's internal requirements. [...] Software requirements are typically stated in functional terms and are defined, refined, and updated as a development project progresses.
+> — FDA, *General Principles of Software Validation*, 3.1.1
+
+Notice two phrases. "**Statutory**" is exactly where regulatory affairs' decision lives: a regulatory constraint is a requirement, not a footnote. And "**defined, refined, and updated as a development project progresses**" is FDA's own acknowledgment that requirements move, which is what makes agile and requirements compatible, provided the movement is recorded.
+
+## From regulatory decision to requirements that can fail
+
+This is the heart of the module. Take regulatory affairs' memo and cut it into pieces a test could break. The memo contains five distinct commitments. Each becomes a requirement row; each row gets a risk rank (high means a failure could lead to a wrong or unsuitable unit being offered or released, in the sense the BECS guidance uses for risk, III.E) and a source, so the row points back to the decision.
+
+| ID | Requirement | Risk | Source |
+|---|---|---|---|
+| HOP-R31 | HOP shall present auto-allocation output only as a proposed distribution, labeled "Proposal: not confirmed" on every screen and export where it appears. | High | RA determination |
+| HOP-R32 | HOP shall not commit, finalize, reserve or release an allocation. HOP shall not write to BECS any record that changes a unit's status or records a distribution. | High | RA determination |
+| HOP-R33 | A proposal shall have no effect on BECS until distribution staff confirm the allocation in BECS. | High | RA determination |
+| HOP-R34 | HOP shall present no suitability, labeling or release result of its own. Any suitability information shown shall be the value read from BECS, with its read time. | High | RA determination |
+| HOP-R35 | A proposal older than the configured limit, or for a unit whose BECS status has changed since it was read, shall be marked stale and shall not be presented as current. | Medium | Interface risk (HOP reads BECS) |
+
+HOP-R35 is not in the regulatory memo. A good team adds requirements the decision *implies*: if HOP proposes units from a snapshot of BECS, the snapshot can go stale. Marking R35 as sourced from interface risk, not from regulatory affairs, tells a reader which rows trace to the decision and which came from engineering judgment.
+
+Now the stories. Each is a small slice of one requirement, built in a sprint, with acceptance criteria written as Given / When / Then. (Given/When/Then is a widely used way of writing acceptance criteria; Martin Fowler's short explainer is in the resources.) The point of the format is not ceremony. It forces each criterion to name a starting condition, an action, and an observable result, which means each one *can* be wrong.
+
+> **HOP-482a** (traces to HOP-R31). *As distribution staff, I want auto-allocation output clearly labeled as a proposal, so I never mistake it for a confirmed allocation.*
+> - Given a hospital order with sufficient available inventory, when auto-allocation runs, then every proposed unit row displays "Proposal: not confirmed."
+> - Given a proposal, when it is exported or printed, then the label appears on the export.
+> - Given any proposal, then no control labeled "confirm," "allocate" or "release" is present in HOP.
+
+> **HOP-482b** (traces to HOP-R32, HOP-R33). *As Lakeshore, I want HOP unable to commit an allocation, so BECS remains the only place a distribution is recorded.*
+> - Given a proposal, when a user with any HOP role attempts to call an allocation-commit interface function, then HOP returns an error and BECS shows no change to any unit's status.
+> - Given the HOP interface account, when its BECS permissions are inspected, then it holds read access to inventory and write access to order requests only.
+> - Given a proposal that distribution staff never confirm, when twenty-four hours pass in the validation environment, then BECS shows no distribution record for those units.
+
+> **HOP-482c** (traces to HOP-R34). *As the Quality Analyst, I want HOP to show only BECS's own suitability status, so HOP never decides suitability.*
+> - Given a unit that BECS marks unsuitable, when auto-allocation runs, then that unit is not proposed.
+> - Given a unit whose BECS status changes to unsuitable after proposal, when the proposal is next viewed, then HOP displays the changed status read from BECS with its read time.
+
+> **HOP-482d** (traces to HOP-R35). *As distribution staff, I want stale proposals marked, so I never act on out-of-date inventory.*
+> - Given a proposal older than the configured limit, when it is viewed, then it displays "Stale" and cannot be exported as current.
+> - Given a proposed unit whose BECS status has changed since it was read, when the proposal is viewed, then it is marked stale.
+
+Read those acceptance criteria as a skeptic. Each could fail on a Tuesday. "No change to any unit's status" is observable in BECS. "Read access to inventory and write access to order requests only" is a checkable permission list, and it connects to the Part 11 expectation for authority checks, which "ensure that only authorized individuals can use the system" and "perform the operation at hand" (21 CFR 11.10(g)). That is the difference between a requirement and a mood.
+
+Notice what the story set does about the negative. Two of the high-risk requirements are *shall not*. A "shall not" requirement is harder to prove than a "shall," because you cannot show a thing never happens; you show that the attempts you can think of fail. That is why the criteria above name specific attempts (calling the commit function, inspecting the interface account, waiting a day and checking BECS). When you review a "shall not," ask: what are the specific attempts, and is each one in a test?
+
+### Why this connects to the regulation behind it
+
+The regulatory decision is not arbitrary. It rests on two ideas from the regulations you already read.
+
+Distribution has to be traceable *in BECS*. 21 CFR 606.165(a) says distribution procedures "shall include a system by which the distribution or receipt of each unit can be readily determined to facilitate its recall, if necessary," and 606.160(a)(1) requires records "so that all steps can be clearly traced." If HOP could commit an allocation, there would be a second system where a distribution decision is made, and the one place that must hold the complete story would no longer hold it.
+
+And BECS is defined by what it does. 21 CFR 864.9165(a) describes BECS as a device used "by preventing the release of unsuitable blood and blood components" among other functions. Requirements HOP-R32 and HOP-R34 are how Lakeshore keeps HOP on the other side of that line, in testable form. This also shows why the decision *is* a set of requirements: each commitment in the memo can be checked, and the checks are the evidence that Lakeshore kept its own determination.
+
+A vendor-side parallel is worth knowing. For BECS itself, the special controls in 864.9165(b) say software "performance and functional requirements including detailed design specifications" are required (b)(1), and "Traceability matrix must be performed" (b)(4). Those are obligations on whoever manufactures a BECS, not on Lakeshore for HOP. But they show how seriously regulators treat the requirement-to-test link in this domain, and they are the reason regulatory affairs' decision, "not a BECS," matters so much: if HOP were a BECS, Lakeshore would be on the manufacturer's side of those controls.
+
+## The untestable story, rewritten
+
+Back to HOP-482, "allocation works well." Why it fails, in three sentences you can say to a developer: nothing in it says what *works* means; nothing in it names a result an observer could mark wrong; and two reviewers would disagree about whether a test passed. Compare the earlier [GAMP 5 module's](../../csv-and-becs/gamp5-and-the-v-model/index.qmd) "user-friendly" row; it is the same disease.
+
+The fix is not to ban the story. The fix is to ask what the hospital user actually wants, which is real: faster order fulfillment. That need is legitimate but is a *business outcome*, not a testable requirement. Split it:
+
+- Keep "orders are filled faster" as a **goal** with a measure (for example, median time from order receipt to staff confirmation in BECS), tracked after release. It is a benefit, not a pass/fail gate.
+- Write **testable requirements** for the behavior that serves the goal: the proposal respects component type and quantity, excludes units BECS marks unsuitable, returns within a stated time under the stated load, and so on.
+
+A rewritten criterion might read: "Given an order for four units of a component type with at least four suitable units in BECS inventory, when auto-allocation runs, then it proposes exactly four distinct units of that type, and none that BECS lists as unsuitable, within the stated response time." Every phrase there can be wrong. That is the standard.
+
+## Traceability in a backlog tool
+
+A traceability matrix, in an agile tracker, is not a spreadsheet someone assembles at the end. It is the set of relationships the tool maintains as work happens. The records are:
+
+| Record | What it is | Key fields | Links to |
+|---|---|---|---|
+| Requirement | The controlled statement of a need | ID, text, risk rank, source, version, status | Stories, tests |
+| Story | A planned slice of one or more requirements | ID, acceptance criteria, sprint | Requirement(s), test(s) |
+| Test case | A scripted or exploratory check | ID, steps, expected result, linked requirement | Requirement, results |
+| Test result | One execution of one test | Input, expected, actual, pass/fail, who, when, build, environment | Test case, defect |
+| Defect | A failure and its resolution | ID, severity, status, fix build, retest result | Test result, requirement |
+
+FDA's blood-specific guidance names what an executed test case should carry:
+
+> Each executed test case in your pre-defined written test plan should include the input, expected output, actual output, acceptance criteria, whether the test passed or failed, the name or initials of the person performing the test, and the date the test was performed.
+> — FDA, *Blood Establishment Computer System Validation in the User's Facility*, III.G
+
+That is a field list for the "Test result" row above. And on keeping evidence attached to the case: "For traceability purposes and to facilitate quality assurance review and follow-up, we recommend that any supporting documentation, such as screen-prints, where appropriate, be identified to link them to the specific test case" (III.G). This is guidance (*should*), but a result without evidence linked to it is the first thing a reviewer will question.
+
+Here is the HOP-R32 chain as it would look in the tracker for the release candidate:
+
+| Requirement | Story | Test | Result | Defect |
+|---|---|---|---|---|
+| HOP-R32 | HOP-482b | TC-32a: call commit function as each HOP role | Pass, build 3.0-rc2, run by the Quality Analyst | none |
+| HOP-R32 | HOP-482b | TC-32b: inspect interface account permissions in BECS | Pass, with screen print | none |
+| HOP-R32 | HOP-482b | TC-32c: leave a proposal unconfirmed for twenty-four hours | **Fail** in rc1: HOP wrote a hold to the order request | DEF-0412, fixed, retest Pass in rc2 |
+| HOP-R35 | HOP-482d | TC-35a: change a unit's BECS status after proposal | Pass | none |
+
+This is a *good* matrix, and the failure in it is a feature. TC-32c failed in the first release candidate: a developer, trying to be helpful, made HOP write a soft hold to the order request so two hospitals would not be proposed the same unit. It looked harmless, and it was exactly the sort of quiet commitment the decision forbids. The test caught it because the acceptance criterion was specific. DEF-0412 links the failure to the requirement, the fix, and the passing retest.
+
+Read the matrix both ways, as the earlier module taught. **Forward:** does every high-risk requirement have at least one test that attacks its failure mode, not just a happy path? **Backward:** does every test point at a requirement, or is some of it proving nothing anyone asked for? A requirement with no test is a promise nobody checked. A story with no requirement above it is scope creep with a ticket number.
+
+One tooling caution: build the links into the workflow (a story cannot move to "done" without a linked requirement and passing results) rather than assembling the matrix at the end. And a tool that generates a matrix reports whatever links exist, including wrong ones; the Quality Analyst still reads the rows.
+
+## Definition of done that includes validation evidence
+
+The Scrum Guide defines a Definition of Done as a formal description of the state of an increment when it meets the quality measures required for the product. It belongs to the team, and it is where "agile" and "validated" actually meet. Without a validation-aware definition of done, a story can be "done" in the tracker and have no evidence behind it.
+
+A definition of done for a HOP 3.0 story, as the Director might approve it with Quality:
+
+**A story is done when:**
+
+1. It is linked to at least one controlled requirement with an ID, a risk rank and a source.
+2. Its acceptance criteria are written as checks that can fail, and have been reviewed by someone other than the author.
+3. Code is reviewed and merged under the team's source-control rules, and built into a numbered build.
+4. Its tests have been executed **in the validation environment** on that build, with input, expected output, actual output, pass/fail, tester and date recorded (BECS guidance III.G).
+5. The tester is not the developer who wrote the change, for any story tied to a high-risk requirement (independence of review, GPSV 4.9, as general thinking).
+6. Any failure is linked to a defect, and the defect is fixed and retested or explicitly accepted by Quality in writing.
+7. The traceability links (requirement, story, test, result, defect) are complete and current for this build.
+8. Evidence is stored where the release record can reach it: screen prints identified to their test cases, not in a developer's inbox.
+9. Regression impact for the change has been noted for the release-level analysis (BECS guidance III.I).
+
+Two things to notice. First, the list stops short of "released." A story can be done and not in production; the release gate from the last module is a separate event with its own evidence (validation summary, regression analysis, authorized approval). Second, item 5 is a Lakeshore decision grounded in general FDA thinking, not a regulatory requirement. It is the independence the two-developer team cannot supply itself.
+
+There is also a team-level definition of done for a *release*, which is the gate itself. [Module 4](../release-management-deployment-and-change-control/index.qmd) covers the release calendar and approval. For now, keep the two straight: story-done feeds release-ready; it does not equal it.
+
+## When stories change mid-release
+
+Stories change in agile. That is the point of it. The danger is a requirement that changes quietly and a test that still passes because nobody updated it.
+
+Three weeks into HOP 3.0, a hospital customer asks the development lead for a convenience: "if an order is for a single unit and only one unit fits, can HOP just confirm it so staff don't have to?" It is a reasonable ask, and the development lead brings it to sprint planning as HOP-531.
+
+The Quality Analyst reads it and says one word: "Trigger."
+
+She is right. "HOP confirms the allocation" is a feature that lets HOP commit an allocation without a BECS step. Regulatory affairs wrote the trigger exactly for this. HOP-531 does not go into a sprint. It goes back to regulatory affairs for a new determination, and until the answer is in, it sits in the backlog marked "pending regulatory determination," just as auto-allocation did before. The requirements HOP-R31 to R33 are not edited to accommodate it. Changing them without a new determination would be amending the regulatory decision by stealth.
+
+That small episode shows the change-control logic in two layers:
+
+- **The story layer is flexible.** The team may split, reword, reorder or drop stories freely, as long as every surviving requirement still has stories and tests, and every dropped story is recorded.
+- **The requirement layer is controlled.** Changing the text, risk rank or source of a requirement is a recorded change: who proposed it, why, who reviewed the impact on tests and risk, who approved, and the version history afterward.
+
+Why control the requirement layer? Because requirements are system documentation, and the Part 11 rule for systems documentation asks for "Revision and change control procedures to maintain an audit trail that documents time-sequenced development and modification of systems documentation" (21 CFR 11.10(k)(2)). Part 11 applies to electronic records the establishment keeps under it, and how far a given requirements tracker falls under it is a judgment for Lakeshore's Quality function; this lesson does not claim the rule settles it. The practical point stands regardless: an inspector who finds a requirement that quietly changed, with no history, will stop trusting the entire matrix. The BECS guidance also lists records of changes and validation records among the system documentation a blood establishment maintains (III.B), as guidance and for BECS itself; Lakeshore applies the same habit to HOP as a matter of good practice.
+
+For a mid-release change, a short route works:
+
+1. The change request names the requirement ID and states the proposed new wording.
+2. Impact is assessed: which stories, which tests, which risk ranks, and whether the regulatory determination is touched.
+3. Quality reviews; if the regulatory determination is touched, regulatory affairs answers first.
+4. The requirement is versioned; affected stories and tests are updated and re-linked; any result recorded against the old wording is marked as against that version, not carried forward silently.
+5. The change record references the release record (REL-0311), so the release file shows the change.
+
+The version in step 4 matters at the gate. "Passed against version 1 of the requirement" is not evidence for version 2.
+
+## The actual text
+
+The sections below are the ones used above, in full, so you can read the sentences yourself. Regulation says *shall*; guidance says *should*.
+
+> A documented software requirements specification provides a baseline for both validation and verification. The software validation process cannot be completed without an established software requirements specification (Ref: 21 CFR 820.3(z) and (aa) and 820.30(f) and (g)).
+> — FDA, *General Principles of Software Validation*, 4.1
+
+Reading it here: the guidance cites device-manufacturer regulations, so it is general thinking for Lakeshore, not a binding rule. Its use is as FDA's plain statement that validation without requirements is not finished.
+
+> Test cases should include normal results (results within the "normal" range), abnormal results (unacceptable results or those outside the "normal" range) and boundary results or values.
+> — same guidance, III.G
+
+Reading it: "abnormal results" is where the "shall not" tests live: the attempt that should be refused.
+
+> (k) Use of appropriate controls over systems documentation including: (1) Adequate controls over the distribution of, access to, and use of documentation for system operation and maintenance. (2) Revision and change control procedures to maintain an audit trail that documents time-sequenced development and modification of systems documentation.
+> — 21 CFR 11.10(k)
+
+Reading it: shall-level text for systems documentation in systems covered by Part 11; the requirement version history is the audit trail it describes.
+
+> (a) Distribution and receipt procedures shall include a system by which the distribution or receipt of each unit can be readily determined to facilitate its recall, if necessary.
+> — 21 CFR 606.165(a)
+
+Reading it: the regulation behind "BECS records the distribution." The auto-allocation decision keeps that single record in BECS.
+
+> (4) Traceability matrix must be performed.
+> — 21 CFR 864.9165(b)(4), among the special controls for BECS
+
+Reading it: a vendor-side obligation. It is cited here to show the weight regulators put on the requirement-to-test link, and why "HOP is not a BECS" needs to stay true.
+
+### Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| GPSV 3.1.1 | "General Principles of Software Validation, section 3.1.1" | Guidance defining requirement and specification; requirements may be statutory or internal and are refined as a project progresses. | Regulatory affairs' decision is a requirement; stories refine it. |
+| GPSV 4.1 | "...section 4.1" | Guidance: validation cannot be completed without a documented requirements specification. | Why HOP-482 must be fixed before testing means anything. |
+| BECS guidance III.B | "Section III, subsection B of the 2013 user's-facility guidance" | Guidance (with some regulation cited): maintain current, accurate system documentation, including validation records and records of changes. | Where requirement history and change records live. |
+| BECS guidance III.G | "...subsection G" | Guidance: executed test-case content; link supporting evidence to the test case. | The fields in the test-result record. |
+| 21 CFR 11.10(k)(2) | "Title 21, part 11, section 11.10, paragraph (k)(2)" | Regulation: revision and change control with an audit trail over systems documentation (for systems covered by Part 11). | Versioning HOP requirements when a story changes. |
+| 21 CFR 11.10(g) | "...paragraph (g)" | Regulation: authority checks so only authorized individuals perform the operation at hand. | The HOP interface account that cannot commit an allocation. |
+| 21 CFR 606.165(a) | "Title 21, part 606, section 606.165, paragraph (a)" | Regulation: a system by which distribution of each unit can be readily determined. | Why BECS stays the system of record. |
+| 21 CFR 606.160(a)(1) | "...section 606.160, paragraph (a)(1)" | Regulation: records so that all steps can be clearly traced. | The same point, from the records rule. |
+| 21 CFR 864.9165(a), (b)(1), (b)(4) | "...section 864.9165, paragraphs (a), (b)(1), (b)(4)" | Regulation: what BECS is; special controls on BECS manufacturers, including requirements and a traceability matrix. | The line HOP stays on the other side of; the vendor-side parallel. |
+
+## See it in one picture
+
+This is the path from regulatory affairs' decision to a passed test, and the loop that sends a changed story back through control. Failures go through a defect; a story that would let HOP commit goes back to regulatory affairs.
+
+```{mermaid}
+flowchart TD
+    RA["Regulatory affairs decision on auto-allocation<br/>proposal only; BECS confirms and records"]
+    RA --> URS["Requirements: HOP-R31 to HOP-R35<br/>(each with a risk rank and a decision source)"]
+    URS --> ST["Stories in the backlog: HOP-482a to HOP-482d<br/>Given / When / Then criteria that can fail"]
+    ST --> TC["Test cases TC-31 to TC-35<br/>run in the validation environment"]
+    TC --> RES{"Result"}
+    RES -->|"Pass"| EV["Evidence: input, expected, actual,<br/>who, when (BECS guidance III.G)"]
+    RES -->|"Fail"| DEF["Defect DEF-0412<br/>fix, then retest and regression"]
+    DEF --> TC
+    EV --> DOD["Definition of done met:<br/>story counts toward the release gate"]
+    CH["Mid-release change request:<br/>'auto-confirm single-unit orders'"] -->|"would let HOP commit"| TRG["Trigger fires:<br/>back to regulatory affairs"]
+    TRG -.->|"change control updates requirement and tests"| URS
+```
+
+## Watch it explained
+
+This is a general tutorial from a software-testing training channel on what a requirement traceability matrix is and how it links requirements to test cases. It is generic, not about blood establishments or agile trackers, and it uses a spreadsheet picture where Lakeshore's links live in a backlog tool. Watch it for the forward-and-backward reading of a matrix; the regulatory context comes from this lesson, not from the video.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/cm-cSW66Isc"
+  title="Requirement Traceability Matrix (RTM) in Software Testing" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## What an inspector or assessor would look for
+
+The question will not be "do you have a traceability matrix?" It will be: **"Show me the requirement for X, and the test that proves it."** Practically:
+
+- **The requirement for X,** with an ID, current wording, risk rank, and version history. A bad answer: scrolling a tracker for the story that "sort of covers it."
+- **The test and its result for that requirement,** on the build that went to production, with expected and actual output, tester and date, and linked evidence. A bad answer: a test run on an earlier build, or a result with no screen print.
+- **The failure history.** "Show me one that failed." A team that has never recorded a failed test is more suspicious than one that has, because it suggests tests that cannot fail.
+- **The change trail.** "This requirement reads differently from the one in your plan. What changed, who approved it?" A bad answer: "the developer updated the story."
+- **The regulatory determination.** The memo, the rationale in the HOP file, and the written trigger. And evidence the trigger is operating: HOP-531 in the backlog marked pending, not scheduled.
+- **The definition of done,** and a sample of done stories checked against it.
+
+An assessor will also pick a requirement at random and walk it both ways. Practice that yourself before they do.
+
+## Common traps
+
+**"Our stories are our requirements."** Sometimes true, often not. If a story can be reworded or deleted without any record, and tests point at it, the tests now point at nothing. A controlled requirement layer, even a thin one, prevents that.
+
+**"The tool generated the matrix, so it's right."** A generated matrix shows the links that exist. It cannot tell you a link is wrong, or that a requirement with no tests was never entered. The Quality Analyst's review of the rows is the control.
+
+**"Passing tests prove the requirement."** Only if the test can fail for the right reason. A happy-path test behind a high-risk "shall not" requirement proves almost nothing. Ask what attempt the test makes to break the rule.
+
+**"Agile means requirements are always changing, so we can't freeze them."** You do not freeze them; you version them. FDA's own text accepts requirements being "defined, refined, and updated as a development project progresses" (3.1.1). What an inspector rejects is change with no record.
+
+**"The regulatory decision is the legal department's problem, not the backlog's."** The decision is only real if it changes what the software does and what is tested. A memo that does not become requirements is a document nobody can show was followed.
+
+## What this means for your job
+
+- **Make "can it fail?" the first review question** on every story and requirement. Teach the development lead the one-sentence test: what does a failing run look like, and who calls it?
+- **Insist regulatory decisions become requirement rows with an owner and a source.** The memo is the evidence of the decision; the requirements and tests are the evidence of compliance with it.
+- **Approve the definition of done together with Quality,** and include validation evidence in it, not as a release-time scramble.
+- **Put the trigger into the backlog process.** Whoever grooms the backlog should recognize "HOP confirms/commits/reserves" as an automatic stop and route it to regulatory affairs.
+- **Practice the inspector's question** quarterly: pick a requirement, walk to the test, result, defect and version history in under five minutes. If you cannot, the tooling or discipline is the finding.
+- **Report in the CIO's language:** "Auto-allocation is approved as a proposal only. We turned that decision into five requirements and the matching tests. One failed in the first candidate, we fixed it, and the record shows it."
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Why can't the Quality Analyst approve HOP-482, "auto-allocation works well"?
+
+Its acceptance criteria cannot fail. Nothing in them defines "works well" or "satisfied," and two reviewers would disagree about whether a test passed. Split it: keep faster order fulfillment as a measured goal after release, and write testable requirements such as proposing exactly the requested number of distinct, BECS-suitable units within a stated time.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Regulatory affairs says auto-allocation is a proposal only. Give two requirements that decision produces, and one test for each.
+
+For example, HOP-R32 "HOP shall not commit, finalize, reserve or release an allocation," tested by attempting the commit function under each HOP role and checking BECS for no change, and HOP-R34 "HOP shall present no suitability result of its own," tested by marking a unit unsuitable in BECS and confirming HOP does not propose it. Any pair that is specific, includes a *shall* or *shall not*, and names a test that can fail is acceptable.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The development lead proposes "HOP auto-confirms single-unit orders" mid-sprint. What do you do, and is the answer a regulation?
+
+The story does not enter a sprint. It matches the written trigger (a feature that lets HOP commit an allocation without a BECS step), so it goes back to regulatory affairs and waits, marked "pending regulatory determination." The trigger and the reasoning are Lakeshore's own documented decision, grounded in 21 CFR 864.9165(a) and the distribution-record rules (606.165). No regulation says "route auto-confirm to regulatory affairs"; the procedure is what makes the determination durable.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Is "a story must be tested by someone other than its developer" a regulatory requirement?
+
+No. It is Lakeshore's decision, grounded in FDA's general principle of "independence of review" (GPSV 4.9), which is guidance for device makers and general thinking here. Put it in the definition of done for high-risk requirements because a two-developer team cannot supply the independence itself.
+:::
+
+## Where this goes next
+
+HOP 3.0 now has requirements, stories, a definition of done and a regulatory decision with a trigger. The next question is *where* the evidence is produced: [environments, baselines and test data](../environments-baselines-and-test-data/index.qmd) designs the development, test, validation and production environments, the configuration baseline, and the rule that real donor data stays out of non-production.

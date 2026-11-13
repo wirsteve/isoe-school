@@ -108,7 +108,7 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
 |---|---|---|---|---|
 | — | (syllabus) | — | 127 | Published |
 | 1 | `sdlc-models-in-a-regulated-blood-center` | Place any Lakeshore change on the right lifecycle (waterfall/V, iterative, agile, DevOps) and say what validation evidence each model has to produce, and when — using HOP 3.0's auto-allocation question. | 128/129 | Published |
-| 2 | `requirements-backlogs-and-traceability-in-agile` | Turn user stories into requirements an inspector can trace to tests, write a definition of done that includes validation evidence, and record the regulatory-affairs decision on auto-allocation. | 130/131 | Not started |
+| 2 | `requirements-backlogs-and-traceability-in-agile` | Turn user stories into requirements an inspector can trace to tests, write a definition of done that includes validation evidence, and record the regulatory-affairs decision on auto-allocation. | 130/131 | Published |
 | 3 | `environments-baselines-and-test-data` | Design dev/test/validation/production environments, keep a configuration baseline (CM-2), and keep real donor data out of non-production. | 132/133 | Not started |
 | 4 | `release-management-deployment-and-change-control` | Tell ITIL release management, deployment management and change enablement apart, classify release types, and set a release calendar and freeze windows that respect blood operations. | 134/135 | Not started |
 | 5 | `vendor-release-intake-for-becs` | Take a vendor's BECS release (Release C) from release notes to a validation-in-your-facility decision: 510(k) status, anomaly lists, impact assessment, regression scope. | 136/137 | Not started |
@@ -141,3 +141,21 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
   agile inside a controlled release path; Release C = vendor lifecycle + V-style user validation
   (module 5); CHG-2207 = emergency path with retrospective documentation (module 10). Lesson links
   forward to module 2 by slug (fine once module 2 exists).
+- 2026-11-13 — Module 2 `requirements-backlogs-and-traceability-in-agile` published (verified).
+  Video: Guru99 "Requirement Traceability Matrix (RTM) in Software Testing" (cm-cSW66Isc). **Locked:**
+  regulatory affairs' memo to the Director records the plan's decision (proposal only; staff confirm in
+  BECS; BECS does every suitability check and records distribution; HOP stays "not a BECS"; rationale
+  re-documented in HOP's file; trigger = any feature letting HOP commit an allocation without a BECS
+  step). Five requirement rows: HOP-R31 proposal-only label (high), HOP-R32 HOP shall not
+  commit/finalize/reserve/release or write status/distribution records to BECS (high), HOP-R33 no
+  BECS effect until BECS confirmation (high), HOP-R34 HOP shows no suitability result of its own,
+  only BECS-read status with read time (high), HOP-R35 stale proposals marked (medium; from interface
+  risk). Stories HOP-482a–d (Given/When/Then) → tests TC-31…TC-35. QA rejected HOP-482 "auto-allocation
+  works well" as untestable (split into a post-release goal + testable requirements). DEF-0412: TC-32c
+  failed in rc1 (HOP wrote a soft hold to the order request), fixed, passed in rc2. Mid-release story
+  HOP-531 "auto-confirm single-unit orders" fired the trigger → back to regulatory affairs, pending;
+  R31–R33 not edited. Story layer flexible; requirement layer under change control (versioned,
+  impact-assessed, authorized, results tied to requirement version, change record cites REL-0311).
+  Definition of done has nine items incl. validation-environment tests with BECS-guidance III.G fields
+  and tester independent of developer for high-risk requirements (Lakeshore decision; GPSV 4.9 as
+  general thinking). Story-done ≠ release-ready; release gate is module 4's.
