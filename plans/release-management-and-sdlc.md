@@ -112,7 +112,7 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
 | 3 | `environments-baselines-and-test-data` | Design dev/test/validation/production environments, keep a configuration baseline (CM-2), and keep real donor data out of non-production. | 132/133 | Published |
 | 4 | `release-management-deployment-and-change-control` | Tell ITIL release management, deployment management and change enablement apart, classify release types, and set a release calendar and freeze windows that respect blood operations. | 134/135 | Published |
 | 5 | `vendor-release-intake-for-becs` | Take a vendor's BECS release (Release C) from release notes to a validation-in-your-facility decision: 510(k) status, anomaly lists, impact assessment, regression scope. | 136/137 | Published |
-| 6 | `risk-based-testing-and-regression` | Size a test effort by risk, decide regression scope from an impact analysis, and know what test evidence must look like. | 138/139 | Not started |
+| 6 | `risk-based-testing-and-regression` | Size a test effort by risk, decide regression scope from an impact analysis, and know what test evidence must look like. | 138/139 | Published |
 | 7 | `ci-cd-pipelines-under-gxp` | Run HOP through an automated pipeline without breaking segregation of duties, tool assurance, or the audit trail of who deployed what. | 140/141 | Not started |
 | 8 | `secure-sdlc-and-software-supply-chain` | Apply the SSDF's four practice groups to HOP, and ask a vendor the right supply-chain questions (component inventories, release integrity, vulnerability response). | 142/143 | Not started |
 | 9 | `deployment-cutover-and-rollback` | Plan a go-live with go/no-go criteria, BECS downtime procedures, post-deployment verification, and a rollback you've actually rehearsed. | 144/145 | Not started |
@@ -225,3 +225,28 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
   HOP-only). Validated pair after Release C = same HOP build + new BECS baseline (VAL-1418 evidence).
   Validation env's BECS moves to the Release C baseline only after HOP 3.0 deploys and its monitoring
   period ends; production install waits for the post-freeze window.
+- 2026-11-13 — Module 6 `risk-based-testing-and-regression` published (verified; long). Video: Parasoft
+  "What Is Test Impact Analysis?  | Parasoft" (4Q5xypeIOrU; tool vendor, framed as background).
+  **Locked:** Director's decision on "just use the vendor's OQ" vs. QA's "re-run everything": neither.
+  Vendor OQ report received, reviewed, filed in system documentation and used as the basis for Tier 3
+  on unchanged vendor functions Lakeshore can review and that aren't adjacent to a change or Lakeshore
+  configuration; historical library is a source of regression cases selected by the analysis (cases
+  outside it neither re-run nor deleted); Lakeshore's own testing = Tier 1 (LR-1…LR-6, TC-32a/b/c,
+  TC-34, TC-35) + Tier 2 targeted checks; Tier 3 items incl. TC-31 carry a written rationale naming
+  the document reviewed; all written into VAL-1418's plan before testing; Quality can block plan
+  approval without Director override. Method: depth follows severity and detectability, scope follows
+  the impact analysis (changed / adjacent / unchanged-but-vulnerable); BECS III.E's "assume most
+  hazards are likely" means likelihood doesn't rescue a high-severity function; tests move up on a
+  vendor "unknown"/"yes", an earlier-tier failure, a patient-safety path, or a past deviation; move
+  down only with a dated written line. Leverage conditions for vendor evidence (documentation in hand
+  and reviewed; function unchanged per revision history and not in vendor's "other affected
+  functions"; not adjacent to Lakeshore config/interfaces/labeling; reviewer records what and why);
+  labeling and HOP–BECS interface items never qualify on documents alone. Test record = III.G fields
+  (input, expected output written before run, actual, acceptance criteria, pass/fail, tester, date) +
+  module 3 environment block + identified screen prints + linked defects (failures never overwritten)
+  + reviewer/date. Techniques: scripted for Tier 1; chartered exploratory for Tier 2 (Lakeshore
+  decision, not "CSA permission"); automation for stable repeated checks (HOP–BECS interface suite is
+  a *proposal* to cost) — automated results are evidence only if scripts controlled, tool/config
+  recorded, results retained and independently reviewed. Boundary cases: LR-1 longest name; LR-5
+  reprint in the same second as a status change ±1 s; HOP-R35 proposal at/just under/just over age
+  limit. CSA "scripted/unscripted" not characterized from the excerpt (not in it).

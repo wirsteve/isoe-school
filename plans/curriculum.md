@@ -291,7 +291,7 @@ has no `plans/<slug>.md` file until its first session.
 | `healthcare-security-and-privacy` | 5 / 5 | Done |
 | `vendor-and-third-party-risk-management` | 5 / 5 | Done |
 | `itsm-for-regulated-blood-services` | 6 / 6 | Done |
-| `release-management-and-sdlc` | 5 / 11 | In progress |
+| `release-management-and-sdlc` | 6 / 11 | In progress |
 | `research-programs-reds-and-nih` | 0 / ? | Not started |
 | `clia-and-cap-for-blood-center-labs` | 0 / ? | Not started |
 | `hrsa-and-cellular-therapy-programs` | 0 / ? | Not started |

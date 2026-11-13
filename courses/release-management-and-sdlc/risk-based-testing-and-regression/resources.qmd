@@ -1,0 +1,29 @@
+---
+title: "Resources"
+order: 139
+---
+
+Places to go deeper on sizing tests by risk, scoping regression from an impact analysis and keeping defensible test evidence, or to check a citation before it goes into a real Lakeshore document. Every link below was checked with `curl` and loaded, and the page title was read to confirm it is the page named. The CSA guidance is linked so you can read FDA's own text, but it does not govern BECS validation (its scope excludes device software functions), and this site's local excerpt does not include its testing-methods sections.
+
+- **[21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)** — automatic, mechanical and electronic equipment: the written program, input and output checks, and "the degree and frequency of input/output verification shall be based on the complexity and reliability" of the system. Use it when justifying a risk-proportionate test scope. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)** — the lesson's main source: II.C (regression testing defined), III.D (assess the vendor's test cases), III.E (risk), III.G (executed test records, boundary and absurd cases) and III.I (regression after a change). Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: General Principles of Software Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)** — 2002 guidance for device manufacturers; general thinking only for Lakeshore. Sections 4.7 (validation after a change), 4.8 (coverage by risk) and 5.2.7 (archive tests for later regression). Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Computer Software Assurance for Production and Quality Management System Software](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/computer-software-assurance-production-and-quality-management-system-software)** — FDA's risk-based assurance guidance for device manufacturers' production and quality-system software. Read its testing-methods sections here yourself before citing them; scope excludes device software functions, so it does not govern Lakeshore's BECS validation. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-53 Rev. 5, CSRC publication page](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)** — the federal control catalog; SA-11 (developer testing and evaluation) and CM-4 (impact analyses) supply the "depth and coverage" and "evidence of execution" vocabulary. Voluntary for Lakeshore. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[What Is Test Impact Analysis? | Parasoft](https://www.youtube.com/watch?v=4Q5xypeIOrU)** (Parasoft, from oEmbed `author_name`) — the video embedded in the lesson: a testing-tool vendor's explanation of choosing tests by what changed. Vendor content, general software testing, not blood-specific; only title, channel and embeddability were verified, not the claims. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200). The watch page itself returned HTTP 429 to `curl`, so no further requests were made.
+
+Earlier modules this one builds on: [vendor release intake for BECS](../vendor-release-intake-for-becs/index.qmd), [environments, baselines and test data](../environments-baselines-and-test-data/index.qmd), [requirements, backlogs and traceability](../requirements-backlogs-and-traceability-in-agile/index.qmd), [IQ, OQ, PQ and traceability](../../csv-and-becs/iq-oq-pq-and-traceability/index.qmd), [staying validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd), [quality risk management](../../quality-system-essentials/quality-risk-management/index.qmd) and [reviewing validation packages](../../directing-the-quality-analyst/reviewing-validation-packages/index.qmd).
+
+## Keep learning
+
+Not official sources. Good places to keep learning; none is authority for a regulatory claim.
+
+- **[Exploratory Testing, Satisfice](https://www.satisfice.com/exploratory-testing)** — practitioner explanation of exploratory testing (charters, notes, skilled judgment) by long-standing testing educators; the clearest account of why "unscripted" is not "unrecorded." Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Self Testing Code, Martin Fowler](https://martinfowler.com/bliki/SelfTestingCode.html)** — a short practitioner note on automated tests as a standing asset; useful background for the HOP-BECS interface regression suite. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[ISTQB Certified Tester Foundation Level](https://www.istqb.org/certifications/certified-tester-foundation-level)** — certification body overview; its syllabus treats risk-based testing and regression testing after change as standard topics. Page is an overview, not the syllabus. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[GAMP 5 Guide, 2nd Edition, ISPE](https://ispe.org/publications/guidance-documents/gamp-5-guide-2nd-edition)** — the professional society's product page for the industry guide behind risk-based computerized system validation (paid publication, industry practice and not regulation; only the page was checked, not the book). Verified loading via `curl` on 2026-11-13 (HTTP 200).

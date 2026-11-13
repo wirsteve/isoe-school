@@ -1,0 +1,398 @@
+---
+title: "Risk-Based Testing and Regression"
+order: 138
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** size a test effort by risk, decide regression scope from an impact analysis, and know what test evidence has to look like.
+- **The punchline:** for VAL-1418 (Release C) the vendor says "just rely on our OQ results" and the Quality Analyst says "re-run every historical test case to be safe." The Director decides neither. Lakeshore leverages the vendor's documented testing for unchanged vendor functions it can actually review, and spends its own testing on intended use, configuration, interfaces and the changed or vulnerable areas. The rationale is written into the VAL-1418 plan.
+- **The rule in one line:** test depth follows the harm a failure could do (severity), how likely the change makes a failure, and how easily you would notice it; scope follows the impact analysis; the record proves what ran, where, on what, with what result (BECS guidance III.D, III.E, III.G, III.I).
+- **Monday question:** "For each function in scope, show me the risk reasoning that put it in Tier 1, 2 or 3, and for each Tier 3 item, the document we reviewed that justifies leaning on someone else's testing."
+- **The trap:** both extremes feel safe. "Trust the vendor" and "re-run everything" are each a way of not doing the analysis.
+:::
+
+**Before you start:** this module builds on [vendor release intake for BECS](../vendor-release-intake-for-becs/index.qmd) (which set the three regression tiers), [environments, baselines and test data](../environments-baselines-and-test-data/index.qmd) (the environment fields), [requirements and traceability](../requirements-backlogs-and-traceability-in-agile/index.qmd) (TC-31 to TC-35), [IQ, OQ, PQ and traceability](../../csv-and-becs/iq-oq-pq-and-traceability/index.qmd), [staying validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd), [quality risk management](../../quality-system-essentials/quality-risk-management/index.qmd) (how to score severity, likelihood and detectability) and [reviewing validation packages](../../directing-the-quality-analyst/reviewing-validation-packages/index.qmd). It does not re-teach them.
+
+## The scenario: two proposals and one test plan
+
+HOP 3.0 is in production and the freeze has ended. Release C's window is coming, and the Quality Validation Lead has asked for a test-planning meeting on VAL-1418. The impact analysis from [module 5](../vendor-release-intake-for-becs/index.qmd) is on the table with its three tiers.
+
+The vendor's account manager has sent an email beforehand. "We have executed our full operational qualification on Release C and can supply the report. Lakeshore does not need to repeat that work. Please just run the vendor's OQ results as your own and save everyone the effort."
+
+The systems administrator likes it. "That is weeks of someone's time we do not have to spend."
+
+The Quality Analyst does not. She has the VAL-1203 test library open: every case that was ever run on Release B. "I want all of it re-run. Every historical case, against Release C, at all three locations. If we have missed something, nobody can say we did not try. I would rather be slow than sorry."
+
+The head of distribution, who has to give up staff time for any test run at Brookfield and Fairview, goes quiet. The development lead, who owns HOP's interface checks, says only, "That is a lot of re-running for things that did not change."
+
+You ask each of them one question. To the vendor's proposal: "Whose configuration did the vendor test?" To the Quality Analyst: "What failure does re-running the donor-eligibility screens catch that the label tests do not?"
+
+Neither has a good answer. Not because either is wrong about the risk. Both are *skipping the step that would justify their position*: the written link between what changed, what it touches, what a failure would cost, and how much testing that cost deserves.
+
+## Why the rule exists, and the ITSM bridge
+
+Testing is a finite budget spent against an unbounded space. The BECS guidance says so plainly: "BECS validation is difficult because you cannot test indefinitely, and it is hard to determine how much evidence is sufficient" (III.D). Two failures follow from ignoring that.
+
+**Under-testing the thing that can hurt someone.** A team that spreads the same effort over every function tests the labeling path as lightly as the help screens. A wrong label travels to a transfusion service.
+
+**Over-testing everything equally.** A team that re-runs the whole library burns the window, exhausts staff at the satellites, and produces so much evidence that the failures that matter are buried. It also does not *prove* completeness: a test library is a record of what was once worth testing, not a map of what could now break.
+
+The ITSM bridge is **change risk assessment feeding test and release planning**. You already do this: a standard change gets a smoke test, a major platform change gets a rehearsal and a back-out plan, and the risk score on the change record decides which. This module is the same discipline with a regulator reading the reasoning, and with one added term: the consequence side is product, donor, patient and record, not just service availability.
+
+## The rule in plain English
+
+Six moves, in order. They structure the rest of the module.
+
+1. **Assess risk per function.** What is the worst realistic harm if this function fails (severity), how likely is a failure given what changed (likelihood), and how likely would anyone notice before it did harm (detectability)?
+2. **Run the impact analysis.** List what changed, what it touches, and what is "unchanged but vulnerable." That sets the *scope*. Risk then sets the *depth* within it.
+3. **Choose the technique.** Scripted, exploratory, automated, or reliance on someone else's documented testing, whichever gives the needed confidence for that risk.
+4. **Design the cases.** Normal, abnormal, boundary and absurd inputs, plus worst-case load, on the actual configuration.
+5. **Record the evidence** so a stranger can see what ran, where, with what result, by whom, and what happened to every failure.
+6. **Write the reasoning into the plan.** The decision about what *not* to test is part of the validation record, not a private judgment.
+
+Moves 1, 2, 4 and 5 rest on the BECS guidance. Move 3 is partly general industry practice. Move 6 is how Lakeshore fills the written plan that 21 CFR 211.68(a) calls for. The layering tells you which choices are Lakeshore's to make.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| BECS guidance II.C | "Section II, subsection C of the 2013 user's-facility guidance" | Defines "software regression testing" as re-running test cases a program previously executed correctly (guidance definition). | Regression testing means re-running; analysis decides which. |
+| BECS guidance III.B | "...subsection B" | Maintain current system documentation, including software change records and problem reports (*must maintain*; contents *recommended*). | The vendor's test documentation Lakeshore reviews belongs in the system file. |
+| BECS guidance III.D | "...subsection D" | Validate at your location; assess the manufacturer's test cases and add or change plans; include worst-case scenarios; you cannot test indefinitely (guidance). | The anchor for rejecting both "just use the vendor's OQ" and "test everything." |
+| BECS guidance III.E | "...subsection E" | Base test plans on risk assessment; test the highest-risk functions more comprehensively; treat most hazards as likely (guidance). | Risk sizes the effort; probability does not rescue a high-severity function. |
+| BECS guidance III.G | "...subsection G" | Executed test case fields; normal, abnormal, boundary and absurd results; keep records incl. screen prints; validate interfaces; monitor after install (guidance, with *must* where it cites regulation). | Test design and the record. |
+| BECS guidance III.I | "...subsection I" | Regression analysis for any change, then regression testing for "unchanged but vulnerable" portions (guidance). | The scope method. |
+| GPSV 4.7, 4.8, 5.2.6, 5.2.7 | "General Principles of Software Validation, sections 4.7, 4.8, 5.2.6 and 5.2.7" | Re-establish validation status after change; coverage follows complexity and risk, not firm size; user-site testing; archive tests for later regression (FDA guidance for device makers; general thinking here, not binding on Lakeshore). | Supporting logic and the "archive your tests" point. |
+| CSA guidance, Sections I and III and Section V.B | "FDA's Computer Software Assurance guidance" | A risk-based approach to confidence in production and quality-system software of device manufacturers (guidance; **scope excludes device software functions, so it does not govern BECS**). | Used only as FDA's thinking on assurance. |
+| 21 CFR 211.68(a), (b) | "Title 21, part 211, section 211.68, paragraphs (a) and (b)" | Equipment, including computers, checked under a written program; input and output checked for accuracy; degree and frequency based on complexity and reliability (regulation: *shall*). | The regulatory root: a written program, and risk-proportional checking. |
+| NIST SP 800-53 SA-11, CM-4 | "Security and privacy control SA-11, Developer Testing and Evaluation; CM-4, Impact Analyses" | Testing at a defined depth and coverage with evidence of execution; analyze changes before implementing them (federal control catalog; voluntary for Lakeshore). | Vocabulary for "depth and coverage" and "evidence of execution." |
+
+## The actual text
+
+### Risk sets the effort, and probability does not rescue you
+
+> The level of confidence and, therefore, the level of validation effort needed, varies depending upon the potential hazards posed by the automated functions of the system. Your test plan and test cases should be developed based on a risk assessment. We, therefore, recommend that you perform a risk assessment early in the validation process. After performing that assessment, you should determine the degree of validation necessary based on the identified risks, and then develop your test plan and test cases accordingly. The highest risk functions of the system should be tested more comprehensively. For example, because of the potentially fatal consequences of a transfusion based on an improper crossmatch between donor and recipient, the validation of the electronic or computer crossmatch would require more extensive testing.
+>
+> Because of the complexity of software, especially BECS, it is difficult to predict the probability of a hazard occurrence. Therefore, when you conduct your risk assessment, we recommend you consider most hazards to have a high probability of occurrence.
+> — BECS guidance III.E (`sources/fda-guidance/becs-validation-users-facility-2013.md`)
+
+Read it as a sequence: *assess early, decide degree from the risks, then build cases.* Note the order: the test list comes **after** the risk assessment. Note also what the second paragraph does to the usual scoring. If you are told to assume most hazards are likely, then in your scoring the likelihood axis collapses toward "high," and **severity and detectability do the work.** The guidance's own example is severity: the crossmatch gets more testing because a wrong one can be fatal.
+
+### The vendor's tests are an input you assess, not an answer
+
+> We recognize that it is a common practice for software manufacturers to provide test cases to blood establishments for use in system validation. We recommend that you carefully assess the software manufacturer's test cases, consider your own intended use of the software, your internal policies and procedures, and add or change test plans as appropriate to ensure that the software will accurately and repeatedly meet your requirements. The test cases should include those that represent "worst case scenarios," e.g., maximum numbers of users working simultaneously, all possible activities occurring simultaneously, etc.
+>
+> We recognize that BECS validation is difficult because you cannot test indefinitely, and it is hard to determine how much evidence is sufficient. Generally, software validation is a matter of developing a "level of confidence" (Ref. 1) that the software device meets all requirements and user expectations for the automated functions and features of the software.
+> — BECS guidance III.D
+
+This passage is the whole argument in miniature. "**Carefully assess**" is the Quality Analyst's reply to the vendor: you do not adopt the vendor's cases, you read them. "**Consider your own intended use... add or change test plans**" is the vendor's reply to the Quality Analyst: the goal is *confidence about Lakeshore's requirements*, not a ceremonial repeat of every case. "**You cannot test indefinitely**" is the sentence to keep on the wall.
+
+### Scope: change, adjacency and "unchanged but vulnerable"
+
+> Due to the complexity of systems and BECS, a seemingly small local change (e.g., software, hardware, peripherals, or infrastructure) may have a significant global system effect. When any change (even a small change) is made to the software on the system, a software regression analysis should be conducted, not just for validation of the individual change, but also to determine the extent and impact of that change on the entire system. Based on the analysis, you should then conduct an appropriate level of software regression testing to show that unchanged but vulnerable portions of the system have not been adversely affected. [...] We recommend that you perform regression testing, when indicated by your analysis, by re-running test cases that previously passed.
+> — BECS guidance III.I
+
+And the definition that makes the verb precise:
+
+> Software regression testing means re-running test cases which a program has previously executed correctly to detect errors caused by changes or corrections made during software development (Ref. 1).
+> — BECS guidance II.C
+
+"**When indicated by your analysis**" is the sentence the Quality Analyst skipped: regression testing is not automatic. "**Re-running test cases that previously passed**" is why the old library matters: it is raw material, and keeping it usable is a discipline. FDA's general guidance says so directly:
+
+> The level of effort needed to fully validate a change is also dependent upon the degree to which validation of the original software was documented and archived. For example, test documentation, test cases, and results of previous verification and validation testing need to be archived if they are to be available for performing subsequent regression testing. Failure to archive this information for later use can significantly increase the level of effort and expense of revalidating the software after a change is made.
+> — FDA, *General Principles of Software Validation*, 5.2.7 (guidance for device makers; general thinking for Lakeshore; `sources/fda-guidance/general-principles-software-validation-2002-excerpt.md`)
+
+And the same document on proportionality:
+
+> Validation coverage should be based on the software's complexity and safety risk – not on firm size or resource constraints. [...] For lower risk devices, only baseline validation activities may be conducted. As the risk increases additional validation activities should be added to cover the additional risk.
+> — GPSV 4.8
+
+Note "not on firm size or resource constraints." A short window is not a justification for lighter testing; risk is. That is why the rationale has to be written down.
+
+### What the executed record contains
+
+> Each executed test case in your pre-defined written test plan should include the input, expected output, actual output, acceptance criteria, whether the test passed or failed, the name or initials of the person performing the test, and the date the test was performed. Test cases should include normal results (results within the "normal" range), abnormal results (unacceptable results or those outside the "normal" range) and boundary results or values. Boundary testing is testing at the boundary of a specification, in other words, at the limit, just below the limit, and just over the limit. Boundary values are "off-by-one errors." An example of boundary testing is testing for a hematocrit of 37%, 38% and 39% if the cutoff (or boundary value) for hematocrit is 38%. You should also test for "absurd" results (invalid or nonsense results). [...]
+>
+> You must retain validation records (21 CFR 211.68(b), 211.100(b), 606.160(b)(5)(ii)). Your records should include documented evidence of all test cases, test input data and test results. Test results should include screen prints. For traceability purposes and to facilitate quality assurance review and follow-up, we recommend that any supporting documentation, such as screen-prints, where appropriate, be identified to link them to the specific test case.
+> — BECS guidance III.G (the *must* is the guidance citing regulation; the rest is *should* or *recommend*)
+
+### Regulation and general principles underneath
+
+> Appropriate controls shall be exercised over computer or related systems to assure that changes in master production and control records or other records are instituted only by authorized personnel. Input to and output from the computer or related system of formulas or other records or data shall be checked for accuracy. The degree and frequency of input/output verification shall be based on the complexity and reliability of the computer or related system.
+> — 21 CFR 211.68(b) (`sources/cfr/211.68.md`)
+
+The last sentence is the only place in the regulation text of this module that scales effort: the **degree and frequency** of verification follows complexity and reliability. It is a regulation, binding on equipment used under it, and it supports proportionality. It is not a testing standard, and it says nothing about scripted versus unscripted tests.
+
+> When changes are made to a software system, either during initial development or during post release maintenance, sufficient regression analysis and testing should be conducted to demonstrate that portions of the software not involved in the change were not adversely impacted. This is in addition to testing that evaluates the correctness of the implemented change(s).
+> — GPSV 5.2.7
+
+"In addition to" is the line that separates *verifying the fix* from *regression*. A resolved anomaly needs its own verification test (module 5's LR-5) **and** the regression set.
+
+### FDA's assurance thinking, with its scope caveat
+
+> This guidance recommends that manufacturers base their approach to computer software assurance on a justified and documented risk assessment and a determination of the potential of the system to affect product quality, patient safety, and record integrity.
+> — FDA, *Computer Software Assurance for Production and Quality Management System Software*, Section V.B (`sources/fda-guidance/csa-production-qms-software-2026-excerpt.md`)
+
+The same document's Scope section says it "does not provide recommendations for the design and development verification or validation requirements for device software functions." BECS is a device (see [BECS as a regulated device](../../csv-and-becs/becs-as-a-regulated-device/index.qmd)), so **this guidance does not govern Lakeshore's validation of BECS, and Lakeshore cannot cite it as authority for a testing choice.** What it offers is a way of thinking: a risk-based approach to "establish confidence", with "additional rigor" where the risk warrants it, justified and documented. That is entirely consistent with the BECS guidance's own III.E. Use it as vocabulary and as evidence that FDA is comfortable with risk-proportionate effort, nothing more.
+
+One more honesty note. The guidance describes testing methods, including how it uses the terms *scripted* and *unscripted* testing, in sections that are **not in this site's local excerpt**. This lesson therefore does not quote or characterize FDA's treatment of them. The scripted/exploratory vocabulary below is general industry usage, labeled as such. Read FDA's own text from the link on the resources page before citing it.
+
+### NIST vocabulary for depth and evidence
+
+> SA-11 Developer Testing and Evaluation. Require the developer of the system, system component, or system service, at all post-design stages of the system development life cycle, to: [...] b. Perform [Selection (one or more): unit; integration; system; regression] testing/evaluation [Assignment: organization-defined frequency to conduct] at [Assignment: organization-defined depth and coverage]; c. Produce evidence of the execution of the assessment plan and the results of the testing and evaluation; [...]
+>
+> CM-4 Impact Analyses. Analyze changes to the system to determine potential security and privacy impacts prior to change implementation.
+> — NIST SP 800-53 Rev. 5 (`sources/nist/sp-800-53r5-cm-sa-excerpt.md`; a federal control catalog, voluntary for a private blood center)
+
+Two phrases to borrow. "**Organization-defined depth and coverage**" says depth is something an organization *decides and defines*, which is what a test strategy is. "**Produce evidence of the execution**" says a result without evidence of running it is an assertion. CM-4's impact analysis comes *prior to implementation*, which matches the regulatory logic: analysis first, then testing sized to it. (The NIST controls are security-oriented; borrowed here only for their structure.)
+
+## Move 1: sizing a test effort by risk
+
+QRM has its own module on [scoring severity, likelihood and detectability](../../quality-system-essentials/quality-risk-management/index.qmd) (including the convention that a *higher* detectability number means *harder* to catch). Do not re-score everything from scratch for a release; use the same three questions, in plain terms, on the functions Release C could touch.
+
+- **Severity: harm if it fails.** Think in four directions: the *product* (a wrong or unreadable label on a unit), the *donor* (a wrong deferral or record), the *patient* (a wrong or unsuitable unit reaching a transfusion), and the *record* (a distribution or test record that is wrong, missing or unattributable).
+- **Likelihood: how likely is a failure *given this change*?** Changed code is likelier to fail than unchanged code. Code that shares logic, data or an interface with the change is likelier than code that does not. Remember III.E: where you cannot argue otherwise, assume "likely."
+- **Detectability: would anyone notice before harm?** A failure that stops a screen with an error is easy to catch. A summary count that quietly disagrees with the unit list, or a label that scans on one printer and not another, is not.
+
+Here is how the three questions play out for Release C. These are illustrative judgments for the plan, not facts about the vendor's code; the Quality Validation Lead owns the real scoring.
+
+| Function | Severity | Likelihood given Release C | Detectability | Depth and tier |
+|---|---|---|---|---|
+| Label reprint, multi-attribute product names (new anomaly) | High: label is on the product; touches proper name and machine-readable code | High: this is where the anomaly *is* | Poor: wrapped text on a routine reprint is easily missed; scan result varies by printer | Tier 1, deep: LR-1 to LR-6, all three locations |
+| Reprint with quarantine status change (resolved anomaly) | High: wrong status text on a label | Moderate to high: it was *changed* | Poor: a one-second race condition | Tier 1: LR-5 at the boundary |
+| HOP-to-BECS interface: commit attempts, permissions, stale proposals (TC-32a/b/c, TC-35) | High: HOP committing an allocation would put HOP into BECS territory | Unknown: depends on vendor's answer about shared logic and interface behavior | Moderate: no commit means no visible error, absence of a record is hard to notice | Tier 1: re-run |
+| HOP availability read (TC-34) | High: a wrong "suitable" display influences a distribution choice | Unknown: inventory-count fix may share logic | Poor | Tier 1: re-run |
+| Central-to-satellite sync | Moderate to high: satellites run the reprints | Moderate: infrastructure underneath | Moderate | Tier 2: targeted check |
+| Instrument and lab inbound path, with Lakeshore's own translation script | High if it fails: wrong results in a donor or product record | Low to moderate: the vendor says input formats did not change (an input, to be recorded) | Poor | Tier 2: targeted check, with the vendor's written answer on file |
+| ICCBBA table load | Moderate to high | Low: table content, not logic | Moderate | Tier 2: targeted check |
+| Riverside shipment records | Moderate: distribution records, 606.165 | Low | Moderate | Tier 2: targeted check |
+| HOP-only behavior (TC-31) | Moderate | Very low: HOP build unchanged | Good: HOP shows the proposal label itself | Tier 3: rationale only |
+
+Read down the table and you can see the method. **Tier 1 is where severity is high and either the change is there or detection is poor.** Tier 2 is where severity is meaningful but likelihood is lower or the failure would show itself. Tier 3 is where likelihood is very low, the item is reachable by other evidence and a failure would be caught by Tier 1 or 2.
+
+The table refuses two shortcuts: "rarely used" is never a reason to lower a score (III.E), and nothing is lowered on the vendor's say-so alone ("input formats did not change" is recorded as an input and still gets a smoke-level check).
+
+A simple rule of thumb that fits on one line of the plan: **depth = f(severity, detectability), scope = f(impact analysis).** Likelihood given the change is *how you decide scope*, and under III.E you assume it is high unless you can show why not.
+
+## Move 2: from impact analysis to regression scope
+
+Module 5 produced the impact assessment: configuration, interfaces, SOPs, training, reports. Regression scope is what you do with it. For each item, put it in one of three buckets.
+
+1. **Changed.** The release notes or revision history say it changed, or a Lakeshore configuration item changed (the alternate reprint layout is one).
+2. **Adjacent or touched.** It was not listed as changed but it shares code, data, configuration, an interface, a printer driver or a database with something that was. The vendor's answer to "what other functions might be affected" (III.I) feeds this bucket. So does your own knowledge of how Lakeshore uses the product.
+3. **Unchanged but vulnerable.** Nothing says it changed, nothing visibly touches it, but a failure would be severe or hard to see, and "a seemingly small local change may have a significant global system effect" (III.I). The HOP-to-BECS interface is the example: HOP did not change, and its evidence is still Tier 1 because BECS's behavior underneath did.
+
+Anything that is none of these three goes to Tier 3 with the reasoning written. A one-row-per-function analysis is enough:
+
+| Function | Bucket | Evidence for the bucket | Severity and detectability | Tier | Test or rationale |
+|---|---|---|---|---|---|
+| Reprint of multi-attribute names | Changed (new anomaly) | Vendor release notes | High, poor | 1 | LR-1 to LR-4, LR-6 |
+| HOP inventory read | Unchanged but vulnerable | Vendor has not yet answered whether the read shares the changed count logic | High, poor | 1 | TC-34, TC-35 |
+| Central-to-satellite sync | Adjacent | Satellites run the reprint tests; sync carries the configuration | Moderate, moderate | 2 | Targeted check |
+| TC-31, HOP-only proposal label | Unchanged, not adjacent | HOP build unchanged; no interface involved | Moderate, good | 3 | Rationale only |
+
+### What moves a test up or down
+
+Scope is not fixed at plan approval. **Up:** a vendor answer of "unknown" or "yes"; any failure in an earlier tier (a failure in LR-2 at one satellite pulls the neighboring label tests, and the other satellite's equivalent, up); a change on a patient-safety path; a past deviation touching the function. **Down:** a specific, credible vendor answer, a reviewed vendor test case that covers the function on a configuration like Lakeshore's, or a reason the function is not reachable from anything that changed. Moving down is allowed; moving down *silently* is not. Every move gets a dated line in the analysis.
+
+## Move 3: choosing the technique
+
+Testing technique is also a risk decision. The vocabulary below is general industry usage, not taken from FDA's guidance as stored here (see the honesty note above).
+
+**Scripted testing** means the steps, inputs and expected results are written in advance, and the tester follows them and records the result against each. **Unscripted or exploratory testing** means the tester has a goal (a "charter") and explores the system with judgment, noting what they tried and what they saw. **Automated testing** means a tool executes written checks without a human performing each step. **Reliance on documented third-party testing** means you do not test the function yourself because someone else did, and you can show you reviewed how.
+
+How the Director and Quality might assign them for VAL-1418:
+
+| Technique | Use it when | VAL-1418 example |
+|---|---|---|
+| **Scripted** | Severity is high, the result must be repeatable and compared later, or the BECS guidance's executed-record fields (III.G) have to be met cleanly | Tier 1: LR-1 to LR-6, TC-32a/b/c, TC-34, TC-35 |
+| **Exploratory, with a charter and notes** | The function is moderate risk, the failure shape is unknown, and you want a skilled person to look around the change for surprises | A staffed session at each satellite on label printing beyond the scripted cases: unusual product mixes, rapid sequential reprints |
+| **Automated** | The check is stable, repeated every release and mechanical | The HOP-to-BECS interface suite (below) |
+| **Reliance on reviewed vendor evidence** | The function is an unchanged vendor function, not adjacent to a change or Lakeshore's configuration, and the documentation is reviewable | Tier 3 items, with the rationale |
+
+Two cautions, both Lakeshore's to own rather than FDA's to dictate.
+
+**First, "unscripted" does not mean "unrecorded."** BECS guidance III.G describes executed cases in a "pre-defined written test plan" with expected and actual outputs. An exploratory session for a BECS-related release should therefore be defined in the plan (charter, scope, who, how long), notes kept, screen prints identified, and any defect recorded like any other. If the session finds nothing, the record still says what was explored. Quality should agree the approach before it is used for evidence, because the guidance's executed-record fields are written for scripted cases and whether a charter-based session satisfies them is a judgment for Quality and regulatory affairs.
+
+**Second, do not import the CSA guidance's testing menu as though it governed BECS.** Its scope excludes device software functions. A well-run exploratory session is good engineering and a reasonable choice for Tier 2; calling it "compliant with the CSA guidance" would be a claim the sources do not support.
+
+## Move 4: designing the cases
+
+BECS guidance III.G names four families of input, and the lesson's tests should visibly use all of them where they apply.
+
+- **Normal:** values within the expected range. The routine reprint of a single-attribute product.
+- **Abnormal:** unacceptable results or values outside the normal range. A name just over the line length (LR-3).
+- **Boundary:** "at the limit, just below the limit, and just over the limit." The guidance's hematocrit example uses 37, 38 and 39 percent for a 38 percent cutoff. For Release C: the longest product name with the maximum number of modifiers and attributes (LR-1); a reprint requested in the same second as a quarantine status change, and one second either side (LR-5); and for HOP, a proposal at exactly the configured age limit, just under it and just over it (HOP-R35's stale marking).
+- **Absurd:** "invalid or nonsense results": alpha text in a numeric field, a result of 110 percent, a blank or leading blank. For the instrument and lab inbound path, that means feeding the translation script a blank result and a text value in a numeric field and checking that BECS rejects them visibly and does not post to a record.
+
+And two more from the guidance's wider list: **worst-case load** ("maximum numbers of users working simultaneously, all possible activities occurring simultaneously," III.D; LR-6 does this for reprints), and **simulated peak production times** with the maximum number of concurrent users (III.G).
+
+A test with no stated acceptance criterion is not a test. "Check that the label looks right" is a hope. "The proper name with all modifiers and attributes is complete and legible; the quiet zone around the machine-readable code is intact; the code scans on this site's scanner" is a test.
+
+## Move 5: what a defensible test record contains
+
+Combine III.G's list, module 3's environment fields and the linkage a reviewer needs. Every executed case should carry:
+
+| Field | Why it is there |
+|---|---|
+| Test ID and version, and the requirement or risk it traces to | So a reviewer can follow the chain (module 2) |
+| Input and preconditions | So someone else could repeat it |
+| **Expected output**, written **before** the run | Recording the expectation after seeing the result is the failure the [validation-package review](../../directing-the-quality-analyst/reviewing-validation-packages/index.qmd) taught you to flag |
+| **Actual output** | What really happened, in words and evidence |
+| Acceptance criteria | The threshold for pass |
+| **Pass or fail** | Unambiguous |
+| **Tester name or initials, and date** | III.G; also the independence check |
+| **Environment block:** environment name, HOP build, baseline reference and comparison result, interface targets including BECS patch level, configuration version, data set and refresh date | Module 3; without it a pass is a pass of *something* |
+| **Evidence:** screen prints, scanner output, files, each identified to the test case | III.G: "identified to link them to the specific test case" |
+| **Defects linked** | Every failure points to a defect record and every defect to a retest |
+| Reviewer and date | Who in Quality agreed the result stood |
+
+A failed test stays in the record. The defect, the fix and the re-run are added; the original result is never overwritten. DEF-0412 in module 2 showed this: TC-32c failed in rc1, the defect was linked, the fix was retested, and the failed result remained visible.
+
+### A good line and a bad line
+
+A thin record for LR-2: *"Scanned reprinted label. OK. 14 Nov. Initials."* It has no expected result, no criterion, no named printer or scanner, no site, no environment, no evidence, nothing linking it to a requirement. It proves someone clicked something.
+
+A defensible one: *"LR-2, Fairview. Expected: machine-readable code on alternate-layout reprint of longest-named product scans on this site's handheld scanner on the first attempt; blank space around the code intact. Input: reprint product code [the longest-name product], alternate layout, label printer at Fairview. Actual: scanned first attempt, code read matched the unit record; screen print and photo of the label attached as LR-2-E1 and E2. Result: Pass. Tester: [name]; date: [date]; reviewer: [Quality name]. Environment: validation; BECS Release C candidate baseline [reference]; printer and scanner models per the site's configuration record; drift check signed [date]."* It is longer to write, and a stranger can rely on it.
+
+## Move 6: using someone else's evidence, honestly
+
+This is where the two proposals meet.
+
+**What the vendor's OQ is good for.** The vendor knows its code. Its documented testing, if Lakeshore can *review* it (BECS guidance III.B puts the vendor's information and Lakeshore's change records in the system documentation; III.D tells you to assess the manufacturer's test cases), tells you what the vendor believes it verified, under what conditions, and on which functions. That is legitimately useful for **unchanged vendor functions** that sit far from anything Lakeshore changed or configures. Re-running those cases yourself adds little confidence and takes real time from the satellites.
+
+**What it cannot do.** It cannot be Lakeshore's own validation. It was not run on Lakeshore's printers, product codes, interfaces, roles, volumes or staff, and III.D says validation happens "at your location using the same software, hardware, SOPs, and personnel." Lakeshore remains "ultimately responsible for validation of your system in your facility" (III.D). And it cannot address what the vendor does not know: HOP, the translation script, the satellites' configurations.
+
+**What leverage requires.** For each function Lakeshore wants to lean on the vendor for:
+
+1. The vendor documentation is *in hand and reviewed*: the test case or summary, its result, the version tested. If the vendor will not provide it, you cannot leverage it; the function is "unknown" and moves up.
+2. The function is **unchanged** in Release C per the revision history, and the vendor's answer to "what other functions might be affected" does not list it.
+3. It is **not adjacent** to a Lakeshore configuration, interface or changed function. Labeling, interfaces and anything on the HOP-to-BECS path never qualify on documents alone.
+4. The reviewer wrote down *what* they reviewed, *what* it shows and *why* it is enough for this risk.
+
+### The tension, resolved
+
+**The Director's decision for VAL-1418:**
+
+1. **Not "just run the vendor's OQ results."** The vendor's report is received, reviewed and filed in the system documentation. It is an input to the analysis and the basis for Tier 3 on unchanged vendor functions Lakeshore can review. It is not a substitute for Lakeshore's own testing.
+2. **Not "re-run every historical test case."** The library is the *source* for regression cases, as III.I recommends, and the analysis selects from it. Cases outside the analysis are not re-run and are not deleted.
+3. **Lakeshore's own testing is focused where only Lakeshore can supply confidence:** intended use, configuration, interfaces, and the changed or vulnerable areas. That is Tier 1 (LR-1 to LR-6, TC-32a/b/c, TC-34, TC-35) and Tier 2 (targeted checks on central-to-satellite sync, the instrument and lab inbound path, ICCBBA table load, Riverside shipment records and HOP's inventory read).
+4. **Tier 3 items carry a written rationale**, including TC-31 (HOP-only), naming the document reviewed and why it is sufficient.
+5. **The rationale is written into the VAL-1418 plan before testing starts**, and Quality can block approval of the plan if it judges the reasoning inadequate. The Director does not override that.
+
+To the Quality Analyst: the instinct to be safe is right, and the safe move is a *defensible* scope, not a maximal one. A full re-run that cannot explain itself fails the same inspection question as a thin one. To the vendor: thank you for the report; we will read it and use what we can.
+
+| Function | Source of assurance | Lakeshore's own test | Rationale to write |
+|---|---|---|---|
+| Label reprint (alternate layout) | None adequate: new anomaly and Lakeshore configuration | LR-1 to LR-6 | Labeling, changed, Lakeshore printers |
+| HOP-to-BECS interface | None: vendor never saw HOP | TC-32a/b/c, TC-34, TC-35 | Unchanged but vulnerable; vendor answer pending |
+| Sample unchanged vendor function, e.g., one with no Lakeshore configuration and no adjacency (a plan row to be completed with real functions) | Vendor's documented test, reviewed | None, or a smoke check | Unchanged; reviewed [document, version]; not adjacent; low severity or good detectability |
+| TC-31, HOP-only proposal label | HOP's own prior evidence on an unchanged build | None | Unchanged build, no interface involved |
+
+## Move 6b: automation and the HOP-to-BECS regression suite
+
+TC-32a/b/c, TC-34 and TC-35 have already been run and re-run across HOP 3.0's release candidates, and they will be run again for Release C and for every future BECS baseline change. That is what automation is for.
+
+**What is a good candidate.** A check that is stable, mechanical and run every time the interface or either side's baseline moves. A reusable **HOP-BECS interface regression suite** is an obvious one: attempt the commit function under each HOP role and confirm no change appears in BECS (TC-32a), read the interface account's permissions (TC-32b), leave a proposal for the configured period and confirm no distribution record exists (TC-32c, which is slow by hand because it waits), compare what HOP shows with what BECS returns (TC-34) and change a status and watch HOP react (TC-35). A suite like this would also be exactly the kind of asset GPSV 5.2.7 means by archiving tests for later regression. (Whether Lakeshore builds one is a proposal for the Director and development lead to cost; nothing in this module says it already exists.)
+
+**What is not.** Visual label inspection and scanning on the real printers, where human judgment and physical equipment are the test. LR-2 stays a person with a scanner.
+
+**When an automated result is evidence.** Automation does not make a result trustworthy by itself. A result from a tool counts as validation evidence only if three things hold.
+
+- **The tests are controlled.** The scripts are versioned, change-controlled, reviewed, and traceable to the requirement or risk they cover, the same way a written test case is. A script edited last night to "make it pass" is a deviation.
+- **The tool and its use are controlled.** Tool version, configuration, credentials and the environment it ran in are recorded in the result's environment block. How much assurance the tool itself needs is proportional to what depends on it: a tool that *decides* a high-risk pass or fail deserves scrutiny; one that merely drives a screen for a human to judge deserves less. NIST SA-11(c) is the vocabulary: "evidence of the execution... and the results."
+- **The results are retained and reviewable:** raw output, timestamps, the run's identity, linked defects, and a human reviewer from outside the team that wrote the scripts for high-risk requirements (the independence decision from module 2).
+
+Where those scripts run, who can change them, and how a pipeline preserves the audit trail of who ran what is the subject of the next module on [CI/CD pipelines under GxP](../ci-cd-pipelines-under-gxp/index.qmd). The only point here is that **automated is a technique, not an exemption.**
+
+## See it in one picture
+
+```{mermaid}
+flowchart TD
+    C["VAL-1418: Release C candidate<br/>after the freeze"] --> IA["Impact analysis<br/>changed / adjacent /<br/>unchanged but vulnerable"]
+    IA --> RA["Risk per function<br/>severity, likelihood given the change,<br/>detectability"]
+    RA --> V{"Unchanged vendor function<br/>with reviewable vendor test<br/>documentation?"}
+    V -->|"Yes, and not adjacent<br/>to a change or Lakeshore config"| T3["Tier 3: leverage vendor evidence<br/>written rationale, e.g. TC-31"]
+    V -->|"No, or unknown"| D{"Severity high or<br/>interface / labeling path?"}
+    D -->|"Yes"| T1["Tier 1: scripted, re-run or new<br/>LR-1 to LR-6, TC-32a/b/c, TC-34, TC-35"]
+    D -->|"Moderate"| T2["Tier 2: targeted checks<br/>sync, inbound path, ICCBBA load,<br/>Riverside records, HOP inventory read"]
+    T1 --> E["Evidence: expected vs actual, pass/fail,<br/>tester, date, environment fields,<br/>screen prints, linked defects"]
+    T2 --> E
+    T3 --> R["Rationale written into VAL-1418 plan"]
+    E --> F{"Any failure or surprise?"}
+    F -->|"Yes"| UP["Move related tests up a tier,<br/>defect, fix, re-run"]
+    F -->|"No"| OK["Validation report, Quality review"]
+    UP --> D
+```
+
+This is a decision flow for VAL-1418 as this lesson sets it up. It is Lakeshore's method, not a regulatory flowchart.
+
+## Watch it explained
+
+This is a short vendor-produced video on **test impact analysis**: choosing which tests to run based on what changed. It comes from a software-testing tool vendor, and its pitch is about that vendor's automated approach, so treat it as background on the idea in Move 2 and nothing else. It is general software testing and says nothing about BECS, FDA guidance or evidence requirements. Only the title, channel and embeddability were verified, not the claims in the video.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4Q5xypeIOrU"
+  title="What Is Test Impact Analysis?  | Parasoft" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## What an inspector or assessor would look for
+
+- **The test strategy or risk assessment inside the VAL-1418 plan,** written before testing: what was assessed, how severity and detectability were judged, and how that set depth. A bad answer: a test list with no reasoning, or "we ran everything."
+- **The impact analysis with a bucket and a tier for each function,** including a rationale for what was *not* re-run. A bad answer: "the vendor said those did not change."
+- **Reviewed vendor documentation behind each Tier 3 item,** filed in the system documentation, naming what was reviewed and by whom. A bad answer: "the vendor gave us their results" with no sign anyone read them.
+- **Executed test records with the III.G fields,** expected results written before execution, environment block, identified screen prints, and tester and date on each. A bad answer: "pass" with initials and nothing else.
+- **Failures kept in the record,** each tied to a defect, a fix and a re-run, with the original result preserved.
+- **For automated tests, the script's version and change history, the tool configuration, retained raw results and an independent reviewer.** A bad answer: a green dashboard screenshot.
+- **Plan approved before testing began;** tier changes dated and explained.
+
+## Common traps
+
+**"We have the vendor's OQ, so we are done."** The vendor tested the vendor's configuration. III.D asks you to assess those cases and add your own for your intended use. Reviewed vendor evidence supports Tier 3 on unchanged, non-adjacent vendor functions and nothing more.
+
+**"Re-run everything to be safe."** III.I says regression testing is conducted "when indicated by your analysis." A complete re-run consumes the satellites' time and adds no assurance on the labeling path beyond a well-chosen Tier 1.
+
+**"It is rarely used, so it is low risk."** III.E tells you to treat most hazards as likely. Rarity is not a reason to lower a severity.
+
+**"Unscripted testing needs no records."** BECS guidance III.G expects a pre-defined plan and documented evidence. An exploratory session still needs a charter, notes and linked evidence, and Quality should agree the approach.
+
+**"CSA says we can do less."** The CSA guidance does not govern BECS validation. Do less only when your own analysis, written down, says the risk allows it.
+
+**"Our test automation passed, so it is evidence."** Only if the scripts, the tool, the environment and the results are controlled. An uncontrolled green run is a rumor.
+
+## What this means for your job
+
+- **Ask for the risk reasoning, not the test list.** When Quality brings a test plan, ask for the page that says why these cases and not others. Send it back if there is none.
+- **Make "what did we *not* test, and why?" a standing question.** The Tier 3 rationale is the part inspectors and CIOs test your judgment on.
+- **Give the vendor's documents a named reviewer and a filing place.** If nobody can say who read the vendor's OQ report, it is not evidence.
+- **Fund the regression suite for the interface.** The HOP-to-BECS checks run every release; automating them, under control, is the cheapest durable test asset Lakeshore can build. Ask the development lead for a cost and a control plan, then ask Quality what independent review it needs.
+- **Do not let either proposal win by default.** When someone offers "trust the vendor" or "test everything," ask them to write the analysis that supports it. Both usually converge on the same defensible middle.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The vendor offers its executed OQ report as Lakeshore's evidence for Release C. What exactly may Lakeshore use it for?
+As a reviewed input: the basis for Tier 3 rationales on unchanged vendor functions that are not adjacent to a change or Lakeshore's configuration, and a source of cases to adapt (BECS guidance III.D: "carefully assess the software manufacturer's test cases"). It cannot replace testing of Lakeshore's intended use, configuration, interfaces (including HOP) and the changed or vulnerable areas, because Lakeshore is "ultimately responsible for validation of your system in your facility" (III.D).
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Does any regulation require Lakeshore to re-run every previously passed test case after a vendor release?
+No. The BECS guidance recommends a regression *analysis*, then "an appropriate level of software regression testing," and re-running previously passed cases "when indicated by your analysis" (III.I). That is guidance (*should*, *recommend*). The regulatory obligation is a written program and checking sized to complexity and reliability (21 CFR 211.68(a) and (b)), which a documented risk-based scope can satisfy.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A team member says, "FDA's CSA guidance lets us replace scripted tests with exploratory testing on BECS." Is that right?
+Not as stated. The CSA guidance's scope covers software used in device manufacturers' production or quality systems and excludes device software functions, so it does not govern a blood establishment's validation of BECS. Exploratory testing can still be a sound Lakeshore choice for moderate-risk areas if the plan defines it, records it and Quality agrees, but that is Lakeshore's decision under the BECS guidance, not permission from CSA. (Also note this site's local copy of the CSA excerpt does not include its testing-methods sections.)
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: A Tier 2 inbound-path check passes, but the tester wrote only "OK, initials, date." What is missing, and does the record stand?
+Missing: input, expected output written beforehand, actual output, acceptance criteria, the environment block and identified evidence (BECS guidance III.G; module 3). On its face it is a weak record; the fix is to re-run or to supplement with contemporaneous evidence if it exists, and to correct the template going forward. Do not let it stand as "pass" on trust.
+:::
+
+## Where this goes next
+
+Lakeshore now has a method for sizing tests and a record worth keeping, and a regression suite that is a natural candidate for automation. The next module, [CI/CD pipelines under GxP](../ci-cd-pipelines-under-gxp/index.qmd), takes up how an automated pipeline can run HOP builds and these checks without breaking segregation of duties, tool assurance or the audit trail of who deployed what.
