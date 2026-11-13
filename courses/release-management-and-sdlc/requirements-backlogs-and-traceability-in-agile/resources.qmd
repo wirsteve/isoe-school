@@ -1,0 +1,35 @@
+---
+title: "Resources"
+order: 131
+---
+
+Places to go deeper on turning stories into traceable requirements, or to check a citation before it goes into a real Lakeshore document. Every link below was checked with `curl` and loaded.
+
+- **[21 CFR 11.10, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.10)** — the controls for closed systems, including (g) authority checks and (k) revision and change control over systems documentation. Use it for the exact words behind versioning requirements and restricting what HOP's interface account can do. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 864.9165, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/864.9165)** — what BECS is and the special controls on its manufacturers, including requirements and the traceability matrix in (b)(1) and (b)(4). Read it to see the vendor-side parallel and why "HOP is not a BECS" matters. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 606.165, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.165)** — distribution and receipt procedures and records; the reason BECS stays the system of record for distribution. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)** — system documentation (III.B) and what an executed test case should contain (III.G). Use it when writing the test-result record. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: General Principles of Software Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)** — FDA's 2002 guidance for device manufacturers; general thinking only for Lakeshore. Sections 3.1.1 and 4.1 define requirements and say validation cannot be completed without a requirements specification. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[The Scrum Guide](https://scrumguides.org/scrum-guide.html)** — the framework's own definition of the Definition of Done. Use it to separate the team's definition from the validation evidence you add to it. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Agile Alliance: Definition of Done](https://agilealliance.org/glossary/definition-of-done/)** — a short practitioner-body glossary entry; useful for explaining the idea to a developer who has not met it. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Agile Alliance: User Stories](https://agilealliance.org/glossary/user-stories/)** — a concise definition of the story form and its role as a conversation device, supporting this lesson's point that a story is not a controlled requirement. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Given When Then, Martin Fowler](https://martinfowler.com/bliki/GivenWhenThen.html)** — a short explanation of the structure used for acceptance criteria in this lesson. Opinion and practice, not regulation. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Requirement Traceability Matrix (RTM) in Software Testing](https://www.youtube.com/watch?v=cm-cSW66Isc)** (Guru99, from oEmbed `author_name`) — the video embedded in the lesson: a generic software-testing tutorial on linking requirements to test cases. Not blood-specific and not about agile trackers. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200).
+
+## Keep learning
+
+Not official sources. Good places to keep learning; none is authority for a regulatory claim.
+
+- **[Agile Software Development with Verification and Validation in High Assurance and Regulated Environments, Rally Software whitepaper (hosted by Agile Alliance)](https://agilealliance.org/wp-content/uploads/2016/01/Rally_Agile_High_Assurance_Reg_Environments-1.pdf)** — a vendor whitepaper on user stories as requirements, traceability to tests, and validation in regulated settings. Vendor content and older than current guidance; read for the practitioner reasoning only. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[User Stories: What They Are, How to Write Them, and Examples, Mountain Goat Software](https://www.mountaingoatsoftware.com/agile/user-stories)** — a well-known agile training firm's explainer on writing stories (commercial site, free article). Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Specification by Example, Martin Fowler](https://martinfowler.com/bliki/SpecificationByExample.html)** — short practitioner article on turning examples into executable specifications, the idea behind criteria that can fail. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Cucumber: Behaviour-Driven Development](https://cucumber.io/docs/bdd/)** — an introduction to BDD and writing scenarios in Given/When/Then form (the tool vendor's own documentation). Verified loading via `curl` on 2026-11-13 (HTTP 200).
