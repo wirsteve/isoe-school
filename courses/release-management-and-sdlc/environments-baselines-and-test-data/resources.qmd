@@ -1,0 +1,36 @@
+---
+title: "Resources"
+order: 133
+---
+
+Places to go deeper on environments, baselines and test data, or to check a citation before it goes into a real Lakeshore document. Every link below was checked with `curl` and loaded. HHS's HIPAA guidance pages on minimum necessary and de-identification returned "Access Denied" to `curl` (HTTP 403) and were not used; the regulation text is linked instead.
+
+- **[NIST SP 800-53 Rev. 5, Security and Privacy Controls (NIST CSRC)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)** — the publication page for the control catalog containing CM-2 (baseline), CM-3 (change control), CM-4 (impact analysis) and CM-5 (access restrictions for change). Voluntary for Lakeshore; use it for the exact control wording. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)** — III.F (validation SOPs), III.G (test environment, test evidence), III.H (validation report) and III.I (validation after a change). Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: General Principles of Software Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)** — 2002 guidance for device manufacturers; general thinking only for Lakeshore. Section 5.2.6 covers user site testing on the actual installed configuration. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 11.10, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.10)** — closed-system controls, including (d) limiting system access and (g) authority checks. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 606.160, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.160)** — blood establishment records, including (a)(1) on traceable, complete records. Use it when deciding what to keep from a failed or superseded test run. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[45 CFR 164.514, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/45/164.514)** — includes (d), minimum necessary, quoted in the lesson. It also contains the de-identification standard in its earlier paragraphs, which the lesson deliberately does not quote because it is not in the local `sources/` copy; the exact method is a privacy-office decision. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[45 CFR 164.312, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/45/164.312)** — HIPAA technical safeguards; (a)(1) access control is the text behind who may reach an environment holding real data. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[The Twelve-Factor App: Dev/prod parity](https://12factor.net/dev-prod-parity)** — a well-known practitioner statement of keeping development and production alike, naming the time, personnel and tools gaps. Opinion and practice, not regulation. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Episode 2 BASELINE CONFIGURATION (CM-2)](https://www.youtube.com/watch?v=6d9vetMzbIk)** (KamilSec, from oEmbed `author_name`) — the video embedded in the lesson: a security-training explainer on CM-2. Generic federal security context, not blood-specific; only the title, channel and embeddability were verified. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200).
+
+Earlier modules this one builds on: [IQ, OQ, PQ, and traceability](../../csv-and-becs/iq-oq-pq-and-traceability/index.qmd), [validated-state lifecycle and patching](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd), [the HIPAA Privacy Rule](../../healthcare-security-and-privacy/the-hipaa-privacy-rule/index.qmd), [security rule safeguards and Part 11](../../healthcare-security-and-privacy/security-rule-safeguards-and-part-11/index.qmd).
+
+## Keep learning
+
+Not official sources. Good places to keep learning; none is authority for a regulatory claim.
+
+- **[Keeping Configuration Management Simple, ISC2 Insights](https://www.isc2.org/Insights/2025/10/keeping-configuration-management-simple)** — a professional-body article on configuration management basics, useful for the baseline and drift vocabulary. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Deployment Pipeline, Martin Fowler](https://martinfowler.com/bliki/DeploymentPipeline.html)** — a short practitioner article on moving one build through stages of increasing confidence, the idea behind promoting what you validated. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Snowflake Server, Martin Fowler](https://martinfowler.com/bliki/SnowflakeServer.html)** — a short article on hand-tuned servers that cannot be reproduced, the root of drift. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Phoenix Server, Martin Fowler](https://martinfowler.com/bliki/PhoenixServer.html)** — the counter-practice: rebuild servers from a known definition so they cannot drift. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[iSpeak blog, ISPE](https://www.ispe.org/pharmaceutical-engineering/ispeak)** — a professional-body blog (pharmaceutical engineering) that often covers validation and data topics; browse for current posts. Verified loading via `curl` on 2026-11-13 (HTTP 200).
