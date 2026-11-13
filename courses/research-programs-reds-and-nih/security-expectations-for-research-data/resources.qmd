@@ -1,0 +1,108 @@
+---
+title: "Resources: security expectations for research data"
+order: 160
+---
+
+Every link below was loaded with `curl` on 2026-11-13 (HTTP 200) and its page title checked, unless
+noted. Official sources come first.
+
+## Curated links
+
+- **[NOT-OD-24-157: Implementation Update for Data Management and Access Practices Under the Genomic Data Sharing Policy](https://grants.nih.gov/grants/guide/notice-files/NOT-OD-24-157.html)**
+  (NIH Guide) — the notice the questionnaire's "NIST SP 800-171" line most plausibly traces to. Use it
+  to read the Scope and Applicability section and the "Security Best Practices for Users of
+  Controlled-Access Data" section yourself. Verified loading via `curl` on 2026-11-13 (HTTP 200; title
+  matches).
+
+- **[Genomic Data Sharing Policy](https://sharing.nih.gov/genomic-data-sharing-policy)** (NIH,
+  sharing.nih.gov) — NIH's hub page for the GDS Policy and controlled-access data. Use it when someone
+  proposes requesting genomic data and you need the process and the current security documents. Verified
+  loading via `curl` on 2026-11-13 (HTTP 200; title "Genomic Data Sharing Policy | Grants & Funding").
+
+- **[45 CFR 164.312, Technical safeguards](https://www.law.cornell.edu/cfr/text/45/164.312)** (Cornell
+  LII) — access control, audit controls, integrity, authentication, transmission security. The
+  technical core of the EXT-21 control set. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[45 CFR 164.308, Administrative safeguards](https://www.law.cornell.edu/cfr/text/45/164.308)**
+  (Cornell LII) — risk analysis, activity review, termination procedures, incident response, backup.
+  Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[45 CFR 164.402, Definitions (breach)](https://www.law.cornell.edu/cfr/text/45/164.402)** (Cornell
+  LII) — the breach definition, the presumption and the four-factor assessment. Use it for the
+  misdirected-file conversation with the privacy officer. Verified loading via `curl` on 2026-11-13
+  (HTTP 200).
+
+- **[45 CFR 164.514, Other requirements relating to uses and disclosures of PHI](https://www.law.cornell.edu/cfr/text/45/164.514)**
+  (Cornell LII) — paragraph (e) is the limited data set and the DUA terms, including the recipient's
+  duty to report misuse. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[42 U.S.C. 241, Research and investigations generally](https://www.law.cornell.edu/uscode/text/42/241)**
+  (Cornell LII) — subsection (d) is the Certificate of Confidentiality statute, including "all copies"
+  and "for perpetuity." Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-171 Rev. 2, Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final)**
+  (NIST CSRC) — the standard the notice names. Read it from NIST before anyone commits Lakeshore to it
+  for anything. This lesson doesn't state its requirements, and which revision NIH expects is something
+  to confirm in NIH's own documents. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-57 Part 1 Rev. 5, Recommendation for Key Management: General](https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final)**
+  (NIST CSRC) — the reference vocabulary for key lifecycle: generation, storage, rotation, revocation,
+  destruction. Use it when writing the key-handling control. Verified loading via `curl` on 2026-11-13
+  (HTTP 200).
+
+- **[NIST IR 7966, Security of Interactive and Automated Access Management Using Secure Shell (SSH)](https://csrc.nist.gov/pubs/ir/7966/final)**
+  (NIST CSRC) — practical guidance on managing SSH keys for automated transfers, which is the kind of
+  credential an sFTP job uses. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+**No video embed for this module.** Searched for a video on NIH's controlled-access genomic data
+security notice and on NIST SP 800-171; the only candidates were on non-YouTube hosts (an NIH VideoCast
+page, a Defense Department site) or vendor webinars. The two government videos relevant to the HIPAA
+side (HHS's Security Rule cybersecurity video and OCR's risk management video) verified through
+YouTube oEmbed on 2026-11-13 but are already embedded elsewhere in the curriculum, in
+[investigating a healthcare data incident](../../healthcare-security-and-privacy/investigating-a-healthcare-data-incident/index.qmd)
+and [information governance in a covered entity](../../healthcare-security-and-privacy/information-governance-in-a-covered-entity/index.qmd).
+
+Not listed: NIH's "Security Best Practices for Users of Controlled-Access Data" document (the notice
+names it, but the PDF address I tried returned a generic NIH page title to `curl`, so I could not
+confirm its content), NIH's Certificates of Confidentiality page (the connection failed with a proxy
+error and was not retried) and HHS's breach and encryption guidance pages (HTTP 403, not retried).
+
+## Prior modules
+
+- [REDS structure, contracts and governance](../reds-structure-contracts-and-governance/index.qmd)
+- [The vein-to-vein database and research extracts](../the-vein-to-vein-database-and-research-extracts/index.qmd)
+- [Human subjects, HIPAA and Certificates of Confidentiality](../human-subjects-hipaa-and-certificates-of-confidentiality/index.qmd)
+- [NIH data management and sharing](../nih-data-management-and-sharing/index.qmd)
+- [Security Rule safeguards and Part 11](../../healthcare-security-and-privacy/security-rule-safeguards-and-part-11/index.qmd)
+- [Breach notification and dual reporting](../../healthcare-security-and-privacy/breach-notification-and-dual-reporting/index.qmd)
+- [Investigating a healthcare data incident](../../healthcare-security-and-privacy/investigating-a-healthcare-data-incident/index.qmd)
+- [Business associate agreements](../../vendor-and-third-party-risk-management/business-associate-agreements/index.qmd)
+- [Secure SDLC and the software supply chain](../../release-management-and-sdlc/secure-sdlc-and-software-supply-chain/index.qmd)
+
+## Keep learning
+
+Not official sources, and not authority for any regulatory claim.
+
+- **[Key Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html)**
+  (OWASP) — practitioner-written, concrete advice on key generation, storage, rotation and separation.
+  Good for turning the key-handling control into a checklist. Verified loading via `curl` on
+  2026-11-13 (HTTP 200; title "Key Management - OWASP Cheat Sheet Series").
+
+- **[Logging Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html)**
+  (OWASP) — what to log, what not to log (including sensitive data), and how to protect logs. Useful
+  for the "keep donor data out of the logs" rule. Verified loading via `curl` on 2026-11-13 (HTTP 200;
+  title "Logging - OWASP Cheat Sheet Series").
+
+- **[SP 800-92, Guide to Computer Security Log Management](https://csrc.nist.gov/pubs/sp/800/92/final)**
+  (NIST CSRC) — older but still a clear walkthrough of log generation, storage and review. Verified
+  loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[SP 800-61 Rev. 2, Computer Security Incident Handling Guide](https://csrc.nist.gov/pubs/sp/800/61/r2/final)**
+  (NIST CSRC) — the standard incident-handling lifecycle; a good base for the EXT-21 incident plan's IT
+  portion. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[HIPAA Encryption Requirements](https://www.hipaajournal.com/hipaa-encryption-requirements/)**
+  (HIPAA Journal; commercial publisher, also sells training) — a readable explainer of how
+  "addressable" encryption is treated in practice. Treat as commentary and check any claim against the
+  rule text. Verified loading via `curl` on 2026-11-13 (HTTP 200; title "HIPAA Encryption Requirements
+  - 2026 Update").

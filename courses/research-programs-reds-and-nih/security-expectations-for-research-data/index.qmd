@@ -1,0 +1,602 @@
+---
+title: "Security expectations for research data"
+order: 159
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** you can set the security controls for research data leaving Lakeshore (encryption,
+  keys, access, logging, copies, incident handling) and apply NIH's controlled-access genomic-data
+  expectations only where they genuinely apply.
+- **Punchline:** the hub's security questionnaire says Lakeshore must "comply with NIST SP 800-171."
+  The Director traces the phrase to NIH's genomic data notice, which binds users of controlled-access
+  *genomic* data. EXT-21 sends no genomic data. Lakeshore answers precisely: it applies its own
+  HIPAA-based controls to EXT-21 and documents them.
+- **The rule in one line:** for EXT-21 the security rule is HIPAA's Security Rule plus whatever the
+  DUA says. The NIH genomic notice is a different rulebook for a different kind of data.
+- **Monday question:** "Who holds the sFTP private key for EXT-21, when was it last rotated, and what
+  happens to it when that person changes jobs?"
+- **The trap:** one misdirected file starts four decisions at once (breach assessment, DUA notice, CoC
+  treatment, FDA question). Teams that treat it as one IT incident answer two of the four.
+:::
+
+## "We'd like you to comply with NIST 800-171"
+
+The hub's draft agreement for RSH-0107 arrives with a security questionnaire attached. Most of it is
+ordinary: encryption in transit, access reviews, incident contacts. Question 14 isn't. "Does your
+organization comply with NIST SP 800-171? If not, please describe your plan to do so."
+
+The CIO reads it twice. "That's the federal standard for controlled unclassified information. We
+don't hold federal contracts. Are we being asked to rebuild the network?"
+
+The systems administrator is already pricing it. "That's a whole control family set. Enclave, MFA
+everywhere, the works. Months."
+
+The medical director shrugs. "It's an NIH program. I assume it's an NIH requirement."
+
+Your Quality Analyst asks the useful question: "Where does that sentence come from: the agreement, a regulation, or the questionnaire template?"
+
+That is the question this lesson is built on. You'll find where the expectation really comes from,
+decide whether it reaches EXT-21, and set the security controls EXT-21 does need, which are a
+different and more practical list.
+
+## Why the rule exists, and the ITSM bridge
+
+Research data leaving a blood center goes to a party you can't audit, for years. The failure modes are
+ordinary: a transfer key that never rotates and walks out with an employee, a file sent to the wrong
+endpoint, test copies nobody inventoried, a crosswalk backup on a shared drive. Each turns a carefully
+scoped limited data set into an incident.
+
+The ITSM bridge is information security management as *service design*. EXT-21 is a service, and its
+security is a set of designed controls, each with an owner, evidence and a review date, recorded in the
+CMDB. Keys are configuration items with a lifecycle. A misdirected file is a major incident with
+several stakeholders and legal consequences.
+
+The part the Director must hold apart is *whose* rulebook applies. Three can be in play:
+
+1. **HIPAA's Security Rule**, which binds Lakeshore as a covered entity for electronic protected
+   health information it creates, receives, maintains or transmits.
+2. **The agreement** (the DUA, the data use agreement) and any security terms in it, which bind what
+   Lakeshore signs.
+3. **NIH's genomic-data security expectations**, which bind users of NIH controlled-access human
+   genomic data.
+
+EXT-21 sits squarely in the first two. Whether it touches the third is a question of fact about the
+data, and we'll answer it from the notice.
+
+## The rule in plain English
+
+- **Lakeshore must protect the electronic protected health information it holds and transmits,** using
+  measures it chooses reasonably for its size, systems, costs and risks. The Security Rule is flexible
+  about *how*, not about *whether* you analyze risk, control access, keep audit trails, protect
+  integrity, secure transmissions and handle incidents.
+- **"Addressable" is not "optional."** You assess whether the specification is reasonable and
+  appropriate, implement it if so, and otherwise document why and implement an equivalent alternative.
+  For data leaving the building, "we chose not to encrypt" is a hard sentence to defend.
+- **The DUA adds contract terms,** including that the recipient uses "appropriate safeguards" and
+  reports unauthorized use or disclosure.
+- **The CoC treatment** adopted in module 3 (no disclosure outside the research purpose, legal requests
+  to counsel, copies tracked, indefinite protection) needs IT to make "copies tracked" true.
+- **NIH's genomic notice applies to users of controlled-access genomic data,** not to every NIH-funded
+  program's data.
+
+Is the hub a business associate? A recipient of a limited data set under a DUA is a research recipient,
+and the DUA is the governing instrument. Any business associate question is for the privacy officer.
+The [business associate agreements module](../../vendor-and-third-party-risk-management/business-associate-agreements/index.qmd)
+shows how that analysis works generally.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 45 CFR 164.306(a), (b), (d) | "one-sixty-four point three-oh-six" | HIPAA regulation: confidentiality, integrity, availability of ePHI; flexible approach; required vs. addressable | Why Lakeshore chooses its own controls and documents them |
+| 45 CFR 164.308(a)(1)(ii) | "...three-oh-eight, a, one, two" | Regulation: risk analysis, risk management, activity review (required) | The risk analysis behind the control set; the log review |
+| 45 CFR 164.308(a)(3), (4) | "...a, three" and "a, four" | Regulation: workforce security, termination procedures, access authorization (addressable) | Revoking the key and crosswalk access when staff change |
+| 45 CFR 164.308(a)(6)(ii) | "...a, six, two" | Regulation: identify, respond, mitigate and document security incidents (required) | The misdirected-file response |
+| 45 CFR 164.308(a)(7)(ii) | "...a, seven, two" | Regulation: backup plan, disaster recovery (required); testing (addressable) | Crosswalk backup and tested restore |
+| 45 CFR 164.310(d)(1), (2) | "...three-ten, d" | Regulation: device and media controls, disposal, accountability | Copies inventory, media handling, destruction |
+| 45 CFR 164.312(a)-(e) | "...three-twelve" | Regulation: access control, audit controls, integrity, authentication, transmission security | The technical core of the control set |
+| 45 CFR 164.402 | "...four-oh-two" | Regulation: breach definition; presumption; four-factor assessment; "unsecured" PHI | The breach question after a misdirected file |
+| 45 CFR 164.404(a)(2), (b) | "...four-oh-four" | Regulation: discovery date; notice no later than 60 days | The clock IT must timestamp |
+| 45 CFR 164.514(e)(2), (4) | "...five-fourteen, e" | Regulation: limited data set; DUA contents | EXT-21's legal form; the misuse-reporting term |
+| 42 U.S.C. 241(d)(1) | "forty-two U.S.C. two-forty-one, d" | Statute: Certificates of Confidentiality | The copies and disclosure commitments |
+| NIH NOT-OD-24-157 | "the genomic data security notice" | NIH policy: security expectations for users of controlled-access human genomic data | Where "NIST SP 800-171" in the questionnaire plausibly comes from |
+| NIST SP 800-53 Rev. 5 (CM-3, CM-5) | "eight-hundred fifty-three" | Voluntary federal control catalog | Vocabulary only: change control and access restrictions for the job |
+
+## The actual text
+
+### The HIPAA Security Rule: what Lakeshore must do
+
+Quoted from `sources/cfr/45-164-security-rule-excerpt.md`.
+
+The general rule, 45 CFR 164.306(a)(1) to (3):
+
+> (1) Ensure the confidentiality, integrity, and availability of all electronic protected health
+> information the covered entity or business associate creates, receives, maintains, or transmits.
+> (2) Protect against any reasonably anticipated threats or hazards to the security or integrity of
+> such information. (3) Protect against any reasonably anticipated uses or disclosures of such
+> information that are not permitted or required under subpart E of this part.
+
+Read against EXT-21: "transmits" is the transfer; "reasonably anticipated threats" is the risk
+analysis; "uses or disclosures ... not permitted" is the misdirected file and the unauthorized copy.
+
+The addressable concept, 164.306(d)(3):
+
+> Assess whether each implementation specification is a reasonable and appropriate safeguard [...]
+> Implement the implementation specification if reasonable and appropriate; or [...] Document why it
+> would not be reasonable and appropriate [...] and [...] Implement an equivalent alternative measure
+> if reasonable and appropriate.
+
+Technical safeguards, 164.312 (selected):
+
+> (a)(1) Standard: Access control. Implement technical policies and procedures for electronic
+> information systems that maintain electronic protected health information to allow access only to
+> those persons or software programs that have been granted access rights as specified in §
+> 164.308(a)(4).
+
+> (2) Implementation specifications: (i) Unique user identification (Required). [...] (iv) Encryption
+> and decryption (Addressable). Implement a mechanism to encrypt and decrypt electronic protected
+> health information.
+
+> (b) Standard: Audit controls. Implement hardware, software, and/or procedural mechanisms that
+> record and examine activity in information systems that contain or use electronic protected health
+> information.
+
+> (c)(1) Standard: Integrity. Implement policies and procedures to protect electronic protected
+> health information from improper alteration or destruction. [...]
+
+> (e)(1) Standard: Transmission security. Implement technical security measures to guard against
+> unauthorized access to electronic protected health information that is being transmitted over an
+> electronic communications network. [...] (ii) Encryption (Addressable). Implement a mechanism to
+> encrypt electronic protected health information whenever deemed appropriate.
+
+Mapping: (a) is the service account and crosswalk access (note "persons or software programs"); (b) is
+the log; (c) is the checksum in the ledger; (e) is encryption in transit and the receipt.
+
+From 164.308: (a)(1)(ii)(D), information system activity review (Required), means to "regularly
+review records of information system activity, such as audit logs, access reports, and security
+incident tracking reports." And (a)(6)(ii), Response and reporting (Required): "Identify and respond to
+suspected or known security incidents; mitigate, to the extent practicable, harmful effects of
+security incidents that are known to the covered entity or business associate; and document security
+incidents and their outcomes."
+
+Termination procedures, (a)(3)(ii)(C) (Addressable), is where "revoke the key when staff change" comes
+from. Media rule: 164.310(d)(2)(i), "Disposal (Required). Implement policies and procedures to
+address the final disposition of electronic protected health information, and/or the hardware or
+electronic media on which it is stored," and (iii), "Accountability (Addressable). Maintain a record of
+the movements of hardware and electronic media and any person responsible therefore." That is your
+copies inventory.
+
+### The DUA terms
+
+From `sources/cfr/45-164-research-provisions-excerpt.md`, 45 CFR 164.514(e)(4)(ii)(C): the DUA must
+provide that the recipient will
+
+> (*1*) Not use or further disclose the information other than as permitted by the data use agreement
+> or as otherwise required by law; (*2*) Use appropriate safeguards to prevent use or disclosure of
+> the information other than as provided for by the data use agreement; (*3*) Report to the covered
+> entity any use or disclosure of the information not provided for by its data use agreement of which
+> it becomes aware; [...] and (*5*) Not identify the information or contact the individuals.
+
+Notice that the regulation puts the reporting duty on the *recipient*, toward Lakeshore. Any duty for
+Lakeshore to tell the hub about its own misdirected file comes only from what the agreement says.
+
+### The breach definition
+
+From `sources/cfr/45-164-breach-notification-excerpt.md`, 164.402, definition of *Breach*:
+
+> an acquisition, access, use, or disclosure of protected health information in a manner not
+> permitted under subpart E is presumed to be a breach unless the covered entity or business
+> associate, as applicable, demonstrates that there is a low probability that the protected health
+> information has been compromised based on a risk assessment of at least the following factors: (i)
+> The nature and extent of the protected health information involved, including the types of
+> identifiers and the likelihood of re-identification; (ii) The unauthorized person who used the
+> protected health information or to whom the disclosure was made; (iii) Whether the protected health
+> information was actually acquired or viewed; and (iv) The extent to which the risk to the protected
+> health information has been mitigated.
+
+*Unsecured* PHI is PHI not rendered unusable, unreadable or indecipherable "through the use of a
+technology or methodology specified by the Secretary." We don't hold that guidance in `sources/`, so
+this lesson doesn't say which encryption methods qualify. The shape is the point: the breach question
+turns partly on whether encryption made the data unreadable, so encrypt well and keep keys apart from
+the data.
+
+Timing, 164.404(b): notice "without unreasonable delay and in no case later than 60 calendar days
+after discovery of a breach." Discovery, 164.404(a)(2), is "the first day on which such breach is
+known to the covered entity, or, by exercising reasonable diligence would have been known." For IT
+that means: the moment your log shows the misdirected file is a timestamp someone will have to defend.
+
+### The CoC statute
+
+From `sources/usc/42-usc-241d.md`, 42 U.S.C. 241(d)(1)(E) and (F):
+
+> Identifiable, sensitive information collected by a person to whom a certificate has been issued
+> under subparagraph (A), and all copies thereof, shall be subject to the protections afforded by
+> this section for perpetuity.
+
+"All copies thereof" is why a copies inventory is a control, not housekeeping. Module 3 recorded
+Lakeshore's *conservative organizational decision* to treat EXT-21 output and the crosswalk as
+covered. This lesson doesn't claim the statute settles Lakeshore's exact status.
+
+## Where "NIST SP 800-171" actually comes from
+
+The Director goes looking. The phrase appears in the NIH notice NOT-OD-24-157, in
+`sources/nih/gds-security-best-practices-not-od-24-157.md`. Here is what it says, verbatim.
+
+On who it applies to, under *Scope and Applicability*:
+
+> This update applies to all NIH funding mechanisms (grants, cooperative agreements, contracts, Other
+> Transactions, and intramural support) regardless of the activity code that support the following
+> activities: Approved Users of controlled-access human genomic data from NIH controlled-access data
+> repositories.
+
+On what it expects of those users:
+
+> The "NIH Security Best Practices for Users of Controlled-Access Data" is intended to ensure that
+> Approved Users of NIH controlled-access data under the GDS Policy maintain such data on
+> institutional IT systems and third-party computing infrastructures that meet certain standards in
+> accordance to NIST SP 800-171 [...] To that end, NIH expects that: Approved Users of NIH
+> controlled-access data will attest to NIH that their institution is compliant with NIST SP 800-171.
+> Approved Users choosing a third-party IT system and/or Cloud Service Provider (CSP) [...] will
+> provide NIH with an attestation affirming that the third-party system is compliant with NIST SP
+> 800-171.
+
+How it gets enforced:
+
+> The "NIH Security Best Practices for Users of Controlled-Access Data" update will be effective on
+> January 25, 2025, at which point adherence to this standard will be included in new or renewed Data
+> Use Certifications or similar agreements stipulating terms of access to controlled-access human
+> genomic data regardless of whether the Approved User is supported by NIH or not.
+
+And the limit:
+
+> Expectations under the NIH Security Best Practices for Users of Controlled-Access Data are in
+> addition to, and do not supersede, any local, State, Tribal, Federal laws and regulations, and/or
+> relevant institutional policies.
+
+Map it to the scenario:
+
+- **The trigger is the data and the access route:** "Approved Users of controlled-access human genomic
+  data from NIH controlled-access data repositories," who sign a Data Use Certification after NIH
+  approval. The standard arrives through that certification.
+- **EXT-21 is not that.** It sends donor, donation and component fields from BECS (blood establishment
+  computer software) to a program's data coordinating center. No genomic data, no NIH controlled-access
+  repository, no Approved Users at Lakeshore. The notice doesn't, on its face, reach it. The source
+  file's own scope caution says it isn't a general NIH security standard.
+- **Ask the hub about its DCC.** The notice says NIH "does not intend to include in the definition of
+  controlled-access data repositories activities such as consortia data coordinating centers or similar
+  activities that do not share data outside of a specific program or initiative." That concerns the
+  repository definition, not Lakeshore's duties, but it is a reason to ask what standard the hub has
+  been told applies.
+- **A contract can still import it.** If the agreement itself says Lakeshore must meet NIST SP 800-171,
+  that is a term Lakeshore signs. It is a negotiation for regulatory affairs and counsel, so read the
+  agreement, not only the questionnaire.
+
+One honesty note. NIST SP 800-171 itself is not in `sources/`, and this lesson doesn't state any of its
+requirements or number any of them. Anyone proposing to adopt it should read the standard from NIST
+directly (the resources page links it).
+
+## The questionnaire answer
+
+You write the answer for question 14 with regulatory affairs and the privacy officer:
+
+> "Lakeshore does not currently attest to NIST SP 800-171. We understand the expectation to arise from
+> NIH's notice NOT-OD-24-157, which applies to Approved Users of NIH controlled-access human genomic
+> data. EXT-21 transmits donor, donation and component data and no genomic data, and no Lakeshore
+> staff are Approved Users of controlled-access data. Lakeshore protects EXT-21 under the HIPAA
+> Security Rule and the data use agreement, using the documented control set attached. Please tell us
+> if the program's agreement or the DCC's terms impose a different standard on contributing sites, and
+> cite the clause."
+
+It is true, names its source, promises nothing Lakeshore won't deliver, and invites correction.
+
+## If the medical director later asks for controlled-access genomic data
+
+Suppose the medical director's team wants controlled-access human genomic data from an NIH repository
+for their own analysis. Then the notice *does* apply, to the Approved Users and their institution.
+IT would need to provide:
+
+1. **An institutional attestation to NIH** that Lakeshore is compliant with NIST SP 800-171: evidence
+   from IT, signature from an executive.
+2. **A system that meets the standard** to hold and analyze the data ("institutional IT systems and
+   third-party computing infrastructures that meet certain standards"): a segregated environment at
+   Lakeshore or a third-party platform.
+3. **A separate attestation for any third-party or cloud provider** used, "affirming that the
+   third-party system is compliant with NIST SP 800-171."
+4. **Agreement terms:** adherence is built into the Data Use Certification, and the attestation process
+   "will vary and may be incorporated as part of the process for accessing controlled data or through
+   other agreements."
+5. **Alignment with other duties.** The expectations are "in addition to, and do not supersede" other
+   laws and institutional policies, so HIPAA and the CoC treatment still apply. (NIH's CoC policy names
+   individual-level human genomic data research as in scope: `sources/nih/certificates-of-confidentiality-not-od-17-109.md`.)
+
+(The notice also mentions a non-U.S. ISO/IEC alternative and a developer-access framework. Neither
+applies to EXT-21.)
+
+That is a project with its own funding and a signatory, not a toggle on EXT-21. Don't quietly extend
+EXT-21 into a genomic environment, and don't drag the genomic standard onto EXT-21.
+
+## The EXT-21 control set, end to end
+
+Modules 2 to 4 each made security-shaped decisions. This is where they become one set of controls, each
+with an owner and evidence.
+
+### 1. Source access
+
+EXT-21 reads from the read-only reporting copy through the dedicated view holding only the spec
+fields (module 2). The service account has no write permission anywhere. No external party has a login
+to any Lakeshore system. Least privilege here is concrete: the account can `SELECT` from one view and
+nothing else. **Evidence:** the account's grants, reviewed on a schedule and after any BECS change
+that touches the view. **Rule:** 164.312(a)(1); 164.308(a)(4).
+
+### 2. The crosswalk is the crown jewel
+
+The crosswalk (code-to-donor table, design option B in module 2) is the one thing that turns
+EXT-21's output back into people. Treat it accordingly:
+
+- **Separate store**, not on the extract server, not in the reporting copy, with its own encryption
+  key.
+- **Restricted access:** a short named list of people, plus the coding step of EXT-21 itself. Humans
+  access it by exception, with a ticket and the privacy officer's knowledge.
+- **Logged:** every read and write by person or service account.
+- **Never transferred**, to the hub, to a repository, to a "secure share," to a consultant. A request
+  for it is escalated to the privacy officer and counsel, never fulfilled by IT.
+- **Backed up, and restore tested.** A lost crosswalk makes corrections and re-linking impossible
+  (module 4), so backups matter as much as secrecy. The backup is itself a copy with the same
+  protections, and the restore is actually tested, not assumed (164.308(a)(7)(ii)(A), (B) required;
+  (D) testing addressable).
+- **Destroyed only on the privacy officer's decision**, with counsel, because destruction is
+  irreversible (module 4). IT doesn't free the space on a disk budget argument.
+
+### 3. Encryption in transit and at rest
+
+In transit: the paper describes data transferred "using secure data transfer (sFTP) keys." The
+transfer should use that channel and authenticate both ends. At rest: the sent-file archive, the
+staging area, the ledger and the crosswalk (and its backups) are encrypted, with keys held apart from
+the data. Both are *addressable* under 164.312(a)(2)(iv) and (e)(2)(ii). The Director's position:
+Lakeshore assessed them, found them reasonable and appropriate for data leaving the organization, and
+implements them. That assessment is written down.
+
+### 4. File integrity
+
+The ledger from module 4 already records a checksum and algorithm per file. Use it in three places:
+computed at release; compared with the checksum the receiving side reports in the receipt; and
+re-checked if the file is ever retrieved from the archive. Borrow the vocabulary from the
+[secure SDLC module](../../release-management-and-sdlc/secure-sdlc-and-software-supply-chain/index.qmd):
+a checksum shows a file is unchanged since recorded. It does not show *who* made it. If an attacker
+can alter both the file and its recorded checksum, the check passes on a forgery. So keep the ledger
+write-restricted and separate from the file store. If the hub supports it, signing is the stronger
+option. That is a question for the hub, not something to assume it offers. **Rule:**
+164.312(c)(1), (c)(2), (e)(2)(i).
+
+### 5. Keys and credentials for the transfer
+
+The paper says sFTP keys are used to reach the DCC's cloud environment. The paper doesn't say whose
+key it is or how it is issued, so ask the hub and settle it in the agreement. For Lakeshore's side:
+
+- **Generated at Lakeshore.** The private key never leaves Lakeshore and is never emailed or put in a
+  ticket. The hub receives only the public key.
+- **A named key owner and a named backup.** The systems administrator is the custodian. A second
+  person, named by the Director, can act when he's away. The security official reviews. Roles, not
+  "the team."
+- **Held in a managed secrets store,** usable by the EXT-21 job's identity, never in scripts, laptops or chat.
+- **Verify the other end.** Record the hub's host key fingerprint received through a second channel,
+  so a spoofed endpoint is detectable. That is also how a *misdirected* file gets caught before it
+  happens.
+- **Rotation on a stated interval**, set by the security official and written into the control, and
+  after any suspected exposure.
+- **Revocation on staff change.** When the custodian changes role or leaves, the key is rotated, not
+  just his account disabled, because he has seen the key. That is the termination procedure
+  (164.308(a)(3)(ii)(C)) applied to a credential.
+- **Separate keys** for transfer, data at rest and crosswalk, so one compromise doesn't open everything.
+
+### 6. Logging and monitoring
+
+Log every EXT-21 run (times, row counts, outcome), every use of the transfer key, every outbound
+transfer and receipt, every read or write of the crosswalk, every QC sign-off, failed access attempts,
+and changes to the job, mapping or permissions. Keep donor data out of the logs and keep the logs where
+the people logged can't edit them. Someone reviews them on a schedule (a *required* specification,
+164.308(a)(1)(ii)(D)), and the review is recorded. A log nobody reads is not an audit control.
+
+### 7. The copies inventory
+
+"Copies tracked" (the CoC commitment) and "accountability" (164.310(d)(2)(iii)) both mean: you can
+list every copy. For EXT-21 the list is:
+
+| Copy | Contains | Owner | Control |
+|---|---|---|---|
+| Reporting copy view | Spec fields, live data | Systems administrator | Read-only account; reviewed |
+| Staging output before release | Mapped extract | EXT-21 owner | Encrypted; deleted after release per schedule |
+| Sent-file archive | Exactly what was sent | EXT-21 owner | Encrypted; retention per DUA |
+| Transfer ledger and logs | Metadata, checksums | EXT-21 owner | Write-restricted |
+| Crosswalk and its backups | Code to donor | Named custodian | Section 2 above |
+| Validation environment copy | De-identified copy used for test runs (module 2) | Validation owner | Still inventoried. "De-identified" is a claim to verify, not a reason to skip tracking |
+| Test files for a hub test endpoint | Synthetic content only | EXT-21 owner | Never real data |
+| Anything else | Nothing should exist | | Laptops, email, shared drives, tickets: prohibited, and found by search, not trust |
+
+Every row is a CMDB item with an owner, location, retention and destruction rule. Destruction follows
+the DUA's terms and the privacy officer's decision, not disk pressure.
+
+### 8. Change control for the controls
+
+Changes to the job, mapping, permissions or key arrangements go through change enablement. NIST SP
+800-53's CM-3 ("with explicit consideration for security and privacy impact analyses") and CM-5
+("Define, document, approve, and enforce physical and logical access restrictions associated with
+changes") are useful *vocabulary*. They are a voluntary catalog here, not a requirement.
+
+### 9. Incident handling
+
+See the next section. The control is that the incident plan names EXT-21 explicitly and has been
+rehearsed.
+
+## When an extract goes to the wrong place
+
+The transfer log shows an EXT-21 file went to an endpoint the DUA doesn't name. The cause may be a
+mistyped destination in a config change. It doesn't matter yet. The first hour is IT's. Everything
+after it belongs to people who aren't in IT.
+
+```{mermaid}
+flowchart TD
+    A["Transfer log shows an EXT-21 file<br/>went to an endpoint the DUA does not name"] --> B["Contain and document<br/>stop the job, revoke the key,<br/>preserve logs, open incident ticket<br/>164.308(a)(6)(ii)"]
+    B --> C["Same day: notify the privacy officer,<br/>counsel, regulatory affairs, Quality"]
+    C --> T1{"Track 1: HIPAA<br/>breach assessment"}
+    C --> T2{"Track 2: DUA<br/>misuse and notice terms"}
+    C --> T3{"Track 3: Certificate of<br/>Confidentiality treatment"}
+    C --> T4{"Track 4: FDA reporting<br/>Quality confirms"}
+    T1 --> R1["Privacy officer applies the four factors<br/>164.402; clock runs from discovery"]
+    T2 --> R2["Notify the hub as the DUA requires;<br/>ask recipient to confirm deletion"]
+    T3 --> R3["Counsel: disclosure outside the research<br/>purpose; recover or destroy copies"]
+    T4 --> R4["Director's reasoning: no BECS record altered,<br/>so likely not triggered; Quality decides"]
+    R1 --> Z["One incident record,<br/>four decisions, four owners"]
+    R2 --> Z
+    R3 --> Z
+    R4 --> Z
+```
+
+**IT's first hour (a required specification: identify, respond, mitigate, document):** stop the job,
+revoke or rotate the key, preserve the logs and the file, find what was in it, find who or what
+received it, and start the incident record with timestamps. The investigation method is in
+[investigating a healthcare data incident](../../healthcare-security-and-privacy/investigating-a-healthcare-data-incident/index.qmd).
+
+**Then four tracks, at once, with four owners:**
+
+1. **HIPAA breach assessment (privacy officer).** An EXT-21 file is a limited data set, which is PHI
+   without direct identifiers (164.514(e)(2)). A disclosure the DUA doesn't permit is *presumed* a
+   breach under 164.402 unless low probability of compromise is shown on the four factors. The coded
+   key, with the crosswalk held back, bears on factor (i), "likelihood of re-identification." IT
+   supplies evidence: what was in the file, where it went, whether it was opened or deleted. The
+   privacy officer decides. The
+   [breach notification and dual reporting module](../../healthcare-security-and-privacy/breach-notification-and-dual-reporting/index.qmd)
+   covers the method and the 60-day clock, which runs from discovery.
+2. **The DUA's terms.** The regulation requires the *recipient* to report misuse to Lakeshore. If the
+   file went to the hub's own environment by mistake, the hub's duties and Lakeshore's notice
+   duties are whatever the agreement says. This is the reason to put a mutual notice-and-deletion
+   term into the DUA now, before any incident. It's also a recommendation for the privacy officer and
+   counsel, not something 164.514(e) requires. If the file went to an unrelated party, there is no
+   recipient relationship to lean on.
+3. **CoC treatment (counsel with the privacy officer).** Lakeshore treats EXT-21 output as covered. A
+   disclosure to someone "not connected with the research" is exactly what that treatment is meant to
+   prevent. Counsel decides what notice or recovery is called for. IT provides the copy list so
+   recovery and deletion can be confirmed.
+4. **FDA reporting (Quality).** This is the Director's reasoning, for Quality to confirm, and not a
+   legal conclusion: a research-data incident does not, on its face, trigger FDA reporting, because
+   no BECS record was altered and no product's safety, purity or potency is in question. The extract
+   is a read-only copy. If the cause turns out to be a BECS change that also affected a regulated
+   record or a distributed product, that's a separate deviation with its own clock, and Quality files
+   it.
+
+The ticket closes when each track's owner has recorded a decision, not when IT's work is done.
+
+## Watch it explained
+
+No video embed for this module. The two on-topic government videos found (HHS's Security Rule
+cybersecurity video and OCR's risk management video) are already embedded in the
+[investigating a healthcare data incident](../../healthcare-security-and-privacy/investigating-a-healthcare-data-incident/index.qmd)
+and [information governance](../../healthcare-security-and-privacy/information-governance-in-a-covered-entity/index.qmd)
+modules, and nothing else both on-topic and verifiable turned up (no NIH or NIST video on the genomic
+notice or SP 800-171). See the resources page.
+
+## What an assessor would look for
+
+A hub review, the privacy officer's audit or an HHS inquiry would ask for: the control set with an
+owner and evidence per control (bad answer: "We're HIPAA compliant"); the risk analysis covering
+EXT-21 and the written assessment of each addressable specification relied on; the key record (owner,
+backup, last rotation, revocation log; bad answer: "It's on the server"); the crosswalk and log access
+lists with proof of review; the copies inventory and destruction records; the incident plan naming
+EXT-21 and a rehearsal record; and the questionnaire answer with the clause behind it.
+
+## Common traps
+
+1. **"It's an NIH program, so NIST 800-171 applies."** Check the data, not the sponsor. And say no
+   precisely rather than yes casually. A false attestation is worse than a gap.
+2. **"Addressable means optional."** It means assess and document. For data leaving the building,
+   skipping encryption needs a justification you'd struggle to write.
+3. **"The crosswalk is just another table."** It is the one table that re-identifies the program.
+4. **"De-identified test data isn't in scope."** It still goes in the inventory, and someone must verify
+   the claim.
+5. **"The incident is IT's until the ticket closes."** Four tracks have four owners.
+
+## What this means for your job
+
+- **Run the questionnaire like a change request.** For each line, find the clause or policy it comes
+  from. If it's the notice and the data doesn't fit, say so in writing. If it's the contract, negotiate.
+- **Ask who holds the key.** Owner, backup, rotation interval, last revocation record.
+- **Make the inventory searchable.** If a copy isn't in the CMDB, you can't claim "copies tracked."
+- **Escalate the same day:** any misdirected file, suspected key exposure, request for the crosswalk or
+  legal request about the data goes to the privacy officer and counsel.
+- **Timestamp everything.** "Discovered" is defensible only if your log says when.
+- **Keep the tiers straight** in every email: HIPAA, the agreement, NIH policy, Lakeshore policy, NIST
+  as vocabulary.
+
+## The Director's decision for RSH-0107
+
+Recorded, with the privacy officer's and regulatory affairs' concurrence:
+
+> **The EXT-21 control set (items 1 to 9 under "The EXT-21 control set, end to end") is approved as the
+> security condition for RSH-0107.** It applies Lakeshore's HIPAA-based controls to EXT-21 and is
+> documented. Lakeshore does not attest to NIST SP 800-171 for EXT-21, and the questionnaire answer
+> says why.
+>
+> 1. **Agreement asks:** a mutual notice-and-deletion term in the DUA; the hub states whether a test
+>    endpoint exists and what standard its DCC says applies to contributing sites.
+> 2. **Genomic data:** NOT-OD-24-157 does not apply to EXT-21. If the medical director's team ever
+>    requests controlled-access genomic data, it comes to the Director as a separate project with an
+>    institutional attestation.
+> 3. **Sequence:** Quality and the security official verify the controls against evidence. Only then
+>    does the first test transfer go to the hub's test endpoint, if one exists, with synthetic content
+>    only. No production data moves until RSH-0107's other conditions also clear: the privacy officer's
+>    written pathway (module 3) and the signed agreement (module 4's terms).
+
+RSH-0107's condition 3 (written agreement and security terms) is now decided on both sides. What
+remains is verification and signature.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The hub's questionnaire asks Lakeshore to "comply with NIST SP 800-171." What do you check before answering, and what is the likely answer for EXT-21?
+
+Where the expectation comes from. In our sources it comes from NIH's notice NOT-OD-24-157, which
+applies to Approved Users of NIH controlled-access human genomic data. EXT-21 sends no genomic data,
+and no Lakeshore staff are Approved Users, so the notice doesn't reach it. The answer says so, names
+the HIPAA-based controls Lakeshore applies, and asks the hub to cite any clause that says otherwise.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A colleague says HIPAA encryption is "addressable, so we can skip it for the sFTP archive." Right or wrong?
+
+Wrong. "Addressable" means assess whether it is reasonable and appropriate, implement it if so, and
+if not, document why and implement an equivalent alternative if reasonable (164.306(d)(3)). For data
+leaving the organization and sitting in an archive, "not reasonable" would be a hard case to make.
+The assessment itself must be written down.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The key custodian leaves Lakeshore. Is disabling his account enough?
+
+No. He has seen the private key, so the key is rotated and the hub is given the new public key. His
+account and access to the crosswalk are removed too. That is the termination procedure
+(164.308(a)(3)(ii)(C), addressable) applied to a credential.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: An EXT-21 file went to the wrong endpoint. Name the four tracks and who owns each.
+
+HIPAA breach assessment (privacy officer, 164.402 four factors, clock from discovery); the DUA's
+misuse and notice terms (privacy officer and counsel, with regulatory affairs); the CoC treatment
+(counsel with the privacy officer); FDA reporting (Quality confirms, based on the Director's reasoning
+that no BECS record was altered). IT owns containment, evidence and the incident record.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q5: Does HIPAA require Lakeshore to notify the hub within a set time if Lakeshore misdirects an EXT-21 file?
+
+No. 164.514(e)(4) requires the *recipient* to report misuse to Lakeshore. Any duty for Lakeshore to
+notify the hub, and any deadline, comes only from the agreement. That is a "not a regulatory
+requirement" answer, and a reason to negotiate the term now.
+:::
+
+## Where this goes next
+
+Module 6 is the capstone: a BECS release breaks EXT-21's field mapping the same week a
+rapid-response study request arrives. You'll run both using the controls from this module, change
+control, the copies inventory and the incident plan, without touching a regulated record.
