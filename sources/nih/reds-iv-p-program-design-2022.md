@@ -13,6 +13,17 @@ honestly (the 2026 records describe "phase 3" contracts).
 
 ---
 
+## Section 1, Introduction — program lineage (verbatim excerpt; whitespace normalized where the PMC text layer dropped a space before a citation marker)
+
+> The programs evolved from the Retrovirus Epidemiology Donor Study (REDS), 1989–2001 and REDS-II,
+> 2004–2012, primarily focused on improving blood availability and safeguarding the blood supply
+> (with attention to infectious risks), to the programs of today encompassing epidemiological
+> research on the entire transfusion chain, from donors to recipients. These linked
+> donor-donation-recipient centered programs include the Recipient Epidemiology and Donor
+> Evaluation Study - III (REDS-III), 2011–2020, and the current phase of the program, the Recipient
+> Epidemiology and Donor Evaluation Study-IV-Pediatric (REDS-IV-P), launched in 2019 by NHLBI in
+> collaboration with National Institute of Child Health and Human Development (NICHD).
+
 ## Section 2, Infrastructure of the REDS-IV-P program (verbatim excerpt)
 
 > The 7-year multi-center program (April 2019 to March 2026), will conduct epidemiologic and

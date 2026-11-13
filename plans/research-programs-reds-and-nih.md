@@ -85,7 +85,7 @@ depth but keep index.qmd prose ≤ 5,000 words; "Keep learning" section in resou
 | # | Slug | Finish line | `order:` | Status |
 |---|---|---|---|---|
 | — | (syllabus) | — | 150 | Published |
-| 1 | `reds-structure-contracts-and-governance` | Explain who governs REDS today (NHLBI/NICHD, executive and steering committees, monitoring board, hubs, DCC, CTLS), how the 2026 contract round is structured, what "REDS V" does and doesn't mean in the records, and what a contributing blood center commits to. | 151/152 | Not started |
+| 1 | `reds-structure-contracts-and-governance` | Explain who governs REDS today (NHLBI/NICHD, executive and steering committees, monitoring board, hubs, DCC, CTLS), how the 2026 contract round is structured, what "REDS V" does and doesn't mean in the records, and what a contributing blood center commits to. | 151/152 | Published |
 | 2 | `the-vein-to-vein-database-and-research-extracts` | Design and govern a recurring research extract from BECS (EXT-21): scope, read-only source, linkage keys, transformation, secure transfer, QC, and change control — without touching regulated records. | 153/154 | Not started |
 | 3 | `human-subjects-hipaa-and-certificates-of-confidentiality` | Explain the Common Rule, single-IRB waiver, HIPAA research pathways, and Certificates of Confidentiality well enough to know what the privacy officer and IRB must confirm before EXT-21 runs, and what CoC means for IT. | 155/156 | Not started |
 | 4 | `nih-data-management-and-sharing` | Explain NIH's Data Management and Sharing policy (including its reach through contracts), where shared data ends up, and what a contributing blood center's IT must support (retention, provenance, de-identification before sharing). | 157/158 | Not started |
@@ -98,3 +98,19 @@ depth but keep index.qmd prose ≤ 5,000 words; "Keep learning" section in resou
   (RePORTER), REDS-IV-P program design paper excerpts, NIH DMS policy, NIH GDS security update,
   NIH CoC policy, 42 U.S.C. 241(d), Common Rule excerpt, HIPAA research provisions. `order:`
   150–162 assigned (next unused: **163**). Next: module 1.
+- 2026-11-13 — Module 1 `reds-structure-contracts-and-governance` published (verified; ~3,900 words).
+  No YouTube video exists on REDS; main session linked NIH VideoCast "NHLBI and OASH State of the
+  Science in Transfusion Medicine Symposium 2022 (Day 2)" (https://videocast.nih.gov/watch=46109) as a
+  link, not an embed. Lineage dates (REDS 1989–2001, REDS-II 2004–2012, REDS-III 2011–2020, REDS-IV-P
+  from 2019) now in the source excerpt. **Locked:** RSH-0107 = approved in principle with conditions,
+  not yet approved to begin transfers: (1) privacy officer confirms the privacy/IRB pathway in writing
+  (module 3); (2) EXT-21 read-only (module 2); (3) written data agreement + security terms (modules
+  4–5); (4) no change to any BECS record or workflow. Five commitment areas → modules: recurring
+  extracts (2), secure transfer (2, 5), QC (2), change notification (2, 6), data protection (3–5).
+  Contract facts taught as public records (seven records, all starting 2026-09-30; Columbia holds a hub
+  + CTLS; Vitalant a hub + Brazil; DCC + Brazil records list periods to 2033-09-29 while Brazil's title
+  says base period to 2027-09-29 — reported as unexplained, no options/renewals assumed). Director asks
+  the hub in writing whether new recurring extracts are in scope this phase (abstracts say phase 3 =
+  dissemination, database closure, deliverables). Governance bodies listed exactly as the paper gives
+  them; the paper assigns no roles — later modules must not assign them powers. No CFR, FDA guidance
+  or AABB Standard requires joining REDS.

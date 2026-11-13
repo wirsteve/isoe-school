@@ -1,0 +1,389 @@
+---
+title: "REDS structure, contracts and governance"
+order: 151
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** you can say who governs REDS, how the 2026 contract round is built, what "REDS V"
+  does and doesn't mean in the records, and what a contributing blood center signs up for.
+- **Punchline:** a regional hub has invited Lakeshore to contribute. The Director's decision on
+  RSH-0107 is **yes in principle, with conditions**, and the first condition is that no BECS record
+  or workflow changes.
+- **The rule in one line:** REDS findings are research evidence, not regulation. Your obligations
+  come from the contract chain, human-subjects rules and HIPAA, and FDA rules on the BECS records
+  you read from, each in its own tier.
+- **Monday question:** "Which contract is our hub funded under, and what exactly does our
+  agreement with the hub say we deliver, how often, and in what format?"
+- **The trap:** treating the invitation as an IT project. It is a governance decision first. The
+  extract is the easy part.
+:::
+
+## The invitation
+
+The email from the hub's program office is polite and specific. One of the REDS program's regional
+hubs is looking for contributing blood centers in the current contract round. It would want
+recurring donor, donation and component extracts from Lakeshore's BECS (Blood Establishment
+Computer Software), linked into the program's database, plus occasional rapid-response studies
+that use retained donation samples.
+
+The medical director forwards it within the hour: "This is exactly the research we should be part
+of. I'll be the scientific lead on our side." Then the CIO replies-all: "Great. What does this cost
+us in IT, and what are we signing up for?" Regulatory affairs adds: "Is any of this FDA-regulated?"
+Your Quality Analyst comes to your desk with a narrower question: "Do research extracts touch our
+BECS records?"
+
+You open Lakeshore's internal research participation file, **RSH-0107**, and write four questions
+at the top. Who is actually asking us, and who governs them? What contract sits behind the request?
+Which rules reach us? What would we commit to? This lesson answers those four, then ends with the
+decision you record in the file.
+
+## What REDS is, and where it came from
+
+REDS stands for the Recipient Epidemiology and Donor Evaluation Study, a research program funded by
+NHLBI (the National Heart, Lung, and Blood Institute, part of NIH, the National Institutes of
+Health). The 2022 program-design paper (Josephson et al., *Transfusion*) describes the lineage in
+its introduction (read on PubMed Central; our local excerpt file holds other sections). In the paper's words, the programs "evolved from the Retrovirus Epidemiology
+Donor Study (REDS), 1989–2001 and REDS-II, 2004–2012." The local excerpts of the paper also say the
+current phase, REDS-IV-P (Pediatric), was "launched in 2019 by NHLBI in collaboration with National
+Institute of Child Health and Human Development (NICHD)." Our earlier project notes add REDS-III
+between REDS-II and REDS-IV-P, and the paper's own references to REDS-III data (see below) fit that.
+The paper's years for REDS-III were not checked, so this course does not state them.
+
+The shift worth noticing is what the data looks like. Early work centered on blood availability and
+infectious risk. The paper describes today's programs as epidemiological research on "the entire
+transfusion chain, from donors to recipients." The paper calls the technical backbone the
+**V2V (vein-to-vein) database**: donor and donation information, the manufactured components, and
+hospital patient data, linked so that "blood products can be tracked from donation to
+transfusion." Module 2 takes that database apart. Here you only need to know why a blood center's
+BECS data is valuable to it: the donor-to-component half of the chain only exists in blood-center
+systems.
+
+### What "REDS V" means, and doesn't
+
+People, including people in this curriculum's audience, call the current round "REDS V." Say this
+plainly once: **the official records still describe REDS-IV-P phase 3, and none of them use the name
+"REDS-V."** The 2026 contract abstracts in NIH RePORTER (the public database of NIH awards) still
+call the program REDS-IV-P and describe each contract as being "for phase 3." This course follows
+the records. It will not assert a "REDS-V" name, structure or requirement. If a hub's materials use
+that name, treat it as their shorthand and ask which contract and protocol the invitation actually
+rests on. Re-check NHLBI's REDS page before you rely on any later phase name.
+
+## Why this governance matters to a Director
+
+Every failure mode in research participation starts with someone saying yes to "a study" without
+asking who the study answers to. A data feed gets built for a request that never went through the
+right approval. Or two people at Lakeshore each promise something different to different parties.
+Or a research extract quietly becomes a second, unofficial copy of BECS data with no owner.
+
+The ITSM bridge is **service level management and supplier management, with a funder in the
+background**. You would never accept a new recurring integration without knowing who the
+customer is, what the agreement says, who can change the requirements, and who is on the hook when
+it breaks. REDS participation is that, plus a layer you don't normally have: the "customer"
+is a federally funded research program with its own oversight bodies, and the data concerns people
+who never signed up for IT operations.
+
+## The rule in plain English
+
+Four things are true at once, and each belongs to a different tier:
+
+1. **REDS is research, not regulation.** Its papers and findings can inform policy. They bind no one.
+   This is the same "research evidence" tier the
+   [regulatory landscape orientation](../../../foundations/regulatory-landscape-orientation/index.qmd)
+   keeps separate from statute, FDA regulation, FDA guidance and AABB Standards.
+2. **Participation is arranged through contracts and agreements.** NHLBI funds the program through
+   contracts to organizations; a contributing blood center's commitments come from its agreement
+   with the hub, not from a regulation about REDS.
+3. **Separate rules reach the data itself.** Human-subjects rules (the Common Rule), HIPAA, and NIH
+   policies on data management and security apply to the *data*, whatever tier REDS sits in.
+   Modules 3 to 5 cover them.
+4. **FDA rules still govern the BECS records you read from.** A research extract does not change
+   what those records are or how you protect them. See
+   [BECS in the pipeline](../../blood-center-operations/becs-in-the-pipeline/index.qmd).
+
+## Who governs REDS today
+
+The paper's Section 2 lists the bodies that shape the program. Quote first, then the caution about
+how far we can interpret it:
+
+> The NHLBI, NICHD, REDS-IV-P Executive Committee, US and Brazil Steering Committees, Observational
+> Study Monitoring Board, External Review Panel, and REDS-IV-P committees (e.g.,
+> Maternal/In-utero/Neonatal/Kids [MINeKids], Publications, and Mentoring committees) all help
+> either to guide or monitor the studies and activities of REDS-IV-P.
+
+*(Josephson et al., Transfusion 2022, Section 2, from `sources/nih/reds-iv-p-program-design-2022.md`.)*
+
+**The paper lists these bodies and says they "guide or monitor." It does not describe each one's
+authority, membership or procedures in the excerpts this course holds.** The table below gives each
+body's role only as far as the paper or the plain generic meaning of the name supports. Where the
+paper is silent, the table says so. Don't present the "generic" column as REDS fact.
+
+| Body | What the paper says | Plain generic meaning of the name | What we don't know from the paper |
+|---|---|---|---|
+| **NHLBI** | Launched REDS-IV-P in 2019 | The NIH institute that funds the program | Its contracting officers' day-to-day role |
+| **NICHD** | Launched it "in collaboration with" NHLBI | The NIH institute focused on child health, which fits the pediatric emphasis | How the collaboration works |
+| **Executive Committee** | Named as one of the guiding or monitoring bodies | Typically the program's top operating group | Membership, decision rights |
+| **US and Brazil Steering Committees** | Named; two committees, one per country program | Typically coordinate the studies of each national program | Who sits on them, what they approve |
+| **Observational Study Monitoring Board** | Named | An independent body that reviews how observational studies are running | Its charter, what it can halt |
+| **External Review Panel** | Named | Outside reviewers of the program's work | Scope, frequency |
+| **Program committees** | Examples: MINeKids, Publications, Mentoring | Working groups for topics, papers and trainee support | The full list today |
+
+For you, the practical reading is this. **Operational questions about data deliverables go through
+your hub, and the hub's contract points back to NHLBI.** The committees are why a study's design,
+publication and data use are not up to any single blood center. You will not negotiate with them.
+You will be bound by what they decide, through the hub's agreement and study protocols.
+
+### The people who actually do the work
+
+The paper also describes the working structure. The US program comprises "4 hubs," each including
+blood centers and several participating hospitals, plus a **Center for Transfusion Laboratory
+Studies (CTLS)** and a **Data Coordinating Center (DCC)**. In plain terms:
+
+- **Hubs** are the regional groupings of blood centers and hospitals that do the data collection
+  and studies. A contributing blood center like Lakeshore would join through one.
+- **The DCC** receives, validates and manages the data. The paper says donor, donation, component
+  and patient data are "extracted and transferred to the DCC's Amazon Web Services Virtual Private
+  Cloud using secure data transfer (sFTP) keys," with submissions tracked on dashboards. That's the
+  paper describing the program's own architecture. Lakeshore's systems are its own business, and
+  this lesson does not name any.
+- **The CTLS** does laboratory studies, which is where retained samples fit.
+
+## How the 2026 contract round is structured
+
+NIH RePORTER (retrieved 2026-11-13 into `sources/nih/reds-2026-contracts.md`) lists federal award
+records. These are facts about who holds which contract. They are not guidance and say nothing about
+who a given blood center partners with. Lakeshore is not tied to any organization named here.
+
+| Contract role | Holder, per RePORTER | Period as listed |
+|---|---|---|
+| Regional hub | Columbia University Health Sciences | 2026-09-30 to 2027-09-29 |
+| Regional hub | Emory University | 2026-09-30 to 2027-09-29 |
+| Regional hub | Versiti Blood Health, Inc. | 2026-09-30 to 2027-09-29 |
+| Regional hub | Vitalant | 2026-09-30 to 2027-09-29 |
+| Data Coordinating Center | Westat, Inc. | 2026-09-30 to 2033-09-29 |
+| Center for Transfusion Laboratory Studies | Columbia University Health Sciences | 2026-09-30 to 2027-09-29 |
+| REDS Brazil | Vitalant | 2026-09-30 to 2033-09-29 |
+
+Read that carefully:
+
+- **Seven contract records, four kinds of work.** Four hub contracts, one DCC, one CTLS, one Brazil.
+  Columbia holds a hub contract and the CTLS contract. Vitalant holds a hub contract and the Brazil
+  contract.
+- **Base period versus project period.** The Brazil record's title says "base period" September 30,
+  2026 to September 29, 2027, yet RePORTER lists a project period to 2033-09-29 for it and for the
+  DCC. The records don't explain the difference, and we don't assume options, renewals or terms.
+  The one fact all seven share is the start, 2026-09-30. For the four hubs and the CTLS, the listed
+  period is the base year.
+- **The abstracts say "phase 3."** The hub, DCC and CTLS abstracts say each contract "is for phase
+  3," which they define as dissemination of findings, closure of databases, and "provision of all
+  deliverables to NHLBI." That has a direct IT meaning: this round is heavy on finishing, publishing
+  and closing out the databases. Whether a contributing center sends *new* recurring extracts in
+  this period is something your hub must tell you in writing. The scenario's invitation says
+  recurring extracts, so RSH-0107 starts with that question.
+- **The contract numbers start with 75N980.** They are NHLBI contracts. Don't over-read anything
+  else about the numbers.
+
+The abstract's own phase definitions also give you the sequence: Phase 1 (years 1–2) for protocols
+and a pilot linked database; Phase 2 (years 3–5) for compiling the database and analysis; Phase 3
+(years 6–7) for dissemination, database closure and deliverables. The paper's own April 2019 to
+March 2026 dates predate the September 2026 round. The records and the paper are two honest
+sources describing different slices of time, and neither is wrong.
+
+### Contracts versus grants, in general terms
+
+You'll hear "grant" and "contract" used loosely. In general terms, NIH uses a **grant** to support
+research a recipient proposes, with the recipient shaping the work. It uses a **contract** to buy
+defined deliverables for the government's own purposes, so NIH directs more of the work. REDS is
+funded through contracts, which is why the RePORTER records read as "deliverables to NHLBI." This
+matters to you in one way: the program's requirements travel down to participants through the
+agreements below the prime contracts. A general starting point for how federal research-and-
+development contracts work is FAR Part 35, linked in Resources. **This lesson does not describe any
+REDS contract's clauses, because we have not seen any and will not invent them.** What you must get
+from the hub is the actual document that binds Lakeshore.
+
+NIH's Data Management and Sharing policy states in its Section III that it applies to research
+funded or conducted by NIH "by extramural grants, contracts, Intramural Research Projects, or other
+funding agreements." That scope sentence is why a contract-funded program can't treat data sharing
+as optional. Module 4 covers what follows.
+
+## What a contributing blood center commits to
+
+At a high level, IT commitments cluster into five areas. Each previews a module:
+
+| Commitment | What it means at Lakeshore | Where taught |
+|---|---|---|
+| **Recurring extracts** | A scheduled job (EXT-21) reads BECS and produces the donor, donation and component data the program defines | Module 2 |
+| **Secure transfer** | Delivery to the program's receiving environment over an agreed secure channel; the paper names sFTP with keys | Modules 2 and 5 |
+| **Quality control** | Checks on completeness and format; the paper says submissions are tracked with QC results on dashboards | Module 2 |
+| **Change notification** | Telling the hub before a BECS change alters what EXT-21 sends | Modules 2 and 6 |
+| **Data protection** | Privacy and confidentiality approvals, a written data agreement, security terms | Modules 3, 4 and 5 |
+
+Two more points keep this honest. First, the paper reports that "a waiver of informed consent was
+requested and granted by the single IRB for both hospital patients and blood donors." (An IRB is an
+institutional review board, the committee that reviews human-subjects research.) That is the
+program's pathway for its own study. It does not decide Lakeshore's privacy obligations. Lakeshore's
+privacy officer has to confirm how Lakeshore itself fits, which is module 3. The human-subjects
+rules exist in the Common Rule at 45 CFR Part 46, and the local excerpt in `sources/cfr/` is where
+that detail will come from.
+
+Second, **the paper says source data are retained "allowing for potential new analyses or
+investigations without the need for additional data extractions."** That means what leaves Lakeshore
+may live a long time and be reused. A one-line extract request is really a long-lived data
+commitment. Module 4 is about that.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it is | In our scenario |
+|---|---|---|---|
+| Josephson et al., *Transfusion* 2022;62(5):982–999 | "Josephson and colleagues, Transfusion, 2022" | Peer-reviewed description of a research program. Not regulation, guidance or standard | Source for the lineage, governance bodies and V2V architecture |
+| NIH RePORTER contract records (75N98026D00095 to 00101) | "RePORTER award records for the 2026 REDS contracts" | Federal award records: who holds what contract, for what period | Source for the seven contracts |
+| NIH Data Management and Sharing Policy (NOT-OD-21-013), Section III | "the NIH DMS policy, scope section" | NIH funding policy | Says the policy covers research funded through contracts |
+| 45 CFR Part 46 (Common Rule) | "forty-five CFR part forty-six" | Regulation on human-subjects protection | Named here only to show the rules exist. Detail is module 3 |
+
+Note what's absent: no CFR row says "REDS." There is no regulation, FDA guidance or AABB Standard
+that *requires* a blood center to join REDS. Participation is voluntary and arranged by agreement.
+Your regulatory obligations to FDA concern the BECS records, which participation must leave
+untouched.
+
+## See it in one picture
+
+The diagram shows the relationships as the records and the paper give them. Solid arrows are
+funding and the invitation; the dotted arrows are guidance and a boundary.
+
+```{mermaid}
+flowchart TD
+    N["NHLBI (with NICHD): funds the program through contracts"]
+    N --> H["Regional hub contract holders<br/>(four, per the 2026 records)"]
+    N --> D["Data Coordinating Center<br/>(one contract)"]
+    N --> C["Center for Transfusion Laboratory Studies<br/>(one contract)"]
+    N --> B["REDS Brazil<br/>(one contract)"]
+    G["Guide and monitor, per the 2022 paper:<br/>Executive Committee, Steering Committees,<br/>Monitoring Board, External Review Panel"] -.-> H
+    H -->|"invitation to contribute"| L["Lakeshore: RSH-0107"]
+    L -->|"EXT-21: read-only extract, later modules"| D
+    L -.->|"no change to"| R[("BECS records and workflows")]
+```
+
+Notice that Lakeshore sits *below* the hub and *beside* its own BECS. The arrow to the DCC is the
+paper's architecture; how the hub mediates it is an agreement detail we haven't seen.
+
+## Watch it explained
+
+There's no embeddable video on REDS governance. The closest primary source is NIH's own recording
+of the [NHLBI and OASH State of the Science in Transfusion Medicine Symposium 2022 (Day 2)](https://videocast.nih.gov/watch=46109)
+on NIH VideoCast: NHLBI's transfusion-research community discussing priorities in the field REDS
+works in. It's a long symposium, not a REDS explainer, and it isn't on YouTube, so it's linked rather
+than embedded; skim the agenda for the sessions that interest you. The resources page also lists a
+podcast transcript with the paper's own authors.
+
+## What an assessor or auditor would look for
+
+For research participation, the "inspector" is as likely to be a hub's site visit, an IRB, your
+privacy officer or an internal audit as it is FDA. What each would want to see:
+
+- **A research participation file (RSH-0107)** with the invitation, the signed agreement, the
+  approval decisions and a named owner. Bad answer: "It's in someone's email."
+- **A written statement of scope**: which fields, which cadence, which destination. Bad answer: "We
+  send whatever they asked for last time."
+- **Evidence BECS is unaffected.** A read-only design (module 2), and a change-control entry
+  linking any BECS change to the extract. FDA's interest is the regulated records, covered in the
+  earlier BECS lessons. Bad answer: "The extract user has write access, but it never writes."
+- **Evidence of the privacy pathway.** The privacy officer's written confirmation, not a verbal
+  "legal said it's fine."
+
+## Common traps
+
+1. **"REDS is NIH, so NIH's rules are our rules."** REDS is a research program funded through
+   contracts. What binds Lakeshore is its own agreement, plus rules on the data (module 3 to 5) and
+   FDA's rules on the BECS records. Whether any NIH contract term flows down to Lakeshore is a
+   question for the agreement, which we haven't seen.
+2. **"It's research, so FDA doesn't matter."** The extract is research. The records it reads from
+   are not. Regulatory affairs' question has two answers: the program's findings are not FDA
+   requirements, *and* the BECS records stay FDA-regulated records. A research job that edits,
+   flags or deletes them is a regulated-records problem.
+3. **"The new round means a new REDS-V with new rules."** The records show REDS-IV-P phase 3. Ask
+   for the current protocol and agreement. Don't assume a successor's requirements, and don't
+   promise any.
+4. **"Governance bodies are the hub's problem."** They explain why you can't unilaterally change
+   an extract's content, timing or use. Treat the hub agreement as the change-control boundary.
+
+## What this means for your job
+
+- **Get the paper trail before the project plan.** Ask the hub for the agreement that would bind
+  Lakeshore, the study protocol(s) it covers, and which contract funds them. Don't scope EXT-21
+  without them.
+- **Answer the CIO in dollars and hours only after scope exists.** Until then, the honest answer is
+  "recurring extract, secure transfer, QC, change notification and data protection, sized in
+  module 2." Don't guess.
+- **Give regulatory affairs a precise answer.** The program is not an FDA requirement. The BECS
+  records remain regulated. Participation must not change them.
+- **Give the Quality Analyst a design rule.** The extract reads; it never writes, flags or
+  reorders BECS data. Any BECS change that affects extract fields goes through change control with
+  the extract named.
+- **Name one accountable owner per party.** Medical director for the science, privacy officer for
+  the legal pathway, you for the service. No orphaned recurring jobs.
+- **Escalate when scope grows.** New data elements, new recipients, longer retention or genomic
+  data each go back to the privacy officer and the Director before IT builds anything.
+
+## The Director's decision for RSH-0107
+
+You record this, in the file, as a **conditional decision**:
+
+> **Participation in the REDS contribution is approved in principle, subject to the following
+> conditions. It is not yet approved to begin transfers.**
+>
+> 1. The privacy officer confirms the privacy and IRB pathway in writing (module 3).
+> 2. EXT-21 is designed as a read-only extract (module 2).
+> 3. A written data agreement and security terms are in place (modules 4 and 5).
+> 4. No change is made to any BECS record or workflow.
+
+Why conditional? Enthusiasm from the medical director is the reason to say yes. The hub, the
+agreement and the privacy pathway are what you haven't seen yet. A yes-in-principle keeps the
+relationship moving and keeps IT from building before the paper exists.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: A colleague says "REDS V launched in September, so the rules changed." What do you say?
+
+The records don't support the name. The contracts that started 2026-09-30 are described in RePORTER
+as REDS-IV-P "phase 3." A new contract round is real; a formally named REDS-V is not in the records
+we hold. Ask the hub for the actual agreement and protocol, and don't assume new requirements.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is REDS participation an FDA requirement for a blood center? Is it "regulation"?
+
+No. REDS is a research program, and its findings are research evidence, a tier that informs policy
+but binds no one. Participation is voluntary and arranged by agreement. This is a "this is not a
+regulatory requirement" answer. FDA rules still govern the BECS records the extract reads from.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The Quality Analyst asks whether research extracts touch BECS records. What's the right design stance, and why?
+
+The extract should read from BECS and never write to it. The records stay regulated (the earlier
+BECS lessons cover why), and a research job that alters them creates a data-integrity problem for a
+study nobody at FDA asked for. The Director's condition: no change to any BECS record or workflow.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: The paper lists an Executive Committee, Steering Committees, a Monitoring Board and an External Review Panel. A board member asks what the Monitoring Board can do. How do you answer honestly?
+
+The paper names it as one of the bodies that "guide or monitor" the program, and the name suggests
+independent oversight of the observational studies. But the excerpts we hold don't describe its
+charter or powers, so say that and ask the hub rather than guessing.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q5: Explain to your CIO in two sentences what we're signing up for.
+
+"We'd send a recurring, read-only data extract from BECS to a federally funded research program
+through a hub, which means secure transfer, quality checks, change notification and data-protection
+approvals. The size of the IT cost is set in the next step, once we have the written agreement
+and scope, and nothing in our regulated records changes."
+:::
+
+## Where this goes next
+
+Module 2, [the vein-to-vein database and research extracts](../the-vein-to-vein-database-and-research-extracts/index.qmd),
+designs EXT-21: scope, read-only source, linkage keys, transformation, transfer and QC.
