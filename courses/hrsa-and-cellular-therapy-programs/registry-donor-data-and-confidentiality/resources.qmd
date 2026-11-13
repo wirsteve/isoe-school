@@ -1,0 +1,31 @@
+---
+title: "Resources"
+order: 178
+---
+
+External links for this lesson. Each was loaded with `curl` and its page title checked on 2026-11-13. The statute text quoted in the lesson comes from the dated local copy `sources/usc/42-usc-274k-274l.md`; use the live links below to check for amendments.
+
+- **[Cornell LII: 42 U.S.C. 274k, National Program](https://www.law.cornell.edu/uscode/text/42/274k)**: the statute behind the lesson, including (d)(3)(B), (d)(4)(D), (f)(5), (f)(6) and (n). Use it to confirm current text, especially given that `sources/` doesn't show whether the program was reauthorized after Sept. 30, 2026. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 42 U.S.C. 274l, Stem cell therapeutic outcomes database](https://www.law.cornell.edu/uscode/text/42/274l)**: the companion section on the outcomes database. Use it when a data question is about outcomes reporting rather than registry donor records. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 18 U.S.C. 3571, Sentence of fine](https://www.law.cornell.edu/uscode/text/18/3571)**: subsection 274k(n) says "fined in accordance with title 18." This is the title 18 section titled "Sentence of fine," where fine amounts are set. The lesson does not state amounts; take them to counsel. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NMDP online privacy statement](https://www.nmdp.org/what-we-do/about-us/legal/privacy)**: the program operator's own public privacy statement. Read it as a member would, to see what registry members are told. It is the operator's statement, not Lakeshore's consent language, and not a source for the program agreement's terms. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-53 Rev. 5, Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)**: the control catalogue behind terms like least privilege, account management and audit logging. Use it for language when you write the role matrix, access review and disclosure log procedures. Industry guidance, not a 274k requirement. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST CSRC: Role Based Access Control](https://csrc.nist.gov/projects/role-based-access-control)**: NIST's project page on role-based access control. Use it when designing registry roles. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[How Patients and Blood Stem Cell Donors Are Matched](https://www.youtube.com/watch?v=6q879w-bVWQ)** (NMDP, from oEmbed `author_name`): the video embedded in the lesson, on the matching purpose that registry data serves. A public explainer from the program's operator; it is not about confidentiality or IT, and I could not read its transcript, so the lesson uses it only for the matching idea. Found by searching YouTube for NMDP registry videos and linked from NMDP's own myths-and-facts page. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200; title and author as above). Not used by any other module.
+
+**Not linked, and why.** HHS's HIPAA Privacy Rule page (hhs.gov) returned HTTP 403 to a plain request on 2026-11-13 and was not retried. For HIPAA, use the course lessons: [The HIPAA Privacy Rule](../../healthcare-security-and-privacy/the-hipaa-privacy-rule/index.qmd), [Information Governance in a Covered Entity](../../healthcare-security-and-privacy/information-governance-in-a-covered-entity/index.qmd), [Breach Notification and Dual Reporting](../../healthcare-security-and-privacy/breach-notification-and-dual-reporting/index.qmd) and [Investigating a Healthcare Data Incident](../../healthcare-security-and-privacy/investigating-a-healthcare-data-incident/index.qmd). Also relevant: [Human subjects, HIPAA and Certificates of Confidentiality](../../research-programs-reds-and-nih/human-subjects-hipaa-and-certificates-of-confidentiality/index.qmd), [Multi-Site Governance and Donor Identification](../../data-integrity-and-records/multi-site-governance-and-donor-identification/index.qmd), [The CAP inspection from IT](../../clia-and-cap-for-blood-center-labs/the-cap-inspection-from-it/index.qmd) for the access-review pattern, and the previous module, [HRSA and the cell transplant program](../hrsa-and-the-cell-transplant-program/index.qmd).
+
+## Keep learning
+
+Not official sources. Good places to go deeper on access control, logging and purpose limitation. None is authority for a 274k claim.
+
+- **[Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)** (OWASP Cheat Sheet Series; community-run, non-commercial): practical guidance on least privilege and deny-by-default access, useful for the role design behind the registry store. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Logging Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html)** (OWASP): what to log and what not to, useful for the interface logs and disclosure evidence you'd preserve in an incident. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Principle (b): Purpose limitation](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles/a-guide-to-the-data-protection-principles/purpose-limitation/)** (UK Information Commissioner's Office): a regulator's plain explanation of purpose limitation and "function creep." UK law, not US; read it for the idea behind the purpose test, not for legal authority here. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[NIST Privacy Framework](https://www.nist.gov/privacy-framework)** (NIST): a voluntary framework for managing privacy risk, helpful for talking about data flows with a privacy officer. Verified loading via `curl` on 2026-11-13 (HTTP 200).
