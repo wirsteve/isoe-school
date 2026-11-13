@@ -186,7 +186,7 @@ course's LCR-0xx records stay with lab systems.
 | — | (syllabus) | — | 183 | Published |
 | 1 | `apheresis-platelets-and-bacterial-risk` | Explain 606.110, 640 subpart C and 606.145 with FDA's platelet bacterial-risk guidance, and make BECS enforce sampling linkage, timing conventions, testing-status traceability and the positive-after-distribution alert. | 184/185 | Published |
 | 2 | `immunohematology-reference-and-antigen-negative-inventory` | Keep antigen-negative claims honest: lineage of antigen types, historical versus confirmed attributes, and the reference-lab-to-BECS path, under 606.151 and CLIA. | 186/187 | Published |
-| 3 | `inventory-returns-reissue-and-reconciliation` | Keep BECS inventory true across returns, reissue and discards: 606.165 traceability, temperature evidence, and reconciliation. | 188/189 | Not started |
+| 3 | `inventory-returns-reissue-and-reconciliation` | Keep BECS inventory true across returns, reissue and discards: 606.165 traceability, temperature evidence, and reconciliation. | 188/189 | Published |
 | 4 | `mobile-collections-and-offline-systems` | Run offline collection systems so deferral, suitability and audit-trail requirements still hold: freshness, sync checks, quarantine and evidence. | 190/191 | Not started |
 | 5 | `lookback-and-consignee-notification` | Run an HIV/HCV lookback under 610.46/610.47 end to end from IT's side: the query, the clock, consignee notification and the records. | 192/193 | Not started |
 
@@ -232,3 +232,17 @@ course's LCR-0xx records stay with lab systems.
   incubation (III.A.5) left to medical director/Quality. "Promptly" (III.A.3) has no number — Lakeshore
   procedure. 630.3(i) not in sources. Quality assesses BPDR (606.171), no outcome stated. Next unused BOC
   after module 3: **BOC-022**.
+- 2026-11-13 — Module 3 `inventory-returns-reissue-and-reconciliation` published (verified; prose ~4,190
+  words; no verifiable video; links module 4 by slug). **Locked:** change record **BOC-021**: HOP-to-BECS
+  return mapping fix, BECS return gate blocking acceptance without a temperature-evidence reference, and a
+  weekly reconciliation report; regression of HOP order/return/cancel flows. Second fictional hospital:
+  **Maple Hollow Community Hospital** (one red cell unit returned by Riverside was reissued there; its
+  return message is the one that dropped the temperature reference). Ghost unit never allocated or shipped;
+  the reissued unit's temperature evidence was found on paper at Riverside and attached late (stated
+  honestly); no harm. Root cause of the ghost unit not asserted (order/return/cancel all in regression
+  scope). Reissue criteria = SOPs owned by distribution manager + Quality (no regulation or AABB text in
+  sources). 606.165(c) applicability to returns → Quality. Hospital discard reporting per agreement (no
+  terms). Weekly BECS-vs-physical reconciliation worked by distribution manager with evidence record —
+  framed as the same control as sent-vs-acknowledged (CLIA LCR-014) and listed-vs-actual (HRSA CBC-034).
+  Dating (610.53) doesn't reset on reissue; 606.160(b)(3)(iv) is the only reissue–temperature link in
+  sources. Quotes also from 600.15. Next unused BOC: **BOC-022**.
