@@ -188,7 +188,7 @@ course's LCR-0xx records stay with lab systems.
 | 2 | `immunohematology-reference-and-antigen-negative-inventory` | Keep antigen-negative claims honest: lineage of antigen types, historical versus confirmed attributes, and the reference-lab-to-BECS path, under 606.151 and CLIA. | 186/187 | Published |
 | 3 | `inventory-returns-reissue-and-reconciliation` | Keep BECS inventory true across returns, reissue and discards: 606.165 traceability, temperature evidence, and reconciliation. | 188/189 | Published |
 | 4 | `mobile-collections-and-offline-systems` | Run offline collection systems so deferral, suitability and audit-trail requirements still hold: freshness, sync checks, quarantine and evidence. | 190/191 | Published |
-| 5 | `lookback-and-consignee-notification` | Run an HIV/HCV lookback under 610.46/610.47 end to end from IT's side: the query, the clock, consignee notification and the records. | 192/193 | Not started |
+| 5 | `lookback-and-consignee-notification` | Run an HIV/HCV lookback under 610.46/610.47 end to end from IT's side: the query, the clock, consignee notification and the records. | 192/193 | Published |
 
 ## Progress log
 
@@ -265,3 +265,22 @@ course's LCR-0xx records stay with lab systems.
   vs 11.10(e) → design; 630.40 clock start → Quality/medical director. Lost laptop = security incident
   with donor PHI + paper reconciliation of units collected vs uploaded. Nightly list beats 606.160(e)(3)
   monthly minimum.
+- 2026-11-13 — Module 5 `lookback-and-consignee-notification` published (verified; prose ~5,000 words; no
+  verifiable video). **Locked:** **BOC-023** = merge remediation: root cause first; repair of the known pair
+  via controlled correction with audit trail (nothing deleted); merge procedure fix that re-points all
+  dependents and verifies; queryable merge history; validation cases; regression of donor-number consumers;
+  plus the Director's one-time sweep for other imperfect merges. Lookback query = three passes (current
+  record; linked/merged records; demographic candidates), every candidate reviewed by a person with the
+  decision recorded, no auto-merge, candidate list kept in case file. Consignee log: one row per consignee
+  per notice (case ID, agent, clock start, notice type (a)(1)(B) or (a)(3), products, contact, sent time and
+  channel, acknowledgment, deadline, consignee-reported quarantine confirmation, escalation); clock starts
+  itself from the reactive result, manual case-open for "other reliable information"; unacknowledged →
+  distribution manager → medical director; acknowledgment = receipt, not action. Conservative Lakeshore
+  reading: all of 610.47(a)(1) inside the 3 calendar days (Quality confirms); day-counting convention fixed
+  by procedure. Look-back period determination = Quality + medical director. Riverside owns 610.47(b) incl.
+  recipient notification within 12 weeks; Lakeshore notifies and keeps records (606.160(b)(1)(viii), (d)).
+  610.46 differences shown only where text differs (p24 antigen in (a)(1)(ii); "deceased" in (b)(3)). (c)
+  not a recall + 7.3(g) quoted. Whether missed donations were in period/in date/transfused not asserted.
+  Reconciliation table: sent-vs-acknowledged (CLIA), listed-vs-actual (HRSA), BECS-vs-physical (module 3),
+  query-vs-independent-search (this module). Track 7 wrap links all five course indexes and
+  `../../../curriculum.qmd`. **Course complete (5/5). Track 7 complete.**

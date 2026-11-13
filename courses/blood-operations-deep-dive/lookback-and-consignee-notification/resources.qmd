@@ -1,0 +1,41 @@
+---
+title: "Resources: Lookback and Consignee Notification"
+order: 193
+---
+
+## Primary sources
+
+- **[Cornell LII: 21 CFR 610.47, HCV "lookback" requirements](https://www.law.cornell.edu/cfr/text/21/610.47)** (page title: "21 CFR § 610.47 - Hepatitis C virus (HCV) "lookback" requirements.") — the section this lesson quotes. Use it to read (a), (b) and (c) in one place. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 610.46, HIV "lookback" requirements](https://www.law.cornell.edu/cfr/text/21/610.46)** (page title: "21 CFR § 610.46 - Human immunodeficiency virus (HIV) "lookback" requirements.") — the parallel section. Read it beside 610.47 to see the shared structure. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.160, Records](https://www.law.cornell.edu/cfr/text/21/606.160)** (page title: "21 CFR § 606.160 - Records.") — (b)(1)(vii) and (viii), (c) and (d): the donor-to-donation link, the lookback records and retention. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 630.40, Requirements for notifying deferred donors](https://www.law.cornell.edu/cfr/text/21/630.40)** (page title: "21 CFR § 630.40 - Requirements for notifying deferred donors.") — the donor-notification rule Quality and the medical director apply. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 610.40, Test requirements](https://www.law.cornell.edu/cfr/text/21/610.40)** (page title: "21 CFR § 610.40 - Test requirements.") — where the reactive test and the further testing in paragraph (e) come from. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 7.3, Definitions](https://www.law.cornell.edu/cfr/text/21/7.3)** (page title: "21 CFR § 7.3 - Definitions.") — the definition of "recall" that paragraph (c) of each section points to. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Federal Register, 24 August 2007: Requirements for Blood and Blood Components Intended for Transfusion or for Further Manufacture and for the Deferral of Donors; Hepatitis C Virus Infection ("Lookback"); Final Rule](https://www.govinfo.gov/content/pkg/FR-2007-08-24/html/E7-16607.htm)** (page opens as "Federal Register, Volume 72 Issue 164 (Friday, August 24, 2007)", FR Doc E7-16607) — FDA's own preamble to the HCV lookback rule, which also revised the HIV lookback rule for consistency. Use it when you need the reasoning behind the text. This lesson quotes only the regulation, not the preamble. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA: Blood Guidances](https://www.fda.gov/vaccines-blood-biologics/biologics-guidances/blood-guidances)** (page title: "Blood Guidances | FDA") — FDA's index of blood guidance documents, for looking up current lookback and further-testing guidance. Not opened in this lesson. FDA's separate page for the HCV lookback guidance returned HTTP 503 when checked on 2026-11-13, so it is not linked. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+## Video note
+
+No video embed for this module. Searched for a hepatitis C lookback explainer, a transfusion-transmitted infection lecture and an FDA blood-donor testing video. The results were regulatory documents and journal articles. Nothing both on topic and independently verifiable from a regulator, professional society, news or educational channel was found, so no video was embedded and none was verified with oEmbed.
+
+## Related lessons in this curriculum
+
+- [Collection and testing](../../blood-center-operations/collection-and-testing/index.qmd) for the first introduction to lookback.
+- [Multi-site governance and donor identification](../../data-integrity-and-records/multi-site-governance-and-donor-identification/index.qmd) for the donor-number thread.
+- [Inventory: returns, reissue and reconciliation](../inventory-returns-reissue-and-reconciliation/index.qmd) for the reconciliation pattern and 606.165 consignee traceability.
+- [Filing a biological product deviation report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd) and [Warning letters and recalls](../../fda-and-aabb-in-practice/warning-letters-and-recalls/index.qmd).
+
+## Keep learning
+
+- **[Wikipedia: Record linkage](https://en.wikipedia.org/wiki/Record_linkage)** (page title: "Record linkage - Wikipedia") — an overview of matching records that refer to the same person across data sets, the discipline under the demographic match step. A general encyclopedia, not an authority for any regulatory claim. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Wikipedia: Master data management](https://en.wikipedia.org/wiki/Master_data_management)** (page title: "Master data management - Wikipedia") — how organizations keep one trusted record per entity, which is the control behind a safe merge process. Not about blood. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Blood Bank Guy's Glossary of Blood Banking Terms](https://www.bbguy.org/education/glossary/)** (page title: "Blood Bank Guy's Glossary of Blood Banking Terms") — a transfusion-medicine educator's glossary for when colleagues' vocabulary outruns yours. Verified loading via `curl` on 2026-11-13 (HTTP 200).

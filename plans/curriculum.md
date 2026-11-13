@@ -295,9 +295,9 @@ has no `plans/<slug>.md` file until its first session.
 | `research-programs-reds-and-nih` | 6 / 6 | Done (plan: `plans/research-programs-reds-and-nih.md`) |
 | `clia-and-cap-for-blood-center-labs` | 5 / 5 | Done (plan: `plans/clia-and-cap-for-blood-center-labs.md`) |
 | `hrsa-and-cellular-therapy-programs` | 4 / 4 | Done (plan: `plans/hrsa-and-cellular-therapy-programs.md`) |
-| `blood-operations-deep-dive` | 4 / 5 | In progress (plan: `plans/blood-operations-deep-dive.md`) |
+| `blood-operations-deep-dive` | 5 / 5 | Done (plan: `plans/blood-operations-deep-dive.md`) |
 
-**Next up: `blood-operations-deep-dive` module 5 (capstone, verifying) — the last module of Track 7.**
+**Next up: Track 7 is complete (all five courses published 2026-11-13). No further course is queued. Open items for a future session: (1) a site-wide "turn on narration" accessibility feature — only when the user asks; (2) a final audit pass over Track 7 with the strongest model.**
 Track 7 order: release-management-and-sdlc → research-programs-reds-and-nih →
 clia-and-cap-for-blood-center-labs → hrsa-and-cellular-therapy-programs →
 blood-operations-deep-dive. (The paragraph below describing the original curriculum as complete
