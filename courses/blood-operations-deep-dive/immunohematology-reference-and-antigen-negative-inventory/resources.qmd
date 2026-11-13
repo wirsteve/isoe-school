@@ -1,0 +1,40 @@
+---
+title: "Resources"
+order: 187
+---
+
+External links for this lesson. Every link below was checked with `curl` on 2026-11-13 (HTTP 200). eCFR's own site blocks automated traffic in this repo's build environment, so the regulation text in the lesson comes from the local copies in `sources/`, and the links below use Cornell LII's mirror of the same text.
+
+- **[Cornell LII: 21 CFR 606.151, Compatibility testing](https://www.law.cornell.edu/cfr/text/21/606.151)** (page title: "21 CFR § 606.151 - Compatibility testing.") — the transfusion-service frame quoted in the lesson. Use it to check the current text, including paragraphs (d) and (e), which the lesson names but does not quote. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.160, Records](https://www.law.cornell.edu/cfr/text/21/606.160)** (page title: "21 CFR § 606.160 - Records.") — the concurrent, traceable, "complete history" records requirement behind the lineage fields, plus (b)(4) compatibility test records. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.121, Container label](https://www.law.cornell.edu/cfr/text/21/606.121)** (page title: "21 CFR § 606.121 - Container label.") — read paragraph (c)(1) yourself and note what it does not say about antigen claims. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.100, Standard operating procedures](https://www.law.cornell.edu/cfr/text/21/606.100)** — where the written procedure for what supports a claim belongs. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[CMS QSO-25-18-CLIA (PDF)](https://www.cms.gov/files/document/qso-25-18-clia.pdf)** — the memo whose blood table marks immunohematology testing, including antigen typing, as CLIA-covered. Policy guidance, not regulation. Verified loading via `curl` on 2026-11-13 (HTTP 200; PDF, no HTML title).
+
+- **[Cornell LII: 42 CFR 493.1291, Test report](https://www.law.cornell.edu/cfr/text/42/493.1291)** (page title: "42 CFR § 493.1291 - Standard: Test report.") — the CLIA text on getting results accurately and reliably from data entry to the final report destination. Use it as a design target for the LIS-to-BECS interface and confirm with the laboratory director how it maps. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)** (page title: "Blood Establishment Computer System Validation in the User's Facility | FDA") — nonbinding guidance on validating BECS and its interfaces, behind the interface test set. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Antibody ID: The Basics (Part 1)](https://www.youtube.com/watch?v=mvGC5M0ICCs)** (Blood Bank Guy (D. Joe Chaffin MD), from oEmbed `author_name`) — the video embedded in the lesson. A general teaching video on antibody identification. It is not about antigen typing of inventory, BECS or U.S. regulation. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200; exact title as returned).
+
+- **[W3C: PROV-Overview](https://www.w3.org/TR/prov-overview/)** (page title: "PROV-Overview") — a standards-body overview of provenance: recording where data came from, who or what produced it, and when. Not about blood or regulation. It is a clean vocabulary for the lineage fields in this lesson. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+## Keep learning
+
+Not official sources, and none is cited for a regulatory claim in the lesson.
+
+- **[Blood Bank Guy](https://www.bbguy.org/)** (page title: "Blood Bank Guy - Essential Transfusion Medicine with Joe Chaffin") — a long-running, well-regarded transfusion medicine education site with videos, a podcast and quizzes. Browse it for immunohematology background written by a practitioner. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Blood Bank Guy glossary: Alloantibody](https://www.bbguy.org/education/glossary/gla17/)** (page title: "Glossary: Alloantibody - Blood Bank Guy Glossary") — a short definition, useful when a lab colleague's vocabulary outruns yours. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[ARUP Institute for Learning: Introduction to Antibody Identification](https://arup.utah.edu/education/AntibodyIdentification)** (page title: "Introduction to Antibody Identification | ARUP Laboratories Institute for Learning") — a laboratory education page on the same topic as the video, from a clinical laboratory's learning institute. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Blood Bank Guy: video, Antibody Identification 2; Basic Cases](https://bbguy.org/?p=1834)** (page title: "Video - Antibody Identification 2; Basic Cases - Blood Bank Guy") — the follow-up to the embedded video, for worked panels. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+## Video note
+
+The embedded video is a general antibody identification explainer. Searches for a video on antigen typing of donor units, antigen-negative inventory and label claims turned up nothing both specific enough and independently verifiable as embeddable, apart from material on real blood centers' channels, which this site does not use.
