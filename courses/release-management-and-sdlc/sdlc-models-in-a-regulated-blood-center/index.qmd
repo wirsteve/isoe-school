@@ -1,0 +1,275 @@
+---
+title: "SDLC Models in a Regulated Blood Center"
+order: 128
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** place any Lakeshore change on the right lifecycle (waterfall/V, iterative, agile, DevOps) and say what validation evidence it must produce, and when.
+- **The punchline:** the development lead says "we're agile now" and wants to ship HOP 3.0 to production every sprint. Agile is not the problem. Shipping to *production* without a validated release gate is.
+- **The rule in one line:** no regulation picks your lifecycle model, but every model has to produce a validation plan before the work, evidence as the work goes, and a documented decision before production.
+- **The Director's call:** sprints may ship to the validation environment; production releases follow a validated release cadence through a gate Quality signs.
+- **Monday question:** "Where is the validation plan for this release, and what evidence will exist at the end of each sprint?"
+- **The trap:** treating "agile" as meaning "less documentation." It means evidence arrives in slices, not that it arrives optionally.
+:::
+
+**Before you start:** this module leans on [GAMP 5 and the V-Model](../../csv-and-becs/gamp5-and-the-v-model/index.qmd) (the V, GAMP categories), [BECS as a Regulated Device](../../csv-and-becs/becs-as-a-regulated-device/index.qmd) (what makes software a BECS), [Change Control for Regulated Systems](../../quality-system-essentials/change-control-for-regulated-systems/index.qmd) and the [ITIL-to-QSE crosswalk for change and problem](../../itsm-for-regulated-blood-services/itil-to-qse-crosswalk-change-and-problem/index.qmd). It does not re-teach them.
+
+## The Monday meeting
+
+Three people want three different things from the same release, and all three are right about something.
+
+Lakeshore's development lead runs a two-developer in-house team. Their product is the Hospital Ordering Portal, **HOP**: the web application hospital transfusion services use to place component orders and see order status. HOP reads available inventory from BECS (blood establishment computer software) through an interface and writes order requests that distribution staff fulfil in BECS. BECS stays the system of record for distribution; HOP is order intake and status.
+
+The next release is **HOP 3.0, release record REL-0311**. The development lead has put a slide on the screen: two-week sprints, a demo at the end of each, and a push to production every time the demo goes well.
+
+"We're agile now," they say. "The old way, we wrote a hundred-page spec, disappeared for months, and the hospitals got what we guessed they wanted. This way they see something every two weeks."
+
+The Quality Analyst has not looked at the slide for long. "That's a good instinct and I'm not going to fight it. But I have one question, and I've asked it three times in three different emails. Where is the validation plan? I can't review evidence for a thing that doesn't have a plan."
+
+"The plan *is* the backlog," the development lead says. "It's all in the tracker."
+
+The CIO, who has been quiet, speaks up. "I don't care what we call it. HOP 3.0's headline feature is auto-allocation: HOP proposes the specific units to fill an order, so distribution staff stop picking them by hand in BECS. The hospitals have been asking for it and I'd like it live soon."
+
+Everyone looks at you. You own IT service operations, so release cadence is yours; you also sit at the table with Quality and Regulatory, so "what evidence will we have" is yours too. Nobody in the room is wrong. The development lead is right that long waterfalls fail users. The Quality Analyst is right that a plan has to exist before testing starts. The CIO is right that the feature matters. The job in this module is to turn those three positions into one release process that survives an inspector's question.
+
+## Why this rule exists, and the ITSM bridge
+
+The failure a software lifecycle controls is not "slow delivery." It is **a change that reaches production without anyone having established, with evidence, that the system still does what Lakeshore needs it to do.** In a blood center, the downstream consequence of a quiet software defect is a wrong order, a wrong unit offered, a delayed release, or a record that cannot be reconstructed. Defects in software are also hard to see: FDA's software validation guidance notes that "a seemingly small local change may have a significant global system impact."
+
+You already own the ITSM side of this. A lifecycle model is the *shape* of a release pipeline: how requirements, build, test and deploy are sequenced, and how often. ITIL change enablement (the practice, not the board) is the control that sits over production changes; release management and deployment management are the practices that plan and carry them out. The new element in a regulated blood center is that **the evidence trail is a deliverable of the lifecycle, not a by-product.** In ordinary IT, "we tested it in staging" is a claim. Here it has to be a record: a plan that existed first, test cases with expected and actual results, a named person who approved the move to production, and a way to show an outside reader what changed.
+
+One more ITSM bridge, because it is the one that causes the argument in the Monday meeting. In DevOps vocabulary you already know, "deploy" and "release" are separable: code can reach an environment without being switched on for users. The regulated version of the same idea: **deployment to a non-production environment is a development event; promotion to production is a controlled change.** That separation is what makes agile and validation compatible.
+
+## The rule in plain English
+
+Start with what is *not* in the rules. No regulation tells Lakeshore to use waterfall, and none tells it to use agile. FDA's software validation guidance says so directly: it "does not recommend any particular life cycle models – only that they should be selected and used for a software development project." (That guidance is written for medical device manufacturers. Read it here as FDA's general thinking about validation, not as a document binding on Lakeshore; the blood-specific guidance is the 2013 one for the user's facility.)
+
+What the sources do require or recommend is the same in every model:
+
+1. **A written plan exists before validation starts.** For a blood establishment, the regulation behind that is 21 CFR 211.68(a); FDA's BECS guidance (III.C) says you "must define and control how you will validate the system through the use of a written plan," and that the plan has to call for validation "any time a change is made that has the potential to affect the functions of the system."
+2. **Evidence is built across the life cycle, not bolted on at the end.** FDA's general guidance says the conclusion that software is validated "should be based on evidence collected from planned efforts conducted throughout the software lifecycle" (4.3), and that validation tasks "may be one time occurrences or may be iterated many times, depending on the life cycle model used" (Section 5).
+3. **Every change is analysed for what else it might break.** Both FDA documents ask for regression analysis, then regression testing sized to that analysis (GPSV 4.7 and 5.2.7; BECS guidance III.I).
+4. **Authorization and records.** Computer system changes must be controlled so that changes to records happen "only by authorized personnel" (211.68(b)), and validation records must be kept (BECS guidance III.G, citing 211.68(b)).
+
+So the model is your choice. The evidence obligations are not. Everything else in this module is about *when in each model the evidence appears.*
+
+## The four models, and what each must produce
+
+Industry practice (not regulation) groups lifecycles into four families. FDA's guidance names several (waterfall, spiral, rapid prototyping, incremental development) without ranking them. For Lakeshore's decisions, four families are enough.
+
+| Model | How it works | Validation evidence | When it appears |
+|---|---|---|---|
+| **Waterfall / V-model** | Requirements, design, build, test, deploy in sequence; one big release. | Validation plan, URS/FS/DS, risk assessment, traceability, IQ/OQ/PQ, summary report. | Plan first; specs down the left of the V; test evidence up the right; report before go-live. All in one pass. |
+| **Iterative / incremental** | The system is built in several planned increments, each one a mini-V. | Same artifacts, produced per increment, plus an overall plan that says how increments add up to validated whole. | Overall plan up front; per-increment specs and tests; a cumulative report before each production release. |
+| **Agile** | Short time-boxed sprints; requirements live as a backlog and are refined as you learn. | Same *content*, in smaller slices: approved plan and risk assessment, requirements with acceptance criteria, executed tests per story, defect log, traceability kept current. | Plan and risk first (a living document); evidence each sprint; a review before anything is promoted to production. |
+| **DevOps / continuous delivery** | Automated pipeline builds, tests and deploys small changes frequently. | All of the above, produced *by* the pipeline, plus evidence that the pipeline itself is controlled: who can change it, who can approve a deploy, an audit trail of what went where. | Pipeline qualified once and kept under change control; each deploy leaves its own record. Modules 7 and 9 of this course go deep. |
+
+Two points the table hides.
+
+**First, the V does not go away in agile.** Look at how [GAMP 5 and the V-Model](../../csv-and-becs/gamp5-and-the-v-model/index.qmd) pairs specs with tests: requirement to user-level test, function to operational test, design to installation test. Agile keeps that *pairing* (every requirement has a test, every test traces to a requirement) and changes the *size of the slice* it is applied to. A sprint is a very small V. Industry practice has noticed: ISPE's description of the GAMP 5 Second Edition (a paid guide, named here only as a theme, not quoted) emphasizes critical thinking and accepts agile approaches. Treat that as direction of travel in industry practice, not a rule.
+
+**Second, "iterative" is not "undocumented."** In the Monday meeting, "the plan is the backlog" was half right. A backlog is where requirements live. A validation plan answers different questions: what is in scope, how risk sizes the testing, who approves, what counts as done, which environment holds the evidence. The backlog cannot say those things for itself.
+
+FDA's 2026 Computer Software Assurance guidance for production and quality-system software is sometimes cited as proof FDA now favours agile. Handle it carefully. It is written for **device manufacturers' production and quality management system software**, and its scope section expressly says it "does not provide recommendations for the design and development verification or validation requirements for device software functions." It does not govern a blood establishment's validation of BECS. What it *is* useful for is the mindset: it records that manufacturers "have also expressed a desire for a more iterative, agile approach for validation," and it frames validation as a risk-based way of building confidence. Borrow the risk-based mindset. Do not cite it as authority for Lakeshore.
+
+## Placing a change: three Lakeshore examples
+
+The practical skill is classification. Take three changes already on Lakeshore's books:
+
+| Change | Who writes the code | Right lifecycle | Why |
+|---|---|---|---|
+| **HOP 3.0 (REL-0311)** | Lakeshore's two developers | Agile *inside* a controlled release path | Requirements are learnable with hospital feedback; Lakeshore owns the code; the risk is moderate and rises with auto-allocation. Needs the gate. |
+| **BECS Release C (VAL-1418)** | The vendor | Vendor's own lifecycle (their V); Lakeshore runs a V-style user validation of the release in its own facility | Lakeshore does not control the vendor's sprints. What it controls is intake, impact assessment, regression and acceptance. See module 5. |
+| **CHG-2207, a critical framework vulnerability in HOP** | Lakeshore's developers, under time pressure | Emergency path of the same pipeline, with retrospective documentation | Speed matters, but the evidence debt is recorded and repaid. See module 10. |
+
+Notice the pattern. HOP 3.0 is the only one of the three where Lakeshore *chooses* a lifecycle. For the vendor's BECS release the vendor chooses, and Lakeshore's job is user validation. FDA's BECS guidance is explicit on this: "you are ultimately responsible for assuring that the system used in your establishment has been validated for use in your establishment."
+
+GAMP 5 vocabulary from the earlier module helps here too. HOP is custom software (Category 5): nobody besides Lakeshore has ever tested its code, so the "vendor already tested it" argument that works for Category 4 products is unavailable. That raises, not lowers, the weight on Lakeshore's own evidence.
+
+## The actual text
+
+The regulation first. 21 CFR 211.68 is the drug cGMP rule on automatic, mechanical and electronic equipment. FDA's BECS guidance says blood establishment systems are regulated "as automated or electronic equipment under 21 CFR Part 211, Subpart D (Equipment), specifically 21 CFR 211.68," which is why the guidance leans on it.
+
+> (a) Automatic, mechanical, or electronic equipment or other types of equipment, including computers, or related systems that will perform a function satisfactorily, may be used in the manufacture, processing, packing, and holding of a drug product. If such equipment is so used, it shall be routinely calibrated, inspected, or checked according to a written program designed to assure proper performance. Written records of those calibration checks and inspections shall be maintained.
+>
+> (b) Appropriate controls shall be exercised over computer or related systems to assure that changes in master production and control records or other records are instituted only by authorized personnel. Input to and output from the computer or related system of formulas or other records or data shall be checked for accuracy. [...]
+> — 21 CFR 211.68(a) and (b) (first two sentences of (b)); full text in `sources/cfr/211.68.md`
+
+Reading it against the Monday meeting:
+
+- **"a written program designed to assure proper performance"** is the regulatory root of the validation plan. Shall, not should. A tracker full of stories is not obviously a "written program."
+- **"changes ... instituted only by authorized personnel"** is the root of the release gate. Whoever promotes HOP to production is exercising a control, and the control has to be defined.
+- **"Input to and output from ... shall be checked for accuracy"** is why the HOP-to-BECS interface and the order data HOP writes are in scope for testing, not just HOP's screens.
+
+Now the blood-specific guidance (FDA guidance, so "should," except where it cites regulation):
+
+> Before you start user validation, you must define and control how you will validate the system through the use of a written plan designed to assure proper performance (21 CFR 211.68(a)). A written plan is not "designed to assure proper performance" unless it requires user validation prior to routine use, on a routine basis, and any time a change is made that has the potential to affect the functions of the system.
+> — FDA, *Blood Establishment Computer System Validation in the User's Facility*, III.C
+
+Reading it: "prior to routine use" is the line between a sprint demo and production. "Any time a change is made" means every release, however small, is an event the plan must cover.
+
+> We recommend that you perform validation in the "test environment" or "test partition" of your system. After successful validation, you or your software manufacturer should copy or move the file configuration on which you performed your validation into the production environment.
+> — same guidance, III.G (first bullet)
+
+This is the guidance's own picture of a release path: validate in a non-production partition, then move what was validated. Lakeshore's environments (development, test, validation, production) are a more detailed version of that; module 3 builds them. Note the guidance says "test environment," where Lakeshore will call the controlled one "validation." The idea is the same.
+
+> When any change (even a small change) is made to the software on the system, a software regression analysis should be conducted, not just for validation of the individual change, but also to determine the extent and impact of that change on the entire system. Based on the analysis, you should then conduct an appropriate level of software regression testing to show that unchanged but vulnerable portions of the system have not been adversely affected.
+> — same guidance, III.I
+
+Reading it: a two-week sprint is *a lot* of changes in a short time. Regression analysis is not a per-feature chore; it is a per-release one, and the release is where the analysis has to land.
+
+From FDA's general guidance for device manufacturers (not binding here, useful as general thinking):
+
+> Software validation takes place within the environment of an established software life cycle. [...] This guidance does not recommend any particular life cycle models – only that they should be selected and used for a software development project.
+> — FDA, *General Principles of Software Validation*, 4.4
+
+> To build a case that the software is validated requires time and effort. Preparation for software validation should begin early, i.e., during design and development planning and design input. The final conclusion that the software is validated should be based on evidence collected from planned efforts conducted throughout the software lifecycle.
+> — same guidance, 4.3
+
+> Validation activities should be conducted using the basic quality assurance precept of "independence of review." Self-validation is extremely difficult. [...] Smaller firms may need to be creative in how tasks are organized and assigned in order to maintain internal independence of review.
+> — same guidance, 4.9
+
+That last one matters for a two-developer team. "Self-validation is extremely difficult": the people who built HOP should not be the only people who approve it. Lakeshore's independent reviewers are Quality (the Quality Analyst) and, for the interface, the systems administrator and BECS staff.
+
+### Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 211.68(a) | "Title 21, part 211, section 211.68, paragraph (a)" | Equipment including computers checked per a written program designed to assure proper performance (regulation: *shall*). | The validation plan HOP 3.0 needs before testing starts. |
+| 21 CFR 211.68(b) | "...paragraph (b)" | Controls so changes to records are made only by authorized personnel; input and output checked for accuracy. | The release gate and the HOP-to-BECS interface testing. |
+| 21 CFR 864.9165(a) | "Title 21, part 864, section 864.9165, paragraph (a)" | Defines what BECS is: a device used in blood manufacture to prevent disease by identifying ineligible donors, preventing release of unsuitable products, performing compatibility testing, or positive patient and component identification. | The question auto-allocation raises (below). |
+| BECS guidance III.C | "Section III, subsection C of the 2013 user's-facility guidance" | Written validation plan before user validation; plan covers changes (guidance, *should*; cites 211.68). | "Where is the validation plan?" |
+| BECS guidance III.G | "...subsection G" | Validate in a test partition, then move to production; record test evidence; monitor after go-live. | Sprint output goes to the validation environment, not production. |
+| BECS guidance III.I | "...subsection I" | Regression analysis and testing after any change. | Every production release, regardless of sprint size. |
+| GPSV 4.3, 4.4, 4.7, 4.9, 5.1 | "General Principles of Software Validation, section 4.3 ..." | FDA's general thinking for device makers: no mandated model; evidence throughout; revalidate after change; independent review. | Why agile is not excluded and why self-review is weak. |
+
+## See it in one picture
+
+This is HOP 3.0's release path as the Director's decision would draw it. Sprints loop on the left; production is only reachable through the gate on the right; and the auto-allocation question runs on its own track, because it has to be answered by someone else.
+
+```{mermaid}
+flowchart TD
+    REQ["REL-0311: HOP 3.0<br/>two-week sprints, validation plan approved first"]
+    REQ --> S["Each sprint: stories built, unit and integration tests,<br/>requirements and test evidence recorded as you go"]
+    S --> VE["Sprint build ships to the validation environment<br/>(not to production)"]
+    VE --> EV["Incremental evidence: executed tests, defects,<br/>traceability, regression analysis"]
+    EV --> RG{"Release gate: Quality Analyst review,<br/>regression analysis reviewed, approval recorded<br/>(211.68(a), BECS guidance III.C and III.I)"}
+    RG -->|"Evidence incomplete"| S
+    RG -->|"Evidence complete"| PR["Production release on the validated release cadence<br/>change record, then close-out and monitoring"]
+    REQ --> AA["Auto-allocation: is HOP moving toward BECS?<br/>864.9165(a)"]
+    AA --> RA["Routed in writing to regulatory affairs<br/>Open: answer recorded in module 2"]
+    RA -.->|"answer sets what evidence this feature needs"| RG
+```
+
+## Watch it explained
+
+This webinar, from a validation-software company's channel, covers how agile methods fit with GAMP 5 and FDA's Computer Software Assurance thinking, which is the same question HOP 3.0 raises. It is general life-sciences training, not blood-specific and not about Lakeshore, and it's a vendor's own presentation, so treat it as one practitioner's view of how the pieces fit, not as guidance.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DMh_ES-XVbU"
+  title="Webinar GAMP5 CSA Agile Methods" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## The Director's decision
+
+Here is the resolution you take back to the room, stated so it can go in a memo.
+
+**Agile is compatible with validation if the evidence is produced incrementally and production releases pass through a validated release gate.** In practice:
+
+- **Before sprint one:** an approved validation plan for REL-0311 and a risk assessment. These are living documents, but they exist and are approved first (BECS guidance III.C; 211.68(a)). The development lead's backlog feeds the plan; it does not replace it.
+- **During sprints:** each story has acceptance criteria that can fail, tests are executed and recorded with expected and actual results, defects are logged, and traceability from requirement to test is kept current. [Module 2](../requirements-backlogs-and-traceability-in-agile/index.qmd) covers how.
+- **Sprint output goes to the validation environment.** Demos to hospitals and users happen there. Nothing in a sprint demo touches production, which keeps with the guidance's recommendation to validate in the test partition (III.G).
+- **Production releases follow a validated release cadence.** Not every sprint. When the accumulated increments have a complete evidence set, a release candidate goes through the gate: regression analysis reviewed (III.I), independent review by Quality (GPSV 4.9, as general thinking), authorized approval recorded (211.68(b)), and a change record. Module 4 sets the actual calendar and freeze windows around blood operations.
+- **Post-release:** close-out of the validation summary and a monitoring period (III.G recommends closely monitoring the system after installation of new software).
+
+This is a Director's decision, not a regulatory requirement. Nothing in the sources says "release every N sprints." The sources say what evidence should exist and who should authorize production. The cadence is your lever; it is how you give the development lead the speed they want in the environment where speed is cheap, and Quality the control they need where it is not.
+
+Notice what the development lead gets: two-week demos, fast feedback, small stories. And what the CIO gets: a path to auto-allocation that is built in slices rather than a year-long project. The only thing neither gets is automatic production every fortnight.
+
+### The auto-allocation question: raised, and routed
+
+Now the CIO's feature. Today distribution staff pick specific units in BECS to fill an order. Auto-allocation would have HOP *propose* specific units by donation identification number.
+
+A question follows, and **this module does not answer it**: does a feature like that move HOP toward being blood establishment computer software? The text that defines BECS is the regulation:
+
+> (a) Identification. Blood establishment computer software (BECS) is a device used in the manufacture of blood and blood components to assist in the prevention of disease in humans by identifying ineligible donors, by preventing the release of unsuitable blood and blood components for transfusion or for further manufacturing into products for human treatment or diagnosis, by performing compatibility testing between donor and recipient, or by performing positive identification of patients and blood components at the point of transfusion to prevent transfusion reactions.
+> — 21 CFR 864.9165(a); full text in `sources/cfr/864.9165.md`
+
+When HOP was first built, Lakeshore's regulatory affairs function documented that HOP is not a BECS, on the reasoning that it makes no suitability, labeling, or release decision. That decision was made for a HOP that takes orders and shows status. Auto-allocation changes what HOP does, so the earlier decision does not automatically carry over. That is a regulatory judgment, and it belongs to regulatory affairs, not to the development lead, the Quality Analyst, or the Director.
+
+Why it is in this module anyway: **the answer changes the lifecycle.** If HOP stays an order-intake system, validation follows the path above. If the answer were different, the evidence expected (and who must supply it) could change, including the special controls for BECS in 864.9165(b) (design specifications, verification and validation testing with hazard analysis, traceability matrix, labeling of anomalies). You cannot plan the validation of a feature whose regulatory status you have not asked about.
+
+So the Director's action is a written routing, sent before sprint planning commits auto-allocation to a release:
+
+> **To:** Regulatory Affairs. **From:** Director, IT Service Operations. **Re:** REL-0311 (HOP 3.0), auto-allocation.
+> HOP 3.0 includes a feature in which HOP would propose specific units, by donation identification number, to fill hospital orders. Our existing documentation states HOP is not BECS under 21 CFR 864.9165. We are asking whether the auto-allocation feature, as designed, changes that determination, and what you need from us to document your answer. Please respond before auto-allocation stories are scheduled into a release. Attached: the feature description and the current HOP-to-BECS interface description.
+
+Until the answer comes back, auto-allocation sits in the backlog marked "pending regulatory determination." Other HOP 3.0 stories can proceed. [Module 2](../requirements-backlogs-and-traceability-in-agile/index.qmd) records the answer.
+
+## What an inspector or assessor would look for
+
+You will not be asked "are you agile?" You will be asked for records. For a HOP release, expect:
+
+- **The validation plan** for the release, approved *before* test execution began. Owner: the development lead drafts, the Quality Analyst reviews, you approve with Quality. A bad answer: "the plan is the Jira board," or a plan dated after the tests.
+- **Requirements with traceability to executed tests,** current as of the release candidate, not as of sprint one.
+- **Test records:** input, expected output, actual output, pass/fail, who and when (BECS guidance III.G lists these elements for executed test cases).
+- **The regression analysis** and what was re-run because of it (III.I).
+- **The release approval** and the change record, showing who authorized production and when. A bad answer: "the developer merged it and it deployed."
+- **The validation summary report,** with variances and amendments to the plan (III.H).
+- **For anything touching BECS-adjacent behavior,** the regulatory affairs determination in writing.
+
+An assessor will also test whether practice matches the procedure. If the SOP says production releases need Quality approval and the deploy history shows Tuesday-night pushes with no matching change records, you have a nonconformance regardless of how good the code was.
+
+## Common traps
+
+**"Agile means we don't write a validation plan."** No source says that. The plan requirement (211.68(a); III.C) is independent of method. What changes in agile is that the plan is a living, version-controlled document and evidence is produced per slice.
+
+**"Every sprint is a release."** A sprint is a unit of *development* cadence. Production promotion is a *change*, with authorization and regression analysis. Shipping every sprint to production is possible only if the gate itself can run every sprint, with real evidence and real review. For a two-developer team with one Quality Analyst, that is usually not realistic. This is judgment, not rule; the rule is the evidence.
+
+**"FDA's CSA guidance says agile is fine, so we're covered."** The CSA guidance is scoped to device manufacturers' production and quality-system software and excludes device software functions. It is not Lakeshore's governing guidance and does not govern BECS validation. Use its risk-based mindset; cite the BECS guidance and 211.68.
+
+**"The developers tested it, so it's validated."** Independence of review is FDA's general thinking (GPSV 4.9): self-validation is "extremely difficult." For a small team, that means assigning review to someone not involved in the build, which is the Quality Analyst and the systems administrator.
+
+**"HOP isn't a BECS. It says so in the file."** It says so for HOP as it was when that determination was made. A new feature that changes what HOP does is a reason to ask again, in writing.
+
+## What this means for your job
+
+- **Ask for the plan before the first sprint.** "Where is the validation plan, and who approved it?" is the question the Quality Analyst already asked; back her up.
+- **Separate deploy from release in your own head and in your procedures.** Sprints deploy to validation freely. Production is a controlled change.
+- **Write the release gate down:** who reviews, what evidence must exist, who authorizes. If it is not in a procedure, it is a habit, and habits are not controls.
+- **Name an independent reviewer for every release.** With two developers, independence comes from outside the team.
+- **Route regulatory questions in writing, early,** and mark the dependent work as pending. A feature scheduled before its regulatory question is answered will cost you a sprint of rework or a worse conversation later.
+- **Report in the CIO's language:** "We ship to validation every two weeks and to production when the evidence is complete. Auto-allocation is waiting on a regulatory answer, not on engineering."
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The development lead says "FDA guidance recommends waterfall, so we can't do sprints." Accurate?
+
+No. FDA's general software validation guidance says it "does not recommend any particular life cycle models" (4.4, 5.1), and it expects validation tasks to be iterated "depending on the life cycle model used." What is required, however the work is sequenced, is a plan, evidence, regression analysis and authorized release.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is "production releases follow a validated release cadence, not every sprint" a regulatory requirement?
+
+No. It is the Director's decision, grounded in what the sources require (a written plan, regression analysis, authorized changes) and recommend (validate in a test partition, then move to production). No regulation or guidance sets a release frequency. If the gate can be run with real evidence at a shorter interval, a shorter cadence is defensible.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The CIO asks you to confirm that auto-allocation keeps HOP out of BECS territory so the feature can be scheduled. What do you say, and what do you do?
+
+You do not answer it. 21 CFR 864.9165(a) defines BECS, and whether a changed HOP falls toward it is a regulatory determination for regulatory affairs. You send a written request, mark the auto-allocation stories "pending regulatory determination," and let the rest of HOP 3.0 proceed. The answer will be recorded in module 2.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Explain to your CIO in two sentences why HOP can't go to production at the end of every sprint.
+
+"Each production release has to be backed by a written plan, regression analysis and an authorized approval, and with a two-person team and one Quality Analyst we can only produce that evidence for a release, not for every two-week slice. Sprints still ship to our validation environment so hospitals see progress, and production follows when the evidence is complete."
+:::
+
+## Where this goes next
+
+You now have the lifecycle models, the evidence each one owes, and a release path for HOP 3.0 that gives everyone most of what they asked for. Next, [requirements, backlogs and traceability in agile](../requirements-backlogs-and-traceability-in-agile/index.qmd) turns user stories into requirements an inspector can trace to tests, writes a definition of done that includes validation evidence, and records regulatory affairs' answer on auto-allocation.
