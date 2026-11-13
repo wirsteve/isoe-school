@@ -1,0 +1,436 @@
+---
+title: "Lookback and Consignee Notification"
+order: 192
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can run an HIV or HCV (hepatitis C virus) lookback under 21 CFR 610.46 and 610.47 end to end from IT's side: the query, the clock, consignee notification and the records.
+- **The punchline:** a repeat donor tests reactive for HCV. The BECS (Blood Establishment Computer Software) lookback query finds the earlier donations filed under the donor's current record. It misses two older donations filed under a duplicate donor record that was merged imperfectly years ago. The Quality Analyst finds them by searching on demographics. No outcome is asserted for those two donations. Whether their components were ever transfused is for the consignee to determine. Lakeshore's job is to notify and to keep the records.
+- **The rule in one line:** within 3 calendar days of the reactive test, review the donor's records to identify prior donations; quarantine what is in date, tell consignees to quarantine, tell them the further-testing results within 45 calendar days, and keep records of every step (610.47(a), 606.160(b)(1)(viii)). HIV (610.46) has the same structure.
+- **IT's part:** a query that reaches linked and merged records and a person-reviewed demographic match, a clock that starts itself, a consignee log with timestamps and acknowledgments, and a one-time sweep for other imperfect merges (BOC-023).
+- **Ask on Monday:** "If the last lookback query had missed a donation, what would have told us?"
+- **The trap:** a query that returns results looks complete. Completeness is a reconciliation problem, not a query-syntax problem.
+:::
+
+## The Thursday result
+
+The testing lab posts a reactive HCV screening result on a donor who has given many times. The medical director is told within the hour. The BECS analyst runs the lookback query before lunch, as the procedure says. It returns a tidy list: every prior donation filed under the donor's current donor number, each with its components and where they went.
+
+The Quality Analyst reads the list the next morning and frowns. "This donor has been giving longer than this list goes back. Their first donation here was years before the earliest entry." She doesn't trust the gap, so she does what a query can't do for itself. She searches the donor database on the donor's name, date of birth and other demographics, ignoring donor numbers entirely.
+
+A second record comes up. Same person, an older donor number, flagged as merged into the current record. Two donations hang off the old number. They were not in the query results.
+
+She brings it to your office. "The merge years ago moved the history, mostly. These two never moved. The query follows the current donor number, so it never looked."
+
+You ask the questions that matter before anyone starts fixing:
+
+- "Which clock are we on?" The 3-day clock started when the result posted. It is running.
+- "Do these two fall inside the look-back period, and are any components still in date?" The medical director and Quality will decide on the facts. Nobody guesses.
+- "Who tells Riverside General Hospital, and in what words?" The distribution manager owns the call. Quality owns the wording.
+
+The BECS analyst adds the sentence that frames the rest of the day: "The query did exactly what we built it to do. We built it to read one donor record."
+
+Nobody in this scene asserts harm. Whether any component from those two donations was transfused is for the consignee to determine, and a lookback exists precisely so the consignee can find out. The merge defect is a data problem you own.
+
+## Why the rule exists, and the ITSM bridge
+
+A donor can be infected before any test can see it. When a repeat donor later tests reactive, the earlier donations, collected while the infection may already have been there, may have gone out to patients. Lookback is the mechanism that works backward from the reactive test: find the earlier donations, stop the ones still in inventory, tell every hospital that received one, and make sure the results of further testing reach them.
+
+The failure mode is quiet. A lookback that finds nine of eleven donations does not look like a failure. It looks like a completed lookback. The two missing ones are exactly the ones nobody is watching.
+
+You already own the ITSM concept. Lookback is **impact analysis**: given a failed configuration item (the donor), find every dependent item (donations, components, consignees). Impact analysis is only as good as the CMDB (configuration management database) relationships it traverses. A CMDB with a duplicated CI and a half-completed merge gives you an impact list that is confidently wrong. Duplicate CIs, orphaned relationships and bad merges are classic CMDB defects, and the fix is the same: reconcile the relationships against an independent source, then repair the merge process that created the orphan.
+
+The **3-day clock** is an SLA whose start event must be detected automatically. The **consignee log** is the notification record of a major incident: who was told, when, how, and who confirmed.
+
+## The rule in plain English
+
+Both sections, 610.46 for HIV and 610.47 for HCV, have the same shape. Each has a part for the collecting establishment, paragraph (a), a part for the consignee, paragraph (b), and a closing sentence in (c).
+
+**For Lakeshore, the collector, (a):** within 3 calendar days of the reactive test, review the donor's records to identify prior donations; for those inside the look-back period, quarantine in-date products and notify consignees to quarantine; test the reactive donation further; tell consignees the results within 45 calendar days; and release, destroy or relabel to match the results.
+
+**For Riverside, the consignee, (b):** quarantine when notified, dispose consistent with the results and, when further testing is positive, make reasonable attempts to notify recipients or their physicians within 12 weeks of receiving the results. Those duties are the hospital's. Lakeshore does not notify patients and does not decide what a transfusion record shows.
+
+**(c):** these actions are not a recall as defined in 7.3.
+
+The text sets the quarantine and notification duties but says nothing about how Lakeshore builds its query or what technology it uses. "An appropriate system" is the regulation's phrase. Everything below about linked records, demographic matching and the consignee log is Lakeshore's design for making that system true.
+
+## Who decides what
+
+- **IT owns** the query, the clock, the log, the data model, the merge remediation, and the evidence that they work.
+- **Quality** decides whether the missed donations are a biological product deviation to report (see [Filing a biological product deviation report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd)). IT supplies the facts and states no conclusion.
+- **Quality and the medical director** decide donor notification under 630.40.
+- **The medical director** decides the clinical questions: what the further testing means for the donor and for the products.
+- **The distribution manager** works the consignee calls and the log.
+- **The Director** orders the one-time sweep for other imperfect merges and owns the change under **BOC-023**.
+- **The consignee** (Riverside) owns everything in paragraph (b).
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 610.47(a)(1) | "Six-ten point four-seven, paragraph a, sub-one" | Within 3 calendar days after a donor tests reactive for HCV, review all records required under 606.160(d) to identify prior donations; quarantine and notify consignees to quarantine, for those within the look-back period. | The clock starts at the reactive test. The review must reach the two older donations. |
+| 21 CFR 610.47(a)(2) | "...paragraph a, sub-two" | Perform further testing under 610.40(e) on the reactive donation. | The lab runs it. IT makes sure the result flows to the consignee notice. |
+| 21 CFR 610.47(a)(3) | "...paragraph a, sub-three" | Notify consignees of further-testing results within 45 calendar days after the reactive test, including results for the identified earlier products. | The second notice, with its own deadline and its own log entry. |
+| 21 CFR 610.47(a)(4) | "...paragraph a, sub-four" | Release from quarantine, destroy or relabel, consistent with results. | The disposition step, recorded. |
+| 21 CFR 610.47(b) | "...paragraph b" | The consignee's duties: quarantine, disposition, recipient notification within 12 weeks of receiving results. | Riverside's duties. Lakeshore's job is to notify on time and keep the records. |
+| 21 CFR 610.47(c) | "...paragraph c" | Actions under the section are not a recall as defined in 7.3. | No recall process is opened by the lookback itself. |
+| 21 CFR 610.46 | "Six-ten point four-six" | The HIV counterpart, with the same structure. | Shown side by side below. |
+| 21 CFR 606.160(b)(1)(vii), (viii) | "Six-oh-six point one-sixty, paragraph b, sub-one, clauses seven and eight" | Records relating the donor to each previous donation's unit number; records of quarantine, consignee notification, testing, recipient notification and disposition under 610.46 and 610.47. | The first is what the query reads. The second is the evidence of the lookback. |
+| 21 CFR 606.160(c) | "...paragraph c" | A donor number that relates the unit to the donor, the medical record, any component and all records of history and disposition. | The identity thread the duplicate record broke. |
+| 21 CFR 606.160(d) | "...paragraph d" | Retention: no less than 10 years after processing records are completed or 6 months after the latest expiration date, whichever is later. | The records the lookback reviews, and the retention for the lookback records. |
+| 21 CFR 630.40 | "Six-thirty point four-oh" | Reasonable attempts to notify a deferred donor within 8 weeks, with documentation. | Quality and the medical director decide; the record is kept. |
+| 21 CFR 7.3(g) | "Seven point three, paragraph g" | Defines "recall." | Why (c) matters. |
+
+## The actual text
+
+### 21 CFR 610.47: HCV lookback
+
+Quoted verbatim from `sources/cfr/610.47.md`. Paragraph (a), for the collecting establishment:
+
+> (a) If you are an establishment that collects Whole Blood or blood components, including Source Plasma and Source Leukocytes, you must establish, maintain, and follow an appropriate system for the following actions:
+>
+> (1) Within 3 calendar days after a donor tests reactive for evidence of hepatitis C virus (HCV) infection when tested under § 610.40(a) and (b) of this chapter or when you are made aware of other reliable test results or information indicating evidence of HCV infection, you must review all records required under § 606.160(d) of this chapter, to identify blood and blood components previously donated by such a donor. For those identified blood and blood components collected:
+>
+> (i) Twelve months and less before the donor's most recent nonreactive screening tests, or
+>
+> (ii) Twelve months and less before the donor's reactive direct viral detection test, e.g., nucleic acid test and nonreactive antibody screening test, whichever is the lesser period, you must:
+>
+> (A) Quarantine all previously collected in-date blood and blood components identified under paragraph (a)(1) of this section if intended for use in another person or for further manufacture into injectable products, except pooled blood components intended solely for further manufacturing into products that are manufactured using validated viral clearance procedures; and
+>
+> (B) Notify consignees to quarantine all previously collected in-date blood and blood components identified under paragraph (a)(1) of this section if intended for use in another person or for further manufacture into injectable products, except pooled blood components intended solely for further manufacturing into products that are manufactured using validated viral clearance procedures;
+
+Reading it against the scenario:
+
+- **"an appropriate system... establish, maintain, and follow."** Three verbs. The system must be written, kept current and actually used. A query nobody re-validates after a donor-record change is not "maintained."
+- **"Within 3 calendar days after a donor tests reactive... or when you are made aware of other reliable test results or information."** Two start events. The first is the test. The second is information Lakeshore receives some other way. The query and the clock must both be triggerable by either.
+- **"calendar days."** Weekends and holidays count. A reactive result posted on a Thursday does not wait for Monday.
+- **"review all records required under § 606.160(d)... to identify blood and blood components previously donated by such a donor."** "All records." The review is of the records, and the records of this donor include those filed under any record that is the same person. The text does not say how to find them. It says what the review must cover.
+- **(i) and (ii): the look-back period.** The text counts back "twelve months and less" from one of two reference points, "whichever is the lesser period." The first is the donor's most recent nonreactive screening tests. The second applies when there is a reactive direct viral detection test with a nonreactive antibody screening test. The query's period logic must implement this exactly. Which of the two applies to this donor's results is a determination for Quality and the medical director. This lesson does not make it.
+- **(A) and (B).** Quarantine here, and notify consignees to quarantine. Both attach to products "in-date" and "intended for use in another person or for further manufacture into injectable products." The text sets the 3-calendar-day phrase at the head of (a)(1). It does not state a separate time for (A) and (B). Lakeshore's procedure should treat all of (a)(1) as inside the 3 days, and Quality should confirm that reading. That is a conservative design choice, not a quotation.
+
+The rest of (a), (b) and (c):
+
+> (2) You must perform further testing for HCV as required under § 610.40(e) on the reactive donation.
+>
+> (3) You must notify consignees of the results of further testing for HCV, or the results of the reactive screening test if further testing is not available, or if under an investigational new drug application (IND) or investigational device exemption (IDE), is exempted for such use by FDA, within 45 calendar days after the donor tests reactive for evidence of HCV infection under § 610.40(a) and (b). Notification of consignees must include the test results for blood and blood components identified under paragraph (a)(1) of this section that were previously collected from donors who later test reactive for evidence of HCV infection.
+>
+> (4) You must release from quarantine, destroy, or relabel quarantined in-date blood and blood components consistent with the results of the further testing performed under paragraph (a)(2) of this section, or the results of the reactive screening test if further testing is not available, or if under an IND or IDE, exempted for such use by FDA.
+
+- **(a)(3)'s 45 days** runs "after the donor tests reactive," the same start event as the 3 days. It is a second deadline, not a continuation of the first.
+- **"must include the test results for blood and blood components identified."** The notice is not a generic "donor was reactive." It carries results for the identified products. A product the query missed is a product missing from the notice.
+- **(a)(4).** Disposition follows the test results. The medical director and Quality own what happens to a product; the record must show it.
+
+Paragraph (b), the consignee's:
+
+> (b) If you are a consignee of Whole Blood or blood components, including Source Plasma or Source Leukocytes, you must establish, maintain, and follow an appropriate system for the following actions:
+>
+> (1) You must quarantine all previously collected in-date blood and blood components identified under paragraph (a)(1) of this section, except pooled blood components intended solely for further manufacturing into products that are manufactured using validated viral clearance procedures, when notified by the collecting establishment.
+>
+> (2) You must release from quarantine, destroy, or relabel quarantined in-date blood and blood components, consistent with the results of the further testing performed under paragraph (a)(2) of this section, or the results of the reactive screening test if further testing is not available, or if under an IND or IDE, is exempted for such use by FDA.
+>
+> (3) When the further testing for HCV is positive or when the screening test is reactive and further testing is not available, or if under an IND or IDE, is exempted for such use by FDA, you must notify transfusion recipients of previous collections of blood and blood components at increased risk of transmitting HCV infection, or the recipient's physician of record, of the need for recipient HCV testing and counseling. You must notify the recipient's physician of record or a legal representative or relative if the recipient is a minor, adjudged incompetent by a State court, or if the recipient is competent but State law permits a legal representative or relative to receive information on behalf of the recipient. You must make reasonable attempts to perform the notification within 12 weeks after receiving the results of further testing for evidence of HCV infection from the collecting establishment, or after receiving the donor's reactive screening test result for HCV if further testing is not available, or if under an IND or IDE, is exempted for such use by FDA.
+
+- **"when notified by the collecting establishment."** The consignee's quarantine duty is triggered by Lakeshore's notice. That is why the notice's timing and proof of delivery matter. In (b)(3), the 12 weeks run "after receiving the results... from the collecting establishment," so the date the hospital received them matters too.
+- **Everything in (b) is Riverside's.** Lakeshore's job ends at timely notice and good records. Whether a given component was transfused, and what to tell a recipient or a physician of record, is the consignee's determination.
+
+And paragraph (c):
+
+> (c) Actions under this section do not constitute a recall as defined in § 7.3 of this chapter.
+
+### 21 CFR 610.46 side by side
+
+Quoted from `sources/cfr/610.46.md`. The HIV section is built the same way. The opening lines of (a)(1) and (a)(3):
+
+> (1) Within 3 calendar days after a donor tests reactive for evidence of human immunodeficiency virus (HIV) infection when tested under § 610.40(a) and (b) or when you are made aware of other reliable test results or information indicating evidence of HIV infection, you must review all records required under § 606.160(d) of this chapter, to identify blood and blood components previously donated by such a donor.
+>
+> (3) You must notify consignees of the results of further testing for HIV, or the results of the reactive screening test if further testing under paragraph (a)(2) of this section is not available, or if under an investigational new drug application (IND) or investigational device exemption (IDE), is exempted for such use by FDA, within 45 calendar days after the donor tests reactive for evidence of HIV infection under § 610.40(a) and (b) of this chapter.
+
+| Element | 610.47 (HCV) | 610.46 (HIV) |
+|---|---|---|
+| Records review clock | Within 3 calendar days (a)(1) | Within 3 calendar days (a)(1) |
+| Look-back period | Twelve months and less before the most recent nonreactive screening tests, or before the reactive direct viral detection test with nonreactive antibody screening, whichever is the lesser period | Same two reference points, whichever is the lesser period |
+| Direct viral detection examples in (a)(1)(ii) | "nucleic acid test and nonreactive antibody screening test" | "nucleic acid test or HIV p24 antigen test, and nonreactive antibody screening test" |
+| Quarantine and consignee quarantine notice | (a)(1)(A) and (B) | (a)(1)(A) and (B) |
+| Further testing | (a)(2), under 610.40(e) | (a)(2), under 610.40(e) |
+| Consignee results notice | Within 45 calendar days (a)(3) | Within 45 calendar days (a)(3) |
+| Disposition | (a)(4) | (a)(4) |
+| Consignee duties | (b)(1) to (3), recipient notification within 12 weeks | (b)(1) to (3), recipient notification within 12 weeks |
+| Who the consignee may notify, (b)(3) | Physician of record, or a legal representative or relative if the recipient is "a minor, adjudged incompetent by a State court," or competent with State law permitting it | The same list, with "deceased" added to it |
+| "Not a recall" | (c) | (c) |
+
+Two differences are visible in the text: the direct viral detection example in (a)(1)(ii), and the word "deceased" in (b)(3). The table's other rows read alike, though a table is not a substitute for reading both sections. For IT, the design consequence is the useful one: one lookback engine, parameterized by agent, with both sections' deadlines and period logic encoded and tested.
+
+### 606.160: the records
+
+Quoted from `sources/cfr/606.160.md`. The two donor-record clauses a lookback runs on:
+
+> (vii) Records to relate the donor with the unit number of each previous donation from that donor.
+>
+> (viii) Records concerning the following activities performed under §§ 610.46 and 610.47 of this chapter: Quarantine; consignee notification; testing; notification of a transfusion recipient, the recipient's physician of record, or the recipient's legal representative; and disposition.
+
+And the donor-number paragraph and retention:
+
+> (c) A donor number shall be assigned to each accepted donor, which relates the unit of blood collected to that donor, to his medical record, to any component or blood product from that donor's unit of blood, and to all records describing the history and ultimate disposition of these products.
+>
+> (d) Records shall be retained for such interval beyond the expiration date for the blood or blood component as necessary to facilitate the reporting of any unfavorable clinical reactions. You must retain individual product records no less than 10 years after the records of processing are completed or 6 months after the latest expiration date for the individual product, whichever is the later date. When there is no expiration date, records shall be retained indefinitely.
+
+- **(b)(1)(vii)** is what the query reads, and it is the clause the duplicate record bent. The records exist. The relationship between donor and donation is what failed.
+- **(b)(1)(viii)** lists five activities: quarantine, consignee notification, testing, recipient notification (the consignee's, but Lakeshore keeps records of what it is told), and disposition. Each is a field or an attachment in the lookback case file.
+- **(c)** says one donor number relates everything. Two donor numbers for one person is a structural conflict with that sentence. This lesson does not assert that it is a violation. That is Quality's determination. It is a defect in the thing the sentence describes.
+- **(d)** is both the source of "records required under 606.160(d)" in 610.47(a)(1) and the retention rule: the lookback case file is kept at least that long.
+
+### 7.3(g) and 630.40
+
+Quoted from `sources/cfr/7.3.md`:
+
+> (g) *Recall* means a firm's removal or correction of a marketed product that the Food and Drug Administration considers to be in violation of the laws it administers and against which the agency would initiate legal action, e.g., seizure. *Recall* does not include a market withdrawal or a stock recovery.
+
+Lookback is therefore a different mechanism with its own text. The recall material is in [Warning letters and recalls](../../fda-and-aabb-in-practice/warning-letters-and-recalls/index.qmd). Do not open a recall record because a lookback is running, and do not use "lookback" to avoid one if a different problem is a recall. They are separate questions.
+
+For donor notification, 630.40(c) from `sources/cfr/630.40.md`:
+
+> (c) *Time period for notification.* You must make reasonable attempts to notify the donor within 8 weeks after determining that the donor is deferred or determined not to be eligible for donation as described in paragraph (a) of this section. You must document that you have successfully notified the donor or when you are unsuccessful that you have made reasonable attempts to notify the donor.
+
+That is Quality's and the medical director's decision and document trail. IT's role is to make the deferral flag, the notification task and its documentation exist and be retrievable.
+
+## What the earlier modules already cover
+
+[Collection and testing](../../blood-center-operations/collection-and-testing/index.qmd) introduced lookback in a paragraph. This module takes it to a procedure. The identity thread under it comes from [Multi-site governance and donor identification](../../data-integrity-and-records/multi-site-governance-and-donor-identification/index.qmd), which covers the donor number across sites and formats. It does not cover a badly merged duplicate. That case is this lesson's: the same thread, broken in a different place.
+
+## Why the query missed two donations
+
+The query followed the donor number from the current record. A merge normally picks a surviving record, moves the history across and marks the other record as merged, and each step can be incomplete: history never moved, a related table left pointing at the old number, or the old record kept as a separate, still-searchable record. The root cause here is part of the remediation, and this lesson does not assert which it was. Either way, a query that starts at the current donor number cannot see the two donations.
+
+The deeper flaw is that the query trusts the record's boundary as the definition of "this donor." The regulation says "previously donated by such a donor," which is a statement about a person, not a database key.
+
+## The control: query completeness is a reconciliation problem
+
+You have met this pattern three times in this curriculum. In each case a system reported success and a second, independent source showed otherwise.
+
+| Where | What the system said | What reality was | The check that finds it |
+|---|---|---|---|
+| [The LIS and the test report](../../clia-and-cap-for-blood-center-labs/the-lis-and-the-test-report/index.qmd) | A corrected report was released | The correction never reached the reader | Sent versus acknowledged |
+| [Program data feeds and reporting](../../hrsa-and-cellular-therapy-programs/program-data-feeds-and-reporting/index.qmd) | A feed reported success | The listing still showed a unit no longer available | Listed versus actual |
+| [Inventory: returns, reissue and reconciliation](../inventory-returns-reissue-and-reconciliation/index.qmd) | BECS showed a unit available | The hospital had discarded it | BECS versus physical |
+| This lesson | The lookback query returned a complete-looking list | Two donations were filed under another record | Query versus an independent search on the person |
+
+The lookback case is the hardest of the four because the missing thing is invisible in the output. A ghost unit shows up as an exception when somebody counts a shelf. A missed donation is simply absent. The only way to see an absence is to ask the question a different way and compare.
+
+That is why the Quality Analyst's move is the model. She did not re-run the query. She changed the key: from donor number to demographics. The independent source need not be better than the query. It needs to fail differently.
+
+## The decisions
+
+### 1. Extend the query to linked and merged records, and add a demographic match step reviewed by a person
+
+The lookback query becomes three passes, with a union of the results:
+
+1. **The current donor record.** The pass that ran.
+2. **Linked and merged records.** Every donor number that BECS holds as linked to, merged into, or marked as a duplicate of the current record, including the history of past merges. This needs the merge history to be queryable, which is part of the remediation below.
+3. **Demographic candidates.** A search that does not use the donor number: name variants, date of birth, and other identifying fields Lakeshore's procedure names, with tolerance for typos and name changes. It returns candidates.
+
+The third pass is a matching problem (the discipline is called record linkage or entity resolution; see Keep learning). Two points matter for a regulated process:
+
+- **Candidates are not matches.** A demographic search finds people who might be the same person. Two different donors can share a name and a birth date. The step produces a list, and **a person reviews every candidate** and records the decision: same donor, different donor, or unresolved. Auto-merging on a fuzzy match would repeat the original failure at speed.
+- **Err toward review, not toward silence.** A candidate that cannot be resolved quickly is escalated to the medical director and Quality, not dropped. The cost of an extra review is minutes. The cost of a missed donation is a consignee who was not told.
+
+The reviewed candidate list is retained as part of the lookback case file. It is the evidence that the demographic step ran and what was decided.
+
+The person doing the review sees donor identity data. Access to the candidate list is limited to the roles that need it, like any other donor record.
+
+### 2. Remediate the merge under BOC-023, with validation
+
+The duplicate-record merge is remediated as change record **BOC-023**, under Lakeshore's blood-operations change control, with Quality in the approval:
+
+- **Root cause first.** Why did the merge leave history behind? The BECS analyst traces the merge procedure or tool. Until that is known, no claim is made about whether it can recur.
+- **Repair the known pair.** The two donations are re-associated to the surviving donor record through BECS's controlled correction path, with an audit trail. Nothing is deleted. The old record stays as a retired record with a pointer, so history remains traceable.
+- **Fix the merge process.** A merge must move or re-point every dependent record, and it must verify that afterward, or fail loudly.
+- **Make the merge history queryable.** The lookback query's second pass needs it.
+- **Validate.** The change is validated like any other BECS change (see [Risk-based testing and regression](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd) for scope and tiers). Test cases worth naming:
+  - a merge of two records with donations on both: afterward, the lookback query on the surviving number returns both sets;
+  - a merge where a dependent table (components, tests, distribution) has records: nothing is left pointing at the retired number;
+  - a lookback run on a record that was merged before the fix (the historical case, using the repaired pair): the query returns all donations;
+  - a demographic candidate that is the same person but has no link: it appears on the candidate list and is not silently accepted;
+  - a candidate that is a different person with the same name and birth date: a reviewer can mark it "different donor" and the decision is recorded.
+- **Regression.** Anything that reads donor-number relationships is in scope: component traceability, deferral checks, the cumulative deferred-donor record from [multi-site governance](../../data-integrity-and-records/multi-site-governance-and-donor-identification/index.qmd).
+
+### 3. Track consignee notifications in a log with timestamps and acknowledgments
+
+The consignee log is where the 3-day and 45-day deadlines become provable. For each consignee and each notice, one row:
+
+| Field | Why it is there |
+|---|---|
+| Lookback case ID, agent (HIV or HCV) | One case file per reactive donor |
+| Reactive-test timestamp (the clock start) | Every deadline is computed from it |
+| Notice type: quarantine request (610.47(a)(1)(B)) or further-testing results (610.47(a)(3)) | Two different notices, two different deadlines |
+| Products covered (donation and component identifiers) | The notice must cover the identified products |
+| Consignee and contact reached | Who was told |
+| Timestamp sent, channel, sender | When and how |
+| Acknowledgment: timestamp, name, method | Proof the consignee received it |
+| Deadline and time remaining | Drives escalation |
+| Consignee's quarantine confirmation | What the consignee reports doing; the duty is theirs |
+| Escalation and follow-up entries | What happened when no acknowledgment came |
+
+Design points for the BECS analyst:
+
+- **The clock starts itself.** The reactive result posting in BECS creates the case and starts the 3-day and 45-day timers. It does not wait for someone to open a ticket. The second start event, "other reliable test results or information," needs a manual case-open path that starts the same clock from the date Lakeshore became aware.
+- **Unacknowledged notices escalate.** The same shape as the platelet alert in [Apheresis platelets and bacterial risk](../apheresis-platelets-and-bacterial-risk/index.qmd): a notice with no acknowledgment is a task that goes to the distribution manager and then to the medical director.
+- **Consignees come from distribution records.** Finding who received each identified component uses the 606.165 distribution records that [Inventory: returns, reissue and reconciliation](../inventory-returns-reissue-and-reconciliation/index.qmd) kept true. A unit reissued to a second hospital has two consignees. A ghost unit or a bad return record is a lookback defect waiting to happen.
+- **Acknowledgment is evidence of receipt, not of action.** A consignee's "received" does not mean the units were quarantined. The log records what the consignee reports, and the duty to act is theirs.
+- **The log is read-only after the fact.** Corrections are new entries with an audit trail, not overwrites.
+
+Riverside gets the notices Lakeshore is required to send. What Riverside finds in its own transfusion records, and what it does about recipients under (b)(3), is its own work. Lakeshore does not ask, and the log does not claim to know.
+
+### 4. Keep the lookback records under 606.160
+
+The case file is the record set that 606.160(b)(1)(viii) names. One case file holds:
+
+- the reactive result and clock start;
+- the query run: which passes, with what parameters, when and by whom, with the three result sets and the reviewed demographic candidates;
+- the look-back period determination and who made it;
+- quarantine records for in-date product at Lakeshore;
+- the consignee log entries;
+- further-testing results and their notice;
+- disposition records: released, destroyed or relabeled;
+- any consignee reports Lakeshore receives about recipient notification;
+- the deviation-reporting decision and the donor-notification record, each from the people who own them.
+
+Retention follows 606.160(d). The records are in BECS or linked from it, with an audit trail, so that an inspector can pick the case and walk it in one sitting. The Part 11 principles in [Part 11 for validated systems](../../csv-and-becs/part-11-for-validated-systems/index.qmd) apply to the electronic parts.
+
+### 5. Quality decides deviation reporting; Quality and the medical director decide donor notification
+
+IT does not conclude whether the missed donations need a biological product deviation report. Quality does, using [the BPDR module's](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd) method, and IT supplies the facts. Donor notification under 630.40 and its record (606.160(b)(1)(x)) belong to Quality and the medical director.
+
+### 6. The Director orders a one-time sweep for other imperfect merges
+
+If one merge was imperfect, others may be. The Director orders a **one-time sweep**, as part of BOC-023:
+
+- **Find candidates.** Every retired or merged record that still owns donations, components or test results, and every pair of active records with matching demographics.
+- **A person reviews every hit,** and repairs go through the controlled path with an audit trail.
+- **Record the result** (counts, hits, resolutions) and hand findings to Quality, who decide whether any is itself a deviation to assess.
+
+A sweep is a one-time catch-up. The lasting control is the merge fix plus a periodic integrity check.
+
+## The response, step by step
+
+1. **Run the clock.** Confirm the start, compute the 3-day and 45-day deadlines and put them in the case. The text says "calendar days" and does not say how to count the first day, so Lakeshore's procedure fixes a convention (for example, the reactive day is day 0) and Quality confirms it.
+2. **Contain.** Quarantine every in-date identified component in Lakeshore's inventory.
+3. **Widen the query.** Run all three passes and record each candidate decision.
+4. **Fix the period.** Quality and the medical director determine which reference point applies and apply it to the full union.
+5. **Notify.** The distribution manager works the log: quarantine notices first, then the results notice, each acknowledged or escalated.
+6. **Dispose and hand off.** Release, destroy or relabel with records. Quality decides deviation reporting. Quality and the medical director decide donor notification.
+7. **Open BOC-023** and order the sweep, then review effectiveness after a defined period.
+
+## See it in one picture
+
+The diagram follows this lookback from the reactive test to the records, and shows where the Quality Analyst's demographic search sits. It is Lakeshore's workflow as this lesson sets it up. It is not a regulatory flowchart.
+
+```{mermaid}
+flowchart TD
+  T["Donor tests reactive for HCV<br/>(610.40(a) and (b))<br/>CLOCK STARTS: day 0"] --> C["3-calendar-day window<br/>610.47(a)(1)"]
+  C --> Q1["Lookback query on 606.160(d) records<br/>1. Current donor record"]
+  Q1 --> Q2["2. Linked and merged records<br/>(old donor numbers, merge history)"]
+  Q2 --> Q3["3. Demographic match candidates<br/>REVIEWED BY A PERSON"]
+  Q3 --> L["Prior donations identified<br/>within the look-back period"]
+  L --> K["Quarantine in-date components<br/>in Lakeshore inventory<br/>(610.47(a)(1)(A))"]
+  L --> N["Consignee notification log<br/>notice sent, time, method,<br/>acknowledgment<br/>(610.47(a)(1)(B))<br/>Riverside quarantines per (b)(1)"]
+  T --> F["Further testing on the reactive donation<br/>610.47(a)(2)"]
+  F --> R["Further-testing results notice to consignees<br/>within 45 calendar days<br/>610.47(a)(3), logged"]
+  N --> R
+  R --> D["Release, destroy or relabel<br/>610.47(a)(4)"]
+  K --> D
+  D --> REC["Records: quarantine, consignee notification,<br/>testing, recipient notification, disposition<br/>606.160(b)(1)(viii)"]
+  Q3 -. "Quality Analyst demographic search<br/>caught two missed donations" .-> M["Merge remediation under BOC-023<br/>and one-time sweep"]
+```
+
+## Watch it explained
+
+No video embed for this module. Searches for a lookback, hepatitis C transfusion-transmission or transfusion-transmitted infection explainer from a regulator, professional society, news or educational channel returned documents and journal articles, and no verifiable on-topic video. Nothing was embedded rather than embed a weaker one. The diagram and the primary text carry the lesson, and the resources page lists the FDA's own rule-making record.
+
+## Lookback is not a recall
+
+Both sections close with the same sentence, quoted above. It tells you which process this is: quarantine, consignee notification and recipient notification run under 610.46 and 610.47 and are recorded under 606.160(b)(1)(viii). It does not relieve any deadline, and it does not make a separate product problem a non-recall. [Warning letters and recalls](../../fda-and-aabb-in-practice/warning-letters-and-recalls/index.qmd) covers how Quality tells a recall from a market withdrawal. In the system, the lookback case and the recall case are different objects with different owners and reports.
+
+## What an inspector or assessor would actually look for
+
+Pick the most recent lookback and walk it.
+
+| They ask | Record that answers | Owner | What a bad answer sounds like |
+|---|---|---|---|
+| "When did the donor test reactive, and when did you start?" | Result timestamp and case-open timestamp | Quality, BECS analyst | "We got to it that week." |
+| "Show me how you found the prior donations." | Query record: passes, parameters, results | BECS analyst | "We run a report." |
+| "How do you know it found them all?" | Demographic candidates and reviewer decisions | Quality | "The query is validated." |
+| "Show me the look-back period you applied and who decided." | Period determination with decision-maker | Quality, medical director | "Twelve months, I think." |
+| "Who did you tell, and when?" | Consignee log with timestamps | Distribution manager | "We called the hospitals." |
+| "How do you know they got it?" | Acknowledgments, escalations | Distribution manager | "We emailed." |
+| "What happened to the quarantined product?" | Disposition records | Component lab supervisor, Quality | "It was handled." |
+| "What did you do when you found the gap?" | BOC-023, sweep results, validation evidence | Director, Quality | "We merged them again." |
+
+A recorded lookback exercise on a donor with a known merge history is stronger than any assertion.
+
+## Common traps
+
+**"The query is validated, so it is complete."** Validation shows the query meets its specification. The specification said "follow the donor number." The regulation says "previously donated by such a donor."
+
+**"The 3 days start when we confirm."** The text starts the clock when the donor tests reactive or when you are made aware of other reliable results or information. Further testing is its own paragraph, (a)(2), and the results notice has its own 45 days.
+
+**"We notified the hospital, so we're done."** The log is the proof: products covered, time, acknowledgment. A call with no entry did not happen, to an inspector. The opposite error is also real: Lakeshore does not run Riverside's recipient notification.
+
+**"A match is a match."** Auto-merging on demographics is how wrong merges happen. People review candidates.
+
+## What this means for your job
+
+- **Ask the BECS analyst: "What does the lookback query treat as one donor?"** If the answer is "one donor number," you have this lesson's gap.
+- **Ask for the last lookback exercise.** A run on a known-merged donor, with the demographic step, and its result. If none exists, schedule it. Add a periodic run (Lakeshore's cadence, not the regulation's).
+- **Check that the clock starts itself,** from the result, and has a manual start for "other reliable information." A deadline that depends on someone remembering is a deadline that will be missed once.
+- **Read the consignee log as an inspector would.** Every notice has a timestamp, a channel and an acknowledgment, and anything unacknowledged has an escalation. Look for rows with no acknowledgment and no follow-up.
+- **Keep the line between Lakeshore's duties and the consignee's.** When someone asks whether a recipient was exposed, the answer is "Riverside determines that, and we have notified them." IT never writes a sentence that asserts harm or its absence.
+- **Escalate** the moment the query and an independent search disagree, or any deadline is at risk.
+- **Treat merge integrity as a standing control,** not a one-time fix: a periodic check that retired records own nothing and that active duplicates are surfaced for review.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The reactive result posts on a Thursday evening. When does the 3-day clock start, and does the weekend count?
+
+The clock starts when the donor tests reactive (or when Lakeshore is made aware of other reliable results or information), not when someone opens a ticket on Monday. The text says "3 calendar days," so weekends and holidays count. This is why the case must open itself from the result. How the first day is counted is not stated in the text, so Lakeshore's procedure fixes a convention, and Quality confirms it.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A colleague says, "Lookback is basically a recall, so Quality's recall procedure covers it." Right or wrong, and what's the text?
+
+Wrong. 610.47(c) and 610.46(c) both say actions under the section do not constitute a recall as defined in 7.3. Lookback has its own steps, deadlines and records. A recall is a separate analysis (see Warning letters and recalls) that Quality would make if a product problem met that definition.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Is it a regulatory requirement that Lakeshore run a demographic match step in its lookback query?
+
+No. The regulation requires "an appropriate system" and a review of the records required under 606.160(d) to identify prior donations by "such a donor." It does not mandate a demographic match. The demographic step is Lakeshore's design choice, made because a query keyed on one donor number can miss records of the same person. Label it that way when an inspector asks.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Riverside acknowledges the quarantine notice. Is the log row finished?
+
+No. The acknowledgment proves receipt. The log should also hold what Riverside reports about quarantine, and a second notice (further-testing results) is due within 45 calendar days of the reactive test, with its own row and acknowledgment. Anything Riverside decides about recipients under (b)(3) is Riverside's, and Lakeshore records only what it is told.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q5: Explain this to your CIO in two sentences.
+
+"When a repeat donor tests positive for hepatitis C or HIV, we have three days to find everything they ever gave in the look-back period and stop it, and 45 days to send hospitals the further-testing results, and our query had missed two donations because they sat under a duplicate donor record. We are fixing the merge, searching the donor database a second, independent way every time, logging every hospital notice with a timestamp and a confirmation, and sweeping for other bad merges."
+:::
+
+## Where this goes next: the Track 7 wrap
+
+This is the last module of Track 7, and the end of [Blood Operations Deep Dive](../index.qmd). Look at what you can now do across the track's five courses.
+
+- **[Release management & the SDLC](../../release-management-and-sdlc/index.qmd).** Run any software change at Lakeshore, from an in-house release to a vendor BECS upgrade to an emergency hotfix, and say what evidence a regulator, an assessor and your CIO would each expect. Every fix in this course, BOC-023 included, rides on it.
+- **[Research programs: REDS & NIH](../../research-programs-reds-and-nih/index.qmd).** Explain how the REDS research program is structured and governed, what NIH and human-subjects rules reach a blood center that contributes data, and where IT touches each: the extract, its transfer and linkage, privacy, data sharing and security.
+- **[CLIA & CAP for blood center labs](../../clia-and-cap-for-blood-center-labs/index.qmd).** Say where CLIA and CAP accreditation apply to a blood center's testing and reference laboratories, and what they expect of the LIS, interfaces, the LIS-to-BECS result path, reports, records and proficiency testing. The reactive test that starts a lookback was born there.
+- **[HRSA & cellular therapy programs](../../hrsa-and-cellular-therapy-programs/index.qmd).** Place the national cell transplantation program, the registry and cord blood systems and the data feeds a blood center sends into it, and put those systems under the same control as BECS.
+- **[Blood operations deep dive](../index.qmd).** Take five blood operations IT carries, from platelet bacterial risk to lookback, and say for each what the rule asks, where the system makes it true or false, and what evidence proves it.
+
+One pattern runs through the last course: a system that reports success is not proof. Sent versus acknowledged, listed versus actual, BECS versus physical, query versus an independent search. In every case the control is a second source, a named owner and a retained record.
+
+For the whole map, including what is built and what is next, go back to the [Curriculum](../../../curriculum.qmd) page.

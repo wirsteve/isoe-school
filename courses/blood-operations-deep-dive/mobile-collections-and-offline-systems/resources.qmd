@@ -1,0 +1,47 @@
+---
+title: "Resources"
+order: 191
+---
+
+External links for this lesson. Every link below was checked with `curl` on 2026-11-13 (HTTP 200). eCFR's own site blocks automated traffic in this repo's build environment, so the regulation text in the lesson comes from the local copies in `sources/`, and the links below use Cornell LII's mirror of the same text.
+
+- **[Cornell LII: 21 CFR 630.30, Donation suitability requirements](https://www.law.cornell.edu/cfr/text/21/630.30)** (page title: "21 CFR § 630.30 - Donation suitability requirements.") — the suitability conditions and the "must not release" rule behind the sync-time check. Use it to read the whole section. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.160, Records](https://www.law.cornell.edu/cfr/text/21/606.160)** (page title: "21 CFR § 606.160 - Records.") — paragraph (e) is the deferred-donor record behind the laptop's list. Use it when asked what the list is built from. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 610.41, Donor deferral](https://www.law.cornell.edu/cfr/text/21/610.41)** (page title: "21 CFR § 610.41 - Donor deferral.") — deferral for reactive screening tests and requalification (the "no longer deferred" case in test S3). Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 630.40, Requirements for notifying deferred donors](https://www.law.cornell.edu/cfr/text/21/630.40)** (page title: "21 CFR § 630.40 - Requirements for notifying deferred donors.") — content, the 8-week period and the documentation duty that Quality and the medical director own. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 630.10, General donor eligibility requirements](https://www.law.cornell.edu/cfr/text/21/630.10)** (page title: "21 CFR § 630.10 - General donor eligibility requirements.") — paragraph (d)(1) and its exception for the cumulative record. Read the full paragraph before relying on the exception. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 11.10, Controls for closed systems](https://www.law.cornell.edu/cfr/text/21/11.10)** (page title: "21 CFR § 11.10 - Controls for closed systems.") — the audit-trail, access, authority-check and device-check paragraphs behind the evidence pack. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)** (page title: "Blood Establishment Computer System Validation in the User's Facility | FDA") — nonbinding guidance behind the kit validation and BOC-022 regression. It says nothing specific about offline clients, and the lesson says so. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance: Part 11, Electronic Records; Electronic Signatures - Scope and Application](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/part-11-electronic-records-electronic-signatures-scope-and-application)** (page title: "Part 11, Electronic Records; Electronic Signatures - Scope and Application | FDA") — FDA's nonbinding view of how it applies Part 11, including audit trails. Use it for the wider context of the 11.10(e) discussion. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST Internet Time Service (ITS)](https://www.nist.gov/pml/time-and-frequency-division/time-distribution/internet-time-service-its)** (page title: "NIST Internet Time Service (ITS) | NIST") — a national reference time source and how computers get it. Useful background for "trusted reference" in the clock evidence. It is not a blood or FDA requirement. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+## Video note
+
+No video embed for this module. Searched for offline-first data synchronization, clock synchronization and NTP, and audit-trail explainers. Nine NTP explainers on YouTube passed an oEmbed check, but all came from small independent or training channels (none from a regulator, professional society, news outlet or educational institution), and none addressed offline drift, deferral lists or audit trails. The searches for offline-first synchronization turned up only written courses and blog posts. Nothing both specific enough and from an acceptable source was found.
+
+## Related lessons in this curriculum
+
+- [Donor recruitment and screening](../../blood-center-operations/donor-recruitment-and-screening/index.qmd) for the registry check and 630.10 in full.
+- [Audit trails and e-signatures](../../data-integrity-and-records/audit-trails-and-esignatures/index.qmd) and [ALCOA and data integrity](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd) for the principles behind the evidence pack.
+- [Multi-site governance and donor identification](../../data-integrity-and-records/multi-site-governance-and-donor-identification/index.qmd) for the matching problem inside the sync check.
+- [BECS interfaces and data integrity](../../csv-and-becs/becs-interfaces-and-data-integrity/index.qmd) for the sync as an interface with an error path.
+- [Environments, baselines and test data](../../release-management-and-sdlc/environments-baselines-and-test-data/index.qmd) for the kit baseline under BOC-022.
+- [Healthcare security and privacy](../../healthcare-security-and-privacy/index.qmd) for the lost-laptop incident.
+
+## Keep learning
+
+- **[Cambridge Computer Laboratory: Distributed systems, Lecture 4 (clock synchronization; logical clocks)](https://www.cl.cam.ac.uk/teaching/1617/ConcDisSys/2017-DistributedSystems-1B-L4-handout.pdf)** (PDF; first page: "Distributed systems, Lecture 4: Clock synchronization; logical clocks") — university lecture handout on why clocks drift and how synchronization works. Read it for the reasoning behind "record the offset." Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[MDN: Offline and background operation (Progressive web apps)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Offline_and_background_operation)** (page title: "Offline and background operation - Progressive web apps | MDN") — a vendor-neutral developer reference on how offline-capable applications store and synchronize data. Not about blood, and not authority for any regulatory claim. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Educative: Offline-first design and data synchronization](https://www.educative.io/courses/mobile-system-design/offline-first-design-and-data-synchronization)** (page title: "Offline-First Design and Data Synchronization in Mobile Apps") — a lesson on stale reads, conflict detection and sync strategies. A commercial learning platform, so treat it as a general explainer only. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST CSRC glossary: audit trail](https://csrc.nist.gov/glossary/term/audit_trail)** (page title: "audit trail - Glossary | CSRC") — NIST's definitions of an audit trail from several of its publications, for vocabulary when you talk to security and Quality colleagues. Not about blood. Verified loading via `curl` on 2026-11-13 (HTTP 200).
