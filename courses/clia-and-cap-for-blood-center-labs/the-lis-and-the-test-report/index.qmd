@@ -1,0 +1,336 @@
+---
+title: "The LIS and the Test Report"
+order: 166
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can apply 42 CFR 493.1291 (including 1291(a)'s requirement that results be accurately and reliably sent from data entry to the final report destination), 493.1283, 493.1105 and 493.1231 to the LIS, the LIS-to-BECS interface and the reference lab's reports, corrected reports included.
+- **The punchline:** the reference lab corrected an antibody identification. The correction was released in the LIS, but the outbound interface treated it as a duplicate message and suppressed it. The hospital's system kept showing the original, and the hospital found out by phone two days later.
+- **The rule in one line:** the laboratory must have a system that gets results to the final report destination accurately, reliably and on time, and when a reporting error is found it must notify promptly, issue the corrected report promptly, and keep both the original and the corrected report (493.1291(a), (k)).
+- **The IT lesson:** "the LIS says released" is not the same as "the recipient has it." Interface logic that silently drops a message is a CLIA problem in the reference lab and a release risk on the donor side.
+- **Ask on Monday:** "For every outbound interface, how do we know a corrected report arrived, and who sees the exception when one didn't?"
+- **The trap:** treating CLIA as only about the bench result. The report's journey is regulated too.
+:::
+
+## The phone call
+
+The call comes in on a Thursday to the reference immunohematology laboratory. A hospital transfusion service supervisor is polite and a little puzzled. Her system still shows an antibody identification for a patient, and it doesn't match what the lab told her tech about the same specimen on the phone yesterday. Her tech had been working from the corrected specificity because someone at Lakeshore mentioned it. The system of record at the hospital says something else.
+
+The laboratory director pulls the case. Two days earlier a Lakeshore technologist had noticed that an antibody specificity on a released antibody identification had been entered wrong. The LIS (laboratory information system) generated a corrected report directly, with no re-keying, and the LIS shows it as released. Nothing is wrong with the correction itself.
+
+Your LIS analyst opens the interface log. "There's the original, acknowledged by the hospital. And there's the correction. Status: suppressed, duplicate. Same patient, same order, same accession keys. The message-handling rule on the outbound interface thinks it's a retransmission and drops it. No error, no alert, no queue entry anyone watches."
+
+The Quality Analyst has the event record open already. "So the lab did everything right at the bench and in the LIS, and the report never arrived."
+
+"Which is a report-delivery failure," the laboratory director says. "And I'm the one who answers for it."
+
+Nobody on the team misconfigured anything out of carelessness. A rule written to prevent duplicate results on the hospital's screen did exactly what it was built to do. That is the point of this lesson: the rule that protected one workflow defeated another, and nobody tested the second one.
+
+## Why the rule exists, and the ITSM bridge
+
+A hospital transfusion service chooses blood for a patient from the reference lab's antibody identification. If the report says the wrong specificity, the hospital may select units that are not safe, or exclude units that are. A correction that never arrives leaves the hospital acting on the wrong answer while the lab believes the problem is fixed. The patient bears the risk, and the hospital reasonably thinks it is relying on current information.
+
+CLIA's postanalytic rules exist for this gap: the lab has produced a good result, and the question is whether the right person ends up holding the right version of it. CLIA does not stop at the instrument. It follows the result to its "final report destination."
+
+The ITSM bridge: this is **service level management and event management applied to a message, with a regulator reading the log.** You already own the idea that a delivery isn't "done" until the consumer has it, and that a healthy dashboard on the sending side can hide a broken service on the receiving side. In ITIL terms, the suppressed correction is an event with no monitoring: a state change nobody was watching. The regulator's version is "adequate system ... to ensure" delivery, which is a control objective, not a method. You choose the method, and you will be asked to show it works.
+
+The second bridge is **change enablement**. The dedup rule was added once, for a good reason, and it carried an assumption: that two messages with the same keys are the same message. A corrected report is the one case in which the same keys carry different content. That assumption lived in a configuration setting, and the setting had no regulatory owner. Module 3 returns to this theme for middleware rules.
+
+## The rule in plain English
+
+Four rules, then the Lakeshore mapping.
+
+1. **Results must reliably get from where they are entered to where they are used.** The laboratory must have a manual or electronic system, adequate to ensure that results and other patient-specific data are accurately and reliably sent from the point of data entry (interfaced or manual) to the final report destination, in a timely manner. That includes results sent electronically to network or interfaced systems, and results received from outside referral laboratories (493.1291(a)).
+2. **When a reported result is wrong, the lab must tell people, correct it, and keep both versions.** Notify the authorized person who ordered the test promptly, issue corrected reports promptly, and maintain duplicates of the original and the corrected report (493.1291(k)).
+3. **Records and reports must be kept and findable.** The lab maintains an information or record system for specimen identification, receipt, testing and who tested (493.1283), and retains records and reports for set periods (493.1105).
+4. **Patient information stays confidential in every phase the lab controls**, including inside the systems that carry the report (493.1231).
+
+What the rules do not do: they don't specify an interface standard, a message format, a retry policy, an acknowledgment protocol, or a reconciliation method. Those are Lakeshore's design decisions, and that is exactly why an inspector will ask you what they are.
+
+## Where this lands in Lakeshore's systems
+
+Lakeshore's result path, from module 1: instruments, then middleware, then the LIS, then an interface to BECS (Blood Establishment Computer Software). The reference lab also sends patient reports to hospitals. Three places in that path matter here.
+
+**The LIS itself.** It holds the test records (493.1283), generates the reports, and keeps the original and corrected versions. It is the lab's record system, so retention and retrieval (493.1105), access control and confidentiality (493.1231) all live here.
+
+**The outbound hospital report interface.** This is where the scenario failed. It carries patient-specific results to a system Lakeshore doesn't own. 493.1291(a)(2) names "results and patient-specific data electronically reported to network or interfaced systems."
+
+**The LIS-to-BECS interface.** Donor results flow into BECS, and BECS drives donor suitability and release. A donor result that is corrected in the LIS but not updated in BECS is not just a paperwork gap: BECS could keep an original result that the lab has already disavowed. FDA's BECS validation guidance says to validate interfaces, and to keep monitoring them afterward. [BECS Interfaces and Data Integrity](../../csv-and-becs/becs-interfaces-and-data-integrity/index.qmd) covers the validation side in depth. This lesson adds the CLIA lens.
+
+A note on inbound traffic: 493.1291(a)(3) covers results received from outside referral laboratories, satellite or point-of-care locations, whether manually transcribed or electronically transmitted. If Lakeshore's reference lab ever receives a result from another lab and passes it on, that inbound leg is in scope too.
+
+## Citation decoder
+
+For citation anatomy, see [Reading a CFR citation](../../../foundations/reading-a-cfr-citation/index.qmd).
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 42 CFR 493.1291(a) | "Four-ninety-three point twelve-ninety-one, paragraph a" | An adequate manual or electronic system so results and patient-specific data are accurately, reliably and timely sent from data entry to the final report destination, including to interfaced systems | The outbound interface suppressed a correction and no system caught it |
+| 42 CFR 493.1291(c), (j) | "...paragraph c; paragraph j" | What a report must show; reports and report information kept so they can be readily identified and timely accessed | Original and corrected reports must both be identifiable and retrievable |
+| 42 CFR 493.1291(k) | "...paragraph k" | When reporting errors are detected: promptly notify, promptly issue corrected reports, maintain duplicates of original and corrected | The hospital learned by phone, not from Lakeshore |
+| 42 CFR 493.1291(f) | "...paragraph f" | Results released only to authorized persons (and the lab that requested the test) | Every outbound destination must be an authorized one, including a replay destination |
+| 42 CFR 493.1283 | "Four-ninety-three point twelve-eighty-three" | The lab keeps an information or record system covering specimen identification, receipt, disposition, testing records and who tested; patient testing records retained | The LIS is that record system |
+| 42 CFR 493.1105(a)(3), (a)(6) | "Four-ninety-three point eleven-oh-five, paragraph a-three; a-six" | Retention periods for test records and for original, preliminary, final and corrected reports | How long the LIS keeps the original and the correction |
+| 42 CFR 493.1231 | "Four-ninety-three point twelve-thirty-one" | Confidentiality of patient information throughout the total testing process under the lab's control | Interface queues, logs and support access |
+| 42 CFR 493.1299 | "Four-ninety-three point twelve-ninety-nine" | Ongoing mechanism to monitor, assess and correct postanalytic problems; review whether corrective actions worked; document it | How the event gets handled |
+| 21 CFR 606.160(a)(1), (d) | "Six-oh-six point one-sixty..." | FDA record rules for blood and components, including retention | The FDA side of immunohematology and donor records |
+| FDA BECS guidance (2013) | "The FDA guidance on BECS validation in the user's facility" | Guidance (not regulation): validate all interfaces and keep monitoring interface error files | The LIS-to-BECS interface |
+
+## The actual text
+
+All text below is verbatim from the local copies in `sources/`.
+
+### 493.1291(a): the electronic-transmission requirement
+
+> (a) The laboratory must have an adequate manual or electronic system(s) in place to ensure test results and other patient-specific data are accurately and reliably sent from the point of data entry (whether interfaced or entered manually) to final report destination, in a timely manner. This includes the following:
+>
+> (1) Results reported from calculated data.
+>
+> (2) Results and patient-specific data electronically reported to network or interfaced systems.
+>
+> (3) Manually transcribed or electronically transmitted results and patient-specific information reported directly or upon receipt from outside referral laboratories, satellite or point-of-care testing locations.
+
+Read it clause by clause against the scenario.
+
+- **"adequate manual or electronic system(s) ... to ensure."** The obligation is a system that ensures, not a system that tries. A dedup rule with no exception handling is hard to call a system that ensures delivery of corrections.
+- **"accurately and reliably sent."** Accuracy means the content survives (the right specificity, the right patient). Reliability means it arrives every time. The failed message was accurate and unreliable.
+- **"from the point of data entry (whether interfaced or entered manually)."** Starts at the technologist's keystroke or the instrument's output. "Interfaced" is named in the text.
+- **"to final report destination."** The destination is the hospital's system, not the LIS's "released" status. The lab's own screen is not the destination.
+- **"in a timely manner."** The regulation says timely and does not define a number of hours. Lakeshore has to define what timely means for its report types and be able to show it was met.
+- **(a)(1) calculated data.** If any results are computed (for example, in the LIS or middleware), they ride on the same requirement.
+- **(a)(2) interfaced systems.** The outbound hospital interface and the LIS-to-BECS interface are directly named categories.
+- **(a)(3) outside referral laboratories.** Inbound results from outside sources are covered whether keyed or transmitted.
+
+### 493.1291(k), (j), (c): errors, corrected reports, and the report itself
+
+> (k) When errors in the reported patient test results are detected, the laboratory must do the following:
+>
+> (1) Promptly notify the authorized person ordering the test and, if applicable, the individual using the test results of reporting errors.
+>
+> (2) Issue corrected reports promptly to the authorized person ordering the test and, if applicable, the individual using the test results.
+>
+> (3) Maintain duplicates of the original report, as well as the corrected report.
+
+This is all 493.1291 says on corrected reports. It does not prescribe wording, a "CORRECTED" label, a time limit, or a specific notification channel. Those are the lab's own procedure. Notice the structure: (k)(1) notification and (k)(2) issuing the corrected report are separate duties, and both are owed to the authorized person who ordered the test. Here, Lakeshore's LIS did (k)(2) in its own system and (k)(3) by keeping both versions, and failed (k)(1) because nothing triggered notification when the transmission silently failed. Whether the event also failed (k)(2) depends on how the lab defines "issue" for an electronically delivered report. That is a judgment for the laboratory director and Quality, and it is worth deciding explicitly rather than leaving it implied. 493.1291(a) is the clearer fit for the interface failure itself.
+
+> (j) All test reports or records of the information on the test reports must be maintained by the laboratory in a manner that permits ready identification and timely accessibility.
+
+> (c) The test report must indicate the following:
+>
+> (1) For positive patient identification, either the patient's name and identification number, or a unique patient identifier and identification number.
+>
+> (2) The name and address of the laboratory location where the test was performed.
+>
+> (3) The test report date.
+>
+> (4) The test performed.
+>
+> (5) Specimen source, when appropriate.
+>
+> (6) The test result and, if applicable, the units of measurement or interpretation, or both.
+>
+> (7) Any information regarding the condition and disposition of specimens that do not meet the laboratory's criteria for acceptability.
+
+For IT, (c) is a report-template requirement. If a LIS build or interface mapping drops, truncates or reformats one of these fields on the way out, the delivered report fails (c) even when the lab's screen is right. A related point is (c)(3): the test report date on a corrected report is something Lakeshore should decide how to show, so both versions stay distinguishable. The regulation says "the test report date," and doesn't say more.
+
+Three other paragraphs of 493.1291 touch IT and are quoted here because the LIS enforces or breaks them:
+
+> (b) Test report information maintained as part of the patient's chart or medical record must be readily available to the laboratory and to CMS or a CMS agent upon request.
+
+> (f) Except as provided in § 493.1291(l), test results must be released only to authorized persons and, if applicable, the persons responsible for using the test results and the laboratory that initially requested the test.
+
+> (i) If a laboratory refers patient specimens for testing—
+>
+> (1) The referring laboratory must not revise results or information directly related to the interpretation of results provided by the testing laboratory;
+>
+> (2) The referring laboratory may permit each testing laboratory to send the test result directly to the authorized person who initially requested the test. The referring laboratory must retain or be able to produce an exact duplicate of each testing laboratory's report; and
+>
+> (3) The authorized person who orders a test must be notified by the referring laboratory of the name and address of each laboratory location where the test was performed.
+
+Paragraph (i) matters for Lakeshore in two ways. Where Lakeshore's reference lab is the *testing* laboratory for hospital specimens, its report is the testing laboratory's report, and a downstream system that alters or reformats it for the hospital must not change the result or its interpretation. Where Lakeshore ever refers a specimen onward, (i)(2) says it must be able to produce an exact duplicate of the testing laboratory's report. An interface that re-renders results, rather than storing the original, makes "exact duplicate" hard to show.
+
+### 493.1283: test records
+
+> (a) The laboratory must maintain an information or record system that includes the following:
+>
+> (1) The positive identification of the specimen.
+>
+> (2) The date and time of specimen receipt into the laboratory.
+>
+> (3) The condition and disposition of specimens that do not meet the laboratory's criteria for specimen acceptability.
+>
+> (4) The records and dates of all specimen testing, including the identity of the personnel who performed the test(s).
+>
+> (b) Records of patient testing including, if applicable, instrument printouts, must be retained.
+
+The wording is "an information or record system." The LIS is that system in practice, though the regulation doesn't name an LIS. For IT it turns into questions about traceability: given any report, can the lab show which specimen it came from, when it was received, how it was tested, and by whom? And for the correction: can it show the original entry, who changed it, when, and why? The LIS audit trail is the natural place for that. See [Audit Trails and Electronic Signatures](../../data-integrity-and-records/audit-trails-and-esignatures/index.qmd) for 21 CFR 11.10(e) and how audit trails work. Part 11 applies where records are ones FDA's rules require. For the reference lab's patient reports, CLIA is the clearer anchor, so ask the laboratory director and Quality which framework governs each record type rather than assuming one.
+
+### 493.1105: retention
+
+> (a) The laboratory must retain its records and, as applicable, slides, blocks, and tissues as follows:
+>
+> ...
+>
+> (3) *Analytic systems records.* Retain quality control and patient test records (including instrument printouts, if applicable) and records documenting all analytic systems activities specified in §§ 493.1252 through 493.1289 for at least 2 years. In addition, retain the following:
+>
+> (i) Records of test system performance specifications that the laboratory establishes or verifies under § 493.1253 for the period of time the laboratory uses the test system but no less than 2 years.
+>
+> (ii) Immunohematology records, blood and blood product records, and transfusion records as specified in 21 CFR 606.160(b)(3)(ii), (b)(3)(iv), (b)(3)(v) and (d).
+>
+> ...
+>
+> (6) *Test reports.* Retain or be able to retrieve a copy of the original report (including final, preliminary, and corrected reports) at least 2 years after the date of reporting. In addition, retain the following:
+>
+> (i) Immunohematology reports as specified in 21 CFR 606.160(d).
+>
+> (ii) Pathology test reports for at least 10 years after the date of reporting.
+
+Reading it:
+
+- **Two years is the floor** for patient test records and for reports, and (a)(6) says outright that "corrected reports" are included. So the correction is a retained report, not an overwrite of the original.
+- **"Retain or be able to retrieve."** For reports, retrieval counts. A lab can retain the report in the LIS or be able to reproduce it from there. Whichever it is, "retrieve" has to work on demand and for the full period, including after an LIS upgrade or migration.
+- **Immunohematology gets a longer clock through a cross-reference.** (a)(3)(ii) and (a)(6)(i) point to 21 CFR 606.160. The text of 606.160(d) from `sources/`:
+
+> (d) Records shall be retained for such interval beyond the expiration date for the blood or blood component as necessary to facilitate the reporting of any unfavorable clinical reactions. You must retain individual product records no less than 10 years after the records of processing are completed or 6 months after the latest expiration date for the individual product, whichever is the later date. When there is no expiration date, records shall be retained indefinitely.
+
+- **A caution we are not resolving here.** 493.1105 hands immunohematology reports to 606.160(d), and (d) is written about records of blood and blood components. How that interval maps onto a reference-lab antibody identification report for a hospital patient, which is not a product record, is a question for the laboratory director and Quality to answer in the lab's retention schedule. This lesson makes no claim beyond the text. The practical rule for IT is to set the LIS retention for these reports to the longer interval Quality names, not the two-year floor, and to ask for that decision in writing. [Retention Across Record Types](../../data-integrity-and-records/retention-across-record-types/index.qmd) works through the 606.160(d) interval itself.
+- **Pathology is the only 10-year line spelled out in (a)(6)(ii).** Lakeshore has no pathology reports in this scenario, so don't let a "10 years" memory from somewhere else substitute for what the text says about immunohematology.
+- **(b)** if a lab ceases operation, records must remain available for the stated periods, which is a decommissioning and archive question for any retired LIS.
+
+### 493.1231: confidentiality
+
+> The laboratory must ensure confidentiality of patient information throughout all phases of the total testing process that are under the laboratory's control.
+
+One sentence, and "all phases ... under the laboratory's control" is broad. An interface queue, its error log, a support engineer's replay tool, a test environment seeded with copies of patient messages, and a message sent to the wrong destination all sit inside that phrase. For the scenario: the investigation itself touched patient-specific messages, so who looked at them, in which environment, and whether a copy was sent anywhere is part of the answer. 493.1291(f) adds the release side: results go to authorized persons only, so a "resend" must go to the verified destination.
+
+### 493.1299: quality assessment of the postanalytic system
+
+> (a) The laboratory must establish and follow written policies and procedures for an ongoing mechanism to monitor, assess and, when indicated, correct problems identified in the postanalytic systems specified in § 493.1291.
+>
+> (b) The postanalytic systems quality assessment must include a review of the effectiveness of corrective actions taken to resolve problems, revision of policies and procedures necessary to prevent recurrence of problems, and discussion of postanalytic systems quality assessment reviews with appropriate staff.
+>
+> (c) The laboratory must document all postanalytic systems quality assessment activities.
+
+493.1299 is the quality-system hook: the lab needs a mechanism that finds and corrects problems with report delivery, checks that the fix worked, revises procedures, discusses it with staff, and documents all of it. Confidentiality (493.1231) has its own parallel assessment requirement in 493.1239. The Director's reconciliation check, below, is Lakeshore's way of having a "mechanism to monitor."
+
+### The FDA guidance on interfaces
+
+From FDA's *Blood Establishment Computer System Validation in the User's Facility* (guidance, not regulation, so "recommend" rather than "must"):
+
+> We recommend that you qualify equipment, validate all interfaces, including those to a Hospital Information System (HIS) (e.g., admissions, discharges and transfers (ADT)); a Laboratory Information System (LIS) (e.g., order entry/results return (OE/RR)); and all instrument interfaces, as applicable. Monitoring of interface error files should continue subsequent to implementation as unforeseen transaction types or data elements may cause disastrous results (for instance, orders not being received, results posting to the incorrect donor/patient record, etc.).
+
+This is the same lesson from the FDA side. "Unforeseen transaction types" is a fair description of a corrected report meeting a dedup rule that was only ever tested against ordinary results. Note also that a suppressed message may never write to an error file at all. That is why monitoring errors isn't enough and why the Director's reconciliation (below) compares what was sent with what was acknowledged.
+
+## What CAP adds (themes only)
+
+Lakeshore is CAP-accredited, so CAP's requirements are Lakeshore's operating standard (493.61(b)(3), module 1). CAP's checklists are copyrighted and are not quoted here, and this course doesn't cite checklist requirement numbers or text. CAP's public pages say its custom checklist for each lab reflects the test menu. The lab's custom checklist, held by the laboratory director or lab quality staff, is where the LIS and interface items will be. Ask for them by name.
+
+What to expect, stated as themes to confirm against the lab's own checklist and not as a quotation of anything: that the lab can show LIS functions and interfaces were verified or validated before use and after changes; that result integrity is checked across interfaces; that report content and corrected-report handling follow written procedures; and that records and access are controlled. For additional reading on how an accredited lab's interface validation is described by practitioners, see the CAP TODAY article linked on the resources page. This lesson has not verified that any particular checklist item reads a particular way.
+
+## The Director's decisions
+
+Back at Lakeshore, the laboratory director and you sit down with the Quality Analyst and the LIS analyst. Four decisions come out of it.
+
+1. **Fix the rule.** The outbound interface's message-handling rule is changed so that corrected reports are never deduplicated as duplicates. The change goes through lab change control as **LCR-014**, with the laboratory director as approver (Lakeshore's own rule from module 1, not a regulation). The verification evidence is attached to LCR-014: a test that sends an original and a correction with the same keys and shows the correction delivered; a test that sends a true duplicate of an original and shows it is still suppressed; and the interface log showing both outcomes.
+2. **Check delivery, not just sending.** A reconciliation check is added: every corrected report sent from the LIS is compared with acknowledgments received from the destination. Any correction without an acknowledgment inside the lab-defined window raises an exception that the LIS analyst works and the laboratory director can see. "Timely" is the lab's to define, so the window is written into the procedure.
+3. **Handle the event in the quality system.** The event is recorded and worked through the lab's quality system, which is the 493.1299 mechanism: root cause, correction, a check later that the fix held, and a documented review with staff. Whether to notify anyone beyond the hospital that already knows is the laboratory director's decision, made under the lab's own procedure. This lesson does not state that any outside report is required for this kind of event, because the sources in this course don't show one. Don't write one into the record on a guess either way.
+4. **Ask the same question of the LIS-to-BECS interface.** Does any message-suppression, deduplication or "latest wins" logic exist on that interface? The LIS analyst reviews it and records the answer in LCR-014's scope, whatever it is. The review is under way and its finding is not part of this module. A corrected donor result that never reaches BECS is the more dangerous cousin of the hospital problem, because BECS acts on what it holds.
+
+The Quality Analyst adds one more item that isn't in the four: the original and the corrected report for the affected patient must both be retrievable from the LIS, and the interface log entry showing the suppression is retained with the event record, so the full history can be reconstructed.
+
+## See it in one picture
+
+The sequence below is this event, not a generic flow. Note that the failure produces no error anywhere the lab was looking.
+
+```{mermaid}
+sequenceDiagram
+    participant T as Technologist
+    participant L as LIS (reference lab)
+    participant O as Outbound interface
+    participant H as Hospital system
+    participant B as BECS
+    T->>L: Enter antibody ID (wrong specificity)
+    L->>O: Original report (message 1)
+    O->>H: Delivered and acknowledged
+    T->>L: Finds error, issues corrected report
+    L->>O: Corrected report (message 2, same patient/order keys)
+    Note over O: Dedup rule sees "duplicate" and suppresses it
+    O--xH: Never sent, no error raised
+    Note over L,H: LIS shows corrected. Hospital still shows original.
+    H->>T: Phone call two days later
+    Note over L,B: Donor results use a different interface to BECS.<br/>Same question: does any suppression logic exist there?
+    L->>B: Donor result messages (reviewed in LCR-014)
+```
+
+Read it top to bottom. The failure sits at the interface, the one step the lab's screen can't show. The final two lines are the Director's fourth decision: the same logic is checked on the path into BECS, where it would be a release risk and not a notification gap.
+
+## Watch it explained
+
+No video embed for this module. I searched for a CLIA test-report or LIS-interface-validation explainer on YouTube and none surfaced that was specific enough to corrected reports and interface delivery and verifiably embeddable. The most relevant material found is written (CAP TODAY's interface validation article and ADLM's lab interface validation page), and both are linked on the [resources page](resources.qmd). An honest gap is better than a mismatched embed.
+
+## What an inspector or assessor would look for
+
+**A CAP inspector, acting for CMS:**
+
+- *The records:* the LIS and interface verification evidence, the written procedure for corrected reports, a sample of recent corrected reports with both versions and the notification record, and the retention schedule.
+- *Who owns it:* the laboratory director owns the lab's procedures and reports. IT owns the interface configuration and its verification evidence. Quality owns the event and the change records.
+- *What a bad answer sounds like:* "The LIS marks it released, so it was sent." Or "We'd see an error if something failed." After this event, neither can be said honestly unless the reconciliation proves it.
+- *What a good answer sounds like:* "Here is the event, here is LCR-014 with the before-and-after verification, here is the reconciliation report showing sent against acknowledged, and here is the effectiveness check the laboratory director signed."
+
+**An FDA investigator** looking at donor records asks a different question: do the LIS results match what BECS holds, and are the records complete (606.160(a)(1))? The suppression review on the LIS-to-BECS interface is the evidence.
+
+**An AABB assessor** will want the same event handled in the quality system, with the policies, processes and procedures followed as written. AABB's standards text is not quoted in this course.
+
+## Common traps
+
+**"Released in the LIS means delivered."** 493.1291(a) says "to final report destination." The destination isn't the sending system. Release is a state in one system. Delivery is confirmed by the next one.
+
+**"Our interface logs errors, so we'd have seen it."** A correctly working suppression rule logs nothing as an error. It is a designed behavior doing the wrong thing in one case. FDA's guidance on monitoring error files helps with failures, not with silent policy. Monitoring has to compare outcomes, such as sent to acknowledged.
+
+**"A corrected report is just a resend."** To a dedup rule, a correction looks like a repeat of the original because the keys match. To the regulation, it's a separate event with its own duties: notify promptly, issue promptly, keep both (493.1291(k)).
+
+**"Two years is the retention rule."** For test records and reports, 493.1105 sets a two-year floor, and for immunohematology reports it points to 606.160(d). Setting the LIS to the floor everywhere is a trap, and so is guessing at the longer period instead of asking Quality for the decision.
+
+**"CLIA tells us how to reconcile."** It doesn't. 493.1291(a) requires an adequate system to ensure delivery and leaves the design to you. Don't cite a clause for the reconciliation check. It is Lakeshore's control, chosen because it demonstrates that the requirement is met.
+
+## What this means for your job
+
+- **Inventory your outbound and inbound interfaces by destination.** For each one, answer: what is the final report destination, how is delivery confirmed, and who sees a non-delivery. If the answer to the last question is "nobody," it's a 493.1291(a) gap waiting to be found.
+- **Treat message-handling rules as regulated configuration.** Deduplication, filtering, routing and retry rules belong under lab change control with the laboratory director as approver, with verification evidence that includes the unusual cases: corrections, cancellations, amended results, reruns.
+- **Test the exceptions, not just the happy path.** When the LIS analyst brings a change, ask: "What does this do to a corrected report? A cancelled one? A duplicate with different content?" Make the three cases a standard line in the verification template.
+- **Make the reconciliation a standing report.** Sent against acknowledged, reviewed on a schedule the lab defines, with exceptions worked and documented. It doubles as evidence for the quality assessment in 493.1299.
+- **Get the retention decision in writing.** Ask Quality and the laboratory director for the schedule by report type, including the immunohematology interval, and configure the LIS and archive to match. Test retrieval of an old original and correction after any upgrade.
+- **Escalate on any suppressed or unacknowledged message touching donor results.** That is a release risk, not a reporting inconvenience. Page the laboratory director and Quality, and hold the affected units' disposition decisions until the BECS record is confirmed. How the hold works is Lakeshore's procedure, not a regulation quoted here.
+- **Keep investigations confidential.** Limit who can open interface queues and logs, work in the production environment only as needed, and don't paste patient-specific messages into tickets or chat (493.1231).
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: In two sentences for the CIO, why is a suppressed corrected report a compliance problem and not just a bug?
+
+493.1291(a) requires an adequate system to ensure results are accurately and reliably sent from data entry to the final report destination, in a timely manner, and 493.1291(k) requires promptly issuing corrected reports to the authorized person who ordered the test. A dedup rule that silently drops corrections means the lab can't show its system ensures delivery, and the hospital may act on a wrong antibody identification while believing it is current.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Does CLIA require Lakeshore to run a reconciliation of corrected reports sent versus acknowledged?
+
+No. That is not a regulatory requirement as written. 493.1291(a) requires an "adequate manual or electronic system(s) ... to ensure" delivery and doesn't prescribe how. The reconciliation is the Director's chosen control, and it's a good one because it produces evidence the system works. Cite 493.1291(a) as the requirement it serves, not as the source of the check.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The correction was released in the LIS, and the LIS keeps both the original and the corrected report. Which parts of 493.1291(k) are satisfied and which are open?
+
+Keeping duplicates of the original and corrected reports is (k)(3), which the LIS handles. Promptly notifying the authorized person (k)(1) was not done by Lakeshore, since the hospital found out by phone. Whether (k)(2), issuing the corrected report promptly to the authorized person, was met depends on how the lab defines issuing a report that is delivered electronically. That is a judgment for the laboratory director and Quality. The text doesn't settle it, and 493.1291(a) applies to the delivery failure either way.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Lakeshore's LIS is set to keep reports for two years. Is that compliant for immunohematology reports?
+
+Not safely to assume. 493.1105(a)(6) sets at least two years after the date of reporting and includes corrected reports, but (a)(6)(i) adds that immunohematology reports are retained "as specified in 21 CFR 606.160(d)," which has a longer interval written for blood and component records. How that applies to a reference-lab patient report is a decision for the laboratory director and Quality, recorded in the retention schedule. Configure the LIS to that decision, and don't assume the two-year floor is enough.
+:::
+
+## Where this goes next
+
+The suppression rule was a configuration change nobody verified for the unusual case. The next module, `instruments-middleware-and-performance-verification`, takes the earlier part of the path: how 493.1252, 493.1253 and 493.1281 apply to instrument and middleware interfaces, and what verification evidence a rule change needs before it goes live.
