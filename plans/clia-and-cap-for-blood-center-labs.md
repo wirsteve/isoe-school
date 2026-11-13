@@ -63,7 +63,7 @@ learning section. No narration.
 | 2 | `the-lis-and-the-test-report` | Apply 493.1291 (incl. 1291(a)'s electronic-transmission requirement), 493.1283, 493.1105 and 493.1231 to the LIS, the LIS-to-BECS interface and reference-lab reports, including corrected reports. | 166/167 | Published |
 | 3 | `instruments-middleware-and-performance-verification` | Direct IT's part in 493.1252/493.1253/493.1281: instrument and middleware interfaces, rule changes, and the verification evidence a change needs. | 168/169 | Published |
 | 4 | `proficiency-testing-and-the-lis` | Keep PT samples handled like patient samples but never referred out (493.801) and never mistaken for donations in BECS. | 170/171 | Published |
-| 5 | `the-cap-inspection-from-it` | Prepare IT for a biennial CAP inspection — LIS validation, interfaces, downtime, access, retention, change control — and line it up with FDA and AABB. | 172/173 | Not started |
+| 5 | `the-cap-inspection-from-it` | Prepare IT for a biennial CAP inspection — LIS validation, interfaces, downtime, access, retention, change control — and line it up with FDA and AABB. | 172/173 | Published |
 
 ## Progress log
 
@@ -139,3 +139,26 @@ learning section. No narration.
   laboratory director; conservative: hide PT results until reporting date); (b)(6) 2-year minimum PT
   records incl. signed attestation; 493.61(b)(1) accreditation hook. 493.1804(c) not in sources (lesson
   says so). Module 5 exhibits: LCR-014, LCR-021, reflex-rule inventory, PT procedure, BECS check.
+- 2026-11-13 — Module 5 `the-cap-inspection-from-it` published (verified; prose ~4,976 words). Video: CAP
+  "CAP Accreditation: 10 Steps on the Path to Laboratory Excellence" (3ero7W1rCvw; CAP's channel; general
+  accreditor overview, not IT). Sources added for it: 493.551, 493.563, 493.1771, 493.1773 (inspection
+  requirements). **Locked:** **SI-12** = IT readiness self-check (laboratory director, Quality Analyst,
+  LIS analyst; Director attending), kept as a quality-assessment record under 493.1239/493.1299; walked
+  exhibits LCR-014 + reconciliation report, middleware rule inventory + LCR path, LCR-021 + reflex
+  inventory + PT procedure + no-PT-in-BECS check. Open item from module 2 closed: the LIS-to-BECS review
+  had been read from configuration, never tested; SI-12 tested it and found a duplicate-suppression rule
+  that silently dropped a same-key corrected donor result **in the test environment** (latent; no known
+  event; no harm). **LCR-027**: corrected donor results carry an explicit correction indicator and are
+  never deduplicated; true duplicates still suppressed and every drop logged for LIS analyst review;
+  laboratory director approves; tests incl. regression of LCR-014 hospital cases and the standing
+  corrections/cancellations/duplicates and PT lines; sent-vs-acknowledged reconciliation extended to BECS
+  interface; LCR-014 closing note points to LCR-027. Look-back of retained interface logs: **none found**,
+  scope on LCR-027; Quality documents FDA-deviation assessment on LCR-027 (no BPDR). Downtime: lab owns
+  procedure, IT supplies system facts; evidence = recovery exercise record, post-downtime reconciliation
+  (paper keyed, backlog replayed and tested against LCR-027 rule), incident record per real downtime;
+  also signed periodic access reviews, remote-access log, retention-retrieval test after every
+  upgrade/migration. CLIA text in sources has no "downtime" requirement (lesson says so). Answering
+  inspectors: show the record, don't narrate; laboratory director speaks for the lab; nothing changed
+  during inspection; Quality Analyst keeps a one-page exhibit index. 493.1773(e) "may reinspect … at any
+  time" = standing readiness (announced/unannounced not asserted). AABB column themes only. Course wrap
+  links `courses/fda-and-aabb-in-practice/`. **Course complete (5/5).**

@@ -1,0 +1,408 @@
+---
+title: "The CAP Inspection from IT"
+order: 172
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can prepare IT for a biennial inspection by the College of American Pathologists (CAP), covering LIS (laboratory information system) validation, interfaces, downtime, access, retention and change control, and you can show how the same evidence also serves FDA and AABB.
+- **The punchline:** Lakeshore's readiness self-check, **SI-12**, walked the course's own exhibits and found one real gap. The review of the LIS-to-BECS (Blood Establishment Computer Software) interface for suppression, deduplication and "latest wins" logic, left open in module 2, was still open. SI-12 closed it under a new change record, **LCR-027**, with the laboratory director's approval.
+- **The rule in one line:** a CLIA-certified laboratory must keep "all records and data accessible and retrievable within a reasonable time frame during the course of the inspection" (42 CFR 493.1773(c)). For IT, readiness means records you can produce, not stories you can tell.
+- **The method:** one body of evidence, indexed once, serving three audiences. CAP inspects for CMS (the Centers for Medicare & Medicaid Services) under CLIA (the Clinical Laboratory Improvement Amendments); FDA inspects BECS records; AABB assesses information systems as a theme.
+- **Ask on Monday:** "If an inspector asked for the last change to the BECS interface rules, could the LIS analyst put the record, the test evidence and the approval in front of them in ten minutes?"
+- **The trap:** treating inspection readiness as a project that starts when the date is known. The evidence is a by-product of how you run change, access and recovery all year.
+:::
+
+## The self-check
+
+Lakeshore's CAP inspection of its two laboratories is coming. There is no date on this page, and there doesn't need to be one. The laboratory director has asked for an IT readiness self-check and given it a record number, **SI-12**, so that what it finds and what gets done about it are traceable. The attendees are the laboratory director, the Quality Analyst, the LIS analyst, and you.
+
+The Quality Analyst has built a one-page index. Across the top: the exhibits IT will bring. Down the side: who owns each one and where it lives. "I did not want this to be a pile," she says. "Every exhibit has an owner and a retrieval path. If it takes more than a few minutes to find, it isn't ready."
+
+The exhibits are the ones this course has already built:
+
+- **LCR-014** (the corrected-report deduplication fix) with its test evidence, and the **sent-vs-acknowledged reconciliation report** for corrected reports ([module 2](../the-lis-and-the-test-report/index.qmd)).
+- The **middleware and autoverification rule inventory**, and the change-record path every rule change now follows ([module 3](../instruments-middleware-and-performance-verification/index.qmd)).
+- **LCR-021**, the **reflex and send-out rule inventory**, the **PT (proficiency testing) procedure section**, and the **"no PT result ever posted to BECS" check** ([module 4](../proficiency-testing-and-the-lis/index.qmd)).
+
+The group goes through them one at a time. Most are in good order. Then the LIS analyst pauses at LCR-014.
+
+"This one has an open item," they say. "Module 2's scope said I'd review the LIS-to-BECS interface for suppression, dedup, or latest-wins logic and record the answer. The review was started. The answer was never written down. The record is still open."
+
+The laboratory director asks only: "Did you look?"
+
+"I looked at the rule set when we fixed the hospital interface. I did not test it. I can tell you what the configuration says. I can't show you evidence."
+
+The Quality Analyst writes one line on the index: *open item, LCR-014 scope, BECS interface review, no evidence.* Then she says what everyone in the room knows. "An inspector who opened LCR-014 would have found that before we did."
+
+That is what a self-check is for.
+
+## Why the rule exists, and the ITSM bridge
+
+An inspection exists because a laboratory's own assurance is not enough. Patients and donors rely on results they cannot check, so a third party looks at the system that produces them: the people, the procedures, the records and, increasingly, the software between the instrument and the report.
+
+Under CLIA, the federal laboratory law, CMS can inspect a certified laboratory directly. A laboratory that holds a certificate of accreditation, as both Lakeshore labs do, is inspected by its accreditor instead. CMS has granted CAP "deeming authority, which allows for a CAP inspection in lieu of a CMS inspection" (CAP public page, [module 1](../where-clia-and-cap-reach-a-blood-center/index.qmd)). CMS keeps a look-over-the-shoulder role: it may inspect accredited labs "on a representative sample basis or in response to a substantial allegation of noncompliance" (42 CFR 493.563(a)(1)(i)), and the accredited laboratory must permit it (493.61(b)(4)). So the CAP inspection is the main event, not the only door.
+
+The ITSM bridge: this is an **audit of your service management practices, run by people who read the logs.** You already own change enablement, access management, incident and problem records, backup and recovery testing, and a CMDB (configuration management database). An inspector wants the same artifacts you would show a SOX or ISO 27001 auditor. The differences are who is asking (peer laboratory professionals, not IT auditors), what they care about (does a result reach the right place, unchanged, on time, and can you prove it), and who answers for the laboratory (the laboratory director, not the CIO).
+
+## The rule in plain English
+
+Four things matter for IT.
+
+1. **The laboratory must let inspectors in and show them everything.** That includes interviews of personnel, observation of the whole testing process, access to all areas, copies of records, and accessible, retrievable records during the inspection (493.1773).
+2. **The inspector measures the laboratory against two sets of requirements.** CLIA's regulation, and CAP's own program requirements, which "commonly exceed the standards" according to CAP's public page. CAP's accreditation checklists are not public text. Each laboratory gets a custom checklist built from its test menu. This lesson teaches checklist *themes* only. It quotes no CAP requirement text and cites no CAP requirement number, because none is in this course's sources.
+3. **The LIS-related themes are predictable.** Validation and change control of the LIS and interfaces; the path of a result to its final destination; downtime and recovery; who can access and change what; record retention and retrieval; confidentiality of patient information.
+4. **The laboratory director speaks for the laboratory.** CLIA puts the laboratory director in charge of the laboratory's procedures and quality. In an inspection, policy questions go to the laboratory director. IT's job is to answer the factual questions about its systems, and to show the record.
+
+What the lesson cannot tell you: what the CAP inspector will actually ask, or whether CAP gives notice. The public CAP pages in `sources/` say that on-site inspections occur every two years, that inspection teams are practicing laboratory professionals, and that a custom checklist is generated from each laboratory's test menu. They don't say more about timing, and neither does this lesson. CLIA does say that CMS or a CMS agent "may reinspect a laboratory at any time" (493.1773(e)), which is a good reason to treat readiness as a standing state.
+
+## Where IT is touched
+
+Six areas come up repeatedly. For each, the section after the quotes shows what Lakeshore holds as evidence.
+
+| Area | The question behind it | Where this course built the evidence |
+|---|---|---|
+| **LIS and interface validation, change control** | Was the system shown to work, and is every change controlled and verified? | Modules 2, 3, 4 (LCR-014, LCR-021, rule inventories) |
+| **Interfaces and the result path** | Do results reach the final destination accurately, reliably and on time? | Module 2 (reconciliation), SI-12 (BECS interface) |
+| **Downtime and recovery** | When the LIS is unavailable, are results still reported, and is everything reconciled afterward? | This module |
+| **Access** | Who can see, change or release results, and is that reviewed? | This module, with module 3's edit-access controls |
+| **Retention and retrieval** | Can you produce the record, years later, in a readable form? | Modules 2 and 3 (retention anchors), this module |
+| **Confidentiality** | Is patient information protected in every phase under the lab's control? | Module 2 (investigation hygiene), this module |
+
+## Citation decoder
+
+For citation anatomy, see [Reading a CFR citation](../../../foundations/reading-a-cfr-citation/index.qmd).
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 42 CFR 493.1773(a) to (c) | "Four-ninety-three point seventeen-seventy-three, paragraphs a through c" | Permit inspection; CMS or its agent may require testing of samples (including PT), interviews of all personnel, observation of all phases; access to all areas; copies of records; records accessible and retrievable | The inspection itself; what IT must be able to produce |
+| 42 CFR 493.1773(e) | "...paragraph e" | CMS or its agent may reinspect at any time | Why readiness is a standing state |
+| 42 CFR 493.563(a)(1) | "...five-sixty-three, a-one" | CMS may inspect an accredited laboratory on a representative sample basis or on a substantial allegation | CAP's inspection is not the only possible one |
+| 42 CFR 493.61(b)(4) | "...sixty-one, b-four" | Accredited labs must permit random sample validation and complaint inspections | Lakeshore's certificates of accreditation (module 1) |
+| 42 CFR 493.1291(a), (f) | "...twelve-ninety-one, a; f" | Systems that send results accurately and reliably to the final report destination; release only to authorized persons | Interfaces and access |
+| 42 CFR 493.1283(a) | "...twelve-eighty-three, a" | An information or record system that holds specimen identification, receipt, and records and dates of testing, including who tested | The LIS as record system; downtime entries |
+| 42 CFR 493.1105(a)(3), (4), (5), (6) | "...eleven-oh-five, a-three through a-six" | Retention: analytic systems records, PT records, quality system assessment records, test reports (including corrected) | Retention and retrieval |
+| 42 CFR 493.1231 | "...twelve-thirty-one" | Confidentiality of patient information throughout the phases under the lab's control | Access and logging |
+| 42 CFR 493.1239, 493.1299 | "...twelve-thirty-nine; twelve-ninety-nine" | Written policies for ongoing monitoring, assessment and correction of general laboratory and postanalytic systems; document the activities | SI-12 as quality system assessment |
+| 21 CFR 606.160(a)(1), (d) | "Six-oh-six point one-sixty" | FDA's blood-establishment records: concurrent, legible, traceable; retention intervals | The FDA column of the table |
+| 21 CFR 11.10(b), (c), (d), (e), (g) | "Eleven point ten" | Copies of records for FDA; retrievable records; limited access; audit trails; authority checks | The FDA column of the table |
+| FDA BECS guidance (2013), III.F, III.G and III.I | "Blood Establishment Computer System Validation in the User's Facility" | Guidance (not regulation): validate interfaces; keep monitoring interface error files; regression analysis after any change | Interface and change evidence |
+
+## The actual text
+
+All text below is verbatim from the local copies in `sources/`. Paragraph labels follow the sources.
+
+### 42 CFR 493.1773: what the inspector may do
+
+> (b) General requirements. As part of the inspection process, CMS or a CMS agent may require the laboratory to do the following:
+>
+> (1) Test samples, including proficiency testing samples, or perform procedures.
+>
+> (2) Permit interviews of all personnel concerning the laboratory's compliance with the applicable requirements of this part.
+>
+> (3) Permit laboratory personnel to be observed performing all phases of the total testing process (preanalytic, analytic, and postanalytic).
+
+"Interviews of all personnel" includes IT staff who touch the lab's systems. "All phases" includes postanalytic, which is where the LIS and its interfaces sit. The inspector may watch a result travel from the instrument to the report, and may ask who changed the rule it passed through.
+
+> (4) Permit CMS or a CMS agent access to all areas encompassed under the certificate including, but not limited to, the following:
+> (i) Specimen procurement and processing areas.
+> (ii) Storage facilities for specimens, reagents, supplies, records, and reports.
+> (iii) Testing and reporting areas.
+>
+> (5) Provide CMS or a CMS agent with copies or exact duplicates of all records and data it requires.
+>
+> (c) Accessible records and data. A laboratory must have all records and data accessible and retrievable within a reasonable time frame during the course of the inspection.
+>
+> (d) Requirement to provide information and data. A laboratory must provide, upon request, all information and data needed by CMS or a CMS agent to make a determination of the laboratory's compliance with the applicable requirements of this part.
+
+Read (b)(5) and (c) as IT requirements. "Exact duplicates" means exports that match the system of record. "Accessible and retrievable within a reasonable time frame" means the retrieval path must exist before the day. The text sets no minutes or hours; Lakeshore's own target (a few minutes) is a margin, not a rule. The text speaks of what CMS or its agent may require; CAP runs its own program, and this lesson doesn't claim the two are identical.
+
+### 42 CFR 493.1291(a) and (f): the result path and who may receive it
+
+> (a) The laboratory must have an adequate manual or electronic system(s) in place to ensure test results and other patient-specific data are accurately and reliably sent from the point of data entry (whether interfaced or entered manually) to final report destination, in a timely manner.
+
+> (f) Except as provided in § 493.1291(l), test results must be released only to authorized persons and, if applicable, the persons responsible for using the test results and the laboratory that initially requested the test.
+
+(a) is the reason the sent-vs-acknowledged reconciliation exists, and the reason SI-12's open item mattered: "final report destination" is where the result lands, not where the LIS released it. (f) is the access-review hook for who can release or receive results.
+
+### 42 CFR 493.1283(a): the record system
+
+> (a) The laboratory must maintain an information or record system that includes the following:
+>
+> (1) The positive identification of the specimen.
+>
+> (2) The date and time of specimen receipt into the laboratory.
+>
+> (3) The condition and disposition of specimens that do not meet the laboratory's criteria for specimen acceptability.
+>
+> (4) The records and dates of all specimen testing, including the identity of the personnel who performed the test(s).
+
+When the LIS is down, this is the system that has to be kept some other way, and then reconciled.
+
+### 42 CFR 493.1105: retention
+
+> (3) *Analytic systems records.* Retain quality control and patient test records (including instrument printouts, if applicable) and records documenting all analytic systems activities specified in §§ 493.1252 through 493.1289 for at least 2 years. In addition, retain the following:
+>
+> (i) Records of test system performance specifications that the laboratory establishes or verifies under § 493.1253 for the period of time the laboratory uses the test system but no less than 2 years.
+>
+> (ii) Immunohematology records, blood and blood product records, and transfusion records as specified in 21 CFR 606.160(b)(3)(ii), (b)(3)(iv), (b)(3)(v) and (d).
+>
+> (4) *Proficiency testing records.* Retain all proficiency testing records for at least 2 years.
+>
+> (5) *Quality system assessment records.* Retain all laboratory quality systems assessment records for at least 2 years.
+>
+> (6) *Test reports.* Retain or be able to retrieve a copy of the original report (including final, preliminary, and corrected reports) at least 2 years after the date of reporting. In addition, retain the following:
+>
+> (i) Immunohematology reports as specified in 21 CFR 606.160(d).
+
+Two years is the CLIA floor for most of these. Where a record is also an FDA blood-establishment record, 606.160(d) applies, and it is much longer (below). Whether a given LIS artifact, such as a rule-change test record, counts under "records documenting all analytic systems activities" is a mapping decision for the laboratory. The sensible default is to hold it for the longer of the periods that could apply. See [Retention Across Record Types](../../data-integrity-and-records/retention-across-record-types/index.qmd).
+
+### 42 CFR 493.1231: confidentiality
+
+> The laboratory must ensure confidentiality of patient information throughout all phases of the total testing process that are under the laboratory's control.
+
+"Under the laboratory's control" brings in the LIS, its interfaces, its logs, its test environments and anything IT does while troubleshooting.
+
+### 42 CFR 493.1239(a) and 493.1299(a), (c): monitor, assess, correct, document
+
+> (a) The laboratory must establish and follow written policies and procedures for an ongoing mechanism to monitor, assess, and, when indicated, correct problems identified in the general laboratory systems requirements specified at §§ 493.1231 through 493.1236.
+
+> (a) The laboratory must establish and follow written policies and procedures for an ongoing mechanism to monitor, assess and, when indicated, correct problems identified in the postanalytic systems specified in § 493.1291.
+
+> (c) The laboratory must document all postanalytic systems quality assessment activities.
+
+SI-12 is a Lakeshore mechanism for this. The text doesn't prescribe a self-check, and an inspector doesn't need to see one. It needs to see that problems get found, corrected and documented. SI-12 is how Lakeshore can show that.
+
+### FDA records: 21 CFR 606.160 and 11.10
+
+> (a)(1) Records shall be maintained concurrently with the performance of each significant step in the collection, processing, compatibility testing, storage and distribution of each unit of blood and blood components so that all steps can be clearly traced.
+
+> (d) Records shall be retained for such interval beyond the expiration date for the blood or blood component as necessary to facilitate the reporting of any unfavorable clinical reactions. You must retain individual product records no less than 10 years after the records of processing are completed or 6 months after the latest expiration date for the individual product, whichever is the later date.
+
+> (b) The ability to generate accurate and complete copies of records in both human readable and electronic form suitable for inspection, review, and copying by the agency.
+>
+> (c) Protection of records to enable their accurate and ready retrieval throughout the records retention period.
+>
+> (d) Limiting system access to authorized individuals.
+>
+> (e) Use of secure, computer-generated, time-stamped audit trails to independently record the date and time of operator entries and actions that create, modify, or delete electronic records. Record changes shall not obscure previously recorded information. Such audit trail documentation shall be retained for a period at least as long as that required for the subject electronic records and shall be available for agency review and copying.
+>
+> (g) Use of authority checks to ensure that only authorized individuals can use the system, electronically sign a record, access the operation or computer system input or output device, alter a record, or perform the operation at hand.
+
+The (b) through (g) items above are from 11.10, which applies to electronic records a closed system creates or maintains under FDA's predicate rules. Part 11 applies to the records FDA requires, here the blood-establishment records in 606.160, and not automatically to every CLIA record. Whether a given LIS record is also a 606.160 record is a Quality decision, covered in [Part 11 for validated systems](../../csv-and-becs/part-11-for-validated-systems/index.qmd). In practice, the LIS and BECS interface carry both kinds of record, and one set of controls usually serves both.
+
+### FDA's BECS guidance (April 2013): guidance, not regulation
+
+> Monitoring of interface error files should continue subsequent to implementation as unforeseen transaction types or data elements may cause disastrous results (for instance, orders not being received, results posting to the incorrect donor/patient record, etc.).
+
+> When any change (even a small change) is made to the software on the system, a software regression analysis should be conducted, not just for validation of the individual change, but also to determine the extent and impact of that change on the entire system.
+
+> Note:  Although a remote access log is not part of validation records, you may consider keeping a log of remote access to any part of your system, such as the BECS or laboratory instruments.  We recommend this log include the date, time, reason for the access and the name of the person connecting to your system.
+
+"Should," "may" and "recommend" mean guidance. The first sentence reads like SI-12's finding in advance: an unforeseen transaction type (a corrected donor result) can be dropped. The third is the origin of the remote-access log practice below.
+
+## See it in one picture
+
+This is SI-12 itself: the exhibits, the open item and how it closes.
+
+```{mermaid}
+flowchart TD
+    A["SI-12: IT readiness self-check<br/>laboratory director, Quality Analyst, LIS analyst, Director"] --> B["Walk the exhibits"]
+    B --> C["LCR-014 and sent-vs-acknowledged reconciliation"]
+    B --> D["Middleware rule inventory and module 3 LCR path"]
+    B --> E["LCR-021, reflex and send-out inventory,<br/>PT procedure, no-PT-in-BECS check"]
+    B --> F["Downtime recovery, access reviews,<br/>retention retrieval test"]
+    B --> G{"Any open item?"}
+    G -- "Yes: LIS-to-BECS interface review<br/>left open in LCR-014 scope" --> H["Finding: dedup rule can drop a<br/>corrected donor result"]
+    H --> I["LCR-027: fix, verify, extend reconciliation<br/>laboratory director approves"]
+    I --> J["Look-back of interface logs<br/>Quality decides any FDA deviation"]
+    J --> K["Open item closed, evidence in binder"]
+    G -- "No" --> K
+    K --> L["Inspector asks: laboratory director answers for the lab,<br/>IT shows the record"]
+```
+
+The last step is the point of the whole structure. The exhibits exist so that the answer to an inspector's question is a record, produced by IT, under the laboratory director's ownership of the answer.
+
+## Watch it explained
+
+CAP's own channel has an overview of its accreditation process, "CAP Accreditation: 10 Steps on the Path to Laboratory Excellence." It is aimed at laboratories deciding how to get accredited, not at IT, and I have not reviewed its full content beyond the title and CAP's description, so I can't tell you what it says about inspection day. Watch it to hear the accreditor's own account of the cycle. It knows nothing about Lakeshore, and no IT specifics should be taken from it.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/3ero7W1rCvw" title="CAP Accreditation: 10 Steps on the Path to Laboratory Excellence" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+*College of American Pathologists (CAP), on YouTube (channel "capathologists"). Title checked against YouTube's oEmbed record on 2026-11-13.*
+
+## What SI-12 decided
+
+### The open item: the LIS-to-BECS interface
+
+Module 2 asked a question: does the LIS-to-BECS interface have any suppression, deduplication or "latest wins" logic that could drop or overwrite a corrected result? A corrected donor result that never reached BECS is the dangerous cousin of the hospital problem, because BECS acts on what it holds (suitability, release).
+
+Under SI-12 the LIS analyst did what should have been done the first time: they tested rather than read the configuration. In the test environment they sent an original donor test result and a correction with the same donation and test keys. **The finding:** the BECS interface carries the same style of duplicate-suppression rule as the hospital interface did before LCR-014. The correction was dropped as a duplicate, with no error and no queue entry anyone watches. A true retransmission was dropped too, which is correct.
+
+The finding is modest: a latent gap found by test. No event is known to have occurred, and no harm is asserted.
+
+### The Director's decisions
+
+**1. Open LCR-027 and close LCR-014's open item against it.** LCR-014 gets a closing note pointing to LCR-027. The review's answer is now on the record: the rule existed; here is the evidence; here is the fix.
+
+**2. The fix (LCR-027).** Corrected donor results carry an explicit correction indicator and are never subject to duplicate suppression. True duplicates are still suppressed. Any message the interface drops now writes an entry to a log the LIS analyst reviews, so a suppression is never silent. The change is approved by the laboratory director, under Lakeshore's own rule from modules 2 and 3 that message-handling and interface rule changes are lab change control.
+
+**3. The verification evidence.** Test cases with expected results written before the run, as in module 3: an original and a same-key correction (correction delivered); a true duplicate (still suppressed, and now logged); an ordinary result (unchanged); and a regression rerun of the hospital-interface cases from LCR-014. The test list also carries the two standing lines from earlier modules: "does this change handle corrections, cancellations and duplicates?" and "does this change affect a PT sample?" (module 4's allow-list must still pass donations and still block PT).
+
+**4. Extend the reconciliation.** The sent-vs-acknowledged report built for hospital corrections now covers the BECS interface too. Exceptions are worked by the LIS analyst and visible to the laboratory director. This is Lakeshore's control; CLIA prescribes no reconciliation method.
+
+**5. A look-back.** The LIS analyst, with Quality, searched the retained interface logs for any donor correction that had been dropped as a duplicate. **Outcome: none found.** The scope (which logs, which period, which keys) is attached to LCR-027, with the caveat that "none found" is only as good as the logs that were retained.
+
+**6. The FDA question belongs to Quality.** Had the look-back found a dropped correction, Quality would decide whether it is a biological product deviation for FDA. That call is not IT's. The method and the filing decision are in [Filing a Biological Product Deviation Report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd), and the course does not repeat them. Because nothing was found, Quality documents its assessment on LCR-027 and no report is opened. If any future look-back finds something, the path is already agreed.
+
+**7. SI-12 itself is a record.** The self-check's findings and actions are kept as a quality system assessment record (see 493.1239 and 493.1299 above). Their retention follows the same two-year floor, and Lakeshore will hold them longer than that.
+
+## The six areas, one at a time
+
+### 1. LIS and interface validation, and change control
+
+The inspector will ask how the LIS and its interfaces were shown to work, and how changes are controlled. The answer is the change record. Each lab-system change is an LCR with the laboratory director's approval (or documented delegate), test cases with expected results written first, expected-vs-actual evidence, and a regression rerun of the standing lines.
+
+Lakeshore's inventories prove control: the middleware and autoverification rules (module 3), the reflex and send-out rules (module 4), and now the interface message-handling rules for both outbound paths. Each has an owner, restricted and logged edit access, and a change history that ends at an LCR.
+
+The change-discipline link is strong across departments. The release-management course already shows how IT handles a regulated vendor change: [Vendor Release Intake for BECS](../../release-management-and-sdlc/vendor-release-intake-for-becs/index.qmd) takes BECS Release C through impact analysis, and [Risk-Based Testing and Regression](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd) scopes its regression, including the HOP–BECS interface (the Hospital Ordering Portal's interface to BECS) as an "unchanged but vulnerable portion." That is the same discipline the LCR path applies to LIS rules. Point to it as evidence that Lakeshore's change control is not improvised for each audience.
+
+*What a bad answer sounds like:* "The vendor validated it." *A good answer:* "Here's the inventory, here's the last change to it, here's the LCR, here's the approval, here are the test cases."
+
+### 2. Interfaces and the result path
+
+The exhibits are LCR-014, LCR-027, the reconciliation report and the interface logs. The inspector's question is the one in 493.1291(a): how do you know a result gets to its destination? The answer: the sent-vs-acknowledged report, the exception list, who works it and how often, and one worked example ending with the correction delivered.
+
+The most credible interface evidence is an exception the control found and someone worked to closure. If the report has never shown one, seed one in test and keep the evidence.
+
+### 3. Downtime and recovery
+
+Honestly: none of the CLIA text in this course's sources uses the word "downtime." The requirements it does contain are the ones a downtime failure breaks. Results must still reach their destination "accurately and reliably ... in a timely manner" (493.1291(a)). When results can't be reported in time, the laboratory "must determine, based on the urgency of the patient test(s) requested, the need to notify the appropriate individual(s)" (493.1291(h)). Test records must still exist (493.1283). And the FDA's BECS guidance recommends evaluating whether personnel can perform "system maintenance procedures, such as backups." Lakeshore's downtime procedure is a lab procedure under the manual (493.1251), approved by the laboratory director. IT's part is the systems side. Ask the laboratory director whether the lab's custom CAP checklist has items on this theme; this lesson cannot say what any item requires.
+
+What IT holds as evidence:
+
+- **The downtime procedure's system facts:** which systems it covers, what staff do on paper, how long before it triggers, who declares it, and who declares recovery. The lab writes it. IT confirms it matches how the system actually fails.
+- **A recovery test, with a record.** Restore or fail over the LIS in a controlled exercise. Record what was restored, how long it took, and what was checked afterward.
+- **The post-downtime reconciliation:** paper entries keyed into the LIS, an interface backlog replayed, and a check that nothing was lost, duplicated or suppressed. This is where SI-12's finding becomes practical. A backlog replayed after an outage is exactly where a suppression or "latest wins" rule does harm, because it sees many messages with the same keys. The recovery test includes a replay case, run against the LCR-027 rule.
+- **A record of real events:** start, end, who was notified, how results were reported meanwhile, and the reconciliation result.
+
+*A bad answer:* "We have backups." *A good one:* the procedure, the last recovery exercise and its findings, the last real downtime with its reconciliation.
+
+### 4. Access
+
+The inspector's question is who can see, change and release results, and how Lakeshore knows. The LIS-side evidence parallels what BECS already has under Part 11 (11.10(d) and (g)): limited access, authority checks, audit trails. The text sets no review frequency, and Lakeshore's is its own choice. The evidence is:
+
+- **A periodic user access review** of the LIS and middleware, signed by the laboratory director or a named delegate. Each account against role: who can edit rules, who can release results, who can change the interface configuration, who holds administrator rights.
+- **Leavers and movers.** Removals within a stated window; the review compares the account list to HR.
+- **Service and interface accounts**, with named owners and credentials under control.
+- **Vendor access.** Remote sessions logged with date, time, reason and person, as the BECS guidance suggests as a good practice.
+- **Separation of duties.** The person who builds a rule change is not the person who approves it (module 3).
+- **Audit trails** that show who changed a result, a rule or a configuration, and that cannot be edited by the people they record.
+
+### 5. Retention and retrieval
+
+Retention is an IT problem because the records live in systems that get upgraded, migrated and retired. The CLIA floor is two years for most records, including all corrected reports (493.1105(a)(6)). For immunohematology records and reports, CLIA points to 606.160(d), which means no less than 10 years after processing or 6 months after the latest expiration date, whichever is later. For performance specification records, it is "the period of time the laboratory uses the test system but no less than 2 years" (493.1105(a)(3)(i)). FDA's 11.10(e) adds that audit trail documentation must be retained "at least as long as" the electronic records it covers.
+
+Lakeshore's evidence: a retention schedule by record type that names the system and the period; and, more important, a **retrieval test**. Pull a report from the oldest data in the LIS, a PT accession and its block events from an old event, and a test case from an old rule change, along with the audit trail for each. Time it. Do it after every upgrade or migration. A schedule that says ten years proves nothing if the data cannot be read after the last migration.
+
+### 6. Confidentiality
+
+493.1231 is one sentence, and it reaches the places IT works. Test environments should not hold unprotected copies of production patient data. Tickets and chat should not carry patient-specific messages. Interface logs and exports are patient information too. Printed reports and screens in testing and reporting areas that an inspector walks through are fair game under the access-to-all-areas text (493.1773(b)(4)). Evidence: the access review above, the rules for test data, a short guide for staff who troubleshoot interface messages, and a clean walkthrough of the areas.
+
+## How IT answers an inspector
+
+Four habits. They are Lakeshore's guidance for its own staff, not regulation.
+
+**Show the record, don't narrate.** "Let me show you" beats an explanation every time. If the record doesn't exist, say so plainly and say what you will do. A gap acknowledged with a plan reads very differently from a gap discovered.
+
+**Answer what you own.** IT can say what the system does, who changed it, when, and under which record. Questions about policy, medical judgment, what the lab reports to whom, or what a procedure should say go to the laboratory director. The laboratory director speaks for the lab. This is partly a courtesy and partly a necessity: IT staff can be interviewed (493.1773(b)(2)), and an off-the-cuff answer about lab policy from IT can contradict the lab's own.
+
+**Don't guess, don't improvise, don't alter.** If you don't know, say you will find out and return with the record. Never change a record, a rule or a log during the inspection to make it look tidier. An audit trail will show it, and an inspector will ask why.
+
+**Bring the index.** The Quality Analyst's one-page index is the tool. Each exhibit has an owner and a retrieval path. An inspector's request is routed to the owner. The Quality Analyst keeps a running list of what was requested and what was provided, so there are no surprises in the closing discussion.
+
+## One binder, three audiences
+
+The same evidence serves all three oversight bodies. This is the table to take to your CIO.
+
+| IT evidence | CAP / CMS (CLIA) | FDA | AABB (themes only) |
+|---|---|---|---|
+| **Change records** (LCR-014, 021, 027; rule inventories; approvals) | 493.1773(b)(5), (c): records produced on request; 493.1239 and 493.1299: problems monitored, corrected, documented | 21 CFR 11.10(a) validation; 11.10(k) controls over system documentation and change; BECS guidance III.I regression analysis | Information systems and change control themes |
+| **Interface logs, reconciliation, test evidence** | 493.1291(a): accurate, reliable, timely delivery to final destination; 493.1291(k) corrected reports | BECS guidance: validate interfaces; keep monitoring interface error files | Information systems and data-integrity themes |
+| **PT handling and the no-PT-in-BECS check** | 493.801(b), 493.61(b)(1), 493.1236 | 606.160(b)(5)(v) lists proficiency test results as a record | Quality system and records themes |
+| **User access reviews and audit trails** | 493.1231 confidentiality; 493.1291(f) release only to authorized persons | 11.10(d), (e), (g) | Access control as a theme of information systems |
+| **Downtime procedure and recovery tests** | 493.1291(a), (h); 493.1283; manual under 493.1251 | 606.160(a)(1) concurrent records; 11.10(c) records retrievable | Backup and continuity as a theme of information systems |
+| **Retention schedule and retrieval test** | 493.1105(a)(3) to (6): at least 2 years for most; immunohematology per 606.160(d) | 606.160(d): 10 years or 6 months after latest expiration, whichever is later; 11.10(b), (c), (e) | Records and document control themes |
+| **Interviews: who speaks** | 493.1773(b)(2): interviews of all personnel | Quality leads any FDA inspection; this course makes no claim about who an investigator will ask | Not asserted here; see the AABB assessment module |
+
+Two honesty notes on the table. First, the AABB column gives themes only. This course's AABB source files say that AABB's Standards cover information systems, including validation, backup and continuity, and access control, but the standards' text is copyrighted and is neither quoted nor numbered here. If an assessor's wording matters, read the standards your Quality organization holds. Second, the columns overlap but do not substitute for each other: a clean CAP inspection does not satisfy FDA's inspection of BECS records, and an FDA-ready BECS file does not cover the LIS's CLIA duties ([module 1](../where-clia-and-cap-reach-a-blood-center/index.qmd) made this point first). The same exhibit, framed three ways, is cheaper than three binders.
+
+For the BECS side, see [Mock Inspections and Presenting IT/BECS Evidence](../../fda-and-aabb-in-practice/mock-inspections-and-presenting-it-becs-evidence/index.qmd) and [The AABB Assessment Process](../../fda-and-aabb-in-practice/the-aabb-assessment-process/index.qmd).
+
+## What an inspector would actually look for
+
+Not a list from CAP's checklist, which this course doesn't have. This is what the CLIA text makes predictable: records produced on request (493.1773(c)); the LCR path and its approvals; the reconciliation and its exceptions; a downtime procedure and the last time it was tested; access reviews with names and sign-offs; retention shown by demonstration; staff who know when to route a question to the laboratory director; and a quality system that finds its own problems. SI-12 with a real finding, a real fix and a closed record is stronger evidence than a clean sheet.
+
+## Common traps
+
+**"CAP will tell us what to prepare."** The custom checklist exists for the lab, and the laboratory director and Quality own it. IT should ask for the items that touch the LIS and interfaces, early, and map each to an exhibit. Waiting for the inspector to name them is how a gap becomes a finding.
+
+**"Having a policy is having a control."** A downtime policy nobody has tested, an access policy nobody has reviewed, a retention schedule nobody has retrieved against: these are intentions. The inspector asks for the last time it ran.
+
+**"A clean self-check is a good self-check."** SI-12's value was the open item. A self-check that finds nothing in a system this complex mostly shows it did not test. Look for the evidence that does not exist.
+
+## What this means for your job
+
+- **Own the index.** One page: every IT exhibit, its owner, where it lives, the retrieval path, and the last time someone retrieved it as a test. Review it at each SI-style self-check.
+- **Run SI-12-style self-checks on a schedule,** not only before an inspection. Test rather than read configurations. Close findings under an LCR, and keep the record.
+- **Test recovery, replay and retrieval, not just backup.** Each one needs a record with a date, a result and a name.
+- **Do the access review for real.** Remove what the review finds. A review that changes nothing, year after year, deserves a question.
+- **Brief IT staff before the inspection.** Show the record; answer what you own; route policy to the laboratory director; don't change anything during the inspection.
+- **Escalate immediately** if a self-check or an inspection turns up a result that did not reach its destination. The laboratory director and Quality decide what happens next, including any FDA question.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: A CAP inspector asks the LIS analyst, "Why does the BECS interface treat these two messages as duplicates?" The LIS analyst isn't sure. What should happen?
+
+The LIS analyst says what they don't know, then finds the record: the interface's message-handling rule history and LCR-027. They show the record and don't improvise an explanation. Any question about what the lab's procedure should say, or what the lab does about a result, goes to the laboratory director. Guessing is the worst option, because the audit trail can contradict the guess.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is a quarterly user access review for the LIS a CLIA requirement?
+
+No, not as written. The CLIA text in this course's sources requires confidentiality (493.1231) and release only to authorized persons (493.1291(f)); it sets no review frequency or method. A periodic, signed access review is Lakeshore's control, and it is how the lab can show those two requirements are met. On the FDA side, 11.10(d) and (g) require limiting access and authority checks for electronic records covered by Part 11, again without naming a review. CAP's checklists may say more, and this lesson cannot tell you what.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The look-back for LCR-027 found no dropped corrections. Is the finding therefore closed with nothing more to do?
+
+The LCR closes, but only with its scope on record: which logs, which period, which keys, and the limits of the retained logs. Quality documents its assessment of whether any FDA deviation question arises. The fix remains and is verified, the reconciliation now covers the BECS interface, and the same test cases are rerun after any change nearby. "None found" is a result with a stated scope, not a guarantee.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: In one sentence each, how does the same retention-retrieval test serve CAP, FDA and AABB?
+
+CAP/CMS: it shows records "accessible and retrievable within a reasonable time frame" (493.1773(c)) and that the 493.1105 periods are honored. FDA: it shows "accurate and ready retrieval throughout the records retention period" (11.10(c)) and, for immunohematology records, the 606.160(d) retention. AABB: it supports the records and information-systems themes an assessor examines. This course does not quote AABB's text.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q5: Two sentences for the CIO: why does IT keep a binder when the lab already has its own?
+
+The lab's inspection includes its software, and the software's records (changes, access, recovery, interfaces) are IT's. One set of evidence, indexed once and owned by named people, serves CAP, FDA and AABB, and being able to produce it quickly is what the CLIA text asks for.
+:::
+
+## Where this goes next: course wrap
+
+You can now:
+
+- **Say which Lakeshore testing CLIA covers** and how CAP, FDA and AABB oversight overlap without replacing each other ([module 1](../where-clia-and-cap-reach-a-blood-center/index.qmd)).
+- **Direct IT's part in the test report and result path,** including corrected reports, the BECS interface, retention and confidentiality ([module 2](../the-lis-and-the-test-report/index.qmd)).
+- **Control instrument, middleware and rule changes** with laboratory-director approval and verification evidence ([module 3](../instruments-middleware-and-performance-verification/index.qmd)).
+- **Keep PT samples inside the lab and out of BECS,** with controls and a look-back ([module 4](../proficiency-testing-and-the-lis/index.qmd)).
+- **Run a readiness self-check, close what it finds, and walk into an inspection with one indexed set of records** that serves CAP, FDA and AABB, while letting the laboratory director speak for the laboratory.
+
+For the FDA and AABB side of the same preparation, continue in [FDA and AABB in practice](../../fda-and-aabb-in-practice/index.qmd).

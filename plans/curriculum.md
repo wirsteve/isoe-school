@@ -293,11 +293,11 @@ has no `plans/<slug>.md` file until its first session.
 | `itsm-for-regulated-blood-services` | 6 / 6 | Done |
 | `release-management-and-sdlc` | 11 / 11 | Done |
 | `research-programs-reds-and-nih` | 6 / 6 | Done (plan: `plans/research-programs-reds-and-nih.md`) |
-| `clia-and-cap-for-blood-center-labs` | 4 / 5 | In progress (plan: `plans/clia-and-cap-for-blood-center-labs.md`) |
+| `clia-and-cap-for-blood-center-labs` | 5 / 5 | Done (plan: `plans/clia-and-cap-for-blood-center-labs.md`) |
 | `hrsa-and-cellular-therapy-programs` | 0 / 4 | Scoped (plan: `plans/hrsa-and-cellular-therapy-programs.md`) |
 | `blood-operations-deep-dive` | 0 / ? | Not started |
 
-**Next up: `clia-and-cap-for-blood-center-labs` module 5 (capstone); then `hrsa-and-cellular-therapy-programs`, then `blood-operations-deep-dive`.**
+**Next up: `hrsa-and-cellular-therapy-programs` module 1 (drafting), then 2–4; then `blood-operations-deep-dive` (to be scoped; sources for it being saved).**
 Track 7 order: release-management-and-sdlc → research-programs-reds-and-nih →
 clia-and-cap-for-blood-center-labs → hrsa-and-cellular-therapy-programs →
 blood-operations-deep-dive. (The paragraph below describing the original curriculum as complete
