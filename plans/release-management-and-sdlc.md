@@ -107,7 +107,7 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
 | # | Slug | Finish line | `order:` | Status |
 |---|---|---|---|---|
 | — | (syllabus) | — | 127 | Published |
-| 1 | `sdlc-models-in-a-regulated-blood-center` | Place any Lakeshore change on the right lifecycle (waterfall/V, iterative, agile, DevOps) and say what validation evidence each model has to produce, and when — using HOP 3.0's auto-allocation question. | 128/129 | Not started |
+| 1 | `sdlc-models-in-a-regulated-blood-center` | Place any Lakeshore change on the right lifecycle (waterfall/V, iterative, agile, DevOps) and say what validation evidence each model has to produce, and when — using HOP 3.0's auto-allocation question. | 128/129 | Published |
 | 2 | `requirements-backlogs-and-traceability-in-agile` | Turn user stories into requirements an inspector can trace to tests, write a definition of done that includes validation evidence, and record the regulatory-affairs decision on auto-allocation. | 130/131 | Not started |
 | 3 | `environments-baselines-and-test-data` | Design dev/test/validation/production environments, keep a configuration baseline (CM-2), and keep real donor data out of non-production. | 132/133 | Not started |
 | 4 | `release-management-deployment-and-change-control` | Tell ITIL release management, deployment management and change enablement apart, classify release types, and set a release calendar and freeze windows that respect blood operations. | 134/135 | Not started |
@@ -124,3 +124,20 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
 - 2026-11-13 — Course scoped (Phase 2, strongest model). Sources fetched: GPSV 2002 excerpt, NIST
   SSDF excerpt, NIST 800-53 CM/SA excerpt. `order:` 127–149 assigned (next unused after this
   course: **150**). Syllabus page published. Next: module 1.
+- 2026-11-13 — Module 1 `sdlc-models-in-a-regulated-blood-center` published (Sonnet draft, verified:
+  orders, short-version box, quotes found in `sources/`, links 200, mmdc diagram, video oEmbed).
+  Video: FIVE Validation "Webinar GAMP5 CSA Agile Methods" (DMh_ES-XVbU; vendor webinar, framed as
+  such; added by the main session after the drafter found none). **Locked:** the Director's decision —
+  sprints ship to the *validation environment* only; production releases follow a *validated release
+  cadence* through a release gate (approved validation plan + risk assessment before sprint one;
+  incremental evidence each sprint; QA review; regression analysis reviewed per BECS guidance III.I;
+  recorded authorized approval + change record; validation summary; post-release monitoring) — the
+  lesson says plainly no source mandates a cadence. "The plan is the backlog" rejected (backlog =
+  requirements; plan = scope, risk, approvals, definition of done, evidence environment).
+  Auto-allocation routed in writing to regulatory affairs via a memo in the lesson; backlog item
+  marked "pending regulatory determination"; other HOP 3.0 stories proceed. Independence of review
+  comes from outside the two-developer team (QA, systems administrator), GPSV 4.9 as general
+  thinking. HOP = GAMP Category 5 ("vendor tested it" unavailable). Lifecycle placement: HOP 3.0 =
+  agile inside a controlled release path; Release C = vendor lifecycle + V-style user validation
+  (module 5); CHG-2207 = emergency path with retrospective documentation (module 10). Lesson links
+  forward to module 2 by slug (fine once module 2 exists).

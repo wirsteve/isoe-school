@@ -1,0 +1,35 @@
+---
+title: "Resources"
+order: 129
+---
+
+Places to go deeper on lifecycle models and what each owes a validation file, or to check a citation before it goes into a real Lakeshore document. Every link below was checked with `curl` and loaded.
+
+- **[21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)** — the equipment rule that FDA's BECS guidance treats as the regulatory root of a validation plan: the "written program designed to assure proper performance" in (a) and the authorized-changes control in (b). Use it when you need the exact words. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 864.9165, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/864.9165)** — what BECS is, and the Class II special controls (design specifications, verification and validation with hazard analysis, traceability matrix, labeling of unresolved anomalies). Read it before the regulatory-affairs conversation about auto-allocation; this module deliberately does not answer that question. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)** — the blood-specific guidance: plan (III.C), validate in a test partition (III.G), validation after a change (III.I). Reread III.C and III.I with your own release procedure next to them. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: General Principles of Software Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)** — FDA's 2002 guidance for device manufacturers. It reaches Lakeshore only as general thinking, not as a binding requirement, but sections 4.3 to 4.9 and 5.1 are the clearest FDA statement that no particular life cycle model is required. Note its front-page notice that the Computer Software Assurance guidance supersedes its Section 6. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Computer Software Assurance for Production and Quality Management System Software](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/computer-software-assurance-production-and-quality-management-system-software)** — read for the risk-based assurance mindset only. Its scope is device manufacturers' production and quality-system software; it excludes device software functions and does not govern a blood establishment's BECS validation. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Manifesto for Agile Software Development](https://agilemanifesto.org/)** and **[Principles behind the Agile Manifesto](https://agilemanifesto.org/principles.html)** — the primary source for what "agile" claims and does not claim. Useful when the development lead says "we're agile": the principles speak of frequent delivery of working software, and nothing in them says validation evidence is optional. Verified loading via `curl` on 2026-11-13 (HTTP 200 for both).
+
+- **[The Scrum Guide](https://scrumguides.org/scrum-guide.html)** — the definition of sprints, the Definition of Done, and the roles. Use it to tell your development lead's practice from the framework; the Definition of Done is the hook module 2 uses for validation evidence. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Waterfall Process, Martin Fowler's bliki](https://martinfowler.com/bliki/WaterfallProcess.html)** — a short practitioner explanation of why long sequential processes fail users, balancing the case for sprints. Opinion, not regulation. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[GAMP 5 Guide, Second Edition, ISPE publisher page](https://ispe.org/publications/guidance-documents/gamp-5-guide-2nd-edition)** — the catalogue page for the industry-practice guide that module text names as a theme only. The guide is a paid publication and is not quoted here. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Webinar GAMP5 CSA Agile Methods](https://www.youtube.com/watch?v=DMh_ES-XVbU)** (FIVE Validation, from oEmbed `author_name`) — the video embedded in this lesson: a validation-software company's webinar on fitting agile methods to GAMP 5 and FDA's Computer Software Assurance thinking. Vendor training content, not blood-specific and not guidance. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200).
+
+## Keep learning
+
+Not official sources. Good places to keep learning; none is authority for a regulatory claim.
+
+- **[Continuous Integration, Martin Fowler](https://martinfowler.com/articles/continuousIntegration.html)** — the classic practitioner explanation of integrating small changes frequently with automated tests; background for the DevOps row in this lesson and for module 7. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Continuous Delivery, Martin Fowler](https://martinfowler.com/bliki/ContinuousDelivery.html)** — short definition that separates "ready to release" from "released," the distinction the Director's decision relies on. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[DORA's software delivery performance metrics](https://dora.dev/guides/dora-metrics/)** — the public research program's description of its four delivery metrics, which module 11 uses. Research, not a standard. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Agile Validation in a GxP environment, ISPE Netherlands Affiliate](https://ispe.org/conferences/agile-validation-gxp-environment)** — an event announcement for an ISPE community discussion on agile validation; no recording or transcript was found, so treat it as a signal that the topic is active in industry, not as a learning resource in itself. Verified loading via `curl` on 2026-11-13 (HTTP 200).
