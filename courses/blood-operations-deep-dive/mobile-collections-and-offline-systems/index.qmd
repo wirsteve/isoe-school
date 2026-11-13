@@ -1,0 +1,390 @@
+---
+title: "Mobile Collections and Offline Systems"
+order: 190
+---
+
+::: {.callout-tip appearance="simple"}
+
+## The short version
+
+- **Finish line:** you can run offline collection systems so deferral, suitability and audit-trail requirements still hold: a freshness rule for the deferral list, a sync-time check that blocks release, and an evidence pack for what the laptops did while nobody was watching.
+- **The punchline:** a donor deferred at a fixed site that morning donated at a rural drive that afternoon, because the offline laptop's deferral list was from the previous night. At sync, BECS (Blood Establishment Computer Software) flagged the donation. The unit was quarantined and never released. No harm is asserted.
+- **The rule in one line:** a donation is suitable only when the donor "is not currently deferred" as determined by review of the deferred-donor records (21 CFR 630.30(a)(1)), and an unsuitable donation must not be released (630.30(b)(1)).
+- **The honest part:** no regulation or FDA guidance in this course's sources says anything specific about offline clients. The freshness rule, the sync check and the evidence pack are Lakeshore's way of meeting general requirements, not requirements by themselves.
+- **Ask on Monday:** "For yesterday's drive, show me the age of the deferral list on every laptop at the moment each donor registered."
+- **The trap:** treating "we sync every night" as the control. A nightly sync is a schedule. The control is what the system does with a donation whose list was stale.
+:::
+
+## The night sync
+
+The rural drive was in a church hall, an hour from the nearest Lakeshore Blood Center fixed site, with no usable network. That is normal for the mobile collections team. Staff register donors offline against a local copy of the deferral list, and each laptop uploads its day's records to BECS when it reaches a connection that night.
+
+The next morning the BECS analyst on your team messages you before you have your coffee.
+
+"The overnight sync from the drive threw a hold. One donation from yesterday afternoon matches a deferral entered at a fixed site yesterday morning. The unit is in quarantine. It never reached the release queue."
+
+The mobile collections manager is already on a call with the Quality Analyst, who is pulling the registration record.
+
+"Here's the timeline," she says. "The donor was deferred at a fixed site yesterday morning, and it went into BECS right away. The laptop's list was built the night before, so at the drive it had no idea. Registration cleared and we collected the unit. BECS caught it when the laptop uploaded: the suitability check matched the donor against the current deferral records and held the unit."
+
+The mobile collections manager says what matters. "Nothing about the laptops was broken. The list was exactly as old as we'd designed it to be. We never decided how old was too old."
+
+That sentence is the lesson. The gap was a decision nobody had made, and the thing that saved the day was a check that happened to exist at the other end of the sync.
+
+Two things are true at once. The unit was never released, so the product-side control worked. And a donor deferred that morning was collected from that afternoon, so the intake-side control did not. Both go in the record. No harm is asserted, and whether the event is reportable is Quality's decision.
+
+## Why the rule exists, and the ITSM bridge
+
+The deferral list exists so that a donor whose donation could harm a recipient, or the donor, is not collected from, and if collected from, does not reach a patient. [The donor screening lesson](../../blood-center-operations/donor-recruitment-and-screening/index.qmd) covers the registry check at registration, and this lesson does not repeat it. It asks what happens when the registry you check is a copy.
+
+An offline laptop holds a **replica**, and a replica is only as good as its last sync. The failure modes are familiar:
+
+- **Stale read.** The laptop answers "not deferred" with confidence.
+- **Write you cannot see.** The deferral happened somewhere the laptop cannot reach.
+- **Late arrival.** The laptop's records, including time stamps, reach the system of record hours later.
+- **Clock drift.** With no network, nobody corrects the laptop's clock.
+
+The ITSM shape is a **remote site on a cached credential store**: a cache that still admits a terminated employee because the directory change has not replicated. You fix that with a maximum cache age, a forced refresh, a compensating check (call the help desk) and a reconciliation at reconnect. The blood version has the same four parts.
+
+The second bridge is **change enablement**. The laptops, the OS image, the BECS client version and the deferral-list package are a configuration baseline, and a kit that drifts from its validated baseline is an unauthorized change. The baseline discipline is in [Environments, baselines and test data](../../release-management-and-sdlc/environments-baselines-and-test-data/index.qmd). Here it applies to laptops that travel in a van.
+
+## What the sources say, and what they do not
+
+In the sources this course uses (21 CFR parts 11, 606, 610 and 630 sections, and FDA's 2013 BECS validation guidance), nothing is written specifically about offline clients, synchronization, deferral-list freshness or clock synchronization. I checked the guidance and 11.10 for those subjects and found nothing. What exists are general requirements: do not collect from or release a donation from a deferred donor (630.10, 630.30, 606.160(e)); keep a working deferred-donor record (606.160(e)); keep time-stamped audit trails (11.10(e)); validate the system (11.10(a) and the guidance).
+
+**Everything specific in this lesson is Lakeshore's way of meeting those general requirements.** If an inspector asks, "Which regulation requires a midday refresh?", the honest answer is "none does; here is why our design meets the general requirement." Citing a regulation that does not say it is worse.
+
+## The rule in plain English
+
+1. **A suitable donation needs a donor who is not currently deferred,** established by "review of the records of deferred donors required under § 606.160(e)" (630.30(a)(1)). A review of a stale list does not establish that.
+2. **An unsuitable donation must not be released** (630.30(b)(1)). That is the rule the quarantine enforced.
+3. **The donor must be deferred and notified** under 630.40 (630.30(b)(2), (b)(4)).
+4. **Deferred-donor records must be maintained** so ineligible donors are not "collected and/or released" (606.160(e)(1)). The cumulative record for certain reactive-test deferrals must be updated "at least monthly" (606.160(e)(3)). Lakeshore's nightly list already beats that minimum. The scenario's gap was a same-day deferral at another site, which the nightly design could not see.
+5. **Electronic records need time-stamped audit trails** (11.10(e)). On a laptop with no network, what sets "the date and time" matters.
+
+Everything else is design.
+
+## Who decides what
+
+- **The freshness rule and mobile procedure:** the mobile collections manager, as Lakeshore's design, approved by Quality.
+- **Deviation reporting:** Quality. See [Filing a biological product deviation report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd). This lesson states no outcome.
+- **Donor notification under 630.40, and any decision about a donor's status:** Quality and the medical director. IT does not edit deferrals.
+- **System behavior and evidence** (list package, sync check, hold state, audit trail, device baseline, proof they work): IT.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 630.30(a)(1) | "Six-thirty point thirty, paragraph a, sub-one" | A donation is suitable when the donor is not currently deferred, as determined by review of the 606.160(e) records. | The sync-time check is this review, done late. A stale laptop list could not establish it at the table. |
+| 21 CFR 630.30(b)(1), (2), (4) | "Six-thirty point thirty, paragraph b, subs one, two and four" | Do not release an unsuitable donation; defer the donor; notify the deferred donor under 630.40. | Why the unit stays in quarantine, and why Quality and the medical director have a notification question. |
+| 21 CFR 610.41 | "Six-ten point forty-one" | Donor deferral: deferral for reactive screening tests, and requalification by an FDA-acceptable method. | The deferral list is built from deferrals under this section and under the other eligibility rules. A requalified donor is "no longer deferred" (610.41(b)). |
+| 21 CFR 606.160(e)(1)-(4) | "Six-oh-six point one-sixty, paragraph e" | A location deferral record; a cumulative record for certain reactive-test deferrals, updated at least monthly. | The data source for the laptop's list. The nightly build is Lakeshore's design on top of this. |
+| 21 CFR 630.10(d)(1) | "Six-thirty point ten, paragraph d, sub-one" | Consult the deferred-donor records before collection; a narrow exception for the cumulative record. | The exception is about the cumulative record. It does not mention the location record. See the next section. |
+| 21 CFR 630.40(a), (c) | "Six-thirty point four-oh, paragraphs a and c" | Reasonable attempts to notify within 8 weeks after determining the donor is deferred; document success or the attempts. | The notification clock and record Quality and the medical director own. |
+| 21 CFR 11.10(a), (d), (e), (g), (h) | "Eleven point ten, paragraphs a, d, e, g and h" | Validation; limited system access; time-stamped audit trails; authority checks; device checks. | The controls behind the laptop evidence pack: who used which laptop, what changed, when, and whether the source of the data is a known device. |
+| FDA BECS validation guidance (2013), III.D, III.G, III.I | "FDA's BECS validation guidance, sections D, G and I" | Nonbinding recommendations ("should"): validate where it will be used, test boundaries, regress after change. | The model for validating the mobile kit and for the change control in BOC-022. |
+
+## The actual text
+
+### Suitability: the rule the sync check enforces
+
+From `sources/cfr/630.30.md`:
+
+> (a) When is a donation suitable? A donation is suitable when:
+>
+> (1) The donor is not currently deferred from donation as determined by review of the records of deferred donors required under § 606.160(e) of this chapter;
+>
+> (2) The results in accordance with §§ 630.10 through 630.25 indicate that the donor is in good health and procedures were followed to ensure that the donation would not adversely affect the health of the donor;
+>
+> (3) The results in accordance with § 630.10(e) indicate that the donor is free from risk factors for, or evidence of, relevant transfusion-transmitted infections and other factors that make the donor ineligible to donate;
+>
+> (4) The donor's blood is tested in accordance with § 610.40 of this chapter, and is negative or nonreactive, unless an exception applies under § 610.40(h) of this chapter; and
+>
+> (5) The donation meets other requirements in this subchapter.
+
+Read it as a conjunction. The scenario's donation failed (a)(1) on the facts: the donor *was* currently deferred. The laptop's list could not show that, and the later review could. Paragraph (a)(1) says "as determined by review of the records." The regulation does not say when that review must happen relative to collection in this paragraph. For that, see 630.10(d), next. Conditions (a)(2) through (4) are the subject of other modules ([donor screening](../../blood-center-operations/donor-recruitment-and-screening/index.qmd) and [collection and testing](../../blood-center-operations/collection-and-testing/index.qmd)) and are not re-taught here.
+
+What happens when the donation is not suitable:
+
+> (b) What must you do when the donation is not suitable? (1) You must not release the donation for transfusion or further manufacturing use unless it is an autologous donation, or an exception is provided in this chapter.
+>
+> (2) You must defer the donor when a donation is determined to be unsuitable based on the criteria in paragraphs (a)(1) through (4) of this section.
+>
+> (3) You must defer the donor of bacterially contaminated platelets when the contaminating organism is identified in accordance with § 606.145(d) of this chapter as likely to be associated with a bacterial infection that is endogenous to the bloodstream of the donor.
+>
+> (4) You must notify the deferred donor in accordance with the notification requirements in § 630.40.
+
+Paragraph (b)(1) is the regulatory home of the quarantine. "You must not release" is a "must." The system's job is to make "not released" the default state for anything that has not passed the suitability review. Paragraph (b)(3) is the platelet case from [the first module](../apheresis-platelets-and-bacterial-risk/index.qmd) and is not part of this scenario.
+
+### The deferred-donor records
+
+From `sources/cfr/606.160.md`, paragraph (e):
+
+> (e) *Records of deferred donors.* (1) Establishments must maintain at each location a record of all donors found to be ineligible or deferred at that location so that blood and blood components from an ineligible donor are not collected and/or released while the donor is ineligible or deferred; and
+>
+> (2) Establishments must maintain at all locations operating under the same license or under common management a cumulative record of donors deferred from donation under § 610.41 of this chapter because their donation tested reactive under § 610.40(a)(1) of this chapter for evidence of infection due to HIV, HBV, or HCV. In addition, establishments other than Source Plasma establishments must include in this cumulative record donors deferred from donation under § 610.41 of this chapter because their donation tested reactive under § 610.40(a)(2) of this chapter for evidence of infection due to HTLV or Chagas disease.
+>
+> (3) The cumulative record described in paragraph (e)(2) of this section must be updated at least monthly to add donors newly deferred under § 610.41 of this chapter due to reactive tests for evidence of infection due to HIV, HBV, or HCV, and, if applicable, HTLV or Chagas disease.
+>
+> (4) Establishments must revise the cumulative record described in paragraph (e)(2) of this section to remove donors who have been requalified under § 610.41(b) of this chapter.
+
+Three things to take from it:
+
+- **"so that ... are not collected and/or released"** is the purpose clause. The record exists to stop collection *and* release. A control that stops only one of the two is half a control, and the scenario had exactly that: release stopped, collection not.
+- **(e)(1) is about each location.** A donor deferred at a fixed site is in that site's record. How Lakeshore makes that visible to a mobile drive is design. Whether a mobile drive is itself a "location" in this sense is not answered in the sources, so it is flagged for Quality. The conservative design, which Lakeshore uses, is to put every deferral into the one list every laptop carries.
+- **(e)(3) and (e)(4) set minimums for the cumulative record, and a requalification removes a donor.** The list package has to handle removals, not just additions, or the laptop will turn away donors who are legitimately back. That is a test case below.
+
+Source note: 606.160 also lists, at (b)(1)(ii), "Permanent and temporary deferrals for health reasons including reason(s) for deferral" among donor records, and at (b)(1)(x), "Records of notification of donors deferred or determined not to be eligible for donation." Both are part of the evidence below.
+
+### The check before collection, and its exception
+
+From `sources/cfr/630.10.md` (the full treatment is in [the donor screening lesson](../../blood-center-operations/donor-recruitment-and-screening/index.qmd)):
+
+> (d) *How must you determine the eligibility of a donor?* You must determine the donor's eligibility before collection of blood or blood components, by the following procedures:
+>
+> (1) You must consult the records of deferred donors maintained under § 606.160(e)(1) and (2) of this chapter. Exception: If pre-collection review of the record described in § 606.160(e)(2) of this chapter is not feasible because you cannot consult the cumulative record at the collection site, you must consult the cumulative record prior to release of any blood or blood component prepared from the collection.
+
+The general rule is a pre-collection review of both the location record, (e)(1), and the cumulative record, (e)(2). The exception names **only** the cumulative record in (e)(2), and only when you "cannot consult the cumulative record at the collection site." For that case, the check moves to "prior to release." It is easy to hear this as "offline sites may check later." The text says something narrower. It does not mention the location record in (e)(1), and it says nothing about a list that is merely old. Whether Lakeshore's offline design can rely on the exception for some deferrals and not others is an interpretation for Quality and Regulatory, not for IT and not for this lesson. Lakeshore's approach is to treat the sync check as the **safety net**, never as the plan, and to design the plan so the check at the table has current information.
+
+### Notifying the donor
+
+From `sources/cfr/630.40.md`:
+
+> (a) *Notification of donors.* You, an establishment that collects blood or blood components, must make reasonable attempts to notify any donor, including an autologous donor, who has been deferred based on the results of tests for evidence of infection with a relevant transfusion-transmitted infection(s) as required by § 610.41(a) of this chapter; any donor who has been deferred as required under § 630.30(b)(3) because their donated platelets have been determined under § 606.145(d) of this chapter to be contaminated with an organism that is identified as likely to be associated with a bacterial infection that is endogenous to the bloodstream of the donor; and any donor who has been determined not to be eligible as a donor based on eligibility criteria under §§ 630.10 and 630.15.
+
+> (c) *Time period for notification.* You must make reasonable attempts to notify the donor within 8 weeks after determining that the donor is deferred or determined not to be eligible for donation as described in paragraph (a) of this section. You must document that you have successfully notified the donor or when you are unsuccessful that you have made reasonable attempts to notify the donor.
+
+Two points for this scenario. First, the donor was already deferred that morning, which means, if that deferral is one 630.40(a) covers, a notification for the original deferral should already be in progress. The sync finding does not restart or replace it. Second, 630.30(b)(4) separately says "You must notify the deferred donor in accordance with the notification requirements in § 630.40" when a donation is found unsuitable. What a donor is told about a donation that was collected and then held is a decision for Quality and the medical director. IT's job is to give them the dates, the records and a task in the system so the 8-week clock is visible. The clock runs "after determining," and when the determination was made for this event is a call for them, not for the lesson.
+
+### What 11.10 says about the laptop's record
+
+From `sources/cfr/11.10.md`:
+
+> Persons who use closed systems to create, modify, maintain, or transmit electronic records shall employ procedures and controls designed to ensure the authenticity, integrity, and, when appropriate, the confidentiality of electronic records, and to ensure that the signer cannot readily repudiate the signed record as not genuine. Such procedures and controls shall include the following:
+>
+> (a) Validation of systems to ensure accuracy, reliability, consistent intended performance, and the ability to discern invalid or altered records.
+>
+> (d) Limiting system access to authorized individuals.
+>
+> (e) Use of secure, computer-generated, time-stamped audit trails to independently record the date and time of operator entries and actions that create, modify, or delete electronic records. Record changes shall not obscure previously recorded information. Such audit trail documentation shall be retained for a period at least as long as that required for the subject electronic records and shall be available for agency review and copying.
+>
+> (g) Use of authority checks to ensure that only authorized individuals can use the system, electronically sign a record, access the operation or computer system input or output device, alter a record, or perform the operation at hand.
+>
+> (h) Use of device (e.g., terminal) checks to determine, as appropriate, the validity of the source of data input or operational instruction.
+
+(Paragraphs (b), (c), (f) and (i) through (k) are in `sources/cfr/11.10.md` and covered in [Part 11 for validated systems](../../csv-and-becs/part-11-for-validated-systems/index.qmd).) For the laptops:
+
+- **(e)** is the clock problem. It asks for audit trails that "independently record the date and time," and does not say how the time is set or mention network time. A drifted clock still yields a "computer-generated" and "time-stamped" entry, with the wrong time. Whether that satisfies (e) is a fair question, and Lakeshore's answer is to treat a wrong clock as a data-integrity defect and record the evidence to detect it. The wider principles are in [Audit trails and e-signatures](../../data-integrity-and-records/audit-trails-and-esignatures/index.qmd) and [ALCOA and data integrity](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd).
+- **(a)** includes "the ability to discern invalid or altered records." A sync that silently overwrites or drops a record fails that, so the design must expose conflicts.
+- **(d) and (g)** cover who can use a laptop, including a lost one in someone else's hands.
+- **(h)** is the closest text to "which laptop did this come from." A sync that accepts uploads only from enrolled devices is a device check.
+
+### What FDA's BECS guidance says about the kit
+
+The following is nonbinding guidance: "should" means recommended, not required, as the guidance itself says. From `sources/fda-guidance/becs-validation-users-facility-2013.md`:
+
+> A Blood Establishment Computer System (system) includes: computer hardware; computer software; peripheral devices; networks; personnel; and documentation, e.g., User's Manuals and Standard Operating Procedures (SOPs).
+
+> You should validate your system at your location using the same software, hardware, SOPs, and personnel who will use the system after it is formally implemented. Thus, in cases where a central server is used by multiple locations, not only the main server but also each individual location should have a validation plan that is specific to the functions and configurations at each location.
+
+> When any change (even a small change) is made to the software on the system, a software regression analysis should be conducted, not just for validation of the individual change, but also to determine the extent and impact of that change on the entire system.
+
+> An example of boundary testing is testing for a hematocrit of 37%, 38% and 39% if the cutoff (or boundary value) for hematocrit is 38%.
+
+What the guidance does *not* say is anything about offline operation, synchronization or laptops specifically. The mobile kit is part of "the system" because the first quote's definition includes hardware, software, peripheral devices and networks (and a disconnected laptop is still hardware and software). The validation expectation follows from the second quote: validate in the setting where it will be used, with the same people and procedures, and where several locations share a central server, each location's functions and configurations get their own plan. A mobile drive is a different configuration from a fixed site. That is Lakeshore's reading, and it is a reasonable one. The guidance does not use the word "mobile."
+
+## See it in one picture
+
+This diagram follows the scenario's donor, with the freshness rule shown as the branch that was missing. The bottom half is the sync-time check that did exist.
+
+```{mermaid}
+flowchart TD
+    A["Morning: donor deferred<br/>at fixed site, recorded in BECS"] --> B["Nightly list build<br/>(the list on the laptop predates the deferral)"]
+    B --> C["Offline registration laptop<br/>at rural drive"]
+    C --> F1{"Freshness rule 1:<br/>list refreshed before the drive?"}
+    F1 -->|"yes: list includes morning deferral"| OK["Donor stopped at registration"]
+    F1 -->|"no refresh"| F2{"Freshness rule 2:<br/>midday refresh or phone check?"}
+    F2 -->|"connectivity: refresh list"| OK
+    F2 -->|"none: documented phone check"| OK
+    F2 -->|"neither done"| E["Afternoon: donor registers<br/>and donates"]
+    E --> G["Night: laptop syncs to BECS"]
+    G --> H{"Sync-time suitability check<br/>630.30(a)(1), 606.160(e)"}
+    H -->|"deferred donor found"| Q["Unit quarantined,<br/>release blocked"]
+    H -->|"no match"| R["Normal release review"]
+    Q --> N["Quality and medical director:<br/>deviation question, 630.40 notice"]
+    Q --> EV["Evidence pack: audit trail,<br/>clock offset, list version"]
+```
+
+The top half shows Lakeshore's new design: three ways the deferral is seen at the table (a refresh before the drive, a midday refresh where connectivity exists, a documented phone check where it does not). The path to "Afternoon: donor registers and donates" is open only when none of the three happened. That is the path the scenario took, because the rule did not exist. The bottom half is the net, and it is the part that worked.
+
+## Watch it explained
+
+No video embed for this module. The searches found nothing both on topic and acceptable under the course's sourcing rules. See the note in the resources page.
+
+## The design, step by step
+
+Everything below is Lakeshore's design, owned as described above, and put under change control as BOC-022.
+
+### 1. The deferral-list freshness rule
+
+1. **Refresh before the drive.** The laptop loads the current list as the last step before the van leaves, and the registration screen shows the list's build time.
+2. **Refresh at midday where any connectivity exists.** A cell signal or working hotspot is enough to pull the list or the changes since the last one. That narrows the window from a day to a few hours.
+3. **Otherwise, a documented check by phone.** The team phones a staffed fixed-site desk that can query live BECS. The call is logged: who called, who answered, the time, what was checked, the result.
+
+The mobile collections manager and Quality decide these, not this lesson:
+
+- Whether the phone check is **per donor** (identifiers read to the desk before collection) or a **delta call** (the desk reads out every deferral entered since the list was built). Per-donor is easier to prove and slower at the table. Both are defensible if the log shows what was done.
+- How old a list can be before the laptop refuses to register donors without a logged phone check. That is a number in the procedure. IT makes the laptop enforce it, so it does not depend on memory at 3 p.m.
+- What the team does when there is no connectivity and nobody answers the phone. Write the answer down in advance.
+
+Enforce the age in software, but give a supervisor an override with a logged reason, because a rural drive cannot be cancelled by an error message. The override is an audit-trail event Quality reviews.
+
+This rule shrinks the window and does not close it. A deferral entered five minutes after the midday refresh still will not be on the laptop. That is why the sync check exists, and why neither control is called sufficient alone.
+
+### 2. The sync-time suitability check, which blocks release
+
+When a laptop uploads, BECS checks each donation against the **current** deferral records, not the laptop's copy, and not the list as of when the donor registered.
+
+The strongest design is **default-deny**: every donation created by an offline client enters BECS in a hold state, and only a passed sync check moves it to the normal release path. Compare the two designs:
+
+| Design | How release is blocked | Failure mode |
+|---|---|---|
+| **Flag on match** | The check looks for deferred donors and quarantines matches. | If the check fails to run, errors out or is skipped, the unit looks normal and moves on. |
+| **Hold until cleared** | The unit is held by default. The check must run and pass to release it. | If the check fails to run, the unit stays held, which is visible and safe. |
+
+The scenario had the first design and got lucky that the check ran. BOC-022 moves to the second. This is the same pattern as the release gates in [the platelet module](../apheresis-platelets-and-bacterial-risk/index.qmd): the system does not let a unit through because nothing objected. It lets a unit through because something affirmatively cleared it, and release for the "blocked" cases has no override at the level of a donor-deferral match.
+
+The check has to cover more than a name match. It uses the same donor identity logic the registry uses, which means the weaknesses in [multi-site governance and donor identification](../../data-integrity-and-records/multi-site-governance-and-donor-identification/index.qmd) apply here too: a donor who registered offline under a slightly different spelling can slip past a naive match. [Module 5](../lookback-and-consignee-notification/index.qmd) goes into duplicate and merged records in depth. The sync check should surface *possible* matches (same date of birth and similar name, say) to a person for review, not only exact matches, and a possible match holds the unit as well.
+
+When the check finds a match, BECS does four things automatically: quarantines the unit, creates a task for Quality (not a note in a log), records which list version the laptop used and which deferral record matched, and starts the evidence collection described below. Quality and the medical director decide the rest.
+
+### 3. The offline audit-trail and time-sync evidence pack
+
+An offline laptop creates records with nobody watching and no server to time-stamp them. The evidence pack lets Lakeshore prove afterwards what happened. For each drive, per laptop:
+
+- **Device and kit identity:** the enrolled laptop, OS image, BECS client version and list-package version. This is the 11.10(h) device check made visible.
+- **Who:** logged-in users matched to the access list (11.10(d), (g)).
+- **List age at each registration:** the build time of the list the laptop held when each donor registered. This is the most useful record in the scenario.
+- **Audit trail with time stamps:** every create, modify and delete, with the laptop's date and time (11.10(e)). Corrections are new entries, never overwrites, because record changes "shall not obscure previously recorded information."
+- **Clock evidence:** the laptop's clock against a trusted reference at start and end of the drive, and the **offset measured at sync** (laptop time against BECS server time when the upload arrives).
+- **Sync log:** what was accepted, rejected or conflicted, and the suitability-check result per donation.
+- **Freshness-rule record:** the pre-drive refresh, the midday refresh or the phone-check log.
+
+Why clock drift is a data-integrity risk: the audit trail says "entered at 14:05," but a clock 40 minutes slow means it was 14:45. The record is wrong about *when*, which damages "contemporaneous" and "accurate" in ALCOA. Any logic that compares time stamps ("was this collected before or after the deferral was entered?") can then answer wrongly. In the scenario the order was a day apart. In a same-hour case it could be confused, so the sync check should use the server's receipt time, the list version and the offset together, not the laptop clock alone.
+
+Lakeshore's design: set the clock from a trusted source in the pre-drive step and record that it happened; record the offset at sync and apply a **tolerance** the owner sets (within it, record it; beyond it, hold that laptop's records for Quality review); treat a manual clock change as an audit-trail event. The tolerance is a procedure parameter, not a regulatory number, and this lesson sets none. Test it with boundary values, as the BECS guidance does: just below, at and just above.
+
+### 4. A lost or stolen laptop is a security incident
+
+A registration laptop holds donor personal and health information, and a deferral list is itself information about people's health. Loss or theft is an incident under the information security incident process, with a breach assessment. This lesson does not re-teach that. Use [Healthcare security and privacy](../../healthcare-security-and-privacy/index.qmd), especially [Security Rule safeguards and Part 11](../../healthcare-security-and-privacy/security-rule-safeguards-and-part-11/index.qmd) and [Breach notification and dual reporting](../../healthcare-security-and-privacy/breach-notification-and-dual-reporting/index.qmd).
+
+The design points that belong here:
+
+- **Minimize what the laptop holds.** The list needs match fields, not donor histories.
+- **Protect the device** with access controls and disk protection, and be able to disable it remotely or at its next connection (11.10(d), (g)).
+- **Treat unsynced records as a data-integrity event.** Donations on a laptop that never syncs are units BECS has never heard of, possibly in a cooler. A paper reconciliation of units collected versus units uploaded is the compensating control and belongs in the evidence pack.
+
+### 5. The mobile kit under change control
+
+The kit is a baseline: laptop model, OS image, BECS client version, sync agent configuration and list-package format. Any change goes through **BOC-022**, with the BECS analyst assessing impact, the mobile collections manager approving operationally and Quality approving.
+
+The BECS guidance maps onto validation as follows. This is Lakeshore's application of nonbinding guidance, not an FDA requirement for mobile kits:
+
+- **Validate in the setting of use,** with the same software, hardware, procedures and people (III.D). A kit tested only on a bench with a network has not been validated for a church hall without one, so the validation runs the kit disconnected.
+- **Treat the mobile configuration as its own location configuration** ("each individual location should have a validation plan that is specific to the functions and configurations at each location").
+- **Regress after any change, even a small one** (III.I). A new client version or list format reruns the offline scenarios below.
+- **Test normal, abnormal and boundary values** (III.G), including "absurd" ones: an empty list, a corrupted list, a list with a future build time.
+- **Keep the change record.** The guidance's documentation list includes "Record of changes made to the system hardware, software and peripheral devices, including date." The BOC record is that record.
+
+Test practice is in [Environments, baselines and test data](../../release-management-and-sdlc/environments-baselines-and-test-data/index.qmd). Use test donors, never real donor data, on a test laptop. A starting test set for the BECS analyst and Quality:
+
+| # | Scenario | Expected result |
+|---|---|---|
+| S1 | Donor deferred after the list was built; donates offline; laptop syncs. | Sync check matches; unit held; Quality task created. (Replays the scenario; runs first.) |
+| S2 | Same, but the sync check service is down at upload. | Unit stays held; no release path opens. |
+| S3 | Donor requalified (610.41(b)) after the list was built. | Not wrongly held. The current record decides, not the old list. |
+| S4 | Laptop list age just below, at and just above the owner's limit. | Below: registers normally. At and above: laptop requires the logged phone check or supervisor override. |
+| S5 | Laptop clock offset just below, at and just above tolerance at sync. | Within: recorded. Beyond: records held for Quality review. |
+| S6 | Two laptops upload the same donation (replay). | One record, with the duplicate rejected and logged; no silent overwrite. |
+| S7 | Sync interrupted partway. | Only complete donations accepted; the rest retried; the sync log shows which. |
+| S8 | Unknown device attempts to upload. | Rejected and logged (11.10(h)). |
+| S9 | Possible-match donor identity (similar name, same date of birth). | Held for human review, not auto-released. |
+| S10 | Lost-laptop procedure: device disabled, units collected on it reconciled by paper. | Disabled device cannot upload; reconciliation shows any unaccounted units. |
+
+### 6. Notification and the deviation question
+
+Quality and the medical director own the 630.40 notification and Quality owns the deviation question. IT supplies the timeline: list version, registration, collection, sync and check result, quarantine, audit trail. The evidence pack exists to produce that quickly and without argument.
+
+## What an inspector or assessor would actually look for
+
+The document, its owner, and what a bad answer sounds like.
+
+- **The mobile procedure with the freshness rule and phone check** (mobile collections manager, approved by Quality). Bad answer: "We sync every night, so the list is current." A nightly sync means the list is *at most a day old*, which is the problem.
+- **Per-donor registration records showing list age** (BECS analyst reports, Quality reviews). Bad answer: "I'd have to ask the team what the laptops had."
+- **The phone-check log.** Bad answer: "We call if someone remembers."
+- **The sync log and suitability-check results,** plus the quarantine record for any match. Bad answer: "A person looks through the uploads in the morning." That is a person, not a control.
+- **The audit trail with clock evidence** for a sampled drive. Bad answer: "Laptops get their time from the network." They were not on the network.
+- **The kit baseline and BOC-022,** with validation evidence that includes offline runs. Bad answer: "IT images the laptops and sends them out."
+- **Notification records** under 606.160(b)(1)(x) and 630.40(c), with dates, and any lost-laptop incident record.
+
+The sharpest question will be about the gap the design cannot close: "What stops a donor deferred an hour ago from donating at the drive?" The honest answer has three parts. The refresh and phone check narrow the window, the sync check catches what is left before release, and what remains is a collected unit held with documented follow-up. The answer is not "it can't happen."
+
+## Common traps
+
+**"The regulation requires offline sites to sync nightly."** It does not. No source here addresses synchronization schedules. Nightly is Lakeshore's design, and calling it a requirement hands an inspector an easy correction.
+
+**"630.10(d)(1)'s exception lets offline sites check the deferral list at release instead."** The exception covers only the cumulative record in 606.160(e)(2), when it cannot be consulted at the collection site. It does not mention the location record in (e)(1). How it applies to a given deferral is for Quality and Regulatory. A design that leans on it for everything leans on a reading nobody has confirmed.
+
+**"Computer-generated time stamps are trustworthy."** 11.10(e) does not say the time is accurate by itself. A drifted clock produces a computer-generated, wrong time. Treat the offset as evidence you collect, not a property you assume.
+
+**"The quarantine worked, so there is nothing to fix."** The unit was held, but the donor was still collected from after being deferred. The product-side net fired. The intake-side control did not.
+
+## What this means for your job
+
+- **Ask for list age, not sync schedule.** "Show me the deferral-list age at registration for last weekend's drives." If nobody can produce it, you do not have a freshness control, only a schedule.
+- **Insist on hold-until-cleared.** For any offline-created unit, release should require a passed check, not the absence of a flag. Ask your BECS analyst to demonstrate what happens when the check service is down.
+- **Make the clock part of the evidence pack.** Ask Quality what they would say if an inspector asked how you know a laptop's time stamps are right. If the answer is "the network sets them," ask what sets them when there is no network.
+- **Treat the mobile kit like a production baseline.** Every OS update, client upgrade or list-format change is a BOC-022 change with offline regression. A "quick fix" pushed to laptops in the van is an unauthorized change.
+- **Escalate a lost laptop immediately.** It is a security incident with donor information on it, and it may also be units that BECS has never seen. Both clocks start when it goes missing.
+- **Keep the decisions with their owners.** You supply the timeline and evidence. Do not draft Quality's or the medical director's conclusions for them.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+
+## Q1: A colleague says, "FDA requires a deferral-list refresh at midday at mobile drives." Is that right?
+
+No. Nothing in the sources used here requires a midday refresh, or addresses offline clients at all. The midday refresh and the phone-check fallback are Lakeshore's design, owned by the mobile collections manager, to meet the general requirement that deferred donors not be collected from or released (630.10(d), 630.30(a)(1), 606.160(e)(1)). The correct statement is "this is our design for meeting those requirements, and here is why we think it does."
+:::
+
+::: {.callout-tip collapse="true"}
+
+## Q2: The sync check found the deferred donor and the unit was quarantined. Which rule is the quarantine enforcing, and what did it *not* fix?
+
+It enforces 630.30(b)(1): a donation that is not suitable must not be released. Suitability failed on 630.30(a)(1), since the donor was currently deferred. What it did not fix is the collection: the donor was collected from at the drive after being deferred, because the table-side list was stale. Fixing that is the freshness rule's job. The quarantine is the net, not the plan. Whether the event is reportable is Quality's decision, and the donor-notification question goes to Quality and the medical director under 630.40.
+:::
+
+::: {.callout-tip collapse="true"}
+
+## Q3: A laptop's clock was 40 minutes slow all day. Does 11.10(e) say the audit trail is therefore non-compliant?
+
+The text does not answer that directly. It requires "secure, computer-generated, time-stamped audit trails to independently record the date and time of operator entries and actions," and says nothing about how the time is set or how accurate it must be. So the honest answer is that it is not spelled out. What is clear is the data-integrity risk: the recorded time is wrong, which undermines any record or logic that depends on when something happened. Lakeshore's offset record and tolerance exist to detect that, and the tolerance is Lakeshore's choice, not a regulatory number.
+:::
+
+::: {.callout-tip collapse="true"}
+
+## Q4: Under 606.160(e), how often must the cumulative deferred-donor record be updated, and why does that not settle the scenario?
+
+At least monthly (606.160(e)(3)), and that applies to the cumulative record for donors deferred because of reactive infectious-disease tests (606.160(e)(2)). Lakeshore's nightly list is already more frequent than that minimum. It does not settle the scenario: a same-day deferral at another site is a gap far smaller than a month and still wide enough to collect from a deferred donor. The regulatory minimum and the risk the design must cover are different things.
+:::
+
+::: {.callout-tip collapse="true"}
+
+## Q5: Explain this to your CIO in two sentences.
+
+"Our mobile laptops work from a copy of the deferral list, so the question is how old that copy is allowed to be, and we now enforce a limit, refresh it at midday where we can, and phone a check where we can't. Anything collected offline stays on hold until BECS checks it against the live records, and we keep evidence of the list age, the laptop clock and the device for every drive, because regulators have no rule written for offline laptops, only general rules we have to prove we still meet."
+:::
+
+## Where this goes next
+
+A deferral decides who may donate. The next module, [Lookback and consignee notification](../lookback-and-consignee-notification/index.qmd), picks up the donor record itself: what happens when a repeat donor tests reactive, and the BECS query that has to find every earlier donation, including ones filed under a duplicate or merged record. The identity weaknesses touched on in the sync check are the heart of that module.

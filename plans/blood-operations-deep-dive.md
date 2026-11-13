@@ -187,7 +187,7 @@ course's LCR-0xx records stay with lab systems.
 | 1 | `apheresis-platelets-and-bacterial-risk` | Explain 606.110, 640 subpart C and 606.145 with FDA's platelet bacterial-risk guidance, and make BECS enforce sampling linkage, timing conventions, testing-status traceability and the positive-after-distribution alert. | 184/185 | Published |
 | 2 | `immunohematology-reference-and-antigen-negative-inventory` | Keep antigen-negative claims honest: lineage of antigen types, historical versus confirmed attributes, and the reference-lab-to-BECS path, under 606.151 and CLIA. | 186/187 | Published |
 | 3 | `inventory-returns-reissue-and-reconciliation` | Keep BECS inventory true across returns, reissue and discards: 606.165 traceability, temperature evidence, and reconciliation. | 188/189 | Published |
-| 4 | `mobile-collections-and-offline-systems` | Run offline collection systems so deferral, suitability and audit-trail requirements still hold: freshness, sync checks, quarantine and evidence. | 190/191 | Not started |
+| 4 | `mobile-collections-and-offline-systems` | Run offline collection systems so deferral, suitability and audit-trail requirements still hold: freshness, sync checks, quarantine and evidence. | 190/191 | Published |
 | 5 | `lookback-and-consignee-notification` | Run an HIV/HCV lookback under 610.46/610.47 end to end from IT's side: the query, the clock, consignee notification and the records. | 192/193 | Not started |
 
 ## Progress log
@@ -246,3 +246,22 @@ course's LCR-0xx records stay with lab systems.
   framed as the same control as sent-vs-acknowledged (CLIA LCR-014) and listed-vs-actual (HRSA CBC-034).
   Dating (610.53) doesn't reset on reissue; 606.160(b)(3)(iv) is the only reissue–temperature link in
   sources. Quotes also from 600.15. Next unused BOC: **BOC-022**.
+- 2026-11-13 — Module 4 `mobile-collections-and-offline-systems` published (verified; prose ~5,000 words;
+  no acceptable video found). **Locked:** **BOC-022** = mobile kit baseline (laptop model, OS image, BECS
+  client version, sync agent config, deferral-list package format) + controls; approvals BECS analyst
+  (impact), mobile collections manager (operational), Quality; offline regression after any change.
+  Freshness rule (Lakeshore design; owner mobile collections manager; Quality approves): refresh before the
+  drive; midday refresh where any connectivity; else logged phone check to a staffed fixed-site desk; max
+  list age and fallbacks left to owner (no numbers); laptop enforces list age, supervisor override is an
+  audit event. Sync: every offline-created unit enters BECS on hold, released only by a passed suitability
+  check against live deferral records (hold-until-cleared); possible identity matches held for human
+  review; a match quarantines, creates a Quality task, records list version + matching deferral record.
+  Offline tests S1–S10 (S1 replays scenario, runs first). Evidence pack per drive/laptop: device/kit
+  identity, users, list age per registration, time-stamped audit trail, clock check vs trusted reference
+  at start/end + offset at sync, sync log, freshness records; out-of-tolerance clock holds that laptop's
+  records for Quality (tolerance = Lakeshore parameter, no number). Sources say nothing specific about
+  offline clients/sync/clock sync (lesson says so). Flags: 630.10(d)(1) exception names only 606.160(e)(2)
+  cumulative record; whether a mobile drive is a "location" under 606.160(e)(1) → Quality; drifted clock
+  vs 11.10(e) → design; 630.40 clock start → Quality/medical director. Lost laptop = security incident
+  with donor PHI + paper reconciliation of units collected vs uploaded. Nightly list beats 606.160(e)(3)
+  monthly minimum.

@@ -295,9 +295,9 @@ has no `plans/<slug>.md` file until its first session.
 | `research-programs-reds-and-nih` | 6 / 6 | Done (plan: `plans/research-programs-reds-and-nih.md`) |
 | `clia-and-cap-for-blood-center-labs` | 5 / 5 | Done (plan: `plans/clia-and-cap-for-blood-center-labs.md`) |
 | `hrsa-and-cellular-therapy-programs` | 4 / 4 | Done (plan: `plans/hrsa-and-cellular-therapy-programs.md`) |
-| `blood-operations-deep-dive` | 3 / 5 | In progress (plan: `plans/blood-operations-deep-dive.md`) |
+| `blood-operations-deep-dive` | 4 / 5 | In progress (plan: `plans/blood-operations-deep-dive.md`) |
 
-**Next up: `blood-operations-deep-dive` module 4 (drafting), then 5 (capstone) — the last course in Track 7.**
+**Next up: `blood-operations-deep-dive` module 5 (capstone, verifying) — the last module of Track 7.**
 Track 7 order: release-management-and-sdlc → research-programs-reds-and-nih →
 clia-and-cap-for-blood-center-labs → hrsa-and-cellular-therapy-programs →
 blood-operations-deep-dive. (The paragraph below describing the original curriculum as complete
