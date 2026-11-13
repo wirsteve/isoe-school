@@ -1,0 +1,369 @@
+---
+title: "Release Management, Deployment and Change Control"
+order: 134
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** tell ITIL's release management, deployment management and change enablement apart, classify release types, and set a release calendar and freeze windows that respect blood operations.
+- **The punchline:** three parties want three different things on the same calendar: the CIO wants HOP 3.0 out before the holiday week, the BECS vendor wants Release C installed soon, and distribution leadership wants nothing touching the order or distribution path that week. The Director's decision: HOP 3.0 deploys first, before the freeze, validated against the current production BECS baseline; Release C waits until after the freeze, and its validation scope (VAL-1418) must include regression of the HOP-to-BECS interface.
+- **The rule in one line:** never two releases touching the HOP-to-BECS interface in the same window. Order releases by the state of their evidence, not by who is asking loudest.
+- **Monday question:** "Show me the release calendar, the freeze windows, and for the next release, the readiness checklist with a document behind every line."
+- **The trap:** treating "the change ticket was approved" as the same thing as "the release is ready." Authorizing, packaging and installing are three different jobs with three different records.
+:::
+
+**Before you start:** this module builds on [Change Control for Regulated Systems](../../quality-system-essentials/change-control-for-regulated-systems/index.qmd), the [ITIL-to-QSE crosswalk for change and problem](../../itsm-for-regulated-blood-services/itil-to-qse-crosswalk-change-and-problem/index.qmd) (change enablement versus regulated change control) and [Staying Validated: Changes, Patches, and Periodic Review](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd) (what keeps a system validated after go-live). It continues HOP 3.0's story from [environments, baselines and test data](../environments-baselines-and-test-data/index.qmd). It does not re-teach them.
+
+## Three people, one calendar
+
+HOP 3.0 (release record REL-0311) has a third release candidate. The re-run module 3 demanded is done: the validation environment's BECS test instance was brought to production's baseline, the interface-dependent tests (TC-32a/b/c, TC-34, TC-35) were executed again, and they passed. DEF-0412, the soft hold HOP wrote to the order request, is closed on that evidence. The Quality Analyst is assembling the package for the release gate that [module 1](../sdlc-models-in-a-regulated-blood-center/index.qmd) defined.
+
+Then the calendar arrives.
+
+The BECS vendor has announced **Release C**, which Lakeshore tracks as validation record VAL-1418. The vendor's account manager has written twice: they would like Lakeshore to install it soon, and they note, politely, that the vendor's support team prefers customers close to current.
+
+The CIO opens the Monday meeting. "Here is my problem. We are about three weeks out from the holiday week. I told the executive team HOP 3.0 would be live before it, because hospitals will be ordering harder than ever and auto-allocation proposals will save my distribution staff real time. And now the vendor wants Release C in as well. Can we do both?"
+
+The head of distribution, who has not said a word yet, puts a hand flat on the table. "Let me tell you what that week looks like. Collections drop because donors are traveling or busy. Hospital demand does not drop. Every unit on the shelf matters and every order gets looked at twice. I need the order and distribution path boring that week. Not improved. Boring. If HOP or BECS hiccups on a Wednesday, I am filling orders by phone with a short inventory."
+
+The Quality Analyst has a different worry. "I have one analyst. I can review one release package properly. If two arrive together, one of them gets reviewed badly, and I am not going to tell you which."
+
+The systems administrator adds the technical one. "And both touch the same wire. Release C changes BECS. HOP 3.0 talks to BECS. If they land the same week and something breaks at the interface, I will not be able to tell you which one did it."
+
+Everyone looks at you. You own release cadence, and you sit at the table with Quality and Regulatory. There is no regulation that says what to do. This module gives you the vocabulary and the structure to decide, and to write the decision down so it survives the next holiday week and the next inspector.
+
+## Why this rule exists, and the ITSM bridge
+
+Two failures sit behind everything in this module.
+
+**First, a change reaching production that nobody authorized, packaged or timed deliberately.** Someone with deploy rights pushes a build because it was ready, on a day it was convenient for the team, not for distribution. The software might even be good. The failure is that the decision was made by the wrong people on the wrong information, and nothing in the record shows who decided.
+
+**Second, two changes interacting where neither's evidence covers the combination.** HOP 3.0's tests proved HOP behaves correctly against one specific BECS baseline. If BECS changes underneath it, those results are evidence about a system that no longer exists. FDA's BECS guidance says why this is not a theoretical worry: "a seemingly small local change (e.g., software, hardware, peripherals, or infrastructure) may have a significant global system effect" (III.I). When two changes land together, you also lose the ability to attribute a failure, which is how an hour of trouble becomes a day.
+
+For a blood center, add a third consideration that ordinary IT shares only in spirit: **the cost of a bad release is not evenly distributed over the calendar.** An order-path defect in a quiet week is an irritation. The same defect in the week when inventory is tight and hospitals are calling is delayed or missed transfusion support. That uneven cost is the reason a freeze window exists, and it is why the freeze is Lakeshore's own decision tied to blood-operations risk rather than something copied from a template.
+
+You already know the ITSM side. Under ITIL 4 vocabulary there are three practices that people routinely blur together:
+
+- **Change enablement** authorizes changes and schedules them, balancing risk against the benefit of getting things done. In ITIL v3 this was change management, and its calendar was the "forward schedule of change."
+- **Release management** plans, packages and makes new or changed functionality available for use.
+- **Deployment management** moves the components (software, configuration, documentation) into the environments where they will run.
+
+(Those are paraphrases. ITIL 4 is paid material and nothing here quotes it. Use the practice names, not the wording.)
+
+The regulated-blood-center twist is the same one every module in this course has: each of those practices has to leave **a record someone outside the team can read.** The ITIL practices are a way of organizing the work; the evidence is what an inspector or assessor asks for.
+
+## The three practices, told apart
+
+The confusion is natural, because on a small team the same two people do all three jobs on the same afternoon. The way to tell them apart is by the question each one answers.
+
+| Practice | The question it answers | At Lakeshore, for HOP 3.0 | Record it leaves |
+|---|---|---|---|
+| **Change enablement** | "Is this change authorized, and is this the right slot for it?" | Change authority (Lakeshore's change procedure names the approvers; for REL-0311 that includes Quality) reviews risk, checks the calendar, authorizes. | The change record: risk and impact analysis, approvals, scheduled slot. |
+| **Release management** | "What exactly are we releasing, is it ready, and when do users get it?" | The Director owns the release record and calendar; the development lead assembles the release package; Quality reviews readiness. | The release record REL-0311: package contents, version, readiness checklist, validation summary, close-out. |
+| **Deployment management** | "How do the approved components get into the target environment, correctly?" | The systems administrator (the release role from module 3) moves the approved build, and configuration, into validation, then production. | The deployment record: what was installed, where, when, by whom, and the check that it matches what was approved. |
+
+Three ways to keep them straight:
+
+1. **Authorization is not installation.** A change can be approved and sit on the calendar for two weeks. Approval is a decision; deployment is an action. Both need records, and the records have different authors.
+2. **Installation is not release.** Moving a build to production does not mean users have it. Hold that thought, because it is the most useful distinction for a regulated team: a deployed-but-not-enabled feature (behind a switch that is off) is *installed code*, and it still counts as a change to the production system. Flipping the switch is a second event that also needs a record. A "dark deploy" does not dodge change control; it splits one control event into two.
+3. **Release is not the end.** Release management does not finish at "deployed." It finishes at close-out: monitoring period complete, validation summary approved, record closed. That is why module 11 on hypercare and post-release review belongs to this course.
+
+Be honest about what is regulation and what is vocabulary. **No regulation says Lakeshore must have three ITIL practices.** What regulation and guidance say is narrower, and more demanding:
+
+- Changes to computer systems must be controlled so that changes to records are made only by authorized personnel (21 CFR 211.68(b)).
+- Blood establishments must establish, maintain and *follow* written procedures for their steps, including recordkeeping (21 CFR 606.100(b)). A release procedure and a freeze rule that only exist as slide decks fail the "follow" test.
+- Validation must be done "any time a change is made that has the potential to affect the functions of the system" (BECS guidance III.C, quoted in module 1).
+
+The three-practice split is simply the cleanest way to meet those expectations without making one person's inbox the whole control environment. The earlier [crosswalk module](../../itsm-for-regulated-blood-services/itil-to-qse-crosswalk-change-and-problem/index.qmd) already maps change enablement to regulated change control; this module adds the other two practices to the map.
+
+## The rule in plain English
+
+Seven ideas, each tied to the Monday meeting.
+
+1. **Separate the decisions.** Authorize (change enablement), package and judge readiness (release management), install (deployment management). Different records, and where the team is small, different people for the independent steps (Quality reviews; the developer does not approve their own release).
+2. **Classify every release by what it can break,** not by the version number on the box. Major, minor, patch and emergency are Lakeshore's categories; each has a defined evidence path and a defined place on the calendar.
+3. **A release is a defined package with an identity.** What was tested is exactly what is installed, and every piece of evidence points at the same version.
+4. **The calendar is a control.** Release windows and freeze windows are published, owned, and followed. Exceptions are decisions with names on them.
+5. **Readiness is a checklist of evidence,** not a feeling. The checklist is module 1's gate made concrete, and every line has a document behind it.
+6. **One interface, one release at a time.** Never two releases touching the HOP-to-BECS interface in the same window.
+7. **Order by evidence state.** The release whose evidence is complete against the current baseline goes first. The release that will change the baseline waits.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 211.68(a) | "Title 21, part 211, section 211.68, paragraph (a)" | Computers and related systems checked per a written program designed to assure proper performance (regulation: *shall*). | The written plan and procedure that release readiness rests on. |
+| 21 CFR 211.68(b) | "...paragraph (b)" | Controls so changes to records are made only by authorized personnel; input and output checked for accuracy. | Authorization of the production change; interface checks. |
+| 21 CFR 606.100(b) | "Title 21, part 606, section 606.100, paragraph (b)" | Establish, maintain and follow written SOPs for the listed steps, including distribution and recordkeeping (regulation: *must*). | Writing the release and freeze procedure down, and following it. Whether a given software release falls under it is a Quality and regulatory-affairs judgment. |
+| BECS guidance III.G | "Section III, subsection G of the 2013 user's-facility guidance" | Validate in the test partition; move what you validated; keep test evidence; train; closely monitor after installation (guidance: *should*, plus *must* where it cites regulation). | The deployment step and the monitoring period. |
+| BECS guidance III.H | "...subsection H" | Validation report: results, variances, amendments, evaluation, dated management approvals. | The validation summary on the checklist. |
+| BECS guidance III.I | "...subsection I" | Regression analysis, then regression testing sized to it, after any change. | Why a "patch" is not exempt, and why Release C reopens the interface. |
+| GPSV 4.7 | "General Principles of Software Validation, section 4.7" | Re-establish validation status after any change (FDA general thinking for device makers; not binding on Lakeshore). | Supporting logic for regression analysis. |
+| NIST SP 800-53 CM-3, CM-4 | "Control CM-3, configuration change control; CM-4, impact analyses" | Document which changes are controlled, review and approve, record decisions, retain records, and run oversight through a body that convenes on a frequency or conditions (federal catalog; voluntary for Lakeshore). | The shape of the change authority and when it meets. |
+| AABB Standards 3.9 (themes only) | "AABB Information Systems, section 3.9" | Documented processes for implementing and modifying information systems; version designation and validation records. Exact sub-numbering is edition-dependent and is not quoted here. | The idea that Lakeshore's release process is written and its versions are recorded. |
+
+## The actual text
+
+Start with the regulation. 21 CFR 211.68 is the drug cGMP rule on computers and electronic equipment. FDA's BECS guidance says blood establishment systems are regulated under it.
+
+> (a) Automatic, mechanical, or electronic equipment or other types of equipment, including computers, or related systems that will perform a function satisfactorily, may be used in the manufacture, processing, packing, and holding of a drug product. If such equipment is so used, it shall be routinely calibrated, inspected, or checked according to a written program designed to assure proper performance. Written records of those calibration checks and inspections shall be maintained.
+>
+> (b) Appropriate controls shall be exercised over computer or related systems to assure that changes in master production and control records or other records are instituted only by authorized personnel. Input to and output from the computer or related system of formulas or other records or data shall be checked for accuracy. The degree and frequency of input/output verification shall be based on the complexity and reliability of the computer or related system. [...]
+> — 21 CFR 211.68(a) and (b) (first three sentences of (b)); full text in `sources/cfr/211.68.md`
+
+Against the meeting:
+
+- **"changes ... instituted only by authorized personnel"** is the root of change enablement here. Someone with the authority to authorize must have done so, and the record has to show it. "The developer merged it and it deployed" is the bad answer.
+- **"The degree and frequency of input/output verification shall be based on the complexity and reliability"** is a risk-based sentence. It supports classifying releases by what they can break and sizing verification to it.
+- **"a written program"** is why the readiness checklist is a controlled document and not a mental model.
+
+Now the procedures rule. It is written for the steps of blood work, and it extends to recordkeeping:
+
+> (b) Establishments must establish, maintain, and follow written standard operating procedures for all steps in the collection, processing, compatibility testing, storage, and distribution of blood and blood components for allogeneic transfusion, autologous transfusion, and further manufacturing purposes; for all steps in the investigation of product deviations related to § 606.171; and for all steps in recordkeeping related to current good manufacturing practice and other applicable requirements and standards. Such procedures must be available to the personnel for use in the areas where the procedures are performed. [...]
+> — 21 CFR 606.100(b) (opening); full text in `sources/cfr/606.100.md`
+
+Reading it: **"follow"** is the load-bearing word for the calendar. A freeze window written in a policy and then waived informally because the CIO asked is a procedure that was not followed. **"all steps in ... distribution"** is why distribution leadership has a legitimate voice in the freeze: the order-to-distribution path is a regulated step, and the systems that support it are in scope of what the procedures protect. Whether Lakeshore's release procedure itself is an SOP in the 606.100 sense is a judgment for Quality and regulatory affairs; the safe practice is to write it as one.
+
+The blood-specific guidance on what happens at installation and afterward:
+
+> We recommend that you perform validation in the "test environment" or "test partition" of your system. After successful validation, you or your software manufacturer should copy or move the file configuration on which you performed your validation into the production environment.
+> [...]
+> We recommend that you closely monitor the system for a period of time after installation of the new or upgraded software in the production environment to detect any discrepancies that were not identified by the test cases.
+> — FDA, *Blood Establishment Computer System Validation in the User's Facility*, III.G (first and later bullets)
+
+Reading it: **"copy or move the file configuration on which you performed your validation"** is the deployment management rule in one sentence: what goes into production is what you validated, not a rebuild. **"a period of time after installation"** is why the monitoring period belongs *inside* the calendar. A release deployed on the last day before a freeze has no monitoring period before the freeze starts, and the guidance's own logic says that is when discrepancies you did not test for turn up. The same bullet list also says "validate all interfaces," and that monitoring of interface error files "should continue subsequent to implementation as unforeseen transaction types or data elements may cause disastrous results." That is the HOP-to-BECS interface exactly.
+
+And the report that closes the release:
+
+> You must document your validation activities pursuant to 21 CFR 211.68, 211.100(b), and 606.160(b)(5). Your validation report should include a summary of the test results, including any variances or failed tests, any amendments made to the test cases or the validation plan, an evaluation of the outcome of your testing, and approvals or sign-offs by management, including dates.
+> — same guidance, III.H
+
+And the rule that sets Release C's scope:
+
+> When any change (even a small change) is made to the software on the system, a software regression analysis should be conducted, not just for validation of the individual change, but also to determine the extent and impact of that change on the entire system. Based on the analysis, you should then conduct an appropriate level of software regression testing to show that unchanged but vulnerable portions of the system have not been adversely affected.
+> — same guidance, III.I
+
+Read it twice. "the entire system" does not stop at BECS's own screens. HOP is a system that depends on BECS's interface, so for Release C the HOP-to-BECS interface is exactly the kind of "unchanged but vulnerable" portion the sentence is about. The same text appears in FDA's general guidance for device makers as section 4.7 (general thinking, not binding on Lakeshore).
+
+NIST's catalog is voluntary here, but its change-control wording is precise about who oversees changes and when that body meets:
+
+> a. Determine and document the types of changes to the system that are configuration-controlled;
+> b. Review proposed configuration-controlled changes to the system and approve or disapprove such changes with explicit consideration for security and privacy impact analyses;
+> c. Document configuration change decisions associated with the system;
+> d. Implement approved configuration-controlled changes to the system;
+> [...]
+> g. Coordinate and provide oversight for configuration change control activities through [Assignment: organization-defined configuration change control element] that convenes [Selection (one or more): [Assignment: organization-defined frequency]; when [Assignment: organization-defined configuration change conditions]].
+> — NIST SP 800-53 Rev. 5, CM-3 (items a to d and g; full text in `sources/nist/sp-800-53r5-cm-sa-excerpt.md`)
+
+> Analyze changes to the system to determine potential security and privacy impacts prior to change implementation.
+> — NIST SP 800-53 Rev. 5, CM-4
+
+Reading CM-3 as a release manager: **(a)** is "which changes need the full path and which are routine." **(d)** is deployment management, separate from (b) approval. **(g)** is the quiet gem. The oversight body is not just a standing meeting; it "convenes" on a frequency *or when conditions are met*, and those conditions are yours to define. Lakeshore's conditions should include "a vendor announces a release," "a release asks to enter a freeze window," and "two releases want the same interface window." Those are triggers that call the change authority together outside its normal rhythm.
+
+Finally, a theme-only note. AABB's Standards, Information Systems (section 3.9), address documented processes for implementing and modifying information systems and the records of validation and version designation. This course paraphrases themes and never quotes AABB text; the exact sub-numbering is edition-dependent, so confirm it in the current edition before citing it in a real document.
+
+## Release types: how to classify what you are about to ship
+
+Release types are Lakeshore's categories, not regulatory ones. Industry practice often borrows **semantic versioning** (MAJOR.MINOR.PATCH), which was designed for software interfaces; it is a good vocabulary and a poor risk classifier on its own, because version numbers are assigned by developers and risk is assigned by consequence.
+
+| Type | What it is | HOP example | Evidence path | Calendar behavior |
+|---|---|---|---|---|
+| **Major** | New or materially changed functionality, or a change to data model, interface or architecture. | HOP 3.0: auto-allocation proposals. | Full gate: approved plan, requirements and tests traced, regression analysis, independent review, regulatory-affairs determination where relevant, validation summary. | Only into a planned release window, with notice to hospitals and distribution. |
+| **Minor** | Added or improved functionality inside existing behavior; no change to interface contracts or data model. | A new filter on the order-status page. | Same gate, scaled: risk assessment sizes the testing; regression analysis still reviewed. | Planned window; may share a window with unrelated changes. |
+| **Patch** | Defect fix; no new functionality. | A corrected date format in an order confirmation. | Still analyzed. Regression analysis scaled down, but it exists; test evidence for the fix and the vulnerable neighbors. | Routine window; may be scheduled faster, never exempt from the record. |
+| **Emergency** | A change that cannot wait for the normal cycle, typically a security or safety issue. | CHG-2207, the critical framework vulnerability (module 10). | Own path with retrospective documentation. Named here only; module 10 teaches it. | Can enter a freeze only through the emergency path and a named waiver. |
+
+Two overrides matter more than the table.
+
+**A patch is not a free pass.** BECS guidance III.I says it in as many words: "even a small change." FDA's general guidance puts it in the same terms: "a seemingly small local change may have a significant global system impact" (GPSV 4.7). A patch gets a lighter, documented analysis, not no analysis.
+
+**Interface-touching is its own flag, whatever the number says.** A release that changes anything on the HOP-to-BECS interface, on either side, is marked *interface-touching* in its release record, regardless of whether the developers call it a patch. That flag is what the calendar's collision rule reads. A vendor's release number gets the same treatment: Lakeshore classifies Release C by what it changes in Lakeshore's environment (it changes BECS, the system of record and HOP's interface partner), not by whether the vendor's label sounds modest. Module 5 does Release C's intake properly.
+
+One more ITIL idea belongs in the margin. ITIL has **standard changes**: pre-approved, low-risk, repeatable changes with a defined procedure. They are useful at Lakeshore for things like rotating a certificate on a non-validated host. For anything that can affect a validated system, a pre-approval has to be earned by an actual risk analysis and a written procedure, and the [crosswalk module](../../itsm-for-regulated-blood-services/itil-to-qse-crosswalk-change-and-problem/index.qmd) explains why "it's a standard change" is never enough by itself.
+
+## Release units, packages and versioning
+
+A **release unit** is the smallest thing Lakeshore will release independently. A **release package** is everything that must move together for the release to behave as validated. For HOP 3.0, the package is more than the application:
+
+- the application build (one identified, immutable artifact)
+- database changes and any data migration steps
+- configuration values, including the interface endpoints and mapping
+- the requirements set the build was validated against (the versioned requirements, HOP-R31 to R35 among them)
+- release notes and updated user documentation, including the proposal-only labeling
+- the validation summary and test evidence index
+- the updated configuration baseline record
+- the hospital communication and distribution-staff training material
+
+Why a package and not "the code"? Because a build that is correct and a configuration that is one value off is a defective release. Module 3's lesson on the drifted BECS test instance has the same moral from the other side: the evidence is about a configuration, so the release has to be defined as one.
+
+**Versioning** has one job here: to let anyone follow a single identifier from the running system back to the evidence. Lakeshore's version scheme should let a reader answer, for what is in production: which release (REL-0311, HOP 3.0), which build, which requirements version, which test results, which change record, which baseline. Release candidates (rc1, rc2, rc3) are not casual labels; each rc is a distinct build with its own evidence, and rc2's interface results were already shown to be unsafe to reuse. AABB's Standards treat version designation and numbering as part of the records for information systems (3.9.1, theme only).
+
+Two rules fall out of III.G:
+
+1. **Promote what you validated.** If the production deployment needs a rebuild, the thing in production is not the thing that was tested. If a last-minute fix is needed, it is rc4, with its own regression analysis and evidence, not a quiet edit to rc3.
+2. **Record the validated pair.** HOP 3.0 was validated against a specific BECS baseline, production's current one. That pairing, HOP build and BECS baseline, goes in the release record. It is the sentence that makes the freeze and the Release C decision easy to defend, because it says exactly what changes the validity of the evidence.
+
+## The release calendar and freeze windows
+
+No regulation or guidance in this course says "freeze releases in a peak week." The calendar and its freezes are a **Lakeshore decision tied to blood-operations risk**, and the right way to build them is to list the risk and let the dates fall out.
+
+**Inputs the Director collects:**
+
+- **Blood operations rhythm.** Weekly and seasonal demand, and the times of day when orders and distribution are busiest. The holiday week is the extreme case: collections fall, hospital demand does not, and the margin for a degraded order path is the smallest of the year.
+- **What the release needs from the real world.** A BECS deployment may need BECS downtime and the paper procedures that cover it (module 9). HOP deployments need hospital notice.
+- **Evidence capacity.** One Quality Analyst can review one package properly. Review capacity is a real scheduling constraint, and the calendar should respect it rather than pretend it does not exist.
+- **Staff availability** for the deployment, the monitoring period and the rollback decision, including who is on call.
+- **Vendor and third-party schedules.** Release C's availability is an input, not a command.
+- **Other changes.** The forward schedule of change, so the interface collision rule can be checked.
+
+**Elements of the calendar:**
+
+- **Release windows:** planned slots when production changes for the affected systems may land.
+- **Cutoff for entering a window:** the readiness gate must be passed, the change authorized and the package frozen by a stated point before the slot, so the window is not spent finishing paperwork.
+- **Monitoring period** after each deployment, sized to the system (BECS guidance III.G: "a period of time"). This is where interface error files are watched.
+- **Freeze windows:** periods when changes to a defined scope do not enter production.
+- **Exceptions:** only the emergency path (module 10), with a named waiver, and the people who can grant it written into the procedure. A waiver signed by one person who is also the requester is not a control.
+
+**A freeze is defined by path, not by system name.** Lakeshore's holiday freeze is on the **order and distribution path**: HOP, the HOP-to-BECS interface, BECS's distribution functions, and the shared infrastructure beneath them (network, authentication, hosting). Changes outside that path, to a non-validated internal tool, say, can continue under normal change control. A freeze defined as "no changes at all" gets waived by Tuesday; a freeze defined by what blood operations cannot afford to lose is one people respect.
+
+**The pre-freeze buffer matters as much as the freeze.** A release must complete its monitoring period before the freeze opens, or it does not go. Otherwise the freeze starts with a brand-new release in its first, riskiest days, which is the opposite of boring. The exact number of business days is a judgment for the Director, Quality and distribution to agree and write down; what the lesson insists on is that the buffer exists and has an owner.
+
+**Who convenes.** CM-3(g)'s idea fits: the change authority meets on a regular rhythm and also *when conditions occur*. Lakeshore's conditions: a vendor announces a release; a release asks to enter or touch a freeze window; two releases want the same interface window; a gate decision is contested. The calendar is reviewed and republished by that body, and it is the first thing an inspector asks to see after the procedure.
+
+## See it in one picture
+
+This is the Director's decision drawn as a path. HOP 3.0 passes through the three practices before the freeze. Release C waits for the freeze to end and a confirmation from distribution. The dotted lines are the two pressures from the Monday meeting and what each one gets.
+
+```{mermaid}
+flowchart TD
+    A["HOP 3.0 rc3 passes the re-run<br/>against production's current BECS baseline"] --> G{"Readiness gate<br/>(checklist, Quality independent review)"}
+    G -->|"Any criterion unmet"| A2["Back to the team<br/>or a recorded risk decision"]
+    G -->|"All met, before the cutoff"| CH["Change enablement:<br/>change record authorized,<br/>slot booked in window 1"]
+    CH --> DP["Deployment management:<br/>approved build moved into production,<br/>same build that was validated"]
+    DP --> RL["Release management:<br/>feature available to hospitals,<br/>monitoring period, release closed out"]
+    RL --> FZ["FREEZE: holiday week<br/>no change to the order and distribution path<br/>(HOP, HOP-to-BECS interface, BECS distribution)"]
+    FZ --> OK{"Distribution confirms<br/>normal volume, no open HOP issues"}
+    OK -->|"Yes"| RC["Window 2: BECS Release C (VAL-1418)<br/>validated with HOP-to-BECS interface regression"]
+    OK -->|"No"| FZ
+    RC --> CH2["Own change record, own deployment,<br/>own monitoring, no other interface release in the window"]
+    VEND["Vendor announces Release C,<br/>asks for soon"] -.->|"waits for window 2"| RC
+    CIO["CIO: HOP 3.0 before the holiday"] -.->|"met only if gate passes by the cutoff"| G
+```
+
+## Watch it explained
+
+This short talk from a DevOps practitioner separates **deployment** (getting code into an environment) from **release** (making it available to users). That is the software-delivery framing of the distinction this module uses; it is not ITIL's wording, and it says nothing about regulated change control. Watch it for the idea that a feature can be installed without being on, then remember that at Lakeshore the installed code is still a change under 211.68(b), and the later switch-on is a second recorded decision.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/qmItPR0I-OE"
+  title="What is the difference between deployment and release?" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## Release readiness: module 1's gate made concrete
+
+Module 1 defined the release gate in outline: approved plan and risk assessment, incremental evidence, QA review, regression analysis reviewed, recorded authorized approval, validation summary, post-release monitoring. Modules 2 and 3 produced the evidence. Here is the gate as a checklist for REL-0311, with where each line's evidence came from. A line is met only when the document exists and has been reviewed; "in progress" is unmet.
+
+| # | Readiness criterion | Evidence behind it | Where it came from |
+|---|---|---|---|
+| 1 | Validation plan approved before testing began, and amended where scope changed | The plan, version history, dated approvals | Module 1; 211.68(a); BECS III.C |
+| 2 | Requirements traced to executed tests, current as of rc3 | Traceability matrix: HOP-R31 to R35 to TC-31 to TC-35, at the requirement versions in the package | Module 2 |
+| 3 | Test records complete, with environment fields | Each result: input, expected, actual, acceptance criterion, pass/fail, tester, date (III.G); plus environment, build, baseline reference, interface targets, data set | Modules 2 and 3 |
+| 4 | Deviations and defects closed or dispositioned | DEF-0412 closed on re-run evidence; the test-plan deviation closed with the rc2 results kept and marked not accepted; any open defect with a recorded risk decision | Module 3 |
+| 5 | Environment parity confirmed, and re-confirmed on release day | Baseline comparison between validation and production, repeated at the gate, because production may have changed since the re-run | Module 3; NIST CM-2 as vocabulary |
+| 6 | Regression analysis reviewed | The analysis and the list of what was re-run because of it | BECS III.I; GPSV 4.7 |
+| 7 | Regulatory-affairs determination on file, scope matches it | The memo: auto-allocation ships as a proposal only; HOP-531 (auto-confirm) is not in the package | Module 2 |
+| 8 | Release package defined and identified | Build identifier, configuration version, interface settings, requirements version, release notes, baseline update drafted | This module |
+| 9 | Rollback plan exists and names who decides | A written plan with trigger conditions and decision owner (rehearsal and detail are module 9) | Module 9 |
+| 10 | Slot confirmed, collision check done | Calendar entry outside any freeze; confirmation that no other interface-touching release is in the window | This module |
+| 11 | People are ready | Distribution staff trained on confirming proposals in BECS (BECS III.G on training); hospitals notified | BECS III.G |
+| 12 | Monitoring plan written | What is watched, for how long, by whom, including interface error files (III.G) | BECS III.G |
+| 13 | Validation summary report complete, with dated approvals | Summary of results, variances, plan amendments, evaluation, management sign-offs | BECS III.H |
+| 14 | Authorized approval recorded in the change record | Named approvers with dates, Quality's independent review included | 211.68(b) |
+
+Two things to notice. **First,** several lines are about the world around the code (rows 5, 10, 11), which is why a green pipeline is not a green gate. **Second,** row 5 is the standing consequence of module 3: the parity check is not performed once and forgotten; it is repeated at release time. If the production baseline moved between the re-run and the gate, rc3's interface evidence is in question again.
+
+Who says no? The gate is a decision with an independent voice. Quality reviews against the checklist; the change authority authorizes. If a criterion is unmet and the business wants to proceed anyway, the proceeding is a recorded risk decision by a named, appropriately senior person, not a quietly relaxed checklist.
+
+## The Director's decision
+
+You take this back to the room.
+
+**1. HOP 3.0 deploys first.** Its evidence is complete (once the checklist is), it was validated against the *current* production BECS baseline, and nothing in production is scheduled to change that baseline before the cutoff. It goes into a release window ahead of the freeze, with its monitoring period finished before the freeze opens. This delivers on the CIO's request, conditionally: if the gate is not passed by the cutoff, HOP 3.0 waits until after the holiday week. The cutoff does not move because the date was announced.
+
+**2. Release C waits until after the freeze.** The vendor's preference is an input; installing is Lakeshore's decision (BECS guidance III.I: "you are ultimately responsible for assuring that the system used in your establishment has been validated for use in your establishment"). Nothing about "soon" is a safety or security reason, which would be the emergency path in module 10. Installing Release C first would also change the BECS baseline that rc3's evidence was produced against, which would send HOP 3.0 back to re-run its interface tests. Order by evidence state: complete evidence first, baseline-changing release second.
+
+**3. VAL-1418's validation scope must include regression of the HOP-to-BECS interface.** When Release C changes BECS, HOP's tests against the old baseline stop being evidence for the new combination. As a starting point for the impact analysis, the interface-dependent tests module 3 identified (TC-32a/b/c, TC-34, TC-35) are the first candidates; module 5 does the intake and module 6 sizes the regression properly. While the validation environment's BECS instance is deliberately brought to Release C's baseline for testing, that environment is not equivalent to production, so no HOP release evidence is produced in it during that period. That is one more reason the two releases cannot share a window.
+
+**4. The rule, adopted:** *never two releases touching the HOP-to-BECS interface in the same window.* "Window" means the planned slot plus the monitoring period that follows it. It goes in the release procedure, the calendar template and the change record's checklist.
+
+**5. The freeze** covers the order and distribution path, opens after the pre-freeze buffer, and ends when the head of distribution confirms normal volume and no open HOP issues. The only way in is the emergency path with a named waiver. The head of distribution is one of the named approvers for a waiver, as is Quality.
+
+What each party gets. The CIO gets HOP 3.0 before the holiday if the evidence is ready, and an honest answer if it is not. The vendor gets a committed slot for Release C, with Lakeshore's validation on Lakeshore's timeline. Distribution gets a boring week. Quality gets one release package at a time. Nobody gets a surprise.
+
+This is a Director's decision, not a regulatory requirement. No source states a freeze rule, a buffer length or a collision rule. What the sources state is the evidence and authorization that must exist; the calendar is how you arrange for it to exist without gambling with the busiest week.
+
+## What an inspector or assessor would look for
+
+Expect to be asked for records, and then to be asked whether the records match what happened.
+
+- **The written release and change procedure,** including the freeze rule, and evidence people follow it. A bad answer: the freeze is "understood."
+- **The release calendar** and the history of what shipped in each window. Compare it to the production deploy log; any production change without a matching change record is a finding regardless of the quality of the code.
+- **The release record** for a sampled release: package contents, version identifiers, validated pair (HOP build and BECS baseline), readiness checklist with evidence, authorization.
+- **Deployment records:** who deployed what, when, with a check that what was installed is what was validated. A bad answer: "it was rebuilt from main that morning."
+- **The validation summary** with variances and approvals (III.H).
+- **Waivers and exceptions,** with who approved. A bad answer: a freeze waived by the person who asked for the release.
+- **Monitoring records** after go-live, including interface error review (III.G).
+
+An assessor will also probe independence: who approved a release the developers built, and whether Quality had a real veto.
+
+## Common traps
+
+**"The change was approved, so it is ready."** Authorization, packaging and installation are three practices. A change record with approvals and no readiness checklist, no package definition and no deployment record has one third of the control.
+
+**"It's only a patch."** Patch is a version-number word. III.I and GPSV 4.7 say even small changes need analysis, and a patch that touches the interface is interface-touching whatever it is called. The analysis can be short. It cannot be absent.
+
+**"Deploy equals release equals done."** A feature switched off in production is installed code and a change to the validated system. Switching it on is a second recorded event. And a release is not done until monitoring ends and the validation summary is approved.
+
+**"A freeze means nothing can ever change."** A freeze is defined by scope and has a defined exception path. Without the exception path, people route around it; with a loose one, the freeze is decorative. Neither is a control.
+
+**"The vendor's version number tells us the risk."** The vendor knows its own code. Lakeshore knows its own environment, interface and operational calendar. Risk is assessed on the combination, by Lakeshore.
+
+## What this means for your job
+
+- **Ask for the calendar first.** Before approving any release, ask to see the release windows, the freeze windows and the next two scheduled changes to the order and distribution path. If the calendar does not exist, building it is your next task.
+- **Put the readiness checklist in the change template.** Every line needs a document link. Quality should be able to reject a checklist with a line marked "met" and no evidence.
+- **Name an owner for collisions.** One person (usually you or your delegate) checks each new release against the interface collision rule and escalates conflicts to the change authority, which convenes on conditions as well as on schedule.
+- **Define "window" to include monitoring.** A deployment the Tuesday before a freeze with a three-day monitoring period is not before the freeze. Ask when the monitoring period ends.
+- **Treat vendor announcements as a trigger.** When a vendor announces a release, convene the change authority: classify it, flag it interface-touching if it is, pencil it onto the calendar, and start module 5's intake. Do not let the account manager set your schedule.
+- **Report it in the CIO's language:** "HOP 3.0 goes live ahead of the holiday week as long as it clears the release gate by the cutoff. The vendor's upgrade follows after the week, once we have tested it with our ordering portal. We will not do both at once, because if something breaks we could not tell which change caused it, and that week we cannot afford an outage."
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The systems administrator says, "I can deploy HOP 3.0 myself once the CIO tells me it is approved." Which of the three practices is he doing, and what is missing?
+
+He is doing deployment management: moving the approved build into the environment. What is missing is the authorization record from change enablement (21 CFR 211.68(b): changes only by authorized personnel), and the release record showing the readiness checklist was met and Quality reviewed it. A CIO's verbal approval is an instruction, not the change record. He should deploy only against a change record that names the approvers, and he should record that what he installed matches what was validated.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A developer proposes a "patch release" 3.0.1 that corrects how HOP formats a field it sends to BECS. Treated as a patch, it would skip the gate's regression analysis. Right?
+
+No. A patch gets a lighter analysis, not none (BECS guidance III.I; GPSV 4.7). This one also touches the HOP-to-BECS interface, so it is flagged interface-touching: it cannot share a window with another interface release, and it cannot enter the freeze except through the emergency path. The size of the analysis follows the risk; the interface is high-risk territory.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Is a freeze window around a high-demand period a regulatory requirement?
+
+No. No regulation or guidance in this course requires a freeze, a buffer or a calendar rule. They are Lakeshore's decision, grounded in blood-operations risk. What regulation does require is that changes are controlled and authorized (211.68(b)) and that written procedures are followed (606.100(b)): once Lakeshore writes the freeze into its procedure, following it becomes an expectation, and waiving it informally becomes a finding.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: The vendor says Release C is ready now and will "only take a few hours" to install. Explain to your CIO in two sentences why it waits until after the holiday week.
+"Release C changes the system our ordering portal depends on, so we have to test the two together first, and installing it right before the holiday week would put an unproven combination in front of hospitals during our tightest week. It goes in right after, with its own testing and monitoring, and the portal upgrade goes in first because its testing is already done."
+:::
+
+## Where this goes next
+
+HOP 3.0 now has a gate, a calendar slot and a rule for what may share a window. Release C is on the calendar but not yet understood. [Vendor release intake for BECS](../vendor-release-intake-for-becs/index.qmd) takes it from release notes to a validation-in-your-facility decision: 510(k) status, anomaly lists, impact assessment and regression scope.

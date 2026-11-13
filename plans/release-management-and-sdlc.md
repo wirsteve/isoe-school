@@ -110,14 +110,14 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
 | 1 | `sdlc-models-in-a-regulated-blood-center` | Place any Lakeshore change on the right lifecycle (waterfall/V, iterative, agile, DevOps) and say what validation evidence each model has to produce, and when — using HOP 3.0's auto-allocation question. | 128/129 | Published |
 | 2 | `requirements-backlogs-and-traceability-in-agile` | Turn user stories into requirements an inspector can trace to tests, write a definition of done that includes validation evidence, and record the regulatory-affairs decision on auto-allocation. | 130/131 | Published |
 | 3 | `environments-baselines-and-test-data` | Design dev/test/validation/production environments, keep a configuration baseline (CM-2), and keep real donor data out of non-production. | 132/133 | Published |
-| 4 | `release-management-deployment-and-change-control` | Tell ITIL release management, deployment management and change enablement apart, classify release types, and set a release calendar and freeze windows that respect blood operations. | 134/135 | Not started |
+| 4 | `release-management-deployment-and-change-control` | Tell ITIL release management, deployment management and change enablement apart, classify release types, and set a release calendar and freeze windows that respect blood operations. | 134/135 | Published |
 | 5 | `vendor-release-intake-for-becs` | Take a vendor's BECS release (Release C) from release notes to a validation-in-your-facility decision: 510(k) status, anomaly lists, impact assessment, regression scope. | 136/137 | Not started |
 | 6 | `risk-based-testing-and-regression` | Size a test effort by risk, decide regression scope from an impact analysis, and know what test evidence must look like. | 138/139 | Not started |
 | 7 | `ci-cd-pipelines-under-gxp` | Run HOP through an automated pipeline without breaking segregation of duties, tool assurance, or the audit trail of who deployed what. | 140/141 | Not started |
 | 8 | `secure-sdlc-and-software-supply-chain` | Apply the SSDF's four practice groups to HOP, and ask a vendor the right supply-chain questions (component inventories, release integrity, vulnerability response). | 142/143 | Not started |
 | 9 | `deployment-cutover-and-rollback` | Plan a go-live with go/no-go criteria, BECS downtime procedures, post-deployment verification, and a rollback you've actually rehearsed. | 144/145 | Not started |
 | 10 | `emergency-changes-and-hotfixes` | Ship CHG-2207 fast without leaving a validation gap: emergency change path, retrospective documentation, and when an emergency becomes a deviation. | 146/147 | Not started |
-| 11 | `post-release-review-and-delivery-metrics` | Close the loop: hypercare, post-implementation review, delivery metrics (DORA's four keys) and how to report release health upward. | 148/149 | Not started |
+| 11 | `post-release-review-and-delivery-metrics` | Close the loop: hypercare, post-implementation review, delivery metrics (DORA's software delivery performance metrics — DORA now describes five, not four; use what dora.dev says on the day) and how to report release health upward. | 148/149 | Not started |
 
 ## Progress log
 
@@ -180,3 +180,28 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
   vocabulary; pipeline enforcement taught in module 7). 211.68(b)'s applicability to HOP left to
   Quality and regulatory affairs. Lessons run long (~5,500–6,300 words incl. quotes) — accepted:
   the user asked for in-depth lessons.
+- 2026-11-13 — Module 4 `release-management-deployment-and-change-control` published (verified; long,
+  ~7,300 words incl. quotes/checklists — accepted). Video: Romano Roth "What is the difference between
+  deployment and release?" (qmItPR0I-OE; practitioner talk, framed as software-delivery framing).
+  **Locked:** ITIL split — change enablement authorizes/schedules and leaves the change record;
+  release management plans/packages and owns REL-0311, the calendar and the readiness checklist;
+  deployment management (systems administrator) moves the exact validated build. Deployed-but-switched-
+  off code is still a change under 211.68(b); switch-on is a second recorded event. Release types
+  major/minor/patch/emergency are Lakeshore categories by consequence, not version number; patch still
+  gets scaled regression analysis; separate "interface-touching" flag for anything touching the
+  HOP–BECS interface, vendor releases included. Release package = build, DB changes, config/interface
+  settings, versioned requirements, release notes, validation summary, baseline update,
+  training/communication; promote what was validated, no rebuild; any late fix = rc4 with own
+  evidence; release record carries the "validated pair" (HOP build + BECS baseline). 14-item readiness
+  checklist citing modules 1–3. rc3 re-run of TC-32a/b/c, TC-34, TC-35 passed; DEF-0412 closed;
+  HOP-531 not in the package. Freeze defined by path (HOP, interface, BECS distribution functions,
+  shared infrastructure beneath); pre-freeze buffer so monitoring ends before the freeze; change
+  authority convenes on schedule and on conditions (CM-3(g)); freeze exit only via emergency path
+  with named waiver from head of distribution + Quality; freeze ends when head of distribution
+  confirms normal volume and no open HOP issues. **Director's decision:** HOP 3.0 deploys first,
+  before the freeze, validated against production's current BECS baseline (cutoff does not move);
+  Release C waits until after the freeze; VAL-1418 scope must include HOP–BECS interface regression
+  (TC-32a/b/c, TC-34, TC-35 first candidates); validation env isn't production-equivalent while
+  holding the Release C candidate baseline, so no HOP evidence then. Rule: never two releases
+  touching the HOP–BECS interface in the same window (slot + monitoring period). QA reviews one
+  package at a time.

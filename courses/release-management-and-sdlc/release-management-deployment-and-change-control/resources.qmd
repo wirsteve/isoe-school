@@ -1,0 +1,31 @@
+---
+title: "Resources"
+order: 135
+---
+
+Places to go deeper on release management, deployment and change control, or to check a citation before it goes into a real Lakeshore document. Every link below was checked with `curl` and loaded. ITIL 4 is paid material and is not linked or quoted; the lesson uses practice names only. A search for an official ITIL explainer turned up only a generic AXELOS blog landing page whose content could not be confirmed as the article named in its URL, so it was left out rather than listed.
+
+- **[21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)** — (a) written program for computers and (b) controls so record changes are made only by authorized personnel; the regulatory root of change enablement and the release gate. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 606.100, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)** — written standard operating procedures, including (b) "establish, maintain, and follow"; use it when deciding how formally to write the release and freeze procedure. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)** — III.G (validation activities, moving what you validated, monitoring after installation), III.H (validation report) and III.I (validation after a change). Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: General Principles of Software Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)** — 2002 guidance for device manufacturers; general thinking only for Lakeshore. Section 4.7 is validation after a change. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-53 Rev. 5, Security and Privacy Controls (NIST CSRC)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)** — the publication page for the control catalog containing CM-3 (configuration change control, including the body that convenes on a frequency or conditions) and CM-4 (impact analyses). Voluntary for Lakeshore. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[What is the difference between deployment and release?](https://www.youtube.com/watch?v=qmItPR0I-OE)** (Romano Roth, from oEmbed `author_name`) — the video embedded in the lesson: a short practitioner talk separating deploying code from releasing a feature. A software-delivery framing, not ITIL's wording and not about regulated change control; only the title, channel and embeddability were verified, not the claims. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200).
+
+Earlier modules this one builds on: [change control for regulated systems](../../quality-system-essentials/change-control-for-regulated-systems/index.qmd), [ITIL-to-QSE crosswalk: change and problem](../../itsm-for-regulated-blood-services/itil-to-qse-crosswalk-change-and-problem/index.qmd), [the validated-state lifecycle and patching](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd), [environments, baselines and test data](../environments-baselines-and-test-data/index.qmd).
+
+AABB's Standards section 3.9 (Information Systems) is cited in the lesson by number and theme only. The AABB standards pages could not be confirmed as a clean public page for this module, so no AABB link is listed; confirm the current edition's wording directly before citing it in a real document.
+
+## Keep learning
+
+Not official sources. Good places to keep learning; none is authority for a regulatory claim.
+
+- **[Semantic Versioning 2.0.0](https://semver.org/)** — the short specification behind MAJOR.MINOR.PATCH, designed for software interfaces. Read it for the vocabulary, then remember the lesson's point that a version number is not a risk classification. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Feature Toggles (aka Feature Flags), Martin Fowler](https://martinfowler.com/articles/feature-toggles.html)** — a practitioner's long-form article on separating deploying code from switching a feature on; useful background for the "installed code is still a change" point. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Blue Green Deployment, Martin Fowler](https://martinfowler.com/bliki/BlueGreenDeployment.html)** — a short article on keeping two production-like environments so a release can be switched over and back; relevant when module 9 turns to rollback. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Release Engineering, Site Reliability Engineering (Google)](https://sre.google/sre-book/release-engineering/)** — a chapter from a widely read practitioner book on reproducible, identified builds and controlled releases at scale; the scale is far beyond Lakeshore's, the principles (identity, repeatability, approvals) carry over. Verified loading via `curl` on 2026-11-13 (HTTP 200).
