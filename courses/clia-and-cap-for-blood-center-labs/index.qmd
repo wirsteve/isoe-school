@@ -1,0 +1,54 @@
+---
+title: "CLIA & CAP for Blood Center Labs"
+order: 163
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- A blood center's testing labs answer to two regulators at once: FDA (because the tests decide
+  whether blood is suitable) and CMS, through CLIA (because they are laboratories testing human
+  specimens). Accreditation by CAP stands in for CMS's own inspection.
+- CMS's own 2025 memo says CLIA covers a blood center's immunohematology testing, FDA-required
+  infectious-disease testing, emerging-infection tests, CMV, hemoglobin S, sterility and HLA testing,
+  but not purity and potency tests.
+- CLIA reaches straight into IT: the laboratory information system, instrument and middleware
+  interfaces, the result path into BECS, test reports, record retention and proficiency testing.
+- This course shows the Director where IT carries those obligations, and what a CAP inspector asks IT.
+:::
+
+## The finish line
+
+By the end of this course you can explain where CLIA (42 CFR Part 493, administered by CMS) and CAP
+accreditation apply to a blood center's testing and reference laboratories, and what they expect of
+the laboratory information system, instrument and middleware interfaces, the LIS-to-BECS result
+path, test reports, records, proficiency testing and inspections. That's enough to direct IT's part
+and answer a CAP inspector's IT questions.
+
+## Why this course exists
+
+Most of this curriculum looks at blood through FDA's eyes. But a test result is born in a laboratory,
+and laboratories have their own federal rulebook. CLIA's test-report requirement says, in plain
+words, that a lab needs manual or electronic systems that get results accurately and reliably from
+where they are entered, whether interfaced or typed, to where they're reported. That's an interface
+requirement written into a federal regulation, and IT owns most of it.
+
+## Before you start
+
+- [Collection and testing](../blood-center-operations/collection-and-testing/index.qmd) and
+  [BECS in the pipeline](../blood-center-operations/becs-in-the-pipeline/index.qmd).
+- [BECS interfaces and data integrity](../csv-and-becs/becs-interfaces-and-data-integrity/index.qmd).
+- [Release management & the SDLC](../release-management-and-sdlc/index.qmd), whose change discipline
+  this course applies to lab systems.
+
+## The five modules
+
+1. **Where CLIA and CAP reach a blood center.** Which tests CLIA covers, how CAP's accreditation fits,
+   and how FDA, CMS/CAP and AABB oversight overlap.
+2. **The LIS and the test report.** Electronic result transmission, test records, retention and
+   confidentiality, including a corrected report that didn't arrive.
+3. **Instruments, middleware and performance verification.** IT's part when a test system or a
+   middleware rule changes.
+4. **Proficiency testing and the LIS.** Handling proficiency samples like patient samples, never
+   sending them out, and never letting them look like donations.
+5. **The CAP inspection from IT.** Preparing IT for a biennial CAP inspection, and lining it up with
+   FDA and AABB.
