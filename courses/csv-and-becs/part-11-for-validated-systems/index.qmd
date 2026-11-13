@@ -3,16 +3,6 @@ title: "Part 11 for Validated Systems"
 order: 49
 ---
 
-<!-- listen-block:start -->
-::: {.callout-note appearance="simple" icon=false}
-## Listen: audio briefing (6 min)
-
-<audio controls preload="none" style="width:100%" src="../../../audio/csv-and-becs/part-11-for-validated-systems.mp3"></audio>
-
-Short on time? This narrated briefing covers the lesson's key points. Subscribe to every briefing in your podcast app from the [Listen](../../../listen.qmd) page.
-:::
-<!-- listen-block:end -->
-
 ## The remote-access line in VAL-1203's statement of work
 
 The vendor's implementation consultant has a new ask for VAL-1203. Buried in a statement-of-work

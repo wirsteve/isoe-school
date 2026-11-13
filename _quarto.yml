@@ -1,14 +1,9 @@
 project:
   type: website
-  resources:
-    - "audio/**/*.mp3"
-    - "podcast.xml"
-    - "podcast-cover.png"
   render:
     - "index.qmd"
     - "curriculum.qmd"
     - "study-resources.qmd"
-    - "listen.qmd"
     - "foundations/**/*.qmd"
     - "foundations/**/*.md"
     - "courses/**/*.qmd"
@@ -25,7 +20,6 @@ website:
     contents:
       - index.qmd
       - curriculum.qmd
-      - listen.qmd
       - study-resources.qmd
       - section: "Foundations"
         contents: "foundations/**"
