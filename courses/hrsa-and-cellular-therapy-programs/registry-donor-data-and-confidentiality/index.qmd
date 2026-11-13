@@ -1,0 +1,299 @@
+---
+title: "Registry donor data and confidentiality"
+order: 177
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** you can apply 42 U.S.C. 274k's confidentiality, disclosure-purpose and penalty provisions to the registry donor database and its interfaces, and you can decide a data-reuse request on the spot.
+- **The punchline:** Recruitment marketing asks (RDR-003) to copy registry members' contact details and HLA typing into the blood-donor CRM. The answer is no. Nobody has to prove harm for it to be wrong. The statute asks for a system of strict confidentiality and prescribes the purposes for which donor records may be disclosed. A convenient copy is a disclosure to a place the statute never had in mind.
+- **The rule in one line:** registry records move only for purposes the program's standards and agreement allow, and a person who discloses them outside that, or without the donor's prior written consent, faces up to 2 years in prison or a fine (274k(n)).
+- **Ask on Monday:** "Which interfaces, exports and copies of the registry database exist today, and which agreement clause or privacy-officer approval covers each one?"
+- **The trap:** treating "it's only contact details" or "we already hold it" as a defense. Neither is in the text. Whether the same records are also HIPAA protected health information (PHI) is the privacy officer's call, and a HIPAA answer never settles the 274k question.
+:::
+
+## The ticket: RDR-003
+
+The request arrives as a registry data request, **RDR-003**, and it is polite. Recruitment marketing wants to fill more seats at next quarter's blood drives. They have noticed that Lakeshore's registry donor database holds thousands of people who already said yes to something: they swabbed their cheeks at a drive, joined the national registry, and gave Lakeshore their address, phone number and email. The database also holds their HLA typing (human leukocyte antigen, the tissue-matching profile that makes a registry member useful to a transplant patient).
+
+The ask, in the ticket's own words: copy contact details and HLA typing for registry members into the blood-donor CRM (customer relationship management system) so campaigns can target invitations. The HLA part has a rationale. Marketing has heard that some tissue types are rarer and that invitations could be tuned to them.
+
+You pull three people into a room before anyone touches a query: the registry program manager (they), who runs the registry side day to day, Lakeshore's privacy officer (they), and the marketing lead who filed the ticket.
+
+"It's our database," the marketing lead says. "These are our recruits. We're not selling anything. We want them to give blood."
+
+The registry program manager is quiet for a moment. "Those members joined for one reason. They told us they'd be there if a patient needed a match. I've had members call me upset because a hospital asked a question they didn't expect. I would not want to explain this one."
+
+The privacy officer asks the question IT would not have asked: "What would the agreement with the program say about this, and what did the members consent to? Until I have read both, my answer to RDR-003 is no. And I'm not asking IT to decide whether these records are also PHI. That's mine."
+
+
+You decline RDR-003 in the meeting and you write down why. This lesson is about why that was the right call, what you now build so the next request is easy to decide, and what you do when a copy has already left.
+
+This builds on [the first module](../hrsa-and-the-cell-transplant-program/index.qmd), where the registry donor database joined the compliance inventory with named owners. Having an owner is what makes this conversation possible. Without one, RDR-003 would have gone to whoever answered the ticket first.
+
+## Why this rule exists, and the ITSM bridge
+
+Think about what a registry is. A person you have never met agrees to be a potential match for a stranger. They will never see the stranger. The system works only if people believe the registry will use their identity and their tissue type for matching and nothing else. If members come to believe that joining means getting marketing, or that a pharmaceutical company, an insurer or a relative could ask who they are, people stop joining. Patients with rare tissue types wait longer because the pool is smaller. The harm is a quiet, statistical one: fewer donors, fewer matches.
+
+
+**The ITSM bridge.** You know three concepts that map here:
+
+- **Data classification and purpose limitation.** You already label data and say what it may be used for. 274k does that for one specific data set, and it makes the label legal, not internal.
+- **Service catalog and change enablement.** A request to copy data into a new system is a request for a new interface and a new data store. In an ordinary shop it goes through change enablement. Here the change record needs two extra approvers: whoever holds the program agreement and the privacy officer. A CAB (change advisory board) that approves RDR-003 on technical merit has missed the point.
+- **Configuration management.** Every copy of registry data is a configuration item with an owner, a location, an access list and a retention rule. A copy in the CRM is not "the same data somewhere else." It is a new CI that needs the whole control set, and nobody planned for it.
+
+## The rule in plain English
+
+Four ideas, all from the statute, all about the registry donor database you put on the inventory last module.
+
+1. **The records need a system of strict confidentiality.** The Secretary of HHS must enforce standards for participating registries and donor centers that require such a system. Its stated purpose is to protect the identity and privacy of patients and donors.
+2. **The standards say when records may be disclosed.** They prescribe the purposes for which the records may be disclosed, and the circumstances and extent of the disclosure. That is three constraints: why, when and how much. The text of those standards is in the program's rules and Lakeshore's agreement, not in the statute. This lesson never pretends to know what they say.
+3. **Registry files have to integrate with the Program.** A donor center or registry participating in the program must have a method for integrating its donor files, searches and general procedures with the Program. This is the legitimate data flow. It is not an invitation to share broadly. It is a specific, agreed connection to a specific counterpart.
+4. **Disclosing outside those lines is a crime.** Any person who discloses the content of a record covered by the confidentiality provisions without the donor's prior written consent, or in violation of the disclosure standards, faces up to 2 years in prison or a fine under title 18, or both.
+
+Applied to RDR-003: copying the registry members' records into a marketing CRM is a movement of the content of those records to a new place, for a purpose (marketing blood drives) that nothing in front of you says is a permitted one. That is the decision, in one sentence. The rest of this lesson makes it defensible, repeatable and technical.
+
+One more distinction, because the legitimate flow matters as much as the declined one. The statute also requires the program's contract holders to make a standard dataset available "in a standardized electronic format" so transplant physicians can compare donors and cord blood units. Data going to the program, in the form and by the route the agreement describes, is the job. Data going to marketing is not.
+
+## Citation decoder
+
+Statute citations read a little differently from CFR ones. "42 U.S.C. 274k" is title 42 of the United States Code, section 274k. Inside a long section, letters and numbers drill down: subsection (f), paragraph (5), subparagraph (A). If you need the general method, see [Reading a CFR citation](../../../foundations/reading-a-cfr-citation/index.qmd); statutes follow the same idea of nested levels.
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 42 U.S.C. 274k(f)(5)(A) | "Forty-two U.S.C. two-seventy-four-K, subsection f, paragraph five, subparagraph A" | Standards that require a system of strict confidentiality to protect the identity and privacy of patients and donors, in accordance with Federal and State law. | The registry donor database and everything around it must be run as that system. Who can see it, where it is copied and how it is exported are the confidentiality system's parts. |
+| 274k(f)(5)(B) | "... paragraph five, subparagraph B" | Standards that prescribe the purposes for which the records may be disclosed, and the circumstances and extent of the disclosure. | The reason RDR-003 needs a purpose before it needs a query. Marketing is not a purpose anyone in the room could point to. |
+| 274k(f)(6) | "... paragraph six" | For a marrow donor center or registry participating in the program, procedures for a method of integrating donor files, searches and general procedures with the Program. | The interfaces to the program operator. Lakeshore sends data to the program for a reason the statute recognizes. |
+| 274k(n) | "... subsection n" | Penalties for disclosure: up to 2 years' imprisonment or a fine under title 18, or both, for disclosing record content without prior written consent or in violation of the (f)(5)(B) standards. | Why a convenient copy is not an IT housekeeping decision. |
+| 274k(d)(3)(B) | "... subsection d, paragraph three, subparagraph B" | The Secretary requires contract recipients to make a standard dataset available in a standardized electronic format. | The legitimate flow, the contrast to RDR-003. What exactly goes in the dataset comes from the program and the agreement, not from this lesson. |
+| 274k(d)(4)(D) | "... paragraph four, subparagraph D" | A qualified cord blood bank has established a system of strict confidentiality to protect the identity and privacy of patients and donors. | The cord blood side's version of the same duty. Mentioned here because (n) covers its records too; [module 3](../cord-blood-identification-records-and-tracking/index.qmd) takes it up. |
+
+## The actual text
+
+Everything below is quoted from the local copy at `sources/usc/42-usc-274k-274l.md` (Cornell LII's mirror of the U.S. Code, retrieved 2026-11-13). Spacing and punctuation are as saved.
+
+### The confidentiality system and the disclosure purposes: 274k(f)(5)
+
+The lead-in to subsection (f) tells you who the standards bind:
+
+> (f) Bone marrow criteria, standards, and procedures The Secretary shall enforce, for participating entities, including the Program , individual marrow donor centers, marrow donor registries, marrow collection centers, and marrow transplant centers—
+
+Paragraph (5), the two clauses this lesson turns on:
+
+> (5) standards that—
+> (A) require the establishment of a system of strict confidentiality to protect the identity and privacy of patients and donors in accordance with Federal and State law; and
+> (B) prescribe the purposes for which the records described in subparagraph (A) may be disclosed, and the circumstances and extent of the disclosure; and
+
+How to read it, clause by clause:
+
+- **"The Secretary shall enforce, for participating entities."** The duty sits with the Secretary to enforce standards on the entities in the program, including individual donor centers and registries. Lakeshore's exposure runs through its participation and its agreement. Where the exact standards live, and how they reach Lakeshore, is for Contracts and the privacy officer to show you.
+- **"A system of strict confidentiality."** The statute says "system." It does not say "policy" or "a locked cabinet." A system is people, process and technology working together. IT owns a lot of that technology.
+- **"To protect the identity and privacy of patients and donors."** Two things are protected: who they are, and their privacy. A registry member's contact details are identity. Their HLA typing, attached to that identity, is exactly the kind of thing privacy covers.
+- **"In accordance with Federal and State law."** Other laws still apply. The registry's confidentiality system does not replace them, and they do not replace it.
+- **"The purposes ... the circumstances and extent."** Why, when and how much. Any request to move registry data answers all three or it does not move.
+
+An honest drafting note. Subparagraph (B) refers to "the records described in subparagraph (A)," but subparagraph (A) does not itself list what the records are. The statute does not define record contents in these paragraphs. Which fields count (contact details, HLA typing, consent forms, search history) is a question for counsel and the privacy officer. The safe design posture, which is a posture and not a legal conclusion, is to treat every field in the registry donor database as in scope until they say otherwise.
+
+### Integrating donor files with the Program: 274k(f)(6)
+
+> (6) in the case of a marrow donor center or marrow donor registry participating in the program , procedures to ensure the establishment of a method for integrating donor files, searches, and general procedures of the center or registry with the Program .
+
+This sentence makes your outbound interface legitimate. It says the registry participant must have a method for integrating its files, searches and procedures *with the Program*. It does not authorize integration with anything else. For IT, the practical use is this: the interface to the program operator is not a leak, it is a required connection. And it is a connection whose content is set by the program's agreement, not by what the registry database happens to contain.
+
+### The standard dataset: 274k(d)(3)(B)
+
+> (B) Standard data The Secretary shall require all recipients of contracts under this section to make available a standard dataset for purposes of subparagraph (A) in a standardized electronic format that enables transplant physicians to compare among and between bone marrow donors and cord blood units to ensure the best possible match for the patient.
+
+The purpose clause is built into the sentence: "to ensure the best possible match for the patient." This is what the data is for. HLA typing in the registry exists to let a transplant physician compare candidates. That is the standard against which RDR-003's HLA request fails. Nobody is comparing marketing audiences for a patient's best possible match.
+
+The dataset's content and format are set elsewhere. This lesson does not say what the fields are, and nothing in `sources/` does either. The agreement in your contract file says what data, in what format, by when. Read it with Contracts and Quality.
+
+### The penalty: 274k(n)
+
+> (n) Penalties for disclosure Any person who discloses the content of any record referred to in subsection (d)(4)(D) or (f)(5)(A) without the prior written consent of the donor or potential donor with respect to whom the record is maintained, or in violation of the standards described in subsection (f)(5)(B), shall be imprisoned for not more than 2 years or fined in accordance with title 18, or both.
+
+Read this slowly, because three details change how you manage:
+
+- **"Any person."** The sentence does not say "any registry" or "any officer." It does not exempt an engineer who runs the job or an analyst who builds the file. It does not tell you who a prosecutor or a regulator would look at in a given case, and this lesson has no example of how the provision has been applied. What the text tells IT is: do not assume the liability sits only with whoever signed a request.
+- **Two routes into the penalty.** One is disclosure without the donor's **prior written consent**. The other is disclosure **in violation of the standards** in (f)(5)(B). The word "or" between them matters for counsel. This lesson does not tell you whether a given disclosure with consent is safe or whether a given disclosure inside the standards but without consent is safe. That is a legal question for the privacy officer and counsel, and it depends on what the members signed.
+- **"Fined in accordance with title 18."** The fine amounts are not in `sources/` and are not discussed here. "Not more than 2 years" is a ceiling, not a typical outcome.
+
+Whether the statute is currently in force in the form saved is a separate point. The program's authorizing act was set to expire on Sept. 30, 2026 per an advocacy page in `sources/`, and `sources/` doesn't show whether it was reauthorized. Check current status. Don't assume the confidentiality duties disappeared; also don't assume they were renewed. Ask counsel.
+
+### The cord blood side, in one line
+
+> (D) has established a system of strict confidentiality to protect the identity and privacy of patients and donors in accordance with existing Federal and State law;
+
+That is 274k(d)(4)(D), one item in the definition of a "qualified cord blood bank." Subsection (n) reaches the records it refers to as well. We stay on the registry here and return to cord blood next module.
+
+## What IT puts in place
+
+The statute asks for a system. Here is what IT contributes, as a design, not a regulatory checklist. Nothing in `sources/` prescribes these particular controls; they are how an IT shop makes "a system of strict confidentiality" real and demonstrable.
+
+### 1. Registry data stays in its own store
+
+The registry donor database is already separate from BECS. Keep it that way and keep it separate from the CRM, the data warehouse, the analytics sandbox and the email platform.
+
+- **No shared tables, no shared service accounts.** Every join between the registry store and another system is an interface, and every interface is a decision.
+- **No "just for testing" copies.** Test and development environments get synthetic data. See [Environments, Baselines and Test Data](../../release-management-and-sdlc/environments-baselines-and-test-data/index.qmd) for the habit; registry data is the strongest case for it.
+- **No convenient derived flags.** A "registry member" checkbox in the CRM, populated from the registry, is a disclosure of a fact from the registry. Even this needs the privacy officer first. Do not build it as a courtesy.
+- **Backups and logs count.** A backup is a copy. Treat its access and retention like the source.
+
+### 2. Role-based access, with a periodic access review
+
+- **Roles from the work.** Registry staff who work donors through matching and collection need access. Most others do not. Make roles narrow and name who approves each.
+- **Separate the powerful roles.** Database administrators, export-job owners and interface owners are the people who can move data out. Their access is the one the review looks at hardest.
+- **A review on a schedule, signed by the data owner.** Each account against role: who can read, who can export, who can change an interface. The registry program manager signs, not IT alone. Remove what the review finds. If you have a periodic access review for the laboratory information system, reuse the pattern: [The CAP inspection from IT](../../clia-and-cap-for-blood-center-labs/the-cap-inspection-from-it/index.qmd) lays out what a signed review looks like, and [Staying Validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd) places access reviews in the periodic-review cycle.
+
+### 3. A disclosure log
+
+A disclosure log answers one question: what content of registry records left the store, who authorized it, why and to whom?
+
+Each entry should hold: date; what data (record set or fields); who received it; the stated purpose; the authority (the agreement clause or the privacy officer's written approval, by reference); who sent it and by what route.
+
+Two points. First, the routine program feed does not need a hand-written entry per message. It needs a standing entry that names the interface, the agreement clause that authorizes it and the owner, plus system logs that show the transmissions happened. Second, a disclosure log is not required by the text of 274k. It is how you would answer "what circumstances and extent?" with a record instead of a recollection.
+
+### 4. Interfaces that send only what the agreement specifies
+
+Every interface is built from the agreement, not from the table.
+
+- **Start from the agreement's data list.** The interface specification should trace each field to a clause in the program agreement. Fields the agreement does not name do not ship, even when they are in the same table.
+- **Never invent the agreement's terms.** If nobody can point to the clause, the interface has an open question, not an answer. Take it to Contracts and the registry program manager.
+- **Treat any change to an interface as a change record with the registry program manager and the privacy officer on it.** A new field, a new destination or a new schedule is the same kind of request as RDR-003, smaller.
+- **Contracted parties get the same test.** The histocompatibility laboratory that types registry samples is outside Lakeshore. What Lakeshore sends it, and what comes back, follows the contract with that laboratory and the program agreement. Same questions: purpose, extent, authority.
+
+### 5. Anything outside program purposes needs two keys
+
+A use outside the program's purposes needs **permission under the agreement** and **the privacy officer's review**. Both. Neither alone. IT's job is to hold the gate closed until both are in the RDR record.
+
+## The purpose test: a checklist for any RDR-0xx
+
+Put this at the top of the registry data request form. Whoever on your team receives a request can run it in ten minutes.
+
+1. **What is being asked, exactly?** Which fields, which records, how often, to where. If the answer is "a copy," note that a copy is itself a new store.
+2. **What is the purpose, in one sentence?** Written by the requester, not guessed by IT.
+3. **Is it a program purpose?** Matching, donor workup and collection, or the integration with the Program that (f)(6) describes? If the purpose is Lakeshore's own (marketing, fundraising, research, analytics), it is not a program purpose until the agreement says it is.
+4. **Does the agreement permit this recipient, these fields and this route?** The registry program manager and Contracts answer this, quoting the clause. "I think so" is no.
+5. **Did the privacy officer review it?** Including what members consented to and whether the records are also PHI. IT does not answer either.
+6. **Is it the minimum?** Could the goal be met with less, or from a source that is not the registry?
+7. **Where will it live, and who will have access?** If the answer is "a new place," the new place needs the full control set before any data moves.
+8. **Is the decision recorded?** RDR number, the answers above, the decision, the decider and a disclosure-log entry if anything was released.
+
+**Decide:** all of 3 through 5 must be yes. Any no or "unknown" means the answer is not yet or no. IT never approves on its own.
+
+Run RDR-003 through it. Question 1: contact details and HLA typing for all registry members, to the CRM. Question 3: the purpose is blood-drive marketing, and none of the program purposes covers it. Question 4: nobody has quoted a permitting clause. Question 5: the privacy officer's answer is no until they have read the agreement and the consent. Question 6: marketing can reach blood donors through the CRM's own contacts without the registry. Question 7: the CRM was not built, reviewed or access-controlled as a registry store. The test ends at question 3.
+
+Here is one useful habit. When you decline, give marketing something to do. Their goal is more people at drives. The blood-donor CRM already holds people with their own relationship to Lakeshore. Whether registry program communications could mention blood drives is a question for the agreement and the privacy officer. IT does not offer it as a workaround.
+
+A subtle version of RDR-003 is a **match key**. Registry members are often blood donors too. [Multi-Site Governance and Donor Identification](../../data-integrity-and-records/multi-site-governance-and-donor-identification/index.qmd) is about recognizing one donor across locations for eligibility. Here the danger is the reverse: a handy identifier that links registry records to CRM or BECS records and reveals who is in the registry. Do not build that link without the same two keys.
+
+## See it in one picture
+
+The allowed flow runs from the registry store to the program operator, carrying only what the agreement specifies. RDR-003's copy to the CRM hits the purpose test and stops. The dotted red path is the one the Director declined.
+
+```{mermaid}
+flowchart LR
+    M["Registry members<br/>(recruited at blood drives)"] --> R
+    subgraph S["Registry store: separate from BECS and the CRM"]
+        R[("Registry donor database<br/>role-based access<br/>periodic access review")]
+        L["Disclosure log"]
+    end
+    R --- L
+    R -->|"ALLOWED: only what the program<br/>agreement specifies (standard dataset,<br/>standardized electronic format)"| P["Program operator"]
+    R -. "RDR-003: copy contact details<br/>and HLA typing" .-> G{"Purpose test:<br/>agreement permits it?<br/>Privacy officer reviewed it?"}
+    G -. "No: DECLINED" .-> C["Blood-donor CRM<br/>(recruitment marketing)"]
+    linkStyle 3,4 stroke:#c0392b,stroke-width:2px,stroke-dasharray:5 3
+```
+
+
+## Watch it explained
+
+The video below is from NMDP, the program's operator per its own public statement, and is titled "How Patients and Blood Stem Cell Donors Are Matched." Watch it for the purpose side of the picture: why registry data, HLA typing included, exists at all. That is the legitimate use RDR-003 lacks. It is a public-facing explainer, not a confidentiality or IT video. I confirmed the title and channel through YouTube's embed check; I could not read a transcript, so use it for the matching idea only. It says nothing about Lakeshore's systems, and nothing in this lesson describes the operator's own systems.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6q879w-bVWQ"
+  title="How Patients and Blood Stem Cell Donors Are Matched" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## When an extract has already left the store
+
+Suppose it is not a request. Suppose the systems administrator finds a registry export sitting in a shared marketing folder, or the nightly job has been feeding a column of registry data into the CRM for weeks.
+
+Treat it as a **potential disclosure under 274k(n)**. Not as a clean-up ticket.
+
+1. **Stop the spread, not the evidence.** Restrict access to the copy and pause the job if you can, without deleting. Deleting before logs and copies are preserved can destroy what counsel and the privacy officer need.
+2. **Preserve.** Export and hold the access logs, job logs, file metadata, change records and the list of who could reach the copy. Note times and who did what.
+3. **Escalate the same day to the privacy officer and legal.** They decide whether this is a disclosure, who must be told, and whether the program agreement requires notice to the operator. What the agreement requires is in your contract file; this lesson does not know it.
+4. **IT does not investigate alone.** The questions, such as who saw it, whether a member's identity was exposed and whether consent existed, are not technical questions. Your role is to supply facts quickly and accurately and to keep your hands off the conclusion. [Investigating a Healthcare Data Incident](../../healthcare-security-and-privacy/investigating-a-healthcare-data-incident/index.qmd) shows how a real investigation handles the evidence and why "we may never know" can be the honest finding.
+5. **Fix the cause after the facts are held.** Then run the purpose test against the interface that allowed it, change the control, and log the decision as a normal problem record.
+
+If the same data might also be PHI, the HIPAA breach analysis runs alongside, led by the privacy officer: [Breach Notification and Dual Reporting](../../healthcare-security-and-privacy/breach-notification-and-dual-reporting/index.qmd). 
+
+## Two shields, not one
+
+The program's confidentiality provision sits beside the other federal protections you may already know. Read [Human subjects, HIPAA and Certificates of Confidentiality](../../research-programs-reds-and-nih/human-subjects-hipaa-and-certificates-of-confidentiality/index.qmd) as a contrast. A Certificate of Confidentiality is a different federal shield for a different situation (research data), and it works differently. 274k(n) is a criminal penalty for disclosing program records. Having one shield does not mean you can skip the other.
+
+**HIPAA and the registry.** Whether registry records are also HIPAA PHI is the privacy officer's call, made on Lakeshore's actual facts. This lesson doesn't assert it either way. For the HIPAA frame itself, use [The HIPAA Privacy Rule](../../healthcare-security-and-privacy/the-hipaa-privacy-rule/index.qmd) and [Information Governance in a Covered Entity](../../healthcare-security-and-privacy/information-governance-in-a-covered-entity/index.qmd). The operating rule: a use can clear one regime and fail the other. Pass both, or it does not happen.
+
+## What an inspector, or the program, would actually look for
+
+Per the scenario, HRSA does not inspect Lakeshore the way FDA does. The questions come from the program operator under the agreement, a donor complaint, counsel, an auditor or the privacy officer. The records that answer them:
+
+- **A data-flow map** of the registry donor database: every interface, export, backup and copy, each with an owner and the agreement clause or approval that covers it. Owner: the registry program manager, with IT.
+- **The interface specifications**, with each field traced to the agreement.
+- **The role matrix and the signed access reviews.** Owner: the registry program manager signs; IT produces.
+- **The disclosure log** and the RDR register with every decision, including the declined ones.
+- **The privacy officer's written reviews** for anything outside program purposes.
+- **The inventory entry** from module 1, with named owners.
+
+A bad answer sounds like: "I think the nightly job only sends what the program needs." Or: "Marketing has its own copy, but it's locked down." Or: "We would have to ask who set that up." The good answer is a document you can hand over in an hour.
+
+## Common traps
+
+**"It's only contact details."** The text protects "identity and privacy" of donors. A name and phone number tied to "registry member" is identity. Nothing in the saved statute carves out contact details. If you think one exists, ask counsel; don't assume.
+
+**"It's our database, so it's our data."** Holding the records is not owning the purposes. Subsection (f)(5)(B) says the standards prescribe the purposes for which records may be disclosed, and (n) turns on consent or those standards, not on whose server it sits on.
+
+**"HIPAA says marketing is fine, so we're covered."** Even setting aside whether HIPAA applies to these records (the privacy officer's call), satisfying one law does not satisfy the other. 274k has its own text, its own standards and its own penalty.
+
+**"IT only ran the job."** (n) says "any person." The gate protects you: no change without the agreement holder and the privacy officer.
+
+## What this means for your job
+
+- **Hold the gate.** A registry data request is a change request with two extra approvers. Put "agreement permits it?" and "privacy officer reviewed?" on the form.
+- **Know your copies.** Ask for the data-flow map. If nobody can produce it, producing it is your first task. You cannot protect a copy you do not know exists.
+
+- **Never answer the HIPAA question.** If a requester asks "is this PHI?", route it to the privacy officer. Don't say "yes" and don't say "no."
+- **Escalate fast and don't investigate alone.** A registry extract out of its store is a potential disclosure. Preserve, call the privacy officer and legal, supply facts.
+- **Don't invent the agreement.** If you can't quote the clause, the answer is "I'll find out," not "probably fine."
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Marketing says the registry members "are our recruits" and the data is already in-house. How do you decide RDR-003, and which citations carry the decision?
+
+Decline it. 274k(f)(5)(A) requires a system of strict confidentiality to protect donors' identity and privacy, and (f)(5)(B) says the standards prescribe the purposes for which the records may be disclosed, and the circumstances and extent. Marketing is not a purpose anyone has shown the standards or the agreement allow. 274k(n) attaches imprisonment up to 2 years or a fine to disclosure without the donor's prior written consent or in violation of those standards. Holding the data in-house does not change any of that. Run the purpose test: it fails at "is it a program purpose?" Any use outside program purposes would need the agreement's permission and the privacy officer's review.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is a quarterly access review of the registry donor database a requirement of 274k?
+
+No, it is not stated in the text in `sources/`. 274k(f)(5)(A) requires a system of strict confidentiality; it doesn't name access reviews, disclosure logs or role-based access. Those are controls IT builds so that the system is real and provable. The frequency is Lakeshore's decision, set by risk and the agreement's terms. You still do the review, because without it you cannot show an auditor or the program that the system works.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The systems administrator finds a registry export in a shared folder that marketing can read. What are your first three moves, and what do you not do?
+
+First, restrict access to the copy without deleting it. Second, preserve logs, file metadata and access lists. Third, escalate the same day to the privacy officer and legal as a potential disclosure under 274k(n). Do not investigate alone, do not decide whether it was a disclosure, do not declare it "not PHI," and do not delete the file. The privacy officer decides what notifications apply, including anything the program agreement requires, which is in the contract file.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Explain to your CIO in two sentences why the registry feed to the program is fine but the CRM copy is not.
+The feed is the connection the statute requires registries to have with the program (274k(f)(6)), carrying a standard dataset in a standardized electronic format for matching patients to donors (274k(d)(3)(B)), and limited to what the agreement specifies. The CRM copy sends the same people's identity and tissue type to a marketing use that no standard or agreement we've seen allows, and disclosing outside the standards carries criminal penalties (274k(n)), so it takes the agreement's permission and the privacy officer's review first, and today we have neither.
+:::
+
+## Where this goes next
+
+The registry side is now controlled: its own store, its own gate, its own log. Next, [cord blood unit identification, records and tracking](../cord-blood-identification-records-and-tracking/index.qmd) takes the cord blood bank system through a replacement, where a vendor's default unit code builds in a maternal hospital number and a confidential maternal linkage sits in a table every user can read, the cord blood bank's own version of the confidentiality problem.

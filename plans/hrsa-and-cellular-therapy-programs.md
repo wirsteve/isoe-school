@@ -144,7 +144,7 @@ No calendar years.
 |---|---|---|---|---|
 | — | (syllabus) | — | 174 | Published |
 | 1 | `hrsa-and-the-cell-transplant-program` | Say what HRSA's C.W. Bill Young program is (274k/274l, run by contract), how a blood center plugs in (donor center, cord blood bank, outcomes data), and which other regulators ride along (FDA 1271/BLA, CLIA for HLA). Put the registry and cord blood systems on the compliance map. | 175/176 | Published |
-| 2 | `registry-donor-data-and-confidentiality` | Apply 274k's confidentiality, disclosure-purpose and penalty provisions to a registry donor database and its interfaces, and decide a data-reuse request. | 177/178 | Not started |
+| 2 | `registry-donor-data-and-confidentiality` | Apply 274k's confidentiality, disclosure-purpose and penalty provisions to a registry donor database and its interfaces, and decide a data-reuse request. | 177/178 | Published |
 | 3 | `cord-blood-identification-records-and-tracking` | Direct IT's part in 1271.290 tracking (distinct ID codes, code mapping, two-way tracking), 1271.270/1271.55 records and retention, and confidential maternal linkage during a CBB system replacement. | 179/180 | Not started |
 | 4 | `program-data-feeds-and-reporting` | Run a data feed into the program like a regulated interface: standardized data duties, reconciliation, change control and the right reporting path when it fails. | 181/182 | Not started |
 
@@ -170,3 +170,16 @@ No calendar years.
   not apply to 351 products; 600.14 named as the path but not in sources. Decoder rows/quotes for 274k(a),
   (b), (d)(3), (d)(4), (f)(5), (f)(6), (n) live here — modules 2–3 link back. Module 1 did not use the
   Cord Blood Inventory note (it was missing at drafting time); module 4 may now quote it.
+- 2026-11-13 — Module 2 `registry-donor-data-and-confidentiality` published (verified; prose ~4,950 words;
+  links module 3 by slug ahead of its publication). Video: NMDP "How Patients and Blood Stem Cell Donors Are
+  Matched" (6q879w-bVWQ). **Locked:** RDR-003 (from a recruitment marketing lead) declined at the purpose
+  test, resting on 274k(f)(5)(A)–(B) and (n); room = Director, registry program manager, privacy officer.
+  Controls (labelled IT design, not 274k text): registry data in its own store — no copies, test data or
+  derived "registry member" flags elsewhere; role-based access with periodic access review signed by the
+  registry program manager; disclosure log; interfaces send only what the agreement specifies. Non-program
+  use needs the agreement's permission AND privacy-officer review. 8-question purpose test for any RDR-0xx.
+  An extract already outside the store = potential 274k(n) disclosure: restrict without deleting, preserve
+  logs, escalate same day to privacy officer and legal, IT doesn't investigate alone. (f)(5)(B)'s "records
+  described in subparagraph (A)" undefined → every registry field treated in scope as a posture (not a
+  legal conclusion). (n) fine amounts (title 18) not in sources — none given. PHI question = privacy
+  officer. No CLIA/HLA claim made. (d)(4)(D)/(F) left to module 3.
