@@ -7,7 +7,7 @@ https://www.ecfr.gov/api/versioner/v1/full/2026-11-10/title-42.xml?part=493
 Human-readable mirror for links: https://www.law.cornell.edu/cfr/text/42/part-493
 Retrieved: 2026-11-13. Tier: **regulation** (CMS administers CLIA; CDC and FDA have roles).
 
-Sections included, each verbatim and complete: 493.2 (definitions), 493.3 (applicability),
+Sections included, each verbatim and complete (493.551, 493.563, 493.1771 and 493.1773 appended 2026-11-13 from the same API snapshot, for the inspection module): 493.2 (definitions), 493.3 (applicability),
 493.61 (certificate of accreditation), 493.801 (proficiency-testing enrollment and testing of
 samples, incl. the referral prohibition), 493.1105 (retention), 493.1231 (confidentiality),
 493.1232 (specimen identification and integrity), 493.1251 (procedure manual), 493.1253
@@ -612,3 +612,123 @@ Each laboratory that performs nonwaived testing must meet the applicable postana
 (d) Reagents, solutions, culture media, control materials, calibration materials, and other supplies must not be used when they have exceeded their expiration date, have deteriorated, or are of substandard quality.
 
 (e) Components of reagent kits of different lot numbers must not be interchanged unless otherwise specified by the manufacturer.
+
+---
+
+## § 493.551 General requirements for laboratories.
+
+(a) Applicability. CMS may deem a laboratory to meet all applicable CLIA program requirements through accreditation by a private nonprofit accreditation program (that is, grant deemed status), or may exempt from CLIA program requirements all State licensed or approved laboratories in a State that has a State licensure program established by law, if the following conditions are met:
+
+(1) The requirements of the accreditation organization or State licensure program are equal to, or more stringent than, the CLIA condition-level requirements specified in this part, and the laboratory would meet the condition-level requirements if it were inspected against these requirements.
+
+(2) The accreditation program or the State licensure program meets the requirements of this subpart and is approved by CMS.
+
+(3) The laboratory authorizes the approved accreditation organization or State licensure program to release to CMS all records and information required and permits inspections as outlined in this part.
+
+(b) Meeting CLIA requirements by accreditation. A laboratory seeking to meet CLIA requirements through accreditation by an approved accreditation organization must do the following:
+
+(1) Obtain a certificate of accreditation as required in subpart D of this part.
+
+(2) Pay the applicable fees as required in subpart F of this part.
+
+(3) Meet the proficiency testing (PT) requirements in subpart H of this part.
+
+(4) Authorize its PT organization to furnish to its accreditation organization the results of the laboratory's participation in an approved PT program for the purpose of monitoring the laboratory's PT and for making the annual PT results, along with explanatory information required to interpret the PT results, available on a reasonable basis, upon request of any person. A laboratory that refuses to authorize release of its PT results is no longer deemed to meet the condition-level requirements and is subject to a full review by CMS, in accordance with subpart Q of this part, and may be subject to the suspension or revocation of its certificate of accreditation under § 493.1840.
+
+(5) Authorize its accreditation organization to release to CMS or a CMS agent the laboratory's PT results that constitute unsuccessful participation in an approved PT program, in accordance with the definition of “unsuccessful participation in an approved PT program,” as specified in § 493.2 of this part, when the laboratory has failed to achieve successful participation in an approved PT program.
+
+(6) Authorize its accreditation organization to release to CMS a notification of the actions taken by the organization as a result of the unsuccessful participation in a PT program within 30 days of the initiation of the action. Based on this notification, CMS may take an adverse action against a laboratory that fails to participate successfully in an approved PT program.
+
+(c) Withdrawal of laboratory accreditation. After an accreditation organization has withdrawn or revoked its accreditation of a laboratory, the laboratory retains its certificate of accreditation for 45 days after the laboratory receives notice of the withdrawal or revocation of the accreditation, or the effective date of any action taken by CMS, whichever is earlier.
+
+---
+
+## § 493.563 Validation inspections—Basis and focus.
+
+(a) Basis for validation inspection—(1) Laboratory with a certificate of accreditation. (i) CMS or a CMS agent may conduct an inspection of an accredited laboratory that has been issued a certificate of accreditation on a representative sample basis or in response to a substantial allegation of noncompliance.
+
+(ii) CMS uses the results of these inspections to validate the accreditation organization's accreditation process.
+
+(2) Laboratory in a State with an approved State licensure program. (i) CMS or a CMS agent may conduct an inspection of any laboratory in a State with an approved State licensure program on a representative sample basis or in response to a substantial allegation of noncompliance.
+
+(ii) The results of these inspections are used to validate the appropriateness of the exemption of that State's licensed or approved laboratories from CLIA program requirements.
+
+(b) Validation inspection conducted on a representative sample basis. (1) If CMS or a CMS agent conducts a validation inspection on a representative sample basis, the inspection is comprehensive, addressing all condition-level requirements, or it may be focused on a specific condition-level requirement.
+
+(2) The number of laboratories sampled is sufficient to allow a reasonable estimate of the performance of the accreditation organization or State.
+
+(c) Validation inspection conducted in response to a substantial allegation of noncompliance. (1) If CMS or a CMS agent conducts a validation inspection in response to a substantial allegation of noncompliance, the inspection focuses on any condition-level requirement that CMS determines to be related to the allegation.
+
+(2) If CMS or a CMS agent substantiates a deficiency and determines that the laboratory is out of compliance with any condition-level requirement, CMS or a CMS agent conducts a full CLIA inspection.
+
+(d) Inspection of operations and offices. As part of the validation review process, CMS may conduct an onsite inspection of the operations and offices to verify the following:
+
+(1) The accreditation organization's representations and to assess the accreditation organization's compliance with its own policies and procedures.
+
+(2) The State's representations and to assess the State's compliance with its own policies and procedures, including verification of State enforcement actions taken on the basis of validation inspections performed by CMS or a CMS agent.
+
+(e) Onsite inspection of an accreditation organization. An onsite inspection of an accreditation organization may include, but is not limited to, the following:
+
+(1) A review of documents.
+
+(2) An audit of meetings concerning the accreditation process.
+
+(3) Evaluation of accreditation inspection results and the accreditation decision-making process.
+
+(4) Interviews with the accreditation organization's staff.
+
+(f) Onsite inspection of a State licensure program. An onsite inspection of a State licensure program office may include, but is not limited to, the following:
+
+(1) A review of documents.
+
+(2) An audit of meetings concerning the licensure or approval process.
+
+(3) Evaluation of State inspection results and the licensure or approval decision-making process.
+
+(4) Interviews with State employees.
+
+---
+
+## § 493.1771 Condition: Inspection requirements applicable to all CLIA-certified and CLIA-exempt laboratories.
+
+(a) Each laboratory issued a CLIA certificate must meet the requirements in § 493.1773 and the specific requirements for its certificate type, as specified in §§ 493.1775 through 493.1780.
+
+(b) All CLIA-exempt laboratories must comply with the inspection requirements in §§ 493.1773 and 493.1780, when applicable.
+
+*[63 FR 26737, May 14, 1998]*
+
+---
+
+## § 493.1773 Standard: Basic inspection requirements for all laboratories issued a CLIA certificate and CLIA-exempt laboratories.
+
+(a) A laboratory issued a certificate must permit CMS or a CMS agent to conduct an inspection to assess the laboratory's compliance with the requirements of this part. A CLIA-exempt laboratory and a laboratory that requests, or is issued a certificate of accreditation, must permit CMS or a CMS agent to conduct validation and complaint inspections.
+
+(b) General requirements. As part of the inspection process, CMS or a CMS agent may require the laboratory to do the following:
+
+(1) Test samples, including proficiency testing samples, or perform procedures.
+
+(2) Permit interviews of all personnel concerning the laboratory's compliance with the applicable requirements of this part.
+
+(3) Permit laboratory personnel to be observed performing all phases of the total testing process (preanalytic, analytic, and postanalytic).
+
+(4) Permit CMS or a CMS agent access to all areas encompassed under the certificate including, but not limited to, the following:
+
+(i) Specimen procurement and processing areas.
+
+(ii) Storage facilities for specimens, reagents, supplies, records, and reports.
+
+(iii) Testing and reporting areas.
+
+(5) Provide CMS or a CMS agent with copies or exact duplicates of all records and data it requires.
+
+(c) Accessible records and data. A laboratory must have all records and data accessible and retrievable within a reasonable time frame during the course of the inspection.
+
+(d) Requirement to provide information and data. A laboratory must provide, upon request, all information and data needed by CMS or a CMS agent to make a determination of the laboratory's compliance with the applicable requirements of this part.
+
+(e) Reinspection. CMS or a CMS agent may reinspect a laboratory at any time to evaluate the ability of the laboratory to provide accurate and reliable test results.
+
+(f) Complaint inspection. CMS or a CMS agent may conduct an inspection when there are complaints alleging noncompliance with any of the requirements of this part.
+
+(g) Failure to permit an inspection or reinspection. Failure to permit CMS or a CMS agent to conduct an inspection or reinspection results in the suspension or cancellation of the laboratory's participation in Medicare and Medicaid for payment, and suspension or limitation of, or action to revoke the laboratory's CLIA certificate, in accordance with subpart R of this part.
+
+*[63 FR 26737, May 14, 1998; 63 FR 32699, June 15, 1998]*
