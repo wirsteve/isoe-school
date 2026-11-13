@@ -1,0 +1,570 @@
+---
+title: "NIH data management and sharing"
+order: 157
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** you can explain NIH's Data Management and Sharing (DMS) policy, why it reaches REDS
+  through contracts, where shared data ends up, and what Lakeshore's IT has to support: a transfer
+  ledger, provenance, retention terms and a correction path.
+- **Punchline:** the hub's draft data agreement lets the program share data "in NIH-designated
+  repositories." The Director's decision: Lakeshore accepts repository sharing only of data the
+  program has **further de-identified under its own process**, never Lakeshore's coded key or crosswalk.
+  The DUA (data use agreement) names retention and destruction terms, and IT builds the ledger and
+  provenance record as part of EXT-21.
+- **The rule in one line:** the DMS policy binds NIH-funded researchers and institutions, here the
+  hubs, DCC and CTLS under their contracts. It does not bind Lakeshore directly. Lakeshore feels it
+  through what its agreement passes down, so read the agreement as the real rule.
+- **Monday question:** "For the last file EXT-21 sent: which spec version, which mapping version,
+  what checksum, and where is the receipt?"
+- **The trap:** assuming "NIH sharing" means Lakeshore's limited data set goes public. It doesn't,
+  unless the DUA lets it, and Lakeshore decides that in the DUA.
+:::
+
+## The clause
+
+The hub's draft data agreement arrives for RSH-0107. Regulatory affairs flags a single sentence on
+page six. Among the permitted uses of the data, the agreement allows "sharing in NIH-designated
+repositories consistent with the NIH Data Management and Sharing Policy."
+
+The privacy officer is first at your desk, printout in hand. "I signed off on a limited data set
+going to the hub for the program's research. I did not sign off on it going into a public
+repository. Does this clause let it?"
+
+The medical director, who has just read the clause: "That's NIH's policy. Everyone sharing data
+under NIH money has to do it. It would be strange for us to object."
+
+The systems administrator: "If the data's going to a repository anyway, why are we fussing over
+retention? They keep it."
+
+Your Quality Analyst asks the quiet question: "When the hub asks us, two years from now, which
+version of the mapping produced a file, can we answer?"
+
+Four people, four assumptions: that the policy binds Lakeshore, that sharing means public, that
+someone else's retention is enough, and that provenance is the program's problem. This lesson pulls
+them apart, using the policy's own text, and ends with the decision you record in RSH-0107.
+
+## What the policy is, and who it binds
+
+NIH's Policy for Data Management and Sharing (NOT-OD-21-013, here "the DMS policy") is a **funding
+policy**. It is not a regulation in the Code of Federal Regulations. It becomes binding the way
+funding conditions do: through the award. Our local copy is in
+`sources/nih/dms-policy-not-od-21-013.md`, and the copy's own header says it binds funded
+researchers and institutions, and is not binding on a blood center that isn't an NIH awardee or
+performing under one.
+
+Its idea is simple. Before researchers generate data, they write a **plan** for how they will manage
+it and share it. NIH approves the plan. Then they follow it. The policy does not say "share
+everything." In its discussion section NIH says the final policy "does not create a uniform
+requirement to share all scientific data," and expects researchers to "maximize appropriate data
+sharing" while accounting for legal, ethical or technical limits.
+
+The ITSM bridge is a **service level agreement written before the service starts**. The researcher
+commits in advance to what will be preserved, where, and under what limits. The funder holds them to
+it. Lakeshore's equivalent is a service contract you didn't write but will be measured against.
+
+## How it reaches REDS, and where Lakeshore sits
+
+Module 1 laid out the contract chain: NIH contracts to hubs, a DCC (Data Coordinating Center) and a
+CTLS (Center for Transfusion Laboratory Studies), and the hubs invite blood centers to contribute.
+The DMS policy's scope section says it applies to research funded by "extramural grants, contracts,
+Intramural Research Projects, or other funding agreements." The REDS records are **contracts**, so
+the policy's contract language is the relevant text: the plan "will become a Term and Condition of
+the Award, and compliance with and enforcement of the Plan will be consistent with the award and the
+Federal Acquisition Regulations, as applicable."
+
+Three honest points about where that leaves Lakeshore:
+
+1. **The obligated parties are the funded ones.** The hubs, DCC and CTLS submit and follow plans.
+   Lakeshore, as a contributing blood center, is not the awardee of the REDS contracts.
+2. **Whether the policy covers the current round isn't something our sources prove.** The policy's
+   effective date covers "proposals for contracts that are submitted to NIH on or after January 25,
+   2023." The contract records we hold are the 2026 RePORTER entries from module 1; they say nothing
+   about when proposals were submitted or what plans were approved. It would be reasonable to expect
+   the hubs operate under a plan. The Director's move is to **ask**, not assume: "Is there an
+   NIH-approved Data Management and Sharing Plan for this program phase, and which parts of it
+   touch data we contribute?"
+3. **Lakeshore's exposure is whatever the agreement passes down.** The policy itself says nothing
+   about subawardees' or contributors' duties. If the hub's agreement says "Lakeshore will comply
+   with the program's data management and sharing plan," then Lakeshore has accepted it
+   contractually. That is a contract obligation, not an NIH one, and you read it as one.
+
+## How a contributing blood center feels it anyway
+
+A researcher who must produce a plan and keep to it will ask contributors for what the plan needs.
+Expect four kinds of request, and notice that every one lands on IT:
+
+- **Agreement terms** that permit sharing, name repositories or set retention (the clause on page six).
+- **Provenance and documentation requests.** The policy's own definition of metadata includes "data
+  provenance" and "data transformations." The program needs to be able to say where a value came
+  from and what was done to it.
+- **Retention of what you sent.** If a study is later re-analyzed or a repository question comes up,
+  someone asks what exactly Lakeshore contributed.
+- **Correction handling.** Data that will be shared should be right. Errors found downstream come
+  back to the source.
+
+There is also the program's own statement of how it treats data. The 2022 design paper says "The
+source data are retained allowing for potential new analyses or investigations without the need for
+additional data extractions." Read that as the program's design, not a Lakeshore obligation. But it
+tells you what you send will outlive the study that asked for it.
+
+## Where shared data ends up
+
+The sources are thin here, and the lesson says so rather than guessing. What we have:
+
+- **The paper says** investigators have explored "the public-use version of the REDS-III V2V
+  database (accessed through BioLINCC)." BioLINCC is the NHLBI (National Heart, Lung, and Blood
+  Institute) repository for study data and specimens. So for the earlier program round, the paper
+  documents a path from the V2V database to a public-use version in an NHLBI repository.
+- **The DMS policy** says it "strongly encourages the use of established repositories" and points
+  researchers to NIH's repository-selection guidance. It names no REDS repository.
+- **What we don't have:** a REDS-IV-P or current-round plan, or any statement of what will be
+  shared, in what form, or when. This lesson invents none. The Director asks the hub for it.
+
+Notice the shape, though. "Public-use" implies a **version prepared for sharing**, not the raw
+contributions. Data moves from contributed records, to the program's database, to a prepared
+version, to a repository. Each hop is a decision, and the decision belongs to the program, within
+the limits the agreements set. Lakeshore's decision is what its DUA allows at the first hop and
+beyond.
+
+## Why this matters, and the plain-English rule
+
+The failure to prevent is **loss of control over a donor-derived dataset**. A limited data set still
+contains dates and sometimes geography, and a coded key plus a crosswalk can re-link a code to a
+person. If an agreement lets data flow onward with only "consistent with NIH policy" as the limit,
+Lakeshore has handed its privacy decision to a policy that, by its own words, doesn't add privacy
+protections.
+
+In plain English:
+
+1. **The DMS policy obligates the funded researchers and institutions.** It requires a plan and
+   compliance with the approved plan.
+2. **It doesn't change the human-subjects or privacy rules.** NIH says in its discussion that the
+   policy "does not introduce new requirements for protections for research with human
+   participants," and that existing laws, regulations and policies "continue to apply." Lakeshore's
+   HIPAA basis is still its own limited data set and DUA, from
+   [module 3](../human-subjects-hipaa-and-certificates-of-confidentiality/index.qmd).
+3. **"Sharing" is a spectrum.** A limited data set shared under a DUA is not a public file.
+   Public sharing would require the program to de-identify further, and that is not Lakeshore's call
+   to make, but Lakeshore's DUA must say so.
+4. **Lakeshore's IT supports what the agreement and plan need**: a transfer ledger, provenance,
+   retention of what was sent and of the crosswalk per the DUA, and a way to handle corrections.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| NIH, NOT-OD-21-013, Section II | "the DMS policy, section two, definitions" | Funding policy: defines scientific data, data management, data sharing, metadata, plan | What "sharing" and "provenance" mean in the program's own plan |
+| NOT-OD-21-013, Section III | "section three, scope" | Funding policy: applies to research funded or conducted by NIH, including contracts | Why the hubs, DCC and CTLS are covered |
+| NOT-OD-21-013, Section V | "section five, requirements" | Funding policy: submit a plan and comply with the approved plan | What the program owes NIH |
+| NOT-OD-21-013, Section VI | "section six, plans" | Funding policy: plans are part of a contract's technical evaluation | How the plan enters the REDS contracts |
+| NOT-OD-21-013, Section VII | "section seven" | Funding policy: expectations on human-participant data, repositories, timelines | The repository and "no later than publication" timing |
+| NOT-OD-21-013, Section VIII | "section eight, compliance" | Funding policy: for contracts, the plan becomes a term and condition | How the plan binds the performers |
+| 45 CFR 164.514(e)(4) | "one-sixty-four point five-fourteen, e, four" | HIPAA regulation: what a data use agreement must contain | What Lakeshore's DUA must say about onward disclosure |
+| 45 CFR 164.514(e)(2) | "...e, two" | HIPAA regulation: the direct identifiers a limited data set excludes | Why EXT-21 output can contain dates but not names or addresses |
+| 21 CFR 606.160(d) | "six-oh-six point one-sixty, d" | Regulation: retention of blood product records | The BECS records; not the extract file |
+| Josephson et al., *Transfusion* 2022 | "the REDS-IV-P design paper" | Peer-reviewed program description | Source data retained; REDS-III public-use data through BioLINCC |
+
+## The actual text
+
+All quotes below are verbatim from `sources/nih/dms-policy-not-od-21-013.md` unless marked.
+
+**Section II, the definitions that matter to IT:**
+
+> Scientific Data: The recorded factual material commonly accepted in the scientific community as of
+> sufficient quality to validate and replicate research findings, regardless of whether the data are
+> used to support scholarly publications. Scientific data do not include laboratory notebooks,
+> preliminary analyses, completed case report forms, drafts of scientific papers, plans for future
+> research, peer reviews, communications with colleagues, or physical objects, such as laboratory
+> specimens.
+
+> Data Sharing: The act of making scientific data available for use by others (e.g., the larger
+> research community, institutions, the broader public), for example, via an established repository.
+
+> Metadata: Data that provide additional information intended to make scientific data interpretable
+> and reusable (e.g., date, independent sample and variable construction and description,
+> methodology, data provenance, data transformations, any intermediate or descriptive observational
+> variables).
+
+*What it means here.* "Of sufficient quality" is the quality hook: data that can't be trusted isn't
+scientific data. The sharing definition spans "institutions" to "the broader public," which is why
+"sharing" in the clause could mean very different things. And the metadata definition names
+**provenance** and **transformations**, which are exactly what EXT-21's mapping document and ledger
+record. Physical objects such as specimens are excluded, so the retained donation samples in
+rapid-response studies are not "scientific data" under the definition, though data generated from
+them would be.
+
+**Section III, scope:**
+
+> The DMS Policy applies to all research, funded or conducted in whole or in part by NIH, that
+> results in the generation of scientific data. This includes research funded or conducted by
+> extramural grants, contracts, Intramural Research Projects, or other funding agreements regardless
+> of NIH funding level or funding mechanism. The DMS Policy does not apply to research and other
+> activities that do not generate scientific data, including training, infrastructure development,
+> and non-research activities.
+
+*What it means here.* "Contracts" are named. REDS is a set of contracts, so the policy can reach it.
+The exclusion of "infrastructure development" and "non-research activities" is why you ask the hub
+which activities are under the plan. Phase 3 abstracts mention dissemination and database closure
+(module 1), and you shouldn't guess how those map.
+
+**Section IV, effective date (the part about contracts):**
+
+> The effective date of the DMS Policy is January 25, 2023, including for: [...] Proposals for
+> contracts that are submitted to NIH on or after January 25, 2023;
+
+*What it means here.* The trigger for contracts is the **proposal date**, not the award date. The
+RePORTER records don't give it. Ask.
+
+**Section V, requirements:**
+
+> The DMS Policy requires:
+> Submission of a Data Management and Sharing Plan outlining how scientific data and any
+> accompanying metadata will be managed and shared, taking into account any potential restrictions
+> or limitations.
+> Compliance with the awardee's plan as approved by the NIH ICO.
+
+*What it means here.* Two duties, both on the awardee: submit a plan, follow it. "Any potential
+restrictions or limitations" is where a contributor's DUA terms belong. A restriction nobody tells
+the program about can't be in the plan.
+
+**Section VI, plans for contracts, and Section VIII, enforcement:**
+
+> Plans will be included as part of the technical evaluation performed by NIH staff.
+
+> Contracts: The Plan will become a Term and Condition of the Award, and compliance with and
+> enforcement of the Plan will be consistent with the award and the Federal Acquisition Regulations,
+> as applicable.
+
+*What it means here.* For a contract, the plan is part of what NIH evaluates and then a term of the
+award. That is why the hub may need things from Lakeshore: its own contract compliance depends on it.
+
+**Section VII, human-participant data, limits and timing:**
+
+> Any potential limitations on subsequent data use should be communicated to individuals or entities
+> (e.g., data repository managers) that will preserve and share the scientific data.
+
+> Applicable federal, Tribal, state, and local laws, regulations, statutes, guidance, and
+> institutional policies govern research involving human participants and the sharing and use of
+> scientific data derived from human participants. [...] Researchers proposing to generate scientific
+> data derived from human participants should outline in their Plans how privacy, rights, and
+> confidentiality of human research participants will be protected (i.e., through de-identification,
+> Certificates of Confidentiality, and other protective measures).
+
+> Shared scientific data should be made accessible as soon as possible, and no later than the time of
+> an associated publication, or the end of performance period, whichever comes first.
+
+*What it means here.* First: limitations travel with the data. If Lakeshore's DUA limits onward use,
+the program should pass that to any repository. Second: de-identification and Certificates of
+Confidentiality are named as the protective measures. Third: the **timeline** is a clock the program
+runs. "Whichever comes first" means sharing can be due before the final paper. The wording is
+"should," and it is about when shared data becomes accessible, not about how long Lakeshore keeps its
+own copy. The policy separately encourages researchers to consider "data repository policies, award
+record retention requirements, journal policies" as guidance for the minimum availability period.
+
+**The policy's statement on human-participant protections.** This one is in NIH's discussion of
+public comments, the preamble to the policy, not in the numbered policy sections:
+
+> As with the Draft Policy, the final DMS Policy does not introduce new requirements for protections
+> for research with human participants. Existing laws (e.g., Certificates of Confidentiality),
+> regulations (e.g., the Common Rule), and policies (e.g., the NIH Genomic Data Sharing Policy)
+> continue to apply.
+
+*What it means here.* The policy doesn't create privacy protection, and it doesn't waive any. Your privacy
+analysis from module 3 stands.
+
+**45 CFR 164.514(e)(4), what a data use agreement must say** (from
+`sources/cfr/45-164-research-provisions-excerpt.md`):
+
+> (A) Establish the permitted uses and disclosures of such information by the limited data set
+> recipient, consistent with paragraph (e)(3) of this section. The data use agreement may not
+> authorize the limited data set recipient to use or further disclose the information in a manner
+> that would violate the requirements of this subpart, if done by the covered entity;
+>
+> (B) Establish who is permitted to use or receive the limited data set; and
+>
+> (C) Provide that the limited data set recipient will:
+> (*1*) Not use or further disclose the information other than as permitted by the data use agreement
+> or as otherwise required by law;
+> (*2*) Use appropriate safeguards [...]
+> (*3*) Report to the covered entity any use or disclosure of the information not provided for by its
+> data use agreement of which it becomes aware;
+> (*4*) Ensure that any agents to whom it provides the limited data set agree to the same
+> restrictions and conditions [...]; and
+> (*5*) Not identify the information or contact the individuals.
+
+*What it means here.* This is the clause-by-clause test for the page-six sentence. "Consistent with
+the NIH policy" doesn't "establish who is permitted to use or receive" the data. A repository's open
+users aren't named in the DUA. (B) wants named recipients. (C)(1) says no further disclosure beyond
+the agreement. (C)(4) pushes the same restrictions to agents. Subparagraph (e)(4)(iii) adds that a
+covered entity that knew of a pattern of material breach by the recipient must take reasonable
+steps to cure it, and if that fails, stop disclosing and report to the Secretary. So Lakeshore has
+a continuing duty to the DUA, not just a signature.
+
+**Not quoted, and why.** HIPAA's de-identification standard is at 45 CFR 164.514(a) and (b). Our
+local privacy excerpt lists it as "not saved," so the lesson doesn't quote it. It is the right place
+for the privacy officer to ground the word "de-identified" if the program proposes to share publicly.
+Whether the program's own process meets that standard is the program's determination, and Lakeshore
+should ask what process it follows.
+
+## What "sharing" means for a limited data set
+
+Put the decoder on one page:
+
+| If the data is... | Who may have it | Who decides |
+|---|---|---|
+| EXT-21 output, a limited data set | The recipients the DUA names, for the purposes it names | Lakeshore, in the DUA |
+| The same data, onward to the DCC, CTLS or other hubs | Only if the DUA names them or allows agents with the same restrictions | Lakeshore, in the DUA |
+| A version the program has **further de-identified** under its own process | A repository's users, under that repository's terms | The program, with the DUA saying Lakeshore accepts this only for data de-identified this way |
+| Lakeshore's coded key or crosswalk | Nobody outside Lakeshore | Lakeshore, always |
+| Anything else "NIH-designated repository" language might sweep in | Nobody, until the DUA says so | Lakeshore, in the DUA |
+
+The privacy officer's point is the third row. Public sharing would require the program to de-identify
+further, and it is the program's call whether and how. But Lakeshore's DUA must say that without
+further de-identification the data doesn't go to a repository. Silence is how a clause like page six
+becomes permission.
+
+The Certificates of Confidentiality decision from module 3 matters here. Lakeshore treats EXT-21
+output and the crosswalk as covered information: no disclosure outside the research purpose, legal
+requests to counsel, copies tracked, protection treated as indefinite. "Copies tracked" is the
+sentence IT must turn into a ledger. "Indefinite" is why destruction terms in a DUA don't end the
+protection.
+
+## What Lakeshore's IT must support
+
+None of the following is required by the DMS policy, which names no duty for a contributor. These
+are the capabilities that the DUA, the privacy decisions and honest provenance need. Treat them as
+Lakeshore's own design decisions, flagged as such.
+
+### 1. The transfer ledger
+
+One row per file sent. Fields:
+
+| Field | Why |
+|---|---|
+| Run ID and date/time of release | Ties to the signed QC checklist and reconciliation report (module 2) |
+| File name and size | Identifies the artifact |
+| **Spec version** | Which approved data specification defined the contents |
+| **Mapping version** | Which field-mapping document produced the columns |
+| Row counts per table | Compare to the reconciliation report |
+| **Checksum** (and the algorithm) | Proves the file received is the file released |
+| Recipient and transfer method | Matches the DUA's named recipients |
+| Receipt reference | The hub's acknowledgment, per module 2's transfer step |
+| Superseded-by / supersedes | Links a corrected file to the one it replaces |
+
+The ITSM bridge is **configuration management applied to a data release**: every released file is a
+release record you can reproduce or explain. The ledger is also how Lakeshore tracks "copies" for the
+Certificates of Confidentiality decision.
+
+### 2. Provenance
+
+Provenance answers: **which BECS fields, through which mapping version, in which run**. Module 2 made
+the mapping document and the CMDB relationships between EXT-21 and its source fields. This lesson adds
+the join: each ledger row points to the mapping version in force, and each mapping version to the
+source fields and the BECS release at the time. When BECS changes (module 6), the join tells you
+which past files were produced under the old mapping. Provenance is not a promise about the BECS
+records themselves. Those remain under their own controls and the ALCOA principles in
+[ALCOA and data integrity](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd).
+
+### 3. Retention of what was sent, and of the crosswalk
+
+There are three different things to keep, and two different sources of rules:
+
+- **The BECS records.** Regulated, retained under 21 CFR 606.160(d). See
+  [retention across record types](../../data-integrity-and-records/retention-across-record-types/index.qmd).
+  Nothing in this lesson changes that.
+- **Copies of sent files, the ledger and the provenance record.** No regulation in our sources says
+  how long an extract file must be kept, and module 2 left open whether it is a record under any
+  regulation (Quality and regulatory affairs decide). The DUA is the practical source: it should
+  state how long Lakeshore keeps each, and when it destroys them. The ledger and provenance record
+  are small and cheap, and they are what let you answer a question years later. The files themselves
+  are reproducible from BECS only if the mapping and source data are unchanged, which is exactly
+  what provenance tells you.
+- **The crosswalk.** It is the one item that can re-link a code to a donor. Keep it as long as the
+  program might need Lakeshore to resolve a correction or a re-link, protect it as a CMDB item, and
+  let the DUA say when it is destroyed. **Destroying the crosswalk is a privacy decision**: it makes
+  the program's coded data unlinkable at Lakeshore. It is also irreversible. Make it explicitly, with
+  the privacy officer.
+
+Don't invent periods. The privacy officer, regulatory affairs and counsel set them with the program.
+IT's job is to make whatever they pick enforceable: a retention rule on the file store, a destruction
+step with a record of it, and an expiry review on the CMDB item.
+
+A subtlety to flag: **destruction ends Lakeshore's copies, not the confidentiality obligation.** The
+CoC decision treats protection as indefinite. A destroyed file with a ledger entry is still a file
+that was sent.
+
+### 4. Responding to data corrections
+
+Module 2 said source errors are fixed in BECS under its controls, never in the extract. The DMS
+angle: data that will be shared should be right, so corrections must be able to reach the program.
+Whether it restates, flags or replaces is decided by the data specification (an open item from module
+2). Whatever it picks, each correction should produce a **new run and a new ledger row that supersedes
+the old one**, with the reason. And the correction reaches both the program's copy and any copy
+already prepared for sharing. That second part is the program's job. Lakeshore's job is to say, in the
+DUA, that it will notify and expects the program to propagate.
+
+### 5. Answering "what did you send?"
+
+Combine the above. When the hub, an IRB, a privacy complaint or an audit asks, you can produce: the
+spec version, the mapping version, the run's signed QC, the ledger row with checksum, the DUA terms,
+and the retention status. That is the evidence package.
+
+## See it in one picture
+
+```{mermaid}
+flowchart LR
+    L["Lakeshore<br/>EXT-21 limited data set<br/>under DUA"] -->|"transfer: ledger entry<br/>(file, spec version,<br/>mapping version, checksum)"| H["Hub / DCC<br/>(the NIH-funded performers)"]
+    K[("Coded key crosswalk<br/>stays at Lakeshore")] -.-x|"never leaves"| H
+    H --> V["Program's V2V database<br/>(source data retained)"]
+    V --> Q{"Program decides what to share<br/>under its approved DMS Plan"}
+    Q -->|"further de-identified<br/>under program's own process"| R["NIH-designated repository<br/>(e.g. BioLINCC for REDS-III)"]
+    Q -->|"anything else"| X["Stays under DUA terms:<br/>no onward disclosure"]
+    H -.->|"correction request<br/>or provenance question"| L
+    L -.->|"fix in BECS, re-run,<br/>new ledger entry"| H
+```
+
+The BioLINCC node is the one documented example (the paper's REDS-III public-use data). Nothing in
+our sources says the current round will use it.
+
+## Watch it explained
+
+NIH's own grants channel published a video on the policy when it took effect. It is a general
+explainer for funded investigators: what the policy requires, plans, and where to find help. It
+doesn't address blood centers, contracts like REDS, or contributors' obligations, and it won't tell
+you what Lakeshore's agreement should say. Watch it to hear the policy described by the agency that
+wrote it.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/UbtWG_kjPfw"
+  title="The NIH Final Policy for Data Management and Sharing is in Effect: Planning for Success!" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## What an assessor or reviewer would look for
+
+No FDA inspector asks about the DMS policy. A hub site visit, an IRB, the privacy officer or an
+internal audit would. They look for:
+
+- **The signed agreement and DUA**, with the repository clause either narrowed or struck. Bad answer:
+  "It's NIH standard language."
+- **The transfer ledger**, complete, with checksums and spec and mapping versions. Bad answer: "The
+  logs are in the SFTP server," which doesn't tie to a spec version.
+- **The provenance link** from a file to its mapping version and source fields.
+- **The retention and destruction schedule** for files, ledger and crosswalk, and evidence it runs.
+- **The record of corrections**, each linked to a BECS fix and a superseding run.
+- **Evidence that no coded key or crosswalk ever left**, and the access list for the crosswalk.
+
+## Common traps
+
+1. **"The DMS policy binds us."** It binds NIH-funded researchers and institutions. Lakeshore is bound
+   by what it signs. Read the agreement for passed-down terms.
+2. **"Sharing means public."** The policy's own definition runs from "institutions" to "the broader
+   public." A limited data set under a DUA is a restricted share. Public needs more de-identification.
+3. **"The policy adds privacy protection."** It states that it doesn't introduce new human-participant
+   protections. Privacy comes from the Common Rule, HIPAA and CoCs.
+4. **"They keep it, so we don't have to."** The program retaining source data doesn't tell you
+   what you sent, which mapping produced it, or whether a correction landed. Only your ledger does.
+5. **"Retention means keep forever."** Retention is a decision with a date and a destruction step.
+   Keeping a crosswalk indefinitely is a privacy risk too.
+
+## What this means for your job
+
+- **Read every agreement for passed-down terms.** Ask regulatory affairs to list each clause that
+  obliges Lakeshore to follow "the program's plan" or "NIH policy." Each is a contract duty.
+- **Ask the hub for the plan.** Which data does the program expect to share, where, in what form,
+  and by when? If they can't say, that's your answer about how firm the clause is.
+- **Build the ledger and provenance record into EXT-21 now.** Adding them after the first transfer
+  means a gap you can't fill.
+- **Put retention and destruction on the CMDB item,** with an owner and a review date for the file
+  store and the crosswalk, set by the privacy officer, not by IT's disk budget.
+- **Escalate** any proposal to share, publish or re-disclose beyond the named recipients, any request
+  for the crosswalk, and any legal request about the data, to the privacy officer and counsel
+  before IT acts.
+- **Keep the tiers straight** in every email: NIH funding policy, HIPAA regulation, the agreement,
+  Lakeshore's own policy.
+
+## The Director's decision for RSH-0107
+
+Recorded, with the privacy officer's concurrence:
+
+> **Lakeshore accepts repository sharing only of data the program has further de-identified under
+> the program's own process. It does not accept repository sharing of the limited data set, and
+> never of Lakeshore's coded key or crosswalk.**
+>
+> 1. **DUA terms.** The data use agreement says, in terms: the recipient may not use or further
+>    disclose the limited data set other than as the DUA permits; named recipients only; the same
+>    restrictions bind any agents; no attempt to identify or contact individuals; and report any
+>    unauthorized use or disclosure (45 CFR 164.514(e)(4)).
+> 2. **Repository clause.** The page-six sentence is replaced with the narrowed version above. The
+>    DUA asks the program to state its de-identification process and to pass Lakeshore's
+>    limitations to any repository.
+> 3. **Retention and destruction.** The DUA names how long each party keeps files, and requires
+>    destruction terms for the limited data set. Periods are set by the privacy officer, regulatory
+>    affairs and counsel. Destruction does not end the confidentiality commitments from module 3.
+> 4. **IT build.** The transfer ledger and provenance record are built as part of EXT-21 (spec
+>    version, mapping version, checksum, receipt, supersession), under change control, before the
+>    first transfer.
+> 5. **Corrections.** Source errors are fixed in BECS, produce a new run and a superseding ledger
+>    row, and Lakeshore notifies the hub for propagation.
+> 6. **Open questions to the hub, in writing:** is there an approved plan for this phase; what will
+>    be shared, where and when; what de-identification process is used.
+
+RSH-0107's condition 3 (written agreement and security terms) are now half-met: the data side is
+decided here, and the security side is module 5.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The medical director says Lakeshore must comply with the DMS policy because it joins an NIH-funded program. Is she right?
+
+Not directly. The policy requires funded researchers and institutions to submit and follow a plan.
+Our local copy's header says it isn't binding on a blood center that isn't an awardee or performing
+under one. Lakeshore can still take on obligations by signing an agreement that passes plan terms
+down, so you read the agreement. This is a **funding-policy, not a regulatory** answer.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Does the DMS policy let the program put Lakeshore's limited data set in a public repository?
+
+The policy doesn't decide that for Lakeshore. It expects researchers to account for legal, ethical
+and technical limits, and says existing laws still apply. For a limited data set, 45 CFR 164.514(e)(4)
+puts the permitted uses and recipients in the DUA, and the DUA may not authorize further disclosure
+that would violate the Privacy Rule if done by the covered entity. Public sharing would require the
+program to de-identify further. Lakeshore's DUA should say so.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Name three things a ledger row should let you prove two years from now.
+
+Any three of: which spec version defined the file; which mapping version produced it; that the file
+received is the file released (checksum); who received it and when; that a signed QC preceded
+release; which later run, if any, superseded it.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Is there a regulation that says how long Lakeshore must keep an EXT-21 output file?
+
+Not in any source we hold. 21 CFR 606.160(d) governs retention of the BECS product records, not the
+extract. Whether the extract file is a record under any regulation was left to Quality and regulatory
+affairs in module 2. The DUA and Lakeshore's own policy set the period. This is a "not a regulatory
+requirement we can cite" answer.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q5: Explain to your CIO in two sentences what the NIH sharing policy means for us.
+
+"NIH requires the funded research teams to plan and follow how they share data, and it doesn't make
+Lakeshore a party unless our agreement says so. So we control what leaves through our data use
+agreement, and IT's job is to keep a ledger and provenance record showing exactly what we sent and
+how it was built."
+:::
+
+## Where this goes next
+
+Module 5, security expectations for research data, turns the transfer, key and access decisions
+made here and in module 3 into concrete controls, and applies NIH's controlled-access genomic-data
+rules only where they genuinely apply. Genomic controlled-access data has its own rules (NIH's
+NOT-OD-24-157), which don't automatically apply to EXT-21's donor, donation and component fields.
