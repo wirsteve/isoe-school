@@ -62,7 +62,7 @@ learning section. No narration.
 | 1 | `where-clia-and-cap-reach-a-blood-center` | Say which of Lakeshore's tests CLIA covers (per 493.2/493.3 and CMS QSO-25-18), how CAP's deemed accreditation fits, and how FDA, CMS/CAP and AABB oversight overlap without replacing each other. | 164/165 | Published |
 | 2 | `the-lis-and-the-test-report` | Apply 493.1291 (incl. 1291(a)'s electronic-transmission requirement), 493.1283, 493.1105 and 493.1231 to the LIS, the LIS-to-BECS interface and reference-lab reports, including corrected reports. | 166/167 | Published |
 | 3 | `instruments-middleware-and-performance-verification` | Direct IT's part in 493.1252/493.1253/493.1281: instrument and middleware interfaces, rule changes, and the verification evidence a change needs. | 168/169 | Published |
-| 4 | `proficiency-testing-and-the-lis` | Keep PT samples handled like patient samples but never referred out (493.801) and never mistaken for donations in BECS. | 170/171 | Not started |
+| 4 | `proficiency-testing-and-the-lis` | Keep PT samples handled like patient samples but never referred out (493.801) and never mistaken for donations in BECS. | 170/171 | Published |
 | 5 | `the-cap-inspection-from-it` | Prepare IT for a biennial CAP inspection — LIS validation, interfaces, downtime, access, retention, change control — and line it up with FDA and AABB. | 172/173 | Not started |
 
 ## Progress log
@@ -118,3 +118,24 @@ learning section. No narration.
   doesn't mention rule changes; sufficiency is the laboratory director's call. 493.1281(a) not stretched
   to donor screening. 493.1105(a)(3)(i) retention for performance-spec records. CLSI AUTO10 existence
   pointer only. No specific LCR number assigned in module 3.
+- 2026-11-13 — Module 4 `proficiency-testing-and-the-lis` published (verified; prose ~4,490 words excl.
+  quotes/tables). Video: CDC "CLIA Proficiency Testing (PT) Final Rule, CMS-3355-F" (7qKGYH6w3Nw; added by
+  main session; general PT, not referral-specific). **Locked:** a review (Quality Analyst, laboratory
+  director, LIS analyst; Director attending) found two hazards that had not occurred as far as known:
+  (1) the reference lab's reflex rule auto-creates a send-out to an outside reference lab on an
+  inconclusive antibody ID; (2) donor-lab PT samples accessioned with donation-style numbers could post to
+  BECS. Decisions: PT accession type running the same instrument/middleware/analytic path but blocking
+  reflex send-outs, the BECS interface and the hospital report interface (last one = Lakeshore's choice);
+  BECS interface allow-list (only donation accession types sent); PT identifiers from their own namespace,
+  LIS rejects donation-format PT IDs; implemented and verified under **LCR-021** (laboratory director
+  approval); inventory of all reflex/send-out rules in both labs with PT effect; PT handling written into
+  the procedure manual under 493.1251 by the lab, approved/signed/dated by laboratory director (IT supplies
+  system facts); look-back check "no PT result ever posted to BECS" = **none found**, scope attached to
+  LCR-021. Nine test cases; "does this change affect a PT sample?" becomes a standing change-verification
+  line beside module 2's corrections/cancellations/duplicates line. Anchors: 493.801(b) test PT "up until
+  the point it would refer"; (b)(5) intentional referral (revocation ≥1 year) vs reflex-type improper
+  referral (alternative sanctions if conforming, not repeat); (b)(4) no inter-lab communication incl.
+  across a lab's sites (whether Lakeshore's two labs sharing one LIS are "separate locations" left to the
+  laboratory director; conservative: hide PT results until reporting date); (b)(6) 2-year minimum PT
+  records incl. signed attestation; 493.61(b)(1) accreditation hook. 493.1804(c) not in sources (lesson
+  says so). Module 5 exhibits: LCR-014, LCR-021, reflex-rule inventory, PT procedure, BECS check.
