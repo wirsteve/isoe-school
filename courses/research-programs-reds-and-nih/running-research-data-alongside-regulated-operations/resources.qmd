@@ -1,0 +1,79 @@
+---
+title: "Resources"
+order: 162
+---
+
+External links for this lesson, checked to load on 2026-11-13. Quoted regulatory and program text in
+the lesson comes from the local copies in `sources/`, not from these pages.
+
+- **[Cornell LII: 21 CFR 606.160, Records](https://www.law.cornell.edu/cfr/text/21/606.160)** — the
+  BECS records rule (donor number, retention). Use it whenever someone asks whether a research step
+  could change what a record is. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 11.10, Controls for closed systems](https://www.law.cornell.edu/cfr/text/21/11.10)**
+  — the controls that stay attached to the BECS records. Use it to explain why EXT-21 has no write
+  permission. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)**
+  — the guidance page; section III.I is the regression-analysis passage quoted in the lesson. It is
+  guidance ("should"), and it says nothing about research extracts. Verified loading via `curl` on
+  2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 45 CFR 164.514, Other requirements relating to uses and disclosures of PHI](https://www.law.cornell.edu/cfr/text/45/164.514)**
+  — paragraph (e): the limited data set and the data use agreement contents used for the new-field
+  review and DUA scope check. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-53 Rev. 5 (CSRC publication page)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)**
+  — the voluntary control catalog; read CM-3 and CM-4 for change-control and impact-analysis
+  vocabulary. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIH Guide: NOT-OD-21-013, Final NIH Policy for Data Management and Sharing](https://grants.nih.gov/grants/guide/notice-files/NOT-OD-21-013.html)**
+  — the notice whose definition of scientific data excludes physical specimens (module 4). Use it
+  to answer "does the DMS policy govern the samples?" Verified loading via `curl` on 2026-11-13
+  (HTTP 200).
+
+- **[NIH RePORTER](https://reporter.nih.gov/)** — the public award database. Search "Recipient
+  Epidemiology and Donor Evaluation Study" to read the 2026 REDS contract records, including the REDS
+  Brazil abstract that describes a rapid research response capability. Re-check it before relying on
+  any later program phase name. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **Earlier lessons this one builds on:**
+  [Module 2](../the-vein-to-vein-database-and-research-extracts/index.qmd),
+  [Module 5](../security-expectations-for-research-data/index.qmd),
+  [Vendor release intake for BECS](../../release-management-and-sdlc/vendor-release-intake-for-becs/index.qmd),
+  [Risk-based testing and regression](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd),
+  [Emergency changes and hotfixes](../../release-management-and-sdlc/emergency-changes-and-hotfixes/index.qmd),
+  [ALCOA and data integrity](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd).
+
+**No video embed for this module.** I searched for a neutral explainer on CMDB-based change impact
+analysis and for anything on running research extracts alongside a regulated system. The only
+candidates were tool-vendor product demos; none was confirmed as a standalone, on-topic, embeddable
+YouTube video from an authoritative channel, so none was embedded.
+
+**Honest gap.** The 2022 REDS-IV-P design paper excerpt in `sources/` does not mention rapid
+response studies. The only source for the capability is the REDS Brazil record in RePORTER, which
+describes REDS Brazil. Nothing in this course's sources shows what authorizes a particular hub's
+request, so the lesson tells the Director to ask the hub in writing.
+
+## Keep learning
+
+Not official sources, and not authority for any regulatory claim.
+
+- **[Change Impact Analysis with CMDB: Assess Risk (Virima)](https://virima.com/blog/change-impact-analysis-with-cmdb-how-to-assess-risk-before-every-it-change)**
+  (vendor blog) — a plain walk through why impact analysis depends on relationship data in the CMDB.
+  Read it for the idea, and discount product claims. Verified loading via `curl` on 2026-11-13
+  (HTTP 200).
+
+- **[Informed Change Management with Integrated CMDB (Servicely)](https://www.servicely.ai/videos/informed-change-management-with-integrated-cmdb)**
+  (vendor video page) — a short demo of viewing the configuration items affected by a proposed
+  change. A tool demo, not a standard; I did not embed it. Verified loading via `curl` on 2026-11-13
+  (HTTP 200).
+
+- **[The Book of OHDSI, Chapter 6: Extract Transform Load](https://ohdsi.github.io/TheBookOfOhdsi/ExtractTransformLoad.html)**
+  — the OMOP community's practical guide to mapping source data and codes to the model.
+  I have not checked what it says about unmapped values. It describes OHDSI practice, not the REDS DCC.
+  Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[OHDSI Data Quality Dashboard](https://ohdsi.github.io/DataQualityDashboard/)** — a catalog of
+  field-level conformance checks on OMOP data; useful for imagining what the receiving side will
+  flag. Verified loading via `curl` on 2026-11-13 (HTTP 200).

@@ -102,7 +102,7 @@ depth but keep index.qmd prose ≤ 5,000 words; "Keep learning" section in resou
 | 3 | `human-subjects-hipaa-and-certificates-of-confidentiality` | Explain the Common Rule, single-IRB waiver, HIPAA research pathways, and Certificates of Confidentiality well enough to know what the privacy officer and IRB must confirm before EXT-21 runs, and what CoC means for IT. | 155/156 | Published |
 | 4 | `nih-data-management-and-sharing` | Explain NIH's Data Management and Sharing policy (including its reach through contracts), where shared data ends up, and what a contributing blood center's IT must support (retention, provenance, de-identification before sharing). | 157/158 | Published |
 | 5 | `security-expectations-for-research-data` | Set security controls for research data leaving Lakeshore (encryption, key handling, access, logging, incident handling) and apply NIH's controlled-access genomic-data expectations only where they genuinely apply. | 159/160 | Published |
-| 6 | `running-research-data-alongside-regulated-operations` | Handle a BECS release that breaks EXT-21 and a rapid-response study request in the same week, keeping research obligations and regulated records cleanly separated. | 161/162 | Not started |
+| 6 | `running-research-data-alongside-regulated-operations` | Handle a BECS release that breaks EXT-21 and a rapid-response study request in the same week, keeping research obligations and regulated records cleanly separated. | 161/162 | Published |
 
 ## Progress log
 
@@ -211,3 +211,28 @@ depth but keep index.qmd prose ≤ 5,000 words; "Keep learning" section in resou
   security official verify controls against evidence → first test transfer (synthetic content only) to
   the hub's test endpoint if one exists → no production data until module 3's written pathway and the
   signed agreement are complete.
+- 2026-11-13 — Module 6 `running-research-data-alongside-regulated-operations` published (verified).
+  **Course complete, 6/6.** No video (only tool-vendor demos found). Rapid-response capability attributed
+  to the REDS Brazil RePORTER record (the paper's abstract sentence on rapid response has since been
+  added to the source excerpt). **Locked:** starting condition — RSH-0107 conditions cleared; EXT-21 in
+  production transfers; Release C went live after EXT-21's last sent file; next run held at QC on an
+  unmapped component-attribute value (new value = a more specific variant of an existing one — scenario
+  detail introduced here, not in the release course); run stopped as designed, no file released;
+  medical director's "map it to other" refused. Finding, two gaps: EXT-21's CMDB record linked to the view
+  but not to the BECS fields/value sets behind it; nothing re-checked open BECS changes when EXT-21 went
+  live. Process fix: every BECS impact analysis attaches a CMDB downstream-relationship query; EXT-21
+  relationships at field level; a new downstream consumer going live triggers a re-check of open changes;
+  EXT-21 joins the release course's regression scope as a Tier 2 downstream-consumer check (dry run on
+  the validation copy after a BECS baseline move); vendor-intake checklist adds "do any value sets, codes
+  or status vocabularies change?". Change fix: mapping v2 translates the new value to the existing spec
+  category (field owner + medical director confirm); negative unmapped-value test; re-run released within
+  10 business days of the stop (Lakeshore target) unless agreement/spec sets a date; ledger records held
+  run as "no file sent", re-run supersedes; hub notified; mapping and spec version counters separate.
+  Rapid-response request = RSH-0107 scoped addendum, run as an EXT-21 run under spec v2 with the existing
+  pipeline and unchanged controls, conditional on study IRB documentation, privacy officer's field-by-
+  field determination, DUA scope confirmed/amended, spec v2 approval; samples released only under
+  Lakeshore's sample-handling procedures and the research agreement after Quality + regulatory affairs
+  confirm no regulated purpose affected; separate change records (mapping fix first); emergency change
+  path not used for research requests. Boundary: no research activity writes to BECS or changes a
+  donation's status; Quality + regulatory affairs record whether any regulated record is touched; standing
+  "research requests" intake checklist adopted. Course closes with a six-module arc + final REDS-V note.
