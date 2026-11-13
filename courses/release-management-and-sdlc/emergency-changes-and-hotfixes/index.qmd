@@ -1,0 +1,364 @@
+---
+title: "Emergency Changes and Hotfixes"
+order: 146
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** ship CHG-2207 fast without leaving a validation gap: an emergency change path, retrospective documentation, and a clear line for when an emergency becomes a deviation.
+- **The punchline:** a critical, actively exploited flaw in a component HOP uses is announced at night. The Director's decision: a protective filtering rule goes in the same night under an emergency change, with HOP kept online. The real fix, a hotfix build, goes through the pipeline the next day after targeted regression and recorded approvals. One required step (logging the hospital notice) was missed, so it is handled as a deviation and CAPA, and Quality records that it is not reportable on its face.
+- **The rule in one line:** an emergency changes the *order* and the *paperwork timing*, never the *evidence that must exist before production*: a one-sentence risk assessment, targeted regression of the affected paths, and recorded approval by the on-call Quality designee and the Director.
+- **Monday question:** "Show me the emergency procedure: who can authorize at 2 a.m., what evidence must exist before production, how long we have to finish the paperwork, and the last time we tried it."
+- **The trap:** "it was an emergency" is not a justification for a skipped step. A skipped required step is a deviation, however good the reason, and it must be recorded and justified.
+:::
+
+**Before you start:** this module builds on [change control for regulated systems](../../quality-system-essentials/change-control-for-regulated-systems/index.qmd), [deviations and nonconformances](../../quality-system-essentials/deviations-and-nonconformances/index.qmd), [staying validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd), [escalation criteria](../../directing-the-quality-analyst/escalation-criteria/index.qmd), and, for the reportability question, [filing a biological product deviation report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd). From this course it uses [module 4's](../release-management-deployment-and-change-control/index.qmd) release types, [module 7's](../ci-cd-pipelines-under-gxp/index.qmd) pipeline gate, [module 8's](../secure-sdlc-and-software-supply-chain/index.qmd) component inventory and [module 9's](../deployment-cutover-and-rollback/index.qmd) downtime thinking. It does not re-teach them.
+
+## The announcement
+
+It is late evening. The development lead's phone buzzes with a security advisory: a critical vulnerability in the third-party web framework component HOP is built on, and the advisory says it is being actively exploited. HOP is internet-facing for hospital users.
+
+Within the hour the development lead has the answer, because the component inventory exists: HOP 3.0 includes the affected version. They call you.
+
+"Here is what I know. We are exposed. A patched component version is out. I cannot build, test and ship a patched HOP tonight and trust it. But I also do not want to sit on this until morning."
+
+You have three options on the table, and the call fills up quickly. The systems administrator is on the line. So is the on-call Quality designee, who answered on the second ring.
+
+"We can take HOP offline," the systems administrator says. "Hospitals go to phone and fax, the way they would in a downtime. Zero exposure."
+
+"We can put a filtering rule in front of HOP that blocks the exploit pattern," the development lead says. "That is not a fix, but it closes the door the advisory describes, and it is fast."
+
+"Or we ship the patched component," the development lead continues. "The right answer, and the slowest."
+
+The Quality designee asks the question that matters: "Which of those is a change to a validated system, and what do I need to see before I approve it?"
+
+The answer to the first half is "all of the second and third, and the first is a decision with operational consequences." The answer to the second half is the lesson. Here is the part nobody tells you: an emergency does not suspend the rules. It forces you to decide, in advance, which parts of the rules cannot move.
+
+## Why the rule exists, and the ITSM bridge
+
+Two failures sit on either side of this module.
+
+**The slow failure.** A team that treats every urgent change like a normal one leaves a known, exploited hole open for days while paperwork moves. For HOP the exposure is the order path hospitals depend on. Doing nothing quickly enough is also a failure of change control: the system was left in a state Lakeshore knew to be unsafe.
+
+**The fast failure.** A team that treats "emergency" as a password skips testing, approval and records because "there was no time." The change may even be correct. The failure is what it leaves behind: a production system whose current state cannot be shown to be validated, and a record that cannot answer "who authorized this and what did you check?" Worse, the second emergency is easier than the first, because the first one got away with it.
+
+FDA's BECS guidance names the reason small hurried changes are dangerous: "a seemingly small local change (e.g., software, hardware, peripherals, or infrastructure) may have a significant global system effect" (III.I). A framework component sits underneath everything HOP does. A filtering rule sits in front of everything HOP receives.
+
+The ITSM bridge is one you own: **emergency change** in ITIL vocabulary, historically with an emergency change advisory board (ECAB) that is a small, fast subset of the change advisory board. (Those are paraphrases; ITIL is paid material and is not quoted here.) What the regulated version adds is a rule about what the fast path *keeps*. In a normal shop, the ECAB approves and documentation follows. In a blood center, a short list of evidence must exist **before** the change touches production, and the rest may follow on a deadline. The [change-control module](../../quality-system-essentials/change-control-for-regulated-systems/index.qmd) already mapped "emergency change" onto the regulated world and noted the AABB framework's alternative, a *planned* deviation approved in advance for a defined situation. This module covers the case where nothing could be planned: the emergency change path, written into the procedure beforehand.
+
+## The rule in plain English
+
+Seven ideas, each tied to the night in question.
+
+1. **The emergency path is a written procedure, and following it is not a deviation.** The procedure exists before the emergency. Using it correctly is compliance. Skipping a step in it is the deviation.
+2. **Authority is pre-assigned.** The procedure names who can authorize at night, including backups, so nobody is inventing the approval chain at 11 p.m.
+3. **A short list of evidence must exist before production.** Risk assessment in a sentence, targeted regression of the affected paths, recorded approval, a rollback, and the identity of what is being installed.
+4. **Everything else can be retrospective,** on a deadline, and the deadline is itself a control.
+5. **Prefer the smallest change that removes the exposure.** A protective measure plus a normal-speed fix is often better than one heroic fix.
+6. **Break-glass is the exception inside the exception.** Emergency access exists, and it is pre-authorized, logged, time-limited and reviewed afterward.
+7. **An emergency becomes a deviation when a required step is skipped or production records are affected.** Whether that deviation is *reportable* is a separate determination that Quality and regulatory affairs make.
+
+## What "break-glass" means
+
+[Module 7](../ci-cd-pipelines-under-gxp/index.qmd) said there are no bypass accounts, and that emergency break-glass belongs here. The definition, in four words you can test an audit trail against:
+
+| Word | What it means at Lakeshore (a design, not a regulation) |
+|---|---|
+| **Pre-authorized** | The emergency procedure names the role that may use it and the conditions. Nobody decides to have it in the moment. The credential is sealed, held by the release role's backup custodian, and checked out only against a change record number and the on-call Quality designee's approval. |
+| **Logged** | Every use is attributable to a named person: who checked it out, when, for which change record, and every action taken with it, recorded by the system rather than by memory. |
+| **Time-limited** | It expires on its own (say, four hours; the number is Lakeshore's choice) and is rotated after use, so it cannot become a standing second login. |
+| **Reviewed** | Someone other than the user reviews the session log against the change record after the fact, by a stated deadline. A break-glass use nobody reviews is a bypass with a nicer name. |
+
+Break-glass is about **access**: getting a qualified person into a system they do not hold day to day. It does not replace approval. In the scenario, applying the filtering rule needs administrative access to the edge device that the systems administrator does not use routinely, so the access is checked out under break-glass *after* the Director and the Quality designee approve the change. Access follows authorization, not the other way round.
+
+One more design question belongs in the procedure: what if no approver can be reached? A defensible design, if Quality agrees, is a short list of **pre-authorized standing actions** that reduce exposure and are already covered by an existing downtime path. Taking HOP offline, with hospitals on phone and fax, is the natural example: it removes risk, it is reversible, and it is the one emergency action that does not add a new unvalidated thing to production. That is a recommendation, not a requirement.
+
+## The citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 211.68(b) | "Title 21, part 211, section 211.68, paragraph (b)" | Controls so that changes are instituted only by authorized personnel; input and output checked (regulation: *shall*; reaches blood systems through FDA's BECS guidance). | Authorization at night; the filter and the hotfix are changes. |
+| 21 CFR 211.100(b) | "...section 211.100, paragraph (b)" | Procedures followed and documented at the time of performance; any deviation recorded and justified (regulation: *shall*; cited by the BECS guidance). | Why a skipped step is a recorded deviation, and why pre-production evidence cannot be backfilled. |
+| 21 CFR 606.100(b) | "Title 21, part 606, section 606.100, paragraph (b)" | Establish, maintain and follow written SOPs, including for recordkeeping (regulation: *must*). | The emergency procedure is written and followed. Whether it is an SOP in this sense is Quality's judgment. |
+| 21 CFR 606.171(b), (c), (f) | "...section 606.171..." | The criteria for a reportable biological product deviation, the 45-day outer limit, and that all product deviations are investigated whether or not reportable (regulation). | Reportability is a separate determination; this lesson only locates it. |
+| BECS guidance III.I | "Section III, subsection I of the 2013 user's-facility guidance" | Regression analysis after any change, then testing sized to it (guidance: *should*). | Targeted regression is what "small and fast" still has to include. |
+| BECS guidance III.G, III.H | "...subsections G, H" | Closely monitor after installation; document validation, including variances and dated approvals (guidance). | Post-deployment monitoring; the retrospective validation summary. |
+| GPSV 4.7, 5.2.7 | "General Principles of Software Validation, 4.7 and 5.2.7" | Re-establish validation after a change; corrective maintenance still needs regression analysis and testing (device-maker guidance; general thinking). | The hotfix is a software change like any other, in the evidence it needs. |
+| NIST SP 800-53 CM-3, CM-4 | "Controls CM-3, CM-4" | Review and approve changes with security impact considered; analyze impact before implementation; retain records (voluntary catalog). | The shape of the emergency approval and the impact sentence. |
+| NIST SSDF RV.1 to RV.3 | "SSDF practices RV.1, RV.2, RV.3" | Identify vulnerabilities, assess and remediate in line with risk, analyze root causes (voluntary framework). | The response sequence, and the post-incident learning. |
+| 45 CFR 164.308(a)(6) | "...part 164, section 308, paragraph (a)(6)" | Security incident procedures (regulation, HIPAA Security Rule). | Only if there is evidence of exploitation of a system holding ePHI; a separate track. |
+
+## The actual text
+
+**What no source says.** No source in this course prescribes an emergency change procedure, a night-time approval chain, a break-glass design, or a deadline for retrospective documentation. Those are Lakeshore's decisions. What the sources supply is what must be true of the result.
+
+The authorization rule:
+
+> (b) Appropriate controls shall be exercised over computer or related systems to assure that changes in master production and control records or other records are instituted only by authorized personnel. Input to and output from the computer or related system of formulas or other records or data shall be checked for accuracy. The degree and frequency of input/output verification shall be based on the complexity and reliability of the computer or related system. [...]
+> — 21 CFR 211.68(b) (first three sentences); full text in `sources/cfr/211.68.md`
+
+Reading it for 11 p.m.: **"instituted only by authorized personnel"** has no exception for urgency. The emergency path satisfies it by having authority assigned *in advance*, so that the night-time approval is an authorized person exercising authority, not a team improvising. **"based on the complexity and reliability"** is the risk-proportionality sentence: a filtering rule in front of HOP and a changed framework underneath HOP do not need the same depth of verification.
+
+The deviation rule:
+
+> (b) Written production and process control procedures shall be followed in the execution of the various production and process control functions and shall be documented at the time of performance. Any deviation from the written procedures shall be recorded and justified.
+> — 21 CFR 211.100(b); full text in `sources/cfr/211.100.md`
+
+Reading it: two sentences carry this module. **"documented at the time of performance"** is why the pre-production evidence (approvals, test results, access logs) is made *as it happens* and cannot be reconstructed later. What can follow is the *assembly*: the full change narrative, the summary and the updated documents. **"recorded and justified"** is what a deviation requires. Note it says *justified*: it does not say *forbidden*. An emergency can justify a departure; it cannot make the departure invisible. (211.100 is a drug cGMP section that FDA's BECS guidance cites for blood-establishment validation documentation; its application to a given Lakeshore procedure is a Quality judgment.)
+
+The procedures rule, quoted in full in [module 4](../release-management-deployment-and-change-control/index.qmd), supplies "establish, maintain, and follow written standard operating procedures ... for all steps in recordkeeping" (606.100(b)). The emergency path has to be written down *and followed*; an emergency procedure that exists only in the development lead's head fails the first word.
+
+The blood-specific guidance on change, which applies to a hotfix exactly as it does to Release C:
+
+> When any change (even a small change) is made to the software on the system, a software regression analysis should be conducted, not just for validation of the individual change, but also to determine the extent and impact of that change on the entire system. Based on the analysis, you should then conduct an appropriate level of software regression testing to show that unchanged but vulnerable portions of the system have not been adversely affected.
+> — FDA, *Blood Establishment Computer System Validation in the User's Facility*, III.I
+
+Reading it: **"even a small change"** includes a security hotfix, and **"an appropriate level"** is the permission to size the testing to the situation. Emergency does not remove regression testing. It lets you make the analysis short and the testing targeted, as long as both exist and are recorded. HOP is not a BECS, and Lakeshore's regulatory affairs documented that; the guidance is still the closest blood-specific statement of the principle, which is why this course applies it to HOP as general thinking.
+
+> We recommend that you closely monitor the system for a period of time after installation of the new or upgraded software in the production environment to detect any discrepancies that were not identified by the test cases.
+> — same guidance, III.G (monitoring bullet)
+
+Reading it: compressed testing is exactly the situation in which a monitoring period earns its keep.
+
+> You must document your validation activities pursuant to 21 CFR 211.68, 211.100(b), and 606.160(b)(5). Your validation report should include a summary of the test results, including any variances or failed tests, any amendments made to the test cases or the validation plan, an evaluation of the outcome of your testing, and approvals or sign-offs by management, including dates.
+> — same guidance, III.H
+
+Reading it: the **retrospective** validation summary has this content. **"any variances"** is where the missed notification step belongs. **"including dates"** is why the approvals made at night carry their real timestamps, not the date the summary was written.
+
+FDA's general software guidance, written for device makers and used here as general thinking, classifies this kind of change:
+
+> Changes made to correct errors and faults in the software are corrective maintenance. [...] When changes are made to a software system, either during initial development or during post release maintenance, sufficient regression analysis and testing should be conducted to demonstrate that portions of the software not involved in the change were not adversely impacted. This is in addition to testing that evaluates the correctness of the implemented change(s).
+> — FDA, *General Principles of Software Validation*, 5.2.7 (abridged where marked)
+
+Reading it: "in addition to" is the key. Testing that the vulnerability is closed is not regression testing. You need both: the fix works, and nothing else broke. (A component upgrade driven by a vulnerability is arguably adaptive or corrective; the label matters less than the rule that follows.)
+
+NIST's catalog is voluntary, but it phrases the control well:
+
+> b. Review proposed configuration-controlled changes to the system and approve or disapprove such changes with explicit consideration for security and privacy impact analyses; [...] e. Retain records of configuration-controlled changes to the system for [Assignment: organization-defined time period];
+> — NIST SP 800-53 Rev. 5, CM-3 (items b and e)
+
+> Analyze changes to the system to determine potential security and privacy impacts prior to change implementation.
+> — NIST SP 800-53 Rev. 5, CM-4
+
+Reading them: **"prior to change implementation"** is the sentence your one-line risk assessment satisfies at night. It is short, and it exists before the change.
+
+And the SSDF's vulnerability-response practices, in their stated purposes:
+
+> Identify and Confirm Vulnerabilities on an Ongoing Basis (RV.1): Help ensure that vulnerabilities are identified more quickly so that they can be remediated more quickly in accordance with risk, reducing the window of opportunity for attackers.
+> Assess, Prioritize, and Remediate Vulnerabilities (RV.2): Help ensure that vulnerabilities are remediated in accordance with risk to reduce the window of opportunity for attackers.
+> Analyze Vulnerabilities to Identify Their Root Causes (RV.3): Help reduce the frequency of vulnerabilities in the future.
+> — NIST SP 800-218, SSDF v1.1, Respond to Vulnerabilities (RV)
+
+Reading them: RV.1 is the inventory check that took an hour. RV.2's phrase **"in accordance with risk"** is the justification for a two-step response, protective measure tonight and fix tomorrow: the aim is to shrink the "window of opportunity for attackers" while remaining controlled. RV.3 is the after-action: why was this component exposed, and what does that say about the supply chain (module 8).
+
+Finally, the 606.171 text, used for one sentence only. Whether an event is reportable depends on criteria that include that it "[i]nvolves distributed blood or blood components" (606.171(b)(3)) and that it represents a deviation or unexpected event "that may affect the safety, purity, or potency of that product" (606.171(b)(1)). That determination belongs to Quality and regulatory affairs, and the [BPDR module](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd) teaches how it is made.
+
+## Three options, and the Director's decision
+
+Present each option as a decision with a cost, because that is what the Director is choosing among.
+
+| Option | Exposure | Evidence needed before production | Operational cost | Verdict |
+|---|---|---|---|---|
+| **(a) Take HOP offline** | Eliminated while off | Almost none to turn off; a recorded decision and notice | Hospitals on phone and fax at night; staff load; restore path to bring it back | Held in reserve. Pre-authorized fallback if the other options fail or exploitation is evident. |
+| **(b) Protective filtering rule** | Reduced: blocks the described pattern, does not remove the flaw | Impact sentence; the rule tested in validation for blocking the pattern and for HOP still behaving; approvals; rollback (remove the rule) | Small. Risk is that the rule blocks legitimate traffic | **Chosen for tonight.** |
+| **(c) Hotfix build with patched component** | Removed | Regression analysis; targeted regression sized to a changed component; deployment through the pipeline; approvals | Hours of build and test; interface-touching flag; shares a monitoring period with Release C | **Chosen for the next day,** through the normal gates, not around them. |
+
+**The Director's decision.**
+
+**1. Option (b) tonight, with HOP kept online.** It closes the door the advisory describes, quickly, with a change small enough that targeted evidence is meaningful, and it avoids pushing hospitals to fax during the night. It is not treated as the fix: the rule is temporary, owned, and removed by a recorded step once the hotfix is verified.
+
+**2. Option (c) the next day, through the pipeline.** The hotfix is not shipped tonight on a build nobody had time to test. It is built once, deployed to validation, regression-tested on a defined set, approved by Quality and the release role, checked by the gate, and promoted as [module 7](../ci-cd-pipelines-under-gxp/index.qmd) describes: **the normal gates, faster, not bypassed.** (This assumes the pipeline's own assurance from module 7 is done; if it is not, the manual path runs with the same evidence and records.)
+
+**3. Option (a) stays the pre-authorized fallback.** If the rule cannot be shown to work, if it breaks ordering, or if the logs show exploitation, HOP goes offline under the downtime thinking of [module 9](../deployment-cutover-and-rollback/index.qmd) and the Director is called.
+
+**4. The collision rule needs a waiver, tomorrow, not tonight.** Release C is live and its monitoring period is still running, and [module 4](../release-management-deployment-and-change-control/index.qmd) says no two releases touching the HOP-to-BECS interface share a window. The filter sits in front of HOP and does not touch the interface; the hotfix changes HOP's own code and is flagged interface-touching to be conservative. The hotfix therefore enters only with a **named waiver** from the head of distribution and Quality, recorded in the change record. The head of distribution is told tonight and signs tomorrow.
+
+**5. Retrospective documentation is due within five business days.** The number is a Lakeshore decision: shorter than that crowds out Quality's review, longer than that lets the night fade from memory. No source supplies it.
+
+This is the Director's decision, not a regulatory requirement.
+
+## The minimum that must exist before production
+
+This is the heart of the module. Five items, each made at the time and each recorded in the change record as it happens. If any is missing, the change does not enter production without a recorded decision that Quality takes part in, and the gap itself is a deviation.
+
+| # | Evidence before production | What it looks like for the filtering rule tonight | Source thinking |
+|---|---|---|---|
+| 1 | **Risk assessment, in a sentence** | "Actively exploited flaw in the web framework, HOP 3.0 includes the affected version and is internet-facing; the rule blocks the described request pattern, could wrongly block hospital traffic, and is removed by deleting the rule." | CM-3(b), CM-4; 211.68(b) risk-sized verification |
+| 2 | **Targeted regression of the affected paths** | In validation, with the rule applied: HOP-R31 to R35 behavior (TC-31 to TC-35), with the interface-dependent checks TC-32a/b/c, TC-34 and TC-35 run against the validation BECS instance at production's current baseline, plus a harmless probe of the blocked pattern showing it is refused | BECS III.I; GPSV 4.7, 5.2.7 |
+| 3 | **Approval by the on-call Quality designee and the Director,** neither of them the requester or author | Two recorded approvals with timestamps in the change record, made by message or phone and written into the record at the time | 211.68(b); module 7 gate logic |
+| 4 | **A rollback that is named and ready** | The previous rule set saved and identified; removal is one step; who does it and who decides is written down | Module 9; 211.68(b) backup thinking |
+| 5 | **Identity of what is being installed** | The exact rule and configuration version recorded; for the hotfix tomorrow, the artifact ID and checksum | Module 7 |
+
+Four observations.
+
+**Why the regression set is pre-written.** The list in row 2 should exist *before* the night. The emergency regression set (R31 to R35 and the interface-dependent cases) is part of the emergency procedure, so that at 11 p.m. nobody has to design a test plan. They run it. The set came from modules 2, 3 and 6 and it is the cheapest evidence Lakeshore can produce. That is the real answer to "how can we test this fast": we wrote the tests when it was calm.
+
+**Why those tests, for a filter?** A rule in front of HOP does not touch the interface. But a wrongly broad rule can break what hospitals see, and HOP-R34 (status with read time) and HOP-R35 (stale proposals marked) are what protect a hospital from stale information. The pre-written set is cheap enough to run entire rather than argue about which part to skip. For the hotfix tomorrow the set is the floor, not the ceiling.
+
+**Environment parity still applies.** If the validation environment's BECS instance is not at production's current baseline, the interface results are not evidence, as module 3 taught. The systems administrator confirms the baseline match, or the pipeline's drift check does, before the tests count. Skipping this is the quietest way to create a validation gap in a hurry.
+
+**What this is not.** It is not full revalidation, and nobody should claim it is. It is *targeted* regression, sized to the change, recorded honestly. The validation summary will say exactly that.
+
+## What can be retrospective
+
+| Done before production (cannot wait) | Completed afterward (on the deadline) |
+|---|---|
+| One-sentence risk assessment | Full impact analysis and written regression analysis |
+| Targeted regression, with results recorded | Updated traceability and test evidence index; any added test cases |
+| Recorded approvals by Quality designee and Director | The full change record narrative: timeline, decisions, who did what |
+| Rollback named and ready | Release record for the hotfix; baseline record update (for the filter on the night, and for the hotfix when it deploys) |
+| Identity of what is installed | Validation summary with dated approvals, variances noted (BECS III.H) |
+| Break-glass access logged as it happens | Break-glass session review; access rotated and verified |
+| Hospital and distribution notice sent *and logged* | Post-incident review and root cause (SSDF RV.3), supply-chain follow-up (module 8) |
+
+The principle is the second sentence of 211.100(b): what happens at the time of performance is documented at the time. What is retrospective is the **assembly and the analysis**, not the **record of the actions**. Putting a signature on Thursday for an approval nobody gave on Tuesday is not retrospective documentation; it is a false record.
+
+**The deadline is a control.** Five business days, owned by the Quality Analyst and the development lead, tracked on the change record. If it passes, it escalates to the Director and Quality, and a missed retrospective deadline is itself a deviation. A retrospective period with no end date is simply "never."
+
+## When an emergency becomes a deviation, and how that differs from a reportable event
+
+Three different things get blurred at 2 a.m. They need three different words.
+
+**An emergency change, followed correctly, is not a deviation.** The emergency path is a defined procedure. Using it as written, with every step done, is what the procedure is for.
+
+**A deviation** is a departure from a written procedure (211.100(b): "recorded and justified"). An emergency becomes a deviation when, for instance:
+
+- a required pre-production step was skipped or could not be done (no regression, no recorded approval, a missing rollback);
+- a step that the procedure requires was not performed or not logged (a notification, a break-glass review);
+- the retrospective deadline passed;
+- the emergency path was used for something that was not an emergency;
+- the change, or the vulnerability, affected production records: orders lost or duplicated, status data wrong, BECS records touched.
+
+Treating something as a deviation is not an accusation. It is the mechanism that keeps the record honest: describe what happened, assess impact, contain, find the root cause, correct. The [deviations module](../../quality-system-essentials/deviations-and-nonconformances/index.qmd) covers that process.
+
+**A reportable event** is something else entirely. Under 606.171, a report to FDA depends on criteria in the regulation: an event associated with manufacturing, holding or distribution that may affect the safety, purity or potency of the product, occurring in your facility, **and involving distributed blood or blood components**, reported within 45 calendar days of acquiring information that reasonably suggests a reportable event occurred. A process deviation inside an ordering portal, with no product affected and no distributed unit involved, may well fail those criteria. Whether it does is **not the Director's call, and not the development lead's.** Quality and regulatory affairs make that determination and record the reasoning, using the method in the [BPDR module](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd). Note that 606.171(f) says product deviations are investigated whether or not they are reportable, so "not reportable" never means "not investigated."
+
+The distinction in one table:
+
+| | Emergency change | Deviation | Reportable event |
+|---|---|---|---|
+| What it is | An authorized path in the procedure | A departure from the procedure | A regulatory determination about product impact |
+| Who decides | The procedure names the approvers | Quality classifies and owns it | Quality and regulatory affairs |
+| Record | The change record | The deviation record, with CAPA | The determination, and a report if criteria are met |
+| Clock | Retrospective deadline (Lakeshore's) | Lakeshore's deviation timelines | 45 calendar days from acquiring the information (606.171(c)) |
+
+**A separate track: security incident.** If the logs showed any sign the flaw had been exploited against HOP before the rule went in, that is a *security incident* question, not a change-control question. HIPAA's Security Rule requires procedures to "[i]dentify and respond to suspected or known security incidents; mitigate, to the extent practicable, harmful effects of security incidents that are known [...] and document security incidents and their outcomes" (45 CFR 164.308(a)(6)(ii)). Whether HOP holds protected health information at all is a question for the privacy office; the [healthcare data incident module](../../healthcare-security-and-privacy/investigating-a-healthcare-data-incident/index.qmd) takes that route. In this scenario the systems administrator reviews HOP's available access logs the same night, finds no sign of exploitation, and records the review in the change record, so the question is answered and not merely skipped.
+
+## See it in one picture
+
+The night and the next day, as a path with decision points.
+
+```{mermaid}
+flowchart TD
+    A["Evening: critical flaw announced,<br/>actively exploited"] --> B["Inventory check within the hour:<br/>HOP 3.0 includes the affected version"]
+    B --> C{"Options<br/>(a) offline, (b) filter, (c) hotfix"}
+    C --> D["Director decides:<br/>(b) tonight, HOP stays online<br/>(c) next day through the pipeline"]
+    D --> E["Pre-production minimum, all recorded at the time:<br/>1 risk sentence 2 targeted regression R31-R35, TC-32a/b/c, TC-34, TC-35<br/>3 approvals: Quality designee + Director 4 rollback 5 identity"]
+    E -->|"Any item missing"| F["No production change without a<br/>recorded decision; gap = deviation"]
+    E -->|"All present"| G["Break-glass access checked out, logged, time-limited<br/>Filtering rule applied; hospitals notified"]
+    G --> H["Next day: hotfix built once, regression in validation,<br/>Quality + release role approve, waiver for<br/>Release C monitoring window, pipeline promotes"]
+    H --> I["Verify, monitor, retire the filtering rule<br/>by a recorded step"]
+    I --> J["Retrospective documentation within five business days"]
+    J --> K{"Required step missed?<br/>Hospital notice not logged"}
+    K -->|"Yes"| L["Deviation + CAPA (211.100(b))"]
+    L --> M["Quality records: not reportable on its face<br/>(606.171 is a separate determination)"]
+    K -->|"No"| N["Close the change record"]
+    G -.->|"Rule fails, breaks ordering,<br/>or exploitation evident"| O["Fallback (a): HOP offline,<br/>downtime path, Director called"]
+```
+
+## Watch it explained
+
+This short video covers the ITIL idea of an emergency change and the ECAB (emergency change advisory board). It comes from an ITIL exam-preparation channel, not a regulated-industry source, and only its title, channel and embeddability were verified, not its claims. Watch it for the ITSM vocabulary you already half-know; everything regulated in this lesson (what evidence must precede production, the deviation line, reportability) is Lakeshore's own and is not in it.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/lIM0-lwHE74"
+  title="ITIL Change Enablement: Emergency Changes and the ECAB" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## The next day, and the missed step
+
+The hotfix goes the long way, fast. The pipeline builds HOP once with the patched component. The development lead writes the short regression analysis: what in HOP touches the framework (request handling, hospital sign-in, order placement and status, page rendering), and what a component upgrade could change that a filter cannot. The set run in validation is the night's set plus those paths. The systems administrator triggers the validation deployment; the drift check passes against production's baseline; results name the artifact ID and checksum. Quality and the release role approve in the change record. The head of distribution and Quality sign the waiver for Release C's monitoring window, and the head of distribution picks the evening, the quietest hour for orders. The pipeline checks its preconditions and promotes the same artifact, with its checksum verified on arrival. The hospitals are told, and this time it is logged. Post-deployment verification passes, monitoring begins, and the filtering rule is retired by a recorded step.
+
+Then, on day three, the Quality Analyst assembles the retrospective record and checks it against the emergency procedure's checklist. One line is empty.
+
+"The hospital notice," she says. "The procedure says notify and *log* the text, the time and who sent it. The status banner went up that night, and I can see it in the status-message history. But nobody logged it in the change record, and I cannot show who approved the wording."
+
+The development lead owns up. "I posted it. I thought the systems administrator was logging it. He thought I was."
+
+This is the deviation. Nothing was skipped before production: the five items were all present. A required step in the emergency procedure was performed and not recorded, which means the record of what hospitals were told cannot be shown from the change record alone. It was reconstructed afterward from the status-message history and the on-call phone's call log, and the reconstruction is labeled as such.
+
+**Handling it.** The Quality Analyst opens a deviation under the process in the [deviations module](../../quality-system-essentials/deviations-and-nonconformances/index.qmd), with the usual shape:
+
+- **What happened:** the banner was posted and was not logged; no owner had been assigned to the logging step.
+- **Impact assessment:** no orders were affected; no production records were touched; no unit or distribution record is involved; hospital staff received the information; the reconstruction is documented.
+- **Containment and correction:** the reconstructed entry is added to the change record, labeled as reconstructed.
+- **Root cause:** two people each assumed the other was logging it. The checklist step had no named owner.
+- **CAPA** (corrective and preventive action; see the [CAPA module](../../quality-system-essentials/capa-root-cause-to-effectiveness/index.qmd)): pre-approved message templates, so wording is not approved at midnight; a named owner for the logging step (the on-call release role); and an effectiveness check that the next emergency change or the next drill has a complete notification record.
+
+**The reportability decision belongs to Quality.** Quality reviewed the deviation against 606.171, recorded that it is not reportable on its face (no distributed blood or blood components, no effect on the safety, purity or potency of a product, no product record involved), and filed the rationale with the deviation. If the investigation had found otherwise, the determination is revisited and the record shows it. The Director was informed, not asked.
+
+## What an inspector or assessor would look for
+
+| They ask | A good answer | A bad answer |
+|---|---|---|
+| Show me your emergency change procedure. | A controlled document: who authorizes at night, the minimum evidence, break-glass rules, the retrospective deadline. | "We handle emergencies case by case." |
+| Show me the last emergency change. | The change record, with approvals timestamped at the time, targeted test results, the rollback, and the retrospective package inside the deadline. | An approval dated days after the production change. |
+| Who approved it, and could the author have approved it alone? | Named Quality designee and Director; requester and author excluded. | "The development lead approved their own fix." |
+| How do you know the system was still validated afterward? | Regression analysis, targeted regression, a validation summary that says what was and was not retested. | "It was an emergency." |
+| What do you do with break-glass access? | Sealed, checked out against a change number, expires, session reviewed by someone else. | A shared admin password in the wiki. |
+| Was anything missed? | A deviation with root cause, CAPA and Quality's reportability decision. | "Nothing, it went perfectly." (Nothing ever goes perfectly.) |
+
+## Common traps
+
+**"It was an emergency, so we skipped the testing."** The emergency path shortens analysis and narrows testing; it does not remove either. BECS guidance III.I says "even a small change," and 5.2.7 requires testing *in addition to* checking the fix itself.
+
+**"Retrospective means we can write it up whenever."** Retrospective applies to the assembly, not to the record of actions, and it has a deadline. An approval cannot be backfilled; it was either given at the time or it was not (211.100(b): "documented at the time of performance").
+
+**"Break-glass is the shared admin password for emergencies."** A shared standing credential is a bypass. Break-glass is checked out against a change, logged to a person, expires and is reviewed.
+
+**"A deviation means we have to report to FDA."** A deviation is a departure from a procedure. Reportability under 606.171 turns on its own criteria, including involvement of distributed blood or blood components, and it is determined by Quality and regulatory affairs. The opposite trap is as bad: "it was only an IT thing, so no deviation." A missed step is a deviation regardless of whether it is reportable.
+
+**"The filtering rule is not a change, it is a firewall tweak."** A rule in front of a validated production system can break what the system does. It gets an impact sentence, targeted regression, approvals and a rollback like any other change.
+
+## What this means for your job
+
+- **Write the emergency procedure now, while it is calm.** Authority chain with backups, the five pre-production items, the break-glass rules, the retrospective deadline and the deviation triggers. Test it in a tabletop exercise.
+- **Pre-write the emergency regression set.** The test list for HOP's most dangerous paths should already exist, tied to the requirements (HOP-R31 to R35), so tonight's testing is running, not designing.
+- **Keep the component inventory current.** The hour it took to confirm exposure was the inventory working. Without it, the first hour is spent arguing about whether you are affected (module 8).
+- **Put a clock on the paperwork** and watch it. Ask the Quality Analyst on day one of any emergency for the retrospective due date.
+- **Be the escalation Quality expects.** A night-time call to the on-call Quality designee is not a courtesy, it is the approval. [Escalation criteria](../../directing-the-quality-analyst/escalation-criteria/index.qmd) covers what reaches you and how fast.
+- **Never decide reportability yourself.** Ask Quality and regulatory affairs for a recorded determination, and read it.
+- **Report it in the CIO's language:** "A critical flaw was being exploited in a component our ordering portal uses. We put a protective rule in the same night, after testing it and getting Quality's and my approval, and shipped the real fix the next day through the normal process. We missed one logging step, so we recorded it, fixed the cause, and Quality confirmed it is not reportable."
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: At 1 a.m. the development lead says, "The filtering rule is tested enough; approve it and we will write up the validation tomorrow." What is the one thing you cannot let move to tomorrow?
+The evidence made at the time of performance: the risk sentence, the targeted regression results, and the recorded approvals by the on-call Quality designee and you, plus the named rollback and the identity of what is installed (211.68(b); 211.100(b): "documented at the time of performance"). The full change narrative, the validation summary and the updated documents can follow on the deadline. A test result or approval created tomorrow for tonight is a false record, not a retrospective one.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is the five-business-day deadline for retrospective documentation a regulatory requirement?
+No. No source in this course gives a number. It is a Lakeshore decision, balancing Quality's review time against how fast the night fades from memory. What regulation does require is that procedures be established and followed (606.100(b)) and that deviations from them be recorded and justified (211.100(b)), which is why a missed deadline is treated as a deviation.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The hospital notice was posted but not logged. A colleague says that is a "reportable event." Right?
+Not on its face. It is a deviation from Lakeshore's emergency procedure (211.100(b): recorded and justified), handled with an investigation and CAPA. Reportability under 606.171 depends on its own criteria, including involvement of distributed blood or blood components and a possible effect on safety, purity or potency; here no product or distribution record is involved. The determination belongs to Quality and regulatory affairs, who record it with reasoning, and the Director is informed, not the decider.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: What distinguishes break-glass from a shared emergency admin account?
+Break-glass is pre-authorized (a defined role and conditions, checked out against a change record number and approval), logged to a named person, time-limited (it expires and is rotated), and reviewed afterward by someone other than the user. A shared account is a standing bypass: nobody is accountable for a given action and nothing expires. It also does not replace approval; access follows authorization.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q5: Explain to your CIO in two sentences why we did not just ship the patched component that night.
+"A rushed build we had not tested could have broken the ordering portal for hospitals in the middle of the night, so we first closed the hole with a small rule we could test in an hour, and shipped the real fix the next day through our normal process, faster but with every check. Skipping the checks would have traded a security problem for a blood-supply problem and left us unable to show an inspector that the system was still validated."
+:::
+
+## Where this goes next
+
+CHG-2207 is closed: the rule is retired, the hotfix is live and the deviation has a CAPA. What remains is the question of whether any of it worked. [Post-release review and delivery metrics](../post-release-review-and-delivery-metrics/index.qmd) closes the loop with hypercare, post-implementation review, and how to report release health upward.

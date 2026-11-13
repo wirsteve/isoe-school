@@ -116,7 +116,7 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
 | 7 | `ci-cd-pipelines-under-gxp` | Run HOP through an automated pipeline without breaking segregation of duties, tool assurance, or the audit trail of who deployed what. | 140/141 | Published |
 | 8 | `secure-sdlc-and-software-supply-chain` | Apply the SSDF's four practice groups to HOP, and ask a vendor the right supply-chain questions (component inventories, release integrity, vulnerability response). | 142/143 | Published |
 | 9 | `deployment-cutover-and-rollback` | Plan a go-live with go/no-go criteria, BECS downtime procedures, post-deployment verification, and a rollback you've actually rehearsed. | 144/145 | Published |
-| 10 | `emergency-changes-and-hotfixes` | Ship CHG-2207 fast without leaving a validation gap: emergency change path, retrospective documentation, and when an emergency becomes a deviation. | 146/147 | Not started |
+| 10 | `emergency-changes-and-hotfixes` | Ship CHG-2207 fast without leaving a validation gap: emergency change path, retrospective documentation, and when an emergency becomes a deviation. | 146/147 | Published |
 | 11 | `post-release-review-and-delivery-metrics` | Close the loop: hypercare, post-implementation review, delivery metrics (DORA's software delivery performance metrics — DORA now describes five, not four; use what dora.dev says on the day) and how to report release health upward. | 148/149 | Not started |
 
 ## Progress log
@@ -334,3 +334,33 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
   time, a named contact, inventory queries on request (wording to legal/procurement). A SOC 2 doesn't
   answer these; a vendor security patch is still a vendor release validated in proportion to risk.
   Whether HOP holds ePHI left to privacy/security functions.
+- 2026-11-13 — Module 10 `emergency-changes-and-hotfixes` published (verified). Video: Exam Finch "ITIL
+  Change Enablement: Emergency Changes and the ECAB" (lIM0-lwHE74; exam-prep channel, framed as ITSM
+  vocabulary — weakest; swap if better found). **Locked:** break-glass = pre-authorized, logged,
+  time-limited, reviewed after; sealed credential checked out only against a change record number +
+  on-call Quality designee's approval; illustrative 4-hour expiry (Lakeshore choice), rotated after
+  use; session log reviewed by someone other than the user; access only, never replaces approval;
+  short list of pre-authorized standing actions (example: taking HOP offline, the fallback if no
+  approver reachable). Night authority = on-call Quality designee + Director (or named backup),
+  requester and change author excluded. Before production, five items recorded at the time: one-
+  sentence risk assessment, targeted regression, the two approvals, a named rollback, identity of
+  what's installed. Regression set pre-written into the emergency procedure, run in full: TC-31–TC-35
+  (HOP-R31–R35 behavior) + interface-dependent TC-32a/b/c, TC-34, TC-35; validation BECS must match
+  production's baseline (Release C) first. Retrospective deadline = 5 business days (Lakeshore
+  decision); can follow: full narrative, written regression analysis, validation summary with dated
+  approvals (III.H), baseline/release records, break-glass review, root cause; cannot follow:
+  approvals, test results, logs (backfilled approval = false record; 211.100(b)); missed deadline is
+  itself a deviation. CHG-2207: options (a) offline, (b) filtering rule, (c) hotfix; Director chose
+  (b) same night with HOP online and (c) next day through the pipeline (**HOP 3.0.1**, built once,
+  validation regression, Quality + release-role approvals, gate not bypassed); (a) stays the
+  fallback. Release C's monitoring period was still running → hotfix flagged interface-touching,
+  named waiver from head of distribution + Quality signed next day; filter sits in front of HOP, not
+  the interface; filter retired by a recorded step after hotfix verified; systems administrator's
+  log review that night found no sign of exploitation. Missed step: hospital notice posted but not
+  logged — found day three by QA against the emergency checklist (development lead and systems
+  administrator each assumed the other logged it); reconstructed from status-message history and
+  on-call phone log, labeled reconstructed; deviation + CAPA (pre-approved message templates, named
+  logging owner = on-call release role, effectiveness check on next emergency or drill); Quality
+  recorded it not reportable on its face under 606.171 (no distributed product or product record
+  involved); Director informed, not the decider. Three-way line: correct emergency change ≠
+  deviation; deviation = departure from procedure; reportable event = separate 606.171 determination.

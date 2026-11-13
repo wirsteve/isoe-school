@@ -1,0 +1,35 @@
+---
+title: "Resources"
+order: 147
+---
+
+Places to go deeper on emergency changes and hotfixes, or to check a citation before it goes into a real Lakeshore document. Every link below was checked with `curl` and loaded, and the page title was read to confirm it is the page named. None of these sources prescribes an emergency change procedure, a break-glass design or a retrospective-documentation deadline for Lakeshore; the lesson says so plainly. These pages are for the principles it borrows.
+
+- **[21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)** — controls over computer systems; changes instituted only by authorized personnel. Use it when writing who may authorize an emergency change. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 211.100, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.100)** — procedures followed and documented at the time of performance; deviations recorded and justified. The reason pre-production evidence cannot be backfilled. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 606.100, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.100)** — establish, maintain and follow written SOPs, including for recordkeeping. Use it when deciding how the emergency procedure is controlled. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 606.171, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/606.171)** — the criteria and 45-day limit for reporting biological product deviations. Use it to see why reportability is a separate determination made by Quality and regulatory affairs, not by IT. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)** — III.G (monitoring after installation), III.H (validation report) and III.I (regression analysis after any change). Blood-specific; HOP is not a BECS, so the lesson uses it as the nearest statement of the principle. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: General Principles of Software Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)** — sections 4.7 and 5.2.7 on validation after a change and corrective maintenance. Device-maker guidance, general thinking for Lakeshore. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-53 Rev. 5, CSRC](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)** — the control catalog behind CM-3 (change control) and CM-4 (impact analyses). Federal catalog, voluntary for Lakeshore. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-218, Secure Software Development Framework (SSDF) Version 1.1, CSRC](https://csrc.nist.gov/pubs/sp/800/218/final)** — the Respond to Vulnerabilities group (RV.1 to RV.3). Voluntary framework. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[ITIL Change Enablement: Emergency Changes and the ECAB](https://www.youtube.com/watch?v=lIM0-lwHE74)** (Exam Finch, from oEmbed `author_name`) — the video embedded in the lesson. An ITIL exam-preparation channel: useful for the emergency change advisory board vocabulary, not a regulated-industry source, and only the title, channel and embeddability were verified, not the claims. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200).
+
+Earlier modules and courses this one builds on: [release management, deployment and change control](../release-management-deployment-and-change-control/index.qmd), [CI/CD pipelines under GxP](../ci-cd-pipelines-under-gxp/index.qmd), [secure SDLC and the software supply chain](../secure-sdlc-and-software-supply-chain/index.qmd), [deployment, cutover and rollback](../deployment-cutover-and-rollback/index.qmd), [change control for regulated systems](../../quality-system-essentials/change-control-for-regulated-systems/index.qmd), [deviations and nonconformances](../../quality-system-essentials/deviations-and-nonconformances/index.qmd), [staying validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd), [escalation criteria](../../directing-the-quality-analyst/escalation-criteria/index.qmd) and [filing a biological product deviation report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd).
+
+## Keep learning
+
+Not official sources. Good places to keep learning; none is authority for a regulatory claim.
+
+- **[Emergency Changes – How Preparation Helps to Reduce Risk, ITSM.tools](https://itsm.tools/emergency-changes-how-preparation-helps-reduce-risk/)** — a practitioner article on preparing the emergency path in advance, which is this lesson's main argument in ITSM vocabulary. Not regulated-industry specific. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Change Advisory Board in ITIL: advise, approve or what?, Advisera](https://advisera.com/20000academy/knowledgebase/change-advisory-board-itil-advise-approve/)** — an explainer on what a change advisory board does and does not decide, useful background for the ECAB idea. Advisera is a commercial training and consulting vendor; read it as vocabulary only. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Postmortem Culture: Learning from Failure, Google SRE book](https://sre.google/sre-book/postmortem-culture/)** — the case for blameless post-incident review, relevant to the lesson's root-cause step (two people each assuming the other logged the notice). Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[iSpeak, ISPE](https://www.ispe.org/pharmaceutical-engineering/ispeak)** — the pharmaceutical engineering society's blog, where computerized system validation and change topics appear regularly; mostly pharma-oriented, so translate to blood establishments. Verified loading via `curl` on 2026-11-13 (HTTP 200).
