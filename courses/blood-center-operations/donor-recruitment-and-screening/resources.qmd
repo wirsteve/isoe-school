@@ -29,11 +29,11 @@ links below use verified-loading mirrors of the same official text.)
   this for the official, dated, legally citable version of a specific year's text — for example,
   to confirm exactly what 630.10 said on the date of a past inspection or donor complaint.
 
-- **[Who Can Donate Blood? Eligibility Requirements Explained | Interview with Dr. Courtney
-  Lawrence](https://www.youtube.com/watch?v=otspGeTXqe0)** (American Red Cross, from oEmbed
-  `author_name`) — the video embedded in this lesson. A real blood-collection organization
-  walking through donor-eligibility logic from the donor-facing side; it doesn't mention 630.10,
-  BECS, or Lakeshore. Verified embeddable via YouTube oEmbed on 2026-11-11 (HTTP 200).
+- **[New FDA guidelines expanding eligibility for those who want to give
+  blood](https://www.youtube.com/watch?v=EGHbWCc54IE)** (KPRC 2 Click2Houston, from oEmbed
+  `author_name`). This is the local news segment embedded in the lesson. It covers one FDA eligibility
+  change and doesn't mention 630.10's mechanics, BECS or Lakeshore. Verified embeddable via YouTube
+  oEmbed on 2026-11-13 (HTTP 200).
 
 - **[AABB: About AABB Standards](https://www.aabb.org/standards-accreditation/standards)** —
   AABB's own public page on what its Standards are and how accreditation against them works.
