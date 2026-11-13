@@ -1,0 +1,65 @@
+---
+title: "HRSA & Cellular Therapy Programs"
+order: 174
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- HRSA, an agency inside HHS, runs the C.W. Bill Young Cell Transplantation Program: the national
+  registry of unrelated stem-cell donors, the cord blood inventory, and the transplant outcomes
+  database. It runs the program **by contract**, so a blood center feels it through agreements, not
+  inspections.
+- A blood center can sit inside that program in three ways: as a donor center recruiting and
+  collecting registry donors, as a cord blood bank listing units for search, and as a source of data.
+- Other rules ride along. FDA's 21 CFR Part 1271 and, for licensed cord blood, a biologics license
+  apply. So does CLIA for HLA typing. The statute itself requires strict confidentiality and makes
+  improper disclosure of donor records a crime.
+- IT carries most of this. That means the registry donor database, the cord blood bank system,
+  unit identification and tracking, and the data feeds into the program. This course puts those
+  systems under the same control as BECS.
+:::
+
+## The finish line
+
+By the end of this course you can explain which HRSA program touches a blood center (the C.W. Bill
+Young Cell Transplantation Program, with its donor registry, cord blood inventory and outcomes
+database) and which other rules ride along with it: FDA's 21 CFR 1271 and biologics licensing for
+cord blood, and CLIA for HLA testing. You can also say exactly where IT carries the obligations:
+
+- registry donor data and its confidentiality
+- cord blood unit identification, records and tracking
+- the data feeds a blood center sends into the program
+
+That's enough to put these systems under control and answer a regulator's or the program's
+questions about them.
+
+## Why this course exists
+
+Most blood-center compliance programs are built around BECS, because that's where FDA looks first.
+The stem-cell side of the house often runs on separate systems that nobody listed. The registry
+donor database and the cord blood bank system fall into that gap because "HRSA doesn't inspect us."
+But the law behind the program requires a system of strict confidentiality for donor records, and
+prison or fines for disclosing them improperly. FDA's tissue rules require each cord blood unit to
+carry a tracking code that can never be built from a name, a Social Security number or a medical
+record number. Those are IT requirements, and they apply whether or not anyone has put the system
+on a list.
+
+## Before you start
+
+- [Regulatory landscape orientation](../../foundations/regulatory-landscape-orientation/index.qmd).
+- [Collection and testing](../blood-center-operations/collection-and-testing/index.qmd).
+- [Where CLIA and CAP reach a blood center](../clia-and-cap-for-blood-center-labs/where-clia-and-cap-reach-a-blood-center/index.qmd).
+  This course reuses its "who looks at what" habit.
+- [Release management & the SDLC](../release-management-and-sdlc/index.qmd). Its change discipline
+  applies to the cord blood bank system too.
+
+## The four modules
+
+1. **HRSA and the cell transplant program.** What the program is, how a blood center plugs in, and
+   which other regulators come with it.
+2. **Registry donor data and confidentiality.** The statute's confidentiality and penalty
+   provisions applied to a registry database and a data-reuse request.
+3. **Cord blood identification, records and tracking.** Distinct unit codes, two-way tracking,
+   10-year records and confidential maternal linkage, during a system replacement.
+4. **Program data feeds and reporting.** Running a feed into the program like a regulated interface,
+   and what to do when it fails quietly.
