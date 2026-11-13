@@ -1,0 +1,325 @@
+---
+title: "Running research data alongside regulated operations"
+order: 161
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** you can handle a BECS release that breaks EXT-21 and a rapid-response study request in the same week, keeping research obligations and regulated records cleanly separated.
+- **Punchline:** the first monthly EXT-21 run after BECS Release C stops at QC on a component-attribute value nobody mapped. That is the control working. The failure is upstream: Release C's impact analysis never asked the CMDB (configuration management database) about EXT-21 correctly. Two days later the hub asks for retained samples plus an extract with a new field. Both get done, in order, through the same steps as always. Urgency changes the speed, not the steps.
+- **The rule in one line:** research work may read regulated records and may never write to them. Anything that might touch a regulated record is Quality's and regulatory affairs' decision, not IT's and not the study team's.
+- **Monday question:** "For the last BECS change we approved, show me the CMDB query that listed every downstream consumer, EXT-21 included."
+- **The trap:** "fixing" the stopped run by adding a default value, or fast-tracking the rapid-response request by skipping the privacy review. Both feel helpful and both are how a research job quietly corrupts a regulated process.
+:::
+
+**Starting condition.** Some months have passed since module 5. RSH-0107's conditions have cleared: the privacy officer's written pathway (module 3), the signed agreement and its data terms (module 4), and the verified EXT-21 control set (module 5). EXT-21 is in production transfers and has sent several monthly files. BECS Release C (validation record VAL-1418) has gone live in its post-freeze window, as the [release course](../../release-management-and-sdlc/vendor-release-intake-for-becs/index.qmd) decided. This lesson does not re-run that release. It starts with what Release C did to a downstream job nobody was thinking about.
+
+## Tuesday: the run stops
+
+The Quality Analyst comes to your desk with the EXT-21 run report in hand.
+
+"The monthly run held at QC this morning. Item two on the checklist: one value in a component-attribute field isn't in the mapping's value set. The job did what it's supposed to do. It stopped. No file was released."
+
+You have been waiting for a week like this, in a way. Module 2 made one rule explicit: **an unmapped value stops the run rather than defaulting.** The systems administrator reads the log over her shoulder. "It's a new code. Release C added a more specific variant of an existing attribute. We never mapped it because it didn't exist when we wrote the mapping."
+
+The medical director passes by, sees the word "held," and asks the question the program office will ask tomorrow: "Can we just map it to 'other' so the file goes out? The hub's dashboard expects it this week."
+
+That sentence is the lesson's first test. The hub's dashboard is the research side's deadline. The unmapped value is a signal that a regulated system's vocabulary changed under a research product. Which one do you serve first?
+
+## Thursday: the request
+
+Two days later an email arrives from the hub's program office. It describes an emerging threat that a rapid-response study wants to look at. It asks for two things: **retained donation samples** from a defined set of recent donations, for testing, and **an extra extract of recent donations that includes one field EXT-21 does not carry today.** It asks for an answer "as soon as possible."
+
+The privacy officer reads it and says nothing yet. The Quality Analyst asks: "Retained samples. Are those ours to give?" The systems administrator, who has just spent two days on the held run, asks if he can "just add the column and run it." The medical director is already drafting the reply.
+
+You now have a broken extract and an urgent request on the same service in the same week, with the same four or five people. This lesson is the working method for that week.
+
+## Why the rules exist, and the ITSM bridge
+
+Two failures are waiting here, and they are mirror images.
+
+**Failure one: the regulated side breaks the research side silently, or the research side bends the regulated side to keep going.** The first version is a mapping that defaults and ships plausible but wrong values to a research database that keeps source data for years (module 2). The second is a "fix" made in BECS, or in a BECS-adjacent table, so the extract passes. Either way the regulated record and the research copy diverge, and nobody can say which one is right.
+
+**Failure two: urgency erodes the steps.** A rapid-response request carries real scientific weight. That is exactly why its steps get skipped: a field added without the privacy officer, samples handed over on an email, a "temporary" file left on a shared drive. The program itself describes the capability as quick evaluation of emerging threats. The 2026 REDS Brazil contract record in RePORTER says (verbatim): "Like its predecessor programs, REDS Brazil will include a rapid research response capability to address emerging threats to the blood supply." That is a public description of a *program capability in Brazil*. It is not a document Lakeshore signed, and it does not tell you what your hub's request is authorized by. The Director asks the hub for that in writing.
+
+The ITSM bridge is three practices you already run, meeting in one week:
+
+- **Change enablement and service configuration management.** A BECS release is a change. Its impact analysis is only as good as the CMDB's relationships. If the CMDB does not know EXT-21 depends on a BECS field, the CAB (change advisory board) cannot know either.
+- **Incident and problem management.** The held run is an incident with a known cause class (module 2's intake log: *mapping error, source vocabulary changed*). The missing CMDB relationship is the problem record behind it.
+- **Request fulfilment.** The rapid-response request is a service request against an existing service. Request fulfilment works because it follows a defined model even when the request is urgent. What the Director adds is a standing *research requests* intake checklist so each request starts from the same model.
+
+The regulated twist is the same one that ran through the whole course: the source of EXT-21 is a GxP system's data, so anything that could alter that data, or the meaning of a record, escalates to Quality and regulatory affairs.
+
+## The rule in plain English
+
+1. **Regulated records stay regulated records.** BECS keeps its records and its controls. Research extracts and sample releases are derived or separate activities that read, never write, and never change a donation's status.
+2. **The extract is a configuration item under Lakeshore's change control**, and BECS changes are analyzed for downstream impact before they happen, using a CMDB that actually shows the downstream relationships. That is Lakeshore's practice and, for the regression analysis, FDA's recommendation for BECS changes, not a research rule.
+3. **A stopped run is a success of the control, not a failure to be engineered away.** The fix is a change, tested and evidenced, not an override.
+4. **A new field is a new spec version.** It goes through the privacy officer's field-by-field review (module 3), a DUA scope check (module 4), and the same security controls (module 5).
+5. **Samples are physical.** Their release follows Lakeshore's own sample-handling procedures and the research agreement. DMS and the extract ledger don't govern a vial.
+6. **Who decides what:** regulatory affairs and Quality decide whether any regulated record is touched. The privacy officer decides what leaves in data. The Director decides sequence and capacity. IT does not decide whether something is a regulated record.
+7. **Urgency changes the speed, not the steps.** You compress the calendar by running steps in parallel and keeping a ready checklist, never by deleting a step.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it says | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.160(a)(1), (c), (d) | "six-oh-six point one-sixty" | Regulation: records of each significant step; donor number relates unit, components and disposition; retention of product records | The records the extract and the samples must never alter or orphan |
+| 21 CFR 11.10 | "eleven point ten" | Regulation: controls for closed systems that create, modify, maintain or transmit electronic records | Stay attached to BECS records; the research job reads them and doesn't weaken these controls |
+| BECS guidance III.I | "Section III, subsection I of the 2013 user's-facility guidance" | FDA guidance (recommends): regression analysis after any change, testing sized to it, "entire system" | Why Release C's analysis should have reached EXT-21; how it joins the release course's regression scope |
+| NIST SP 800-53 Rev. 5, CM-3, CM-4 | "eight-hundred fifty-three, CM-3, CM-4" | Voluntary federal catalog: configuration change control; impact analysis before implementation | Vocabulary for the change record and the missing impact question |
+| 45 CFR 164.514(e)(3)(i), (e)(4)(ii)(A), (B) | "one-sixty-four point five-fourteen, e" | HIPAA regulation: limited data set only for research, public health or operations; the DUA sets permitted uses and who may receive | The DUA scope check for the rapid-response request |
+| 45 CFR 164.514(e)(2) | "...e, two" | HIPAA regulation: the list of direct identifiers a limited data set excludes | The field-by-field review of the new field |
+| NIH DMS policy (NOT-OD-21-013) | "the data management and sharing notice" | NIH funding policy; its definition of scientific data excludes physical objects such as specimens | Why the samples sit outside the DMS and ledger machinery |
+| RePORTER, REDS Brazil record | "the REDS Brazil award abstract" | Federal award record: describes a rapid research response capability | Attribution for the capability; not Lakeshore's authority |
+
+## The actual text
+
+**21 CFR 606.160(c) and (d), the records the research work must leave alone** (from `sources/cfr/606.160.md`):
+
+> (c) A donor number shall be assigned to each accepted donor, which relates the unit of blood collected to that donor, to his medical record, to any component or blood product from that donor's unit of blood, and to all records describing the history and ultimate disposition of these products.
+>
+> (d) Records shall be retained for such interval beyond the expiration date for the blood or blood component as necessary to facilitate the reporting of any unfavorable clinical reactions. You must retain individual product records no less than 10 years after the records of processing are completed or 6 months after the latest expiration date for the individual product, whichever is the later date.
+
+*What it means here.* The component-attribute value that stopped the run is part of the product record trail these paragraphs protect. Mapping it, or changing it, in the extract does nothing to the regulated record. Changing it in BECS to make the extract pass would. And a research sample release must not leave a record unable to show a unit's "ultimate disposition." No research request changes the retention clock.
+
+**21 CFR 11.10, opening sentence** (from `sources/cfr/11.10.md`):
+
+> Persons who use closed systems to create, modify, maintain, or transmit electronic records shall employ procedures and controls designed to ensure the authenticity, integrity, and, when appropriate, the confidentiality of electronic records [...]
+
+*What it means here.* Those controls (validation, access limits, audit trails) belong to the BECS records. EXT-21's service account has no write permission, so nothing the extract does can create, modify or delete a BECS electronic record. That fact, shown as a permission report (module 2), is why Quality can answer "no record touched" with evidence. See [Part 11 for validated systems](../../csv-and-becs/part-11-for-validated-systems/index.qmd) and [ALCOA and data integrity](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd): the stopped run is "accurate and complete" being protected at the boundary.
+
+**BECS guidance III.I** (from `sources/fda-guidance/becs-validation-users-facility-2013.md`; guidance, so "should," not "shall"):
+
+> Due to the complexity of systems and BECS, a seemingly small local change (e.g., software, hardware, peripherals, or infrastructure) may have a significant global system effect. When any change (even a small change) is made to the software on the system, a software regression analysis should be conducted, not just for validation of the individual change, but also to determine the extent and impact of that change on the entire system. Based on the analysis, you should then conduct an appropriate level of software regression testing to show that unchanged but vulnerable portions of the system have not been adversely affected.
+
+*What it means here.* The guidance is about BECS's validated state. It does not mention research extracts and does not require anyone to consult a CMDB. But "the entire system" is the right frame: a value-set change is exactly a small change with a downstream effect, and EXT-21 is a consumer of BECS data that Lakeshore chose to attach. Lakeshore's own practice extends the analysis to its consumers.
+
+**NIST CM-3 (b) and CM-4** (from `sources/nist/sp-800-53r5-cm-sa-excerpt.md`; voluntary vocabulary):
+
+> CM-3 (b) Review proposed configuration-controlled changes to the system and approve or disapprove such changes with explicit consideration for security and privacy impact analyses;
+>
+> CM-4 Analyze changes to the system to determine potential security and privacy impacts prior to change implementation.
+
+*What it means here.* "Prior to change implementation" is the sentence the Release C analysis fell short of in practice. The catalog is about security and privacy impact, and here the impact was on data correctness, so it is vocabulary, not proof of a violation.
+
+**45 CFR 164.514(e)(3)(i) and (e)(4)(ii)(A) and (B)** (from `sources/cfr/45-164-research-provisions-excerpt.md`):
+
+> (3)(i) A covered entity may use or disclose a limited data set under paragraph (e)(1) of this section only for the purposes of research, public health, or health care operations.
+>
+> (4)(ii) *Contents.* A data use agreement between the covered entity and the limited data set recipient must: (A) Establish the permitted uses and disclosures of such information by the limited data set recipient, consistent with paragraph (e)(3) of this section. [...] (B) Establish who is permitted to use or receive the limited data set [...]
+
+*What it means here.* The DUA defines the permitted uses. A new study may or may not fit inside the purposes the DUA already states. That is a reading of the agreement, with the privacy officer and counsel, before any new field moves. The excerpt's own contents list is the checklist for the field review.
+
+## Track 1: Release C breaks EXT-21
+
+### Why the stop is the control working
+
+Module 2's design gave the run an explicit rule: a value outside the approved value set stops the run. The alternatives are worse. A default ("other") ships an answer nobody chose. The wrong value then lives in the hub's database, in "source data retained" (the 2022 paper's wording, module 2), and in every later analysis. A late file is a visible, correctable event. A plausible wrong value is invisible. The Quality Analyst's signed checklist did what a signed checklist is for.
+
+So your answer to the medical director is no, with a plan: "We will not default it. We will tell the hub the file is late, why, and when to expect it."
+
+### Contain, record, look back
+
+1. **Hold stays a hold.** No file leaves. The run's status in the transfer ledger is *held at QC, no file sent*. A held run still gets a ledger row, a QC checklist with the failed item, and an incident ticket classified as *mapping error: source vocabulary changed* in the intake log from module 2.
+2. **Do not touch BECS.** The new value is correct in BECS. It is a legitimate Release C attribute. It needs a Lakeshore translation, not a correction.
+3. **Look back.** The questions are: when did the new value first appear in BECS, and did any earlier file already carry a Release C value? Compare Release C's go-live with the period covered by each earlier sent file, using the ledger and the sent-file archive (module 4). Here the last sent file ended before go-live, so earlier files are unaffected. If the look-back had found sent rows carrying a silently wrong value, the path is module 4's correction path: fix the mapping, new run, superseding ledger row, notify the hub, and let the program propagate. The look-back is how you know which path you are on, so do it before you promise anything.
+
+### The finding: what should have caught this
+
+The Quality Analyst's incident review asks the process question: "Release C had an impact analysis. Why did it not flag EXT-21?" The honest answer is a finding with two gaps. Present it that way, not as a person's mistake.
+
+> **Finding.** The VAL-1418 impact analysis answered the module 2 question ("does this touch an EXT-21 source field?") with "no."
+>
+> **Gap 1, relationship depth.** When the analysis was written, EXT-21 was in design and test. Its CMDB record linked to the dedicated view over the reporting copy, but not onward to the BECS fields and value sets the view reads. Release C's changed value set lives upstream of the view. A query for "what depends on this BECS item" returned nothing, so "no" was a true answer from an incomplete map.
+>
+> **Gap 2, no re-check at go-live.** When EXT-21 moved to production, nobody re-ran open, approved-but-not-yet-deployed BECS changes against the now-complete CMDB. Release C was one of those.
+>
+> **What worked:** the QC stop, the signed checklist and the unmapped-value rule. **What did not:** the CMDB's granularity and the lack of a trigger when a new downstream consumer goes live.
+
+Quality decides how the finding is classified (a control-gap finding with a corrective action, or something heavier). The Director's reasoning, for Quality to confirm and not a conclusion: no regulated record was altered, no product was affected, and the release course's three-way distinction applies (a correct change is not a deviation; a departure from procedure is; a reportable event is a separate determination). The finding is a gap in Lakeshore's change process.
+
+### The fix, through change control
+
+The fix is a normal change, with the research service treated as the configuration item it is:
+
+- **A new mapping version (v2).** The mapping document (module 2) gets a row for the new value: BECS source, meaning in Lakeshore's terms, target value, owner, version. Here the new value is a more specific variant, and the approved spec value is the broader category. Translating it to that category is the smallest change, so mapping v2 does that and records that detail is lost. The field's named owner confirms the meaning; the medical director confirms the translation is scientifically acceptable.
+- **Spec version stays put.** Mapping version and spec version are separate counters. Mapping v2 changes how Lakeshore translates, not what the hub's spec contains. If the study team later wants the finer value, that is a new spec version through the hub and privacy officer, not a mapping tweak.
+- **Test before production.** Run EXT-21 on the validation environment's de-identified copy, which already sits on the Release C baseline. Include a negative test: seed a synthetic value that is not in the table and confirm the run still stops. The unmapped-value rule is itself a tested control.
+- **Re-run with signed QC and reconciliation** against BECS reports, then release through the normal release step. The ledger row for the re-run records mapping v2 and **supersedes** the held run (module 4's supersedes link, used here to tie the held run to the run that replaced it). No file was ever sent for the held run.
+- **Notify the hub.** Module 1 listed change notification as a commitment area. Tell the hub the file is late and why, that mapping v2 translates the new value to the existing category, and that Lakeshore can supply finer detail only through a spec change. The hub decides whether it wants that.
+- **A stated window.** The Director's decision below sets one. If the agreement or spec states a submission deadline, that governs, and a deadline that cannot be met is raised with the hub before it passes.
+
+### The process fix
+
+1. **Every BECS impact analysis queries the CMDB's downstream relationships**, not just asks people. The question "does this touch an EXT-21 source field?" is answered by a relationship query, and the query result is attached to the analysis.
+2. **EXT-21's CMDB relationships go to field level**, including the value sets, not just the view. Registration of any research extract is complete only when its upstream chain is complete, verified by the Quality Analyst.
+3. **Going live triggers a re-check.** When a new downstream consumer (EXT-21 or any later one) enters production, open and approved-but-undeployed changes are re-run against the CMDB.
+4. **EXT-21 joins the release course's regression scope as a downstream consumer.** In the vendor-intake model it is a Tier 2 targeted check: after the validation environment's BECS moves to a new baseline, run EXT-21 on the de-identified copy and read the QC report. It is sized by the vendor's release notes (reference data, value sets, status codes), and the intake checklist adds the vendor question "do any value sets, codes or status vocabularies change?" See [vendor release intake for BECS](../../release-management-and-sdlc/vendor-release-intake-for-becs/index.qmd) and [risk-based testing and regression](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd).
+
+None of this is a regulatory requirement for a research extract. It is Lakeshore's own change discipline, written down.
+
+## Track 2: the rapid-response request
+
+### Intake first, then the two halves
+
+The Director's new **research requests intake checklist** has one job: make every request, however urgent, begin the same way. For this request it produces three immediate actions.
+
+1. **Ask the hub for the authority.** In writing: which protocol and which IRB approval or determination covers *this* study, and whether the program's single-IRB waiver (module 3) extends to it. The sources in this course show the waiver for the program as the 2022 paper describes it. They do not show that it extends to a particular new study, and Lakeshore does not assume it. The IRB's own documentation, not the email, goes in RSH-0107.
+2. **Split the request.** Data and samples are different things with different owners. One shared deadline does not make them one task.
+3. **Pick the sequence.** The mapping v2 fix goes first. The new field's extract builds on the mapping, so do not bundle the two into one change record: they are separate changes with separate evidence. They may share a validation run.
+
+### The data half: a new field is a new spec version
+
+The extra extract is not a side query. It is **an EXT-21 run under a spec addendum**, through the pipeline that already has its read-only source, view, QC, release step, ledger, key controls and incident plan.
+
+- **New spec version (v2).** Module 2's rule: new fields are a new spec version, with a stated purpose per field. The medical director writes the purpose. If the study question cannot be written in a sentence, the field is not ready.
+- **The privacy officer's field-by-field review** (module 3). She checks the field against the direct identifiers a limited data set excludes (164.514(e)(2)) and decides. A donor number or similar identifier is her call, not IT's. "Recent donations" can also raise a re-identification question the old spec did not. Free-text fields remain out.
+- **DUA scope check** (module 4). Does the agreement's permitted purpose cover this study? Does the DUA name the recipients who will receive it? If not, the DUA is amended first (164.514(e)(4)(ii)(A), (B)). Counsel and the privacy officer decide.
+- **Security controls unchanged** (module 5). Same read-only account (the view gains one column, reviewed), same sFTP channel the agreement names, same keys, same logging, same copies inventory. A one-off extract is still a transfer. If the request seems to need a different channel, a new recipient, or "just this once by email," the answer is no and the request returns to the privacy officer.
+- **Ledger and copies.** The run gets a ledger row with spec v2 and mapping v2, and every copy goes in the inventory (module 5).
+- **Source check for the new field.** Before approving the build, run the CMDB relationship query on the new field's BECS source. This is the process fix from Track 1, used the first time it can matter.
+
+### The sample half: physical, so it is Lakeshore's own procedure
+
+A retained donation sample is a physical object. Module 4 noted that NIH's definition of scientific data excludes specimens, so the extract ledger and DMS machinery do not govern it, though data generated from it would be in scope later. What governs the release?
+
+- **Lakeshore's own sample-handling procedures**, owned by the laboratory and Quality: who may release, how, how it is logged, chain of custody.
+- **The research agreement.** Whether it covers sample transfer, and whether a separate sample agreement is needed, is for counsel and regulatory affairs. This course's sources do not say what the hub's agreement says.
+- **Whether a retained sample is needed for any regulated purpose before it goes to research.** Quality and regulatory affairs decide. This course holds no source on retained-sample requirements, so the lesson makes no claim about them. It flags the question.
+- **Coding.** If a sample manifest links samples to extract rows, it should use the same coded donor key and not the crosswalk (module 2's option B). The privacy officer decides what identifiers may appear on a manifest or label.
+- **No effect on BECS.** Selecting samples and logging their release happen in the research file and the laboratory's sample records. **No research step may alter a BECS record or a donation's status.** If a unit's status would need to change for any reason, that is an ordinary BECS operation under BECS's controls and has nothing to do with the study.
+
+Make the sample list from the same controlled path. A list of donation numbers pulled from the read-only reporting copy through a reviewed query is traceable. A list typed by someone from memory is not.
+
+### Where urgency really goes
+
+The week has five working days of the same people. What compresses:
+
+- **Parallel steps.** Privacy review of the new field, DUA scope reading and sample-procedure review start the same day. Test of mapping v2 runs while they do.
+- **A ready checklist.** The intake checklist already holds the questions, so nobody invents them under pressure.
+- **A named, standing approver set** for research requests (privacy officer, Quality, the medical director, you), so approval is a short meeting, not a thread.
+- **Honest dates to the hub.** A real date beats a promised one that skips a step.
+
+What does not compress: the privacy review, the DUA reading, QC, signed release, the ledger, or the boundary check. And do not borrow the [emergency change path](../../release-management-and-sdlc/emergency-changes-and-hotfixes/index.qmd) for this. That path exists for a threat to Lakeshore's own regulated operations, with its own pre-written controls. A research request is not that. Using it would also teach the organization that "urgent" unlocks the side door.
+
+## See it in one picture
+
+The week as two tracks that meet at one boundary check. The dotted line is the dependency: spec v2 builds on mapping v2.
+
+```{mermaid}
+flowchart TB
+    subgraph W1["Track 1: Release C breaks EXT-21"]
+        A["Release C live in production"] --> B["Monthly run hits an unmapped<br/>component-attribute value"]
+        B --> C{"QC stops the run<br/>no default, no file sent"}
+        C --> D["Ledger: held run, no file.<br/>Look-back: earlier sent files unaffected"]
+        D --> E["Change record: mapping v2<br/>field owner, Quality, privacy officer informed"]
+        E --> F["Test on validation copy,<br/>then re-run with signed QC"]
+        F --> G["Ledger: new run supersedes held run.<br/>Hub notified"]
+    end
+    subgraph W2["Track 2: rapid-response request"]
+        H["Hub request:<br/>samples + extract with a new field"] --> I["Research requests intake checklist"]
+        I --> J["New field: spec v2, privacy officer<br/>field review, DUA scope check"]
+        I --> K["Samples: Lakeshore sample-handling<br/>procedures + research agreement"]
+        J --> L["Extract runs through the same EXT-21<br/>pipeline, same controls, same ledger"]
+    end
+    G -. "mapping v2 is the base for spec v2" .-> J
+    L --> M["Boundary check, signed in RSH-0107:<br/>no BECS write, no donation status change,<br/>Quality decides if any regulated record is touched"]
+    K --> M
+    F --> M
+```
+
+## Watch it explained
+
+No video embed for this module. I searched for a neutral, public explainer on CMDB-based change impact analysis. The candidates found were tool-vendor product demos, and I could not confirm any of them as a standalone, embeddable, on-topic video from an authoritative channel. Nothing about research data alongside a BECS exists on video that I could verify. The diagram and the [release course's regression lesson](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd) carry this topic. See the resources page.
+
+## What an assessor would look for
+
+Mostly the same people as before: the privacy officer's audit, a hub review, an internal audit, and, for the BECS side, an FDA inspector who cares only whether any regulated record could have been affected.
+
+- **The held run's paper trail:** failed QC checklist, ticket, ledger row marked held with no file, the look-back evidence. Bad answer: "We re-ran it and it was fine."
+- **Mapping v2's change record** with owner, tests including the negative test, and Quality's approval. Bad answer: "We added a line to the script."
+- **The finding and its corrective action,** with the CMDB relationships actually updated. Bad answer: "We'll be more careful."
+- **The release course's regression analysis template** showing EXT-21 as a downstream consumer.
+- **The addendum file for the rapid-response request:** IRB documentation from the IRB, spec v2 with purposes, the privacy officer's field-by-field determination, the DUA scope note, the sample release log. Bad answer: "The hub said it was urgent."
+- **The boundary memo:** Quality's and regulatory affairs' written view of whether any regulated record was touched, backed by the permission report.
+
+## Common traps
+
+1. **"Map the unknown to 'other' so the dashboard stays green."** A default ships a value nobody chose. The stop is the control.
+2. **"Fix it in BECS so the extract passes."** The BECS value is legitimate. The mapping changes, the record does not.
+3. **"It's research, so the CMDB doesn't need to know."** The CMDB is how a BECS change finds its downstream consumers. An unlinked consumer is invisible to your own process.
+4. **"Urgent means skip the review."** Urgency changes sequence and parallelism. The steps stay.
+5. **"Samples are just another dataset."** They are physical, governed by Lakeshore's own procedures and the agreement, with a Quality question about regulated purposes that IT cannot answer.
+6. **"IT can tell whether a regulated record was touched."** IT can show the permission set and logs. Quality and regulatory affairs decide.
+
+## What this means for your job
+
+- **Treat a stopped run as good news with homework.** Ask what upstream change caused it and which process should have seen it coming.
+- **Audit the CMDB, not just the people.** For each research extract, ask for the relationship chain to the BECS fields and check it yourself once.
+- **Hold the sequence.** Fix the broken thing first, then build the new thing on it, in separate change records.
+- **Own the intake checklist.** Research requests start with the authority question, the split between data and samples, and the named approvers.
+- **Keep the decision rights written down:** privacy officer for data content, Quality and regulatory affairs for regulated records, laboratory and Quality for samples, counsel for agreements, you for sequence and capacity.
+- **Escalate immediately:** any request that needs a BECS write, a new recipient or channel, a crosswalk, or an identifier on a sample label.
+
+## The Director's decisions
+
+Recorded in RSH-0107:
+
+> **1. EXT-21 fix.** The held run stays held and is not defaulted. EXT-21 mapping v2 is made under change control, tested on the validation environment's de-identified copy (including the unmapped-value negative test), and re-run with signed QC and reconciliation. The re-run is released **within ten business days of the stop** (a Lakeshore target; if the agreement or spec sets a submission date, that date governs and the hub is told in advance if it cannot be met). The ledger row for the re-run supersedes the held run. The hub is notified of the delay and the translation.
+>
+> **2. Process fix.** Every BECS impact analysis includes a CMDB downstream-relationship query. EXT-21's relationships are extended to field level. Going live with a new downstream consumer triggers a re-check of open changes. EXT-21 is added to the release course's regression scope as a Tier 2 downstream consumer, and the vendor-intake checklist adds the value-set question. Quality classifies the finding.
+>
+> **3. Rapid-response request.** Approved as a **scoped addendum** to RSH-0107, conditional on: the IRB documentation for the study; the privacy officer's field-by-field determination for the new field; the DUA scope confirmed or amended; spec v2 approved. The extract runs through the existing EXT-21 pipeline with no change to its security controls. Samples are released only under Lakeshore's sample-handling procedures and the research agreement, after Quality and regulatory affairs confirm no regulated purpose is affected.
+>
+> **4. Boundary.** No research activity writes to BECS or changes any donation status. Quality and regulatory affairs record whether any regulated record is touched.
+>
+> **5. Standing intake.** A *research requests* intake checklist is adopted for every future request.
+
+## The course in one passage
+
+Module 1 asked who is asking and whether Lakeshore should say yes, and the answer was yes with four conditions. Module 2 turned "read-only" into a design: a view, a service account, a spec, a mapping and signed QC. Module 3 put the privacy officer's pathway on paper: a limited data set under a data use agreement, a coded key, a treatment for Certificates of Confidentiality. Module 4 followed the data downstream and gave IT a ledger and a provenance record. Module 5 turned privacy and sponsor expectations into controls and a four-track incident plan. Module 6 tested all of it in one week: a regulated system changed and a scientific request arrived, and the same few habits held. Lakeshore kept its records its own, made research a service with owners, and let urgency set the speed and never the steps.
+
+One last honest note, as in every module. People call the current round "REDS V." The records still describe REDS-IV-P phase 3, none use the name "REDS-V," and nothing in this course asserts a REDS-V structure or requirement. If a later NHLBI or RePORTER record names a new phase, re-read the agreement against it before changing anything.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The run stops on an unmapped value, and the hub's dashboard expects a file. The medical director suggests mapping it to "other." What do you say?
+
+No. The unmapped-value rule exists so a plausible wrong value never ships into a database that retains source data. The stop is the control working. Hold the run, classify the cause, look back at earlier files, make mapping v2 under change control, re-run with signed QC, and tell the hub the file is late and why.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Name the two gaps in the finding.
+
+Relationship depth: EXT-21's CMDB record linked to the view but not to the BECS fields and value sets behind it, so the downstream query returned nothing. And no re-check at go-live: when EXT-21 entered production, nobody re-ran open, approved-but-undeployed BECS changes against the completed CMDB.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Does any regulation require a BECS impact analysis to check a CMDB for research-extract consumers?
+
+No. BECS guidance III.I (guidance, "should") recommends regression analysis for the effect on "the entire system." Querying the CMDB for downstream consumers is Lakeshore's own change practice, and NIST CM-3 and CM-4 are voluntary vocabulary. This is a "not a regulatory requirement, but a policy choice" answer.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: The hub says the rapid-response study is urgent and asks you to add the new field to tomorrow's run. What can you compress and what can't you?
+
+You can run reviews in parallel, use a ready checklist, convene a standing approver set and give honest dates. You cannot skip the new spec version, the privacy officer's field-by-field review, the DUA scope check, QC, signed release or the ledger. Urgency changes the speed, not the steps.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q5: Who decides whether releasing retained samples affects any regulated record, and what can IT supply?
+
+Quality and regulatory affairs decide, with the laboratory's sample-handling procedures and the research agreement in view. IT supplies facts: the read-only permission report, logs showing nothing wrote to BECS, and the traceable sample list. This course holds no source on retained-sample requirements, so the lesson flags the question rather than answering it.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q6: Explain to your CIO in two sentences why a failed research run was good news.
+
+"The run stopped because a rule we wrote said unknown values must never be guessed, so nothing wrong left the building. The real finding is that our change reviews could not see this downstream job, and we have now fixed that."
+:::
+
+## Where this goes next
+
+This is the last module of the course. The foundations behind it are in the release course ([vendor intake](../../release-management-and-sdlc/vendor-release-intake-for-becs/index.qmd), [emergency changes](../../release-management-and-sdlc/emergency-changes-and-hotfixes/index.qmd)), the data-integrity course ([ALCOA](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd)) and the healthcare privacy course. To revisit the course from the start, go back to [module 1](../reds-structure-contracts-and-governance/index.qmd).
