@@ -1,0 +1,389 @@
+---
+title: "Post-Release Review and Delivery Metrics"
+order: 148
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** close the loop on a release. Run hypercare to a written exit, hold a post-implementation review (PIR), measure delivery without distorting it, and report release health upward on one page.
+- **The punchline:** the quarter after HOP 3.0 held three production releases (HOP 3.0, BECS Release C, HOP 3.0.1 for CHG-2207) and two recorded deviations. Neither was a disaster, and each one was found by a check Lakeshore had built. The review's job is to turn those two into fixes, not stories.
+- **The rule in one line:** monitoring ends on criteria someone signed, not on a date; every finding is routed to an owner (CAPA, improvement item, change request or accepted risk); every speed number is shown next to an evidence number.
+- **Monday question:** "For the last release, show me the exit criteria for the monitoring period, who signed them, and the review's open items with owners."
+- **The trap:** DORA's metrics are useful research instruments, not targets. In a validated environment a faster number that rests on thinner evidence is a worse result, and it is easy to produce.
+:::
+
+**Before you start:** this module builds on [CAPA: root cause to effectiveness](../../quality-system-essentials/capa-root-cause-to-effectiveness/index.qmd), [internal audits and management review](../../quality-system-essentials/internal-audits-and-management-review/index.qmd), [translating ITSM and risk metrics for executives](../../itsm-for-regulated-blood-services/translating-itsm-and-risk-metrics-for-executives/index.qmd), [presenting IT service and risk performance](../../itsm-for-regulated-blood-services/presenting-it-service-and-risk-performance/index.qmd) and [staying validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd) (periodic review). From this course it uses [module 4](../release-management-deployment-and-change-control/index.qmd)'s release record and freeze rules, [module 9](../deployment-cutover-and-rollback/index.qmd)'s cutover and [module 10](../emergency-changes-and-hotfixes/index.qmd)'s CHG-2207. It does not re-teach them.
+
+## The quarter in one room
+
+It is the first Monday after the quarter closes. The Director has a meeting with the Quality Analyst, the systems administrator, the development lead and the head of distribution, and a whiteboard with three rows: **HOP 3.0**, **Release C**, **HOP 3.0.1**.
+
+"Before we talk about how it went," the Quality Analyst says, "can we agree what 'done' means? Because I have three release records and I am not sure any of them is actually closed."
+
+She is right to ask. HOP 3.0 deployed first, and its monitoring period ended before the freeze, as [module 4](../release-management-deployment-and-change-control/index.qmd) arranged. Release C went live after the freeze in its ten-hour window, and its monitoring period was still running when the framework advisory arrived. HOP 3.0.1 then went in under a named waiver, because it shared Release C's monitoring period. Three releases, overlapping tails, and nobody has said in writing which tails have ended or who said so.
+
+The head of distribution is blunter. "Nothing broke in front of hospitals. Is that the review? Because that is my review."
+
+The development lead is thinking about the other number. "The CIO will ask how fast we are. We shipped a major release, a hotfix and a vendor upgrade in a quarter. I would like that to count for something."
+
+The systems administrator says what the Director is thinking. "If we answer 'how fast' with a deploy count, we will have told the CIO the wrong story. We were fast on the hotfix because the pre-written regression set existed, and slow on Release C because the freeze and the rollback rehearsal took the time they took. Those are different stories with the same number."
+
+That is this module's problem. The release is installed; whether it *worked*, whether it is *closed*, what it *taught*, and what to *say upward* are four separate jobs.
+
+## Why the rule exists, and the ITSM bridge
+
+Three failures live here.
+
+**The release that never closes.** Monitoring "just stops" when attention moves to the next project. Nobody decides the system is stable; nobody records what was watched. Months later an assessor asks whether the post-installation monitoring the guidance recommends actually happened, and the honest answer is "we looked at it for a while."
+
+**The lesson that never lands.** A bad night produces a good story, retold until it is folklore, and a fix that fits no one's backlog. Two people each assumed the other logged the hospital notice. If the review only says "communication could be better," the same assumption is waiting for the next emergency.
+
+**The number that bends the work.** The moment a delivery metric becomes a target, the work reorganises around the metric. In most shops that costs quality. In a blood center it costs evidence, and evidence is what lets Lakeshore say a system was in a validated state on a given day.
+
+The ITSM bridge is one you own. Hypercare is **early-life support**, with exit criteria that Quality co-signs. The PIR is the **post-implementation review** that ITIL change practice has always called for, now with an evidence-completeness section. Routing findings is **continual improvement**: the register, the problem record, the CAPA, each with an owner. Delivery metrics are **service reporting**, with the same rule you already apply to SLAs: a measure that is wrong, or gamed, is worse than none. (These are paraphrases; ITIL is paid material and is not quoted.)
+
+## The rule in plain English
+
+1. **Monitor after installation, on a written plan,** watching what the test cases could not show (BECS guidance III.G).
+2. **End the monitoring period by a recorded decision against exit criteria** written before go-live. It is not a date on a calendar.
+3. **Review every release after the fact,** in a PIR that covers what went well, what did not, whether the evidence is complete, and what is still open.
+4. **Route every finding to a named owner and a mechanism,** and track it to closure, with trending across releases.
+5. **Measure delivery with a small set of metrics,** each defined in writing, each paired with an evidence measure, none used as a target.
+6. **Report release health upward in one page,** in two voices: the CIO's and the quality council's.
+
+No regulation in this course's sources prescribes a hypercare length, a PIR, a delivery metric or a report format. Those are Lakeshore's decisions. What the sources supply is the expectation around them.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| BECS guidance III.G | "Section III, subsection G of the 2013 user's-facility guidance" | Closely monitor after installation; keep monitoring interface error files (guidance: *should*; *must* only where it cites regulation) | The hypercare plan: what is watched, and why it outlives the test cases. |
+| BECS guidance III.H | "...subsection H" | Validation report includes variances, failed tests, amendments and dated approvals (guidance; cites 211.68, 211.100(b), 606.160(b)(5)) | The PIR feeds the validation summary: variances belong in it. |
+| BECS guidance III.I | "...subsection I" | Regression analysis after any change; the user is ultimately responsible (guidance) | Why the PIR also asks whether the hotfix's regression analysis was complete. |
+| 21 CFR 211.100(b) | "Title 21, part 211, section 211.100, paragraph (b)" | Procedures followed and documented at the time of performance; deviations recorded and justified (regulation: *shall*; cited by the BECS guidance) | The evidence-completeness section of the PIR, and why backfilled approvals are false records. |
+| 21 CFR 606.100(b), (c) | "...part 606, section 606.100, paragraphs (b) and (c)" | Written procedures established, maintained and followed, including for recordkeeping (b; *must*). Records reviewed before release or distribution, and unexplained discrepancies investigated and recorded (c; *shall*) | The monitoring plan as a followed procedure; reconciliation discrepancies found in hypercare. |
+| GPSV 5.2.7 | "General Principles of Software Validation, section 5.2.7" | Anomaly evaluation, root cause, problem tracking and trending, CAPA where trends appear (FDA device-maker guidance; general thinking, not binding on Lakeshore) | The PIR's route from finding to fix. |
+| NIST SP 800-53 CM-3(f) | "Control CM-3, item f" | Monitor and review activities associated with configuration-controlled changes (voluntary catalog) | The PIR is the "review" half of that control for a release. |
+| NIST SSDF RV.3 | "SSDF practice RV.3" | Analyze vulnerabilities to identify root causes (voluntary framework) | CHG-2207's after-action. |
+| DORA, dora.dev | "The DevOps Research and Assessment program's guide" | Five software delivery performance metrics (research program, not a standard, not regulation) | The delivery metrics section. |
+
+## The actual text
+
+**What no source says.** None of these sources prescribes a monitoring period's length, a PIR, a metrics set or a report. They supply the reasons.
+
+The monitoring recommendation, the blood-specific anchor for hypercare:
+
+> We recommend that you closely monitor the system for a period of time after installation of the new or upgraded software in the production environment to detect any discrepancies that were not identified by the test cases.
+> — FDA, *Blood Establishment Computer System Validation in the User's Facility*, III.G
+
+Reading it: **"recommend"** makes this guidance, not regulation. **"A period of time"** is deliberately unspecified, so Lakeshore sets it by risk and writes it down. **"Discrepancies that were not identified by the test cases"** tells you *what* to watch: not a rerun of the validation, but the conditions testing could not produce: real volumes, real data, real combinations. The same bullet list adds a sentence that fits an interface-heavy release:
+
+> Monitoring of interface error files should continue subsequent to implementation as unforeseen transaction types or data elements may cause disastrous results (for instance, orders not being received, results posting to the incorrect donor/patient record, etc.).
+> — same guidance, III.G (interface bullet)
+
+Reading it: **"continue"** means the watching is part of operation, not a one-time check. HOP's order path is exactly "orders not being received."
+
+The regulatory text that applies when hypercare *finds* something in a unit's record:
+
+> (c) All records pertinent to the lot or unit maintained pursuant to these regulations shall be reviewed before the release or distribution of a lot or unit of final product. The review or portions of the review may be performed at appropriate periods during or after blood collecting, processing, compatibility testing and storing. A thorough investigation, including the conclusions and followup, of any unexplained discrepancy or the failure of a lot or unit to meet any of its specifications shall be made and recorded.
+> — 21 CFR 606.100(c); full text in `sources/cfr/606.100.md`
+
+Reading it: **"unexplained discrepancy"** and **"made and recorded"** are why a count that does not reconcile during hypercare is investigated, not adjusted. This is a rule about unit and lot records, not about an ordering portal's metrics; it matters here because Release C's hypercare watches reconciliation of real unit records.
+
+The deviation rule, which governs the PIR's evidence-completeness section:
+
+> (b) Written production and process control procedures shall be followed in the execution of the various production and process control functions and shall be documented at the time of performance. Any deviation from the written procedures shall be recorded and justified.
+> — 21 CFR 211.100(b); full text in `sources/cfr/211.100.md`
+
+Reading it: **"documented at the time of performance"** is what the PIR *checks*: were the records made when the thing happened? A PIR cannot create evidence. It can only find out whether it exists. (211.100 is a drug cGMP section that FDA's BECS guidance cites; whether it applies to a given Lakeshore procedure is a Quality judgment.)
+
+The general guidance on what to do with problems, written for device makers and used as general thinking:
+
+> Software anomalies should be evaluated in terms of their severity and their effects on system operation and safety, but they should also be treated as symptoms of process deficiencies in the quality system. A root cause analysis of anomalies can identify specific quality system deficiencies. Where trends are identified (e.g., recurrence of similar software anomalies), appropriate corrective and preventive actions must be implemented and documented to avoid further recurrence of similar quality problems.
+> — FDA, *General Principles of Software Validation*, 5.2.7 (Anomaly Evaluation)
+
+> All problems discovered during maintenance of the software should be documented. The resolution of each problem should be tracked to ensure it is fixed, for historical reference, and for trending.
+> — same guidance, 5.2.7 (Problem Identification and Resolution Tracking)
+
+Reading them: **"symptoms of process deficiencies"** is the PIR's whole attitude: the hospital notice was not "someone's mistake," it was a checklist step with no owner. **"Trending"** is why findings are logged in one register across releases instead of one report per release. The "must" in the CAPA sentence belongs to a device-maker context and cites a device regulation; for Lakeshore it is the reasoning, not the law.
+
+NIST's catalog supplies the control vocabulary:
+
+> f. Monitor and review activities associated with configuration-controlled changes to the system;
+> — NIST SP 800-53 Rev. 5, CM-3 (item f)
+
+> Analyze Vulnerabilities to Identify Their Root Causes (RV.3): Help reduce the frequency of vulnerabilities in the future.
+> — NIST SP 800-218, SSDF v1.1, Respond to Vulnerabilities (RV)
+
+Reading them: both are voluntary here. CM-3(f) is the sentence behind "we review how changes went." RV.3 is why the CHG-2207 review asks about the *component*, not only the logging step.
+
+## Hypercare: what is watched, and who ends it
+
+"Hypercare" is the ITSM word. The guidance word is **monitoring after installation**. They are the same period, and Lakeshore's plan for each release names it.
+
+**What is watched.** The plan lists signals tied to what the release changed, not generic uptime. For these three releases:
+
+| Release | Signals | Why |
+|---|---|---|
+| **HOP 3.0** | Whether proposals are marked stale when they age out (HOP-R35); that HOP shows only BECS-read status with the read time (HOP-R34); HOP's interface error handling and its order path; support contacts from hospitals about proposals | The auto-allocation requirements from [module 2](../requirements-backlogs-and-traceability-in-agile/index.qmd) are the thing that is new. A proposal HOP shows must never become a commitment (HOP-R32, HOP-R33). |
+| **Release C** | Interface error files (III.G); reconciliation of the downtime paper and its second-person review ([module 9](../deployment-cutover-and-rollback/index.qmd)); the **reprint log** and second-person checks that made the label anomaly a *conditional* acceptance ([module 5](../vendor-release-intake-for-becs/index.qmd)); conversion samples for donor records and deferral codes; inventory counts against the unit-level list (the vendor's resolved anomaly, whose question to the vendor was open) | Each is a condition the release was accepted on, or a place the tests were weakest. |
+| **HOP 3.0.1** | Verification that the patched component is what is installed (artifact ID and checksum); HOP's regression areas touched by the component; retirement of the filtering rule by its recorded step; the log review that already found no sign of exploitation | A hotfix on compressed testing is where monitoring earns its keep ([module 10](../emergency-changes-and-hotfixes/index.qmd)). |
+
+**Who watches.** Named people with a cadence, in the plan: the systems administrator for technical signals, the Quality Analyst for the reprint log and reconciliation, distribution leads for order and label behavior at the sites, the development lead for HOP. A signal nobody reviews is not monitoring.
+
+**Who decides it is over.** Not IT alone. The decision mirrors the go/no-go structure of [module 9](../deployment-cutover-and-rollback/index.qmd):
+
+- The **Director**, as system owner, proposes the exit.
+- **Quality** concurs, and for a labeling-related release has the same blocking authority it had at go-live. The Director does not override it.
+- The **head of distribution** confirms normal volume and no open issues in the order path, as with the freeze exit in [module 4](../release-management-deployment-and-change-control/index.qmd).
+- The vendor's consultant advises; the vendor does not decide.
+
+**Exit criteria.** Written in the release record before go-live. A set Lakeshore could defend:
+
+1. The **minimum observation span** in the plan has elapsed. Lakeshore sets it by risk and writes the number into the plan; no source supplies one, and Release C's is longer than a HOP-only release's.
+2. **Reconciliation is complete** and its second-person review closed, with exceptions raised as deviations.
+3. **Interface error files** are clean or every entry is explained.
+4. **The reprint log** has been reviewed by Quality, with no unexplained discrepancy (the 606.100(c) sentence).
+5. **No open high-severity defect** and no open deviation lacking a recorded risk decision.
+6. **The baseline record** and the validated pair (HOP build plus BECS baseline) are confirmed in the release record.
+7. **Support hands back** to normal operation: runbooks updated, the downtime binder changes made, the monitoring owners released.
+
+**Extend; do not stretch.** When a criterion is not met, the plan says "extend, with a reason and a new review date," and does not say "end anyway." A change *inside* a monitoring period is the harder case. CHG-2207 arrived during Release C's. The Director's rule for next time: any change inside an open monitoring period is recorded against that period, and Quality decides, in writing, whether the clock for the functions it touches restarts. This is Lakeshore's decision. Ending a monitoring period also frees the interface slot that [module 4](../release-management-deployment-and-change-control/index.qmd)'s collision rule protects, which is one more reason the end must be a recorded event.
+
+**Hypercare is not periodic review.** When the exit is signed, the system returns to the ordinary rhythm described in [staying validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd): patches, changes and periodic review of whether the system is still in its validated state. Monitoring after installation is a short, release-specific window; periodic review is the long game.
+
+## The post-implementation review
+
+The PIR is held for **every** release, in proportion: a patch gets a one-page review, Release C gets a meeting. It is a controlled record filed in the release record. No source in this course requires a PIR as such. What the sources do require is the evidence a PIR checks (211.100(b)), and what they recommend is the review-and-trend habit (CM-3(f); GPSV 5.2.7).
+
+**When.** The Director's rule: a release's PIR is complete before the next release's plan is approved. That ties the review to the calendar without inventing a day count, and it makes the lessons arrive before they are needed.
+
+**Who.** The release record owner (the Director), the Quality Analyst, the systems administrator, the development lead, the head of distribution, and for Release C a vendor contact for the parts the vendor owns. Blameless in method, specific in record: the aim is "what did the process allow?" not "who slipped?" ([the Google SRE book's postmortem chapter](https://sre.google/sre-book/postmortem-culture/) is a good account of the method).
+
+**Four sections.**
+
+**1. What went well.** Name it, because controls that worked should be kept deliberately. From these releases: the pre-written emergency regression set let a night change be tested in an hour; the rollback rehearsal found a nine-hour restore before it mattered; the baseline-drift check caught the BECS test instance a patch level behind production before HOP's interface evidence was accepted.
+
+**2. What did not.** Specific and sourced from records, not memory. DEF-0412, the soft hold written to an order request, was found in rc1 by TC-32c: a control working, but also evidence that the requirement HOP-R32 was easy to violate by accident. The environment-parity gap in rc2 was found by QA, not by a check: nobody owned "validation's BECS follows production." The first rollback rehearsal ran nine hours against a six-hour window. The hospital notice was posted and not logged.
+
+**3. Evidence completeness.** The section only a regulated shop has. Walk the release record against the readiness checklist, row by row, and ask of each document: does it exist, is it dated when the thing happened, is the named person the one who did it, are results tied to the build and baseline (the validated pair)? Count and list what is **late** or **reconstructed**. This quarter that list has one entry: the hospital-notice log entry, reconstructed from status-message history and the on-call phone log and labeled as reconstructed. A reconstruction is acceptable only when honestly labeled; an approval cannot be reconstructed at all ([module 10](../emergency-changes-and-hotfixes/index.qmd)). The completeness check also confirms what the validation summary says about variances (BECS III.H).
+
+**4. Open items.** Everything still unresolved, each with an owner and a due date. This quarter's include:
+
+- HOP-531, "auto-confirm single-unit orders," pending regulatory affairs' determination ([module 2](../requirements-backlogs-and-traceability-in-agile/index.qmd)); no one should build toward it meanwhile.
+- The vendor's written question on whether HOP's inventory read shares the bulk-status-change logic ([module 5](../vendor-release-intake-for-becs/index.qmd)), and the "no new 510(k)" basis, asked in writing.
+- The label-reprint anomaly: the conditional acceptance (alternate layout, second-person check, reprint log) stays in force until the vendor's fix is validated.
+- The questions [module 9](../deployment-cutover-and-rollback/index.qmd) left to their owners: a HOP switch to hide proposals during downtime (development lead), BECS back-timed entries (vendor), and write transactions as a labeling smoke check (Quality).
+- The CAPA from the missed notice, whose effectiveness check waits for the next emergency or drill.
+
+## From finding to fix
+
+The PIR's output is a routing table. Every finding goes to one of five places, decided with Quality, never left as a sentence in a report.
+
+| Finding type | Route | Example from this quarter |
+|---|---|---|
+| A procedure was not followed, or a record is wrong or late | **Deviation**, and **CAPA** if the cause is systemic ([deviations](../../quality-system-essentials/deviations-and-nonconformances/index.qmd), [CAPA](../../quality-system-essentials/capa-root-cause-to-effectiveness/index.qmd)) | The unlogged hospital notice: root cause (two people each assumed the other logged it; the checklist step had no owner), CAPA with templates, a named logging owner and an effectiveness check |
+| A control gap that would recur, no procedure was broken | **CAPA or preventive action** with a root cause | The environment-parity gap: a named owner for validation-to-production parity and a drift check as an entry criterion |
+| A way to do the work better, no compliance exposure | **Improvement register** item, in the ITSM continual-improvement register ([crosswalk](../../itsm-for-regulated-blood-services/itil-to-qse-crosswalk-cmdb-and-continual-improvement/index.qmd)) | Costing the proposed automated HOP-to-BECS interface test suite ([module 6](../risk-based-testing-and-regression/index.qmd)) |
+| A design or scope question | **Change request** or **backlog item** with an owner, through change control | The HOP switch to hide proposals during downtime |
+| A risk Lakeshore knowingly carries | **Risk register** entry, accepted by a named person for a stated time | The label-reprint anomaly under conditional acceptance |
+
+Two rules keep the table honest.
+
+**CAPA is not the default.** The [CAPA module](../../quality-system-essentials/capa-root-cause-to-effectiveness/index.qmd) taught that a CAPA needs a root cause and an effectiveness check, and a pile of CAPAs for trivia drowns the real ones. Use the lightest mechanism that fixes the cause. Deviations route into CAPA by Quality's judgment, not automatically.
+
+**Trend across releases.** One register, tagged by release and by cause category (requirement, environment, vendor, process, tool). The reason is 5.2.7: individual anomalies are symptoms, and *recurrence* is what the guidance says triggers corrective and preventive action. Two parity findings in two releases would be a trend even if each looked small.
+
+The same applies to the root-cause questions around vulnerabilities. RV.3 asks why CHG-2207's component was exposed, and the answer feeds [module 8](../secure-sdlc-and-software-supply-chain/index.qmd)'s component-addition rule and release-blocking criteria.
+
+## Delivery metrics: what DORA says today, and what to use
+
+**What DORA is.** DORA (DevOps Research and Assessment) is a research program run by Google Cloud. It is not a regulator, a standard or a certification. Its guide on software delivery performance metrics was last updated on the page's own date of January 5, 2026, and, as checked on the day this module was written, it says DORA has identified **five** software delivery performance metrics, and that the set has evolved from the original four keys to the current five-metric model. The page divides them into throughput and instability:
+
+| Group | Metric | The page's description |
+|---|---|---|
+| Throughput | **Change lead time** | The time for a change to go from committed to version control to deployed in production |
+| Throughput | **Deployment frequency** | The number of deployments over a period, or the time between deployments |
+| Throughput | **Failed deployment recovery time** | The time to recover from a deployment that fails and requires immediate intervention |
+| Instability | **Change fail rate** | The ratio of deployments requiring immediate intervention after a deployment, likely resulting in a rollback or a hotfix |
+| Instability | **Deployment rework rate** | The ratio of deployments that are unplanned but happen as a result of an incident in production |
+
+(These are close paraphrases of the page, not quotations. The page's linked history explains the move from "mean time to recover" to failed deployment recovery time; this lesson describes only what the guide page states and does not rely on older four-metric write-ups, many of which still circulate.)
+
+The page also says some things a regulated shop should hear in both directions:
+
+- The metrics are best at measuring **one application or service at a time**, and blending them across teams or the whole organization "can be problematic." Do not average HOP and BECS.
+- **Setting metrics as a goal** invites gaming: the page names Goodhart's law and warns that broad mandates raise "the likelihood that teams will try to game the metrics."
+- **Using industry as a shield.** The page lists "some teams in highly regulated industries might claim that compliance requirements prevent them from disrupting the status quo" as a pitfall. Hold yourself to that: some of Lakeshore's waiting is evidence it must produce, and some is a queue.
+- **Focusing on measurement at the expense of improvement.** Perfect integrations are not the goal; conversations about friction are.
+- The page's research claim is that speed and stability are not tradeoffs for most teams. That is DORA's research finding about software organizations, not a result about blood centers, and this module does not borrow any DORA benchmark numbers.
+
+**Applying the five to Lakeshore, using only what the course's own record supports.** No invented values here; where a number would be invented, the row says how to compute it.
+
+| Metric | HOP | BECS (vendor releases) | What to compute, and the catch |
+|---|---|---|---|
+| Change lead time | Commit to production for each HOP build, from the pipeline's records. Report it in segments: build and validation evidence, approvals, calendar wait (freeze), deployment | The metric's start (commit) does not exist: Lakeshore has no commits. Use Lakeshore's own measure below | Most of HOP 3.0's lead time is validation evidence and a freeze. Reporting only the total hides that. |
+| Deployment frequency | Two HOP builds went to production this quarter (3.0 and 3.0.1); the filtering rule was an edge configuration change, counted separately | One install (Release C) | Low frequency is the designed cadence ([module 1](../sdlc-models-in-a-regulated-blood-center/index.qmd)'s validated release cadence). A "deployment" that is only a switch-on of installed code is still a change ([module 4](../release-management-deployment-and-change-control/index.qmd)): define what counts. |
+| Failed deployment recovery time | No production deployment in the course record needed rollback. **Nothing to compute.** | Same | The rehearsed rollback (nine hours, then five after the plan changed) is a rehearsal figure. It is not a recovery time and should not appear as one. |
+| Change fail rate | The record shows no rollback and no hotfix *caused by a deployment problem* | Same | HOP 3.0.1 is a hotfix, but it answered an external advisory, not a failed deployment. Whether it counts under the page's definition is a classification Lakeshore must write down in advance. |
+| Deployment rework rate | HOP 3.0.1 and the filtering rule were unplanned. Were they "a result of an incident in production"? An advisory with a clean log review is arguably not | Release C needed no unplanned redeployment in the record | The same event can be zero or one in the numerator depending on the definition. Decide the definition before you look at the data, then report externally triggered work separately so it neither flatters nor punishes. |
+
+With this few releases the *rates* are meaningless: one event moves a ratio from nothing to a third. Show the **list of events and their classification**, not a percentage. Rates earn a place only after enough releases to mean something, and DORA's own advice is to start from conversations and baselines, not integrations.
+
+**What matters in a regulated shop, and is Lakeshore's choice.** These are not industry standards and not DORA metrics. They are what answers "did the evidence keep up?"
+
+| Lakeshore metric | How it is computed | This quarter, from the record | Gaming risk |
+|---|---|---|---|
+| **Evidence completeness at the gate** | Per release, readiness-checklist rows with the record present and dated at the time, over rows required, plus the list of late or reconstructed records | One reconstructed record (the hospital-notice log entry). Per-release proportions: compute from each release record | Backfilling dates; softening what "present" means |
+| **Deviations per release** | A list, tagged by release, cause and who detected it (the team's own check, QA, or the outside) | HOP 3.0: one (environment parity, a deviation from the test plan). Release C: none in the record. HOP 3.0.1: one (hospital-notice logging). Total two | Treating a low count as the goal discourages reporting; track *how* each was found |
+| **Rollback, rehearsal and emergency counts** | Counts of rollbacks executed, rehearsals run (with duration), emergency changes, and waivers | Rollbacks executed: none. Rehearsals: two (first overran the window, second reviewed by Quality). Emergency change records: one (CHG-2207). Named waivers: one | Reclassifying an emergency as normal; calling a roll-forward "not a rollback" |
+| **Vendor release to validated production** | Elapsed time from receipt of the vendor's release notes to production go-live, in segments: intake and impact analysis, validation, wait for the window, installation | Release C's segments include a deliberate wait for the post-freeze window. Compute dates from VAL-1418 | Shrinking validation to shorten the total; losing the freeze wait inside "validation" |
+| **Open items and their age** | Count of PIR items and CAPA effectiveness checks open or past due | Listed in the PIR above; the notice CAPA's check is waiting on an event | Closing items early; moving due dates |
+
+These are **proposals** for the Director to adopt. Define each once, in a controlled document owned jointly with Quality, with the data source named. The evidence metrics are Quality's to define and audit; the Director does not grade the Quality Analyst's evidence counts.
+
+## The trap: fast is good only if the evidence keeps up
+
+Say it as a rule: **never report a speed metric without its evidence metric next to it.**
+
+Ways a validated shop can make the speed numbers look better while the work gets worse:
+
+- **Shrink batches by relabeling.** Calling releases "patches" to take the lightest evidence path. [Module 4](../release-management-deployment-and-change-control/index.qmd) already said patches still get scaled regression analysis.
+- **Inflate frequency with dark deploys.** Installing code switched off counts as a deployment but is also a change needing authorization.
+- **Quiet the failure counts.** Roll forward, call it a "fix," and the rollback count stays at zero. Do not accept "no rollbacks" as good news without asking what was rolled forward.
+- **Starve the deviation count.** If the goal is "fewer deviations," people stop writing them. The count falls and the system gets blinder.
+- **Backfill the evidence.** An approval dated after the fact makes "evidence completeness" look perfect and is a false record (211.100(b)).
+- **Reclassify.** An ordinary release run as an emergency to skip the freeze, or an emergency run as normal to keep the emergency count low.
+
+Four guardrails, all cheap:
+
+1. **Pair every throughput number with an evidence number,** on the same page, from independent sources.
+2. **Set no targets on counts.** Set expectations on behavior (the exit criteria were met, every finding has an owner) and treat the metrics as questions, which is what DORA's own guide recommends.
+3. **Have Quality own the evidence definitions and read the data,** so the person whose output is being measured does not also define the measurement.
+4. **Read lead time in segments,** so you can tell waiting that produces evidence (validation, an independent review) from waiting that produces nothing (an approver on holiday, a queue). Cut the second, not the first.
+
+## See it in one picture
+
+```{mermaid}
+flowchart TD
+    A["Release live:<br/>monitoring period starts<br/>(HOP 3.0, Release C, HOP 3.0.1)"] --> B["Watch what the tests could not show:<br/>interface errors, reprint log,<br/>reconciliation, stale-proposal marking"]
+    B --> C{"Exit criteria met?<br/>Director proposes, Quality concurs,<br/>head of distribution confirms"}
+    C -->|"No"| D["Extend with a reason<br/>and a new review date"]
+    D --> B
+    C -->|"Yes"| E["Recorded exit:<br/>baseline and validated pair confirmed,<br/>support handed back"]
+    E --> F["Post-implementation review:<br/>went well, did not, evidence completeness,<br/>open items"]
+    F --> G{"Route each finding"}
+    G --> H["Deviation or CAPA:<br/>unlogged hospital notice"]
+    G --> I["Improvement register:<br/>automated interface test suite"]
+    G --> J["Change request:<br/>hide proposals in downtime"]
+    G --> K["Risk register:<br/>reprint anomaly, conditional acceptance"]
+    H --> L["Release-health page:<br/>speed beside evidence"]
+    I --> L
+    J --> L
+    K --> L
+    L --> M["CIO: risk, asks, throughput<br/>Quality council: evidence, deviations, CAPA"]
+    M --> N["Next release plan, after this PIR is complete"]
+```
+
+## Watch it explained
+
+This is a podcast interview with Nathen Harvey, who is identified on dora.dev as the author of DORA's metrics guide, on what the DORA metrics are and what DORA's research is about. The channel is a software-engineering-analytics company's, and only its title, channel and embeddability were verified, not what it says about the five metrics: it may describe the older four-metric framing, so treat dora.dev's guide as the authority. It is general software delivery, not regulated blood systems; the evidence metrics and the report in this lesson are Lakeshore's own.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/TSi5V_T2hB8"
+  title="Introduction to DORA Metrics | Nathen Harvey | Engineering Enablement Podcast" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## The one-page release-health report
+
+The Director takes this to two rooms: the CIO, and the exec quality council. The spine is identical; the emphasis is not. [Translating ITSM and risk metrics for executives](../../itsm-for-regulated-blood-services/translating-itsm-and-risk-metrics-for-executives/index.qmd) and [presenting IT service and risk performance](../../itsm-for-regulated-blood-services/presenting-it-service-and-risk-performance/index.qmd) taught the method: the same facts, said once, in each audience's terms, with nothing softened for one room that was hard for the other. This page applies it.
+
+**The layout: four blocks, one page.**
+
+| Block | Contents | This quarter |
+|---|---|---|
+| **1. State** | What shipped, whether each release is in monitoring or closed, the validated pair in production | Three releases shipped; each tail closed or extended by a recorded decision; validated pair recorded per release |
+| **2. Evidence and quality** | Evidence completeness, deviations by release and cause, CAPAs open or due, late or reconstructed records | Two deviations, each with a root cause; one reconstructed record, labeled; one CAPA waiting on its effectiveness event; Quality's reportability determination on file for the notice deviation: not reportable on its face |
+| **3. Delivery** | The few metrics, each beside its evidence number; counts as lists, not rates | Two HOP builds and one BECS install; no rollbacks executed; one emergency change and one waiver; Release C's elapsed time shown in segments |
+| **4. Decisions and risks** | What the Director needs from the reader; risks carried knowingly; open items with owners and dates | Conditional label acceptance continues; pending regulatory determination on HOP-531; vendor questions outstanding |
+
+**What the CIO hears.** Risk and asks in business terms. "Three releases went in and none had to be backed out. One emergency was handled in a day with Quality's approval, and one logging step was missed, recorded, and fixed at the cause. I need one decision from you: whether to fund the interface test automation we have costed, which would shorten the evidence step without changing it." The CIO is told about delivery speed *with* what it rests on.
+
+**What the quality council hears.** The same facts, led by evidence. "Two deviations, both with root cause and CAPA or equivalent; one reconstructed record, labeled; the release records show monitoring ended by signed criteria. Quality has recorded the reportability determination." They get the open items, who owns them, and when they are due.
+
+**Rules for the page.**
+
+- **One page, same facts.** Nothing in the CIO version the council would call misleading, and nothing in the council's version the CIO would find missing.
+- **State what is not known.** If a segment's dates are not yet in the release record, the page says so.
+- **Show the definition once** (a footer line) and keep it constant from quarter to quarter, or the trend means nothing.
+- **Quality reviews the evidence block** before it goes upward, and the Director does not edit it. A report that Quality has not seen is a report Quality can contradict in the room.
+- **It feeds management review.** The quarterly page, with the PIR actions and CAPA statuses, is the release-and-change input to the [management review](../../quality-system-essentials/internal-audits-and-management-review/index.qmd) that Quality runs. Whether management review is required is a question that module answers; this page is simply the IT-release slice of it.
+
+## What an inspector or assessor would look for
+
+| They ask | A good answer | A bad answer |
+|---|---|---|
+| Did you monitor Release C after installation? | The monitoring plan with signals, owners and cadence; the review records; the exit decision against written criteria, signed by Quality and the Director | "We kept an eye on it." |
+| How do you decide a release is stable? | Exit criteria in the release record, set before go-live | "When the vendor said it was fine." |
+| What did you learn from the emergency change? | A PIR and a deviation with root cause, CAPA and an effectiveness check; the reportability determination | "We were happy with the outcome." |
+| Is that CAPA effective? | A stated effectiveness check and date or event | "We trained everyone." |
+| How do you know your releases are keeping up with the evidence? | Metrics showing evidence beside speed, defined in a controlled document | A deploy count |
+| Show me a release where something went wrong | The record, openly: what happened, how it was found, what changed | "We have never had one." |
+
+## Common traps
+
+**"No hospital complained, so the monitoring period was a success."** Silence is a data point, not an exit criterion. The plan said what would be watched; the record says it was.
+
+**"The PIR is a lessons-learned meeting."** A meeting is not a record, and a lesson with no owner will be re-learned. The output is the routing table.
+
+**"Every finding becomes a CAPA."** CAPA for trivia hides the CAPA that matters. Route by cause and risk.
+
+**"DORA says speed and stability go together, so we should deploy more."** That is DORA's research on software teams. Lakeshore's cadence is a validated release cadence; the metrics inform conversations, not targets, and none of DORA's published benchmarks is used here. DORA's page itself warns against both metrics-as-goals and "industry as a shield."
+
+## What this means for your job
+
+- **Write the exit criteria before go-live,** into the release record, and make Quality's concurrence part of them.
+- **Ask for the PIR before the next plan is approved.** If it is late, the next release inherits the last one's unfixed causes.
+- **Keep one finding register across releases,** tagged by cause, and read the trend, not only the latest report.
+- **Insist that every speed number comes with an evidence number,** and that Quality owns the second one.
+- **Never present a rate on three releases.** Show events and classifications, and define "failure" in writing before you see the data.
+- **Escalate** when monitoring is "ended" by silence, when a PIR has findings with no owners, or when a metric becomes a target.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Release C's plan-minimum observation span has elapsed, nothing has broken, and the CIO wants the monitoring period closed so the next project can start. What decides?
+The written exit criteria. The elapsed span is one of seven; also needed are reconciliation closed and reviewed, interface error files clean or explained, the reprint log reviewed by Quality with no unexplained discrepancy, no open high-severity item without a risk decision, the validated pair confirmed, and support handed back. The Director proposes, Quality concurs, the head of distribution confirms normal operation. The CIO's preference is an input, not a criterion. BECS III.G recommends monitoring "for a period of time" without a number, so the length is Lakeshore's decision, and it is recorded.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is a post-implementation review a regulatory requirement?
+Not as a named requirement in any source this course uses. The sources require the things a PIR checks: procedures followed and documented at the time (211.100(b)), deviations recorded and justified, and records maintained (606.100(b), (c)). Guidance recommends monitoring after installation (BECS III.G) and, as general device-maker thinking, anomaly evaluation and trending (GPSV 5.2.7). Lakeshore's PIR is the efficient way to meet and evidence all of that.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: HOP 3.0.1 shipped as an unplanned hotfix. Does it count in "change fail rate" or "deployment rework rate"?
+DORA's page defines change fail rate as the ratio of deployments requiring immediate intervention after a deployment, likely a rollback or hotfix, and deployment rework rate as unplanned deployments resulting from a production incident. The hotfix answered an external advisory, and the log review found no exploitation, so it is arguable either way. The honest answer is that Lakeshore must define the classification in writing before the data is looked at, and report externally triggered work separately. With so few releases, show the events, not a percentage.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: The development lead proposes a team goal of "two production deployments per month." Your answer?
+No target on a count. DORA's own guide lists metrics as a goal as a pitfall (Goodhart's law) and warns that broad mandates invite gaming. In a validated environment the count can be raised by dark deploys, patch relabeling or thinner evidence. Set expectations on behavior (exit criteria met, evidence complete at the gate, every finding owned) and report throughput beside evidence completeness.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q5: Two sentences for the CIO on what the quarter's metrics mean.
+"Three releases went into production and none had to be rolled back; the one emergency was shipped in a day with Quality's approval, and the one missed step was recorded and fixed at its cause. Our delivery speed is set by the evidence we have to produce, so I report it next to the evidence numbers, and the one place money would speed us up without cutting evidence is test automation for the interface."
+:::
+
+## The course in one passage
+
+Eleven modules ago the question was a Hospital Ordering Portal feature that might drift into BECS territory. Here is what you can now do with it.
+
+You can **place any change on the right lifecycle** and say what evidence it must produce and when (module 1), **turn stories into requirements** an inspector can trace to tests, with a definition of done that carries validation evidence (module 2), and **keep four environments honest**, with a baseline and no real donor data outside validation and production (module 3). You can **tell release, deployment and change apart,** classify releases by consequence and set a calendar and freezes that respect the blood supply (module 4). You can **take a vendor's BECS release** from notes to a validation decision, with Lakeshore's own impact analysis and conditions (module 5), **size testing by risk** and decide regression from an analysis (module 6), and **run an automated pipeline** without losing segregation of duties or the audit trail (module 7). You can **ask a supply chain the right questions** and keep a component inventory and signed releases (module 8), **plan a cutover** with go/no-go criteria and a rollback you have timed (module 9), and **ship an emergency fix** without a validation gap, and tell an emergency from a deviation from a reportable event (module 10). And now you can **close the loop**: end monitoring on evidence, review every release, route findings to the right mechanism, measure delivery without bending it, and tell two audiences the same true thing on one page (module 11).
+
+The thread under all of it is one sentence you can say to a regulator, an assessor or your own CIO: *Fast is a result of having the evidence ready, never a substitute for it.*
+
+Keep the loop running: the next vendor release, hotfix and quarterly page are the same work with a better register.
