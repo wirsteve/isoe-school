@@ -1,0 +1,34 @@
+---
+title: "Resources"
+order: 143
+---
+
+Places to go deeper on applying the SSDF to HOP and questioning a vendor's software supply chain, or to check a citation before it goes into a real Lakeshore document. Every link below was checked with `curl` and loaded; the page title was read to confirm it is the page named. The SSDF is a voluntary framework; none of these pages makes signing or an SBOM a requirement for Lakeshore, and the lesson says so plainly. CISA's software bill of materials page was tried and returned "Access Denied" to `curl`, so it is not linked.
+
+- **[NIST Secure Software Development Framework project page, CSRC](https://csrc.nist.gov/projects/ssdf)** — NIST's hub for the SSDF: the publication, related material and updates. Start here to see what NIST currently says about the framework. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-218, Secure Software Development Framework (SSDF) Version 1.1, CSRC](https://csrc.nist.gov/pubs/sp/800/218/final)** — the publication itself, with the PDF. The lesson quotes purpose statements only; the full tasks and examples under each practice (PO, PS, PW, RV) are here. Voluntary framework. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-53 Rev. 5, CSRC](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)** — the control catalog behind SA-10, SA-11 and SA-15. Federal catalog, voluntary for Lakeshore. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Software Bill of Materials, NTIA](https://www.ntia.gov/page/software-bill-materials)** — the U.S. Commerce Department agency's page on SBOMs, including the multistakeholder documents on software component transparency. Use it for the general definition and for what a shared inventory should contain; the lesson cites no specific SBOM format. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Medical Device Cybersecurity, FDA](https://www.fda.gov/medical-devices/digital-health-center-excellence/cybersecurity)** — FDA's landing page for device cybersecurity, described on the page as resources for device manufacturers and users. Device makers have their own FDA cybersecurity expectations; those are not taught or quoted in this lesson, and this page is a starting point for them. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[45 CFR 164.308, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/45/164.308)** — the Security Rule's administrative safeguards, including risk analysis and risk management at (a)(1)(ii)(A) and (B). Use it when privacy and security decide whether HOP holds ePHI. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)** — authorized-personnel change control at (b), the reason a "security patch" is still an authorized change. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[SBOM Explainer: What Is SBOM? Part 1](https://www.youtube.com/watch?v=6yljBKKl8Vo)** (NTIAGov, from oEmbed `author_name`) — the video embedded in the lesson: a short government explainer on the "list of ingredients" idea. General, not specific to blood centers or validation. Only the title, channel and embeddability were verified, not the claims. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200).
+
+Earlier modules this one builds on: [CI/CD pipelines under GxP](../ci-cd-pipelines-under-gxp/index.qmd), [environments, baselines and test data](../environments-baselines-and-test-data/index.qmd), [vendor release intake for BECS](../vendor-release-intake-for-becs/index.qmd), [supplier qualification and risk tiering](../../vendor-and-third-party-risk-management/supplier-qualification-and-risk-tiering/index.qmd), [reading a SOC 2 report](../../vendor-and-third-party-risk-management/reading-a-soc-2-report/index.qmd), [vendor change notifications](../../vendor-and-third-party-risk-management/vendor-change-notifications-and-your-own-change-control/index.qmd), [staying validated: patches](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd) and the [Security Rule module](../../healthcare-security-and-privacy/security-rule-safeguards-and-part-11/index.qmd).
+
+## Keep learning
+
+Not official sources. Good places to keep learning; none is authority for a regulatory claim.
+
+- **[SLSA, Supply-chain Levels for Software Artifacts](https://slsa.dev/)** — a community framework for build provenance and artifact integrity; the deeper background to the signing decision. Voluntary framework, not FDA or NIST. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[OWASP Software Component Verification Standard](https://owasp.org/www-project-software-component-verification-standard/)** — a community project on verifying the components you bring into software, useful as a checklist for the component-addition rule. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[A06 Vulnerable and Outdated Components, OWASP Top 10:2021](https://owasp.org/Top10/2021/A06_2021-Vulnerable_and_Outdated_Components/)** — a plain-language explanation of why unlisted, unpatched components are a leading web-application risk. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[OWASP SAMM](https://owasp.org/www-project-samm/)** — a maturity model for assessing and improving a software security program; a gentler way than the SSDF's full task list to see where a small team stands. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Google SLSA & NIST SSDF: Emerging Software Supply Chain Security Best Practices](https://www.youtube.com/watch?v=2b7yqzDRIII)** (The Linux Foundation, from oEmbed `author_name`) — a conference talk by a speaker from a commercial security vendor, so treat it as a vendor-influenced practitioner view; useful for how the two frameworks relate. Only the title and channel were verified from oEmbed on 2026-11-13 (HTTP 200); the talk's content was not reviewed.
