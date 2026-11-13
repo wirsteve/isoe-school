@@ -1,0 +1,358 @@
+---
+title: "Environments, Baselines and Test Data"
+order: 132
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** design development, test, validation and production environments, keep a configuration baseline (NIST CM-2), and keep real donor data out of non-production.
+- **The punchline:** HOP 3.0's rc2 tests passed, then the Quality Analyst found the validation environment's HOP-to-BECS interface pointed at a BECS test instance on a different patch level than production. The interface-dependent rc2 evidence is not evidence for production. Re-run it after the instance is brought to baseline, and record the whole episode as a deviation from the test plan. Separately, "a quick copy of last month's real orders" for the Test environment is refused and replaced with a de-identified or synthetic reproduction.
+- **The rule in one line:** test evidence is only as good as the environment it was produced in. Record what the environment was, prove it matched production's baseline, and never let real donor data leak into places that were not built to protect it.
+- **Monday question:** "For the last release's test results, show me the versions, configuration and data set of the environment each one ran in, and show me how you know it matched production."
+- **The trap:** "validation passed" and "validation passed in an environment equivalent to production" are different sentences. Only the second one is evidence.
+:::
+
+**Before you start:** this module builds on [IQ, OQ, PQ, and the Traceability Matrix](../../csv-and-becs/iq-oq-pq-and-traceability/index.qmd) (installation qualification, IQ, is the check that a system is installed as specified), [The Validated-State Lifecycle and Patching](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd) (what keeps a system validated after go-live), [The HIPAA Privacy Rule](../../healthcare-security-and-privacy/the-hipaa-privacy-rule/index.qmd) (minimum necessary) and [Security Rule Safeguards and Part 11](../../healthcare-security-and-privacy/security-rule-safeguards-and-part-11/index.qmd) (access control). It continues the story from [Requirements, Backlogs and Traceability in Agile](../requirements-backlogs-and-traceability-in-agile/index.qmd). It does not re-teach them.
+
+## Two requests on the same afternoon
+
+HOP 3.0 (release record REL-0311) is in its second release candidate. In the last module, DEF-0412 showed up when test TC-32c failed in rc1: HOP had quietly written a soft hold to the order request. The development lead fixed it, and TC-32c passed in rc2. The Quality Analyst is assembling the evidence package for the release gate.
+
+She stops at the environment page of the test record, the part nobody usually reads. She calls you over.
+
+"The rc2 tests ran in the validation environment, right? Look at the interface settings. HOP's connection to BECS points at a BECS **test instance**. That is normal; we do not point validation at production BECS. But I asked the systems administrator what patch level that test instance is on." She turns the screen. "It is one patch level behind production. It was never brought forward after the last production patch."
+
+The systems administrator, called in, is not defensive. "Nobody told me validation's BECS had to follow production. It is a test box. We patch production under change control. The test instance gets patched when someone remembers."
+
+"So," the Quality Analyst says to you, "here is my question. TC-32b checks the interface account's permissions in BECS. TC-32c leaves a proposal unconfirmed for twenty-four hours and checks that BECS shows no distribution record. TC-35a changes a unit's BECS status and watches HOP react. All of them passed against a BECS that is not the BECS Lakeshore runs. Is that evidence?"
+
+Before you answer, the development lead walks up with a different problem.
+
+"A hospital complained that HOP shows a proposal for a unit it should not have. I cannot reproduce it with our synthetic data. Can I get a quick copy of last month's real orders loaded into the Test environment? Just for a day. I will delete it afterward."
+
+Two questions, one root: what an environment is allowed to be, and what is allowed to be in it. This module answers both. By the end you will know what to do with rc2 and what to say to the development lead.
+
+## Why environments exist, and the ITSM bridge
+
+A regulated release has two opposing needs. The team needs somewhere to be wrong cheaply: break things, try a change, reload data, throw it away. And Lakeshore needs one place that must not be wrong at all: production, where a defect can touch a donor record or a distribution decision. If those are the same place, you either cannot move fast or you gamble with real units.
+
+So environments exist to **separate** two things: the freedom to change, and the evidence that a change is safe. Each environment has a job:
+
+| Environment | Job | Data | Who changes it |
+|---|---|---|---|
+| Development | Developers write and try code. Expected to break. | Synthetic | Developers |
+| Test | Integration, defect reproduction, exploratory testing, early checks by the team. | Synthetic | Developers and the systems administrator, under team rules |
+| Validation | Formal, evidence-producing testing for a release candidate. Controlled, and built to mirror production. | De-identified copy, refreshed under change control | Only through change control; developers have no write access |
+| Production | The real service. | Real donor and order data | Only through change control, by authorized operations staff |
+
+The environments are Lakeshore's design, not a regulatory taxonomy. No source in this course prescribes "four environments." What the sources do say is what the design must achieve. The FDA's blood-specific guidance says: "We recommend that you perform validation in the 'test environment' or 'test partition' of your system. After successful validation, you or your software manufacturer should copy or move the file configuration on which you performed your validation into the production environment" (BECS guidance III.G). Read that as the shape: validate somewhere safe, then move **what you validated**.
+
+The second reason environments exist is the one the Quality Analyst just found. A test result proves something only about the thing it was run on. FDA's general guidance on user site testing says, in the part device makers should read as general thinking, that testing "should take place at a user's site with the actual hardware and software that will be part of the installed system configuration" (GPSV 5.2.6). The point is **equivalence**. A result obtained on a different configuration from production is a result about that other configuration.
+
+The ITSM bridge is one you already own. In ITIL terms this is the discipline you apply to a change: you would not accept "tested in the lab" as the testing for a major change if the lab differed from the live service in ways that mattered. A CMDB exists to record what is deployed and how the pieces relate; a configuration baseline is the CMDB's snapshot of "what production is supposed to be right now." Environment parity is the same question asked of a test environment: is it the same configuration items, at the same versions, with the same relationships? Regulation adds one thing: the answer must be written down, tied to each test result, and reviewable by someone outside the team who ran the test.
+
+## The rule in plain English
+
+Five ideas, each tied back to the afternoon.
+
+1. **Separate the places.** Developers work in development. Testing for evidence happens in validation. Production is for operating. People and data do not drift between them by convenience.
+2. **Make validation equivalent to production in the ways that matter to the tests.** The same versions, the same configuration, the same interface endpoints and patch levels of the systems HOP talks to, and data of the same shape. Where it differs, the difference is written down and judged.
+3. **Keep a baseline, and keep it under change control.** Production's configuration is recorded as a baseline. Validation is checked against it. Changes to the baseline go through change control with an impact analysis.
+4. **Record the environment state with the test evidence.** Each result says which build, which configuration, which interface targets and which data set it ran against.
+5. **Keep real donor data out of places not built to protect it, and keep write access to validation and production away from the people who write the code.**
+
+## Configuration baselines and drift (NIST CM-2 through CM-5)
+
+NIST SP 800-53 is a federal control catalog. It is mandatory for federal systems and **voluntary for Lakeshore**. It is used here as a well-regarded vocabulary, not as a regulation Lakeshore must obey. Its configuration management family gives four controls that map cleanly onto this module.
+
+CM-2 is the baseline:
+
+> a. Develop, document, and maintain under configuration control, a current baseline configuration of the system; and
+> b. Review and update the baseline configuration of the system:
+> 1. [Assignment: organization-defined frequency];
+> 2. When required due to [Assignment: organization-defined circumstances]; and
+> 3. When system components are installed or upgraded.
+> — NIST SP 800-53 Rev. 5, CM-2
+
+The bracketed placeholders are NIST's way of saying "the organization decides." Read it as three obligations. There is a baseline. It is **current**. And it is **updated when components are installed or upgraded**, which is exactly when the BECS test instance should have moved.
+
+CM-3 covers changes to the baseline: determine which changes are configuration-controlled, review and approve or disapprove them, document decisions, implement approved changes, retain records, and oversee through a body that convenes ("a configuration change control element"). In ITIL terms this is change enablement for configuration items. CM-4 says to "analyze changes to the system to determine potential security and privacy impacts prior to change implementation," which is the impact analysis you already want before any patch. CM-5 says to "define, document, approve, and enforce physical and logical access restrictions associated with changes to the system": **who is allowed to change production, and how that is enforced**, not just promised.
+
+### What a baseline contains
+
+For HOP, a useful baseline is a list that a stranger could use to rebuild or compare an environment:
+
+- HOP application build number and the versions of the third-party components it uses.
+- Runtime, operating system and database versions, with patch levels.
+- Configuration settings that affect behavior: feature flags (for instance, auto-allocation proposal limits and the stale-proposal time limit from HOP-R35), timeouts, security settings.
+- Interface definitions: the BECS endpoint HOP talks to, the interface account, and its permissions (read inventory, write order requests only, per HOP-482b).
+- The patch level and version of the BECS instance on the other end of the interface.
+- Certificates, scheduled jobs and anything else that changes behavior without changing code.
+
+Notice the BECS patch level is on the list. HOP's behavior depends on what BECS returns, so the other side of the interface is part of HOP's environment, even though BECS is a different system with its own vendor.
+
+### Drift
+
+**Drift** is the gap that opens between a baseline and reality: a patch applied to production and never to validation, a setting changed by hand during an incident, a component upgraded in one place. Drift is not malice. It is ordinary maintenance done by people who each reasonably thought it was someone else's job. The twelve-factor methodology, a well-known practitioner statement of the same idea, describes "gaps" between development and production in time, personnel and tools, and says to keep them as similar as possible (resources link). Same disease, outside the regulated world.
+
+The BECS guidance's remark in the validation-after-change section is why drift matters in this domain: "a seemingly small local change (e.g., software, hardware, peripherals, or infrastructure) may have a significant global system effect" (BECS guidance III.I). A one-patch difference in the BECS test instance is exactly a small change whose effect on the HOP-to-BECS interface nobody has analyzed.
+
+## The rc2 evidence, resolved
+
+Back to the Quality Analyst's question. Her instinct is right, but "redo it" is only half the answer. Here is the reasoning in order.
+
+**1. What is actually affected.** Not every rc2 test depends on the BECS side. The Quality Analyst and the systems administrator classify each test: does its result depend on how BECS behaves or what BECS returns?
+
+- TC-31 (labels): HOP's own screens. Independent of BECS behavior.
+- TC-32a, TC-32b, TC-32c (HOP cannot commit; interface account permissions; unconfirmed proposal leaves BECS unchanged): all read BECS to show nothing changed, or inspect the BECS interface account. **Interface-dependent.**
+- TC-34 (HOP shows only BECS's suitability status): depends on what BECS returns. **Interface-dependent.**
+- TC-35 (stale proposals after a BECS status change): the BECS-side change and HOP's read of it. **Interface-dependent.**
+
+This classification is a documented judgment, not a formula. Where there is doubt, the test goes into the re-run set. For HOP-only tests, the build and HOP configuration were the same, so the evidence may stand, with the classification recorded.
+
+**2. The DEF-0412 retest.** Notice what this means for the defect from the last module. TC-32c's passing retest in rc2 is the proof that DEF-0412 is fixed. It ran against a BECS at a different patch level than production. Until it is repeated against an equivalent environment, DEF-0412's closure rests on unproven evidence. The defect record should be reopened or annotated, not left as "fixed and verified."
+
+**3. What the rc2 evidence is worth.** It is not worthless; it is **not valid as production-equivalent evidence for the interface-dependent tests**. It still tells the team the fix is plausible. But the BECS guidance's whole picture of validation is "validate, then move what you validated," and what was validated was not production's configuration.
+
+**4. The action.** Bring the validation environment's BECS test instance to production's baseline, under change control. Then **re-run** the interface-dependent tests in rc2 (or the build that will actually ship), recording the environment state this time.
+
+**5. The record.** Do not treat this as "we ran it again." Record it as a **deviation from the test plan**: the plan assumed an equivalent environment, the environment was not equivalent, the original results are marked as not accepted for the affected tests, here is the impact analysis, here is the corrective change to the environment, and here are the new results. The BECS guidance expects validation reports to include "a summary of the test results, including any variances or failed tests, any amendments made to the test cases or the validation plan" (BECS guidance III.H), and lists "handling validation deviations" among the SOPs a facility should have (III.F). Both are guidance (*should*), but an inspector reading the validation report will want to see this. The original results stay in the record, labeled; they are not deleted. Deleting them would be hiding the episode, and 21 CFR 606.160(a)(1) requires records "so that all steps can be clearly traced" and "as detailed as necessary to provide a complete history of the work performed."
+
+**6. The root cause.** Why did it happen? Because nobody owned "validation's BECS follows production's patches." This goes to the corrective and preventive action process, covered in earlier courses: assign an owner, add a drift check to the test-entry criteria, and add the environment's baseline comparison to the definition of done for any release candidate.
+
+This is also a place to separate regulation from practice. Regulation (21 CFR 211.68(b)) says "appropriate controls shall be exercised over computer or related systems," and 606.160 requires records. The guidance recommends validating in a test environment. **No source in this course prescribes** a four-environment model, a patch-parity rule, or a drift check. Those are Lakeshore's decisions, grounded in the logic of the text.
+
+## Recording environment state in test evidence
+
+The last module quoted the BECS guidance on what an executed test case should contain: "the input, expected output, actual output, acceptance criteria, whether the test passed or failed, the name or initials of the person performing the test, and the date the test was performed" (BECS guidance III.G). Notice what is **not** in that list: where it ran. Add it. For a Lakeshore test record, the minimum environment fields are:
+
+| Field | Example for a HOP result |
+|---|---|
+| Environment name and purpose | Validation |
+| HOP build | 3.0-rc2 |
+| Baseline reference | Production baseline version, and the comparison result (matches, or listed differences with the judgment on each) |
+| Interface targets | BECS endpoint, BECS patch level |
+| Configuration | Configuration snapshot or version identifier |
+| Data set | Which de-identified data set and refresh date |
+| Tester and date | Already required |
+
+A drift check before the run, a few minutes of the systems administrator comparing the environment to the baseline and signing the result, makes the record. When this exists, the Quality Analyst finds the problem on day one instead of at the gate. The same logic is in FDA's general guidance: "There should be evidence that hardware and software are installed and configured as specified. Measures should ensure that all system components are exercised during the testing and that the versions of these components are those specified" (GPSV 5.2.6). Again that is guidance for device makers; for Lakeshore it is general thinking about what evidence of an installed, equivalent configuration looks like.
+
+If you already read the IQ module, this will feel familiar: **an environment is qualified the way a system is.** IQ is the evidence that something is installed as specified. A validation environment gets its own installation evidence against the production baseline, and re-checks it whenever either side changes. See the [validated-state lifecycle module](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd) for how patching feeds this. The new point is that production's patch cycle is now a trigger for **three** actions: patch production, bring validation to the new baseline, and update the baseline record.
+
+## Test data: synthetic, de-identified, real
+
+Now the development lead's request. There are three kinds of test data, and each has a place.
+
+| Kind | What it is | Where it belongs | Strength | Weakness |
+|---|---|---|---|---|
+| Synthetic | Invented data generated to look like real orders and units. No real person behind any record. | Development, Test | No privacy exposure. Can be built to hit edge cases (the expired unit, the status change). | May miss patterns of real data. |
+| De-identified | Real data with identifying details removed or changed by a method the organization has approved. | Validation | Realistic volumes and shapes. | The method must actually work, and re-identification risk must be managed. |
+| Real | Production data, identifiable. | Production only (validation holds the de-identified copy). | Exactly what production sees. | Full privacy and confidentiality obligations follow it everywhere. |
+
+Lakeshore's locked rule for HOP: **development and test use synthetic data; validation uses a de-identified copy refreshed under change control; no real donor data exists outside validation and production.** The refresh is a change: someone proposes it, someone confirms the de-identification worked before the data lands, and the refresh is recorded so test results can name the data set they ran on.
+
+### Why the request is refused
+
+Real orders carry identifiers: hospital and patient details and donation identification numbers that trace back to units and, through BECS, to donors. The Test environment was not built, access-controlled, monitored or backed up like production. Putting real data there creates a second place where donor and recipient information lives, with weaker protections.
+
+Two legal ideas apply, both to be read with care for what Lakeshore actually is. To the extent Lakeshore handles protected health information as a HIPAA covered entity (the HIPAA modules cover that question), the minimum necessary standard applies:
+
+> (2) Implementation specifications: Minimum necessary uses of protected health information. (i) A covered entity must identify: (A) Those persons or classes of persons, as appropriate, in its workforce who need access to protected health information to carry out their duties; and (B) For each such person or class of persons, the category or categories of protected health information to which access is needed and any conditions appropriate to such access. (ii) A covered entity must make reasonable efforts to limit the access of such persons or classes identified in paragraph (d)(2)(i)(A) of this section to protected health information consistent with paragraph (d)(2)(i)(B) of this section.
+> — 45 CFR 164.514(d)(2)
+
+Apply it to the request. Who needs access to real orders to do their duties? Distribution staff in BECS, the support team handling a hospital's call. Does a developer reproducing a defect need identifiable orders? No: the developer needs the **shape** that triggers the defect. Loading identifiable orders into Test fails the "reasonable efforts to limit" test when a synthetic reproduction would do. And the technical side:
+
+> (a)(1) Standard: Access control. Implement technical policies and procedures for electronic information systems that maintain electronic protected health information to allow access only to those persons or software programs that have been granted access rights as specified in § 164.308(a)(4).
+> — 45 CFR 164.312(a)(1)
+
+A Test environment that "everyone on the dev team can reach" is a poor fit for data that must be reachable only by those with granted access rights. The Part 11 closed-system controls say the same in their own words: "Limiting system access to authorized individuals" (21 CFR 11.10(d)). The security module walks through how these overlap.
+
+**Donor confidentiality** is a further reason, separate from HIPAA's mechanics: donors give blood on a promise of discretion, and the blood center's professional and policy commitments depend on it. This lesson does not cite a regulation for that; treat it as a Lakeshore commitment the privacy office owns.
+
+"I will delete it afterward" is the classic fallacy. The exposure is the loading, not the duration. Copies end up in backups, logs, exports and laptops. And "just for a day" makes the exception normal.
+
+### What you offer instead
+
+The development lead has a real problem, and the answer is not just "no." The response:
+
+1. **Characterize the complaint.** Ask support or distribution for the *shape* of the case: component type, quantity, the BECS status of the unit that was proposed, timing relative to a status change. No names, no donation identification numbers, no hospital patient data.
+2. **Reproduce with synthetic data.** Build records with those characteristics in Test. A stale-proposal bug (HOP-R35) or a status-read bug is usually reproducible this way.
+3. **If synthetic fails, escalate to de-identified.** Ask the privacy office to produce a de-identified extract of the affected orders into **validation**, under a change record, with the de-identification method approved. The exact method is a privacy-office decision; the HIPAA text that defines de-identification is not in this curriculum's local sources, so this lesson does not describe it beyond the general idea of removing or altering identifying details so a record no longer points to a person.
+4. **If it needs production data, debug in production under production controls**, by authorized staff, read-only, with the same access and audit trail production already has. The investigation moves to the data; the data does not move to the investigation.
+
+The development lead gets a faster answer than they feared. The first reproduction attempt can start this afternoon.
+
+## Access separation
+
+The last idea ties the environments together: **people who write the code do not hold write access to validation or production.** In NIST's words that is CM-5, "define, document, approve, and enforce physical and logical access restrictions associated with changes to the system." The reasons are plain:
+
+- Evidence independence: if the developer can change the validation environment, a passing result might be produced by an environment tuned to pass. The earlier lesson set independence of review as a Lakeshore decision (GPSV 4.9 as general thinking).
+- Authority checks: 21 CFR 11.10(g) calls for "authority checks to ensure that only authorized individuals can use the system... alter a record, or perform the operation at hand."
+- Audit trail: deployments and configuration changes should be attributable to a person acting under an approved change record.
+
+In a two-developer team this is uncomfortable, because the same two people write, build and want to deploy. The workable pattern:
+
+| Environment | Developers | Systems administrator / release role | Quality |
+|---|---|---|---|
+| Development | Write | Read | None |
+| Test | Deploy builds by the team's rules | Administer | Read |
+| Validation | **Read only**; no write | Deploys approved builds and applies approved baseline changes | Read, witness, approve |
+| Production | **No access** to data or write; support through approved read-only tooling | Deploys under an approved change | Read, approve |
+
+A developer who needs to see something in validation asks for it, and the administrator or tester shows it. This slows nothing important; it is exactly the "someone other than the author" separation already in the definition of done. How pipelines enforce this automatically is the subject of [module 7](../ci-cd-pipelines-under-gxp/index.qmd).
+
+## The actual text
+
+Here are the sources used above, quoted from Lakeshore's local copies. Regulation says *shall*; guidance says *should*; NIST is a voluntary vocabulary.
+
+> We recommend that you perform validation in the "test environment" or "test partition" of your system. After successful validation, you or your software manufacturer should copy or move the file configuration on which you performed your validation into the production environment.
+> — FDA, *Blood Establishment Computer System Validation in the User's Facility*, III.G
+
+Reading it: guidance (*should*), blood-specific. Validate in a non-production partition, then move what you validated. It explains why a validation environment that differs from production undermines the "move what you validated" step.
+
+> Due to the complexity of systems and BECS, a seemingly small local change (e.g., software, hardware, peripherals, or infrastructure) may have a significant global system effect. When any change (even a small change) is made to the software on the system, a software regression analysis should be conducted...
+> — same guidance, III.I
+
+Reading it: the reason a one-patch difference in the BECS test instance cannot be waved off as "small."
+
+> Your validation report should include a summary of the test results, including any variances or failed tests, any amendments made to the test cases or the validation plan, an evaluation of the outcome of your testing, and approvals or sign-offs by management, including dates.
+> — same guidance, III.H
+
+Reading it: where the deviation from the test plan lives in the validation report.
+
+> This testing should take place at a user's site with the actual hardware and software that will be part of the installed system configuration.
+> — FDA, *General Principles of Software Validation*, 5.2.6
+
+Reading it: device-maker guidance, general thinking for Lakeshore: test on the configuration that will actually run.
+
+> (b) Appropriate controls shall be exercised over computer or related systems to assure that changes in master production and control records or other records are instituted only by authorized personnel.
+> — 21 CFR 211.68(b) (excerpt of the first sentence)
+
+Reading it: regulation (*shall*). Controls over who changes computer systems, the regulatory root of access separation. Whether and how it applies to HOP given its not-a-BECS status is a question for Lakeshore's Quality and regulatory functions; it is cited here for the principle, which the BECS guidance also relies on.
+
+> (d) Limiting system access to authorized individuals.
+> — 21 CFR 11.10(d)
+
+Reading it: shall-level text for closed systems covered by Part 11.
+
+> (a)(1) Records shall be maintained concurrently with the performance of each significant step in the collection, processing, compatibility testing, storage and distribution of each unit of blood and blood components so that all steps can be clearly traced.
+> — 21 CFR 606.160(a)(1)
+
+Reading it: the records rule behind keeping the original rc2 results and the deviation visible.
+
+The NIST CM-2 text and the 164.514(d)(2) and 164.312(a)(1) text are quoted in the sections above.
+
+### Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| BECS guidance III.G | "Section III, subsection G of the 2013 user's-facility guidance" | Guidance: validate in a test environment or partition, then move the validated configuration to production; record test evidence. | The validation environment must be what you move to production. |
+| BECS guidance III.H | "...subsection H" | Guidance: validation report includes variances, failed tests and amendments to the plan. | The rc2 deviation. |
+| BECS guidance III.I | "...subsection I" | Guidance: even a small change warrants regression analysis. | A BECS patch-level gap is not small by assumption. |
+| BECS guidance III.F | "...subsection F" | Guidance: validation SOPs should cover handling validation deviations. | Where the deviation procedure comes from. |
+| GPSV 5.2.6 | "General Principles of Software Validation, section 5.2.6" | Guidance for device makers (general thinking here): user site testing on the actual installed configuration; evidence of versions. | What "equivalent to production" means. |
+| NIST SP 800-53 Rev. 5, CM-2 | "NIST 800-53 revision 5, control CM-2" | Voluntary control: a current, documented baseline under configuration control, updated when components are installed or upgraded. | HOP's and BECS's baseline. |
+| NIST CM-3, CM-4, CM-5 | "...CM-3, CM-4, CM-5" | Voluntary controls: configuration change control, impact analysis before change, access restrictions for change. | Refresh and baseline changes; BECS patch impact; who may change production. |
+| 21 CFR 211.68(b) | "Title 21, part 211, section 211.68, paragraph (b)" | Regulation: appropriate controls over computer systems; changes only by authorized personnel. | Access separation principle. |
+| 21 CFR 11.10(d) | "...section 11.10, paragraph (d)" | Regulation (for Part 11 systems): limit system access to authorized individuals. | Developers without write access to validation and production. |
+| 21 CFR 606.160(a)(1) | "...section 606.160, paragraph (a)(1)" | Regulation: records so all steps can be clearly traced, with a complete history. | Keeping the original results and the deviation. |
+| 45 CFR 164.514(d) | "Title 45, part 164, section 164.514, paragraph (d)" | Regulation: minimum necessary uses and disclosures of PHI, for a covered entity. | Refusing real orders in Test. |
+| 45 CFR 164.312(a)(1) | "...section 164.312, paragraph (a)(1)" | Regulation: technical access control for systems holding ePHI. | Who may reach any environment that holds real data. |
+
+## See it in one picture
+
+The environment ladder, the baseline that validation must match, the drift check that caught rc2, and the refused data request turned into a synthetic reproduction.
+
+```{mermaid}
+flowchart TD
+    DEV["Development<br/>synthetic data; developers write and test"]
+    TST["Test<br/>synthetic data; integration and defect reproduction"]
+    VAL["Validation<br/>controlled; mirrors production<br/>de-identified copy, refreshed under change control"]
+    PRD["Production<br/>real donor data; the system of record is BECS"]
+    DEV -->|"numbered build"| TST
+    TST -->|"build + baseline + data set recorded"| VAL
+    VAL -->|"validated configuration moved, not rebuilt"| PRD
+    BASE[("Production baseline (CM-2)<br/>versions, config, interface endpoints")]
+    BASE -.->|"validation must match"| VAL
+    DRIFT{"Drift check before each test run:<br/>does validation match the baseline?"}
+    VAL --> DRIFT
+    DRIFT -->|"No: HOP-to-BECS interface points at a BECS test instance<br/>at a different patch level"| DEVN["Deviation from test plan<br/>bring BECS test instance to baseline<br/>re-run interface-dependent tests"]
+    DRIFT -->|"Yes"| EVID["Run tests; record environment state<br/>with each result"]
+    DEVN --> DRIFT
+    REQ["Request: copy last month's real orders into Test"] -->|"refused"| ALT["De-identified or synthetic reproduction<br/>of the hospital's complaint"]
+    ALT --> TST
+```
+
+## Watch it explained
+
+This is a short practitioner video on the baseline configuration control, NIST CM-2, from a security-training channel. It is about federal security practice generally, not blood establishments or software release environments, and it explains the baseline idea in isolation. Watch it for what a baseline is and why it must be current; the parity with validation, the test evidence fields and the data rules come from this lesson. Only the title, the channel and embeddability were verified, not every claim in the video; treat it as an introduction to the vocabulary, not as authority.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6d9vetMzbIk"
+  title="Episode 2 BASELINE CONFIGURATION (CM-2)" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## What an inspector or assessor would look for
+
+The question will be some version of: **"Where was this tested, and how do you know it matched what you run?"**
+
+- **The environment record for the release.** Environment names and purposes, owners, the baseline reference, and the drift check result for the validation run. A bad answer: "validation is a copy of production, more or less."
+- **The baseline itself.** Current, under change control, with version history, including the BECS patch level on the other side of HOP's interface. A bad answer: a wiki page last edited before the previous patch.
+- **Environment state in test results.** For a sampled test, the build, configuration, interface target and data set. A bad answer: results with a tester and a date and nothing about where.
+- **The deviation record.** Evidence that when the environment was found out of line, the team recorded it, assessed impact, fixed the cause, re-ran the affected tests, and kept the original results. A team with no record of an environment problem is either unusually disciplined or not looking.
+- **Test data controls.** The test data policy, how the de-identified data set was produced and approved, the refresh change record, and evidence real donor data is not in development or test. A bad answer: "we think we cleaned it."
+- **Access lists.** Who can write to validation and production, and the change records those writes trace to. A bad answer: a shared administrator account.
+
+## Common traps
+
+**"The test environment is a test box, so it follows its own patch schedule."** That is how the BECS test instance fell behind. If a result from an environment is going into a validation file, its configuration is part of the evidence. Give it an owner and a trigger: production patched, validation follows.
+
+**"We re-ran the tests, so we are fine."** A silent re-run erases the history and teaches nothing. The record must show the original results were not accepted, why, what changed, and the new results. That is what the validation report guidance means by variances and amendments (III.H).
+
+**"We will delete the data afterward."** Deleting later does not undo loading now. Copies persist in backups, logs and exports. Minimum necessary is about limiting access in the first place.
+
+**"De-identified means safe to put anywhere."** Only if the de-identification actually works for the fields in that data set, which is the privacy office's call, and only if refreshes are controlled. A badly de-identified copy is real data with a different label.
+
+**"NIST CM-2 means we are required to have a baseline."** CM-2 is a federal control catalog, voluntary for Lakeshore. The requirement comes from the regulations and guidance about controlling and validating computer systems; CM-2 is a good, precise way to meet that intent.
+
+## What this means for your job
+
+- **Own the parity rule.** Name an owner for "validation's connected systems follow production's baseline," and make a baseline comparison a gate to start formal testing.
+- **Add environment fields to the test evidence template** and ask the Quality Analyst to reject results without them. Do it before the next release candidate, not after.
+- **Make production patches trigger three actions**: patch production, bring validation to the new baseline, update the baseline record. Put it in the change template.
+- **Say no to real data in Test, and offer the alternative in the same breath.** Keep a small pool of synthetic and de-identified cases and a standing route to the privacy office for a de-identified extract.
+- **Check the access lists quarterly.** Developers with write access to validation or production are a finding waiting to happen. Make it an access review item, with the same rigor as for BECS.
+- **Report in the CIO's language:** "Our validation environment had drifted from production by one patch on the BECS side. We caught it before the gate, fixed it, re-ran the affected tests and recorded it as a deviation. We also declined a request to use real orders for debugging and reproduced the problem with safe data."
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The rc2 tests all passed. Why can't the interface-dependent results go into the validation summary as they are?
+
+They were produced against a BECS test instance on a different patch level than production, so they are evidence about that other configuration. The tests that depend on what BECS does or returns (TC-32a to c, TC-34, TC-35) must be re-run after the instance is brought to production's baseline. The record should be a deviation from the test plan, with the original results kept and marked, not a silent redo. Note too that DEF-0412's closure depended on TC-32c, so it is reopened or annotated until the re-run passes.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: The development lead says the real orders will be in Test for a day only. What do you say, and what do you offer?
+
+Refuse. The Test environment is not built or access-controlled like production, and a developer does not need identifiable data to reproduce a defect; this is the minimum necessary idea (45 CFR 164.514(d)(2)) and the access-control idea (164.312(a)(1)) for a covered entity, plus Lakeshore's own rule that no real donor data lives outside validation and production. Offer a synthetic reproduction from the complaint's shape; if that fails, a de-identified extract into validation through the privacy office under a change record; if it needs production data, investigate in production under production controls.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Is "validation must have the same BECS patch level as production" a regulatory requirement?
+
+No. It is a Lakeshore design decision grounded in the guidance's logic: validate in an environment equivalent to the one you will run (BECS guidance III.G, III.I; GPSV 5.2.6 as general thinking) and keep a current baseline (NIST CM-2, voluntary). No source in this course states a patch-parity rule. The regulation-level text is about controls over computer systems and complete, traceable records (211.68(b), 606.160(a)(1)).
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Explain to your CIO in two sentences why we are pausing HOP 3.0 to re-run tests that already passed.
+
+"Our testing environment was connected to a BECS one patch behind the one we run, so some of those passes do not prove anything about production. We are bringing it in line, re-running just the tests that depend on BECS, and keeping the whole episode on the record, which is faster than explaining a surprise to an inspector later."
+:::
+
+## Where this goes next
+
+HOP 3.0 now has requirements, a definition of done, an environment design, a baseline and a data policy. The next question is how a release moves between all of this: [release management, deployment and change control](../release-management-deployment-and-change-control/index.qmd) separates release management, deployment management and change enablement, classifies release types, and sets a release calendar and freeze windows that respect blood operations.

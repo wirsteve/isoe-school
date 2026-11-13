@@ -109,7 +109,7 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
 | — | (syllabus) | — | 127 | Published |
 | 1 | `sdlc-models-in-a-regulated-blood-center` | Place any Lakeshore change on the right lifecycle (waterfall/V, iterative, agile, DevOps) and say what validation evidence each model has to produce, and when — using HOP 3.0's auto-allocation question. | 128/129 | Published |
 | 2 | `requirements-backlogs-and-traceability-in-agile` | Turn user stories into requirements an inspector can trace to tests, write a definition of done that includes validation evidence, and record the regulatory-affairs decision on auto-allocation. | 130/131 | Published |
-| 3 | `environments-baselines-and-test-data` | Design dev/test/validation/production environments, keep a configuration baseline (CM-2), and keep real donor data out of non-production. | 132/133 | Not started |
+| 3 | `environments-baselines-and-test-data` | Design dev/test/validation/production environments, keep a configuration baseline (CM-2), and keep real donor data out of non-production. | 132/133 | Published |
 | 4 | `release-management-deployment-and-change-control` | Tell ITIL release management, deployment management and change enablement apart, classify release types, and set a release calendar and freeze windows that respect blood operations. | 134/135 | Not started |
 | 5 | `vendor-release-intake-for-becs` | Take a vendor's BECS release (Release C) from release notes to a validation-in-your-facility decision: 510(k) status, anomaly lists, impact assessment, regression scope. | 136/137 | Not started |
 | 6 | `risk-based-testing-and-regression` | Size a test effort by risk, decide regression scope from an impact analysis, and know what test evidence must look like. | 138/139 | Not started |
@@ -159,3 +159,24 @@ look at it later as a site-wide "turn on narration" accessibility feature) — d
   Definition of done has nine items incl. validation-environment tests with BECS-guidance III.G fields
   and tester independent of developer for high-risk requirements (Lakeshore decision; GPSV 4.9 as
   general thinking). Story-done ≠ release-ready; release gate is module 4's.
+- 2026-11-13 — Module 3 `environments-baselines-and-test-data` published (verified). Video: KamilSec
+  "Episode 2 BASELINE CONFIGURATION (CM-2)" (6d9vetMzbIk; modest-credibility security-training channel,
+  framed as vocabulary only — swap if better found). **Locked:** rc2's validation-environment
+  HOP-to-BECS interface pointed at a BECS test instance one patch level behind production (found by
+  QA; systems administrator confirmed nobody owned "validation's BECS follows production"). DEF-0412's
+  rc2 retest rested on that evidence → reopened/annotated until re-run passes. Resolution: bring the
+  BECS test instance to production's baseline under change control; re-run interface-dependent tests
+  TC-32a/b/c, TC-34, TC-35; TC-31 is HOP-only and its rc2 evidence stands with the classification
+  recorded (lesson labels the classification as a documented judgment). Handled as a deviation from
+  the test plan (original results kept, marked not accepted; impact analysis, corrective change, new
+  results). Root-cause fixes: named owner for validation-to-production parity; baseline drift check
+  as an entry criterion for formal testing; environment fields added to test evidence (environment,
+  HOP build, baseline reference and comparison, interface targets incl. BECS patch level, config
+  version, data set and refresh date). The development lead's request for "a quick copy of last
+  month's real orders" in Test refused → synthetic reproduction, then privacy-office de-identified
+  extract into validation under a change record, then production-side investigation under production
+  controls. Access: developers read-only in validation, none in production; systems administrator /
+  release role deploys approved builds and baseline changes; Quality reads, witnesses, approves (CM-5
+  vocabulary; pipeline enforcement taught in module 7). 211.68(b)'s applicability to HOP left to
+  Quality and regulatory affairs. Lessons run long (~5,500–6,300 words incl. quotes) — accepted:
+  the user asked for in-depth lessons.

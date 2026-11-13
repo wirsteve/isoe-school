@@ -291,13 +291,13 @@ has no `plans/<slug>.md` file until its first session.
 | `healthcare-security-and-privacy` | 5 / 5 | Done |
 | `vendor-and-third-party-risk-management` | 5 / 5 | Done |
 | `itsm-for-regulated-blood-services` | 6 / 6 | Done |
-| `release-management-and-sdlc` | 2 / 11 | In progress |
+| `release-management-and-sdlc` | 3 / 11 | In progress |
 | `research-programs-reds-and-nih` | 0 / ? | Not started |
 | `clia-and-cap-for-blood-center-labs` | 0 / ? | Not started |
 | `hrsa-and-cellular-therapy-programs` | 0 / ? | Not started |
 | `blood-operations-deep-dive` | 0 / ? | Not started |
 
-**Next up: `release-management-and-sdlc` module 3, `environments-baselines-and-test-data`.**
+**Next up: `release-management-and-sdlc` module 4, `release-management-deployment-and-change-control`.**
 Track 7 order: release-management-and-sdlc → research-programs-reds-and-nih →
 clia-and-cap-for-blood-center-labs → hrsa-and-cellular-therapy-programs →
 blood-operations-deep-dive. (The paragraph below describing the original curriculum as complete
