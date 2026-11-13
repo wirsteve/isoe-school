@@ -1,0 +1,325 @@
+---
+title: "Program data feeds and reporting"
+order: 181
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can run a data feed into the program like a regulated interface: standardized data duties, a written interface specification, change control on both ends, reconciliation, monitoring that notices silence, and the right reporting path when it fails.
+- **The punchline:** after the cord blood bank (CBB) system go-live (CBC-031), the nightly unit-status feed quietly stopped sending "distributed" and "discarded" changes for one mapping edge case. Units no longer available stayed searchable. A transplant center's request for one exposed it. Nothing shipped wrong, and no alert had fired, because nothing had errored.
+- **The rule in one line:** the statute and the Cord Blood Inventory note require data in a *standardized electronic format*. The agreement says which data, what format and by when. The feed is how Lakeshore keeps that promise every night, so it gets the same controls as any regulated interface.
+- **Ask on Monday:** "For each feed to the program: where is the interface specification, what reconciles it against reality every day, and what alarm goes off if it goes quiet?"
+- **The traps:** treating "no errors" as "working," and treating "who decides FDA reporting" as an IT question. The cord blood bank's medical director and Quality decide it. For a licensed (351) product the path is biologics deviation reporting, not 21 CFR 1271.350.
+:::
+
+## The request that should not have been possible
+
+A transplant center asks the program for a cord blood unit. The program's search listing shows it as available, Lakeshore's, with a good cell dose and a close match. The request is routed to the cord blood bank. The bank's inventory technologist looks it up in the CBB system and stops.
+
+"This unit was discarded. It has been discarded since before the go-live weekend."
+
+She tells the cord blood bank's medical director, who tells you. You are in a small conference room within the hour: the medical director, the Quality Analyst, the systems administrator and you.
+
+"So the listing is wrong," the medical director says. They are calm and exact. "I need to know three things. Did we ship anything we should not have? How many other units are in the same state? And what do we owe the program?"
+
+The systems administrator has already pulled the interface log. "No shipment. The request was refused at our end. The unit was never released. As for how many, I can't say yet. The feed logs show it sending every night, with a success status. But I can see that the 'distributed' and 'discarded' status events for a set of units never arrive at the listing."
+
+"Why those units?"
+
+He turns the laptop around. "Every one of them was remapped from the old unit code to a new one during the migration. The status events carry the new code. The listing only knows the old code for them. The feed's mapping step looks up the listing's code, finds no match, and drops the event. It doesn't error. It just moves on."
+
+The Quality Analyst writes one line in her notes and underlines it: *Feed reported success every night for the whole period.*
+
+Nothing here is a story about a reckless person. It is a story about a design that could fail without making a sound, and a control gap: no one was comparing what the listing said with what the CBB system knew.
+
+## Why the rule exists, and the ITSM bridge
+
+The program exists to match a patient with a suitably matched unit. A transplant physician searching the listing decides, on what the listing says, which units to ask about, and in a patient with little time every wasted request costs days. A listing that shows unavailable units as available is not just untidy. It misdirects clinical decisions. A listing that *omits* available units is the opposite failure: a good unit is never found. The data's quality is the product the program sells to transplant centers. That is why the statute insists on a standard dataset in a standardized electronic format, as you will read below.
+
+You already know the ITSM shape of this. A feed to an external party is an **integration with an external service provider and consumer**, and the agreement is its **operational level agreement or SLA**. You manage these through:
+
+- **Service design:** an interface specification that both sides hold.
+- **Change enablement:** any change on either side is assessed for its effect on the other.
+- **Event management:** monitoring that distinguishes "normal," "warning" and "exception."
+- **Problem management:** a failure that reached the customer is investigated for cause, and the cause is removed.
+- **Service level management:** an agreed measure of whether the feed is working.
+
+The regulatory twist: the CBB system is validated, its data are the cord blood bank's records, and the thing leaving through the feed is a statement about a licensed biological product's availability. So the interface gets the same pedigree as any other regulated interface. [BECS interfaces and data integrity](../../csv-and-becs/becs-interfaces-and-data-integrity/index.qmd) is the pattern, and this lesson applies it to a feed that goes outside the building.
+
+## The rule in plain English
+
+Four separate sources speak to this feed. Keep them separate.
+
+1. **The statute and the Cord Blood Inventory note** say that the data must be available in a *standardized electronic format* and that cord blood banks under contract must submit data for the outcomes database. They do not give Lakeshore a file layout, a field list or a schedule.
+2. **The agreement in your contract file** says what data, in what format, by when, and what Lakeshore must tell the program when something goes wrong. This lesson does not know those terms and invents none. Read the agreement with Contracts and Quality. If it names a notification window, an interface specification or a data dictionary, those become your acceptance criteria.
+3. **FDA's rules** govern the CBB system's records and the licensed product. A unit-status feed is a view of those records, so a wrong feed is a records-integrity problem. Whether a given failure is also a reportable deviation is decided by the cord blood bank's medical director and Quality, not IT.
+4. **Lakeshore's own controls** are the engineering you build: change control, reconciliation, monitoring. These are IT design, not statute text. Label them that way when you describe them to an auditor.
+
+What that means for CBC-034, concretely:
+
+- Fix the mapping defect under change control, with regression tests that would have caught it.
+- Stand up a **daily listed-versus-actual reconciliation**, owned by named people.
+- **Notify the program as the agreement requires.**
+- Let the medical director and Quality decide whether the event is reportable to FDA, and on which path.
+- Add monitoring that alerts on *silence*.
+
+### Reauthorization
+
+The sources in this course do not show whether the program was reauthorized after Sept. 30, 2026. The operator's own advocacy page says the TRANSPLANT Act "is set to expire Sept. 30, 2026," and that legislation to renew the program had been introduced. This lesson does not say the program lapsed or that it was renewed. Check current status. The structure of your obligations to run a clean feed does not depend on that answer, but the contract in force, its funding and its timelines might.
+
+The Cord Blood Inventory note also contains a funding line, quoted in the text section below: appropriations "for each of fiscal years 2022 through 2026." That is a statement of what Congress authorized to be appropriated. It is not an IT duty and not a promise about any particular contract. Contract-funding questions belong to Contracts and leadership. IT's duties come from the agreement in force.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| Cord Blood Inventory note, Pub. L. 109-129, sec. 2(b)(5) | "Public Law one-oh-nine dash one twenty-nine, section two, subsection b, paragraph five" | Contract recipients make data available in a standardized electronic format for the Program, as the Secretary requires, consistent with 274k(d)(3). | The feed to the search listing is how the CBB meets this duty each night. |
+| Cord Blood Inventory note, sec. 2(b)(6) | "...subsection b, paragraph six" | Contract recipients submit data in a standardized electronic format for the outcomes database. | A second feed with its own format and cadence. Same interface discipline. |
+| 42 U.S.C. 274k(d)(3)(B) | "forty-two U.S.C. two seventy-four K, subsection d, paragraph 3, subparagraph B" | The Secretary requires all contract recipients to make a standard dataset available in a standardized electronic format that lets transplant physicians compare donors and units. | Why a unit shown as available when it is not defeats the whole point of the listing. |
+| 42 U.S.C. 274l(b) | "two seventy-four L, subsection b" | The outcomes database includes information in a standardized electronic format. | The outcomes side of the program, held by the contract holder. Lakeshore's data feeds in. |
+| 21 CFR 1271.330 | "twelve seventy-one point three-thirty" | Subpart E does not apply to biological products regulated under section 351. | Why 1271.350 is not the reporting path for a licensed unit. |
+| 21 CFR 1271.350 | "twelve seventy-one point three-fifty" | Reporting for section 361 HCT/Ps (adverse reaction and HCT/P deviation reports). | Not Lakeshore's path for licensed units. Named so you can say why. |
+| 21 CFR 600.14 | "six hundred point fourteen" | Deviation reporting for licensed biological products (not blood). **Not in this curriculum's `sources/`.** | The path the medical director and Quality weigh for the licensed unit. Not described here. |
+
+## The actual text
+
+All quotes below are from the local copies in `sources/`.
+
+### The data duties on a cord blood bank: Cord Blood Inventory note, (b)(5) and (b)(6)
+
+From `sources/usc/42-usc-274k-274l.md`, the statutory note set out under 42 U.S.C. 274k. The note's subsection (b) opens:
+
+> “(b) Requirements.— The Secretary shall require each recipient of a contract under this section—
+
+Then the two paragraphs this lesson uses:
+
+> “(5) to make data available, as required by the Secretary and consistent with section 379(d)(3) of the Public Health Service Act ( 42 U.S.C. 274k(d)(3) ), as amended by this Act, in a standardized electronic format, as determined by the Secretary, for the C.W. Bill Young Cell Transplantation Program; and
+>
+> “(6) to submit data in a standardized electronic format for inclusion in the stem cell therapeutic outcomes database maintained under section 379A of the Public Health Service Act [ 42 U.S.C. 274 l], as amended by this Act.
+
+Read the clauses against the scenario:
+
+- **"to make data available."** The duty is to make data *available*. A feed that technically runs but delivers false availability does not make the right data available.
+- **"as required by the Secretary."** The Secretary decides what. The agreement is where that decision reaches Lakeshore.
+- **"consistent with section 379(d)(3)."** The (b)(5) duty is tied to the standard dataset provision, next.
+- **"in a standardized electronic format, as determined by the Secretary."** Not Lakeshore's format and not the CBB vendor's. Your interface specification must come from the agreement, not from what the vendor's default export happens to emit.
+- **"(6) to submit data ... for inclusion in the stem cell therapeutic outcomes database."** A separate, second duty, to a separate database, held under a different contract.
+
+### The standard dataset: 274k(d)(3)(B)
+
+> (3) Single point of access; standard data
+> (A) Single point of access The Secretary shall ensure that health care professionals and patients are able to search electronically for and facilitate access to, in the manner and to the extent defined by the Secretary and consistent with the functions described in paragraphs (1)(A) and (2)(A)(i), cells from bone marrow donors and cord blood units through a single point of access.
+> (B) Standard data The Secretary shall require all recipients of contracts under this section to make available a standard dataset for purposes of subparagraph (A) in a standardized electronic format that enables transplant physicians to compare among and between bone marrow donors and cord blood units to ensure the best possible match for the patient.
+
+Note the purpose clause at the end: "that enables transplant physicians to compare among and between bone marrow donors and cord blood units to ensure the best possible match for the patient." A discarded unit that stays on the list corrupts exactly that comparison. This is also why the statute doesn't need to say "keep status current" in as many words for you to see that currency is part of what the dataset is for. That reading is this lesson's reasoning about purpose, not statutory text, and the agreement is where any currency requirement would actually be stated.
+
+### The outcomes database: 274l(b)
+
+> (b) Information The outcomes database shall include information in a standardized electronic format with respect to patients described in subsection (a), diagnosis, transplant procedures, results, long-term follow-up, and such other information as the Secretary determines to be appropriate, to conduct an ongoing evaluation of the scientific and clinical status of transplantation involving recipients of a stem cell therapeutics product from a donor.
+
+The outcomes database collects patient-level information. The CBB's contribution is the unit and donor side. The same unit code that broke the status feed also links a unit to its outcomes record. A code remapped without a durable cross-reference can orphan data in either direction. That is why module 3's code-mapping procedure matters beyond tracking: see [cord blood identification, records and tracking](../cord-blood-identification-records-and-tracking/index.qmd). This lesson doesn't re-teach it.
+
+### The appropriations line
+
+> “(g) Authorization of Appropriations.— To carry out this section, there is authorized to be appropriated $23,000,000 for each of fiscal years 2022 through 2026.”
+
+Two things to take from it. First, it is an authorization, not a contract. Second, it is the reason for the reauthorization caution above: the statutory timeline you see in this local copy ends, and this course cannot tell you what replaced it.
+
+### The reporting provisions: 1271.330 and 1271.350
+
+From `sources/cfr/21-1271-hctp-excerpt.md`:
+
+> § 1271.330 Applicability.
+>
+> The provisions set forth in this subpart are being implemented for nonreproductive HCT/Ps described in § 1271.10 and regulated solely under section 361 of the Public Health Service Act and the regulations in this part, and for the establishments that manufacture those HCT/Ps. HCT/Ps that are drugs or devices regulated under the act, or are biological products regulated under section 351 of the Public Health Service Act, are not subject to the regulations set forth in this subpart.
+
+"This subpart" is subpart E, whose reporting section is 1271.350. The last sentence says biological products regulated under section 351 are "not subject to the regulations set forth in this subpart." Lakeshore's licensed cord blood units are 351 biological products (module 1). So **1271.350 is not the path** for this event.
+
+For comparison, the 361 path, so you can see what you are *not* following:
+
+> (b) Reports of HCT/P deviations. (1) You must investigate all HCT/P deviations related to a distributed HCT/P for which you performed a manufacturing step.
+
+That sentence is in 1271.350, which is addressed to 361 HCT/Ps. It is quoted here only to show what the section covers. It is not Lakeshore's obligation for a licensed unit.
+
+**What the licensed unit follows instead.** Deviation reporting for licensed biological products other than blood falls under 21 CFR 600.14. That section is **not** in this curriculum's `sources/`. This lesson does not quote it or describe its content. Regulatory Affairs reads it. The blood-side analog, to see the shape of a deviation report and how an IT-driven event enters one, is [filing a biological product deviation report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd). It is an analogy for how the work flows, not authority for the cord blood path.
+
+## The feed as a regulated interface
+
+Now the engineering. Five controls, in order. Each ties to something you already own.
+
+### 1. A written interface specification, sourced from the agreement
+
+An interface specification names the data elements, the format, the schedule, the key that identifies a unit, the allowed status values and what the receiving side does on each. For the program feed, the spec's authority is the agreement. If the program's operator supplies a specification, that is the document of record. If it does not, the agreement's terms are what you trace to. This lesson will not tell you what fields the program's listing takes. It never knew.
+
+What an IT-owned specification adds, all as Lakeshore's own design:
+
+- **The key.** Which code identifies the unit on the wire: the code the listing knows. In this scenario the mismatch between the code on the event and the code the listing knew is the bug. The spec must say which code is authoritative on each side and what happens when a unit's code changes.
+- **Every status transition.** "Distributed" and "discarded" are transitions, not afterthoughts. A feed that carries new units well and removal poorly is the most dangerous kind, because failures to remove look like success.
+- **Behaviour on no-match.** The scenario's root cause is a mapping step that dropped an event it couldn't match, without an error. The specification should say that an unmatched event is held, flagged and counted. It is never silently dropped.
+
+### 2. Change control and regression on both ends
+
+The feed has two ends and either can change: Lakeshore's CBB system and the program's listing and intake. The scenario's change was Lakeshore's own: the replacement and the code remap. The feed's behaviour changed because a *different* change altered what a field meant.
+
+This is change enablement with a twist. Impact assessment must ask, for every CBB change, "does this alter anything leaving the building?" and for every notice from the program, "does this alter what comes in or what the listing expects?" Put the feeds in your CMDB as configuration items with the CBB system as the upstream dependency, so impact analysis finds them.
+
+The release-management course covers the machinery. Link, don't repeat:
+
+- [Risk-based testing and regression](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd): the regression set for the feed must include the edge case that failed (a unit whose code was remapped, then distributed, then discarded) plus the neighbours that look like it.
+- [Deployment, cutover and rollback](../../release-management-and-sdlc/deployment-cutover-and-rollback/index.qmd): cutover for a feed needs a parallel period or a first-night reconciliation, and a rollback decision that accounts for events sent during the cutover.
+- [Post-release review and delivery metrics](../../release-management-and-sdlc/post-release-review-and-delivery-metrics/index.qmd): the review of CBC-031 should have a finding, "no end-to-end check of the outbound feed," and CBC-034 closes it.
+
+### 3. Two reconciliations: sent-versus-acknowledged, and listed-versus-actual
+
+These are different questions, and the scenario shows why you need both.
+
+- **Sent versus acknowledged** asks whether every message the CBB system sent was accepted by the receiver. It catches transport failures and rejected messages. In this scenario it would have shown nothing wrong, because the dropped events were never *sent*: the mapping step discarded them before the feed.
+- **Listed versus actual** asks whether what the program's listing shows matches what the CBB system knows. It catches everything else, including drops upstream of the send. It is the check that would have caught this event within a day.
+
+The pattern matches the one in the laboratory course, where a de-duplication rule silently suppressed corrected reports and the answer was a reconciliation that compared sent against acknowledged, with the fix under change record LCR-014. Read [the LIS and the test report](../../clia-and-cap-for-blood-center-labs/the-lis-and-the-test-report/index.qmd) for the pattern. The lesson here is the same: a control that only checks "did the send succeed" is blind to what never got sent.
+
+**CBC-034's standing reconciliation**, designed as Lakeshore's own control:
+
+- **Daily.** The CBB system produces the list of units it considers available. The listing's view of Lakeshore's units is compared against it, using whatever the program provides for Lakeshore to see its own listings. What that mechanism is comes from the agreement, not from this lesson.
+- **Three kinds of exception:** listed but not available (the scenario's failure), available but not listed, and attributes that differ.
+- **Named owners.** Each exception class has an owner who works it, a clock, and a closure record. The inventory technologist works "listed but not available" the same day, because it can misdirect a transplant center. Exceptions are not a general queue.
+- **Evidence.** Each day's run produces a record: counts, exceptions, who worked them, how they closed. That record is what you show an assessor or the program.
+- **Trend.** If the exception count is rising, something upstream is changing. That goes to problem management.
+
+### 4. Monitoring that alerts on silence
+
+A good feed monitor asks "did anything arrive?" as often as "did anything fail?" In this scenario the feed ran every night, reported success, and produced no errors. A monitor that waits for an error will wait forever.
+
+Build alerts for the absence of expected things:
+
+- **Volume against expectation.** A nightly feed that normally carries status changes and carries none, or carries far fewer than the CBB system's own event count, should alert. The CBB system's count of status changes in the period versus the feed's count of events sent is a cheap, powerful check. It would have shown a gap on the first night.
+- **Dropped or unmatched counters.** Every "I could not match this" must increment a counter and raise a flag above a small threshold.
+- **A dead-man's switch.** The job emits a heartbeat when it completes *and* when it processed a non-trivial number of events. No heartbeat in the window means page someone.
+- **The listing-side check.** The daily reconciliation above is monitoring too. It is the one that sees the outcome rather than the process.
+
+The pattern is "monitor the symptom, not just the cause." The linked material under Keep learning covers it well, and you don't need to teach it again.
+
+### 5. Ownership
+
+A feed with no owner is the same thing as the inventory footnote in module 1. Each feed needs a named business owner (the cord blood bank's medical director or their delegate), a named IT owner, a place on the compliance inventory (see [HRSA and the cell transplant program](../hrsa-and-the-cell-transplant-program/index.qmd)) and a documented contact on the program side, whose identity comes from the agreement. Registry-side feeds follow module 2's rule that interfaces send only what the agreement specifies: [registry donor data and confidentiality](../registry-donor-data-and-confidentiality/index.qmd).
+
+## See it in one picture
+
+The diagram follows this scenario: the nightly feed, the silent drop on a remapped unit, the request that exposed it, CBC-034, the standing controls and the two reporting branches. The red dashed lines mark the failure point and the path that does not apply.
+
+```{mermaid}
+flowchart LR
+    CBB[("CBB system<br/>unit status events")] -->|"nightly feed<br/>(per agreement)"| IF{"Feed mapping:<br/>event code matches<br/>listing code?"}
+    IF -->|"yes: sent and acknowledged"| L["Program search listing"]
+    IF -.->|"FAILURE POINT: remapped unit,<br/>new code not known to listing,<br/>distributed / discarded events silently dropped"| X(("no error,<br/>no message"))
+    L --> T["Transplant center requests a unit"]
+    T -->|"unit no longer available:<br/>request refused, no harm"| D["DETECTED by the request"]
+    X -.-> D
+    D --> CR["CBC-034 change record:<br/>fix mapping, regression,<br/>cutover, post-release review"]
+    D --> REC["Standing daily reconciliation:<br/>listed vs actual, named owners"]
+    D --> N["Program notification<br/>per the agreement"]
+    D --> Q{"Medical director + Quality:<br/>is FDA reporting needed?"}
+    Q --> B1["351 licensed unit: biologics deviation rules<br/>(21 CFR 600.14, not in sources)"]
+    Q -. "1271.350 does not apply<br/>(1271.330)" .-> B2["Not the path for 351 units"]
+    CR --> M["Silence alert: no status events<br/>for N hours = page someone"]
+    linkStyle 2,5,11 stroke:#c0392b,stroke-width:2px,stroke-dasharray:5 3
+```
+
+## Watch it explained
+
+No video is embedded in this lesson. I searched for a public CIBMTR or NMDP upload on transplant outcomes data and on the program's data side. Nothing was found that was both specific enough to this topic and independently verifiable as embeddable. The diagram and the text carry the lesson. The resources page says so too.
+
+## The response, step by step
+
+Here is what the room decides, in order, and who owns each step.
+
+1. **Contain.** Today, the listing's availability for the affected units is corrected by whatever method the agreement and the program's operator allow. This lesson doesn't know the method and doesn't invent one. The CBB's inventory staff run a one-off comparison of every unit the CBB system calls unavailable against the listing, so the problem is sized in hours, not weeks. The result goes into CBC-034.
+2. **Say what did not happen.** The medical director confirms from the shipping and release records that the requested unit did not ship and that no unit in the exception list shipped on a wrong status. This lesson asserts no harm because the scenario's facts say the request was refused. Your written record must hold the evidence for that claim, not the claim alone.
+3. **Open CBC-034.** It records the defect, the affected population, the root cause (the mapping step's silent no-match on remapped codes), the fix, the regression tests, the cutover plan and the effectiveness check. The Quality Analyst owns the record's completeness. You own the fix's delivery.
+4. **Notify the program, as the agreement requires.** Contracts and Quality read the notification terms in the contract file. Whether this event triggers a notice, to whom, and in what form comes from those terms. This lesson will not describe a program form or an operator system, because it doesn't know them.
+5. **FDA reporting decision.** The cord blood bank's medical director and Quality decide whether the event is reportable and under which rule. For a licensed unit the question goes to the biologics deviation rules (21 CFR 600.14, not in `sources/`) and Regulatory Affairs reads them. IT supplies facts: what happened, when, which units, how it was found and how it was fixed. IT does not decide.
+6. **Stand up the reconciliation and the silence alert.** Both are part of CBC-034's fix, because the defect was a missing control as much as a bad mapping. The daily run starts before the fix is deployed, so the first morning's exceptions are the defect's own footprint.
+7. **Review.** After the fix has run clean for a period the change record defines, the post-release review closes CBC-034 with a statement of what it found about how CBC-031's migration validation missed this. The migration validation in CBC-031 (see module 3) is where tracking was tested. The review should ask whether the outbound feed was tested end to end on remapped units. In this scenario that is the gap.
+
+### What not to do
+
+- **Don't "just resend everything."** A bulk resend to the listing is a change to the program's data. If the agreement or the operator's process doesn't allow it, you've created a second incident. Ask first.
+- **Don't investigate FDA classification yourself.** If a developer says "this is probably not a deviation," that is an opinion about regulation from a person who doesn't decide it.
+- **Don't blame the vendor.** The CBB vendor's default behaviour may have contributed. Lakeshore validated and accepted the system, and CBC-031 owned the migration. Your corrective action is about your controls.
+
+## What an inspector, or the program, would actually look for
+
+Whoever asks, the questions rhyme. Have these ready.
+
+| They ask | The record that answers | A bad answer sounds like |
+|---|---|---|
+| "What data do you send the program, and where is that defined?" | Interface specification traced to the agreement | "Whatever the vendor's export does." |
+| "How do you know the listing is right?" | Daily listed-versus-actual run records and exception closures | "The feed shows success every night." |
+| "What happens when the feed fails?" | Monitoring design with silence and volume alerts, runbook and on-call owner | "We'd see errors in the log." |
+| "What did you do when it did fail?" | CBC-034: cause, affected units, fix, regression evidence, effectiveness check | "We patched it." |
+| "Did you tell the program?" | The notification record under the agreement's terms | "We weren't sure we had to." |
+| "Who decided whether FDA needed to know?" | A decision record signed by the medical director and Quality, with the rule considered | "IT thought it wasn't a big deal." |
+| "How do you control changes that touch the feed?" | Change records with feed impact assessment and regression results | "The vendor tests it." |
+
+For FDA specifically, the CBB system is a computerized system holding records of a licensed product. How an investigator looks at it is outside this course's local sources. What you can do is keep the evidence above current and retrievable.
+
+## Common traps
+
+**"The feed returns success, so it works."** Success means the job completed. It says nothing about what the job dropped. Only an end-to-end comparison, listed versus actual, tells you what a listing viewer sees.
+
+**"Reconciliation is a one-time cleanup."** CBC-034's reconciliation is **standing** because the edge case that failed once is not the only edge case. The next migration, mapping change or program-side update can open another. Treat the daily run as a control with an owner, not an event.
+
+**"This is an FDA reportable event, so IT files it."** Or the reverse, "it's only a listing glitch, so nobody reports." Both are the same mistake: IT deciding a regulatory question. The decision belongs to the medical director and Quality, on the correct rule. For a licensed unit that is not 1271.350, because 1271.330 takes 351 products out of subpart E.
+
+**"The statute tells us what the format is."** It doesn't. It says "standardized electronic format ... as determined by the Secretary." The format and the data elements come through the agreement and the operator. If someone quotes you a field list, ask for the document it came from.
+
+## What this means for your job
+
+- **Ask for the specification.** For each feed to the program, find the interface specification and the agreement clause it traces to. If neither exists, that is your first finding. Don't write one from memory of what the feed does. Write it from the agreement, and let Contracts confirm.
+- **Fund a reconciliation before you fund a dashboard.** A daily listed-versus-actual run, with a human owner for each exception class, finds this class of problem. A dashboard of job statuses does not.
+- **Alert on silence.** Ask your systems administrator which alarm fires if the feed carries nothing tonight. If the answer is "the error alarm," it won't.
+- **Put the feed in change control on both ends.** Every CBB release gets a "does this change what leaves the building?" question, and every notice from the program gets routed to the feed owner.
+- **Keep the decision rights straight.** You supply the timeline, the affected units and the evidence. The medical director and Quality decide FDA reporting. Contracts and Quality read the notification terms. The privacy officer weighs in if registry data is involved.
+- **Escalate early when a feed misstates a licensed product's availability.** Same day to the medical director and Quality, with facts. Not after you've worked out the cause.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The feed's log shows "sent, acknowledged" for every night. Why didn't the sent-versus-acknowledged reconciliation catch the failure, and which check would have?
+
+The dropped events were discarded by the mapping step before anything was sent, so there was nothing to acknowledge. Sent versus acknowledged only compares what left with what was accepted. A listed-versus-actual comparison, which checks the listing's view against the CBB system's own record of what is available, would have shown the discarded units still listed within a day. A volume check on status events produced versus status events sent would have caught it too.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is a daily listed-versus-actual reconciliation a requirement of 274k or the Cord Blood Inventory note?
+
+No. The statute and the note require data to be made available and submitted in a standardized electronic format. They do not prescribe a reconciliation. The daily reconciliation is Lakeshore's own control, an IT design choice that makes the standing duty credible. Any frequency or notification duty in the agreement comes from the agreement. Say which is which when you describe it to an auditor.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A developer says, "It's a licensed product, so we file under 1271.350." What is wrong with that, and who decides what to file?
+
+1271.330 says biological products regulated under section 351 are "not subject to the regulations set forth in this subpart," and 1271.350 sits in that subpart, so it is not the path for a licensed unit. The path for a licensed biological product's deviation is 21 CFR 600.14, which is not in this course's sources, so this lesson doesn't describe it. Regulatory Affairs reads it. The decision on whether and what to report belongs to the cord blood bank's medical director and Quality, not to IT. IT supplies the facts.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Explain to your CIO in two sentences why the feed gets change control, a daily reconciliation and a silence alert.
+
+"The feed is how we keep a standing promise to the national program that our licensed units are shown correctly, and when it failed it failed silently, so a clean 'success' status told us nothing. We now control it like any regulated interface: no change without impact review, a daily comparison of what the program shows against what we hold, and an alarm for when the feed goes quiet."
+:::
+
+## Where this goes next
+
+Next course: [Blood operations deep dive](../../blood-operations-deep-dive/index.qmd), which follows the whole donor-to-patient pipeline end to end.
+
+### Course wrap
+
+You started this course with an inventory that omitted two systems because "HRSA doesn't inspect us." You can now do four things you couldn't before.
+
+1. **Map the obligations.** You can say what the C.W. Bill Young program is, why it reaches Lakeshore through agreements rather than inspections, and which regulators ride along (FDA's Part 1271 and the license, CLIA for the contracted lab's testing, accreditation). Both stem-cell systems are on the compliance inventory with owners. [Module 1](../hrsa-and-the-cell-transplant-program/index.qmd).
+2. **Protect registry data.** You can decide a data-reuse request against 274k's confidentiality and disclosure-purpose provisions and its criminal penalty, and you know the controls: own store, role-based access, access review, disclosure log. [Module 2](../registry-donor-data-and-confidentiality/index.qmd).
+3. **Direct a cord blood system replacement.** You can hold the CBB system's unit identification, mapping, records, retention, maternal linkage and two-way tracking to account. [Module 3](../cord-blood-identification-records-and-tracking/index.qmd).
+4. **Run the feeds like a regulated interface.** You can insist on a specification from the agreement, change control on both ends, daily reconciliation, silence alerts and a clean reporting path with the right people deciding. This module.
+
+Across all four, two habits carry: separate what the statute says from what the agreement says from what Lakeshore chose, and never let IT decide a regulatory question that belongs to Quality or the medical director. One caution carries too: check whether the program was reauthorized before you rely on any funding or timeline statement, because this course's sources can't tell you.
