@@ -490,6 +490,12 @@ The following definitions apply only to this part:
 
 ---
 
+## § 1271.330 Applicability.
+
+The provisions set forth in this subpart are being implemented for nonreproductive HCT/Ps described in § 1271.10 and regulated solely under section 361 of the Public Health Service Act and the regulations in this part, and for the establishments that manufacture those HCT/Ps. HCT/Ps that are drugs or devices regulated under the act, or are biological products regulated under section 351 of the Public Health Service Act, are not subject to the regulations set forth in this subpart.
+
+---
+
 ## § 1271.350 Reporting.
 
 (a) Adverse reaction reports. (1) You must investigate any adverse reaction involving a communicable disease related to an HCT/P that you made available for distribution. You must report to FDA an adverse reaction involving a communicable disease if it:
