@@ -1,0 +1,260 @@
+---
+title: "Instruments, Middleware and Performance Verification"
+order: 168
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can direct IT's part in 42 CFR 493.1252, 493.1253 and 493.1281: instrument and middleware interfaces, rule changes, and the verification evidence a change needs.
+- **The punchline:** the LIS (laboratory information system) analyst changed a middleware rule so results carrying one instrument flag auto-released instead of waiting for technologist review. It shipped under an IT change ticket. No one in the laboratory verified it, and the laboratory director never saw it.
+- **The rule in one line:** the laboratory must run its tests in a way that gives results within its documented performance specifications (493.1252(a)), must verify or establish those specifications before reporting results from a new or modified test system (493.1253), and procedure changes need the laboratory director's signature before use (493.1251(d)).
+- **The honest limit:** the CLIA text never says "middleware" or "autoverification." Treating a rule change as a change that needs verification is the judgment of Lakeshore's laboratory director and Quality, written down. It is a defensible reading, not a quoted requirement.
+- **Ask on Monday:** "Can you show me every rule in the middleware that releases a result without a person looking at it, who approved each, and the test cases that prove it?"
+- **The trap:** "It's a software setting, not a test change." If the rule decides whether a human sees a result, it is part of how the test is performed.
+:::
+
+## The ticket that said "cosmetic"
+
+The Quality Analyst comes into your office with a printout and a quiet look. In her routine review of the donor testing laboratory's release log she noticed that a group of infectious-disease screening results had gone from instrument to LIS to BECS (Blood Establishment Computer Software) with no technologist review recorded. Normally a result carrying an instrument flag is held. This group carried one particular flag and was not held.
+
+She traced it to an IT change ticket. The LIS analyst, on your team, had been trying to cut the manual review queue. The middleware, the software layer between the instruments and the LIS, has a rule that holds a screening result for technologist review whenever an instrument flag is present. The analyst looked at the flags that fired most often, decided one of them was cosmetic, and changed the rule so that result auto-released. The ticket was approved by an IT peer, tested by the analyst on a handful of samples, and deployed in the maintenance window.
+
+You call the analyst in. They are not defensive, just surprised. "The flag description says it's about a print or display issue. I checked that the other flags still held. It cut the queue noticeably."
+
+"Who in the lab agreed that flag is cosmetic?"
+
+A pause. "Nobody. It was an IT change."
+
+The laboratory director is on the call within the hour, and the first question is not about blame. "What did that flag mean on that instrument, and did anyone find out before we stopped looking at it?"
+
+Here is how the facts sit, and they stay fixed for this lesson. The Quality Analyst found the change herself, in routine review. The rule has been reverted under an emergency laboratory change. The laboratory is reviewing every result released under the rule. This lesson does **not** say any donor or patient was harmed, and it does not say whether anything is reportable. The review outcome decides next steps through the laboratory's quality system and, for any donor result that reached BECS, through Quality's FDA deviation process (see [Filing a Biological Product Deviation Report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd)). Reportability is Quality's call after the review.
+
+One more choice, made so it matches [module 1](../where-clia-and-cap-reach-a-blood-center/index.qmd): this change happened **before** the rule that makes the laboratory director a required approver for any lab-system change was in force. It is the reason that rule exists. From here, it is the rule.
+
+## Why the rule exists, and the ITSM bridge
+
+An instrument flag is the instrument telling the laboratory "do not trust this reading without a person looking." It might mean a clot, an insufficient sample, a reagent concern, a reading near the cutoff, or something the instrument vendor documented as purely informational. Which flags matter, on which assay, is laboratory knowledge, not IT knowledge. The hold rule is the place where that knowledge is encoded.
+
+Change the rule and you change which results a human sees before they become a donor's record. In a screening laboratory that matters directly: a donor result drives suitability and release in BECS. If a flag the vendor documented as meaningful gets auto-released, a result that should have been questioned can become a record that looks clean. The failure mode is quiet. Nothing crashes. The queue just gets shorter.
+
+The ITSM bridge: this is **change enablement where the change authority is not the same as the service owner.** In ITIL terms, the LIS analyst raised a standard-looking change and an IT peer authorized it, but the *business* owner of the service, the laboratory, owns the risk assessment. You already know the pattern from a CAB (change advisory board) that approves a database index change without asking the application owner whether the report it feeds is regulated. Here the application owner is the laboratory director, and the regulator is watching.
+
+## The rule in plain English
+
+Five points, each sourced one by one later.
+
+1. **The laboratory selects its test systems and runs them as the manufacturer instructs, so results land within the performance specifications it has stated for each system** (493.1252(a)).
+2. **Before the lab reports patient results from a new test system, it must verify the manufacturer's performance specifications, or establish its own if it modifies the system or uses one without manufacturer specifications** (493.1253(b)). The lab must document all of it (493.1253(c)).
+3. **The procedure manual must describe how a result is produced, interpreted and entered into the record, and changes to procedures must be approved, signed and dated by the current laboratory director before use** (493.1251).
+4. **If the same test runs on different instruments or methods, the lab needs a system that, twice a year, evaluates and defines the relationship between those results** (493.1281(a)).
+5. **Results must travel from data entry to the final report destination accurately and reliably** (493.1291(a), covered in [module 2](../the-lis-and-the-test-report/index.qmd)).
+
+Notice what is absent. No sentence says "middleware" and none says "rule." The regulation speaks of test systems, procedures and results. The bridge from "a rule in middleware" to "part of the test system and procedure" is built in the next section, and labeled as judgment.
+
+## Is a middleware rule part of the "test system"?
+
+CLIA does not define the term in the excerpt this course holds, so be careful what you claim. What can be said from the text is this:
+
+- 493.1251(b)(3) requires the procedure manual to include the "step-by-step performance of the procedure, including test calculations and interpretation of results."
+- 493.1251(b)(13) requires "the laboratory's system for entering results in the patient record and reporting patient results."
+- 493.1252(a) ties the testing to "test results within the laboratory's stated performance specifications for each test system."
+
+A rule that decides which results a technologist reviews before release is part of how a raw instrument reading becomes a reported result. That is interpretation and reporting, in plain words. So Lakeshore's **documented position**, set by the laboratory director and Quality, is: *middleware and autoverification rules are part of the test system and procedure for the tests they touch. Changing them is a change to how the test operates, and is handled as one.*
+
+That is a policy choice, not a regulatory quote. It is also the cautious one. A laboratory could argue the opposite, and an inspector who read the rule logic as outside the "test system" would be unusual, but the lab should not be in the position of arguing it after a mistake. When someone asks "does CLIA require this?", the honest answer has two parts: the regulation requires procedures to be director-approved and performance verified when the system is new or modified, and Lakeshore has decided a rule change counts.
+
+Also keep two things apart. **Autoverification as a practice** is described in laboratory-industry guidance such as CLSI AUTO10 (listed in the resources page; it is a purchased standard we have not read and do not quote). It is not CLIA text. **CAP's checklists** address autoverification and middleware as themes. This course gives themes only and never checklist wording or numbers, because the checklists are not public. Ask the laboratory director to show which items on Lakeshore's custom checklist touch the rules.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 42 CFR 493.1252(a) | "Four-ninety-three point twelve fifty-two, paragraph a" | Lab selects test systems; testing follows manufacturer instructions and yields results within stated performance specifications | The hold rule is how the flagged result stays within what the lab says the test does |
+| 42 CFR 493.1252(b) | "...paragraph b" | Lab defines and monitors the conditions essential for accurate, reliable test system operation and result reporting | Conditions include things like power protection for instruments; the instrument-to-middleware path has to hold up too (see below) |
+| 42 CFR 493.1253(b)(1) | "Four-ninety-three point twelve fifty-three, b-one" | Introducing an unmodified FDA-cleared or approved test system: show comparable accuracy, precision and reportable range before reporting patient results | When a new assay or instrument goes in |
+| 42 CFR 493.1253(b)(2) | "...b-two" | Modifying an FDA-cleared system, or using a system without manufacturer specs: establish a longer list of performance specs before reporting | Where a rule change raises the "modified" question |
+| 42 CFR 493.1253(c) | "...paragraph c" | The lab must document all of these activities | The verification package |
+| 42 CFR 493.1251(a), (b)(3), (b)(13), (d), (e) | "Four-ninety-three point twelve fifty-one" | Written procedures followed by staff; interpretation and result entry/reporting in the manual; procedure changes approved, signed and dated by the current laboratory director before use; copies kept with dates | The rule logic belongs in the procedure; the ticket lacked the director's signature |
+| 42 CFR 493.1281(a), (c) | "Four-ninety-three point twelve eighty-one" | Same test on different instruments or methods: a system that twice a year evaluates and defines the relationship between results; document it | Two instruments running the same assay, each with its own rule set |
+| 42 CFR 493.1105(a)(3)(i) | "Four-ninety-three point eleven-oh-five" | Keep performance-specification records for as long as the test system is used, no less than 2 years | How long the verification evidence lives |
+| 42 CFR 493.1239 | "Four-ninety-three point twelve thirty-nine" | Ongoing mechanism to monitor, assess and correct problems in general laboratory systems, with documentation | The review the Quality Analyst did, and what the lab does with the finding |
+| 21 CFR 610.40(b) | "Six-ten point four-oh, b" | Required donor screening uses FDA-licensed, approved or cleared tests, per the manufacturer's instructions | FDA's view of the same test: the rule must not take the assay outside how it is cleared to be used |
+| NIST SP 800-53 Rev. 5 CM-3, CM-5 | "C-M three," "C-M five" | Security and privacy control vocabulary: configuration change control; access restrictions for change | Borrowed vocabulary for the rule inventory and who can edit rules. Not a CLIA citation |
+
+## The actual text
+
+All quotes are verbatim from `sources/cfr/42-493-clia-excerpt.md` unless marked.
+
+**42 CFR 493.1252(a):**
+
+> Test systems must be selected by the laboratory. The testing must be performed following the manufacturer's instructions and in a manner that provides test results within the laboratory's stated performance specifications for each test system as determined under § 493.1253.
+
+Clause by clause: "selected by the laboratory" puts the choice, and so the accountability, on the laboratory, not on IT or the vendor. "Following the manufacturer's instructions" matters for the flag: the instrument manual says what each flag means and what the lab should do. "Within the laboratory's stated performance specifications" is the outcome the rule exists to protect. A result released with a flag the manufacturer says needs attention is not self-evidently within spec.
+
+**42 CFR 493.1252(b), lead-in:**
+
+> The laboratory must define criteria for those conditions that are essential for proper storage of reagents and specimens, accurate and reliable test system operation, and test result reporting. The criteria must be consistent with the manufacturer's instructions, if provided. These conditions must be monitored and documented and, if applicable, include the following: (1) Water quality. (2) Temperature. (3) Humidity. (4) Protection of equipment and instruments from fluctuations and interruptions in electrical current that adversely affect patient test results and test reports.
+
+The enumerated items are physical. The lead-in is broader: conditions for "accurate and reliable test system operation, and test result reporting." For IT, the practical reading is that the data path from instrument port to LIS is one of the conditions to keep monitored and documented: interface up, queue not backing up, no silent drops. That is an inference from the lead-in, labeled as such, not a listed requirement.
+
+**42 CFR 493.1253(b)(1) and (b)(2):**
+
+> (b)(1) *Verification of performance specifications.* Each laboratory that introduces an unmodified, FDA-cleared or approved test system must do the following before reporting patient test results: (i) Demonstrate that it can obtain performance specifications comparable to those established by the manufacturer for the following performance characteristics: (A) Accuracy. (B) Precision. (C) Reportable range of test results for the test system. (ii) Verify that the manufacturer's reference intervals (normal values) are appropriate for the laboratory's patient population.
+>
+> (2) *Establishment of performance specifications.* Each laboratory that modifies an FDA-cleared or approved test system, or introduces a test system not subject to FDA clearance or approval (including methods developed in-house and standardized methods such as text book procedures), or uses a test system in which performance specifications are not provided by the manufacturer must, before reporting patient test results, establish for each test system the performance specifications for the following performance characteristics, as applicable: (i) Accuracy. (ii) Precision. (iii) Analytical sensitivity. (iv) Analytical specificity to include interfering substances. (v) Reportable range of test results for the test system. (vi) Reference intervals (normal values). (vii) Any other performance characteristic required for test performance.
+
+Read the triggers precisely, because overstating them is how teams lose credibility with inspectors. The triggers in the text are: **introducing** an unmodified FDA-cleared or approved system; **modifying** an FDA-cleared or approved system; **introducing** a system not subject to clearance; or **using** one with no manufacturer specifications. Each applies "before reporting patient test results." The text does not say "any software configuration change triggers verification." It also does not say a rule change is outside "modifies." Whether a hold-rule change counts as modifying the test system is the laboratory director's call, and Lakeshore's documented answer, above, is yes for the tests it touches.
+
+Notice also what the listed characteristics are: accuracy, precision, reportable range, sensitivity, specificity, interfering substances, reference intervals. They are *analytical* characteristics. A rule change does not alter an assay's chemistry, so the full list may not be the right evidence for a rule change. The right evidence is the one that shows the changed logic does what the lab intends with every flag and condition. That is the director's decision, below, and it borrows the "document all activities" discipline of paragraph (c):
+
+> (c) *Documentation.* The laboratory must document all activities specified in this section.
+
+**42 CFR 493.1251(d) and (e), and the two items that carry the rule logic:**
+
+> (b)(3) Step-by-step performance of the procedure, including test calculations and interpretation of results.
+>
+> (b)(13) The laboratory's system for entering results in the patient record and reporting patient results including, when appropriate, the protocol for reporting imminently life-threatening results, or panic, or alert values.
+>
+> (d) Procedures and changes in procedures must be approved, signed, and dated by the current laboratory director before use.
+>
+> (e) The laboratory must maintain a copy of each procedure with the dates of initial use and discontinuance as described in § 493.1105(a)(2).
+
+Paragraph (d) is the sentence the ticket skipped. If the hold rule is part of the written procedure for how screening results are interpreted and released, then changing it is a "change in procedure," and "before use" is unambiguous. That is the strongest regulatory hook for the scenario, and still depends on the rule being part of the procedure, which is why Lakeshore writes the rule logic into its procedures. Paragraph (e) is why you keep the old rule and its dates of use: the discontinued version of the rule is a record.
+
+**42 CFR 493.1281(a) and (c):**
+
+> (a) If a laboratory performs the same test using different methodologies or instruments, or performs the same test at multiple testing sites, the laboratory must have a system that twice a year evaluates and defines the relationship between test results using the different methodologies, instruments, or testing sites.
+>
+> (c) The laboratory must document all test result comparison activities.
+
+For Lakeshore: if an assay runs on two instruments, the comparison has to be done, twice a year, and documented. IT's part is to make the comparison possible. Data export has to identify the instrument that produced each result, and if the two instruments have different middleware rule sets, you need to know. Paragraph (b), on identifying results that "appear inconsistent" with criteria such as patient age or sex, is framed around patient results; this lesson does not stretch it to cover donor screening. Say so plainly if an inspector asks.
+
+**21 CFR 610.40(b), FDA's side** (from `sources/cfr/610.40.md`):
+
+> To perform testing for evidence of infection due to relevant transfusion-transmitted infections as required in paragraph (a) of this section, you must use screening tests that FDA has licensed, approved, or cleared for such use, in accordance with the manufacturer's instructions.
+
+Two regulators, one rule change. CLIA asks whether the test is performed within the lab's specifications. FDA asks whether it is used per the manufacturer's instructions. A rule that auto-releases a flag the instrument manual says needs attention touches both.
+
+**NIST SP 800-53 Rev. 5, CM-3 (selected, from `sources/nist/sp-800-53r5-cm-sa-excerpt.md`):** "Determine and document the types of changes to the system that are configuration-controlled"; "Review proposed configuration-controlled changes to the system and approve or disapprove such changes"; "Document configuration change decisions"; "Retain records of configuration-controlled changes." And **CM-5:** "Define, document, approve, and enforce physical and logical access restrictions associated with changes to the system." These are security-control language from a federal framework, not CLIA and not FDA. We borrow the vocabulary because it describes exactly the discipline a rule inventory needs.
+
+## What the Director decided
+
+You set these down in writing that afternoon, with the laboratory director's agreement:
+
+1. **The rule is reverted** under an emergency laboratory change (the same mechanism and caution as in [Emergency Changes and Hotfixes](../../release-management-and-sdlc/emergency-changes-and-hotfixes/index.qmd): act first, record immediately, review after).
+2. **All middleware and autoverification rule changes become laboratory change records, LCR-0xx.** An LCR needs the laboratory director's approval (or the director's documented delegate). An IT ticket alone cannot change a lab rule. The IT ticket still exists, because IT owns the deployment, but it is a child of the LCR, not a substitute.
+3. **Verification evidence is part of the record.** For each flag or condition the rule handles, a test case with the **expected** outcome (held for review, or released) and the **actual** outcome observed. Each case names the instrument, assay, flag or condition, input, and who ran it and when.
+4. **A rule inventory under configuration control.** Every rule that can release a result without a person: what it does, which tests and instruments it covers, version, effective date, owner, approver, and the LCR that last changed it. Edit access to the rules is restricted (the CM-5 idea) and logged.
+5. **Link to the existing change discipline, don't reinvent it.** The LCR is a laboratory-side wrapper over the mechanisms in [Release Management, Deployment and Change Control](../../release-management-and-sdlc/release-management-deployment-and-change-control/index.qmd) and the test design in [Risk-Based Testing and Regression](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd).
+
+None of this is quoted from CLIA. It is Lakeshore's way of meeting 493.1251(d), 493.1252(a) and 493.1253(c) for the thing most likely to slip through: a rule that looks like configuration.
+
+## What "enough" verification looks like for a rule change
+
+Take the risk-based thinking from the release course and apply it to rules. The question is not "did we test?" but "did we test the thing that could hurt someone?"
+
+- **Enumerate the flags and conditions.** Start with the instrument manual's flag list for the assay, plus the rule's other conditions (sample quality, control status, result near cutoff, duplicate test mismatch). The laboratory, not IT, says what each means. The enumerated list is the test case list.
+- **Test every branch, with the boundary.** For the changed flag, a case that fires it alone; with another flag also present; with none. For the unchanged flags, a regression case each, because the point of "I checked the other flags still held" was good but informal. Evidence that lives in an analyst's head is not evidence.
+- **Expected comes from the laboratory, before testing.** Write the expected outcome in the LCR before running the case. Otherwise the actual result quietly becomes the expected one.
+- **Use real or realistic input, in a place that cannot touch a donor.** Test environments for the LIS and BECS exist for this reason (see [Environments, Baselines and Test Data](../../release-management-and-sdlc/environments-baselines-and-test-data/index.qmd)). Never push a test result into production BECS.
+- **Follow the result downstream.** A held result must show up in the technologist's queue. A released result must arrive in the LIS correctly and cross the interface to BECS correctly, which is the territory of [BECS Interfaces and Data Integrity](../../csv-and-becs/becs-interfaces-and-data-integrity/index.qmd) and 493.1291(a). A rule that works in the middleware but corrupts a field at the interface is a different failure with the same victim.
+- **Decide what else is needed.** Whether a rule change needs fresh accuracy or precision data in the 493.1253 sense is for the laboratory director to decide and document. For a hold rule that changes who sees a result, flag-level test cases may be the right evidence. For a rule that changes a calculation or an interpretation threshold, the director may require comparison data against known samples. Write the reasoning in the LCR either way.
+
+For the V-model and traceability framing (requirement to test case to result), see [IQ, OQ, PQ and Traceability](../../csv-and-becs/iq-oq-pq-and-traceability/index.qmd). A rule inventory row traces to requirements, and test cases trace to rows.
+
+## See it in one picture
+
+Lakeshore's rule change, what happened, and the path from here on.
+
+```{mermaid}
+flowchart TD
+    A["LIS analyst: middleware rule change<br/>auto-release results with one instrument flag"] --> B["IT change ticket approved by IT only"]
+    B --> C["Rule live in production"]
+    C --> D["Results with that flag auto-released<br/>no technologist review"]
+    D --> E["Quality Analyst finds it in routine review"]
+    E --> F["Emergency lab change: rule reverted"]
+    E --> G["Lab reviews affected results"]
+    G --> H{"Any donor result reached BECS?"}
+    H -- yes --> I["Quality FDA deviation process<br/>see BPDR module"]
+    H -- no --> J["Lab quality system closes review"]
+    F --> K["New path: LCR-0xx"]
+    K --> L["Laboratory director approval"]
+    K --> M["Test cases per flag: expected vs actual"]
+    K --> N["Rule inventory under configuration control"]
+    L --> O["Release"]
+    M --> O
+    N --> O
+```
+
+Read it in two halves. The top half is what happened: an IT-only path from idea to production, discovered by a person, not a control. The bottom half is the replacement: three things must exist before release, and none can be supplied by IT alone.
+
+## Watch it explained
+
+The CDC's laboratory-training webinar walks through a test's life: establishing it, verifying or validating it before patient (here, donor) use, and managing quality once it is live — including what counts as a modification. It is general laboratory practice, not about middleware rules, and not a reading of 42 CFR 493. Watch it for the vocabulary the laboratory director will use when you ask "what evidence does this rule change need?"
+
+::: {.video-embed}
+<iframe src="https://www.youtube-nocookie.com/embed/wdRzi3h5V-E" title="Life of a Test Method: Validation, Verification, and Managing Quality" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+*Centers for Disease Control and Prevention (CDC), on YouTube. Title checked against YouTube's oEmbed record on 2026-11-13. I found no public video specifically on autoverification or middleware rule changes.*
+
+## What an inspector would actually look for
+
+An inspector from CAP, acting for CMS, does not read your middleware code. Expect to be asked for artifacts, and expect the laboratory and IT to answer together.
+
+- **The rule inventory.** "Show me every rule that releases a result without human review for the donor testing lab." Owner: the laboratory director, with IT maintaining it. A bad answer: "Let me ask the analyst to pull it from the server." A good answer: a controlled document, with versions, that matches what is actually deployed.
+- **A change record for a recent rule change.** The LCR with director approval, test cases with expected and actual results, deployment record, and the post-release check. A bad answer: an IT ticket with "tested OK" in the comments.
+- **The procedure that describes the rule.** 493.1251(b)(3) and (d): the manual states how results are interpreted and released, and a director's dated signature covers the change.
+- **Verification records for new or modified test systems.** What the lab verified or established under 493.1253, and the document trail (c). Kept at least as long as the system is in use, per 493.1105(a)(3)(i).
+- **Evidence of twice-yearly comparison** where one test runs on more than one instrument (493.1281).
+- **How the lab found and handled a problem.** 493.1239 asks for an ongoing mechanism to monitor, assess and correct problems, and to review the effectiveness of corrective action. The Quality Analyst's routine review is that mechanism working. The question is whether the finding became a documented correction with a prevention step, not whether the problem existed.
+
+## Common traps
+
+**"It's configuration, not a test change."** The CLIA text speaks of test systems, procedures and results, not of where the logic sits. A rule that decides whether a person reviews a result is part of how the result gets interpreted and reported (493.1251(b)(3), (b)(13)). Lakeshore treats it as part of the test system, and says so in writing.
+
+**"We verified it, so it's fine."** Verification in 493.1253 is about performance specifications, and it has a "before reporting patient test results" clock. Informal checking by the person who built the change, with no expected outcomes written first and no laboratory sign-off, answers neither the inspector nor the director. Evidence has to exist as a record (493.1253(c)).
+
+**"CLIA says every software change needs verification."** It does not. The text names introducing and modifying test systems. Lakeshore's rule that every rule change gets an LCR is policy that goes beyond the minimum on purpose, because the cost of a wrong call is a quiet release of a result no one looked at. Don't tell an inspector the regulation says what the policy says.
+
+**"Cutting manual review is the goal, and the flag looked harmless."** Reducing review volume is a legitimate goal, and autoverification exists to do it. The method is the problem: the lab decides which flags are safe to release, tests that decision, and records it. A good LCR could well approve this very change, with evidence.
+
+## What this means for your job
+
+- **Never let an IT ticket be the only authority for a lab rule.** Put "LCR number, laboratory director approval" as a mandatory field on any middleware or LIS change that touches result handling. Make the LIS analyst's intake ask: "Does this change whether a person sees a result?"
+- **Own the rule inventory with the lab.** It is a CMDB-style artifact for logic, not boxes. Reconcile it against what is actually deployed on a schedule, so drift shows up before an inspector or a result reveals it.
+- **Restrict and log who can edit rules** (CM-5 vocabulary). The analyst who builds and the person who approves should be different, and the approver should come from the laboratory.
+- **Teach the team what an expected result is.** Test cases with written expected outcomes, written by or reviewed by the lab, before any run. It is the single cheapest control against "I checked it."
+- **Separate the finding from the consequence.** When a problem like this surfaces, support the lab's review of released results, give them the data fast (which results, which instrument, which window), and keep out of the reportability decision. Quality decides whether a deviation goes to FDA.
+- **Escalate immediately** if you find any lab-affecting rule change that has no LCR, or a rule in production that is not in the inventory. Bring it to the laboratory director the same day.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: Which sentence of 493.1251 did the IT ticket skip, and what condition makes it apply?
+
+493.1251(d): "Procedures and changes in procedures must be approved, signed, and dated by the current laboratory director before use." It applies if the hold rule is part of the written procedure for how screening results are interpreted and released, which Lakeshore's documented position says it is. The regulation does not mention middleware, so the link between the rule and the procedure is the lab's judgment, written into the manual.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: A colleague says "493.1253 requires full accuracy and precision verification for any middleware rule change." Is that right?
+
+No. The triggers in 493.1253(b) are introducing an unmodified FDA-cleared or approved test system, or modifying one, or introducing a system not subject to clearance, or using one without manufacturer specifications. The text doesn't mention rule changes. Lakeshore treats a rule change as a change needing verification evidence, and the laboratory director decides what evidence is enough (flag-level test cases for a hold rule, possibly comparison data for a calculation change). That is policy and judgment, not a quoted requirement.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: The review of released results finds one donor result that reached BECS under the new rule and should have been held. Does IT decide whether it is reportable to FDA?
+
+No. The laboratory reviews the results through its quality system, and for a donor result that reached BECS, Quality runs the FDA deviation process, including the reportability decision (see the BPDR module). IT's job is to supply fast, accurate data on which results passed through which path, and to support correction in BECS under Quality's direction. Nothing in this lesson says any result was harmed or reportable.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Two sentences for the CIO: why can't an IT change ticket alone change a lab rule?
+
+A middleware rule decides which instrument results a technologist sees before they become a donor record, so it is part of how the test is performed, and the laboratory director must approve procedure changes before use (42 CFR 493.1251(d)). IT still deploys the change, but the lab owns the risk, so each rule change needs a laboratory change record with the director's approval and written test evidence.
+:::
+
+## Where this goes next
+
+You can now direct IT's side of instruments, rules and verification. The next module, `proficiency-testing-and-the-lis`, follows a different kind of sample through the same systems: proficiency testing samples that must be handled like patient samples, never sent to another lab, and never mistaken for donations in BECS.

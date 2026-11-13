@@ -1,0 +1,80 @@
+---
+title: "Resources"
+order: 169
+---
+
+All links below were fetched on 2026-11-13. Regulatory text in the lesson is quoted from this repo's local copies in `sources/`; these links are for reading the same text in context.
+
+- [42 CFR 493.1252, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/42/493.1252)
+  — test systems, equipment, instruments, reagents, materials and supplies. Use it to read paragraph (a)
+  (results within stated performance specifications) beside (b)'s conditions for accurate operation and
+  reporting. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- [42 CFR 493.1253, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/42/493.1253)
+  — establishment and verification of performance specifications. Use it to check the exact triggers
+  (introducing, modifying) before telling anyone what "requires verification." Verified loading via
+  `curl` on 2026-11-13 (HTTP 200).
+
+- [42 CFR 493.1251, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/42/493.1251)
+  — the procedure manual, including (d), the laboratory director's approval of procedure changes before
+  use. Use it when deciding whether rule logic belongs in the procedure. Verified loading via `curl` on
+  2026-11-13 (HTTP 200).
+
+- [42 CFR 493.1281, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/42/493.1281)
+  — comparison of test results across methods, instruments and sites (twice a year). Use it when one
+  assay runs on more than one instrument. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- [CMS: *CLIA Verification of Performance Specifications* brochure (PDF)](https://www.cms.hhs.gov/clia/downloads/6064bk.pdf)
+  — CMS's own plain-language brochure on verifying accuracy, precision and reportable range. Use it as
+  the official explainer for what verification looks like in practice; it is aimed at laboratories
+  broadly, not blood centers. Verified loading via `curl` on 2026-11-13 (HTTP 200, a PDF).
+
+- [CMS: Clinical Laboratory Improvement Amendments (CLIA)](https://www.cms.gov/medicare/quality/clinical-laboratory-improvement-amendments)
+  — the program landing page, with current notices and contacts. Use it to re-check anything
+  time-sensitive. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- [CAP: Accreditation Checklists](https://www.cap.org/laboratory-improvement/accreditation/accreditation-checklists)
+  — CAP's public description of its 21 discipline checklists. The checklist text is not on this page, and
+  this course never quotes it or cites requirement numbers; use the page to see how participating labs
+  get them and ask the laboratory director for the custom checklist. Verified loading via `curl` on
+  2026-11-13 (HTTP 200).
+
+- [NIST SP 800-53 Rev. 5, Security and Privacy Controls (CSRC)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
+  — the source of the CM-3 (configuration change control) and CM-5 (access restrictions for change)
+  vocabulary used for the rule inventory. A security framework, not a CLIA or FDA requirement. Verified
+  loading via `curl` on 2026-11-13 (HTTP 200).
+
+**Video:** [Life of a Test Method: Validation, Verification, and Managing Quality](https://www.youtube.com/watch?v=wdRzi3h5V-E)
+(CDC, YouTube) — embedded in the lesson. General laboratory test-lifecycle training, not specific to
+middleware rules. Title checked against YouTube's oEmbed record on 2026-11-13. No public video on
+autoverification or middleware rule changes was found.
+
+**Back-links in this curriculum:** [Where CLIA and CAP Reach a Blood Center](../where-clia-and-cap-reach-a-blood-center/index.qmd);
+[Risk-Based Testing and Regression](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd);
+[Release Management, Deployment and Change Control](../../release-management-and-sdlc/release-management-deployment-and-change-control/index.qmd);
+[BECS Interfaces and Data Integrity](../../csv-and-becs/becs-interfaces-and-data-integrity/index.qmd);
+[IQ, OQ, PQ and Traceability](../../csv-and-becs/iq-oq-pq-and-traceability/index.qmd).
+
+## Keep learning
+
+These are not official sources and are not authority for any regulatory claim in the lesson. The three
+journal articles are laboratory-practice papers; I verified each page loads and read its title, not the
+full text.
+
+- [Autoverification in a core clinical chemistry laboratory at an academic medical center](https://pmc.ncbi.nlm.nih.gov/articles/PMC4023033)
+  (open-access journal article) — a practitioner account of building and validating autoverification
+  rules. Worth your time to see what laboratories actually test. Verified loading via `curl` on
+  2026-11-13 (HTTP 200).
+
+- [Design and evaluation of a LIS-based autoverification system for coagulation assays in a core clinical laboratory](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6609390/)
+  (open-access journal article) — shows rule categories (flags, limits, logic checks) and how a rule set
+  was validated. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- [Customized middleware experience in a tertiary care hospital hematology laboratory](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9577123/)
+  (open-access journal article) — a view of middleware as the place laboratory logic lives. Verified
+  loading via `curl` on 2026-11-13 (HTTP 200).
+
+- [CLSI AUTO10: Autoverification of Clinical Laboratory Test Results](https://clsi.org/standards/products/automation-and-informatics/documents/auto10)
+  (standards body catalogue page; the standard itself is sold) — the industry guideline on designing and
+  validating autoverification. I read only the catalogue page and do not quote the standard. Verified
+  loading via `curl` on 2026-11-13 (HTTP 200).
