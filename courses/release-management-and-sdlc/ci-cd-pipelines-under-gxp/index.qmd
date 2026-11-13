@@ -1,0 +1,417 @@
+---
+title: "CI/CD Pipelines Under GxP"
+order: 140
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** run HOP through an automated pipeline without breaking segregation of duties, tool assurance, or the audit trail of who deployed what.
+- **The punchline:** the development lead wants the pipeline to deploy HOP to production whenever every automated test passes: "the tests *are* the approval." The Director's decision: automate everything up to and including the validation environment, but production gets only an artifact that was already validated, with recorded human approvals from Quality and the release role, enforced by the pipeline itself. And the pipeline gets its own documented, risk-based assurance before the next HOP release relies on it.
+- **The rule in one line:** automation may carry the evidence and enforce the gates, but it cannot be the authority. Build once, promote the same artifact, and let the pipeline refuse anything that skips a gate.
+- **Monday question:** "Show me who deployed the build running in production, when, under whose approval, and how you know it is the build we validated."
+- **The trap:** treating a green pipeline as a green gate, and treating the pipeline as exempt from the controls it was built to enforce. Whoever can edit the pipeline can edit the control.
+:::
+
+**Before you start:** this module builds on [environments, baselines and test data](../environments-baselines-and-test-data/index.qmd) (the access model and the baseline), [release management, deployment and change control](../release-management-deployment-and-change-control/index.qmd) (the gate, "promote what was validated, no rebuild"), [audit trails and e-signatures](../../data-integrity-and-records/audit-trails-and-esignatures/index.qmd), [Part 11 for validated systems](../../csv-and-becs/part-11-for-validated-systems/index.qmd) and [GAMP 5 and the V-model](../../csv-and-becs/gamp5-and-the-v-model/index.qmd). It does not re-teach them. How much testing a release needs is [module 6](../risk-based-testing-and-regression/index.qmd); this module is about the machinery that runs and records it.
+
+## "The tests are the approval"
+
+HOP 3.0 is live and closed out. The development lead asks for twenty minutes at the Monday meeting and brings a diagram.
+
+"Releasing HOP 3.0 took us four days of hand work," they say. "I built the package on my machine, the systems administrator copied it to validation, then copied it again to production. Every step was a person typing a command. Next release, I want a pipeline. Every commit builds and runs the unit and integration tests. A passing build deploys to development and test by itself. Then, when everything is green, it deploys to production. No copying, no typing, nobody to get it wrong at two in the morning."
+
+The Quality Analyst has been writing since the second slide. "I like most of this. I like the tests running on every commit. What I do not like is the last arrow."
+
+"The tests are the approval," the development lead says. "That is the whole point of automated tests. If they pass, the build is good. What is your human adding?"
+
+The systems administrator answers before she does. "Whoever owns the pipeline owns production. If it deploys on green, then the person who can change what 'green' means, or skip a test, or point it at a different build, is deploying to production with no one else involved. I do not hold that much access today and neither do you."
+
+The CIO, practical: "I want fewer manual steps and fewer four-day releases. Tell me what we can have."
+
+You own release cadence, and you sit at the table with Quality. There is no regulation that mentions pipelines. There are, however, regulations and guidance about authorized changes, about records, and about trusting your tools. This module turns those into a design.
+
+## Why the rule exists, and the ITSM bridge
+
+Manual releases fail in familiar ways: the wrong file copied, a step skipped, a configuration value typed wrong, nobody sure afterward which build is running. Automation fixes exactly those failures. A pipeline is the same steps, done the same way every time, with a log. That is the honest case for it, and Quality should hear it said.
+
+Automation also creates three new failure modes:
+
+1. **Speed without authority.** A pipeline can move a change to production faster than any control can look at it. The failure is the one from [module 4](../release-management-deployment-and-change-control/index.qmd): a change in production that nobody authorized, packaged or timed deliberately, only now it happens in seconds and looks tidy in the logs.
+2. **The unguarded guard.** The pipeline concentrates power. The definition of the pipeline (what it tests, what it checks, who may approve) is itself a change-control surface. If a developer can edit the gate and then trigger it, segregation of duties exists on the org chart and nowhere else.
+3. **Trusting a tool nobody checked.** A test runner that reports "passed" when it ran nothing, or a deployment step that silently skips a check, produces records that look like evidence and are not. The output of the tool is evidence, so the tool needs some evidence of its own.
+
+The ITSM bridge: you already know that a CMDB-driven automated deployment tool does not replace change enablement; it implements it. Release and deployment management are practices, and a pipeline is how deployment management gets done at scale. In an ordinary shop, "the pipeline did it" is an answer. In a regulated blood center, "the pipeline did it" has to be followed by "under whose authorization, running what, recorded where."
+
+## The rule in plain English
+
+Seven ideas, each tied to the Monday meeting.
+
+1. **Automate the evidence, not the authority.** Builds, tests, deployments to non-production environments and the checking of gates can be fully automatic. The decision to put a validated build into production is a recorded human decision by people with the authority to make it (211.68(b)).
+2. **Distinguish continuous delivery from continuous deployment.** Continuous *delivery* means every passing change is kept in a deployable state and *can* be released at any time; a person still chooses when. Continuous *deployment* means every passing change goes to production automatically. HOP's production, under the release gate from [module 1](../sdlc-models-in-a-regulated-blood-center/index.qmd), is continuous delivery at most.
+3. **Build once, promote the same artifact.** The pipeline builds HOP one time. That artifact, with a recorded checksum, moves through every environment. Only configuration differs between environments, and configuration is versioned too.
+4. **The pipeline is the enforcement point for segregation of duties.** It refuses a production promotion unless the preconditions hold, and nobody (including its administrators and the development lead) can edit those rules and use them in the same breath.
+5. **The pipeline leaves an audit trail that survives.** For any build in production: who triggered each stage, what artifact, which environment, which approvals, when. That record is part of the release record, retained with it.
+6. **The pipeline is a tool with assurance proportional to risk.** The parts that can put a wrong build in production or fake a passing test get documented requirements and real challenge tests. The parts that post a chat message do not.
+7. **Environments and configuration are code.** The shape of each environment and the settings that differ between them live in version control, so [module 3](../environments-baselines-and-test-data/index.qmd)'s baseline comparison can be automatic.
+
+## Two kinds of "CD," and why one is off the table
+
+The abbreviation "CD" hides an argument. Most practitioner writing, including Jez Humble and Dave Farley's continuous delivery work (resources), uses it like this:
+
+| Term | What happens on a green build | Who decides to go to production |
+|---|---|---|
+| **Continuous integration (CI)** | Every commit is built and the automated unit and integration tests run, so problems surface within minutes of the change that caused them. | Not applicable. CI stops at "this build is good enough to keep." |
+| **Continuous delivery** | The build is promoted through environments and is *always in a state that could be released*. | A person or defined process chooses the moment and approves. |
+| **Continuous deployment** | The build goes to production automatically. | The pipeline. No human decision in the path. |
+
+Definitions vary in the wild, so write yours into Lakeshore's procedure. What matters here: continuous deployment removes the recorded authorization that 211.68(b) points at, ignores everything in the readiness checklist that is not a test result (freeze windows, interface collisions, hospital notice, training, Quality's independent review), and would put every merged commit in front of hospitals without the monitoring period module 4 insisted on. It is not appropriate for HOP's production. That is Lakeshore's design decision, not a regulation: no source prohibits it by name, which is why the decision belongs in the procedure with its reasons.
+
+The development lead is right about something large, though. Continuous *delivery* is a real prize. If every commit produces a build that has passed automated tests, can be deployed to validation with one button, and carries its evidence with it, then the four-day release shrinks to the human parts: review, approval, a slot, monitoring. That is where the time was always going to be saved.
+
+## Where the controls live in the pipeline
+
+Here is the pipeline Lakeshore would build, stage by stage. This is a design, not a product; any competent toolchain can do it.
+
+| Stage | What happens | Automatic? | Control and record |
+|---|---|---|---|
+| **1. Commit** | Developer submits a change. The *other* developer reviews it before it joins the main line. | Review is human | Review record tied to the change; the author cannot approve their own change. |
+| **2. Build and CI** | The pipeline builds HOP once and runs unit and integration tests. | Yes | Build ID, source version, test results, artifact stored with its checksum. |
+| **3. Deploy to development and test** | A green build deploys to development and test (synthetic data). | Yes | Deployment log with the artifact ID. |
+| **4. Release candidate** | A build is designated a release candidate (rc), the unit that module 4 says must have its own evidence. | Human decision | The designation is itself recorded. |
+| **5. Deploy to validation** | On demand: the systems administrator (release role) triggers deployment of the rc. Before it deploys, an automated drift check compares validation to production's baseline. | Triggered by a person | Environment fields for the test record (module 3), written by the pipeline, not typed. |
+| **6. Formal testing** | Automated and manual tests run; QA reviews evidence. | Mixed | Results name the artifact ID and checksum. |
+| **7. Production gate** | The pipeline checks its preconditions and waits for recorded approvals. | Checks automatic; approval human | See the table below. |
+| **8. Promote to production** | The release role promotes *the same artifact*. The pipeline recomputes the checksum on arrival. | Triggered by a person | Deployment record: who, what, when, where, which approvals. |
+| **9. Verify and monitor** | Post-deployment checks run; the monitoring period begins. | Mixed | Verification results and monitoring plan attached to the release record. |
+
+Notice what is *automatic* and what is not. Everything repetitive and error-prone is automatic. The three decisions (designate a release candidate, approve production, choose to promote) are people.
+
+### The gate at stage 7
+
+The pipeline refuses to promote unless **all** of these are true. Each one is a check a script can make and a log can prove:
+
+| Precondition | Why | Where it comes from |
+|---|---|---|
+| The artifact ID and checksum match a build that was deployed to validation and has recorded passing evidence | Promote what was validated, no rebuild | BECS guidance III.G; module 4 |
+| A change record exists, is authorized, and names this artifact and slot | Authorized changes only | 211.68(b); module 4 |
+| Approvals from **Quality** and the **release role** are recorded, by named people | Independent review and authorization | Module 4's gate; GPSV 4.9 as general thinking |
+| The approver is not the person who requested the promotion, and not the author of the change | Segregation of duties | CM-5 as vocabulary; module 3 |
+| The slot is outside any freeze window and no other interface-touching release is in the window | The calendar is a control | Module 4 |
+| Drift check against production's baseline passed at gate time (not only at validation start) | Module 3's repeated parity check | Module 3; checklist row 5 |
+
+If any check fails, the pipeline stops and logs the attempt. A refused attempt is evidence the control works.
+
+## Segregation of duties, enforced
+
+Module 3 set the access model in a table: developers write in development, read in validation, and have no access to production; the systems administrator or release role deploys approved builds; Quality reads, witnesses and approves. Module 3 deferred *enforcement* to this lesson. A table in a wiki is a promise. A pipeline can make it a mechanism, if a few things are true.
+
+**The pipeline holds the keys, people do not.** The credentials that can write to validation and production belong to the pipeline's deployment identity. No developer has them. A person triggers a deployment; the pipeline performs it. This is CM-5 in its own words: "Define, document, approve, and enforce physical and logical access restrictions associated with changes to the system" (NIST, voluntary). The word that matters is *enforce*.
+
+**Production promotion is a role, not a person.** "Release role" in Lakeshore's model means the systems administrator and a named backup, defined in the procedure. The pipeline checks role membership against the identity system, not a shared login. FDA's drug data-integrity Q&A makes the same point from the other side: shared logins mean a unique individual cannot be identified, and actions must be attributable to a specific person (Q5; a drug-CGMP document, used here as general thinking).
+
+**Approval is not self-approval.** Quality and the release role approve; the requester and the change's author cannot. In a two-developer team, the other developer reviews code (stage 1) but is not a production approver.
+
+**The administrator of the pipeline is not the author of what it deploys.** FDA's Q&A says the system administrator role, "including any rights to alter files and settings, should be assigned to personnel independent from those responsible for the record content" (Q4, drug CGMP, general thinking). Translate: the person who administers the pipeline platform should not be a developer whose builds it deploys. At Lakeshore, that is the systems administrator.
+
+**The pipeline definition is under change control.** This is the one most teams miss. The file that says "require Quality's approval" is a controlled document. It lives in version control; changes to it need review and approval from someone outside the two developers (the systems administrator, with Quality informed of any change to a gate). Otherwise a developer can edit the gate to say "no approvals needed," trigger a build, and the pipeline will faithfully enforce the new rules. Part 11 has a clause that fits the idea well: "Revision and change control procedures to maintain an audit trail that documents time-sequenced development and modification of systems documentation" (21 CFR 11.10(k)(2)). Whether Part 11 as a whole applies to Lakeshore's pipeline is a judgment (below); the principle that the rules of the system are themselves controlled and traceable is sound either way.
+
+**No bypass accounts.** "Break-glass" access for emergencies exists, but it is named, logged, time-limited and followed by retrospective review, and it belongs to [module 10](../emergency-changes-and-hotfixes/index.qmd)'s emergency path, not to anyone's convenience.
+
+A word on the rebuttal "that is too heavy for two developers." It is the opposite. Because the pipeline enforces the rules, the *humans* do less: Quality clicks approve against a pre-assembled evidence package, instead of hunting for it; the systems administrator triggers a promotion instead of running forty commands.
+
+## Build once, promote the same artifact
+
+[Module 4](../release-management-deployment-and-change-control/index.qmd) locked this rule: *promote what was validated, no rebuild*, from the BECS guidance's recommendation that after validation you "copy or move the file configuration on which you performed your validation into the production environment" (III.G). The pipeline is how that rule gets mechanical teeth.
+
+**Why a rebuild is not the same thing.** It is tempting to think that building the same source code twice gives the same program. Often it does not: a dependency may have updated between builds, the build machine may differ, a build step may embed a timestamp. The code you validated and the code you deployed are then two different artifacts with the same name, and your evidence is about the first.
+
+**The mechanism.**
+
+1. CI builds once and stores the artifact in an artifact repository that only the pipeline can write to.
+2. At build time, the pipeline computes a **checksum** (a cryptographic hash: a short fingerprint that changes if even one byte of the file changes) and records it with the build ID and the source version.
+3. Every deployment, to every environment, pulls *that* artifact, recomputes its checksum on arrival and compares. A mismatch stops the deployment.
+4. Test evidence cites the artifact ID and checksum. The production deployment record cites the same.
+5. **Signing** (the pipeline cryptographically signs the artifact with a key the developers do not hold) goes one step further: it shows the artifact came from the trusted build process and was not swapped. A checksum shows *it has not changed since it was recorded*; a signature adds *who vouches for it*. For a two-developer team, a checksum recorded by the pipeline and re-verified at each stage is a sound minimum; signing is the stronger option and is worth a risk decision in [module 8](../secure-sdlc-and-software-supply-chain/index.qmd).
+6. Only **configuration** differs between environments (endpoints, credentials, feature settings), held outside the artifact, versioned, and recorded with the deployment. Module 4's release package already treats configuration as part of the package.
+
+NIST's secure-development framework (voluntary) names the underlying ideas. PS.2 is "Provide a Mechanism for Verifying Software Release Integrity," with the purpose to "help software acquirers ensure that the software they acquire is legitimate and has not been tampered with." PS.3 is "Archive and Protect Each Software Release," to "preserve software releases in order to help identify, analyze, and eliminate vulnerabilities discovered in the software after release." The second one has an operational dividend for Lakeshore: an archived, identified artifact is also what [module 9](../deployment-cutover-and-rollback/index.qmd) rolls back to.
+
+If a late fix is needed, it is a new rc with its own evidence, exactly as module 4 says. The pipeline makes that cheap, and it also makes the temptation to "just patch the artifact in place" impossible, because the artifact store is write-once.
+
+## Environments and configuration as code
+
+Module 3's baseline was a list: versions, settings, interface endpoints, the BECS patch level on the other side. A pipeline can turn the list into something executable.
+
+- **Infrastructure as code** describes the environments themselves (servers, runtime versions, network rules) in files under version control, so validation and production are built from the same description. Differences become visible as differences between two files, not as folklore.
+- **Configuration as code** holds the per-environment settings, in a repository the developers cannot push straight to production. Secrets (credentials) are held in a secrets store the release role controls, not in the repository.
+- **The drift check becomes a pipeline step.** Before the pipeline deploys to validation for formal testing, and again at the gate, it compares the environment with the recorded baseline and writes the result into the test record. This is module 3's entry criterion, done every time and attributed to the pipeline rather than to someone's memory.
+
+One caution, because module 3's story was a BECS test instance that fell a patch behind. The pipeline can only compare what it can see. HOP's artifact and configuration are in the pipeline's world; the BECS instance on the other end is managed by the vendor's processes and Lakeshore's change control. The baseline comparison has to *include* BECS's version, read from the interface or recorded by the systems administrator, or the pipeline will cheerfully certify an environment that is not equivalent.
+
+NIST's catalog (voluntary) names the intent in SA-10, developer configuration management: "Document, manage, and control the integrity of changes to [Assignment: organization-defined configuration items]" and "Implement only organization-approved changes to the system, component, or service."
+
+## The pipeline's own audit trail
+
+"Show me who deployed build X" is answered from the pipeline's records. What should those records hold, for each pipeline run that touches validation or production?
+
+| Field | Question it answers |
+|---|---|
+| Who triggered the run, and who approved each gate | Attribution; segregation of duties |
+| Role and identity source at the time | Authority |
+| Artifact ID, checksum, source version | What exactly moved |
+| Source and target environment | Where |
+| Date and time of each stage, from a trusted clock | When, in sequence |
+| Change record number and release record number (REL-0311) | Under what authorization |
+| Results of each automated check, including refusals | That the gates actually ran |
+| Configuration version and baseline comparison | The environment state, module 3 |
+| Changes to the pipeline definition itself, with reviewer | That the rules were controlled |
+
+### Is it a Part 11 record? A judgment, not a reflex
+
+Part 11 (21 CFR Part 11, electronic records and signatures) reaches electronic records that another regulation already requires you to keep: the predicate rule logic from the [Part 11 module](../../csv-and-becs/part-11-for-validated-systems/index.qmd). Whether a pipeline's logs are such a record is not something this lesson can settle for Lakeshore, and it should not be answered by reflex in either direction. This is a Quality and regulatory-affairs judgment, documented.
+
+Some orienting thoughts, labeled by what they are:
+
+- **Regulation.** 21 CFR 11.10(e) describes "secure, computer-generated, time-stamped audit trails to independently record the date and time of operator entries and actions that create, modify, or delete electronic records," adding that "Record changes shall not obscure previously recorded information" and that the documentation must be retained "for a period at least as long as that required for the subject electronic records." Authority checks (11.10(g)) are the regulatory wording for "only authorized individuals can... perform the operation at hand." These apply to Part 11 systems; whether the pipeline is one is the judgment.
+- **Guidance, a different domain.** FDA's guidance on software assurance for medical device manufacturers' production and quality software says, for that audience, that whether a record is necessary as evidence of a validated state is a key consideration for applying Part 11, and illustrates the contrast: documentation demonstrating a system correctly automates a required check "would generally be necessary as evidence," while routine startup activity logs that are "not necessary as evidence" would not be covered. This guidance is *scoped to device manufacturers' production and QMS software* and explicitly excludes device software functions; it does not govern Lakeshore or BECS. It is useful as a way of thinking: **ask whether the log is part of the evidence that a required control happened.**
+- **Applying that thinking to HOP.** The record that a production change was authorized and that the deployed build was the validated one is the evidence behind 211.68(b) and the BECS guidance's validation expectations. A reasonable position, if Quality agrees, is that the *release-and-deployment record* (the part of the pipeline's trail that shows approvals, artifact identity and deployment) is evidence that matters and should be treated with audit-trail discipline. The pipeline's routine debug output is not.
+- **The e-signature question.** If someone clicks "approve" in the pipeline, is that a signature in Part 11's sense? Only if Lakeshore is relying on it as one, and then Part 11's signature controls (unique identity, signature manifestation, and so on, see the [audit-trails module](../../data-integrity-and-records/audit-trails-and-esignatures/index.qmd)) have to be met. A cleaner design: the approval lives in the change record system where Lakeshore's signing controls already exist, and the pipeline *reads* that approval and refuses to proceed without it, while logging who triggered the promotion. Which design to choose is a Quality decision; the design most likely to be easy to defend is the one where approvals are made once, in the controlled system, and the pipeline only checks them.
+
+Whatever the classification, the practical controls are cheap and sound: logs write-once or tamper-evident, identities unique, clocks synchronized, and **retention set to match the release record**. Many pipeline tools keep run history only for a default period; if that is shorter than the release record's retention, the evidence evaporates. Export the deployment record into the release record at close-out.
+
+## Tool assurance, in proportion
+
+The pipeline and the test tools are software that Lakeshore *relies on* to produce evidence. How much confidence is enough?
+
+### What the sources say, and what they do not
+
+- **FDA's general software validation guidance** (device-makers; general thinking here) notes that software "components come in many different forms (e.g., application software, operating systems, compilers, debuggers, configuration management tools, and many more)," and says the software validation process "should be commensurate with the safety risk associated with the system, device, or process." That is a source for two ideas: tools are in the picture, and effort follows risk. It does not give a tool-validation procedure.
+- **FDA's computer software assurance guidance** describes "a risk-based approach to establish confidence in the automation used for production or quality management systems," and recommends basing the approach "on a justified and documented risk assessment and a determination of the potential of the system to affect product quality, patient safety, and record integrity." **Scope caveat, again:** the guidance is written for medical device manufacturers' production and quality-system software, expressly excludes device software functions, and does not govern a blood establishment's validation of BECS or its CI/CD tooling. Treat it as a published statement of risk-based thinking that Lakeshore can borrow, not as the rule for Lakeshore's pipeline.
+- **NIST SA-15, Development Process, Standards, and Tools** (voluntary): follow a documented development process that "Identifies the standards and tools used in the development process," "Documents the specific tool options and tool configurations used in the development process," and "Documents, manages, and ensures the integrity of changes to the process and/or tools used in development"; and review them on a defined frequency. Plainly put: know what your tools are, how they are set up, and control changes to them.
+- **NIST SSDF** (voluntary): PO.3, "Implement Supporting Toolchains," says to use automation to improve "accuracy, reproducibility, usability, and comprehensiveness of security practices throughout the SDLC, as well as provide a way to document and demonstrate the use of these practices." PO.5 asks that all components of development environments be "strongly protected from internal and external threats." PS.1 aims to "help prevent unauthorized changes to code, both inadvertent and intentional."
+- **Regulation.** 21 CFR 211.68(a) requires computers and related systems to be "routinely calibrated, inspected, or checked according to a written program designed to assure proper performance." Whether Lakeshore's pipeline is a "related system" in that sentence is a judgment for Quality and regulatory affairs. A defensible, low-regret position is to treat it as if the principle applies and to size the effort by risk.
+
+So there is **no source that tells Lakeshore how to validate a pipeline**. What exists is a consistent direction: know your tools, control their configuration and changes, and let the rigor follow what could go wrong.
+
+### A risk-based way to assure the pipeline
+
+Split the pipeline into functions and ask of each: *if it fails silently, what is the worst outcome, and would anything else catch it?*
+
+| Function | If it fails silently | Other catch? | Assurance proportionate to risk |
+|---|---|---|---|
+| **Production gate and promotion** | A build reaches production without validation, approval or in a freeze | Little; this is the control | **High.** Written requirements for the gate; challenge tests (below); rerun after any change to the pipeline; access review. |
+| **Artifact store and checksum check** | A different build than the one validated is deployed | Validation evidence cites the checksum, so a mismatch is detectable afterward | **High-medium.** Test that a tampered artifact is refused; restrict write access. |
+| **Test execution and reporting** | A test shows "pass" without running, or a failure is swallowed | Formal testing is reviewed by Quality; but results are what they review | **High-medium.** Seeded known-fail and known-pass checks; confirm test counts; keep tool and configuration versions in the evidence. |
+| **Environment drift check** | Validation judged equivalent when it is not | Module 3's parity review | **Medium.** Test against a deliberately drifted environment. |
+| **Build step** | The artifact is built wrongly | Validation tests the artifact itself, which is what ships | **Lower.** The output is what gets validated; control the build configuration and dependency versions. |
+| **Notifications, dashboards, chat integrations** | A message is missed | Obvious to a human | **Low.** Document the tool; no testing. |
+
+### Challenge tests for the gate
+
+The most convincing assurance for the gate is to try to break it, on purpose, in a non-production environment, and keep the results:
+
+| Attempt | Expected outcome |
+|---|---|
+| Promote an artifact never deployed to validation | Refused, logged |
+| Promote an artifact whose checksum was altered | Refused, logged |
+| Promote with no approved change record | Refused, logged |
+| Promote with Quality's approval missing | Refused, logged |
+| The requester approves their own promotion | Refused, logged |
+| A developer account triggers a production promotion | Refused, logged |
+| Promote during a configured freeze window | Refused, logged |
+| Edit the gate rules without the independent reviewer | Edit rejected |
+| Promote with all conditions met | Succeeds; the deployment record contains every field in the audit-trail table |
+
+That table is the pipeline's assurance evidence: a short plan, the executed results, an approval. It is documented *before* HOP's next release relies on the pipeline, and repeated when the gate's rules or the platform change. Cost: days, not months. This is the CSA-style idea (risk first, effort follows risk, record what you did) delivered for a tool whose failure mode Lakeshore understands.
+
+## The actual text
+
+All text below is quoted from `sources/`. Regulation says *shall*; guidance says *should*; NIST is voluntary vocabulary.
+
+> (b) Appropriate controls shall be exercised over computer or related systems to assure that changes in master production and control records or other records are instituted only by authorized personnel. Input to and output from the computer or related system of formulas or other records or data shall be checked for accuracy. The degree and frequency of input/output verification shall be based on the complexity and reliability of the computer or related system. [...]
+> — 21 CFR 211.68(b) (first three sentences)
+
+Reading it: the regulatory root of the production gate. "Instituted only by authorized personnel" is the sentence a pipeline must not be able to route around, and "The degree and frequency ... shall be based on the complexity and reliability" is the risk-proportionality idea in regulation, which is why the assurance of the pipeline is sized, not uniform. Whether and how 211.68 applies to HOP given its not-a-BECS status is a Quality and regulatory-affairs question (module 3); the principle is the one the BECS guidance relies on.
+
+> (a) Automatic, mechanical, or electronic equipment or other types of equipment, including computers, or related systems that will perform a function satisfactorily, may be used [...]. If such equipment is so used, it shall be routinely calibrated, inspected, or checked according to a written program designed to assure proper performance. Written records of those calibration checks and inspections shall be maintained.
+> — 21 CFR 211.68(a) (abridged where marked)
+
+Reading it: "a written program" and "records of those ... checks" are why the pipeline's assurance is a written plan with executed results, not an opinion. Whether the pipeline is a "related system" is the judgment noted above.
+
+> (e) Use of secure, computer-generated, time-stamped audit trails to independently record the date and time of operator entries and actions that create, modify, or delete electronic records. Record changes shall not obscure previously recorded information. Such audit trail documentation shall be retained for a period at least as long as that required for the subject electronic records and shall be available for agency review and copying.
+> — 21 CFR 11.10(e)
+
+> (g) Use of authority checks to ensure that only authorized individuals can use the system, electronically sign a record, access the operation or computer system input or output device, alter a record, or perform the operation at hand.
+> — 21 CFR 11.10(g)
+
+> (k) Use of appropriate controls over systems documentation including: (1) Adequate controls over the distribution of, access to, and use of documentation for system operation and maintenance. (2) Revision and change control procedures to maintain an audit trail that documents time-sequenced development and modification of systems documentation.
+> — 21 CFR 11.10(k)
+
+Reading them together: (e) is what a pipeline's deployment record should look like if it is a record under Part 11: secure, time-stamped, attributable, not overwritten, retained as long as the record it supports. (g) is the gate's role checks. (k) fits pipeline definitions, configuration and procedures as controlled documentation. All three apply to closed systems that fall under Part 11; whether the pipeline does is the documented judgment above.
+
+> We recommend that you perform validation in the "test environment" or "test partition" of your system. After successful validation, you or your software manufacturer should copy or move the file configuration on which you performed your validation into the production environment.
+> — FDA, *Blood Establishment Computer System Validation in the User's Facility*, III.G
+
+Reading it: guidance (*should*), blood-specific. "Move what you validated" is the artifact-promotion rule.
+
+> Validation activities should be conducted using the basic quality assurance precept of "independence of review." Self-validation is extremely difficult. When possible, an independent evaluation is always better, especially for higher risk applications.
+> — FDA, *General Principles of Software Validation*, 4.9
+
+Reading it: device-maker guidance, general thinking for Lakeshore. It supports why the approver is not the author, and why "the tests ARE the approval" is self-validation by another name.
+
+> Define, document, approve, and enforce physical and logical access restrictions associated with changes to the system.
+> — NIST SP 800-53 Rev. 5, CM-5
+
+> a. Require the developer of the system, system component, or system service to follow a documented development process that: [...] 2. Identifies the standards and tools used in the development process; 3. Documents the specific tool options and tool configurations used in the development process; and 4. Documents, manages, and ensures the integrity of changes to the process and/or tools used in development [...]
+> — NIST SP 800-53 Rev. 5, SA-15(a), items 2 to 4
+
+Reading them: voluntary. CM-5 is "enforce," not "promise." SA-15 is the tool-assurance floor: name your tools, document their configuration, control changes to them.
+
+> [...] a risk-based approach to establish confidence in the automation used for production or quality management systems [...]
+> — FDA, *Computer Software Assurance for Production and Quality Management System Software*, I (bullet, abridged); scope: device manufacturers' production and QMS software; not binding on, and not governing, Lakeshore
+
+### Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 211.68(a) | "Title 21, part 211, section 211.68, paragraph (a)" | Computers and related systems checked per a written program; records of the checks (regulation: *shall*). | The pipeline's written assurance plan and results, if Quality treats it as a related system. |
+| 21 CFR 211.68(b) | "...paragraph (b)" | Controls so changes are instituted only by authorized personnel; verification sized to complexity and reliability (*shall*). | The production gate; sizing the assurance by risk. |
+| 21 CFR 11.10(e) | "Title 21, part 11, section 11.10, paragraph (e)" | Secure, time-stamped audit trails; record changes do not obscure prior information; retained as long as the record (*shall*, for Part 11 closed systems). | The shape of the deployment record; its retention. |
+| 21 CFR 11.10(g) | "...paragraph (g)" | Authority checks (*shall*, Part 11 closed systems). | Role checks at the gate. |
+| 21 CFR 11.10(k) | "...paragraph (k)" | Controls over systems documentation, with revision and change control keeping an audit trail (*shall*, Part 11 closed systems). | Pipeline definitions, procedures and configuration. |
+| BECS guidance III.G | "Section III, subsection G of the 2013 user's-facility guidance" | Validate in test; move what you validated (guidance: *should*). | Build once, promote the same artifact. |
+| GPSV 4.9 | "General Principles of Software Validation, section 4.9" | Independence of review (device-maker guidance; general thinking). | Why the approver is not the author. |
+| GPSV, closing passage of Section 4 | "the paragraph after 4.10" | Software includes tools such as configuration management tools; validation effort commensurate with risk (general thinking). | Tools are in scope of the thinking; effort follows risk. |
+| FDA CSA guidance, I and V.B | "FDA's computer software assurance guidance, introduction and Section V.B" | Risk-based confidence in automation; record-necessity thinking for Part 11 (device manufacturers' production/QMS software; scope caveat). | A way to reason, not Lakeshore's rule. |
+| NIST SP 800-53 CM-3, CM-5 | "Control CM-3, CM-5" | Controlled changes with review and approval; enforced access restrictions (voluntary). | Pipeline definition under change control; who may promote. |
+| NIST SA-10, SA-15 | "Controls SA-10, SA-15" | Configuration management and documented tools and tool configurations (voluntary). | Environment-as-code; tool inventory. |
+| NIST SSDF PO.3, PO.5, PS.1, PS.2, PS.3 | "SSDF practices PO.3 ..." | Supporting toolchains; protected environments; protected code; release integrity; archived releases (voluntary). | Pipeline design; checksums; the artifact store. |
+| FDA data-integrity Q&A, Q4, Q5 and 1c | "Questions 4, 5 and 1c of the 2018 drug-CGMP Q&A" | Restricted access; administrators independent of record content; no shared logins; definition of audit trail (drug-CGMP guidance; general thinking). | Pipeline identities and administration. |
+
+## See it in one picture
+
+The Director's pipeline: automatic where it is safe, a human decision where authority lives, and a gate that refuses.
+
+```{mermaid}
+flowchart TD
+    C["Commit, peer-reviewed"] --> CI["CI: build once, unit and integration tests<br/>artifact stored, checksum recorded"]
+    CI -->|"Red"| STOP1["Stops. Nothing deployed"]
+    CI -->|"Green"| DT["Auto-deploy to development and test<br/>synthetic data"]
+    DT --> REQ["Release candidate requested"]
+    REQ --> VD["Validation: deploy on demand<br/>by release role only<br/>drift check against baseline first"]
+    VD --> EV["Formal testing and review<br/>evidence names the artifact ID"]
+    EV --> GATE{"Production gate: does the pipeline see<br/>1. artifact was validated, checksum matches<br/>2. approved change record<br/>3. Quality and release-role approvals<br/>4. approver is not the requester<br/>5. slot outside any freeze, no collision"}
+    GATE -->|"Any check fails"| REFUSE["Pipeline refuses and logs the attempt"]
+    GATE -->|"All pass"| PD["Release role promotes the same artifact<br/>checksum re-verified on arrival"]
+    PD --> LOG[("Deployment record: who, what, where, when, approvals<br/>kept with the release record REL-0311")]
+    LOG --> MON["Post-deployment verification and monitoring period"]
+    DEVLEAD["Development lead:<br/>deploy to production when all tests pass"] -.->|"declined: tests are evidence, not authorization"| GATE
+```
+
+## Watch it explained
+
+Dave Farley, co-author of the book that popularized continuous delivery, discusses when to use continuous delivery and when continuous deployment. It is a practitioner talk about software delivery in general, not about regulated industries, and nothing in its title or description suggests it addresses blood centers, validation or Part 11. Watch it for the distinction in the table above, which is the vocabulary this lesson relies on. Then apply Lakeshore's reasoning: for HOP's production, the human decision is a control, not a flaw. Only the title, channel and embeddability were verified, not every claim in the video.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/mBzDPRgue6s"
+  title="Continuous Deployment or Continuous Delivery? | When To Release" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## The Director's decision
+
+You take this back to the room.
+
+**1. Automate through validation.** A green build deploys to development and test automatically. Deployment to validation is automated but on demand: the systems administrator (release role) triggers it for a designated release candidate, after an automated drift check against production's baseline.
+
+**2. Production promotion is gated.** Only an artifact already deployed to validation, with recorded passing evidence and a matching checksum, can be promoted. The pipeline requires an authorized change record and recorded approvals from **Quality** and the **release role**, requester and author excluded, and checks the calendar for freezes and interface collisions. The release role triggers the promotion; the pipeline performs it and verifies the checksum on arrival.
+
+**3. Continuous deployment to production is rejected for HOP.** "The tests are the approval" is declined. Automated tests are evidence, and valuable evidence, but the authorization decision includes things no test measures: freeze windows, collision with other interface releases, hospital notice, staff training and Quality's independent review (module 4's readiness checklist, rows 5, 10, 11 and 14).
+
+**4. The pipeline is under change control.** Its definition, gate rules and configuration live in version control. Changes need review by someone outside the development team, with Quality informed of any change to a gate. Administration of the pipeline platform sits with the systems administrator, not with a developer.
+
+**5. The pipeline gets assurance first.** Before HOP's next release uses it, a documented risk-based assessment classifies its functions (table above), a short plan runs the challenge tests against the gate, Quality reviews and approves the results, and the tool inventory and configuration are recorded. Repeat on any change to the gate or the platform. Until that is done, the next release uses the manual path and its existing record.
+
+**6. The audit trail is part of the release record.** The deployment record's fields (table above) are exported to REL-0311 at close-out. Retention of the pipeline's own run history is checked against the release record's retention. Whether the pipeline's log, or its approval click, is a Part 11 record or signature is a documented judgment for Quality and regulatory affairs, and approvals are made once, in the controlled change record, which the pipeline reads.
+
+This is a Director's decision, not a regulatory requirement. No source in this course requires or forbids a pipeline, a checksum, or this particular division of work. The sources say what must be true of the result: changes authorized, evidence of what was validated, records of who did what, tools you can trust. The pipeline is how a two-developer team gets there without four-day releases.
+
+What each party gets. The development lead gets automatic builds, tests and non-production deployments, one-button deployment to validation, and a production path with no hand-copying. Quality gets evidence assembled by machine and gates that cannot be skipped. The systems administrator gets promotions that are one command and a log. The CIO gets shorter releases without an unprovable one.
+
+## What an inspector or assessor would look for
+
+The question, in one sentence: **"Show me who deployed build X to production, when, with whose approval, and that it is the build you validated."**
+
+Here is how the evidence chain should answer it:
+
+| The inspector asks | You show | A bad answer |
+|---|---|---|
+| What build is running in production? | The running artifact's ID and checksum, matched to the deployment record. | "Whatever was merged last." |
+| Who deployed it, and when? | The pipeline's deployment record: triggering identity (named, role-checked), timestamps. | "The pipeline did." |
+| Under whose authorization? | The change record with named approvals (Quality and release role, dated), cited by the deployment record. | A chat message. A CIO's verbal go-ahead. |
+| Is it the build you validated? | Test evidence naming the same artifact ID and checksum, and the validation-environment deployment record. | "It was rebuilt from the same code." |
+| Could the developer have deployed it alone? | The access list, the gate's role rules, and challenge-test evidence that the gate refuses. | "We trust the team." |
+| Who can change the pipeline's rules? | Version-control history for the pipeline definition, with reviewers outside the development team. | "The development lead administers it." |
+| How do you know the pipeline works? | The documented risk assessment, the plan, the executed challenge tests, the approval. | "It has worked every time so far." |
+| Show me that record from six months ago. | The exported deployment record in the release record. | "The tool only keeps thirty days." |
+
+An assessor will also read the production deployment log against the change calendar. A production deployment without a matching change record is a finding however good the code was.
+
+## Common traps
+
+**"The tests are the approval."** Tests are evidence about what was tested. Authorization (211.68(b)) is a decision about whether to change a validated production system now, by people who may do so; it weighs things no test covers, and a developer cannot authorize their own change (GPSV 4.9, general thinking). Automated tests earn their keep by making the evidence cheap, not by replacing the decision.
+
+**"The pipeline is infrastructure, not a validated system, so controls don't apply to it."** The pipeline is where the controls are *implemented*, which makes its own integrity a control question. Nobody can say the gate works if nobody checked it and anyone can change it. Whether Part 11 or 211.68(a) formally applies to the pipeline is a documented judgment; the *principle* (know your tools, control changes to them, test the ones that carry risk) holds either way.
+
+**"We can rebuild from the tagged source for production."** A rebuild is a different artifact with the same label. Dependency versions, build environment and timestamps can all differ, and the evidence is about the artifact that was tested. Promote the stored artifact; check its checksum.
+
+**"If it has a log, it has an audit trail."** A log that the same developers can edit, that rolls off after thirty days, that does not name a unique person, or that does not record the approvals is a diary. Part 11 vocabulary (secure, time-stamped, not obscuring earlier information, retained as long as the record) is a useful checklist even if Quality judges that Part 11 does not formally reach it.
+
+**"Assuring the tool means validating the whole platform."** That is the opposite error. The effort follows risk: heavy for the gate, light for notifications. A short risk assessment and a day of challenge tests on the gate is a better answer than a six-month validation of every feature of a general-purpose tool.
+
+## What this means for your job
+
+- **Ask for the evidence chain, not the diagram.** Pick a past production deployment and ask for the artifact ID, the deployment record, the change record and the test evidence that name the same build. If one link needs a person's memory, the pipeline is not finished.
+- **Put the pipeline's rules in change control before anything else.** The gate definition is a controlled document. Who may change it, who reviews, and who is informed (Quality) should be written down before the first promotion runs through it.
+- **Count who holds production credentials.** It should be the pipeline's deployment identity, and no developer. Add the pipeline's roles to the quarterly access review module 3 recommended.
+- **Run the challenge tests and keep them.** A table of "tried to bypass, was refused" results is the cheapest convincing evidence you will ever produce. Repeat after any gate or platform change.
+- **Check retention before you need the record.** Find out how long the tool keeps run history, compare it with the release record's retention, and export the deployment record at close-out.
+- **Put the Part 11 question to Quality and regulatory affairs in writing,** with the two sub-questions separate: is the deployment record a record that matters as evidence, and is the approval click a signature Lakeshore relies on? Record the answer and the reasoning.
+- **Report it in the CIO's language:** "We will automate everything repetitive, including testing and deployment to our non-production environments. Production still takes two human approvals, one from Quality, and the pipeline will refuse to deploy without them or to deploy anything we did not validate. We are testing the pipeline's own controls first, because a control nobody has tried to break is a guess."
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The development lead says, "If all automated tests pass, what is your human approval adding?" What do you say?
+
+The approval is the authorization decision (21 CFR 211.68(b): changes instituted only by authorized personnel), and it covers what tests cannot: freeze windows and interface collisions (module 4), hospital notice, staff training, whether the evidence is complete against the current baseline, and Quality's independent review (GPSV 4.9, general thinking). Passing tests are necessary evidence, and the pipeline uses them as a gate precondition, but a test suite cannot authorize its own release or decide whether this week is the right week. A developer deciding that their own tests are sufficient is self-validation.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is the pipeline's deployment log automatically a Part 11 electronic record?
+
+No automatic answer, and it should not be assumed either way. Part 11 reaches electronic records that another regulation already requires Lakeshore to keep (the predicate-rule logic from the Part 11 module). Whether the deployment record is part of the evidence behind 211.68(b)'s authorization and the validation expectations is a judgment for Quality and regulatory affairs, documented with reasoning. FDA's software assurance guidance for device manufacturers illustrates the thinking (is the record necessary as evidence of the validated state?) but is scoped to device makers' production and QMS software and does not govern Lakeshore. Either way, treating the release-and-deployment record with audit-trail discipline (11.10(e) as the checklist) costs little.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Is it a regulatory requirement that Lakeshore use a CI/CD pipeline, or that it avoid continuous deployment?
+
+Neither. No regulation or guidance in this course requires or names pipelines, and none prohibits continuous deployment by name. These are Lakeshore design decisions. What the regulation and guidance require is the result: authorized changes (211.68(b)), documented validation (BECS guidance III.G, III.H), records that trace the work, and written, followed procedures. Continuous deployment to HOP's production is rejected because it removes recorded authorization and the non-test parts of the release gate, and the reasons belong in the procedure.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Which parts of the pipeline need the most assurance, and what is the cheapest strong evidence for them?
+
+The production gate and promotion logic, the artifact store and checksum check, and the test execution and reporting, because a silent failure in any of them produces records that look like evidence and are not (SA-15 and GPSV's "commensurate with the risk" as thinking; 211.68(b) sizes verification by complexity and reliability). Cheapest strong evidence: a short written plan and executed challenge tests in a non-production environment (promote an unvalidated artifact, a tampered artifact, a self-approved promotion, a promotion in a freeze; each must be refused and logged), plus a seeded known-fail test for the test runner. Notifications and dashboards need documentation only.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q5: Explain to your CIO in two sentences why HOP's pipeline stops short of deploying to production on its own.
+
+"The pipeline will build, test and deploy to our non-production environments automatically, and promote to production only a build we already validated, after Quality and our release role approve and the pipeline confirms the calendar is clear. Tests tell us the software works as tested; they cannot tell us whether this is the right week, whether the hospitals and staff are ready, or whether anyone independent has looked, and an inspector will ask who decided."
+:::
+
+## Where this goes next
+
+HOP now has a pipeline that enforces who may do what and records it. The next question is what that pipeline should check about the software and its ingredients: [secure SDLC and the software supply chain](../secure-sdlc-and-software-supply-chain/index.qmd) applies the SSDF's four practice groups to HOP and teaches the supply-chain questions to ask a vendor (component inventories, release integrity, vulnerability response). Test depth, the other half of what the pipeline runs, is the subject of [risk-based testing and regression](../risk-based-testing-and-regression/index.qmd).

@@ -1,0 +1,36 @@
+---
+title: "Resources"
+order: 141
+---
+
+Places to go deeper on running HOP through an automated pipeline, or to check a citation before it goes into a real Lakeshore document. Every link below was checked with `curl` and loaded; the page title was read to confirm it is the page named. None of these sources tells Lakeshore how to validate a CI/CD pipeline; the lesson says so plainly, and the pages below are for the principles the lesson borrows.
+
+- **[21 CFR 11.10, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/11.10)** — controls for closed systems: audit trails (e), authority checks (g), systems documentation (k). Use it when deciding what the pipeline's deployment record should look like, remembering that whether Part 11 reaches it is a documented judgment. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[21 CFR 211.68, Cornell Legal Information Institute](https://www.law.cornell.edu/cfr/text/21/211.68)** — automatic, mechanical and electronic equipment: the written checking program in (a) and the authorized-personnel control in (b) that the production gate rests on. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Computer Software Assurance for Production and Quality Management System Software](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/computer-software-assurance-production-and-quality-management-system-software)** — FDA's risk-based approach to confidence in automation. Scope caveat: written for medical device manufacturers' production and quality-system software; it excludes device software functions and does not govern a blood establishment's BECS or pipeline. Use it as a statement of risk-based thinking. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: General Principles of Software Validation](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-principles-software-validation)** — device-maker guidance, general thinking for Lakeshore: independence of review (4.9), and the passage naming tools such as configuration management tools among software components. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Part 11, Electronic Records; Electronic Signatures - Scope and Application](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/part-11-electronic-records-electronic-signatures-scope-and-application)** — FDA's narrow-interpretation thinking on which records Part 11 reaches. Use it when Quality and regulatory affairs write down the pipeline-record judgment. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance page: Data Integrity and Compliance With Drug CGMP: Questions and Answers](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/data-integrity-and-compliance-drug-cgmp-questions-and-answers)** — the audit-trail definition (Q1c), access restriction and administrator independence (Q4) and shared logins (Q5). A drug-CGMP document; used as general thinking for Lakeshore. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-53 Rev. 5, CSRC](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)** — the control catalog behind CM-3, CM-5, SA-10 and SA-15. Federal catalog, voluntary for Lakeshore. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST SP 800-218, Secure Software Development Framework (SSDF) Version 1.1, CSRC](https://csrc.nist.gov/pubs/sp/800/218/final)** — PO.3 toolchains, PO.5 protected environments, PS.1 to PS.3 on protecting, verifying and archiving releases. Voluntary framework. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Continuous Deployment or Continuous Delivery? | When To Release](https://www.youtube.com/watch?v=mBzDPRgue6s)** (Modern Software Engineering, from oEmbed `author_name`) — the video embedded in the lesson: a practitioner talk on the delivery/deployment distinction, not regulated-industry specific. Only the title, channel and embeddability were verified, not the claims. Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200).
+
+Earlier modules this one builds on: [environments, baselines and test data](../environments-baselines-and-test-data/index.qmd), [release management, deployment and change control](../release-management-deployment-and-change-control/index.qmd), [SDLC models](../sdlc-models-in-a-regulated-blood-center/index.qmd), [audit trails and e-signatures](../../data-integrity-and-records/audit-trails-and-esignatures/index.qmd), [Part 11 for validated systems](../../csv-and-becs/part-11-for-validated-systems/index.qmd) and [GAMP 5 and the V-model](../../csv-and-becs/gamp5-and-the-v-model/index.qmd).
+
+## Keep learning
+
+Not official sources. Good places to keep learning; none is authority for a regulatory claim.
+
+- **[Deployment Pipeline, Martin Fowler's site](https://martinfowler.com/bliki/DeploymentPipeline.html)** — a short practitioner definition of the deployment pipeline idea, the stages and why each commit moves through them. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[What is Continuous Delivery?, continuousdelivery.com](https://continuousdelivery.com/)** — the site associated with the continuous delivery authors; the clearest statement of "always releasable" as opposed to "always released." Practitioner site, not a standard. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[SLSA, Supply-chain Levels for Software Artifacts](https://slsa.dev/)** — a community framework for artifact integrity and build provenance; background for the checksum and signing discussion, and for module 8. Voluntary framework, not FDA or NIST. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[DORA](https://dora.dev/)** — the research program behind software delivery performance metrics, used in module 11. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[iSpeak, ISPE](https://www.ispe.org/pharmaceutical-engineering/ispeak)** — the pharmaceutical engineering society's blog, where computerized system validation and automation topics appear regularly; mostly pharma-oriented, so translate to blood establishments. Verified loading via `curl` on 2026-11-13 (HTTP 200).
