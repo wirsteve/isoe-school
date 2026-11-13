@@ -1,0 +1,84 @@
+---
+title: "Resources"
+order: 156
+---
+
+External links for this lesson, checked to load on 2026-11-13. Quoted regulatory and policy text in
+the lesson comes from the local copies in `sources/`, not from these pages.
+
+- **[Cornell LII: 45 CFR Part 46, Protection of Human Subjects](https://www.law.cornell.edu/cfr/text/45/part-46)**
+  — the whole Common Rule. Use it for the parts our excerpt omits (exemptions, IRB review procedures,
+  documentation of consent). Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 45 CFR 46.102, Definitions](https://www.law.cornell.edu/cfr/text/45/46.102)** —
+  research, human subject, private information, identifiable private information. Use it when
+  someone asks "is this even human subjects research?" Verified loading via `curl` on 2026-11-13
+  (HTTP 200).
+
+- **[Cornell LII: 45 CFR 46.111, Criteria for IRB approval of research](https://www.law.cornell.edu/cfr/text/45/46.111)**
+  — what an IRB must determine, including the privacy and confidentiality criterion. Verified
+  loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 45 CFR 164.512, Uses and disclosures not requiring authorization](https://www.law.cornell.edu/cfr/text/45/164.512)**
+  — paragraph (i) is the research pathway (waiver of authorization, preparatory reviews,
+  decedents). Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 45 CFR 164.514, Other requirements relating to uses and disclosures of PHI](https://www.law.cornell.edu/cfr/text/45/164.514)**
+  — paragraph (e) is the limited data set and data use agreement. Paragraphs (a) and (b), which this
+  lesson deliberately doesn't teach, cover de-identification. Verified loading via `curl` on
+  2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 42 U.S.C. 241, Research and investigations generally](https://www.law.cornell.edu/uscode/text/42/241)**
+  — subsection (d) is the Certificate of Confidentiality statute. Read it with counsel when the
+  question is how far a Certificate reaches. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIH Guide Notice NOT-OD-17-109, Changes to NIH Policy for Issuing Certificates of Confidentiality](https://grants.nih.gov/grants/guide/notice-files/NOT-OD-17-109.html)**
+  — NIH's policy: automatic Certificates, the disclosure rules, and what recipients must do. Page
+  title confirmed as "NOT-OD-17-109: Notice of Changes to NIH Policy for Issuing Certificates of
+  Confidentiality." Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIH Grants & Funding: Certificates of Confidentiality (CoC)](https://grants.nih.gov/grants/policy/coc/welcome.htm)**
+  — NIH's own overview page, the place to look for its current FAQs. Verified loading via `curl` on
+  2026-11-13 (HTTP 200).
+
+- **[NIH eRA: Certificates of Confidentiality Frequently Asked Questions](https://www.era.nih.gov/erahelp/Coc_Ext/Content/External/Introduction.htm)**
+  — NIH's eRA help pages on its Certificate system, including who is covered automatically and who
+  applies. Its system is for applications; the lesson's Lakeshore decision doesn't involve one.
+  Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **Back in the curriculum:** [Information governance in a covered entity](../../healthcare-security-and-privacy/information-governance-in-a-covered-entity/index.qmd),
+  [The HIPAA Privacy Rule](../../healthcare-security-and-privacy/the-hipaa-privacy-rule/index.qmd),
+  [Module 2, the vein-to-vein database and research extracts](../the-vein-to-vein-database-and-research-extracts/index.qmd).
+
+- **[Certificates of Confidentiality Part 1: General Overview](https://www.youtube.com/watch?v=wRgwdnHiuQE)**
+  (U.S. Food and Drug Administration, from oEmbed `author_name`) — the video embedded in this lesson:
+  FDA's overview of Certificates of Confidentiality. FDA issues Certificates for research it
+  regulates; NIH's policy governs NIH-funded research, so use it as background on the shared statute.
+  Verified embeddable via YouTube oEmbed on 2026-11-13 (HTTP 200). The 2022 program-design
+paper (Josephson et al., *Transfusion*) is the source for the single-IRB waiver statement; its
+PubMed Central page returned a bot-check page to `curl` on the earlier modules, so it is not
+re-listed here (module 1's resources page links it).
+
+**Not verified.** HHS pages on HIPAA and research (hhs.gov) returned "403 Access Denied" to `curl`
+today, so none are linked. The humansubjects.nih.gov Certificates page was unreachable through the
+agent proxy. Neither was retried by other means.
+
+## Keep learning
+
+Not official sources, and not authority for any regulatory claim.
+
+- **[NIH "All About Grants" podcast: Certificates of Confidentiality (transcript)](https://grants.nih.gov/podcasts/All_About_Grants/episodes/Transcript-Certificates-of-Confidentiality.htm)**
+  — an NIH human subjects officer explains what a Certificate is, when disclosure is and isn't
+  allowed, and how to tell whether a study has one. It's NIH's own explainer but a podcast
+  conversation, not policy text. The transcript page loaded with a generic page title and some
+  garbled characters; the text mentions the speaker and topic. Verified loading via `curl` on
+  2026-11-13 (HTTP 200).
+
+- **[UNC Privacy Office: HIPAA and Research (training slides, PDF)](https://research.unc.edu/wp-content/uploads/2022/01/HIPAA-Training_Research_6.16.2021.pdf)**
+  — a university privacy office's training deck on how HIPAA applies to research. Useful for seeing
+  how an institution explains the pathways to its researchers. A university's own practice, not a
+  rule. Verified loading via `curl` on 2026-11-13 (HTTP 200; PDF).
+
+- **[NIH eRA: About Certificates of Confidentiality](https://www.era.nih.gov/erahelp/CoC_Ext/Content/A-Introduction/Introduction.htm)**
+  — NIH's short introduction to Certificates inside its Certificate-system help. Good as a one-page
+  orientation before reading the statute. Verified loading via `curl` on 2026-11-13 (HTTP 200).

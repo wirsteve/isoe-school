@@ -1,0 +1,735 @@
+---
+title: "Human subjects, HIPAA and Certificates of Confidentiality"
+order: 155
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** you can explain the Common Rule, the program's single-IRB waiver, HIPAA's research
+  pathways and Certificates of Confidentiality well enough to know what the privacy officer and the
+  IRB must confirm before EXT-21 runs on real data, and what a Certificate means for IT.
+- **Punchline:** the medical director says "the IRB waived consent, so we're covered." The privacy
+  officer says that settles one question, and HIPAA is a different one. Her written determination:
+  Lakeshore discloses a **limited data set under a data use agreement**, keeps the donor-key
+  crosswalk at home, and, with counsel, **treats EXT-21 output and the crosswalk as covered by a
+  Certificate of Confidentiality** as a conservative organizational decision.
+- **The rule in one line:** three layers, three owners. The Common Rule is the program's IRB
+  pathway, HIPAA is Lakeshore's own legal basis for disclosing, and the Certificate limits what
+  anyone may do with the data afterwards, "for perpetuity."
+- **Monday question:** "Show me every place a copy of EXT-21 output or the crosswalk exists today,
+  including backups and test copies, and who gets the call if a subpoena names them."
+- **The trap:** treating a Certificate as a shield for BECS or as a reason to stop thinking about
+  HIPAA. It is neither. It is an extra restriction on research data, and it makes your copy
+  inventory a legal matter.
+:::
+
+## "The IRB waived consent, so we're fine"
+
+The privacy officer has asked for a meeting about RSH-0107, Lakeshore's internal research
+participation file. Around the table: the privacy officer, counsel (in-house, there to listen and
+advise), the medical director, you, and your Quality Analyst. The hub has sent the program's
+human-subjects paperwork: a note that a single IRB (institutional review board) has granted a
+waiver of informed consent for the program's blood donors.
+
+The medical director is relieved. "That's the hard part done. The ethics board looked at it and
+waived consent. We can start the monthly feed."
+
+The privacy officer doesn't raise her voice. "That's the Common Rule question, and it's answered for
+the program. It isn't my question. My question is what *Lakeshore's* legal basis is for handing
+donor information to someone outside the building. Those are different rules with different owners."
+
+Counsel adds a second wrinkle. "And since the research is federally funded, there's a third thing
+to decide. Whether any of what we send, or any copy we keep, carries a Certificate of
+Confidentiality. If it does, a subpoena doesn't work the way people expect."
+
+Your Quality Analyst asks: "If it's covered by a Certificate, can FDA still inspect our BECS
+records?" Nobody answers right away.
+
+You open RSH-0107 and write three headings: **Common Rule, HIPAA, Certificate.** The rest of this
+lesson fills them in.
+
+## Why these rules exist, and the ITSM bridge
+
+Each layer prevents a different failure.
+
+- **Human-subjects rules** exist because research on people has gone wrong in ways the people
+  never agreed to. They put an independent reviewer (the IRB) between a research idea and the
+  people it uses. The failure prevented: a study that nobody independent asked "is this fair to
+  the people in it?"
+- **HIPAA** exists because health information moves between organizations. It says when a covered
+  entity may let it go. The failure prevented: a health organization disclosing identifiable
+  information because someone senior said yes.
+- **Certificates of Confidentiality** exist because a research subject who gives information to a
+  study can have it pulled out by a court order, a subpoena or an agency request. The failure
+  prevented: research participants being harmed, or refusing to take part, because their study
+  data can be compelled.
+
+The ITSM bridge is **information security management plus change enablement with a legal
+dimension**. You already classify data and keep a CMDB (configuration management database). The new
+idea is that the classification comes from three separate legal determinations, and each changes
+what your service desk, backup team and decommissioning process may do. The discipline is knowing
+which determination put the label there, and who can change it.
+
+Lakeshore is treated as a HIPAA covered entity for this curriculum. That was settled in
+[Information governance in a covered entity](../../healthcare-security-and-privacy/information-governance-in-a-covered-entity/index.qmd),
+and this lesson doesn't reopen it. For the baseline Privacy Rule ideas (permitted uses,
+authorizations, minimum necessary), read
+[The HIPAA Privacy Rule](../../healthcare-security-and-privacy/the-hipaa-privacy-rule/index.qmd)
+first. This lesson takes the research-specific provisions that module left aside.
+
+## The rule in plain English
+
+**Layer 1, the Common Rule (45 CFR Part 46, Subpart A).** Federal rules protect people in research.
+Research that involves identifiable private information about a living person is "human subjects
+research." An IRB must approve it against a set of criteria, one of which is privacy and
+confidentiality. Consent is the default, and an IRB may waive it only on findings it must document.
+The program says one single IRB did that for the program's donors and patients. That is the
+program's pathway.
+
+**Layer 2, HIPAA's research pathways (45 CFR 164.512(i) and 164.514(e)).** A covered entity needs a
+basis to disclose protected health information (PHI). For research, the Privacy Rule offers
+several. In 164.512(i), an IRB or privacy board can approve a waiver of the individual's
+authorization (and the covered entity must receive documentation of it), or a researcher can give
+specified representations for a preparatory review or for research on decedents. In 164.514(e), a
+covered entity can disclose a **limited data set** (PHI with a list of direct identifiers removed)
+under a **data use agreement**. The covered entity chooses. Lakeshore's privacy officer chooses the
+limited data set.
+
+**Layer 3, the Certificate of Confidentiality (42 U.S.C. 241(d), NIH policy NOT-OD-17-109).**
+Federal law says identifiable, sensitive research information is protected: it can't be disclosed
+to people not connected with the research, except in four named situations, and it is immune from
+legal process. For NIH-funded research within its scope, NIH's policy says a Certificate is issued
+automatically. The protection lasts "for perpetuity" and follows copies.
+
+Whether, and how far, that third layer reaches *Lakeshore* is where this lesson is careful. The
+statute and policy are written for people "engaged in" research and for NIH award recipients. They
+do not say, in the text we hold, what happens to a contributing blood center's own copies. So
+Lakeshore doesn't claim the statute settles it. It makes a documented organizational decision to
+behave as if it did.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it is | In our scenario |
+|---|---|---|---|
+| 45 CFR 46.101(a) | "forty-five CFR forty-six point one-oh-one, a" | Regulation: what the Common Rule applies to | Federally supported research involving human subjects |
+| 45 CFR 46.102(l), (e)(1), (e)(4), (e)(5) | "forty-six point one-oh-two, l; e-one; e-four; e-five" | Regulation: definitions of research, human subject, private information, identifiable private information | Is EXT-21's data "identifiable private information"? |
+| 45 CFR 46.111(a)(7) | "forty-six point one-eleven, a, seven" | Regulation: an IRB must find privacy and confidentiality provisions adequate, when appropriate | What the single IRB had to look at |
+| 45 CFR 46.116(f)(3) | "forty-six point one-sixteen, f, three" | Regulation: the findings an IRB must make and document to waive consent | The program's consent waiver |
+| 45 CFR 164.512(i) | "one-sixty-four point five-twelve, i" | HIPAA regulation: research uses and disclosures (waiver of authorization, preparatory review, decedents) | The pathway Lakeshore did *not* choose, and why |
+| 45 CFR 164.514(e) | "one-sixty-four point five-fourteen, e" | HIPAA regulation: limited data set and data use agreement | Lakeshore's chosen pathway |
+| 42 U.S.C. 241(d) | "forty-two U.S. Code two-forty-one, d" | Statute: Certificates of Confidentiality | The source of the disclosure ban and legal-process immunity |
+| NIH Guide Notice NOT-OD-17-109 | "N-O-T dash O-D dash seventeen dash one-oh-nine" | NIH policy implementing 241(d) | How NIH says Certificates are issued and what recipients must do |
+| Josephson et al., *Transfusion* 2022 | "the REDS-IV-P design paper" | Peer-reviewed program description | The only source for the single-IRB waiver statement |
+
+## The actual text
+
+### Common Rule: what counts as research and as a human subject
+
+**45 CFR 46.102(l), opening sentence:**
+
+> (l) *Research* means a systematic investigation, including research development, testing, and
+> evaluation, designed to develop or contribute to generalizable knowledge.
+
+*In our scenario.* A monthly feed into a database built to study the transfusion chain is designed to
+contribute to generalizable knowledge. That is why the program runs under an IRB. Lakeshore reviewing
+its own deferral coding to run operations is a different thing.
+
+**45 CFR 46.102(e)(1)(ii), 46.102(e)(4) and 46.102(e)(5):**
+
+> (e)(1) *Human subject* means a living individual about whom an investigator (whether professional
+> or student) conducting research: [...] (ii) Obtains, uses, studies, analyzes, or generates
+> identifiable private information or identifiable biospecimens.
+
+> (4) *Private information* includes information about behavior that occurs in a context in which an
+> individual can reasonably expect that no observation or recording is taking place, and
+> information that has been provided for specific purposes by an individual and that the
+> individual can reasonably expect will not be made public (*e.g.,* a medical record).
+
+> (5) *Identifiable private information* is private information for which the identity of the
+> subject is or may readily be ascertained by the investigator or associated with the information.
+
+*In our scenario.* A donor gives information to a blood center for a specific purpose and expects
+it not to be made public, so donor records fit "private information." The question is the next
+step: is the identity of the subject "or may readily be ascertained by the investigator or
+associated with the information"? Lakeshore's extract carries a random code, and Lakeshore alone
+holds the crosswalk. Whether coded information counts as identifiable *for the investigator* is
+exactly the kind of judgment the IRB makes. The local excerpt doesn't include any guidance on
+coded information, so this lesson doesn't decide it. What the privacy officer needs to see is
+that the IRB considered it, and in what words.
+
+One more clause matters to IT. 46.102(e)(7) tells federal departments to "reexamine the meaning" of
+identifiable private information regularly (at least every 4 years). The line between identifiable
+and not is expected to move as re-identification techniques improve.
+
+**45 CFR 46.101(a), what the policy applies to:**
+
+> (a) Except as detailed in § 46.104, this policy applies to all research involving human subjects
+> conducted, supported, or otherwise subject to regulation by any Federal department or agency that
+> takes appropriate administrative action to make the policy applicable to such research.
+
+*In our scenario.* The program is supported by NHLBI. Which entities are bound directly, and which
+through the hub's agreement, is a question the agreement answers (see row 8 below).
+
+### Common Rule: what an IRB must find, and how consent is waived
+
+**45 CFR 46.111(a)(7):**
+
+> (7) When appropriate, there are adequate provisions to protect the privacy of subjects and to
+> maintain the confidentiality of data.
+
+That is one of the criteria the IRB "shall determine" are satisfied before approving research
+(46.111(a)). Others are that risks are minimized and reasonable, that subject selection is
+equitable, and that consent is sought or waived "in accordance with" 46.116 and 46.117.
+
+*In our scenario.* The IRB's privacy finding is about the research plan. It is not an inspection of
+Lakeshore's network. The privacy officer still decides what Lakeshore sends and how.
+
+**45 CFR 46.116(f)(3), the waiver criteria, as written:**
+
+> (3) *Requirements for waiver and alteration.* In order for an IRB to waive or alter consent as
+> described in this subsection, the IRB must find and document that:
+>
+> (i) The research involves no more than minimal risk to the subjects;
+>
+> (ii) The research could not practicably be carried out without the requested waiver or alteration;
+>
+> (iii) If the research involves using identifiable private information or identifiable
+> biospecimens, the research could not practicably be carried out without using such information
+> or biospecimens in an identifiable format;
+>
+> (iv) The waiver or alteration will not adversely affect the rights and welfare of the subjects; and
+>
+> (v) Whenever appropriate, the subjects or legally authorized representatives will be provided
+> with additional pertinent information after participation.
+
+*In our scenario.* Condition (iii) is the IRB's finding about the *research*. It doesn't mean
+Lakeshore must send identifiers. The privacy officer separately asks whether identifiers are needed
+at all, and here they are not.
+
+**The program's statement.** The 2022 design paper says, in its own words: "A waiver of informed
+consent was requested and granted by the single IRB for both hospital patients and blood donors."
+It is a statement in a peer-reviewed paper about the earlier phase. It is the paper, not an IRB
+approval letter, and it's about consent under the Common Rule. Note what it doesn't say. It doesn't
+say a HIPAA authorization was waived, and it doesn't tell us which IRB, what date or which
+protocol covers the current round. Those are what Lakeshore asks the hub for.
+
+### HIPAA: the research pathways in 164.512(i)
+
+**45 CFR 164.512(i)(1), opening and the first pathway:**
+
+> (i) *Standard: Uses and disclosures for research purposes*—(1) *Permitted uses and
+> disclosures.* A covered entity may use or disclose protected health information for research,
+> regardless of the source of funding of the research, provided that:
+>
+> (i) *Board approval of a waiver of authorization.* The covered entity obtains documentation that
+> an alteration to or waiver, in whole or in part, of the individual authorization required by
+> § 164.508 for use or disclosure of protected health information has been approved by either:
+>
+> (A) An Institutional Review Board (IRB), [...] or
+>
+> (B) A privacy board that: (*1*) Has members with varying backgrounds and appropriate professional
+> competency [...]; (*2*) Includes at least one member who is not affiliated with the covered entity,
+> not affiliated with any entity conducting or sponsoring the research, and not related to any
+> person who is affiliated with any of such entities; and (*3*) Does not have any member
+> participating in a review of any project in which the member has a conflict of interest.
+
+*Reading it.* The covered entity must "obtain documentation" of an authorization waiver. A Common Rule
+consent waiver and a HIPAA authorization waiver are different findings under different rules, even
+when one board grants both.
+
+**164.512(i)(2), what the documentation must contain.** The IRB or board's identity and date, a
+statement that the waiver criteria are met, a brief description of the PHI needed, the review
+procedure used and the chair's signature. The criteria include "no more than a minimal risk to the
+privacy of individuals," based on at least an adequate plan to protect identifiers, an adequate plan
+to destroy them "at the earliest opportunity consistent with conduct of the research," and written
+assurances against reuse or further disclosure, plus findings that the research "could not
+practicably be conducted" without the waiver or without the PHI.
+
+*The other two pathways.* Section 164.512(i)(1)(ii) allows **reviews preparatory to research**, with
+the researcher's representations that PHI is sought "solely to review protected health
+information as necessary to prepare a research protocol," that none is removed from the covered
+entity, and that it is necessary. Section 164.512(i)(1)(iii) allows **research on decedents**, with
+the researcher's representation, documentation of death on request, and a necessity
+representation. Neither fits a recurring extract of living donors' data leaving Lakeshore.
+
+### HIPAA: the limited data set in 164.514(e)
+
+**164.514(e)(1) and (e)(2):**
+
+> (e)(1) *Standard: Limited data set.* A covered entity may use or disclose a limited data set that
+> meets the requirements of paragraphs (e)(2) and (e)(3) of this section, if the covered entity
+> enters into a data use agreement with the limited data set recipient, in accordance with
+> paragraph (e)(4) of this section.
+>
+> (2) *Implementation specification: Limited data set:* A limited data set is protected health
+> information that excludes the following direct identifiers of the individual or of relatives,
+> employers, or household members of the individual: (i) Names; (ii) Postal address information,
+> other than town or city, State, and zip code; (iii) Telephone numbers; (iv) Fax numbers; (v)
+> Electronic mail addresses; (vi) Social security numbers; (vii) Medical record numbers; (viii)
+> Health plan beneficiary numbers; (ix) Account numbers; (x) Certificate/license numbers; (xi)
+> Vehicle identifiers and serial numbers, including license plate numbers; (xii) Device
+> identifiers and serial numbers; (xiii) Web Universal Resource Locators (URLs); (xiv) Internet
+> Protocol (IP) address numbers; (xv) Biometric identifiers, including finger and voice prints; and
+> (xvi) Full face photographic images and any comparable images.
+
+*In our scenario.* Three observations. First, a limited data set **is still PHI**, so Lakeshore's
+HIPAA obligations (security, incident response, minimum necessary habits) stay in force. Second,
+**dates are not on the list.** Donation dates, collection and manufacturing timing, and the
+sequence of a donor's visits can stay. Third, town or city, State and zip code can stay. The
+program needs dates, because a vein-to-vein study is about timing, so that is what makes this the
+natural pathway. Whether a number such as a donation identification number or donor number counts as
+one of the listed identifiers (a "medical record number" or "account number," for instance) is a
+call the privacy officer makes field by field. The regulation lists categories, not Lakeshore's field
+names.
+
+**164.514(e)(3), purposes:**
+
+> (3)(i) A covered entity may use or disclose a limited data set under paragraph (e)(1) of this
+> section only for the purposes of research, public health, or health care operations.
+>
+> (ii) A covered entity may use protected health information to create a limited data set that
+> meets the requirements of paragraph (e)(2) of this section, or disclose protected health
+> information only to a business associate for such purpose, whether or not the limited data set is
+> to be used by the covered entity.
+
+*In our scenario.* The disclosure is for research, so it's in bounds. And (e)(3)(ii) is what lets
+Lakeshore's own workforce, running EXT-21, create the limited data set from PHI in BECS.
+
+**164.514(e)(4), the data use agreement.** The agreement must provide satisfactory assurance "that
+the limited data set recipient will only use or disclose the protected health information for
+limited purposes." Its contents:
+
+> (ii) *Contents.* A data use agreement between the covered entity and the limited data set
+> recipient must:
+>
+> (A) Establish the permitted uses and disclosures of such information by the limited data set
+> recipient, consistent with paragraph (e)(3) of this section. The data use agreement may not
+> authorize the limited data set recipient to use or further disclose the information in a manner
+> that would violate the requirements of this subpart, if done by the covered entity;
+>
+> (B) Establish who is permitted to use or receive the limited data set; and
+>
+> (C) Provide that the limited data set recipient will:
+>
+> (*1*) Not use or further disclose the information other than as permitted by the data use
+> agreement or as otherwise required by law;
+>
+> (*2*) Use appropriate safeguards to prevent use or disclosure of the information other than as
+> provided for by the data use agreement;
+>
+> (*3*) Report to the covered entity any use or disclosure of the information not provided for by
+> its data use agreement of which it becomes aware;
+>
+> (*4*) Ensure that any agents to whom it provides the limited data set agree to the same
+> restrictions and conditions that apply to the limited data set recipient with respect to such
+> information; and
+>
+> (*5*) Not identify the information or contact the individuals.
+
+*In our scenario.* Read these as a checklist for the document, and as a map of what IT will later
+be asked to prove. Clause (B), "who is permitted to use or receive," forces a question module 1
+left open: **which entities will actually hold Lakeshore's data?** The hub, the Data Coordinating
+Center, the lab center? Clause (C)(4) pulls any agents into the same terms. Clause (C)(5), "not
+identify the information or contact the individuals," is why the crosswalk never leaves
+Lakeshore: the recipient has no key, and the agreement forbids trying to build one.
+
+**164.514(e)(4)(iii), the covered entity's own exposure:**
+
+> (iii) *Compliance.* (A) A covered entity is not in compliance with the standards in paragraph (e)
+> of this section if the covered entity knew of a pattern of activity or practice of the limited
+> data set recipient that constituted a material breach or violation of the data use agreement,
+> unless the covered entity took reasonable steps to cure the breach or end the violation, as
+> applicable, and, if such steps were unsuccessful: (1) Discontinued disclosure of protected health
+> information to the recipient; and (2) Reported the problem to the Secretary.
+
+*In our scenario.* Lakeshore can't sign the agreement and forget it. If it learns of a pattern of
+violations, it has to act, and one of the available actions is to stop sending. IT's part is a
+transfer that can actually be paused, and a log showing what was sent when.
+
+Notice what the text does **not** contain. It lists no required terms about how long the recipient
+keeps the data, or returning or destroying it at the end. Those would be Lakeshore's to negotiate
+into the agreement. The paper says the program retains source data "allowing for potential new
+analyses," so that conversation is real, and module 4 takes it up.
+
+### The de-identification question we are not answering
+
+HIPAA has a separate de-identification route in 164.514(a) and (b). This course's local sources don't
+include that text, so we don't quote or apply it. We note one thing: a **coded** data set is not
+automatically "de-identified." That is part of why the privacy officer chose the limited data set,
+which has its own written terms.
+
+### Certificates of Confidentiality: the statute
+
+**42 U.S.C. 241(d)(1)(A)(i):**
+
+> (A) If a person is engaged in biomedical, behavioral, clinical, or other research, in which
+> identifiable, sensitive information is collected [...] the Secretary, in coordination with other
+> agencies, as applicable— (i) shall issue to such person a certificate of confidentiality to
+> protect the privacy of individuals who are the subjects of such research if the research is
+> funded wholly or in part by the Federal Government;
+
+**The disclosure prohibition, 241(d)(1)(B), and its exceptions in (C):**
+
+> (B) Except as provided in subparagraph (C), any person to whom a certificate is issued under
+> subparagraph (A) [...] shall not disclose or provide to any other person not connected with the
+> research the name of such an individual or any information, document, or biospecimen that
+> contains identifiable, sensitive information about such an individual and that was created or
+> compiled for purposes of the research.
+>
+> (C) The disclosure prohibition in subparagraph (B) shall not apply to disclosure or use that is—
+> (i) required by Federal, State, or local laws, excluding instances described in subparagraph (D);
+> (ii) necessary for the medical treatment of the individual to whom the information, document, or
+> biospecimen pertains and made with the consent of such individual; (iii) made with the consent of
+> the individual to whom the information, document, or biospecimen pertains; or (iv) made for the
+> purposes of other scientific research that is in compliance with applicable Federal regulations
+> governing the protection of human subjects in research.
+
+**Legal process and "perpetuity," 241(d)(1)(D) to (F):**
+
+> (D) Any person to whom a certificate is issued [...] shall not, in any Federal, State, or local
+> civil, criminal, administrative, legislative, or other proceeding, disclose or provide the name of
+> such individual or any such information, document, or biospecimen that contains identifiable,
+> sensitive information about the individual and that was created or compiled for purposes of the
+> research, except in the circumstance described in subparagraph (C)(iii).
+>
+> (E) Identifiable, sensitive information protected under subparagraph (A), and all copies
+> thereof, shall be immune from the legal process, and shall not, without the consent of the
+> individual to whom the information pertains, be admissible as evidence or used for any purpose in
+> any action, suit, or other judicial, legislative, or administrative proceeding.
+>
+> (F) Identifiable, sensitive information collected by a person to whom a certificate has been
+> issued under subparagraph (A), and all copies thereof, shall be subject to the protections
+> afforded by this section for perpetuity.
+
+**The definition, 241(d)(4):**
+
+> (4) For purposes of this subsection, the term "identifiable, sensitive information" means
+> information that is about an individual and that is gathered or used during the course of
+> research described in paragraph (1)(A) and— (A) through which an individual is identified; or
+> (B) for which there is at least a very small risk, as determined by current scientific practices
+> or statistical methods, that some combination of the information, a request for the information,
+> and other available data sources could be used to deduce the identity of an individual.
+
+*In our scenario.* Four points matter to IT.
+
+1. **"All copies thereof."** Immunity and perpetuity attach to copies, not to the original file. Your
+   backup tape is a copy. So is the file on the staging server and the test copy.
+2. **The definition reaches past direct identifiers.** Clause (B), "at least a very small risk," is
+   a much lower bar than "someone can read the donor's name." Dates, town and zip code, and rare
+   component attributes can together point to a person with enough outside data. So the removal of
+   direct identifiers in a limited data set doesn't take the data out of a Certificate's definition.
+3. **The exceptions are narrow.** Legal requirements are an exception, but not in a "civil, criminal,
+   administrative, legislative, or other proceeding." Consent is an exception. Other compliant
+   scientific research is an exception. A subpoena is not on the list.
+4. **"Created or compiled for purposes of the research."** The wording speaks of research
+   information. BECS records exist for blood operations and for FDA's recordkeeping rules. Nothing
+   in the text we hold makes a Certificate a bar on the FDA obligations attached to BECS. This is a
+   reading for counsel to confirm, but it is the reason Quality can stop worrying about the
+   inspection question while counsel does the confirming.
+
+### Certificates of Confidentiality: NIH's policy
+
+NOT-OD-17-109 is how NIH implements the statute for NIH-funded research. Three passages carry the
+weight for this lesson.
+
+**Scope.** The policy "applies to all biomedical, behavioral, clinical, or other research funded
+wholly or in part by the NIH, whether supported through grants, cooperative agreements, contracts,
+other transaction awards, or conducted by the NIH Intramural Research Program, that collects or
+uses identifiable, sensitive information."
+
+**Automatic issuance.** Research "within the scope of this Policy is deemed to be issued a
+Certificate through this Policy and is therefore required to protect the privacy of individuals who
+are subjects of such research in accordance with subsection 301(d) of the Public Health Service Act."
+It adds that "Institutions and their investigators are responsible for determining whether research
+they conduct is subject to this Policy and therefore issued a Certificate. Certificates issued in
+this manner will not be issued as a separate document."
+
+**Copies and non-NIH-funded recipients.** "Recipients of Certificates are required to ensure that any
+investigator or institution not funded by NIH who receives a copy of identifiable, sensitive
+information protected by a Certificate issued by this Policy, understand they are also subject to the
+requirements of subsection 301(d) of the Public Health Service Act."
+
+*In our scenario.* The program's contracts are NIH-funded (module 1, from NIH RePORTER), so the
+program's own research appears to be inside the policy's scope. Notice what this passage describes:
+the Certificate holder passes responsibilities on to non-NIH-funded institutions that **receive a
+copy**. That is the direction of flow from the program *outward*. Lakeshore sits on the other side:
+it is the source of the data and holds its own copies, and the sources we hold don't say whether
+Lakeshore itself is "a person engaged in research" or a Certificate recipient. That is why
+the decision is organizational and not a statutory finding.
+
+The policy also expects that "[f]or studies in which informed consent is sought," participants are told
+the Certificate's protections and limits. Here consent was waived, so nothing attaches to that
+expectation.
+
+## What the privacy officer must confirm before EXT-21 runs
+
+This is the finish line for the module: a short list the privacy officer, the IRB's paperwork and
+Lakeshore's counsel must be able to tick, with what IT does in each row.
+
+| # | What must be confirmed | Who confirms | Evidence in RSH-0107 | IT's part |
+|---|---|---|---|---|
+| 1 | Which IRB acted, on what date, for which protocol, and that it covers a contributing blood center's donor data for the current round | Privacy officer, from the hub's paperwork | The IRB approval and waiver documentation, not a paper citation or an email | None, except filing it |
+| 2 | That the IRB's consent waiver records the 46.116(f)(3) findings, and that it covers a *recurring* extract | Privacy officer | Waiver findings in the file | Describe the extract accurately to the privacy officer |
+| 3 | That Lakeshore's HIPAA basis is its own: limited data set plus data use agreement under 164.514(e) | Privacy officer, with counsel | Written determination | Build and prove the limit |
+| 4 | That every EXT-21 field avoids the 164.514(e)(2) list, field by field, including free-text and any "number" that works like a listed identifier | Privacy officer | Reviewed data spec, signed | Remove or reject fields; no free-text fields in v1 |
+| 5 | That the data use agreement contains the required terms and names who may use or receive the data | Privacy officer, counsel | Signed agreement | Know which endpoints are authorized |
+| 6 | That the coded key is option B (random, stable, crosswalk never leaves Lakeshore) | Privacy officer | Key design note | Generate, protect, back up and inventory the crosswalk |
+| 7 | That the Certificate decision is documented | Privacy officer, counsel | Written decision | Execute the controls below |
+| 8 | Whether Lakeshore needs its own IRB review or reliance on the program's IRB | Counsel and the hub | **Open: not answered in our sources** | None until decided |
+
+Row 8 is an honest gap. Our Common Rule excerpt does not carry the rules on which institution is
+"engaged" in research or how reliance on another IRB is documented. Ask the hub in writing; don't
+assume. And for row 1: the *paper* says a single IRB granted the waiver. Documentation from the
+actual IRB, for the actual round, is what gets filed.
+
+### Why the privacy officer chose a limited data set and a data use agreement
+
+Her reasoning, as she explains it to the group:
+
+- **Dates are needed.** The protocol studies timing, and the limited data set allows dates.
+- **No direct identifier is needed.** The study needs to follow donors over time, not to know who
+  they are. A coded key does that, and the crosswalk stays at Lakeshore.
+- **It is Lakeshore's own basis.** The program's single-IRB waiver is the program's pathway. If
+  Lakeshore relied only on that, a defect in the hub's paperwork would become a defect in
+  Lakeshore's disclosure. The data use agreement is a document Lakeshore holds, with terms
+  Lakeshore negotiated.
+- **The waiver pathway is open but not chosen.** If the hub supplies documentation of an IRB's HIPAA
+  authorization waiver with the 164.512(i)(2) contents, that would be a second basis. She doesn't
+  need it.
+
+She adds the warning that matters most to IT: "A coded data set is not automatically
+de-identified. I'm not going to argue that EXT-21 is de-identified. I'm saying it's a limited data
+set, and that has written terms."
+
+### The Certificate decision, in her words and counsel's
+
+Counsel is careful. "I can't tell you the statute puts every Lakeshore copy under a Certificate. The
+text we have is written for researchers and award recipients, and Lakeshore's exact status turns on
+facts and an agreement we haven't seen. What I can tell you is that the downside of treating it as
+covered is some operational friction, and the downside of treating it as *not* covered, if we're
+wrong, is handing over research data we couldn't legally hand over."
+
+The decision recorded for RSH-0107, as an organizational decision, is:
+
+> Lakeshore will treat EXT-21 output and the donor-key crosswalk as **information covered by a
+> Certificate of Confidentiality**, grounded in 42 U.S.C. 241(d) and NIH's policy NOT-OD-17-109,
+> without a claim that the statute settles Lakeshore's exact status. In practice: no disclosure
+> outside the research purpose; legal requests routed to counsel; copies tracked; protection
+> treated as indefinite.
+
+## What a Certificate means for IT
+
+Each line below is a control or a habit. None of it comes from a regulation's text about IT. It is
+the operational consequence of the decision above, and each item is labeled as Lakeshore policy.
+
+1. **Inventory every copy.** The statute says "all copies thereof." List every location that holds
+   EXT-21 output rows or the crosswalk: the EXT-21 job's output folder, the staging area before
+   release, the QC reconciliation reports that contain rows, **backups** (including offsite and
+   long-retention sets), **test and validation copies**, logs that capture row-level content, and
+   any dashboard-feedback screenshots saved from the DCC. Register each as a CMDB item with the
+   determination that classifies it. A copy you can't find is a copy you can't protect.
+2. **Route any subpoena or legal request touching research data to counsel.** That includes court
+   orders, subpoenas, agency requests and legislative requests, and also an ordinary-sounding
+   request such as "send us everything we have about donor X." The service desk, the systems
+   administrator and you do not decide whether the exceptions apply. Counsel does. A one-page
+   service desk knowledge article should say: do not respond, do not search, tell counsel the same
+   day, and preserve whatever counsel tells you to preserve. A legal hold is separate: preservation
+   is not disclosure.
+3. **Never use research data for operations.** EXT-21 output and the crosswalk are not a
+   convenient second source for operational questions. Don't use them to fix a BECS record, to look
+   up a donor, to answer a hospital, for marketing or for donor recontact. If someone has a good
+   reason, it goes to the privacy officer and counsel first. The limited data set is lawful only
+   for "research, public health, or health care operations" (164.514(e)(3)(i)), but the *agreement*
+   narrows the purpose further, and the Certificate narrows it again.
+4. **Retention and destruction follow the data use agreement.** The regulation's text doesn't
+   require terms on keeping or destroying data, so Lakeshore's agreement must say it. Protection
+   being "for perpetuity" does not mean you keep everything forever. It means a copy that still
+   exists is still protected, and that destroying a copy needs a record. Destruction has to cover
+   backups and test copies, to be documented and to be cleared with counsel if any hold is in
+   place.
+5. **Log access.** Who read the crosswalk, who touched an output file before release, who released
+   it and when it was transferred. This supports Lakeshore's HIPAA obligations (a limited data set
+   is PHI), the data use agreement's reporting terms and the ability to answer "who had it?" years
+   later. Module 5 turns this into specific controls.
+6. **Plan for end of life.** Retiring EXT-21 or refreshing storage should trigger "where did its
+   data go?" with a recorded answer.
+7. **Keep the ability to stop.** Because of 164.514(e)(4)(iii), Lakeshore may have to discontinue
+   disclosure. A transfer that can be paused cleanly, with a log of what went before, is part of
+   the design.
+
+## See it in one picture
+
+The diagram shows the three layers in this scenario. The solid arrows are the path Lakeshore chose;
+the dotted arrow is the HIPAA pathway it did not choose.
+
+```{mermaid}
+flowchart TD
+    A["Hub invitation: RSH-0107, EXT-21"] --> B["Layer 1: Common Rule<br/>single-IRB consent waiver (program's pathway)<br/>documentation filed in RSH-0107"]
+    A --> C{"Layer 2: Lakeshore's own HIPAA basis"}
+    C -->|"chosen"| D["Limited data set + data use agreement<br/>164.514(e)"]
+    C -.->|"not chosen: needs IRB or privacy board<br/>documentation of authorization waiver"| E["164.512(i)"]
+    D --> F["Coded donor key, option B<br/>crosswalk stays at Lakeshore"]
+    B --> G{"Layer 3: Certificate of Confidentiality"}
+    F --> G
+    G --> H["Organizational decision:<br/>treat EXT-21 output + crosswalk as covered"]
+    H --> I["IT controls: copy inventory, legal requests to counsel,<br/>no operational use, retention per DUA, access logging"]
+    I --> J["Privacy officer's written determination<br/>clears RSH-0107 condition 1"]
+```
+
+## Watch it explained
+
+This is FDA's own overview of Certificates of Confidentiality: what they are, what "identifiable,
+sensitive information" means, and the laws behind them. FDA issues Certificates for research it
+regulates, while NIH's policy covers NIH-funded research like REDS, so treat the video as background
+on the shared statute, not as the rules for this program. It isn't about blood centers or Lakeshore.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/wRgwdnHiuQE"
+  title="Certificates of Confidentiality Part 1: General Overview" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+NIH's podcast episode on Certificates is also worth a listen; its transcript is on the resources page.
+
+## What an inspector or auditor would look for
+
+For research data, the people asking are a hub's site reviewer, an IRB, an internal auditor, or a
+HIPAA reviewer. FDA's interest is the BECS records, not the extract. They would want:
+
+- **The privacy officer's written determination** naming the pathway (limited data set plus data
+  use agreement), the date and the reasoning. Bad answer: "Legal said it's fine."
+- **The signed data use agreement** with the 164.514(e)(4) terms and the named recipients. Bad
+  answer: "It's in the hub's contract somewhere."
+- **The IRB documentation**, from the IRB. Bad answer: "The paper says so."
+- **A field-by-field review** of the data specification against the 164.514(e)(2) list. Bad
+  answer: "We removed names."
+- **The copy inventory, legal-request procedure and access logs.** Bad answer: "We'd have to go
+  looking."
+
+## Common traps
+
+1. **"The IRB waived consent, so HIPAA is handled."** The consent waiver is a Common Rule finding
+   (46.116(f)(3)). HIPAA's authorization is separate, and the covered entity needs *its own* basis:
+   documentation of an authorization waiver under 164.512(i), or a limited data set and agreement
+   under 164.514(e). Lakeshore chose the latter.
+2. **"We took the names out, so it's de-identified."** A limited data set is still PHI
+   (164.514(e)(2) defines it as "protected health information that excludes" the listed items).
+   A coded set is not automatically de-identified, and the Certificate's definition includes
+   information with "at least a very small risk" of identification.
+3. **"A Certificate protects us from FDA."** The statute speaks of information "created or compiled
+   for purposes of the research," and NIH's own list of permitted disclosures includes ones
+   "[r]equired by Federal, State, or local laws (e.g., as required by the Federal Food, Drug, and
+   Cosmetic Act [...])," except in legal proceedings. Don't tell Quality anything about FDA access
+   that counsel hasn't confirmed. The working assumption is that nothing here changes what FDA may
+   see in BECS.
+4. **"A Certificate means we can ignore a subpoena."** It means nobody in IT decides. Counsel
+   decides, and quickly.
+
+## What this means for your job
+
+- **Ask for the paper, not the summary.** Before EXT-21 touches real data, the file holds the IRB
+  documentation, the privacy officer's written determination and the signed agreement. A
+  forwarded email isn't any of them.
+- **Give the privacy officer a field-by-field data spec.** One row per field, a purpose, and
+  whether it could match a 164.514(e)(2) category. Raise free-text fields yourself. Strip them in
+  v1 rather than hoping they're clean.
+- **Own the copy inventory.** It's an IT deliverable, kept in the CMDB, reviewed at each change to
+  EXT-21 and whenever backup or storage changes.
+- **Write the legal-request runbook.** One page: who to call, what not to do, what to preserve.
+- **Say "organizational decision" every time.** To the CIO, Quality and an auditor, describe the
+  Certificate status as Lakeshore's documented decision, grounded in statute and NIH policy. Don't
+  say "the law says our data is protected."
+- **Escalate scope changes.** A new field, recipient or study, or any operational use of the
+  crosswalk, goes to the privacy officer and counsel first.
+
+## The Director's decision for RSH-0107
+
+You record this under the privacy officer's written determination:
+
+> **RSH-0107 condition 1 (privacy and IRB pathway) is cleared when the following are in the file.
+> Transfers remain not approved until condition 3 (data agreement and security terms) is also met.**
+>
+> 1. The program's single-IRB waiver documentation, from the IRB, filed as the program's
+>    human-subjects pathway. This is not Lakeshore's HIPAA basis.
+> 2. Lakeshore's HIPAA basis is a **limited data set under a data use agreement** (164.514(e)),
+>    with a field-by-field review of the data spec and a signed agreement naming recipients.
+> 3. The coded donor key is **option B**: random, stable, with the crosswalk never leaving Lakeshore.
+> 4. Lakeshore treats EXT-21 output and the crosswalk as **covered by a Certificate of
+>    Confidentiality**, as a documented organizational decision. Legal requests go to counsel,
+>    copies are inventoried in the CMDB, research data is never used for operations, retention and
+>    destruction follow the agreement, and access is logged.
+>
+> Open: whether Lakeshore relies on the program's IRB through a written reliance arrangement.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The medical director says the single IRB's consent waiver covers HIPAA. What do you answer?
+
+The waiver is a Common Rule finding under 46.116(f)(3). HIPAA is a separate question: the
+covered entity needs its own basis for disclosing PHI, either documentation of an authorization
+waiver under 164.512(i) or a limited data set and data use agreement under 164.514(e). The paper
+describes a waiver of *informed consent*; it doesn't say a HIPAA authorization waiver exists. This
+is a "different rule, different owner" answer.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Name three things a data use agreement for a limited data set must establish, and one thing it is not required to say.
+
+Any three of: the permitted uses and disclosures; who may use or receive the data; that the
+recipient won't use or further disclose it beyond the agreement or the law; that it will use
+appropriate safeguards; that it will report unauthorized uses or disclosures; that agents are bound
+to the same restrictions; that it won't identify the information or contact individuals
+(164.514(e)(4)(ii)). The text lists no required terms on retention or destruction, so those are
+Lakeshore's to negotiate. That is a "the regulation is silent" answer.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Why isn't a limited data set the same as de-identified data?
+
+Because 164.514(e)(2) defines a limited data set as protected health information that excludes
+listed direct identifiers. It is still PHI, dates and town or city, State and zip code can remain,
+and HIPAA still applies. This course's local sources don't include HIPAA's separate
+de-identification text, so we don't apply it. We only note that a coded data set isn't
+automatically de-identified.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: A subpoena arrives at the service desk naming a donor and "all research data." Walk through what happens.
+
+The service desk doesn't search, answer or release anything. It escalates to counsel the same day.
+Counsel decides how the Certificate decision and the exceptions apply and what must be preserved.
+IT supplies the copy inventory so counsel knows where data lives, and preserves what counsel
+directs. Note that under 42 U.S.C. 241(d)(1)(D) the disclosure bar applies in "any Federal, State,
+or local civil, criminal, administrative, legislative, or other proceeding," with consent as the
+only exception named there. Lakeshore's status is an organizational decision, so counsel confirms
+the approach.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q5: Does the Certificate prevent FDA from inspecting BECS records?
+
+We don't say it does. The statute protects "identifiable, sensitive information" that was "created
+or compiled for purposes of the research," and NIH's policy lists disclosures "[r]equired by Federal,
+State, or local laws (e.g., as required by the Federal Food, Drug, and Cosmetic Act [...])" among the
+permitted ones, other than in legal proceedings. BECS records exist for blood operations and FDA
+recordkeeping. Counsel confirms; the working assumption is that FDA's access to BECS is unchanged.
+This is a "do not overstate" answer.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q6: Explain to your CIO in two sentences what the Certificate decision means for IT.
+
+"We've decided, on counsel's advice, to handle the research extract and its donor-code table as
+legally protected research data, so IT has to know where every copy lives, send any legal request
+to counsel instead of answering it, and never reuse that data for operations. The protection has no
+expiry date, so we plan the data's whole lifecycle, backups and retirement included."
+:::
+
+## Where this goes next
+
+Module 4, [NIH data management and sharing](../nih-data-management-and-sharing/index.qmd), looks at
+what happens to the data after it leaves Lakeshore: NIH's sharing policy and its reach through
+contracts, where shared data ends up, and what retention and provenance IT must support. Module 5
+turns this module's decision into security controls.
