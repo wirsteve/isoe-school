@@ -107,3 +107,9 @@ Never embed a worse video just to avoid writing that sentence.
   site has no infrastructure for anything else, and an iframe to a source that doesn't
   reliably embed (most non-YouTube platforms, for a public static site) will just show a
   broken box to every reader.
+- Never embed or link a video or page from a **real blood center's, cord blood bank's or
+  hospital's own channel or site** (e.g., a regional blood supplier's YouTube channel or donor
+  website), and never name one in a caption. This is a public repo, and the learner's employer
+  could be any of them. Regulators (FDA, CDC, CMS, NIH), professional societies (AABB, CAP,
+  ICCBBA), national program operators a plan already names, news outlets, and educational or
+  academic channels are fine. (Rule added 2026-11-13, after an audit removed two such embeds.)
