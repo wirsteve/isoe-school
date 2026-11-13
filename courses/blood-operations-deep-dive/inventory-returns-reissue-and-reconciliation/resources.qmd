@@ -1,0 +1,40 @@
+---
+title: "Resources"
+order: 189
+---
+
+External links for this lesson. Every link below was checked with `curl` on 2026-11-13 (HTTP 200). eCFR's own site blocks automated traffic in this repo's build environment, so the regulation text in the lesson comes from the local copies in `sources/`, and the links below use Cornell LII's mirror of the same text.
+
+- **[Cornell LII: 21 CFR 606.165, Distribution and receipt; procedures and records](https://www.law.cornell.edu/cfr/text/21/606.165)** (page title: "21 CFR § 606.165 - Distribution and receipt; procedures and records.") — the traceability text quoted in full in the lesson. Use it to check the current wording. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.160, Records](https://www.law.cornell.edu/cfr/text/21/606.160)** (page title: "21 CFR § 606.160 - Records.") — paragraph (b)(3) lists storage and distribution records, including reissue with records of proper temperature maintenance. Read the whole paragraph, since the lesson quotes only part. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 610.53, Dating periods for Whole Blood and blood components](https://www.law.cornell.edu/cfr/text/21/610.53)** (page title: "21 CFR § 610.53 - Dating periods for Whole Blood and blood components.") — the dating table. Use it when checking what a returned unit's clock is. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 600.15, Temperatures during shipment](https://www.law.cornell.edu/cfr/text/21/600.15)** (page title: "21 CFR § 600.15 - Temperatures during shipment.") — the shipment temperature table that return-leg temperature evidence is read against. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.171, Reporting of product deviations](https://www.law.cornell.edu/cfr/text/21/606.171)** (page title: "21 CFR § 606.171 - Reporting of product deviations by licensed manufacturers, unlicensed registered blood establishments, and transfusion services.") — the reporting rule Quality applies when deciding whether a deviation report is needed. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 606.100, Standard operating procedures](https://www.law.cornell.edu/cfr/text/21/606.100)** (page title: "21 CFR § 606.100 - Standard operating procedures.") — where the written reissue and return procedures belong. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA guidance: Blood Establishment Computer System Validation in the User's Facility](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-establishment-computer-system-validation-users-facility)** (page title: "Blood Establishment Computer System Validation in the User's Facility | FDA") — nonbinding guidance on validating BECS and its interfaces, behind the regression for BOC-021. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA: Blood Guidances](https://www.fda.gov/vaccines-blood-biologics/biologics-guidances/blood-guidances)** (page title: "Blood Guidances | FDA") — FDA's index of blood guidance documents. Use it to look for any current guidance on a topic this lesson says the regulation does not cover. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+## Video note
+
+No video embed for this module. Searched for blood inventory management, returned and reissued blood products, and transfusion service inventory. The results were equipment vendors' product videos and local policy documents. Nothing both specific enough and independently verifiable from a regulator, professional society, news or educational channel was found.
+
+## Related lessons in this curriculum
+
+- [Storage, distribution, and hemovigilance](../../blood-center-operations/storage-distribution-and-hemovigilance/index.qmd) for 606.165 at Riverside.
+- [Risk-based testing and regression](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd) for the BOC-021 regression method.
+- [The LIS and the test report](../../clia-and-cap-for-blood-center-labs/the-lis-and-the-test-report/index.qmd) and [Program data feeds and reporting](../../hrsa-and-cellular-therapy-programs/program-data-feeds-and-reporting/index.qmd) for the same reconciliation pattern.
+
+## Keep learning
+
+- **[Blood Bank Guy's Glossary of Blood Banking Terms](https://www.bbguy.org/education/glossary/)** (page title: "Blood Bank Guy's Glossary of Blood Banking Terms") — a transfusion-medicine educator's glossary, for when a distribution or lab colleague's vocabulary outruns yours. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[AccountingTools: Detective control definition](https://www.accountingtools.com/articles/detective-control)** (page title: "Detective control definition — AccountingTools") — a plain definition of detective versus preventive controls, which maps onto the return gate and the weekly reconciliation. A commercial accounting-education site, not an authority for any regulatory claim. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NIST Risk Management Framework (CSRC)](https://csrc.nist.gov/projects/risk-management)** (page title: "NIST Risk Management Framework | CSRC") — general control-selection and assessment vocabulary, useful when you describe the reconciliation as a control with an owner and evidence. Not about blood. Verified loading via `curl` on 2026-11-13 (HTTP 200).

@@ -1,0 +1,313 @@
+---
+title: "Inventory: Returns, Reissue and Reconciliation"
+order: 188
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can keep BECS (Blood Establishment Computer Software) inventory true across returns, reissue and discards: both distributions traceable under 21 CFR 606.165, temperature evidence attached to every return, and a standing reconciliation that finds what the transactions missed.
+- **The punchline:** Riverside General Hospital returned platelets and red cells. The Hospital Ordering Portal (HOP) return message posted the return but dropped the reference to the temperature-evidence attachment. A weekly count-versus-BECS check then turned up a "ghost" unit: BECS said available, but the unit had been discarded at the hospital and never came back. No harm is asserted. The ghost unit was never allocated, and the reissued unit's temperature evidence was found on paper and attached.
+- **The rule in one line:** each distribution of a unit must be readily traceable (606.165(a)), and records must show reissue "including records of proper temperature maintenance" (606.160(b)(3)(iv)). No regulation in this course's sources sets the acceptance criteria for reissue. Those come from Lakeshore's SOPs and AABB themes.
+- **IT's part:** a BECS gate that refuses to accept a return without the evidence reference, an interface fix that carries it (BOC-021), and a weekly reconciliation with named owners and a record.
+- **Ask on Monday:** "Pick any returned unit. Can we show its first distribution, its return, the temperature evidence, and its second distribution, from BECS alone?"
+- **The trap:** a transaction that posts successfully is not proof that the record is complete, and a unit that shows available is not proof that the unit exists.
+:::
+
+## The Tuesday count
+
+On a Tuesday morning the distribution manager walks into your office with a clipboard and the look of someone who has been counting twice. (Riverside General and Maple Hollow Community Hospital are fictional hospitals that Lakeshore supplies.)
+
+"Riverside sent back a batch last week. Platelets, and a few red cells. I'm reconciling BECS against the shelves, which we've been doing when there's time, and I've got two things. First, a red cell unit that came back from Riverside is on a shelf at Maple Hollow Community Hospital now. We reissued it. Fine, that's allowed. But when I opened the return in BECS, the temperature chart reference isn't there."
+
+"Isn't there, as in blank?"
+
+"Blank. The return posted. The unit moved. The little attachment link that's supposed to point at Riverside's temperature record for the trip back is just gone. And second." She puts the clipboard down. "BECS says I have a red cell unit available in the A row. I don't. I went looking. Riverside's blood bank tells me they discarded it on their side. It never came back to us. It's been sitting in our system as available inventory."
+
+The BECS analyst joins and pulls the HOP-to-BECS return message for the reissued unit. The message carried the unit identifier, the return time and the receiving location. It did not carry the field that references the attachment. The interface accepted it anyway.
+
+The Quality Analyst asks the two questions that matter before anyone starts fixing: "Was the ghost unit ever allocated to a patient or shipped? And for the reissued unit, does the temperature evidence exist anywhere?"
+
+The answers come back by end of day. The ghost unit was never allocated and never shipped. For the reissued unit, Riverside's blood bank finds the temperature record on paper, and it is attached to the return. No harm is asserted. But both discoveries came from a person with a clipboard, not from the system. That is the part you own.
+
+## Why the rule exists, and the ITSM bridge
+
+A blood component is a product with a clock, a temperature requirement and a traceable history. Everything a blood center does after release assumes that history is complete. If a hospital later finds a problem, Lakeshore has to answer: which unit, to whom, when, and what happened to it in between. If a donor turns out to have been infected, or a lot of a supply turns out to be faulty, the center has to find every unit, wherever it went.
+
+A returned unit complicates this because it travels twice. It goes out, comes back, and may go out again to a different consignee. Each leg is a place where the record can fork from the physical world:
+
+- A unit that was returned but is not recorded as returned looks like it is still at the hospital.
+- A unit that was discarded at the hospital but is not recorded as discarded looks like usable inventory (the ghost).
+- A unit that was reissued without proof that it stayed cold in between may be a product nobody should have reissued, and nobody could tell.
+
+The failure mode is not dramatic. A ghost unit can sit in the available count and mislead an inventory forecast or, worse, someone allocating by screen. A missing temperature reference means a reviewer, months later, cannot show why a returned unit was safe to reissue.
+
+You already own the ITSM vocabulary for this. A returned unit is a **configuration item that changes owner and state**, and the CMDB (configuration management database) discipline you know applies: every state change is a transaction, every transaction needs evidence, and periodically you **audit the CMDB against reality** because discovery and records always drift. The weekly BECS-versus-physical count is a CMDB audit with an FDA inspector as a potential reader. The interface that dropped the attachment reference is an **integration defect with a data-integrity consequence**: a message that posts successfully while losing a field is the worst kind, because the success status hides the loss.
+
+## The rule in plain English
+
+Four requirements are in play, and they have different sources and different strengths. Keep them separate.
+
+1. **Both distributions must be traceable.** Distribution and receipt procedures must let you "readily determine" the distribution or receipt of each unit (606.165(a)). A returned and reissued unit has two distributions and one receipt (the return). Each has to be findable. A returned unit that cannot be tied to its first distribution, or a reissued unit whose second distribution record is missing, is a traceability failure.
+2. **Records must be concurrent, complete and cover reissue.** 606.160(a)(1) requires records maintained concurrently with each significant step, including storage and distribution, so that all steps can be clearly traced. 606.160(b)(3) lists distribution and disposition, storage temperature and, specifically, reissue "including records of proper temperature maintenance."
+3. **Dating still applies.** A unit coming back does not get a new life. The dating periods in 610.53 count from collection (or other date as the table specifies), and a returned unit past its date is not reissuable.
+4. **Reissue acceptance criteria are not in the regulation.** This needs to be said plainly. In the sources this course uses, no regulation sets criteria for when a returned unit may be reissued: not the time out of storage, not the temperature at return, not the inspection. Those criteria live in Lakeshore's written procedures and are informed by AABB standards themes. This repository holds no AABB text on returns and reissue, so no standard number is cited here and none should be invented. What the regulation does require is the record: reissue, with records of proper temperature maintenance.
+
+Everything else in this lesson is a design choice Lakeshore makes to be able to show those requirements are met. Label it that way when an assessor asks.
+
+## Who decides what
+
+- **Reissue criteria** (how long out, what temperature, what inspection) belong to Lakeshore's SOPs, owned by the distribution manager and Quality, with the medical director where a clinical judgment applies. IT does not set them.
+- **Whether a deviation report applies** is Quality's decision. See [Filing a biological product deviation report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd). This lesson does not state that a report is or is not required.
+- **Hospital disposition reporting** (what a hospital tells Lakeshore when it discards a distributed unit, and when) is governed by Lakeshore's agreement with hospitals. This lesson does not state any agreement term. Ask Quality and the distribution manager what the agreement says, and design the system to capture whatever it requires.
+- **IT owns** system behavior: the return gate, the interface, the reconciliation report, the evidence and the data integrity of all of it. The change runs as **BOC-021** under Lakeshore's blood-operations change control.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.165(a) | "Six-oh-six point one-six-five, paragraph a" | Procedures with a system by which distribution or receipt of each unit can be readily determined, to facilitate recall. | Both Riverside's distribution and the second hospital's distribution of the reissued unit must be findable. |
+| 21 CFR 606.165(b) | "...paragraph b" | Distribution records carry consignee name and address, date and quantity, lot number, expiration or collection date, or the recipient's name for crossmatched units. | Each of the two distributions needs these fields, with the right consignee each time. |
+| 21 CFR 606.165(c) | "...paragraph c" | Receipt records carry the collecting facility, date received, donor or lot number and the date of expiration or collection. | Defined for receipt of product by an establishment. This lesson does not claim how it applies to a return from a hospital; ask Quality. |
+| 21 CFR 606.160(a)(1) | "Six-oh-six point one-six-oh, paragraph a, sub-one" | Records maintained concurrently with each significant step, including storage and distribution, so all steps can be clearly traced. | The return and reissue steps must leave records at the time, not reconstructed later. |
+| 21 CFR 606.160(b)(3)(i), (iii), (iv) | "...paragraph b, sub-three, clauses i, iii and iv" | Distribution and disposition records; storage temperature; reissue, including records of proper temperature maintenance. | The missing temperature-evidence reference is a gap in the (b)(3)(iv) record. The ghost unit is a gap in (b)(3)(i), disposition. |
+| 21 CFR 610.53 | "Six-ten point five-three" | Dating periods by product, with storage temperature, unless the device instructions specify otherwise. | Reissue does not extend dating. Platelets in the return batch are on a 5-day clock. |
+| 21 CFR 600.15 | "Six hundred point one-five" | Temperatures that products must be maintained at during shipment. | The temperature evidence on the return leg is evidence against this table. |
+
+## The actual text
+
+### 21 CFR 606.165: distribution and receipt
+
+Quoted verbatim from `sources/cfr/606.165.md`:
+
+> (a) Distribution and receipt procedures shall include a system by which the distribution or receipt of each unit can be readily determined to facilitate its recall, if necessary.
+>
+> (b) Distribution records shall contain information to readily facilitate the identification of the name and address of the consignee, the date and quantity delivered, the lot number of the unit(s), the date of expiration or the date of collection, whichever is applicable, or for crossmatched blood and blood components, the name of the recipient.
+>
+> (c) Receipt records shall contain the name and address of the collecting facility, date received, donor or lot number assigned by the collecting facility and the date of expiration or the date of collection, whichever is applicable.
+
+Clause by clause against the scenario:
+
+- **"each unit"** in (a) means per unit, not per shipment. A return batch is a set of units, and each has its own trail.
+- **"readily determined"** is a retrieval standard. A system that can only answer after three people dig through emails is not meeting it. For the reissued unit, a single BECS query should show both consignees in order.
+- **"to facilitate its recall"** is the purpose. The reason both legs must be findable is that a recall or lookback has to reach the unit wherever it ended up. [The earlier storage and distribution lesson](../../blood-center-operations/storage-distribution-and-hemovigilance/index.qmd) covers how 606.165 and hemovigilance fit together at Riverside. This lesson does not repeat that.
+- **(b)'s "consignee"** changes between the first and second distribution. If BECS keeps only the latest consignee on the unit and overwrites the first, the first distribution is not "readily determined" anymore. This is a data-model question for the BECS analyst: are distributions stored as separate records per event, or as a mutable field on the unit?
+
+### 21 CFR 606.160: records
+
+Quoted verbatim from `sources/cfr/606.160.md`. First the general requirement:
+
+> (a)(1) Records shall be maintained concurrently with the performance of each significant step in the collection, processing, compatibility testing, storage and distribution of each unit of blood and blood components so that all steps can be clearly traced. All records shall be legible and indelible, and shall identify the person performing the work, include dates of the various entries, show test results as well as the interpretation of the results, show the expiration date assigned to specific products, and be as detailed as necessary to provide a complete history of the work performed.
+
+Then the storage and distribution records (only the clauses this lesson relies on; the full paragraph (b)(3) also lists visual inspection and emergency release):
+
+> (3) Storage and distribution records:
+>
+> (i) Distribution and disposition, as appropriate, of blood and blood products.
+>
+> ...
+>
+> (iii) Storage temperature, including initialed temperature recorder charts.
+>
+> (iv) Reissue, including records of proper temperature maintenance.
+
+What each does here:
+
+- **"concurrently"** is the key word for the temperature evidence. A reference attached when the return is accepted is concurrent. A reference reconstructed by phone call a week later, after a count found it missing, is not. The paper chart that Riverside found rescued the evidence, but the record was assembled after the fact, which is why the gate has to exist.
+- **"complete history of the work performed"** is the reason the attachment reference matters even when the chart exists somewhere. A chart in a drawer at Riverside is not part of Lakeshore's history of the unit unless Lakeshore's record points to it.
+- **"(i) Distribution and disposition"** is the ghost unit's clause. A discard at the hospital is a disposition. If BECS does not know about it, the disposition record is incomplete.
+- **"(iv) Reissue, including records of proper temperature maintenance"** is the only place in these sources that links reissue to temperature. It says what must be *recorded*. It does not say what temperature is acceptable, how long a unit may be out, or who decides. Those are SOP decisions.
+
+### 21 CFR 610.53: dating
+
+From `sources/cfr/610.53.md`, the sentence that governs how long a unit may be stored:
+
+> In using the table in this paragraph, when a product in column A is stored at the storage temperature prescribed in column B, storage of a product must not exceed the dating period specified in column C, unless a different dating period is specified in the instructions for use by the blood collection, processing and storage system approved or cleared for such use by FDA.
+
+And two rows of the table, as printed there:
+
+| Product | Storage temperature | Dating period |
+|---|---|---|
+| Red Blood Cells, additive solutions | Between 1 and 6 °C | 42 days from date of collection. |
+| Platelets | Between 20 and 24 °C | 5 days from date of collection. |
+
+For this lesson the point is narrow: dating is anchored to a date on the unit, and reissue does not reset it. A BECS reissue check must compare the unit's expiration against the second consignee's likely use window, per SOP, and block an expired unit regardless of anything else. How much remaining dating Lakeshore requires at reissue is an SOP choice, not in 610.53.
+
+### 21 CFR 600.15: the temperature during shipment
+
+From `sources/cfr/600.15.md`:
+
+> The following products shall be maintained during shipment at the specified temperatures:
+
+and, in the table, for liquid red cells:
+
+> | Red Blood Cells (liquid product) | Between 1 and 10 °C. |
+
+The platelets row is longer and depends on the label's storage range, so read it in the source. This regulation is about shipment temperature. It does not set reissue criteria and this lesson does not use it that way. It is the yardstick against which a return leg's temperature evidence would be read, and the lesson does not claim more than that.
+
+### What the sources do not contain
+
+- No regulation in `sources/` sets reissue acceptance criteria.
+- `sources/aabb/` holds only structural notes (QSE framework, accreditation, the Information Systems section's themes). It holds no text on returns or reissue. AABB's Standards are where blood banks commonly look for such criteria, but this lesson cites no AABB standard number for this topic.
+- Nothing in `sources/` says how a hospital's discard must be reported to the blood center. That is a matter of the agreement.
+
+## Three controls, one pattern
+
+The fix has three layers. The first two are preventive. The third is detective, and it is the one that found both problems.
+
+### 1. The return gate (preventive)
+
+BECS refuses to accept a return unless the record carries a reference to the temperature evidence. "Refuses" means a blocking rule, not a warning banner. A unit whose return arrives without the reference stays in a held state (not available, not reissuable) and appears on a worklist for the distribution manager.
+
+Design points for the BECS analyst:
+
+- The gate checks for **a reference**, not that the evidence is good. Judging whether the chart shows proper temperature maintenance is the distribution team's job under the SOP.
+- The held state needs a defined exit: evidence attached, or a documented decision to discard. A held unit that nobody owns becomes the next ghost.
+- The gate must apply to every return path, including manual entry in BECS. A gate on the HOP path only invites a workaround.
+
+### 2. The interface fix (preventive)
+
+The HOP-to-BECS return message has to carry the reference, and the receiving side has to reject, not silently accept, a message missing a required field. This is what [BECS interfaces and data integrity](../../csv-and-becs/becs-interfaces-and-data-integrity/index.qmd) calls an interface boundary with an error path: a message that cannot be processed lands somewhere visible instead of posting half-complete.
+
+The fix runs as **BOC-021**. The regression scope matters as much as the fix:
+
+- **HOP order, return and cancel flows** are all regressed, not just the return. A mapping change on one message type can alter another, and a cancel is a flow that can change a unit's inventory status. The root-cause analysis has not shown which path produced the ghost unit, so all three are in scope.
+- Scope, tiers and evidence follow [Risk-based testing and regression](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd). This lesson does not repeat that method.
+- Test cases worth naming: a return with the reference (posts, reference stored, visible), a return without it (rejected or held, never posted as complete), a return with a malformed reference, an order followed by a cancel (status correct, no phantom available unit), and a reissue after a return (two distribution records, in order).
+
+### 3. The weekly reconciliation (detective)
+
+Neither gate would have found the ghost unit. Its record was not wrong because a message was malformed. A unit's real-world fate (a discard at the hospital) never made it into BECS at all. Only a comparison against reality finds that.
+
+Lakeshore's design, as its own control rather than a regulatory requirement:
+
+- **Weekly.** BECS produces its list of units it considers available or distributed, and the distribution team compares it with the physical shelves and with hospitals' reports of what they hold. The frequency is a Lakeshore decision.
+- **Exception classes.** BECS says available but not on the shelf (the ghost). On the shelf but BECS says otherwise. Distributed to a hospital that reports it discarded or does not hold it. Returned without an evidence reference.
+- **Named owner.** The distribution manager works each exception. Exceptions are not a general queue.
+- **An evidence record.** Each run is recorded: date, who ran it, counts, each exception, its cause, how it closed and who approved the correction. A correction to a BECS status is itself a controlled change with an audit trail, not an edit to make the report go green.
+- **Trend.** A rising exception count goes to problem management, because something upstream is changing.
+
+#### The same pattern as two earlier courses
+
+This is the control pattern you have already seen twice in this curriculum, applied to a physical product:
+
+| Course | What the system said | What reality was | The check that found it |
+|---|---|---|---|
+| [The LIS and the test report](../../clia-and-cap-for-blood-center-labs/the-lis-and-the-test-report/index.qmd) | A corrected report was "released" | The correction was suppressed and never delivered | **Sent versus acknowledged** |
+| [Program data feeds and reporting](../../hrsa-and-cellular-therapy-programs/program-data-feeds-and-reporting/index.qmd) | A feed reported success | The listing still showed a unit that was no longer available | **Listed versus actual** |
+| This lesson | BECS showed a unit available | The hospital had discarded it | **BECS versus physical** |
+
+In all three, a success signal (released, sent, available) was trusted without a second source. In all three, the control is a standing comparison between the system's claim and an independent record, with named exception owners and a retained record. The scope of that comparison matters:
+
+- *Sent versus acknowledged* catches what was sent and not received.
+- *Listed versus actual* catches what the system believes versus what a downstream listing shows.
+- *BECS versus physical* catches what neither a message nor a listing can: the thing that happened in the world and was never reported.
+
+If you only have the first, you are blind to everything that never left. This module's ghost unit is that case. The same architectural point also covers the dropped attachment reference: the message was "sent and posted," so a sent-versus-acknowledged check would have shown green.
+
+## See it in one picture
+
+The diagram follows one unit through distribution, return, reissue or discard, and names the record each step must leave. The weekly reconciliation sits outside the flow, because its job is to find units whose state has drifted from the flow.
+
+```{mermaid}
+flowchart TD
+  A["BECS inventory:<br/>unit AVAILABLE"] --> D1["Distribute to Riverside<br/>Record: distribution record<br/>(consignee, date, unit, expiry,<br/>shipping temperature)"]
+  D1 --> H["At the hospital:<br/>BECS status DISTRIBUTED"]
+  H --> Q{"Hospital outcome"}
+  Q -- "Transfused or kept" --> T["Hospital's own records<br/>(outside Lakeshore's BECS)"]
+  Q -- "Discarded at hospital" --> X["Disposition report per agreement<br/>Record: disposition, date, reason<br/>BECS status DISCARDED"]
+  Q -- "Returned to Lakeshore" --> R["HOP return message<br/>Record: return receipt +<br/>temperature-evidence reference"]
+  R --> G{"BECS return gate:<br/>evidence reference present?"}
+  G -- "No" --> BL["Return acceptance BLOCKED<br/>unit stays DISTRIBUTED/QUARANTINED"]
+  G -- "Yes" --> I["Inspection and reissue decision<br/>(SOP criteria, dating check 610.53)<br/>Record: reissue decision,<br/>temperature maintenance"]
+  I -- "Acceptable" --> D2["Distribute to second hospital<br/>Record: new distribution record<br/>(consignee 2, date, unit)"]
+  I -- "Not acceptable" --> X2["Discard at Lakeshore<br/>Record: disposition and reason"]
+  W["Weekly reconciliation:<br/>BECS status vs physical count<br/>Record: run, exceptions, closure"] -. "finds ghost units" .-> A
+```
+
+Read it as a design target. In the scenario, the "Discarded at hospital" branch never reached BECS (the ghost), and the "Yes" branch was entered without its evidence reference (the dropped attachment). The diagram is Lakeshore's workflow as this lesson sets it up. It is not a regulatory flowchart.
+
+## Watch it explained
+
+No video embed for this module. Searches for a video on blood inventory management, returns and reissue, and transfusion service inventory turned up only equipment vendors' product videos and policy documents. Nothing both on topic and independently verifiable from a regulator, professional society, news or educational channel was found. The diagram and the text carry the lesson. See the resources page for the note.
+
+## The response, step by step
+
+1. **Contain.** The ghost unit is set to a held state in BECS with a documented reason, so nothing can allocate it. The distribution manager confirms with Riverside's blood bank, in writing, that it was discarded. A BECS status correction follows the system's controlled correction path and keeps the audit trail. Do not delete the record.
+2. **Preserve evidence for the reissued unit.** The paper temperature record found at Riverside is attached to the return record, with a note of when and by whom it was attached and why it was late. The late attachment is stated honestly. It is not back-dated.
+3. **Look wider.** The BECS analyst queries every return in the affected period for a missing evidence reference, and every unit in a distributed state for which a hospital has reported a discard. The same drop may have happened on other returns, including the platelets.
+4. **Open BOC-021.** The change covers the interface mapping, the BECS return gate and the reconciliation report. Quality is involved in the approval. The scope statement names the HOP order, return and cancel flows for regression.
+5. **Hand the reporting question to Quality.** Whether a deviation report applies is Quality's decision (see the [BPDR lesson](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd)). IT supplies facts: what happened, which units, what the system did, and what was found. IT does not state a conclusion either way.
+6. **Ask about the agreement.** The distribution manager and Quality confirm what Lakeshore's agreement with hospitals says about reporting units a hospital discards, and the BECS analyst builds the capture for whatever it says. This lesson states no term of the agreement.
+7. **Start the reconciliation before the fix lands.** The first run's exceptions are the defect's footprint, and they make the best test data for the fix.
+8. **Check effectiveness later.** After a defined period, review the reconciliation trend and confirm no return posted without its reference. Record the review.
+
+## What an inspector or assessor would actually look for
+
+Pick a returned and reissued unit and walk it.
+
+| They ask | Record that answers | Owner | What a bad answer sounds like |
+|---|---|---|---|
+| "Show me where this unit went, and where it went next." | Both distribution records, with consignees, dates and unit identity | Distribution manager | "It's in the system... we think it was reissued." |
+| "How do you know the unit stayed within proper temperature when it came back?" | The return record with its attached temperature evidence | Distribution manager | "The hospital told us it was fine." |
+| "How do you decide a returned unit can go out again?" | The written SOP and the reissue decision record | Quality, distribution manager | "The technician uses judgment" with nothing written down. |
+| "How do you know BECS inventory matches what you have?" | Weekly reconciliation records, exceptions and closures | Distribution manager | "We count when we have time." |
+| "You changed the interface. What did you test?" | BOC-021 with regression evidence | BECS analyst, Quality | "Vendor says it works" or a test of the return flow only. |
+| "What happens when a hospital discards a unit you distributed?" | The agreement provision and the disposition record | Quality, distribution manager | Nobody can say. |
+
+## Common traps
+
+**"The return posted, so the record is complete."** Posting means the message was accepted. It says nothing about the fields it left out. The only protection is a required-field rule on the receiving side and a gate on the record.
+
+**"A reconciliation is a one-time cleanup."** The ghost unit is one instance of a class: anything that happens to a unit outside BECS's view. The next ones will come from a different path. A standing, owned, recorded reconciliation is the control, and the cleanup is its first run.
+
+**"The regulation tells us when a returned unit can be reissued."** It does not, in the sources this course uses. 606.160(b)(3)(iv) requires reissue records including records of proper temperature maintenance. Acceptance criteria are Lakeshore's SOPs. Citing a regulation for a criterion that is really an SOP rule is the fastest way to lose an assessor's trust.
+
+**"We fixed the return flow, so we regressed the return flow."** Order, return and cancel flows all write to inventory status, and the analysis has not yet shown which path produced the ghost unit. Regress them together.
+
+**"The hospital's discard is the hospital's problem."** Once Lakeshore distributed the unit, Lakeshore's record of its disposition is Lakeshore's problem. How the hospital reports it is set by the agreement, but BECS must be able to hold the answer.
+
+## What this means for your job
+
+- **Ask for the walk.** Once a quarter, have the distribution manager walk one reissued unit from BECS alone: first distribution, return, evidence, second distribution. If it takes a spreadsheet and three phone calls, that is your finding.
+- **Treat "success" statuses with suspicion.** For any interface that touches inventory, ask what a message missing a field does. If the answer is "posts anyway," that is a defect class.
+- **Fund the reconciliation before the dashboard.** A weekly count with named exception owners finds problems a status dashboard does not.
+- **Keep decisions with their owners.** Reissue criteria belong to the SOP, deviation reporting to Quality, hospital disposition terms to the agreement. Your job is to make the system capture and enforce what they decide.
+- **Make corrections controlled.** When a reconciliation finds a wrong status, the fix goes through the same audit-trailed path as any other change. A silent edit to make a number match is a data-integrity problem of its own.
+- **Escalate** when a reconciliation finds a unit shipped or allocated that BECS believed was held, or any unit with no traceable first distribution. Page Quality the same day.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: A colleague says, "21 CFR 606.160 requires that a returned unit be reissued only if it was out of the cold chain less than 30 minutes." Is that right?
+
+No. Nothing in `sources/` sets a time limit for reissue. 606.160(b)(3)(iv) requires "Reissue, including records of proper temperature maintenance" as a record. The criteria for when a unit is acceptable come from Lakeshore's SOPs and AABB themes. Say so plainly and do not cite a regulation for it.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: The return message posted successfully and BECS shows the unit back in inventory. Why is the record still not complete, and which record is the gap?
+
+The message dropped the reference to the temperature-evidence attachment. 606.160(b)(3)(iv) calls for records of proper temperature maintenance for reissue, and (a)(1) calls for a complete history, kept concurrently. A posted return without the evidence reference leaves that record incomplete. The BECS gate that blocks acceptance without the reference is the control.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Would a sent-versus-acknowledged check have found the ghost unit? What would?
+
+No. The discard happened at the hospital and was never sent anywhere, so there was nothing to acknowledge. A comparison of BECS status against physical inventory and hospital-reported dispositions finds it. It is the same pattern as the listed-versus-actual check in the program data feeds lesson, applied to physical stock.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Is the weekly reconciliation a regulatory requirement?
+
+Not as written in the sources used here. 606.165(a) and 606.160 require traceability and records. They do not prescribe a reconciliation or a frequency. It is Lakeshore's control, chosen because it shows the requirement is being met. Cite 606.165 and 606.160 for the duty and call the reconciliation Lakeshore's own control.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q5: Explain this to your CIO in two sentences.
+
+"A unit that goes out, comes back and goes out again has to leave a complete, findable record at every step, including proof it stayed cold. We are making the system refuse a return without that proof, fixing the interface that dropped it, and counting the shelves against the system every week so that a unit that has quietly disappeared from reality gets caught by us and not by an inspector."
+:::
+
+## Where this goes next
+
+Returns are one place where the record can drift from the physical world. The next module, [Mobile collections and offline systems](../mobile-collections-and-offline-systems/index.qmd), takes the same worry to the other end of the pipeline: a laptop at a rural drive working from a deferral list that is a day old. The earlier modules on [apheresis platelets and bacterial risk](../apheresis-platelets-and-bacterial-risk/index.qmd) and [immunohematology reference and antigen-negative inventory](../immunohematology-reference-and-antigen-negative-inventory/index.qmd) covered testing status and antigen claims, two other attributes that have to stay true as a unit moves.
