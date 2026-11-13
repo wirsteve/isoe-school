@@ -146,7 +146,7 @@ No calendar years.
 | 1 | `hrsa-and-the-cell-transplant-program` | Say what HRSA's C.W. Bill Young program is (274k/274l, run by contract), how a blood center plugs in (donor center, cord blood bank, outcomes data), and which other regulators ride along (FDA 1271/BLA, CLIA for HLA). Put the registry and cord blood systems on the compliance map. | 175/176 | Published |
 | 2 | `registry-donor-data-and-confidentiality` | Apply 274k's confidentiality, disclosure-purpose and penalty provisions to a registry donor database and its interfaces, and decide a data-reuse request. | 177/178 | Published |
 | 3 | `cord-blood-identification-records-and-tracking` | Direct IT's part in 1271.290 tracking (distinct ID codes, code mapping, two-way tracking), 1271.270/1271.55 records and retention, and confidential maternal linkage during a CBB system replacement. | 179/180 | Published |
-| 4 | `program-data-feeds-and-reporting` | Run a data feed into the program like a regulated interface: standardized data duties, reconciliation, change control and the right reporting path when it fails. | 181/182 | Not started |
+| 4 | `program-data-feeds-and-reporting` | Run a data feed into the program like a regulated interface: standardized data duties, reconciliation, change control and the right reporting path when it fails. | 181/182 | Published |
 
 ## Progress log
 
@@ -202,3 +202,17 @@ No calendar years.
   decommissioning (1271.55(d)(3), 1271.270(c)). 1271.160(d) software validation incl. changes. Note
   §2(c)(1) "10 years" = program participation, not records clock. One-way MRN transformation question →
   Regulatory Affairs. No coding standard asserted for cord blood.
+- 2026-11-13 — Module 4 `program-data-feeds-and-reporting` published (verified; prose ~4,700 words; no
+  verifiable video — said honestly). **Locked:** CBC-034 root cause = status events for units remapped
+  old-to-new carried the new code while the listing knew only the old one; the feed's mapping step dropped
+  unmatched events silently, so "distributed"/"discarded" never reached the listing; nightly job reported
+  success. Detected by a transplant center's request for a discarded unit; refused at Lakeshore; nothing
+  shipped wrong; no harm asserted. Owners: Quality Analyst owns CBC-034 completeness; Director owns fix
+  delivery. Standing daily listed-vs-actual reconciliation, three exception classes (listed-not-available,
+  available-not-listed, attributes differ), named owners, daily evidence record. Silence monitoring: volume
+  vs CBB event count, unmatched-event counter, heartbeat. Post-release review asks why CBC-031's migration
+  validation didn't test the outbound feed on remapped units. Program notification per agreement (terms not
+  invented). FDA reporting = cord blood bank's medical director + Quality; licensed unit → 600.14 (not in
+  sources); 1271.350 n/a (1271.330). Quotes: note (b)(5)/(b)(6), 274k(d)(3)(A)–(B), 274l(b), "fiscal years
+  2022 through 2026". "Currency of status is part of the standard dataset's purpose" labelled as the
+  lesson's own reasoning. Course wrap points to `blood-operations-deep-dive`. **Course complete (4/4).**

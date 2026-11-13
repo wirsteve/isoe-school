@@ -1,0 +1,35 @@
+---
+title: "Resources"
+order: 182
+---
+
+External links for this lesson. Each was loaded with `curl` and its page title checked on 2026-11-13. Statute and CFR text quoted in the lesson comes from the dated local copies in `sources/`; use the live links below to check for amendments.
+
+- **[Cornell LII: 42 U.S.C. 274k, National Program](https://www.law.cornell.edu/uscode/text/42/274k)**: the statute, including (d)(3)(B), the standard dataset. The Cord Blood Inventory note quoted in the lesson is set out as a note under this section. Use it to check current text, especially because `sources/` doesn't show whether the program was reauthorized after Sept. 30, 2026. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 42 U.S.C. 274l, Stem cell therapeutic outcomes database](https://www.law.cornell.edu/uscode/text/42/274l)**: the outcomes database section, with 274l(b). Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 1271.330, Applicability](https://www.law.cornell.edu/cfr/text/21/1271.330)**: the sentence that takes section 351 biological products out of subpart E. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 1271.350, Reporting](https://www.law.cornell.edu/cfr/text/21/1271.350)**: the 361 HCT/P reporting section, linked so you can see what the licensed unit does *not* follow. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 600.14, Reporting of biological product deviations by licensed manufacturers](https://www.law.cornell.edu/cfr/text/21/600.14)**: the section the lesson names as the licensed-product path. It is **not in this curriculum's `sources/`**, and the lesson does not quote or describe it. It is linked only so Regulatory Affairs and the medical director can find it. Page title checked; I did not read it for the lesson. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA: Approved Cellular and Gene Therapy Products](https://www.fda.gov/vaccines-blood-biologics/cellular-gene-therapy-products/approved-cellular-and-gene-therapy-products)**: FDA's public list, which includes licensed HPC, Cord Blood products. Use it to see the licensed-product category; the lesson names no listed organization. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[CIBMTR: Stem Cell Therapeutic Outcomes Database (SCTOD)](https://cibmtr.org/CIBMTR/About/Our-Impact/SCTOD)**: the contract holder's own public statement of what the outcomes database is. Use it for "who holds which contract." It says nothing about Lakeshore's feeds. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[NMDP: Act Now, C.W. Bill Young Cell Transplantation Program](https://www.nmdp.org/get-involved/advocate/public-policy/protecting-federal-funding)**: the operator's advocacy page, the source of the "set to expire Sept. 30, 2026" statement. An advocacy page, not a legal source, and it does not tell you whether the program was reauthorized. Check current status elsewhere. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **Course links used in the lesson:** [Risk-based testing and regression](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd), [Deployment, cutover and rollback](../../release-management-and-sdlc/deployment-cutover-and-rollback/index.qmd), [Post-release review and delivery metrics](../../release-management-and-sdlc/post-release-review-and-delivery-metrics/index.qmd), [The LIS and the test report](../../clia-and-cap-for-blood-center-labs/the-lis-and-the-test-report/index.qmd) (the LCR-014 reconciliation pattern), [BECS interfaces and data integrity](../../csv-and-becs/becs-interfaces-and-data-integrity/index.qmd), [Filing a biological product deviation report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd) (blood-side analog only), [Cord blood identification, records and tracking](../cord-blood-identification-records-and-tracking/index.qmd), [Registry donor data and confidentiality](../registry-donor-data-and-confidentiality/index.qmd), [HRSA and the cell transplant program](../hrsa-and-the-cell-transplant-program/index.qmd), and the next course, [Blood operations deep dive](../../blood-operations-deep-dive/index.qmd).
+
+**No video embed for this module.** Searched for a CIBMTR or NMDP upload on transplant outcomes data and program data; the searches surfaced web pages, a webinar listed on CIBMTR's site, and third-party video pages, but no YouTube upload from either organization that was both specific to this topic and verifiable through YouTube's oEmbed check. Nothing was embedded.
+
+## Keep learning
+
+Not official sources, and none is authority for a regulatory claim. Good places to go deeper on monitoring that notices silence and on reliable data pipelines.
+
+- **[Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)** (Google SRE book, free online): the clearest practitioner treatment of symptom-based versus cause-based monitoring. Read it for the reasoning behind alerting on what a user would see. Verified loading via `curl` on 2026-11-13 (HTTP 200; page heading "Monitoring Distributed Systems").
+- **[Alerting](https://prometheus.io/docs/practices/alerting/)** (Prometheus project documentation, open source): short advice on what to alert on, including alerting on symptoms. Tool-specific in places; take the principles. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Healthchecks.io documentation](https://healthchecks.io/docs/)** (vendor documentation, commercial service with an open-source core): shows the dead-man's-switch idea in practice, where a scheduled job must check in or someone is alerted. Read it for the concept, not as an endorsement. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+- **[Logging Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html)** (OWASP, community-run): what interface logs should capture so a dropped event leaves a trace. Verified loading via `curl` on 2026-11-13 (HTTP 200).
