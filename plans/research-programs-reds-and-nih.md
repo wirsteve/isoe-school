@@ -75,6 +75,18 @@ incident handling; controlled-access genomic data rules only where in scope); mo
 BECS change (BECS Release C from `release-management-and-sdlc`) breaks EXT-21's field mapping and a
 rapid-response study request arrives the same week — run both without touching regulated records.
 
+**Locked outcome for module 3 (set by the planner so modules 3 and 4 can be drafted in parallel):**
+the privacy officer determines Lakeshore's disclosure to the hub will be a **limited data set under a
+data use agreement** (45 CFR 164.514(e)) — no direct identifiers leave Lakeshore; donation dates may
+(LDS permits dates); the program's single-IRB waiver documentation is filed in RSH-0107 as the
+program's human-subjects pathway, but Lakeshore's HIPAA basis is its own LDS + DUA decision. Donor-key
+option B confirmed (random code not derived from identifiers; crosswalk never leaves Lakeshore). On
+Certificates of Confidentiality: the privacy officer and counsel conclude Lakeshore will **treat EXT-21
+output and the crosswalk as covered information** (conservative organizational decision, grounded in
+42 U.S.C. 241(d) and NIH's policy, without claiming the statute settles Lakeshore's exact status):
+no disclosure outside the research purpose, legal requests routed to counsel, copies tracked, and
+protection treated as indefinite. Module 4 builds on this; module 5 turns it into controls.
+
 ## Lesson format
 
 Same as `release-management-and-sdlc`: "The short version" callout first; TEACHING.md spine; in
