@@ -1,0 +1,69 @@
+---
+title: "Release Management & the SDLC"
+order: 127
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- This course is the operating manual for getting software changes into production at a blood
+  center: in-house releases, vendor BECS upgrades, and emergency fixes.
+- Earlier courses taught *what* validation and change control are. This one teaches *how* releases
+  actually move: lifecycle models, requirements, environments, release planning, testing,
+  pipelines, secure development, cutover, rollback, hotfixes and metrics.
+- The running example is Lakeshore's own Hospital Ordering Portal and its 3.0 release, the BECS
+  vendor's Release C, and one very bad night with a critical vulnerability.
+- Every module ends with what a regulator, an assessor and your CIO would each expect to see.
+:::
+
+## The finish line
+
+By the end of this course you can run any software change at Lakeshore — an in-house release, a
+vendor's BECS (blood establishment computer software) upgrade, or a 2 a.m. security hotfix — from
+idea to production and back out again if needed, and say at every step what evidence a regulator,
+an assessor, and your own CIO would expect to see.
+
+## Why this course exists
+
+You already know release management from the ITSM side. What changes in a blood center is that a
+release can put the wrong unit on a shelf or the wrong label on a bag, so every step leaves
+evidence that someone outside IT will one day read. The earlier courses built the vocabulary:
+[CSV & BECS](../csv-and-becs/index.qmd) taught validation, the V-model and the validated state;
+[Quality System Essentials](../quality-system-essentials/index.qmd) taught change control; and
+[ITSM for Regulated Blood Services](../itsm-for-regulated-blood-services/index.qmd) mapped ITIL's
+change enablement onto it. This course doesn't repeat any of that. It puts it to work on real
+releases, and adds the modern practice those courses only touched: agile, automated pipelines,
+secure development and software supply chains.
+
+## Before you start
+
+- [GAMP 5 and the V-model](../csv-and-becs/gamp5-and-the-v-model/index.qmd) and
+  [IQ, OQ, PQ and traceability](../csv-and-becs/iq-oq-pq-and-traceability/index.qmd).
+- [The validated state: lifecycle and patching](../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd).
+- [Change control for regulated systems](../quality-system-essentials/change-control-for-regulated-systems/index.qmd).
+- [ITIL-to-QSE crosswalk: change and problem](../itsm-for-regulated-blood-services/itil-to-qse-crosswalk-change-and-problem/index.qmd).
+
+## The eleven modules
+
+1. **SDLC models in a regulated blood center.** Waterfall, V-model, iterative, agile and DevOps:
+   what each one has to produce for validation, and when. HOP 3.0's auto-allocation feature raises
+   the question of whether in-house software can drift into being a BECS.
+2. **Requirements, backlogs and traceability in agile.** Turning user stories into requirements an
+   inspector can trace to tests, and a definition of done that includes the validation evidence.
+3. **Environments, baselines and test data.** Development, test, validation and production; keeping
+   a configuration baseline; keeping real donor data out of places it shouldn't be.
+4. **Release management, deployment and change control.** Three ITIL practices that get blurred
+   together, release types, and a release calendar that respects blood operations.
+5. **Vendor release intake for BECS.** Taking the vendor's Release C from release notes to a
+   validation-in-your-facility decision.
+6. **Risk-based testing and regression.** Sizing a test effort by risk and deciding regression
+   scope from an impact analysis.
+7. **CI/CD pipelines under GxP.** Automation without losing segregation of duties, tool assurance,
+   or the record of who deployed what.
+8. **Secure SDLC and software supply chain.** NIST's Secure Software Development Framework applied
+   to HOP, and the supply-chain questions to ask a vendor.
+9. **Deployment, cutover and rollback.** Go/no-go, BECS downtime procedures, post-deployment
+   verification, and a rollback you've actually rehearsed.
+10. **Emergency changes and hotfixes.** Shipping a critical fix fast without leaving a validation
+    gap.
+11. **Post-release review and delivery metrics.** Hypercare, post-implementation review, and the
+    delivery metrics worth reporting upward.

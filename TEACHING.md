@@ -15,6 +15,11 @@ finish on a phone in one sitting.
 
 ## The lesson spine (in this order)
 
+**0. The short version (every lesson from 2026-11-13 on).** Right after the front matter, a
+`::: {.callout-tip appearance="simple"}` titled `## The short version` with 4–6 bullets: the finish
+line, the scenario's punchline, the rule in one line, the one thing to ask on Monday, the trap. The
+learner has little time to read; this box is the skim layer. The lesson below it stays in depth.
+
 1. **The scenario first.** Open with a short, concrete situation at the fictional
    Lakeshore Blood Center — a change ticket, a deviation, an inspector's question, a
    mislabeled unit. No citations yet. Write this scene with real texture — specific
