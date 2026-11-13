@@ -1,0 +1,74 @@
+---
+title: "Resources"
+order: 154
+---
+
+External links for this lesson, checked to load on 2026-11-13. Quoted regulatory and program text in
+the lesson comes from the local copies in `sources/`, not from these pages.
+
+- **[Cornell LII: 21 CFR 606.160, Records](https://www.law.cornell.edu/cfr/text/21/606.160)** —
+  the BECS records rule, including 606.160(c) on the donor number. Use it when anyone asks whether the
+  extract changes what a record is. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 21 CFR 11.10, Controls for closed systems](https://www.law.cornell.edu/cfr/text/21/11.10)**
+  — the controls that stay attached to the BECS records. Contrast, not a requirement for the extract.
+  Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[Cornell LII: 45 CFR 164.514, Other requirements relating to uses and disclosures of PHI](https://www.law.cornell.edu/cfr/text/45/164.514)**
+  — the minimum-necessary paragraph (d) and, later in the same section, the de-identification and
+  limited-data-set paragraphs module 3 relies on. Verified loading via `curl` on 2026-11-13
+  (HTTP 200).
+
+- **[NIST SP 800-53 Rev. 5 (CSRC publication page)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)**
+  — the voluntary control catalog; read CM-3 and CM-5 for the change-control vocabulary. Verified
+  loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[FDA: Data Integrity and Compliance With Drug CGMP, Questions and Answers](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/data-integrity-and-compliance-drug-cgmp-questions-and-answers)**
+  — drug-CGMP guidance, not a blood-establishment rule. Use it only for general thinking about
+  complete, consistent and accurate data. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[OMOP Common Data Model (OHDSI documentation)](https://ohdsi.github.io/CommonDataModel/)**
+  — the model the 2022 paper says the V2V database is based on (it names v6). Use it to read the
+  tables the DCC maps into. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[The Book of OHDSI, Chapter 6: Extract Transform Load](https://ohdsi.github.io/TheBookOfOhdsi/ExtractTransformLoad.html)**
+  — the OMOP community's practical walk through mapping source data to the model. Read it to follow
+  the DCC's side of the conversation. It describes OHDSI practice, not the REDS DCC's process.
+  Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[2017 OHDSI CDM & Vocabulary Tutorial (1 of 5)](https://www.youtube.com/watch?v=BExsHYxkvTw)**
+  (OHDSI, from oEmbed `author_name`) — the embedded video; general OMOP background, not about blood
+  centers or REDS. I confirmed only its title and that it is one of five parts on the OHDSI
+  [tutorial page](https://www.ohdsi.org/2017-tutorials-omop-common-data-model-and-standardized-vocabularies/)
+  (HTTP 200); I did not watch it. Verified embeddable via YouTube oEmbed on 2026-11-13.
+
+- **Earlier lessons this one builds on:**
+  [Module 1](../reds-structure-contracts-and-governance/index.qmd),
+  [BECS in the pipeline](../../blood-center-operations/becs-in-the-pipeline/index.qmd),
+  [BECS interfaces and data integrity](../../csv-and-becs/becs-interfaces-and-data-integrity/index.qmd),
+  [Environments, baselines and test data](../../release-management-and-sdlc/environments-baselines-and-test-data/index.qmd),
+  [Release management and change control](../../release-management-and-sdlc/release-management-deployment-and-change-control/index.qmd).
+
+Note: the PubMed Central page for the 2022 paper returned a bot-check page to `curl` today, so it is
+not re-listed here; module 1's resources page links it.
+
+## Keep learning
+
+Not official sources, and not authority for any regulatory claim.
+
+- **[OHDSI Data Quality Dashboard](https://ohdsi.github.io/DataQualityDashboard/)** (OHDSI, open
+  source) — a practical catalog of field-level and conformance checks on OMOP data. Mine it for
+  ideas for EXT-21's QC checklist and to understand what the DCC's checks may resemble. Verified
+  loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[The Twelve-Factor App: Dev/prod parity](https://12factor.net/dev-prod-parity)** (practitioner
+  essay) — why test and production should differ as little as possible; useful for the first-test-run
+  discussion. Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[OHDSI: Data Standardization](https://www.ohdsi.org/data-standardization/)** (OHDSI community) —
+  the community's overview of its data standards, a gentle starting point before the CDM docs.
+  Verified loading via `curl` on 2026-11-13 (HTTP 200).
+
+- **[The Book of OHDSI](https://ohdsi.github.io/TheBookOfOhdsi/)** (OHDSI) — the full free book;
+  chapters on the CDM and data quality sit alongside the ETL chapter above. Verified loading via
+  `curl` on 2026-11-13 (HTTP 200).
