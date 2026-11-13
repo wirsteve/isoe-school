@@ -184,7 +184,7 @@ course's LCR-0xx records stay with lab systems.
 | # | Slug | Finish line | `order:` | Status |
 |---|---|---|---|---|
 | — | (syllabus) | — | 183 | Published |
-| 1 | `apheresis-platelets-and-bacterial-risk` | Explain 606.110, 640 subpart C and 606.145 with FDA's platelet bacterial-risk guidance, and make BECS enforce sampling linkage, timing conventions, testing-status traceability and the positive-after-distribution alert. | 184/185 | Not started |
+| 1 | `apheresis-platelets-and-bacterial-risk` | Explain 606.110, 640 subpart C and 606.145 with FDA's platelet bacterial-risk guidance, and make BECS enforce sampling linkage, timing conventions, testing-status traceability and the positive-after-distribution alert. | 184/185 | Published |
 | 2 | `immunohematology-reference-and-antigen-negative-inventory` | Keep antigen-negative claims honest: lineage of antigen types, historical versus confirmed attributes, and the reference-lab-to-BECS path, under 606.151 and CLIA. | 186/187 | Published |
 | 3 | `inventory-returns-reissue-and-reconciliation` | Keep BECS inventory true across returns, reissue and discards: 606.165 traceability, temperature evidence, and reconciliation. | 188/189 | Not started |
 | 4 | `mobile-collections-and-offline-systems` | Run offline collection systems so deferral, suitability and audit-trail requirements still hold: freshness, sync checks, quarantine and evidence. | 190/191 | Not started |
@@ -212,4 +212,23 @@ course's LCR-0xx records stay with lab systems.
   confirmatory-testing records but not when required). Interface tests: complete result → confirmed;
   missing lineage → rejected/queued, never confirmed; corrected result updates, not deduped; disagreeing
   retype surfaces to the lab. Caught by a reference-lab technologist before shipping; no harm. Module 3
-  uses **BOC-018**.
+  uses **BOC-021** (changed from BOC-018 to stay chronological after module 1's BOC-019/020).
+- 2026-11-13 — Module 1 `apheresis-platelets-and-bacterial-risk` published (verified; prose ~4,970 words;
+  no verifiable video — only vendor webinars found). **Locked:** BOC-012 = original inherit-status rule
+  (motive: cut data entry; risk-assessed as configuration-only; tested on parent path only — scene
+  texture). **BOC-019** = emergency-path revert to prior validated baseline, with a paper manual hold on
+  split units meanwhile. **BOC-020** = rebuild. Data model: collection key (606.160(c)) → unit (640.24(e))
+  → sample record pointing to exactly one unit; culture status is a computed view, no typeable field.
+  Release gate order: own sample record; sample ≥36 h; volume recorded vs 16 mL; minimum incubation (12 h
+  = guidance's recommended parameter, set by medical director/Quality); final negative; expiry 23:59 of
+  labeled day; no positive on same collection key. No override on the three blocks. A positive on one
+  split quarantines every unit with the same collection key. Timing tests T1–T4 = guidance's own examples
+  (09:00 Jan 1 → 36 h = 21:00 Jan 2; 5-day expiry 23:59 Jan 6; "day 3" = Jan 4 before midnight), T5–T10
+  derived; linkage tests L1–L7 (L7 replays BOC-012, runs first); alert tests A1–A8. Alert path: BECS
+  quarantines, finds consignees via 606.165 records, HOP second-channel alert, distribution manager phones
+  Riverside with logged acknowledgment, unacknowledged tasks escalate to medical director; reverse
+  606.145(c) notices logged; 606.145(d) determination task assignable only to the responsible-physician
+  role. Quarterly alert exercise on the validation environment (Director's decision). Shipping during
+  incubation (III.A.5) left to medical director/Quality. "Promptly" (III.A.3) has no number — Lakeshore
+  procedure. 630.3(i) not in sources. Quality assesses BPDR (606.171), no outcome stated. Next unused BOC
+  after module 3: **BOC-022**.

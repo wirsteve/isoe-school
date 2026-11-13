@@ -1,0 +1,396 @@
+---
+title: "Apheresis platelets and bacterial risk"
+order: 184
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** explain 21 CFR 606.110, Part 640 subpart C and 606.145 alongside FDA's platelet bacterial-risk guidance, and make BECS enforce four things: a sample record behind every split unit, the guidance's hour-and-day timing conventions, a testing status you can trace to a record, and an alert when a platelet that already shipped later tests positive.
+- **The punchline:** change BOC-012 let a split apheresis unit inherit its parent's "culture negative" status with no sample of its own. The component lab supervisor caught it at release. No unit was transfused under the rule and no harm is asserted. The Director reverts it, rebuilds the link per split, blocks release without it, and tests the whole alert path through the Hospital Ordering Portal (HOP) and the phone, ending at the responsible physician.
+- **The rule in one line:** the regulation (606.145) says *control the risk, never release a contaminated platelet, and tell the collector if you find one*. The guidance says *sample each split, count time this way, keep testing status traceable, alert fast*. The first is "must". The second is "should", and it is how FDA currently sees "adequate".
+- **Monday question:** "Pick any split platelet in inventory and show me the sample record behind its culture status, and the clock arithmetic that says it may be released."
+- **The trap:** a status that is *copied* or *inherited* looks like evidence and is not. Status has to be computed from a record that belongs to that unit.
+:::
+
+**Before you start:** this module builds on [component processing and labeling](../../blood-center-operations/component-processing-and-labeling/index.qmd) (one donation becomes several products with separate dating) and [storage, distribution and hemovigilance](../../blood-center-operations/storage-distribution-and-hemovigilance/index.qmd) (distribution records and Riverside General Hospital). It leans on [risk-based testing and regression](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd), [emergency changes and hotfixes](../../release-management-and-sdlc/emergency-changes-and-hotfixes/index.qmd) and [staying validated](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd). It does not re-teach them.
+
+## The scenario: a green status with nothing behind it
+
+It is mid-morning at Lakeshore's central processing lab. The component lab supervisor is at the release bench with a tray of apheresis platelets. One collection was split into two containers the day it was drawn. Both splits show the same BECS (Blood Establishment Computer Software) status: **Culture negative**. The supervisor opens the sample records to attach them to the release checklist. There is one for the parent. There is none for the second split.
+
+"This one says negative," the supervisor tells the systems administrator, who has come over from the next room. "Show me what it's negative *from*."
+
+He pulls the record. The status is there. The sample reference is empty. He pulls the audit trail. The status was set by a rule, not by a person and not by a result.
+
+"BOC-012," he says. "That's the rule that copies the parent's culture status onto any split."
+
+The supervisor puts the tray on hold and calls the Director. By lunch the Quality Analyst has the change record open, the medical director has been told, and the first question has been asked in the plainest possible words: "Has anything that got its status this way gone to a patient?"
+
+The answer, once the query is run, is no. Nothing was transfused under the rule. The query does find the units the rule touched, and each one's disposition is a decision for the medical director and Quality. The Director's job is the other half: how the rule got into production, why nothing in BECS stopped it, and what to build so it cannot happen quietly again.
+
+Lakeshore's platelet strategy is not in question. The medical director set it: **large volume, delayed sampling (LVDS) no sooner than 36 hours** after collection for apheresis platelets, with **5-day dating**. IT does not choose or tune it. IT makes BECS carry it out and prove it did.
+
+## Why the rule exists, and the ITSM bridge
+
+Room temperature platelets are the component with the highest bacterial risk. FDA's guidance says so in its own background section, and says the risk persisted through earlier controls. Platelets are stored at room temperature and kept agitated for days, which is a comfortable place for any bacteria that got in at collection to grow. A culture taken from the product is the control. A culture only protects a patient if it was taken from *the container that patient receives*.
+
+BOC-012 broke that. A split is a separate bag. Sampling one container tells you nothing certain about the other, and copying "negative" across turns a measurement into an assumption hidden behind a green status.
+
+The ITSM bridge is one you own. A patching tool scans one server built from a golden image and reports "compliant". A rule then marks every clone of that image compliant without scanning them. Each clone is its own configuration item (CI), with its own drift and exposure. A compliance status *inherited* instead of *attested per CI* is what an auditor catches, and what a CMDB (configuration management database) relationship rule can quietly create. The blood-center version differs in one way: the unattested CI goes into a person.
+
+Two more bridges. The timing conventions are **SLA clock definitions**: when the clock starts, whether it counts elapsed hours or calendar days, and when it stops. The positive-after-distribution alert is **major incident communication with a recall flavor**: find everyone who holds the affected thing, tell them through a channel that cannot be missed, and keep the record.
+
+## The rule in plain English
+
+Three layers apply, and they must not be confused.
+
+**1. The regulations (binding, "must").** 606.145 requires Lakeshore to assure the bacterial risk of platelets is adequately controlled, never to release a platelet identified as contaminated (or any other component from the same collection), to tell the collector if a transfusion service finds one, and to have the collector's responsible physician make a determination that cannot be delegated. 606.100(b)(22) requires a written procedure covering every 606.145 step, and 606.100(b) requires Lakeshore to *follow* its procedures. Part 640 subpart C is the platelet product standard. 606.110 is a narrow variance for a product collected for a specific recipient. 610.53(b) sets the dating period.
+
+**2. FDA's guidance (nonbinding, "should").** The guidance describes how FDA currently thinks about meeting 606.145(a): sample each split, count hours and days in a defined way, keep testing status traceable, have measures to alert fast. The guidance says of itself that its recommendations are not enforceable and that "should" means suggested or recommended, not required. It also repeats a few "musts". Every one of those points back to a regulation, such as 606.145(b) and (c).
+
+**3. Lakeshore's own procedure (binding on Lakeshore, because 606.100 says follow your SOPs).** The medical director's strategy and the written procedure are what BECS has to implement. When Lakeshore writes "every split is sampled" into its procedure, that sentence becomes something Lakeshore *must* follow, even though the guidance behind it only said "should".
+
+BECS enforcement then has four parts, which are this module's four jobs:
+
+1. **Sampling linkage.** Every split container has its own sample record. Release is blocked without one.
+2. **Timing conventions.** BECS computes the earliest-sample time, the earliest-release time and the expiry exactly as the guidance defines them.
+3. **Testing-status traceability.** A unit's bacterial testing status is derived from records, and anyone can click through to them.
+4. **The alert path.** If a unit that has already left Lakeshore is later identified as positive, the alert reaches the holder, comes back acknowledged and ends in the physician's determination.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it requires | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.145(a) | "Six-oh-six point one-four-five, paragraph a" | **Regulation.** Assure the risk of bacterial contamination of platelets is adequately controlled using FDA approved or cleared devices or other methods FDA has found acceptable. | The reason Lakeshore has a platelet strategy at all. LVDS no sooner than 36 hours is how Lakeshore does it. |
+| 21 CFR 606.145(b) | "Paragraph b" | **Regulation.** If the collector identifies contaminated platelets, it must not release the product or any other component from the same collection, and must take steps to identify the organism. | A positive on one split quarantines its sibling split and any co-collected component. |
+| 21 CFR 606.145(c) | "Paragraph c" | **Regulation.** A transfusion service that finds contamination must not release the unit, must notify the collector, and must report the species or that it cannot be identified. | Riverside's duty if the finding is at Riverside. Lakeshore's system has to receive and record the notice. |
+| 21 CFR 606.145(d) | "Paragraph d" | **Regulation.** The collector's responsible physician determines whether the organism is likely to be associated with an infection endogenous to the donor's bloodstream, under a standard operating procedure. It may not be further delegated. | The last step of the alert test. BECS must not let anyone else complete it. |
+| 21 CFR 606.100(b)(22) | "Paragraph b, sub-twenty-two" | **Regulation.** Written procedures to control platelet bacterial risk, including all steps required under 606.145. | The procedure BECS configuration must match. |
+| 21 CFR 606.110(a) | "Paragraph a" | **Regulation.** A platelet or leukocyte product for a specific recipient may be at variance with additional standards in Part 606 if a physician has determined the recipient must receive it from a specific donor and a responsible physician supervises and documents the donor's health. | A rare exception path. A BECS "variance" flag must never be a free pass past the sampling check. |
+| 21 CFR 640.20 to 640.25 | "Six-forty point twenty through twenty-five" | **Regulation.** Platelets product standard: donors (640.21), collection (640.22), testing (640.23), processing (640.24), general requirements (640.25). | Donor platelet count and frequency, container identification and storage rules the system carries alongside the bacterial-risk controls. |
+| 21 CFR 610.53(b) | "Six-ten point five-three, paragraph b" | **Regulation.** Platelets at 20 to 24 °C: 5 days from date of collection, unless the device instructions say otherwise. | Lakeshore's 5-day dating. |
+| FDA guidance III.A.3 | "Roman three, A, three" | **Guidance (should).** Have measures to promptly alert the collector or transfusion service if a distributed platelet is later identified as positive. | The alert path. |
+| FDA guidance III.A.4 | "Roman three, A, four" | **Guidance (should).** How hours and days are counted for sampling and expiry. | The timing test table. |
+| FDA guidance III.A.8 | "Roman three, A, eight" | **Guidance (should).** Procedures to assure traceability of the bacterial testing status of platelets in inventory. | Why a status needs a record behind it. |
+| FDA guidance III.B.1.a | "Roman three, B, one, a" | **Guidance (should).** LVDS no sooner than 36 hours, at least 16 mL, aerobic and anaerobic media, each split unit sampled, 12-hour minimum incubation before release recommended, 5-day expiration. | The strategy, and the sentence BOC-012 contradicted. |
+
+## The actual text
+
+All quotes below are verbatim from the local copies in `sources/`. The guidance is an excerpt (sections I, II, III.A and III.B.1 only), so this lesson says nothing about the parts that were not copied.
+
+### What "should" means, in the guidance's own words
+
+From the introduction, `sources/fda-guidance/platelet-bacterial-risk-control-2020-excerpt.md`:
+
+> FDA’s guidance documents, including this guidance, do not establish legally enforceable responsibilities. Instead, guidances describe the FDA’s current thinking on a topic and should be viewed only as recommendations, unless specific regulatory or statutory requirements are cited. The use of the word should in FDA’s guidances means that something is suggested or recommended, but not required.
+
+Read the middle clause: "unless specific regulatory or statutory requirements are cited". That is why III.A.6 below says "must". It is quoting a regulation.
+
+### The regulation: 606.145
+
+From `sources/cfr/606.145.md`:
+
+> (a) Blood collection establishments and transfusion services must assure that the risk of bacterial contamination of platelets is adequately controlled using FDA approved or cleared devices or other adequate and appropriate methods found acceptable for this purpose by FDA.
+>
+> (b) In the event that a blood collection establishment identifies platelets as bacterially contaminated, that establishment must not release for transfusion the product or any other component prepared from the same collection, and must take appropriate steps to identify the organism.
+
+Clause map: "must assure ... adequately controlled" in (a) is the umbrella. Lakeshore's strategy is how it meets it. "any other component prepared from the same collection" in (b) is a data requirement: BECS needs a reliable *collection* key above the unit key, or it cannot find the siblings.
+
+> (c) In the event that a transfusion service identifies platelets as bacterially contaminated, the transfusion service must not release the product and must notify the blood collection establishment that provided the platelets. The transfusion service must take appropriate steps to identify the organism; these steps may include contracting with the collection establishment or a laboratory to identify the organism. The transfusion service must further notify the blood collection establishment either by providing information about the species of the contaminating organism when the transfusion service has been able to identify it, or by advising the blood collection establishment when the transfusion service has determined that the species cannot be identified.
+
+Clause map: this is the Riverside-to-Lakeshore direction. Two notices are required, the first that contamination was found and the second the species or a statement that it cannot be identified. BECS needs a place to log both with timestamps.
+
+> (d) In the event that a contaminating organism is identified under paragraph (b) or (c) of this section, the collection establishment's responsible physician, as defined in § 630.3(i) of this chapter, must determine whether the contaminating organism is likely to be associated with a bacterial infection that is endogenous to the bloodstream of the donor, in accordance with a standard operating procedure developed under § 606.100(b)(22). This determination may not be further delegated.
+
+Clause map: the determination is a medical judgment with a named owner. "May not be further delegated" is a role-and-permission rule for the system. (The definition in § 630.3(i) is not in this repo's `sources/`, so this lesson does not restate it.)
+
+### The procedure requirement: 606.100
+
+From `sources/cfr/606.100.md`:
+
+> (b) Establishments must establish, maintain, and follow written standard operating procedures for all steps in the collection, processing, compatibility testing, storage, and distribution of blood and blood components for allogeneic transfusion, autologous transfusion, and further manufacturing purposes; for all steps in the investigation of product deviations related to § 606.171; and for all steps in recordkeeping related to current good manufacturing practice and other applicable requirements and standards.
+
+> (22) Procedures to control the risks of bacterial contamination of platelets, including all steps required under § 606.145.
+
+(Paragraph (b)'s list is long, and the quote above is the opening sentence and item (22).)
+
+### The strategy and the split-unit sentence: guidance III.B.1.a
+
+From the guidance excerpt:
+
+> 1. A single culture with sampling performed no sooner than 36 hours after collection using a sampling volume of at least 16 mL, inoculated evenly into aerobic and anaerobic culture media.
+>
+> 2. Sampling each apheresis unit or each pre-storage pool of WBD platelets for culture. If the apheresis product will be split, each split unit should be sampled.
+>
+> We recommend a minimum incubation period of 12 hours prior to release for transfusion.
+
+Clause map: "If the apheresis product will be split, each split unit should be sampled." is the sentence BOC-012 contradicted. It is guidance, so the honest description of BOC-012 is not "it broke a regulation". It is: *it contradicted FDA's recommendation, it contradicted the strategy Lakeshore's medical director chose, and it left Lakeshore unable to show that each container it released was adequately controlled under 606.145(a)*. All three are real problems and only the third is a regulation. Everything after "We recommend" is also a "should": the 12-hour minimum incubation is a recommendation Lakeshore's procedure can adopt, which then makes it binding on Lakeshore.
+
+The dating line in the guidance reads "Products should be labeled with a 5-day expiration." The binding source for the 5 days is 610.53(b), which the guidance itself cites.
+
+### Counting time: guidance III.A.4
+
+> a. When timing is expressed in units of hours, it is in reference to the actual hour of collection or sampling. For example, if a platelet product is collected at 9 am (0:900) on January 1st, sampling performed no earlier than 24 hours from time of collection means that sampling should be performed no earlier than 9 am (0:900) on January 2nd; sampling performed no earlier than 36 hours means sampling no earlier than 9 pm (21:00) on January 2nd.
+>
+> b. When timing is expressed in units of days, it is in reference to the day of collection, which is considered day 0. A day is defined as beginning at midnight (00:00) and ending at 23:59. Expiry day refers to 23:59 of the stated day (i.e., prior to midnight). For example, if a platelet is collected on January 1st (day 0) at 9 am (0:900) with a 5-day storage period, it means it will expire at 23:59 on January 6th.
+>
+> c. When sampling is recommended to be conducted on a specific day, it means that sampling can occur at any time on that day prior to midnight, regardless of the time of the initial collection. For example, if a platelet is collected on January 1st at 9 am (day 0), secondary culture performed on day 3 should be performed on January 4th, at any time prior to midnight.
+
+(The "0:900" is how the guidance prints 09:00. It is quoted as printed.)
+
+Two conventions sit side by side. **Hours** run from the actual minute of collection or sampling. **Days** run from the calendar day of collection, called day 0, and "expiry day" means 23:59 of the stated day. A BECS developer who treats "5 days" as "120 hours" gets the expiry wrong by up to a day, and one who treats "36 hours" as "day 1.5" gets the sampling window wrong. The test table later in this lesson turns these paragraphs into pass/fail cases.
+
+### Alert, release and traceability: guidance III.A.3, III.A.5, III.A.6, III.A.8
+
+> 3. Blood collection establishments and transfusion services should have in place measures to promptly alert the collection establishment or transfusion service if a distributed platelet product is subsequently identified as positive for bacterial contamination.
+
+> 5. Products may be shipped during the recommended culture incubation periods, provided the blood collection establishment establishes procedures to maintain control of the product during the incubation period.
+>
+> 6. Blood collection establishments and transfusion services must not release for transfusion platelets identified as bacterially contaminated (21 CFR 606.145(b) and (c)).
+
+> 8. Blood collection establishments and transfusion services should establish procedures to assure traceability of the bacterial testing status of platelet products in their inventory.
+
+Clause map:
+
+- **III.A.3** is the alert path. "Promptly" has no number in the guidance. The number comes from Lakeshore's procedure and the medical director, and the test measures against it.
+- **III.A.5** means a platelet can legitimately be in transit while its culture is still incubating, *if* Lakeshore has procedures to keep control of it. Whether Lakeshore ships during incubation is a medical director and Quality decision this module does not make. Either way, the status must read "sampled, incubating" with the clock visible, never "negative".
+- **III.A.6** carries the "must", and the parenthetical says why: it is 606.145(b) and (c).
+- **III.A.8** is the status-traceability sentence. It is "should", and it is the plainest statement of why the rule BOC-012 added fails: if a status cannot be traced to a record, it is not traceable.
+
+### The product standard: Part 640 subpart C, in the parts BECS touches
+
+From `sources/cfr/640-subpart-c-platelets.md`:
+
+> (b) Source. The source material for Platelets is plasma which may be obtained by whole blood collection or by plateletpheresis.
+
+> (e) Final containers used for Platelets shall be colorless and transparent to permit visual inspection of the contents; any closure shall maintain a hermetic seal and prevent contamination of the contents. [...] At the time of filling, the final container shall be marked or identified by number so as to relate it to the donor.
+
+(The second quote is 640.24(e). The bracketed ellipsis marks text on container materials that is not needed here.)
+
+The last sentence matters for splits. Every final container has to be identified so it relates to the donor. In BECS that identifier is the unit-level key a sample record attaches to, and the donation identifier is the collection-level key above it. Subpart C also carries the donor rules BECS enforces at collection: the platelet count thresholds in 640.21(d), the frequency limits in 640.21(e) and the deferral rules in 640.21(f). Those belong to donor eligibility, which the [donor module](../../blood-center-operations/donor-recruitment-and-screening/index.qmd) covered.
+
+One trap lives here. 640.23(b) requires the *donor infectious-disease testing* sample to be collected at the time of collection and labeled with the donor number. That is a different sample from the *culture* sample, which is taken later, under the guidance, from the product itself. They share a word and nothing else. BECS keeps two sample types with two different clocks.
+
+### The specific-recipient exception: 606.110(a)
+
+From `sources/cfr/606.110.md`:
+
+> (a) The use of plateletpheresis and leukapheresis procedures to obtain a product for a specific recipient may be at variance with the additional standards for specific products prescribed in this part provided that: (1) A physician has determined that the recipient must be transfused with the leukocytes or platelets from a specific donor, and (2) the procedure is performed under the supervision of a responsible physician who is aware of the health status of the donor, and the physician has determined and documented that the donor's health permits plateletpheresis or leukapheresis.
+
+IT's reading is narrow. If BECS supports a specific-recipient collection, it should require the physician determination and the responsible physician's documentation before accepting the flag, and log who set it. Whether a variance reaches the bacterial controls is a Quality and medical director determination, not a BECS rule to infer. Avoid a "variance" flag that quietly turns the sampling check off.
+
+## From BOC-012 to the fix
+
+### How a change like BOC-012 gets through
+
+BOC-012 was written as a data-entry convenience. It was assessed as a configuration change to the status field, tested on the parent-unit path, and approved. Each step looked reasonable and the change did what it said.
+
+What went missing was the link between the *rule* and the *requirement*. Nobody asked, "What does this status let us claim, and what evidence stands behind the claim?" That is the question [risk-based testing](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd) puts first: the harm a failure could do, how likely the change makes it, and how easily it would be noticed. A rule that writes "culture negative" onto a unit that has no culture has high severity (the status governs release), moderate likelihood (it fires on every split) and very low detectability (the screen looks fine). That scores as a high-risk change. It was filed as a low-risk one.
+
+The component lab supervisor's release check is the control that worked. The finding for the Director is that a human at the bench was the *only* control.
+
+### Decision 1: revert, then rebuild
+
+The revert is the smallest change that removes the exposure, which makes it the textbook case for the [emergency path](../../release-management-and-sdlc/emergency-changes-and-hotfixes/index.qmd): a one-line risk assessment, targeted regression of the affected paths (the release gate, the status display, the split function), and recorded approval by the on-call Quality designee and the Director, *before* it touches production. Lakeshore records it as BOC-019. The prior validated configuration is the rollback target, so what the Director restores is a known baseline, not a guess. The [validated-state module](../../csv-and-becs/validated-state-lifecycle-and-patching/index.qmd) covers why that baseline record is what makes a revert safe.
+
+Until BOC-019 is live, the interim control is on paper: the supervisor's manual hold on every split unit, with a check that each has its own sample record.
+
+The rebuild is not part of the emergency. It is BOC-020, a normal change with a normal impact analysis and a full test plan, built from the four jobs below.
+
+### Decision 2: every split gets its own sample linkage, and release is blocked without it
+
+Design the data so the wrong state cannot exist. Three layers:
+
+- **Collection** (the donation identifier from 606.160(c), the key that "relates" the unit to the donor and to every product from it).
+- **Unit** (each final container, identified by number to relate it to the donor, per 640.24(e)).
+- **Sample** (one record per sample drawn, pointing to exactly one unit).
+
+The culture status of a unit is then a *computed view*:
+
+| Status shown | Computed from |
+|---|---|
+| Not sampled | No sample record for this unit |
+| Sampled, incubating | A sample record with its sample time, and no result yet. The earliest-release time is displayed. |
+| Culture negative | A final negative result linked to a sample record *for this unit* |
+| Culture positive | A positive result linked to a sample record for this unit, which also quarantines every unit with the same collection key |
+
+There is no field a person or a rule can type "negative" into. The only way to a green status is a result on a sample on that unit. That is what III.A.8's "traceability" looks like in a database: you can click from the status to the record that produced it.
+
+**The release gate** for a unit checks, in order:
+
+1. Is there a sample record for this unit? If not, **block**.
+2. Was the sample time at or after the earliest-sample time computed from the collection time (36 hours, by the hours convention)? If not, **block**.
+3. Is the sample volume recorded, and is the volume at least the guidance's recommended 16 mL? Whether a short volume blocks or flags for review is a medical director and Quality setting, not a developer's call.
+4. Has the minimum incubation period passed since the sample time? The guidance recommends 12 hours. The value is a parameter Lakeshore's procedure sets, and the table below uses the guidance's 12.
+5. Is there a final negative result for that sample? If not, **block**.
+6. Is the unit within its expiry (23:59 of the labeled day)? If not, **block**.
+7. Does any unit with the same collection key have a positive? If yes, **block** (606.145(b)).
+
+Every block shows *why*, in words the bench can read, and every override attempt writes the audit trail that [11.10(e)](../../csv-and-becs/part-11-for-validated-systems/index.qmd) requires. Lakeshore does not give the bench an override for gates 1, 5 or 7.
+
+### Decision 3: test the clock against the guidance's own examples
+
+The timing functions are where a defensible test table is easiest to write, because FDA supplied the first examples. The rows marked **G** below are the guidance's own worked examples (III.A.4). The rows marked **D** are *derived* from the same rules by this lesson, and they are labeled that way because FDA did not publish them.
+
+**Test table: timing (collection at 09:00 on January 1 unless stated)**
+
+| # | Source | Input | Expected result |
+|---|---|---|---|
+| T1 | G (III.A.4.a) | 36-hour sampling rule | Earliest sample 21:00 on January 2. A sample at 20:59 is rejected. A sample at 21:00 is accepted. |
+| T2 | G (III.A.4.a) | 24-hour rule, as the comparison case | Earliest 09:00 on January 2. Lakeshore's 36-hour strategy must reject a sample taken then. |
+| T3 | G (III.A.4.b) | 5-day dating | Expires 23:59 on January 6. A release check at 23:59 on January 6 passes. A check at 00:00 on January 7 fails. |
+| T4 | G (III.A.4.c) | "Day 3" expressed as a day, if any rule in BECS is configured that way | Any time on January 4 before midnight. |
+| T5 | D | Collection at 00:05 on January 1 | Expiry still 23:59 on January 6. Day-based dating ignores the hour of collection. |
+| T6 | D | Collection at 23:50 on January 1 | Expiry still 23:59 on January 6. The unit has a little over 5 days of life, not 6. The 36-hour sample time is 11:50 on January 3. |
+| T7 | D | Collection on December 29 | Expiry 23:59 on January 3. Tests the year boundary. |
+| T8 | D | Collection on February 26 | Expiry 23:59 on March 2 in a leap year, 23:59 on March 3 otherwise. |
+| T9 | D (from III.B.1.a's recommendation) | Sample at 21:00 on January 2, with the 12-hour minimum incubation | Earliest release 09:00 on January 3. A release check at 08:59 blocks. |
+| T10 | D | Expiry display versus stored value | The label and the screen show the same date and time as the stored value. |
+
+Note on T4: Lakeshore's strategy has no day-specific sampling step. The row is there because the *date function* must get "day N" right if anyone configures one.
+
+Two further things to settle in writing before testing starts. These are not in the guidance, so they are Quality and medical director decisions that IT should force into the open:
+
+- **Seconds.** The guidance states times to the minute. Does a unit with 23:59:30 on its expiry day count as in date? The conventional reading is "through 23:59", and the specification should say so in a sentence.
+- **Clock changes.** The guidance says hours refer to "the actual hour". On a day when local clocks change, 36 elapsed hours and 36 wall-clock hours differ by one. The guidance does not address this, so Lakeshore's specification has to choose, and the choice has to be in the requirements and the test. Store collection and sample times in a form that makes elapsed time unambiguous.
+
+**Test table: linkage and status**
+
+| # | Input | Expected result |
+|---|---|---|
+| L1 | Parent split into S1 and S2. Only S1 sampled. | S1 can proceed through the gate. S2 is blocked with "no sample record for this unit". |
+| L2 | S1 and S2 each have their own sample. Both negative and incubation complete. | Both releasable. Statuses link to different sample records. |
+| L3 | Try to set S2's status by editing the field, or by a rule, a script, a bulk update or an import. | Not possible. No such field. Any attempt is denied and logged. |
+| L4 | S1's culture positive. S2 had been negative. | S2 and any co-collected component are quarantined under the same collection key. Release is blocked. |
+| L5 | A sample record is created pointing to a unit from a different collection. | Rejected. The sample's collection key must match the unit's. |
+| L6 | A "specific recipient" variance flag (606.110) is set. | The flag requires the physician determination fields. It does not remove gates 1, 5 or 7 unless Quality and the medical director have specified that in writing. |
+| L7 | Replay the BOC-012 scenario on the validation environment. | The split shows "not sampled" and cannot be released. |
+
+Run L7 first. It is the regression test for the exact failure.
+
+### Decision 4: test the positive-after-distribution path end to end
+
+A platelet can leave Lakeshore and then be identified as positive. Perhaps a culture reads late, perhaps a sibling split turns positive, perhaps Riverside's own testing finds it. The guidance asks for measures to "promptly alert" (III.A.3), and 606.145(b) and (c) say what then must not happen and who must tell whom. A path that exists only on a diagram is not a measure, so the Director has Lakeshore run it as an exercise on the validation environment, with a fictional unit, once a quarter and after any change to the pieces involved.
+
+**The path, with who owns each step**
+
+1. **BECS** receives the positive result, finds every unit with the same collection key, and quarantines the ones still in inventory. (606.145(b))
+2. **BECS** finds every unit already distributed from the collection, using the distribution records that 606.165 requires. 606.165(b) says those records "shall contain information to readily facilitate the identification of the name and address of the consignee, the date and quantity delivered, the lot number of the unit(s)". It creates an urgent task for the distribution manager with the unit numbers and the consignee. (III.A.3)
+3. **HOP** shows an alert on the affected unit in Riverside's view, drawn from BECS's status and stamped with the time BECS was read. HOP is a *second channel*, not the control. Hospitals do not stare at a portal, and the earlier modules already made HOP's staleness visible.
+4. **The distribution manager phones Riverside's transfusion service.** This is the control that cannot be missed. The call is logged with who was called, who answered, the time, and the unit numbers read back. If no one answers within the interval Lakeshore's procedure sets, the task escalates to the medical director, and BECS shows the task as open and aging.
+5. **Riverside** acts under its own procedures: quarantines the unit if it is still in inventory, and tells Lakeshore what happened to it. That is Riverside's work and Riverside's quality system. Lakeshore's system records what Riverside reports.
+6. **The reverse direction (606.145(c)).** If Riverside finds the contamination first, BECS must have a place to log the notice that a unit is contaminated, and then the second notice with the species or "cannot be identified". Both carry timestamps.
+7. **The medical director's office** arranges identification of the organism (606.145(b)), and then **the responsible physician** records the determination (606.145(d)), per the written procedure under 606.100(b)(22).
+
+**What "done" looks like for the test.** The exercise is complete only when it ends at step 7 with a determination record, not at step 4 with a call logged. The test includes a deliberately hostile case: *try to assign the determination task to someone else*. BECS must refuse, because 606.145(d) says "this determination may not be further delegated". IT does not write the determination, suggest it, or default it. IT's part is a task that only the responsible physician's role can complete, an audit trail (11.10(e): "secure, computer-generated, time-stamped audit trails") and a record that cannot be closed without it.
+
+**Test table: alert path**
+
+| # | Input | Expected result |
+|---|---|---|
+| A1 | Positive on S1 after S1 and S2 were distributed to Riverside | Task created for both units within the interval Lakeshore's procedure sets. Both appear as quarantine-requested in HOP with the read time. |
+| A2 | Phone acknowledgment not recorded by the interval | Task escalates to the medical director and shows overdue. |
+| A3 | HOP is down during the alert | The task remains and the phone path completes without it. HOP failure does not suppress the alert. |
+| A4 | Riverside reports a unit contaminated (606.145(c)) | Two logged notices: contamination found, and later the species or "cannot be identified". Both timestamped. |
+| A5 | Organism identified | A determination task is created for the responsible physician role. |
+| A6 | Attempt to reassign the task to another user, or close it without the determination | Denied and logged. |
+| A7 | Determination recorded | The audit trail shows who, when and what. The collection's units are linked to the record. |
+| A8 | Review at quarter end | Exercise record, timings, defects found and fixes are filed with Quality. |
+
+### Decision 5: Quality assesses reporting, and IT hands over the facts
+
+Whether BOC-012's effect is a reportable biological product deviation is a Quality determination, not an IT or Director decision. [Filing a biological product deviation report](../../fda-and-aabb-in-practice/filing-a-biological-product-deviation-report/index.qmd) covers 606.171, the clock and the form, so this module does not re-teach it. IT gives Quality the facts quickly: when BOC-012 went live and was reverted, the units whose status came from the rule, where each went, and the audit trail.
+
+## See it in one picture
+
+The diagram follows one Lakeshore apheresis platelet collection from the draw to Riverside, with the gate BOC-020 builds and the alert path BOC-020 tests. The red-flag path at the bottom is the part that most diagrams of this process leave out.
+
+```{mermaid}
+flowchart TD
+    C["Apheresis collection<br/>one collection key, 606.160(c)"] --> SP["Split into S1 and S2<br/>each container identified, 640.24(e)"]
+    SP --> S1["S1: own sample record<br/>36 h or later after collection"]
+    SP --> S2["S2: own sample record<br/>36 h or later after collection"]
+    S1 --> K1["S1 culture incubating<br/>status computed from record"]
+    S2 --> K2["S2 culture incubating<br/>status computed from record"]
+    K1 --> G{"BECS release gate<br/>sample record, timing, incubation,<br/>negative result, expiry 23:59,<br/>no positive on same collection"}
+    K2 --> G
+    G -->|"any check fails"| B["Release blocked<br/>reason shown, no override"]
+    G -->|"all pass"| D["Distribution to Riverside<br/>606.165 records"]
+    K1 -->|"result positive"| P["Positive on one split"]
+    K2 -->|"result positive"| P
+    D -->|"later identified positive"| P
+    P --> Q["BECS quarantines every unit<br/>from the same collection, 606.145(b)"]
+    Q --> H["HOP alert on affected units<br/>plus urgent task"]
+    H --> T["Distribution manager phones Riverside<br/>acknowledgment logged"]
+    T -->|"no acknowledgment in time"| E["Escalate to medical director"]
+    T --> R["Riverside reports back, 606.145(c)<br/>species or cannot be identified"]
+    E --> R
+    R --> O["Responsible physician determination<br/>606.145(d), not delegable"]
+```
+
+Read the diagram top to bottom and notice two things. The gate has no path around it. And every road from a positive result leads through the same collection key to the physician's determination, whether the positive was found in Lakeshore's lab, after distribution, or at Riverside.
+
+## Watch it explained
+
+No video embed for this module. A search for a video on platelet bacterial contamination and transfusion sepsis turned up vendor webinars and written articles. It did not turn up a public, verifiable YouTube video from a regulator, a professional society or an academic channel that was specific to this topic and passed the embed check. The curriculum's rule is that an honest gap beats a mediocre embed, so the diagram and the primary sources carry this section. The reading list on the Resources page includes FDA's own pages and an episode from a transfusion-medicine podcast.
+
+## What an inspector or assessor would look for
+
+An investigator or an assessor looking at this area asks for records, and a gap in any one is a finding on its own.
+
+- **The written procedure under 606.100(b)(22)**, and the BECS configuration that matches it line by line. The strategy (LVDS no sooner than 36 hours, 5-day dating) should appear in both, and the split-sampling rule should appear in both.
+- **A sample record behind each released split**, and the audit trail for the status. Ask for any three released platelet splits and click from status to sample to result.
+- **Change records BOC-012, BOC-019 and BOC-020**, the impact analyses, the test evidence (including L7), the approvals and the deviation record. A reviewer reading BOC-012 will ask why a rule that sets a release-relevant status was rated low risk.
+- **The alert exercise record**: timings, who was called, the acknowledgment, the determination task, and the defects found.
+- **The responsible physician's determinations** (606.145(d)), with proof they were made by the role the regulation names.
+
+A bad answer sounds like "the lab checks every split by eye before release" (a person, not a control), or "the guidance says *should*, so it is optional" (see the traps), or "the status is calculated by a rule" with no record behind it. This lesson's gate is built so the answer to "show me" is a click.
+
+## Common traps
+
+**"The parent bag tested negative, so its splits are negative."** The guidance recommends each split be sampled, and Lakeshore's procedure now requires it. A split is a separate container. Inheritance is an assumption.
+
+**"'Should' means optional."** The guidance creates no legal obligation, and says so. But 606.145(a) obliges Lakeshore to assure adequate control, and the guidance describes what FDA currently thinks that looks like. Departing from it means showing your approach is adequate and acceptable to FDA. And once Lakeshore writes a recommendation into its procedure, 606.100(b) makes following it mandatory for Lakeshore.
+
+**"Five-day dating means 120 hours."** Under the guidance's day convention, a platelet collected at 09:00 on January 1 expires at 23:59 on January 6, which is more than 120 hours. Hours and days are different clocks, and BECS has to know which one each rule uses.
+
+**"The infectious-disease sample is the culture sample."** 640.23(b) is about the donor testing sample, labeled with the donor number at collection. The culture sample is a separate sample from the product, taken at the time the strategy says. Keep two sample types and do not let one satisfy the other.
+
+## What this means for your job
+
+- **Ask for "the record behind the status".** For any release-relevant status, ask what record it is computed from. If the answer is "a rule sets it", you have found the next BOC-012.
+- **Rate rules that write statuses as high-risk changes.** A configuration change that can mark something releasable deserves the same impact analysis as a change to the release gate itself. Make that an explicit line in the change template.
+- **Keep one regression test for each past failure.** L7 should live in the standing regression suite, so any later change to splits or statuses re-runs it.
+- **Run the alert exercise on a calendar.** A phone tree and an alert banner that nobody has tried are a hope. Quarterly, with the distribution manager and Riverside's transfusion service, and after any change to HOP, BECS or the phone procedure.
+- **Hold the line on what IT decides.** The strategy, the interval for "promptly", the 16 mL handling, the incubation parameter and the determination belong to the medical director, Quality or the responsible physician. IT writes them as requirements, builds them and proves them.
+- **Escalate when a status and a record disagree.** A green status with no sample behind it means stop release and call Quality and the medical director that hour.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: A platelet is collected at 14:00 on March 10. Under Lakeshore's strategy, what is the earliest culture sample time, and when does the unit expire?
+
+Earliest sample: 36 hours after collection by the hours convention (III.A.4.a), which is 02:00 on March 12. Expiry: March 10 is day 0, so 5-day dating runs to 23:59 on March 15 (III.A.4.b, with 610.53(b) as the binding source for 5 days). If a colleague says "120 hours, so 14:00 on March 15", they have used the hours clock for a rule that is written in days.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: Is it a regulatory requirement that each split be sampled?
+
+Not by itself. "If the apheresis product will be split, each split unit should be sampled" is guidance (III.B.1.a), and "should" means recommended. The regulation behind it is 606.145(a), which requires Lakeshore to assure the bacterial risk is adequately controlled. Once the medical director's strategy and Lakeshore's written procedure require per-split sampling, 606.100(b)'s "follow" makes it binding on Lakeshore. The 12-hour minimum incubation is the same kind of statement: a recommendation that becomes Lakeshore's rule when the procedure adopts it.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: A split's culture turns positive after it and its sibling shipped. List what BECS and people must do, and which step is the one IT cannot do.
+
+BECS: quarantine every unit from the same collection still in inventory (606.145(b)), find the shipped units through the distribution records (606.165), and raise an urgent task. People: HOP alert plus a logged phone call to Riverside, escalation if there is no acknowledgment, Riverside's report back under 606.145(c) (species or cannot be identified), and then organism identification. The step IT cannot do is the determination of whether the organism is likely associated with a bacterial infection endogenous to the donor's bloodstream. 606.145(d) gives it to the responsible physician and says it may not be further delegated. IT builds a task only that role can complete.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Explain to your CIO, in two sentences, why BOC-012 mattered even though nobody was harmed.
+
+"We shipped a rule that marked platelet bags 'tested' when only their twin had been, which means our release record claimed a safety check that hadn't happened for that bag. A human at the bench caught it, and we've rebuilt the system so the claim can only come from a test on that exact bag and so we can prove it to FDA."
+:::
+
+## Where this goes next
+
+Platelets taught one lesson about attributes: a status is only as good as the record it comes from. The next module, immunohematology reference work and antigen-negative inventory, asks the same question about another kind of claim. When BECS says a red cell unit is "antigen-negative", was it typed on *this* unit, or carried forward from an earlier donation by a legacy import with no method record?
