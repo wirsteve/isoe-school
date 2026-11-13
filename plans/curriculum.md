@@ -297,7 +297,7 @@ has no `plans/<slug>.md` file until its first session.
 | `hrsa-and-cellular-therapy-programs` | 0 / ? | Not started |
 | `blood-operations-deep-dive` | 0 / ? | Not started |
 
-**Next up: `release-management-and-sdlc` `research-programs-reds-and-nih` module 2, `the-vein-to-vein-database-and-research-extracts` (drafting).**
+**Next up: `research-programs-reds-and-nih` module 2, `the-vein-to-vein-database-and-research-extracts` (drafting).**
 Track 7 order: release-management-and-sdlc → research-programs-reds-and-nih →
 clia-and-cap-for-blood-center-labs → hrsa-and-cellular-therapy-programs →
 blood-operations-deep-dive. (The paragraph below describing the original curriculum as complete
