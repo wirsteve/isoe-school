@@ -86,7 +86,7 @@ depth but keep index.qmd prose ≤ 5,000 words; "Keep learning" section in resou
 |---|---|---|---|---|
 | — | (syllabus) | — | 150 | Published |
 | 1 | `reds-structure-contracts-and-governance` | Explain who governs REDS today (NHLBI/NICHD, executive and steering committees, monitoring board, hubs, DCC, CTLS), how the 2026 contract round is structured, what "REDS V" does and doesn't mean in the records, and what a contributing blood center commits to. | 151/152 | Published |
-| 2 | `the-vein-to-vein-database-and-research-extracts` | Design and govern a recurring research extract from BECS (EXT-21): scope, read-only source, linkage keys, transformation, secure transfer, QC, and change control — without touching regulated records. | 153/154 | Not started |
+| 2 | `the-vein-to-vein-database-and-research-extracts` | Design and govern a recurring research extract from BECS (EXT-21): scope, read-only source, linkage keys, transformation, secure transfer, QC, and change control — without touching regulated records. | 153/154 | Published |
 | 3 | `human-subjects-hipaa-and-certificates-of-confidentiality` | Explain the Common Rule, single-IRB waiver, HIPAA research pathways, and Certificates of Confidentiality well enough to know what the privacy officer and IRB must confirm before EXT-21 runs, and what CoC means for IT. | 155/156 | Not started |
 | 4 | `nih-data-management-and-sharing` | Explain NIH's Data Management and Sharing policy (including its reach through contracts), where shared data ends up, and what a contributing blood center's IT must support (retention, provenance, de-identification before sharing). | 157/158 | Not started |
 | 5 | `security-expectations-for-research-data` | Set security controls for research data leaving Lakeshore (encryption, key handling, access, logging, incident handling) and apply NIH's controlled-access genomic-data expectations only where they genuinely apply. | 159/160 | Not started |
@@ -114,3 +114,23 @@ depth but keep index.qmd prose ≤ 5,000 words; "Keep learning" section in resou
   dissemination, database closure, deliverables). Governance bodies listed exactly as the paper gives
   them; the paper assigns no roles — later modules must not assign them powers. No CFR, FDA guidance
   or AABB Standard requires joining REDS.
+- 2026-11-13 — Module 2 `the-vein-to-vein-database-and-research-extracts` published (verified). Video:
+  OHDSI "2017 OHDSI CDM & Vocabulary Tutorial (1 of 5)" (BExsHYxkvTw; OMOP's maintainers; general OMOP
+  background). **Locked:** EXT-21 v1 approved for design and test only (not production data, no
+  transfer): (1) source = read-only reporting copy via a dedicated view with only spec fields; service
+  account with no write permission anywhere; (2) no external login to any Lakeshore system (the
+  systems administrator's replica-login idea refused); (3) data spec cut to protocol needs with a
+  stated purpose per field, new fields = new spec version (medical director agreed "everything" isn't
+  a spec); (4) coded donor key generated and held by Lakeshore — design option B (A = direct
+  identifiers, C = no key); key random (not a hash of donor ID), stable across runs; crosswalk is a
+  protected CMDB item; final form pending module 3; (5) every run: signed QC checklist + reconciliation
+  report against BECS reports; (6) EXT-21 in the CMDB with relationships to its BECS source fields,
+  under change control; (7) first test run on the validation environment's de-identified copy; no
+  output leaves Lakeshore until module 3's conditions clear. Transfer outbound only with QC-signed
+  release step, transfer log, receipt (module 5 supplies controls). Source-data errors found via DCC
+  dashboard feedback are fixed in BECS under its own controls, never in the extract. BECS change
+  impact analysis must ask "does this touch an EXT-21 source field?" (module 6 hook). Lakeshore owns
+  its field-mapping document (source, transformation, value-set translation, owner, version); unmapped
+  value stops the run rather than defaulting. Open: who does the OMOP mapping; whether the hub has a
+  test endpoint; how late source changes are handled (restate/flag/full snapshot — data spec decides).
+  Whether the extract file is a record under any regulation left to Quality/regulatory affairs.

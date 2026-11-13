@@ -1,0 +1,542 @@
+---
+title: "The vein-to-vein database and research extracts"
+order: 153
+---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+- **Finish line:** you can design and govern a recurring research extract from BECS (EXT-21): scope,
+  read-only source, linkage keys, transformation, secure transfer, QC and change control, without
+  touching a regulated record.
+- **Punchline:** the hub's draft data specification arrives, the systems administrator offers the hub
+  a login, the medical director wants "everything, monthly." The Director approves **EXT-21 v1 for
+  design and test only**: a read-only reporting copy as the source, no external login to anything,
+  a data spec cut to what the protocol needs, and a coded donor key held by Lakeshore.
+- **The rule in one line:** the extract is a designed product that Lakeshore owns end to end. It is
+  not a record, but it reads regulated records, so it runs under change control and never writes back.
+- **Monday question:** "Show me EXT-21's last run: the row counts, the reconciliation to BECS
+  reports, and who signed off before the file left the building."
+- **The trap:** treating "read-only" as a promise. It is a permission set you can show an assessor.
+:::
+
+## The draft data specification
+
+The hub's draft data specification lands in RSH-0107's folder as a spreadsheet. It is a field list:
+donor demographics at whatever level the spec asks for, donation date, site and procedure, the
+donation identification number, component type and manufacturing attributes, and what became of
+each component (disposition, and the destination it was distributed to). There are no patient
+fields from Lakeshore. Hospitals send patient data. Lakeshore's half of the chain is donor to
+component.
+
+Three people react within a day.
+
+The systems administrator, helpful as always: "Easiest thing is to give the hub's data people a
+read-only login to the BECS reporting replica. They pull what they want, when they want. We never
+build anything."
+
+Your Quality Analyst appears at your desk. "A login for someone outside the company, on a system
+that holds every donor? Who decides what they look at? Who proves what they looked at? And what
+happens the first time they run a query that locks the thing?"
+
+The medical director, from the hallway: "Just send everything, monthly. If we strip fields now, we'll
+regret it when the study team has a new question."
+
+You open RSH-0107. In module 1 you approved participation in principle, with four conditions. Condition
+2 was that EXT-21 is read-only. This lesson turns that sentence into a design, and ends with the
+decision you record for **EXT-21 version 1**.
+
+## What the program publishes about its database
+
+The program's own description comes from the 2022 design paper (Josephson et al., *Transfusion*;
+our local excerpt is in `sources/nih/reds-iv-p-program-design-2022.md`). Everything in this section
+is attributed to that paper, and it describes the program as it was written, not the 2026 contract
+round. Module 1's note stands: the current round is what people may call "REDS V," but the official
+records still describe REDS-IV-P phase 3.
+
+The paper calls the vein-to-vein (V2V) database the backbone of the US program. It holds
+information on donors and their donations, the components made from them, and electronic health
+record data for patients at participating hospitals. In the paper's words, "Longitudinal databases
+for donor/donation, components, and patients/transfusion recipients are linked together so that
+blood products can be tracked from donation to transfusion."
+
+On how data arrives, the paper says "donor, donation, component, and patient data are extracted and
+transferred to the DCC's Amazon Web Services Virtual Private Cloud using secure data transfer
+(sFTP) keys," and that "Submissions are tracked in real-time using dashboards (e.g., dates,
+records, ongoing status, QC results)." It adds that the architecture "is based on the Observational
+Medical Outcomes Partnership (OMOP) Common Data Model (CDM) v.6," that data from blood center and
+hospital systems "are transformed into the OMOP CDM for analyses," and that "The source data are
+retained."
+
+Read what this does and doesn't tell you:
+
+- **It tells you the shape:** extract from the source system, transfer, transform into a common
+  model, track quality on dashboards, keep the source.
+- **It doesn't tell you the specifics.** Which fields, which cadence, which linkage keys, who does
+  the OMOP mapping, what the dashboards flag: all of that lives in the hub's specification and
+  agreement, which Lakeshore must ask for and read. The paper is a description of a program, not a
+  specification.
+
+If source data are retained for new analyses "without the need for additional data extractions,"
+every field you send may live a long time in someone else's environment. That, not slogans, is why
+"everything, monthly" is the wrong start. Module 4 follows the data downstream.
+
+## Why the extract is a designed product, and the ITSM bridge
+
+The classic failure is the **accidental service**: a query written for a study gets scheduled, nobody
+owns it or documents which BECS field becomes which column, and a later BECS upgrade renames a code
+value so the hub's dashboard fills with blanks. Or the query ran under a login that could write, and
+one day it does.
+
+The ITSM bridge is the service design package you already know. EXT-21 is a **service**: it has a
+customer (the hub, on behalf of the program), a specification (the data spec), an owner, a
+configuration (the job, its source connection, its mapping, its keys, its schedule), service levels
+(cadence and QC pass criteria), and a change process. The regulated twist is that its source is a
+GxP system's data, so "an unowned query" is also a data-integrity risk. The ITIL vocabulary is
+service design, configuration management, and change enablement, with a Quality Analyst on the
+review.
+
+## The rule in plain English
+
+There is no regulation that says how to build a research extract. What you have is a set of rules
+from different tiers that together constrain the design:
+
+1. **The BECS records stay regulated records.** 21 CFR 606.160 says what the records must be and
+   how long they are kept. The extract is a derived copy for a research purpose. It does not replace,
+   alter or become any of those records. (Module 1, trap 2.)
+2. **What leaves Lakeshore should be limited to what the purpose needs.** HIPAA's minimum-necessary
+   standard, 45 CFR 164.514(d), asks a covered entity to limit routine disclosures. Whether it
+   governs *this* disclosure depends on the pathway the privacy officer confirms in module 3. The
+   design habit is the same either way.
+3. **Lakeshore's own change control covers the extract.** No source in this course requires a
+   research extract to be validated like BECS. Lakeshore's decision is that a scheduled job reading a
+   GxP system's data is a configuration item under change control. That is policy, flagged as
+   policy.
+4. **Nothing external gets inside.** Data goes out through a defined, reviewed, outbound process.
+   Nobody outside gets a seat at the source.
+
+## Citation decoder
+
+| Citation | How to read it aloud | What it says | In our scenario |
+|---|---|---|---|
+| 21 CFR 606.160(c) | "six-oh-six point one-sixty, c" | Regulation: a donor number relates the unit to the donor and to components from it | Why a unit-level identifier is the linkage backbone |
+| 21 CFR 606.160(b)(1)(vii) | "...b, one, roman seven" | Regulation: donor records relate the donor to each previous donation's unit number | BECS already traces repeat donations; a coded key must preserve that |
+| 21 CFR 11.10 | "eleven point ten" | Regulation: controls for closed systems that create, modify, maintain or transmit electronic records | Contrast only: BECS keeps these controls; EXT-21's output is not that record |
+| 45 CFR 164.514(d)(3)(i) | "one-sixty-four point five-fourteen, d, three, i" | HIPAA regulation: routine disclosures limited to the amount reasonably necessary | The test every spec field must pass |
+| NIST SP 800-53 Rev. 5, CM-3, CM-5 | "eight-hundred fifty-three, CM-3" | Voluntary federal control catalog | Vocabulary for EXT-21 change control |
+| FDA, *Data Integrity and Compliance With Drug CGMP* (2018) | "FDA's data-integrity Q and A" | Drug-CGMP guidance, not blood | Borrowed only for the reconciliation idea |
+| Josephson et al., *Transfusion* 2022 | "the REDS-IV-P design paper" | Peer-reviewed program description | What the program says about its V2V database |
+
+## The actual text
+
+**21 CFR 606.160(c), the identifier that ties a unit to everything else:**
+
+> (c) A donor number shall be assigned to each accepted donor, which relates the unit of blood
+> collected to that donor, to his medical record, to any component or blood product from that donor's
+> unit of blood, and to all records describing the history and ultimate disposition of these
+> products.
+
+*What it means for EXT-21.* The regulation requires BECS to be able to trace unit to donor to
+components to disposition. The extract inherits that structure and should not invent a parallel one.
+Lakeshore's donation identification number is how a component links back to a donation, and, in the
+program's design, how a component linked on the hospital side can be tracked to transfusion. The
+paper does not say which identifiers the V2V database links on, so confirm the key list in the hub's
+spec. Whether donor identifiers leave Lakeshore, and in what form, is a privacy decision (module 3),
+not an IT one.
+
+**45 CFR 164.514(d)(3)(i), from our local excerpt:**
+
+> (3) Implementation specification: Minimum necessary disclosures of protected health information.
+> (i) For any type of disclosure that it makes on a routine and recurring basis, a covered entity
+> must implement policies and procedures (which may be standard protocols) that limit the
+> protected health information disclosed to the amount reasonably necessary to achieve the purpose
+> of the disclosure.
+
+*What it means for EXT-21.* A monthly extract is the textbook "routine and recurring" disclosure.
+The data spec is the "standard protocol" that limits it. Notice what a hub login would do: the
+reader, not Lakeshore, would decide how much to look at. An extract is where you can enforce the
+limit, because the extract only contains what you put in it. Whether this paragraph governs
+Lakeshore's disclosure depends on the pathway module 3 settles, and this lesson doesn't decide it.
+Other pathways have their own rules. See [the HIPAA Privacy Rule](../../healthcare-security-and-privacy/the-hipaa-privacy-rule/index.qmd)
+for how minimum necessary works inside a covered entity.
+
+**21 CFR 11.10, opening sentence, as a contrast:**
+
+> Persons who use closed systems to create, modify, maintain, or transmit electronic records shall
+> employ procedures and controls designed to ensure the authenticity, integrity, and, when
+> appropriate, the confidentiality of electronic records [...]
+
+*What it means for EXT-21.* Those procedures and controls attach to the *records in BECS*: validation,
+access limits, audit trails (see [Part 11 for validated systems](../../csv-and-becs/part-11-for-validated-systems/index.qmd)).
+EXT-21 reads those records. It does not weaken any of those controls and does not take them over.
+The extract file is a derived copy: if it is wrong, the source record is still right, and the fix
+is to correct the extract. If the *source* is wrong, the fix is in BECS under BECS's own controls, never
+in the extract. Whether the extract file is itself a record under any regulation is a Quality and
+regulatory affairs question, flagged in the plan rather than assumed here.
+
+**FDA data-integrity guidance, general thinking only.** It defines data integrity as "the
+completeness, consistency, and accuracy of data" and says "System design and controls should enable
+easy detection of errors, omissions, and aberrant results throughout the data's life cycle." It is
+drug-CGMP guidance, not a blood-establishment rule. Take only the habit: make a missing or distorted
+row detectable. See [ALCOA and data integrity](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd).
+
+**NIST CM-3, voluntary vocabulary.** Two lines carry the weight: "(b) Review proposed
+configuration-controlled changes to the system and approve or disapprove such changes with explicit
+consideration for security and privacy impact analyses" and "(c) Document configuration change
+decisions associated with the system." CM-5 adds "Define, document, approve, and enforce physical
+and logical access restrictions associated with changes to the system." Same ideas as the
+[release lesson](../../release-management-and-sdlc/release-management-deployment-and-change-control/index.qmd).
+
+## Designing EXT-21, piece by piece
+
+### 1. Scope: the data spec as a negotiated product
+
+Treat the hub's draft as a first offer. For every field, ask five questions and write the answers
+next to it:
+
+| Question | Why |
+|---|---|
+| Which protocol question needs this field? | "Might be useful" is the "everything, monthly" trap |
+| Can it be coarser? | Age band instead of birth date, month instead of day, if the protocol allows |
+| Does it carry a person's identity? | Donor name, address and contact details are different from component type |
+| Where does it live in BECS, and is that a regulated record? | You must know which source field you're mapping |
+| What does it cost to keep right? | Every field must be mapped, reconciled, protected and, if asked, corrected |
+
+The medical director's "if we strip fields now, we'll regret it" deserves a real answer: **a
+new question is a new version of the spec, not a reason to send everything now.** The spec has a
+version number, and adding a field goes through the hub, the privacy officer and change control
+(module 1: "new data elements go back to the privacy officer"). A well-run program expects this.
+Agreeing that "everything" isn't a spec is not saying no to science.
+
+The medical director agrees once it's framed that way. It costs one meeting, against a possible
+retraction later.
+
+### 2. Source: a read-only reporting copy, never production, never a hub login
+
+The systems administrator's instinct fails on four counts, and the Quality Analyst has the first three.
+
+1. **Identity.** An external person inside Lakeshore's systems is an access-management, audit and
+   offboarding problem for a research favor.
+2. **Control of what is seen.** A login to a replica exposes every table, so minimum-necessary
+   discipline has nowhere to stand. The spec is the control point, and a login bypasses it.
+3. **Performance risk.** An unfamiliar query can degrade a reporting layer other teams use.
+4. **Proof.** "They only read" is a promise. An assessor wants a permission set, an access review
+   and logs.
+
+So the decision is the reverse of the instinct. **Lakeshore runs the job, inside Lakeshore, and the
+data goes out. Nothing comes in.**
+
+What the source should be:
+
+- **A read-only reporting copy**, not BECS production. The extract's query load, schema changes
+  and credentials stay off the live system that supports collection, labeling and release. (Whether
+  Lakeshore already has such a copy, and how it is refreshed, is a configuration fact for your CMDB.
+  This lesson doesn't invent one.)
+- **A dedicated, narrow view over the copy** that exposes only the fields in the approved spec.
+  EXT-21's service account can read that view and nothing else.
+- **A service account with no write permission anywhere**, enforced in the database's permissions
+  and shown to the Quality Analyst as a screenshot or a permission report, not in a README. This is
+  the difference between condition 2 in prose and condition 2 in the design.
+- **Refresh lag written down.** A copy is behind production by some amount of time. The extract's
+  run time and the copy's refresh are part of the design, because a unit's disposition can change
+  between the two.
+
+One caution: the reporting copy is still a copy of regulated records. **EXT-21 doesn't make it a
+record of record**, and nobody corrects data there. See
+[BECS interfaces and data integrity](../../csv-and-becs/becs-interfaces-and-data-integrity/index.qmd)
+and [BECS in the pipeline](../../blood-center-operations/becs-in-the-pipeline/index.qmd).
+
+### 3. Linkage keys: how the pieces find each other
+
+The paper says the databases are "linked together so that blood products can be tracked from
+donation to transfusion." For Lakeshore's half, three kinds of key matter.
+
+| Key | What it links | Design question |
+|---|---|---|
+| **Donation identification number** | A donation to its components, and, on the hospital side, a component to a transfusion | It's the join the program needs. Keep its format exactly as BECS has it, and test for duplicates and orphans every run |
+| **Component identifier** | A component to its donation and its disposition | Whatever BECS uses to tell split or pooled products apart should be in the spec, not guessed |
+| **Donor key** | Repeat donations by the same donor, across time | Do donor identifiers leave Lakeshore, and in what form? |
+
+The third row is the real design choice, and the privacy officer will have the last word on it (module 3).
+IT's job is to lay out the options clearly so she can decide.
+
+| Option | What leaves Lakeshore | Pros | Cons |
+|---|---|---|---|
+| **A. Direct identifiers** | Donor identifiers as they exist in BECS | Simplest linking | Most exposure. Hardest to justify to a privacy officer. Hardest to retract |
+| **B. Study-specific coded donor key held by Lakeshore** | A code that means nothing outside Lakeshore. The code-to-donor table (the crosswalk) never leaves | Longitudinal linking works. Lakeshore can re-link for a correction or a legitimate recontact process the agreement permits | You now own a key-management service: generation, protection, backup, retention |
+| **C. No donor key at all** | Nothing that ties donations to a donor | Least exposure | Longitudinal donor questions become impossible. Probably incompatible with the program's design |
+
+The Director's v1 design is **B**, with its final form pending module 3. A few design points worth
+settling now, labeled as engineering practice rather than regulation:
+
+- **The code is random, not derived.** A "hash of the donor ID" can be recomputed by anyone who
+  can guess or hold a list of donor IDs. A randomly assigned code and a protected lookup table
+  cannot.
+- **The code is stable across runs.** If March's donor 8841 is April's donor 9102, longitudinal
+  linking is silently broken.
+- **The crosswalk is a sensitive asset.** It lives inside Lakeshore with tight access, is backed up
+  and is itself a CMDB item. Losing it is a data-loss problem for the study. Leaking it defeats the
+  coding.
+- **Coded is not automatically de-identified.** Whether a coded dataset counts as de-identified,
+  or as something with its own handling rules, is a legal determination. This curriculum's local
+  sources do not include HIPAA's de-identification text, so we don't decide it here. It belongs
+  to the privacy officer.
+
+### 4. Transformation and mapping
+
+The paper says data "are transformed into the OMOP CDM." That is a statement about the program's
+architecture. Two questions the agreement must answer: **who performs the mapping to OMOP, and
+what does Lakeshore send, in what shape?** If the hub or the DCC maps, Lakeshore sends its own
+fields in the shape the spec defines.
+
+Either way, Lakeshore owns a document the hub can't write: the **mapping of its own fields**. For
+every field in the spec:
+
+- the BECS source (table or report, field) and what it means in Lakeshore's own terms;
+- the transformation (units, date formats, truncation, value-set translation, rules for nulls);
+- the owner who can answer "what does this value mean?"; and
+- the version, because the mapping changes when BECS changes.
+
+Value-set translation deserves a line. BECS's code for a component type or a disposition is
+Lakeshore's vocabulary. The spec may use another. The translation table is part of the mapping, and
+the unmapped value ("a new code appears that the table has never seen") must be handled by rule, not
+by silent default. The standard behavior: stop the run, flag it, resolve it. A fast guess that sends a
+plausible but wrong value is worse than a late file.
+
+The OHDSI community, which maintains the OMOP CDM, publishes conversion guidance (the *Book of
+OHDSI* ETL chapter is on the resources page). Read it to speak the DCC's language. It is not a
+requirement and not a statement of what the DCC will do.
+
+### 5. QC: a checklist and a reconciliation report, every run
+
+The paper says submissions are tracked on dashboards including "QC results." That's the program's
+check after the file arrives. EXT-21's own QC is the check **before** it leaves, and every run
+produces two documents.
+
+**The QC checklist** (pass or fail per item, a person signs):
+
+- Row counts at each stage: reporting copy, spec view, mapped output, transfer file.
+- Required fields populated; values within approved value sets (anything unmapped stops the run).
+- Date sanity: no future donations, no component manufactured before its donation.
+- Identifier checks: donation identification numbers unique and well-formed; no orphan components or
+  donations.
+- Coded key checks: every donor coded, no code shared by two donors, no direct identifier anywhere
+  in the file.
+- File checksum and size recorded before transfer.
+
+**The reconciliation report** compares the extract with BECS's own reports for the same period:
+the number of donations, components manufactured by type, components distributed. The extract is a
+derived copy, so the question is "does it say what BECS says?" The BECS reports are the reference.
+If they disagree, the extract is wrong until proven otherwise. This is the FDA data-integrity
+"complete, consistent and accurate" idea, as general thinking.
+
+**A late change in the source** needs a rule written in advance. A disposition can change after a run:
+will the next run restate rows, flag changes, or send a full snapshot? The spec decides, EXT-21
+does it the same way every time, and the reconciliation report accounts for it.
+
+**The feedback loop.** The DCC's dashboard will report QC results back. Lakeshore keeps an intake
+log: date, run, what the dashboard flagged, the cause classified as *extract defect*, *mapping error*,
+*spec ambiguity* or *source-data problem*, and the action. The last class matters. **If the cause is
+bad data in BECS, nobody fixes it in the extract.** It goes through BECS's normal correction
+and deviation processes, and the next run picks up the corrected source. A "fix in the extract" is how a
+research job quietly diverges from the regulated record.
+
+### 6. Secure transfer as a process
+
+Module 5 sets the security controls. The process around them belongs in this design:
+
+- **Outbound only.** EXT-21 pushes to the destination the agreement names (the paper describes sFTP
+  with keys to the DCC's cloud). Nothing connects in.
+- **A named key owner and rotation rule** (module 5).
+- **A release step.** The file moves only after the QC checklist is signed. "Send on schedule no
+  matter what" is no QC.
+- **A transfer log and receipt:** file, checksum, time, confirmation of arrival. No email
+  attachments or hand-carried copies.
+- **A failure path.** A failed or partial transfer is an incident with a known retry and a known
+  contact at the hub.
+
+### 7. Change control for EXT-21 itself
+
+EXT-21 is a scheduled job touching a GxP system's data. The extract is not a regulated record, but
+it runs under Lakeshore's change control anyway, for three reasons: it reads regulated data, it
+sends data outside, and its mapping depends on something else that changes.
+
+- **Register it in the CMDB**: the job, its schedule, the service account, the view, the
+  crosswalk, the mapping document, the transfer credentials and the destination, with owners.
+- **Version everything**: spec version, mapping version, code version. A run records which versions
+  produced it.
+- **Classify changes.** A new field, mapping, destination or cadence is a change with an impact
+  analysis, reviewed by the Quality Analyst and, where data content changes, the privacy officer.
+- **Never write to BECS.** The permission set proves it. A change that would require a write
+  permission is refused and escalated.
+- **BECS changes can break EXT-21.** A new BECS release can rename a field, change a code value
+  or alter a status. Impact analysis for any BECS change must ask "does this touch an EXT-21 source
+  field?" and the CMDB relationship makes that answerable. Module 6 runs exactly this: a BECS
+  release breaks the mapping in the same week a rapid-response request arrives.
+
+In NIST's vocabulary this is CM-3, with CM-5's point that who may change the job is enforced. How
+much *verification* a research extract needs is a risk-based Lakeshore decision with Quality; no
+source we hold prescribes it. The decision below sets a floor: tested, with evidence, before first
+real use.
+
+### 8. Testing without real data
+
+Lakeshore's rule from the [environments lesson](../../release-management-and-sdlc/environments-baselines-and-test-data/index.qmd)
+applies unchanged: **real donor data lives only in production and validation. Development and test
+use synthetic data. Validation holds a de-identified copy.** The first EXT-21 test run uses
+the validation environment's de-identified copy, never production data, and its output stays
+inside Lakeshore: you review the file, the mapping and the QC report, and you don't transfer it
+anywhere until the module 3 conditions clear. Testing the transfer itself needs a destination the
+agreement defines. Ask the hub whether a test endpoint exists, and use synthetic content with it.
+
+## See it in one picture
+
+The diagram is EXT-21 as decided: data flows outward through one controlled path, and the dotted
+lines are feedback and testing, not access.
+
+```{mermaid}
+flowchart LR
+    P[("BECS production<br/>regulated records")] -->|"existing reporting copy,<br/>one-way"| R[("Read-only reporting copy")]
+    R -->|"spec fields only<br/>(approved view)"| J["EXT-21 job<br/>runs inside Lakeshore"]
+    K[("Coded donor key crosswalk<br/>held by Lakeshore")] <--> J
+    J --> Q{"QC checklist and<br/>reconciliation to BECS reports"}
+    Q -->|"fail: hold, investigate"| I["Investigation record"]
+    Q -->|"pass: release"| S["Secure transfer: sFTP keys<br/>(per the 2022 paper)"]
+    S --> D["Hub / DCC cloud<br/>maps to OMOP CDM"]
+    D -.->|"dashboard QC results"| J
+    V[("Validation environment:<br/>de-identified copy")] -.->|"first test runs only"| J
+    X["Hub login into Lakeshore systems"] -. "refused" .-> P
+```
+
+## Watch it explained
+
+The program's own architecture isn't on video, but the common data model it uses is. The OHDSI
+community, which maintains the OMOP CDM, published a five-part tutorial series for data holders who
+want to map their own data to the model. This is part 1. I have not confirmed from the page what
+each part covers beyond its title, so treat it as general background on the CDM idea. It's not
+about blood centers, not about REDS, and says nothing about Lakeshore's extract. The paper is the
+only source tying OMOP to the REDS program.
+
+::: {.video-embed}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/BExsHYxkvTw"
+  title="2017 OHDSI CDM & Vocabulary Tutorial (1 of 5)" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+## What an assessor would look for
+
+An FDA inspector cares about EXT-21 only if it could affect the BECS records. A hub site visit, an
+IRB, your privacy officer or an internal audit would look at the extract itself:
+
+- **The approved data spec**, versioned, with a rationale per field. Bad answer: "We send what they
+  asked for."
+- **A permission report** showing the account reads one view and writes nothing. Bad answer: "The
+  query only does SELECT."
+- **The mapping document** with owner and version. Bad answer: "It's in the script."
+- **Signed QC checklists and reconciliation reports** for recent runs. Bad answer: "The DCC would
+  tell us."
+- **The CMDB record and change history**, including impact analyses for BECS changes.
+- **The key-management record** for the coded donor key, and evidence that no outsider holds a
+  login to any Lakeshore system.
+
+## Common traps
+
+1. **"It's research, so no change control."** The extract isn't a regulated record, but its source
+   is, and a wrong mapping or leaked field is yours.
+2. **"A read-only login is the same as an extract."** A login hands over the whole system and leaves
+   you to prove what happened. An extract is a defined product you can reconcile.
+3. **"The DCC's QC will catch problems."** It sees the file, not BECS, and only after the file left.
+4. **"Fix the bad value in the extract."** Source errors are corrected in BECS under its controls.
+5. **"Coded means anonymous."** Not necessarily. That is a privacy determination.
+
+## What this means for your job
+
+- **Own the data spec.** Insist on a versioned spec with a purpose for each field, and say no to
+  "everything" kindly and in writing.
+- **Hold the line on logins.** No external account on any Lakeshore system for this program. The
+  answer is a better extract, not a wider door.
+- **Ask the Quality Analyst for the proof, not the promise:** the permission report, the last
+  reconciliation, the change record.
+- **Put EXT-21 in the CMDB with relationships to the BECS fields it reads,** so BECS change
+  reviews can ask the question automatically.
+- **Treat the coded donor key as a service you now run.** Owner, backup, access review, retention.
+- **Escalate when the extract's contents change:** a new field, a new recipient or a new cadence
+  goes to the privacy officer before IT builds it.
+
+## The Director's decision for EXT-21 v1
+
+You record this in RSH-0107:
+
+> **EXT-21 version 1 is approved for design and test only. It is not approved to run on production
+> data or to transfer anything.**
+>
+> 1. **Source:** a read-only reporting copy, through a dedicated view containing only specified fields.
+>    EXT-21's account has no write permission anywhere.
+> 2. **No external login** to any Lakeshore system, for the hub, the DCC or anyone else.
+> 3. **Data spec** reduced to what the hub's protocol needs, field by field with a stated purpose.
+>    The medical director agrees "everything" is not a specification. New fields come as a new
+>    spec version.
+> 4. **Donor key:** a coded donor key generated and held by Lakeshore. Its final form is pending
+>    the privacy officer's determination (module 3).
+> 5. **Every run** produces a QC checklist and a reconciliation report against BECS reports, signed
+>    before any release.
+> 6. **EXT-21 is registered in the CMDB** and runs under change control, with BECS changes checked
+>    for impact on its source fields.
+> 7. **First test run** uses the validation environment's de-identified copy, never production data,
+>    and no output leaves Lakeshore until the module 3 conditions clear.
+
+Why "design and test only"? RSH-0107's condition 1 (the privacy officer's written pathway) is still
+open. Building and testing keeps the relationship moving; running on real data waits for the paper.
+
+## Check your understanding
+
+::: {.callout-tip collapse="true"}
+## Q1: The systems administrator says a read-only login for the hub is "less work than building an extract." What are two reasons to refuse it anyway?
+
+Any two of: an external identity inside Lakeshore's systems is an access-management and audit
+burden; a login exposes every field, so the minimum-necessary limit has nowhere to be enforced;
+unfamiliar queries risk the reporting layer; and "they only read" can't be proven the way a
+permission set and logs can. The extract is the control point.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q2: The DCC dashboard shows a spike of components with an impossible manufacturing date. A colleague suggests correcting the dates in the EXT-21 mapping. What is the right path?
+
+First classify the cause. If BECS holds the wrong date, the error is a source-data problem: correct it
+through BECS's own controls and let the next run pick it up. If EXT-21 transformed a correct date
+wrongly, it's an extract or mapping defect, handled under change control. Silently patching in the
+extract leaves two versions of the record.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q3: Does 21 CFR 11.10 require Lakeshore to validate EXT-21 the way it validates BECS?
+
+No source we hold says so. 11.10 applies to systems that create, modify, maintain or transmit
+*electronic records* under that rule, and the BECS records keep those controls. Whether the extract
+job needs validation-style verification is a risk-based Lakeshore decision with Quality. The
+decision here is change control plus tested, evidenced runs. This is a "not a regulatory
+requirement, but a policy choice" answer.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q4: Why is a hash of the donor ID a weak coded donor key?
+
+Anyone who can list or guess donor IDs can recompute the hash and re-link the codes. A randomly
+assigned code with a protected crosswalk can't be recomputed. This is engineering practice, not a
+regulation, and whether the coded form is acceptable at all is the privacy officer's decision.
+:::
+
+::: {.callout-tip collapse="true"}
+## Q5: Explain to your CIO in two sentences why EXT-21 isn't "just a query."
+
+"EXT-21 is a recurring export of regulated donor and component data to an outside research program,
+so it needs a defined data spec, a read-only source, signed quality checks and change control like
+any service that touches that system. If it breaks or leaks, the problem lands on Lakeshore and our
+regulated records, not on the research program."
+:::
+
+## Where this goes next
+
+Module 3, [human subjects, HIPAA and Certificates of Confidentiality](../human-subjects-hipaa-and-certificates-of-confidentiality/index.qmd),
+covers the pathway the privacy officer must confirm before EXT-21 touches real data, including
+what the coded donor key means legally.
