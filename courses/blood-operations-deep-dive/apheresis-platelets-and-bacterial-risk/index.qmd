@@ -332,7 +332,13 @@ Read the diagram top to bottom and notice two things. The gate has no path aroun
 
 ## Watch it explained
 
-No video embed for this module. A search for a video on platelet bacterial contamination and transfusion sepsis turned up vendor webinars and written articles. It did not turn up a public, verifiable YouTube video from a regulator, a professional society or an academic channel that was specific to this topic and passed the embed check. The curriculum's rule is that an honest gap beats a mediocre embed, so the diagram and the primary sources carry this section. The reading list on the Resources page includes FDA's own pages and an episode from a transfusion-medicine podcast.
+An interview titled "076: FDA Platelet Bacteria Guidance with Pat Kopko" from the Blood Bank Guy channel. By its title it is about FDA's guidance on bacterial risk control for platelets. It is a general discussion, not a walk-through of Lakeshore's scenario or of the split-sampling and BECS configuration details in this lesson, so use it as background and rely on the lesson and the FDA sources for the specifics.
+
+::: {.video-embed}
+<iframe src="https://www.youtube-nocookie.com/embed/sMk4p9Jaavk" title="076: FDA Platelet Bacteria Guidance with Pat Kopko" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+*Blood Bank Guy (D. Joe Chaffin MD), on YouTube. Title checked against YouTube's oEmbed record on 2026-11-14.*
 
 ## What an inspector or assessor would look for
 

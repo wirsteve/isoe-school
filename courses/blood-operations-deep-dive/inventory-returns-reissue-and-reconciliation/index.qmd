@@ -229,7 +229,13 @@ Read it as a design target. In the scenario, the "Discarded at hospital" branch 
 
 ## Watch it explained
 
-No video embed for this module. Searches for a video on blood inventory management, returns and reissue, and transfusion service inventory turned up only equipment vendors' product videos and policy documents. Nothing both on topic and independently verifiable from a regulator, professional society, news or educational channel was found. The diagram and the text carry the lesson. See the resources page for the note.
+An interview titled "060CE: Transforming Inventory Management with Nancy Dunbar" from the Blood Bank Guy channel. By its title it is about blood inventory management. It is a general discussion, not a walk-through of this lesson's return, reissue and reconciliation rules or of Lakeshore's scenario, so use it as background and rely on the lesson for the specifics.
+
+::: {.video-embed}
+<iframe src="https://www.youtube-nocookie.com/embed/bdZtphRKtBI" title="060CE: Transforming Inventory Management with Nancy Dunbar" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+*Blood Bank Guy (D. Joe Chaffin MD), on YouTube. Title checked against YouTube's oEmbed record on 2026-11-14.*
 
 ## The response, step by step
 

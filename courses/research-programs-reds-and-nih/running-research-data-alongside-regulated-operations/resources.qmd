@@ -45,10 +45,7 @@ the lesson comes from the local copies in `sources/`, not from these pages.
   [Emergency changes and hotfixes](../../release-management-and-sdlc/emergency-changes-and-hotfixes/index.qmd),
   [ALCOA and data integrity](../../data-integrity-and-records/alcoa-and-data-integrity/index.qmd).
 
-**No video embed for this module.** I searched for a neutral explainer on CMDB-based change impact
-analysis and for anything on running research extracts alongside a regulated system. The only
-candidates were tool-vendor product demos; none was confirmed as a standalone, on-topic, embeddable
-YouTube video from an authoritative channel, so none was embedded.
+- **[Final NIH Policy on Data Management and Sharing](https://www.youtube.com/watch?v=84wlI1ru2A4)** (National Human Genome Research Institute) — an NIH institute's video on the data management and sharing policy. It does not cover running research data alongside a regulated system.
 
 **Honest gap.** The 2022 REDS-IV-P design paper excerpt in `sources/` does not mention rapid
 response studies. The only source for the capability is the REDS Brazil record in RePORTER, which

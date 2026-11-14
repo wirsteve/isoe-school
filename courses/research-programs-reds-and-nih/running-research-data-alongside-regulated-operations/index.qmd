@@ -231,7 +231,13 @@ flowchart TB
 
 ## Watch it explained
 
-No video embed for this module. I searched for a neutral, public explainer on CMDB-based change impact analysis. The candidates found were tool-vendor product demos, and I could not confirm any of them as a standalone, embeddable, on-topic video from an authoritative channel. Nothing about research data alongside a BECS exists on video that I could verify. The diagram and the [release course's regression lesson](../../release-management-and-sdlc/risk-based-testing-and-regression/index.qmd) carry this topic. See the resources page.
+A video titled "Final NIH Policy on Data Management and Sharing" from the National Human Genome Research Institute's channel. It covers the NIH policy itself. It does not cover running research extracts alongside a regulated BECS or change impact analysis, which this lesson takes up, so use it only as background on the DMS policy that the lesson refers to.
+
+::: {.video-embed}
+<iframe src="https://www.youtube-nocookie.com/embed/84wlI1ru2A4" title="Final NIH Policy on Data Management and Sharing" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+*National Human Genome Research Institute, on YouTube. Title checked against YouTube's oEmbed record on 2026-11-14.*
 
 ## What an assessor would look for
 

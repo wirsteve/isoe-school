@@ -3,8 +3,9 @@ title: "Resources"
 order: 167
 ---
 
-External links for this lesson. Every link below was checked with `curl` on 2026-11-13 (HTTP 200) and the page title confirmed. The regulation text quoted in the lesson comes from this repo's `sources/` copies; the Cornell links are verified-loading mirrors for checking current text. No video embed for this module: searched for a CLIA test-report and LIS-interface-validation explainer on YouTube and found nothing both specific enough and independently verifiable as embeddable, so none is used.
+External links for this lesson. Every link below was checked with `curl` on 2026-11-13 (HTTP 200) and the page title confirmed. The regulation text quoted in the lesson comes from this repo's `sources/` copies; the Cornell links are verified-loading mirrors for checking current text.
 
+- **[Introduction to Laboratory Informatics: Life of a Specimen – Communicating Results](https://www.youtube.com/watch?v=GJEMe-6PjvE)** (Centers for Disease Control and Prevention (CDC)) — a short CDC introduction to how laboratory results are communicated, part of its laboratory informatics series. It does not cover corrected reports or interface validation.
 - **[Cornell LII: 42 CFR 493.1291, Standard: Test report](https://www.law.cornell.edu/cfr/text/42/493.1291)** — the full test report standard: (a) electronic transmission, (c) report content, (k) corrected reports. Use it to re-check current wording before quoting. Verified loading via `curl` on 2026-11-13 (HTTP 200).
 - **[Cornell LII: 42 CFR 493.1283, Standard: Test records](https://www.law.cornell.edu/cfr/text/42/493.1283)** — what the lab's information or record system must contain. Verified loading via `curl` on 2026-11-13 (HTTP 200).
 - **[Cornell LII: 42 CFR 493.1105, Standard: Retention requirements](https://www.law.cornell.edu/cfr/text/42/493.1105)** — retention periods, including the cross-reference to 21 CFR 606.160(d) for immunohematology. Verified loading via `curl` on 2026-11-13 (HTTP 200).

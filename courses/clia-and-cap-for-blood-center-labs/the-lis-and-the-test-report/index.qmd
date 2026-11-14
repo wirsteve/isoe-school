@@ -268,7 +268,13 @@ Read it top to bottom. The failure sits at the interface, the one step the lab's
 
 ## Watch it explained
 
-No video embed for this module. I searched for a CLIA test-report or LIS-interface-validation explainer on YouTube and none surfaced that was specific enough to corrected reports and interface delivery and verifiably embeddable. The most relevant material found is written (CAP TODAY's interface validation article and ADLM's lab interface validation page), and both are linked on the [resources page](resources.qmd). An honest gap is better than a mismatched embed.
+A short CDC video from its "Introduction to Laboratory Informatics" series, titled "Life of a Specimen – Communicating Results". It is a general introduction, not about CLIA corrected-report requirements, HL7 interface suppression or Lakeshore's scenario, so use it as background and rely on the lesson and 42 CFR 493.1291 for the specifics.
+
+::: {.video-embed}
+<iframe src="https://www.youtube-nocookie.com/embed/GJEMe-6PjvE" title="Introduction to Laboratory Informatics: Life of a Specimen – Communicating Results" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+*Centers for Disease Control and Prevention (CDC), on YouTube. Title checked against YouTube's oEmbed record on 2026-11-14.*
 
 ## What an inspector or assessor would look for
 
