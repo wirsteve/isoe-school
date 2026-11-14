@@ -3,6 +3,17 @@ title: "Risk and controls vocabulary"
 order: 5
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can rank any deviation, vendor gap or system finding by likelihood, severity and detectability, and say whether a proposed fix is preventive, detective or corrective.
+- **The punchline:** two deviations land on the Quality Analyst's desk. A callback went out a day late with the unit quarantined throughout. A platelet label was swapped and caught at the last barcode scan before the courier van. Both had zero patient impact, but only one was a thin margin.
+- **The rule in one line:** a thorough investigation with conclusions and followup must be made and recorded (21 CFR 606.100(c)). A deviation may be reportable if it "may affect" safety, purity or potency of distributed product, within 45 days of discovery (606.171).
+- **The IT lesson:** this is incident triage by likelihood and impact. A control that only logs an event, with no one alerted in time, is a record of a failure, not a detective control.
+- **Ask on Monday:** "Show me likelihood, severity and detectability for this deviation, and which control type the fix is."
+- **The trap:** "it was caught, so it was handled." A last-checkpoint catch is a detective control. It does not fix the process.
+:::
+
 ## The ticket
 
 Wednesday afternoon at Lakeshore Blood Center, two deviations land on your Quality Analyst's
