@@ -2,12 +2,16 @@ project:
   type: website
   render:
     - "index.qmd"
+    - "study.qmd"
     - "curriculum.qmd"
     - "study-resources.qmd"
     - "foundations/**/*.qmd"
     - "foundations/**/*.md"
     - "courses/**/*.qmd"
     - "courses/**/*.md"
+  resources:
+    - "assets/study.js"
+    - "assets/study.css"
 
 website:
   title: "ISOE School"
@@ -19,6 +23,7 @@ website:
     collapse-level: 2
     contents:
       - index.qmd
+      - study.qmd
       - curriculum.qmd
       - study-resources.qmd
       - section: "Foundations"
@@ -32,6 +37,7 @@ format:
       light: cosmo
       dark: darkly
     css: styles.css
+    include-after-body: assets/loader.html
     toc: true
     toc-depth: 2
     smooth-scroll: true

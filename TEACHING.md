@@ -143,3 +143,32 @@ that map to this curriculum.
   video's existence, title, channel, or embeddability, and never caption a diagram as
   showing something it doesn't actually show. An honest "no video for this one" or a
   skipped diagram step beats a fabricated one, every time.
+
+## The study layer: what every lesson must keep doing
+
+Every page loads `assets/study.js` and `assets/study.css` through `assets/loader.html`, which is
+included from `_quarto.yml`. That script adds narration (🎧 Listen), quizzes, progress, XP, badges
+and the study hub (`study.qmd`) on top of the rendered pages. **It never edits lesson content, and
+new lessons join it automatically** as long as they keep these conventions:
+
+- **Folders.** A lesson is `courses/<course>/<module>/index.qmd` or `foundations/<slug>/index.qmd`.
+  A course page is `courses/<course>/index.qmd`. The script reads the sidebar for titles and order,
+  so `order:` still decides the sequence.
+- **Questions.** Use one of the two formats already in use, with the answer always in a collapsed
+  tip callout:
+  - a callout titled with the question, i.e. `::: {.callout-tip collapse="true"}` followed by
+    `## Q1: question text`, with the answer inside; or
+  - a paragraph starting `**Q1.** question text`, followed by a callout whose heading is
+    `## Answer`.
+
+  Keep the question wording stable once published: a card's review history is keyed to its text.
+- **Readable structure.** Use real headings, paragraphs and lists, not text inside images. The
+  narrator reads headings, paragraphs, list items, quotes and table rows. It announces diagrams and
+  videos instead of reading them, and it keeps hidden answers hidden unless the learner turns on
+  "Read answers".
+- **The short version** callout stays first. It is the skim layer, and also what Outline view leaves
+  open.
+
+Changing `study.js` or `study.css`: bump `v` in `assets/loader.html` so browsers fetch the new
+version. Test against live pages with Playwright before pushing; no Quarto install is needed. Ideas
+and their status are tracked in `plans/study-experience.md`.

@@ -297,7 +297,7 @@ has no `plans/<slug>.md` file until its first session.
 | `hrsa-and-cellular-therapy-programs` | 4 / 4 | Done (plan: `plans/hrsa-and-cellular-therapy-programs.md`) |
 | `blood-operations-deep-dive` | 5 / 5 | Done (plan: `plans/blood-operations-deep-dive.md`) |
 
-**Next up: Track 7 is complete (all five courses published 2026-11-13). No further course is queued. Open items for a future session: (1) a site-wide "turn on narration" accessibility feature — only when the user asks; (2) a final audit pass over Track 7 with the strongest model.**
+**Next up: Track 7 is complete (all five courses published 2026-11-13). Study layer shipped 2026-11-14 (narration, quizzes, XP, badges, study hub; plan: `plans/study-experience.md`); its roadmap is the next work unless the user names a course. Final audit pass over Track 7 with the strongest model is still open.**
 Track 7 order: release-management-and-sdlc → research-programs-reds-and-nih →
 clia-and-cap-for-blood-center-labs → hrsa-and-cellular-therapy-programs →
 blood-operations-deep-dive. (The paragraph below describing the original curriculum as complete

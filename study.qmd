@@ -1,0 +1,19 @@
+---
+title: "My Study Hub"
+---
+
+::: {.callout-tip appearance="simple"}
+## How to study here
+- **🎧 Listen.** Every page has a Listen button. It reads the page aloud, highlights where it is, and
+  lets you change the speed and voice. Tap any paragraph to start from there.
+- **❓ Quiz as you go.** Lesson questions stay hidden until you tap them. After you reveal one, tap
+  **✓ Got it** or **↻ Not yet**. Misses come back for review, and right answers come back later and
+  later until they stick.
+- **🏁 Mark lessons complete** to fill your course progress bars, earn XP, level up and collect badges.
+- **Outline view** (on any lesson) folds the lesson into sections you open one at a time.
+:::
+
+::: {#isoe-hub}
+Your progress, review deck and badges appear here. They need JavaScript and are saved in this
+browser only.
+:::
