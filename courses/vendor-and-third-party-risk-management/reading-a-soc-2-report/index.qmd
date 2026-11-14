@@ -3,6 +3,17 @@ title: "Reading a SOC 2 Report"
 order: 106
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** read a vendor's SOC 2 report for what it covers and what it doesn't: type, criteria, the customer's own controls, and how current it is.
+- **The punchline:** The vendor's 80-page report arrived and the Quality Analyst asked if it was good and if it explained Brookfield. It could never give one laptop's encryption status. Its customer-controls section would plausibly have said confirming encryption was Lakeshore's job.
+- **The rule in one line:** Ask four questions. Is it Type I or Type II, which Trust Services Criteria are covered, what are the customer's own controls, and how current is it? SOC 2 is a framework described in our own words, not a cited standard.
+- **The IT lesson:** An independent test beats a vendor's own word. Read the customer-controls section yourself, because that is where Lakeshore's own job is written.
+- **Ask on Monday:** "For each High-tier vendor, which report type and criteria does the SOC 2 cover, and who read the customer-controls section?"
+- **The trap:** "They have a SOC 2, so their security is covered." Covered for which criteria, and over what period?
+:::
+
 ## "They sent it. Now what?"
 
 Your Quality Analyst (QA) forwards the email without comment beyond the subject line: "Attached

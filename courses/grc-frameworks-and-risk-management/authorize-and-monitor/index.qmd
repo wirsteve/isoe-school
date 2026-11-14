@@ -3,6 +3,17 @@ title: "Authorize and Monitor"
 order: 88
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** make the eQMS go/no-go call as the one accountable person, on the record, and set up the monitoring that keeps that decision honest after go-live.
+- **The punchline:** The independent assessment confirmed audit/logging and physical and environmental protection. The account and identity access review had not yet run its first cycle. The Director authorized the eQMS across all three sites, accepting that one named risk for 30 days.
+- **The rule in one line:** Authorize is a determination that the risk is acceptable, made by a named person. Monitor is the ongoing checking that follows (NIST SP 800-37 Rev. 2, Ch. 2).
+- **The IT lesson:** This is a release go/no-go gate with one known defect still open. Someone with authority decides, logs it like a known error with an owner and a fix, and the release proceeds on the record.
+- **Ask on Monday:** "For every open item we carry at go-live, who accepted it in writing, and what date does it close?"
+- **The trap:** "We'll just keep an eye on it informally." An unwritten acceptance is not an authorization. It is also Lakeshore's own voluntary discipline, not a federal authorization to operate.
+:::
+
 ## One open line item, and a go-live date on the calendar
 
 You're back in the same room as the last module — you, your Quality Analyst, your systems

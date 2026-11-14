@@ -3,6 +3,17 @@ title: "The HIPAA Privacy Rule"
 order: 95
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** decide whether pulling the extract was a permitted use, whether authorization was needed, and whether the extract carried more than the review needed.
+- **The punchline:** The deferral-coding review plausibly counts as health care operations, so no authorization was needed. That fit is reasoned, not verified against 164.501. The extract carried six fields when the review needed three, so it likely failed minimum necessary.
+- **The rule in one line:** PHI may not be used or disclosed unless the rule permits it (45 CFR 164.502(a)). Routine disclosures must be limited to the amount reasonably necessary (164.514(d)(3)(i)).
+- **The IT lesson:** Minimum necessary is least privilege applied to data fields. A standing report template that pulls every column is the same failure as admin rights for everyone.
+- **Ask on Monday:** "When were our standard BECS report templates last checked against the fields each purpose actually needs?"
+- **The trap:** "If BECS access was authorized, any extract is fine." Legitimate access does not answer whether the extract was scoped correctly.
+:::
+
 ## Three questions nobody asked at the time
 
 The laptop is still missing. Your Quality Analyst (QA) has moved past the "are we even a

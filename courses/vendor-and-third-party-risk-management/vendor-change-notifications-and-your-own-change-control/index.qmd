@@ -3,6 +3,17 @@ title: "Vendor Change Notifications and Your Own Change Control"
 order: 112
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** place a vendor's duty to tell you about changes against Lakeshore's own change control, and decide what to do about the gap.
+- **The punchline:** A quarterly vendor email buried a backend consolidation "with no expected disruption." The Quality Analyst asked whether the BAA already required notice. It does not, because its duty is to report incidents after they happen.
+- **The rule in one line:** No regulation requires advance notice of a vendor's changes. The BAA duty is to report an incident the vendor becomes aware of (164.314(a)(2)(i)(C) / 164.504(e)(2)(ii)(C)). Advance notice needs a contract clause.
+- **The IT lesson:** Lakeshore keeps a forward schedule of change for its own changes and has nothing like it for this vendor's. Lakeshore's change control has no jurisdiction over the vendor's.
+- **Ask on Monday:** "Does this vendor's contract require advance notice of material changes, and where is our decision recorded if it doesn't?"
+- **The trap:** "The BAA already makes them tell us about changes." Incident reporting is reactive, and advance notice is a separate promise.
+:::
+
 ## The quarterly update email
 
 A routine message lands in your inbox, the kind you'd normally forward straight to your Quality
