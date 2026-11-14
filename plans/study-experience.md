@@ -85,3 +85,42 @@ Cover:
 - a course page and the home page
 - the hub, by serving `study.html` as another page with `<div id="isoe-hub">` injected
 - an iPhone viewport
+
+## Parity retrofit (2026-11-14)
+
+The user asked that all content be consumable the same way before anything new is added. An audit
+of all 92 lessons, run with the scratchpad script `audit.py` (the checks are listed below), against
+the newest lessons:
+
+- **"The short version"**
+  - Before: 61 older lessons and 10 course pages lacked it.
+  - Now: every lesson and every course page has one (foundations index included). Added by Sonnet
+    agents from each lesson's own text only.
+  - Every addition was checked as follows:
+    - an insertion-only diff
+    - 3–6 bullets
+    - every citation, ID and number in the bullets already appears in that lesson
+- **Questions:** every lesson already had them, in one of the two formats the study layer reads.
+  Check your understanding is present in all 92.
+- **Diagrams:** all 92 have one. A duplicate and overlap check found three lessons showing a diagram
+  copied from another lesson; replacements were drawn from each lesson's own text:
+  - grc `implement-and-assess-controls`
+  - grc `risk-frameworks-side-by-side`
+  - vendor `vendor-change-notifications-and-your-own-change-control`
+- **Videos**
+  - Before: 9 lessons had none.
+  - Now: 5 have a verified video.
+  - Four still honestly have none, after a second search:
+    - `mobile-collections-and-offline-systems`
+    - `program-data-feeds-and-reporting`
+    - `reds-structure-contracts-and-governance`
+    - `security-expectations-for-research-data`
+- **Resources and Keep learning:** present everywhere.
+
+To re-run the parity audit, check each `courses/*/*/index.qmd` and `foundations/*/index.qmd` for:
+
+- a "## The short version" callout
+- a "Check your understanding" section with detectable Q/A
+- a ```{mermaid} block whose words overlap the lesson text (a score below about 0.8 means suspect)
+- a `video-embed` or an honest "no video" note
+- a resources.qmd with a "## Keep learning" section
