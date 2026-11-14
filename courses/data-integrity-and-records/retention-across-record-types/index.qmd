@@ -3,6 +3,17 @@ title: "Retention Across Record Types"
 order: 64
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can go beyond 606.160(d)'s product-record clock to the records that do not share its schedule, and say what "retain the record" requires for a dynamic electronic record versus a static printout.
+- **The punchline:** asked whether BECS could get DED-0458 back, the systems administrator shows a nightly snapshot that is deleted after 30 days. It is sound disaster recovery but not the backup the regulation means. Separately, nobody can say when a donor's cumulative record expires.
+- **The rule in one line:** a backup must be a true copy kept securely, exact and complete, throughout the retention period (21 CFR 211.68(b), FDA 2018 Q&A Question 1e). A temporary crash-recovery copy does not satisfy it.
+- **The IT lesson:** RPO and RTO answer "can we recover from an outage." They do not answer whether a record can be reconstructed years later, with its metadata and its dynamic nature intact.
+- **Ask on Monday:** "Does our backup also satisfy the regulatory retention period, or only our uptime goal, and what is the retention rule for donor records?"
+- **The trap:** "We have backups, so we're covered." Two different things are being called "backup."
+:::
+
 ## DI-0301 asks IT a question nobody expected to be hard
 
 Your Quality Analyst (QA) is closing in on the end of **DI-0301**, her data-integrity

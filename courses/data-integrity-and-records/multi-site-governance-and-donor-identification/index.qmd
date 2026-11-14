@@ -3,6 +3,17 @@ title: "Multi-Site Governance and Donor Identification"
 order: 66
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can say how Lakeshore's central site and two satellites keep one donor's identity and deferral status consistent, and whether the regulatory floor for sharing a deferral is fast enough.
+- **The punchline:** a donor tests reactive and is deferred at Fairview, and Fairview catches a return visit the same day. Brookfield and the central site learn only through the cumulative record, so in the worst case they stay blind for just under a month. That is compliant but still a real gap.
+- **The rule in one line:** each location keeps its own deferred-donor record, and all locations keep a cumulative record updated at least monthly and revised when donors are requalified (21 CFR 606.160(e)(1) to (4)), tied together by a donor number (606.160(c)).
+- **The IT lesson:** this is eventual consistency across sites, but the delay is a patient-safety question, not an inconvenience. Ask for the dated update log, and decide the cadence deliberately, with its cost named.
+- **Ask on Monday:** "What is the worst-case gap between a deferral at one site and every other site seeing it, and who decided monthly was fast enough?"
+- **The trap:** "We update the cumulative record every month, so we're as safe as we need to be." Monthly meets the rule's letter, and whether it is safe enough is Lakeshore's own risk call.
+:::
+
 ## DI-0301 reaches its last system: one donor, three locations
 
 Your Quality Analyst (QA) is back with the capstone piece of **DI-0301**, her data-integrity

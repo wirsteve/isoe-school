@@ -3,6 +3,17 @@ title: "Quality risk management"
 order: 23
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can run a quality decision through ICH Q9's risk management process with an FMEA or risk ranking and filtering, and decide how much formality the decision deserves.
+- **The punchline:** the Quality Analyst admits she scored the tracked-distribution process in four minutes at your desk and wrote nothing down. A formal FMEA ranks "acknowledgment on file, binder never swapped" at RPN 50, a risk the informal call missed.
+- **The rule in one line:** ICH Q9(R1) is guideline-tier, not a CFR rule. The regulatory floor remains a thorough, recorded investigation (21 CFR 606.100(c)), and Part 606 does not name risk management as a formal process.
+- **The IT lesson:** it is a risk register with a real lifecycle: assess, control, communicate, review. Match the formality to the stakes, and write acceptance down as an owned decision.
+- **Ask on Monday:** "What level of formality did this risk decision get, and when is it next reviewed?"
+- **The trap:** either extreme. A full FMEA for everything wastes rigor, and a gut call on a systemic risk, or an FMEA never revisited, leaves it unexamined.
+:::
+
 ## The ticket
 
 The Owen Pruitt story is closed. Six months of clean audits, a CAPA (corrective and preventive

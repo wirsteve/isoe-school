@@ -3,6 +3,17 @@ title: "Legacy Systems and Part 11 Gaps"
 order: 62
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can apply FDA's own four-part legacy-system test to a system older than Part 11, and say what has to be true for enforcement discretion to keep holding.
+- **The punchline:** the Quality Analyst tests the aging instrument LAB-07. It passes criteria 1 to 3, but she finds no document proving it is fit for its intended use, a gap in evidence rather than a proven violation. She also finds a dormant export mode that would create a dynamic record with no readable copy format.
+- **The rule in one line:** FDA does not intend to enforce Part 11 against a system that was operational before the effective date, met predicate rules then, meets them now, and has documented evidence it is fit for its intended use (2003 guidance, § III.C.3).
+- **The IT lesson:** this is legacy system management and technical debt with a regulatory test. "It still works" is a symptom you can observe. A dated, signed fitness-for-use review is the evidence the test asks for.
+- **Ask on Monday:** "For each old system, where is the signed fitness-for-use review, and does it have a mode nobody uses?"
+- **The trap:** "It still works, so it's fine," and its cousin, "once legacy, always grandfathered." The fourth criterion is ongoing, so the status is conditional.
+:::
+
 ## DI-0301 reaches the instrument it's been circling since module 3
 
 Your Quality Analyst (QA) is back, and this time she's holding the thread last module

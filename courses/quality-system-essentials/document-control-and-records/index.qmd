@@ -3,6 +3,17 @@ title: "Document control and records"
 order: 21
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can follow a controlled document from draft to retirement, tell a document from a record, and explain how an obsolete version ends up in use and what stops it.
+- **The punchline:** six months after the Brookfield event, the document-control audit finds zero exceptions at every site. A new SOP revision also catches a departed site lead whose acknowledgment never came back. It was flagged overdue after 72 hours and fixed before the effective date.
+- **The rule in one line:** written procedures must be available where the work is performed (21 CFR 606.100(b)). Records must be kept concurrently, legible and dated (606.160(a)(1)). Part 606 never uses the phrase "document control."
+- **The IT lesson:** this is knowledge and configuration management with a harder test. The current version must be the only one at the point of use, with proof the old one is gone.
+- **Ask on Monday:** "Show me the document and the record separately: the current SOP, and the signed, dated acknowledgment that it landed at each site."
+- **The trap:** "the current version exists in our system, so we're in control." A correct central record proves nothing about what is in the binder.
+:::
+
 ## The ticket
 
 Six months later. Lakeshore's scheduled document-control audit — the one your Quality Analyst
