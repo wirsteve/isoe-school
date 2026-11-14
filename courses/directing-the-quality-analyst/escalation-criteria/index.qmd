@@ -3,6 +3,17 @@ title: "Escalation: what has to reach you, and how fast"
 order: 32
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can sort any event into "call me now," "tell me today," or "your call, tell me at our one-on-one," know which events go past you, and write escalation criteria that beat the regulatory clocks.
+- **The punchline:** at 11:52 p.m. a hospital reports a possible transfusion death. Four more calls follow that night, including a request to hold off on a write-up. The Quality Analyst sorts each one against criteria written in advance.
+- **The rule in one line:** the FDA clock starts when someone acquires information "reasonably suggesting" a reportable event occurred, not when it is confirmed (21 CFR 606.171(c)). Escalation must key on "suspected."
+- **The IT lesson:** this is major-incident criteria plus functional and hierarchical escalation, with two additions. An external clock may already be running, and one path must bypass you entirely.
+- **Ask on Monday:** "Do our escalation criteria fire on suspected or confirmed, and when did anyone last use the path around me?"
+- **The trap:** waiting for "confirmed" before picking up the phone. It guarantees Lakeshore's response is slower than the deadline it is racing.
+:::
+
 ## The ticket
 
 Tuesday, 11:52 p.m. Your phone rings. It's your Quality Analyst (QA), and she doesn't sound
