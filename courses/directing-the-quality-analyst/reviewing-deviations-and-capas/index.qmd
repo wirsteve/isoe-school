@@ -3,6 +3,17 @@ title: "Reviewing deviation and CAPA write-ups"
 order: 30
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can read a deviation and CAPA write-up the way an assessor will, find the missing reasoning, weak evidence, short scope and effectiveness check that can't fail, then send it back as questions so the second draft is better.
+- **The punchline:** DEV-1147 and CAPA-1147-A arrive marked "ready to close." About 40 units printed labels against a stale ICCBBA table. The packet looks polished, but "none shipped" rests on a supervisor's word, and the effectiveness check is a vendor promise.
+- **The rule in one line:** a deviation is reportable only if it may affect safety, purity or potency and involves distributed product (21 CFR 606.171(b)). "Not reportable" needs shown reasoning, not just an answer.
+- **The IT lesson:** this is a postmortem with a regulator as the reader. "Third-party outage, no action" becomes vendor-blame, and you are the one who knows where the BECS logs live.
+- **Ask on Monday:** "What record or query proves that, and could this effectiveness check ever fail?"
+- **The trap:** "the conclusion is probably right, so the missing reasoning doesn't matter." An assessor grades the page, not the answer.
+:::
+
 ## The ticket
 
 Your Quality Analyst (QA) routes you a deviation and CAPA (corrective and preventive action)

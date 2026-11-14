@@ -3,6 +3,17 @@ title: "Audit Trails and E-Signatures in Practice"
 order: 58
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can review an audit trail the way an inspector would, and name the Part 11 controls an e-signature must satisfy to stand in for a handwritten one.
+- **The punchline:** the Quality Analyst finds BECS's audit trail exists but nobody ever decided how often it is reviewed. The BECS sign-off clears four of five e-signature controls, but the written password-aging policy was never technically enforced (11.300(b)).
+- **The rule in one line:** the person who reviews a record should review its audit trail at the same time (FDA 2018 Q&A, Question 7), and an e-signature stands in for ink only if it satisfies 11.50, 11.70, 11.100, 11.200 and 11.300.
+- **The IT lesson:** a written policy is not evidence. For passwords, show the log of forced changes or the configuration that enforces the interval.
+- **Ask on Monday:** "Who reviewed the audit trail for that record, and when? And where is the log showing password aging actually happens?"
+- **The trap:** "Audit trails are on FDA's enforcement-discretion list, so nobody has to review them." The predicate rule's record-review duty still reaches the audit trail.
+:::
+
 ## DI-0301 continues: two threads, one system
 
 Your Quality Analyst (QA) is back with the next piece of **DI-0301**, her data-integrity

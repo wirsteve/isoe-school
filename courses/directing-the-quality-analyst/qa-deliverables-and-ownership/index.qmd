@@ -3,6 +3,17 @@ title: "What your QA produces, and who owns it"
 order: 28
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can name what your Quality Analyst produces, who writes, approves and only needs to see each piece, what your own signature means on it, and one short test for reviewing any of it.
+- **The punchline:** five requests for your name land on Monday. You are two words into signing "Final disposition approval" on a deviation packet when you realize that box was never yours. It belongs to the medical director or a delegated quality officer.
+- **The rule in one line:** the regulations require the investigation and its record (606.100(c), 606.160(b)(7)(iii)), not any particular person's signature. Who signs disposition is Lakeshore's own SOP choice.
+- **The IT lesson:** this is RACI and separation of duties. Name your box before you sign: supervisor, system-owner co-approver, or informed.
+- **Ask on Monday:** "Which box am I signing here, and what does our SOP say that signature means?"
+- **The trap:** assuming your signature always means the same thing. Three different acts can look like "sign here."
+:::
+
 ## The ticket
 
 Monday morning, five things are waiting from your Quality Analyst (QA), all routed within the

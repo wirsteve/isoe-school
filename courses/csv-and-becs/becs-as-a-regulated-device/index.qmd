@@ -3,6 +3,17 @@ title: "BECS as a Regulated Device"
 order: 45
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can say what makes BECS a regulated device, what a 510(k) clearance can and cannot tell you, and why one central-server plan is not enough for a system that runs at three locations.
+- **The punchline:** VAL-1203's plan states "Release B is FDA 510(k)-cleared" with no citation, and reads as if written only for the central server, though scope also names Brookfield and Fairview. You co-sign only after asking the right questions about both.
+- **The rule in one line:** you, not the vendor, are ultimately responsible for validating the system in your own facility, and each location a central server serves needs its own location-specific plan (guidance III.D).
+- **The IT lesson:** a clearance is like a vendor's SOC 2 report. It speaks to the vendor's product, not to your configuration, your sites or your people. And "the system" includes personnel and documentation, not just the software.
+- **Ask on Monday:** "Do we have the vendor's written regulatory basis for the exact release we are installing, and a validation plan specific to each site?"
+- **The trap:** "It's 510(k)-cleared, so it's already validated." Clearance is about a version of the product, and it does not replace Lakeshore's own validation.
+:::
+
 ## A line in VAL-1203 you didn't write
 
 VAL-1203's validation plan — the same package you've been picking apart for two modules now —

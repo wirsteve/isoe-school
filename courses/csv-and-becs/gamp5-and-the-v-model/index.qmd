@@ -3,6 +3,17 @@ title: "GAMP 5 and the V-Model"
 order: 41
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can say exactly what is wrong with the sysadmin's "Category 4, smoke test and done" position and with three rows of VAL-1203's draft URS, and why a category label never settles test depth.
+- **The punchline:** the BECS upgrade to Release B is now VAL-1203. The draft has an untestable requirement (REQ-014), an unranked release gate (REQ-022), and no requirement at all for the in-house LIS-to-BECS translation script.
+- **The rule in one line:** automated and electronic equipment, including computers, must be checked under a written program designed to assure proper performance, with written records (21 CFR 211.68(a)). GAMP is industry practice, not regulation.
+- **The IT lesson:** a GAMP category is like CI type in your CMDB. It sets a default starting point, but a documented risk assessment sets how hard to test, and FDA's guidance says to assume most hazards are likely.
+- **Ask on Monday:** "Show me the dated risk assessment behind our test depth, and the requirement row for each piece of software we wrote ourselves."
+- **The trap:** "It's a Category 4 vendor product, so the vendor's testing covers it." The vendor's testing is an input. You are ultimately responsible for validation in your facility.
+:::
+
 ## The question this course exists to answer
 
 Last spring, a validation package closed with one question left hanging. Lakeshore ran twelve

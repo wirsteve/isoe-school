@@ -3,6 +3,17 @@ title: "BECS Interfaces and Data Integrity"
 order: 53
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can read the evidence for all six BECS interface boundaries and close VIA-0842's last two open items, the instrument-interface test it never ran and the hospital-interface regression testing nobody owned.
+- **The punchline:** VAL-1203 has been live a quarter. Supplemental testing sent deliberately bad messages through the instrument path and a test shipment record through the Riverside feed, checked field by field. The Quality Validation Lead now owns the hospital item.
+- **The rule in one line:** every interface must prove a record lands complete, correct, on time and on the right donor or unit, because input and output must be checked for accuracy (21 CFR 211.68(b), guidance III.G).
+- **The IT lesson:** the interface error file is your dead-letter queue, and someone must review it after go-live. A message landing on the wrong record is a product-safety event, not a backlog item.
+- **Ask on Monday:** "Who reviews the interface error file, and has anyone sent a deliberately bad message through each interface?"
+- **The trap:** "It connects and logs no errors, so it's validated." A clean connection proves the pipe works, not that a record landed right.
+:::
+
 ## Six boundaries, one last review
 
 VAL-1203 — Lakeshore's upgrade of BECS (Blood Establishment Computer Software) to the vendor's

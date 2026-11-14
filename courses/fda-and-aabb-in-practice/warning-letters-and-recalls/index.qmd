@@ -3,6 +3,17 @@ title: "Warning Letters and Recalls"
 order: 71
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can explain when a 483 escalates into a Warning Letter, and sort any product problem into the right recall class using FDA's own health-hazard test instead of a guess at severity.
+- **The punchline:** a 483 response awaits FDA review, and separately a plasma lot labeled PF24 but actually FFP reaches a hospital. It is a recall, not a withdrawal or stock recovery. The six-factor walk gives a Class II recommendation, and FDA assigns the real class.
+- **The rule in one line:** recall, market withdrawal and stock recovery are three different things (21 CFR 7.3). Classification follows the six health-hazard factors (7.41), and FDA assigns the class, even for a firm-initiated recall (7.46(b)).
+- **The IT lesson:** escalation is incident escalation, and recall class is incident severity. Your internal rating is an input to FDA's determination, never a substitute.
+- **Ask on Monday:** "Did this product ever leave our control, and is our six-factor write-up on paper before FDA asks?"
+- **The trap:** "we've decided it's Class II, so we can tell the hospital." The classification is not yours to assign.
+:::
+
 ## Two different kinds of "worse"
 
 Two things land on your desk the same week.

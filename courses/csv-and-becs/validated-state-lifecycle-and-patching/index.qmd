@@ -3,6 +3,17 @@ title: "Staying Validated: Changes, Patches, and Periodic Review"
 order: 51
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can run a change through regression analysis instead of a vendor's description, build patch-class templates, design a periodic review that catches drift, and give VIA-0842's twelve tests a real verdict.
+- **The punchline:** this quarter's OS patch is scoped correctly, with a regression analysis first. The periodic review then looks back and finds VIA-0842's twelve tests rested only on the vendor's "OS-level memory handling only" claim. The fix is supplemental testing and a CAPA on the VIA template, not a full revalidation.
+- **The rule in one line:** for any change, even a small one, do a documented regression analysis of impact on the whole system, then regression testing that follows from it (guidance III.I, under 21 CFR 211.68(a)).
+- **The IT lesson:** a vendor's patch description is an input, never an analysis. Patch classes are like standard changes, but each still gets its own VIA. Checking configuration drift against the validated baseline is your job.
+- **Ask on Monday:** "For our last patch, show me the dated regression analysis written before the test plan, not the vendor's advisory."
+- **The trap:** "The patch installed without errors, so it's validated." A clean install is implementation evidence, not proof the rest of the system still works.
+:::
+
 ## Two things land on your desk the same week
 
 Release B — VAL-1203's upgrade, the BECS (Blood Establishment Computer Software) upgrade this

@@ -3,6 +3,17 @@ title: "CAPA: root cause to effectiveness check"
 order: 17
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can tell a real root cause from "human error," pick corrective and preventive actions that change the process, and set an effectiveness check that could actually fail.
+- **The punchline:** after the Owen Pruitt deviation, the Quality Analyst's CAPA says staff did not check the downtime binder's list, so retrain them. Pushed through five whys, the real cause is a document-control gap. Satellite binders have no verified distribution of current revisions.
+- **The rule in one line:** investigate thoroughly and record "conclusions and followup" (21 CFR 606.100(c)). Part 606 never says "corrective," "preventive" or "root cause." The structured CAPA process comes from AABB Standards and industry practice.
+- **The IT lesson:** CAPA is problem management plus one thing ITIL often skips, proving the fix worked. A CAPA closes on an effectiveness check, not when the action ships.
+- **Ask on Monday:** "What data will show this CAPA worked, and was the pass or fail criterion written down before we checked?"
+- **The trap:** "root cause: human error, action: retrain." If the same conditions recurred, nothing would go differently. That is a symptom, not a root cause.
+:::
+
 ## The ticket
 
 Wednesday. The Owen Pruitt deviation record is closed — discovery, containment, extent-of-condition,
