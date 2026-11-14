@@ -2,4 +2,13 @@
 title: "Foundations"
 order: 0
 ---
+
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- Three short lessons are taught once and linked wherever a course needs them.
+- They cover how to read a CFR citation, how to sort a rule into regulation, guidance or AABB Standard, and the risk and controls vocabulary used everywhere later.
+- Later courses assume you already have all three, so each one is taught once here and linked from there.
+:::
+
 Shared building blocks. Each one is taught once and linked wherever a course needs it.
