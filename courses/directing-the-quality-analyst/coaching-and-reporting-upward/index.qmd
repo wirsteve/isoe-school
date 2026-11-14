@@ -3,6 +3,17 @@ title: "Coaching your QA and reporting upward"
 order: 38
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can turn repeated review findings into coaching that changes how your Quality Analyst works, widen her decision rights as her judgment proves out, and report quality, IT and risk upward with measures that don't reward hiding problems.
+- **The punchline:** three documents showed the same pattern: right conclusions, reasoning missing from the page, and stopping at the first credible source. Then her draft management-review packet arrived, all counts and no trend.
+- **The rule in one line:** coach the write-up, never the quality outcome. Your feedback can demand that the reasoning is on the page, but never suggest which conclusion it should support.
+- **The IT lesson:** this is code review and CSI. Asking questions grows an engineer, rewriting their diffs doesn't. A "watermelon" report looks green on top and red underneath.
+- **Ask on Monday:** "What's the trend and aging behind this number, and is this measure about the system or about her?"
+- **The trap:** making deviation count her personal target. It rewards under-reporting, and you won't find out until an assessor or a real event does.
+:::
+
 ## The ticket
 
 Three documents, three months, one desk: the ICCBBA (International Council for Commonality in
