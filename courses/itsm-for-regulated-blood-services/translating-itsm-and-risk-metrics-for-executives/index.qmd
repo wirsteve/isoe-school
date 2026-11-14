@@ -3,6 +3,17 @@ title: "Translating ITSM and Risk Metrics for Executives"
 order: 123
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** take one fact and present it to the CIO and the exec quality council in each one's language without changing what it means.
+- **The punchline:** the eQMS's quarterly access review had not run its first cycle. The CIO heard cost, schedule and escalation. The quality council heard that it is a time-bound control gap, not a nonconformance and not a CAPA. Both heard the same owner, date and closure rule.
+- **The rule in one line:** translating changes emphasis, never facts. The finding, owner, date and status stay fixed.
+- **The IT lesson:** this is audience segmentation, which you already do. It is spin only when the facts differ between audiences.
+- **Ask on Monday:** "Put both decks side by side. Do the owner, date and closure rule match?"
+- **The trap:** softening or sharpening the finding for one room, or changing the date or owner to simplify the explanation.
+:::
+
 ## Two meetings, one Tuesday
 
 Your calendar for Tuesday has two blocks that used to make you nervous in different ways. At

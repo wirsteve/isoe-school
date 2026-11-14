@@ -3,6 +3,17 @@ title: "Building an Inspection-Ready Service Catalog and CMDB"
 order: 121
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** build one reconciled service catalog and CMDB entry for the eQMS that an FDA investigator, an AABB assessor and a security assessor can all read and trust.
+- **The punchline:** the CMDB's qualification field was blank and the catalog disagreed with the scope statement about Fairview. The field got a pointer to the existing RMF file, and the catalog was corrected, with a dated, owned migration action for Fairview.
+- **The rule in one line:** keep one source of truth. Nothing here is new regulation, and no new citation is introduced.
+- **The IT lesson:** a gap in one record often needs no new work, just a pointer to work already done elsewhere. Name any boundary plainly, because the artifact fully satisfies FDA and AABB but only partly satisfies a security assessor.
+- **Ask on Monday:** "Where do our service catalog and our quality-system scope statement disagree, and who owns the date to close that?"
+- **The trap:** thinking the blank field needs a new validation exercise, or that fixing the catalog wording alone closes the Fairview gap.
+:::
+
 ## The assembly meeting
 
 You've called this meeting for one reason: finish the thing. Your systems administrator has

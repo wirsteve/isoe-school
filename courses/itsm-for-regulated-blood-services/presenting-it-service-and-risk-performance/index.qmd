@@ -3,6 +3,17 @@ title: "Presenting IT Service and Risk Performance"
 order: 125
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** present the Brookfield incident to the CIO and the exec quality council in one room, at the same time, so the story survives live comparison.
+- **The punchline:** a single invitation put both audiences in the room for the full review. The answer was a sandwich: the six-bullet shared spine first, each audience's question addressed in front of everyone, then back to the spine.
+- **The rule in one line:** everything said must be something both audiences can hear without objection. Every fact traces to a locked citation, and the shared spine is stated identically to everyone.
+- **The IT lesson:** this is a major incident review, briefed once to everyone with a stake. Name any follow-through gap out loud, such as a fix not yet opened as a CAPA.
+- **Ask on Monday:** "If someone in the room pushes for a tidier answer on what we don't know, what exactly do we say?"
+- **The trap:** giving a reassuring answer on encryption, or presenting the open change-notification clause as decided. Both are permanently unknown or undecided, and are stated that way every time.
+:::
+
 ## One invitation, not two
 
 The calendar invite lands with both names on the "required" line for the first time: your CIO
