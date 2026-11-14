@@ -1,0 +1,16 @@
+<!-- ISOE study layer loader: finds the site root from Quarto's own relative script paths,
+     then loads assets/study.css and assets/study.js on every page. Bump ?v= when they change. -->
+<script>
+(function () {
+  var v = '1';
+  var s = document.querySelector('script[src*="site_libs/quarto-nav/quarto-nav.js"]');
+  var root = s ? s.getAttribute('src').split('site_libs/')[0] : '';
+  window.ISOE_ROOT = root;
+  var l = document.createElement('link');
+  l.rel = 'stylesheet'; l.href = root + 'assets/study.css?v=' + v;
+  document.head.appendChild(l);
+  var j = document.createElement('script');
+  j.src = root + 'assets/study.js?v=' + v; j.defer = true;
+  document.body.appendChild(j);
+})();
+</script>
