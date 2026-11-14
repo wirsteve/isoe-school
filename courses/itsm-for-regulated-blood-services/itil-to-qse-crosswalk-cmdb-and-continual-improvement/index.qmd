@@ -3,6 +3,17 @@ title: "ITIL-to-QSE Crosswalk: CMDB and Continual Improvement"
 order: 117
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** map the CMDB to an equipment and validated-system inventory, the service catalog to the quality-system scope, and continual improvement to AABB's process improvement, using the eQMS as the live example.
+- **The punchline:** the Quality Analyst asked where the eQMS's CMDB entry shows its qualification status. There is no such field, so it was left blank on purpose. The catalog and scope statement also disagreed about document control at Fairview.
+- **The rule in one line:** AABB's QSE 3, Equipment, extends qualification to IT systems, and QSE 9 covers process improvement. Both are named and themed only.
+- **The IT lesson:** a CMDB entry proves a system is tracked, not that it is qualified. Keep the catalog and scope statement reconciled, and keep efficiency ideas separate from CAPAs.
+- **Ask on Monday:** "For each quality-relevant system, where is its qualification status recorded, and when was it last checked?"
+- **The trap:** assuming "it's in the CMDB" means it is documented well enough, or that the catalog and scope statement are the same document.
+:::
+
 ## The record with a blank where the important field should be
 
 Your systems administrator is doing something routine: adding the eQMS (electronic

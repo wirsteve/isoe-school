@@ -3,6 +3,17 @@ title: "ITIL-to-QSE Crosswalk: Change and Problem"
 order: 115
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** map ITIL change enablement onto Lakeshore's change control, and problem management onto CAPA, well enough to use in a real conversation with your CIO or exec quality council.
+- **The punchline:** a "low risk" vendor patch to the inventory-tracking system could have let a site pull expired stock. The systems administrator was told to write it up as a full change, not a patch-and-note.
+- **The rule in one line:** same discipline, narrower gate, stricter finish line. Quality is a required approver, not one CAB vote, and CAPA needs an effectiveness check, not just a tracked workaround.
+- **The IT lesson:** ITIL words are fine in conversation, but they never replace the regulated record's actual elements. The change-control process rests on 21 CFR 606.100(b) and AABB's Process Control QSE.
+- **Ask on Monday:** "Show me the dated Quality approval on our last change called standard, and any known error that has sat open for months."
+- **The trap:** treating a Quality Analyst on the CAB as Quality approval, or a known-error record as "being handled."
+:::
+
 ## The patch nobody thought twice about
 
 Your systems administrator stops by with what he clearly expects to be a thirty-second

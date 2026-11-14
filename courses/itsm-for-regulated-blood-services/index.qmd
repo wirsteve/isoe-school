@@ -3,6 +3,14 @@ title: "ITSM for Regulated Blood Services"
 order: 114
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+- This capstone course introduces nothing new. It shows that ITIL, AABB's Quality System Essentials, NIST's Risk Management Framework and ISO 27001 were never separate languages.
+- Six modules crosswalk change and problem management to change control and CAPA, then the CMDB, service catalog and continual improvement to equipment inventory, scope and process improvement, then to RMF and ISO 27001.
+- You then build one inspection-ready service catalog and CMDB entry for the eQMS, and learn to present IT service and risk performance to your CIO and the exec quality council without the story changing.
+- It matters to IT because the same vocabulary you already run daily can answer an FDA investigator, an AABB assessor and a security assessor.
+:::
+
 ## The finish line
 
 By the end of this course you can crosswalk any ITIL (Information Technology Infrastructure
