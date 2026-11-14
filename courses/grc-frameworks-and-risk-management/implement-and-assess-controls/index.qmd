@@ -184,16 +184,18 @@ that clear and one that carries a named gap forward.
 
 ```{mermaid}
 flowchart TD
-    E["Plasma-labeling event: BECS reference-table error,<br/>FFP printed as PF24, caught in label reconciliation"]
-    E --> R["Recall track — 7.46(a), module 2<br/>correct or remove the mislabeled product"]
-    E --> B["BPDR track — 606.171<br/>report the deviation to CBER"]
-    E --> I["Internal investigation — 606.171(f)<br/>Parts 211, 606, 820, whether or not reportable"]
-    B --> Q["Who: Lakeshore as the establishment, through Quality — 606.171(a)<br/>QA drafts, Quality signs and submits"]
-    Q --> F["How: Form FDA-3486 — 606.171(d)"]
-    F --> W{"Where: CBER — 606.171(e)"}
-    W -->|"(e)(2) electronic: CBER web-based application<br/>(this course's recommended default)"| X["BPD-0512 filed"]
-    W -->|"(e)(1) paper: CBER Document Control Center,<br/>envelope marked BPDR enclosed"| X
-    X --> C["Inside the 45-day clock — 606.171(c)"]
+    S["Select chose three control families<br/>for the eQMS"]
+    S --> I["Implement: build each one<br/>and write down how it operates<br/>(systems administrator)"]
+    I --> A1["Account and identity management"]
+    I --> A2["Audit and logging"]
+    I --> A3["Physical and environmental protection"]
+    A1 --> Q{"Assess: Quality Analyst, not the builder<br/>1. implemented correctly?<br/>2. operating as intended?<br/>3. desired outcomes?"}
+    A2 --> Q
+    A3 --> Q
+    Q -->|"Audit and logging: clears all three"| OK1["Cleared"]
+    Q -->|"Physical protection: clears all three"| OK2["Cleared"]
+    Q -->|"Account management: built and documented,<br/>first quarterly access review not yet run"| GAP["Named gap:<br/>implemented, not yet exercised"]
+    GAP --> N["Carried forward to<br/>authorize-and-monitor"]
 ```
 
 ## Watch it explained

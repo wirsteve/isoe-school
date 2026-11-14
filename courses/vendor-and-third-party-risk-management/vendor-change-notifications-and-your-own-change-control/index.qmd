@@ -163,16 +163,15 @@ This module's argument drawn as one picture: the quarterly email forces a single
 
 ```{mermaid}
 flowchart TD
-    F["The one fact: eQMS quarterly access-review control<br/>implemented and documented, first cycle not yet run<br/>(from poams-and-capas)"]
-    F --> CIO["10:00 CIO briefing<br/>operational exposure, no new cost or schedule impact,<br/>risk-register line"]
-    F --> QC["2:00 exec quality council<br/>time-bound control gap, not a nonconformance, not a CAPA,<br/>AABB/FDA audit-trail framing"]
-    CIO --> FIX
-    QC --> FIX
-    FIX["Identical in both: owner (systems administrator),<br/>date (30 days from authorization),<br/>closure rule (clean result closes it)"]
-    FIX --> CHK{"Read only owner, date, closure rule<br/>across both records: do they match?"}
-    CHK -->|Yes| OK["Same story, worded for each audience"]
-    CHK -->|No| BAD["The mismatch itself becomes the finding"]
-    FIX --> TRIG["Date missed: authorization reopened,<br/>CIO hears the same day"]
+    E["Quarterly vendor email: backend consolidation,<br/>'no expected disruption'"]
+    E --> Q{"Is the vendor reporting something that<br/>went wrong, or announcing a planned change?"}
+    Q -->|"Already went wrong"| R["BAA incident reporting<br/>164.314(a)(2)(i)(C) / 164.504(e)(2)(ii)(C)<br/>reactive: incident it becomes aware of"]
+    Q -->|"Planned change"| P["Needs a change-notification clause<br/>not a HIPAA requirement"]
+    P --> X["Current agreement: standard commercial terms<br/>plus thin DPA, no such clause apparent"]
+    L["Lakeshore change control and forward schedule:<br/>covers Lakeshore's own changes only"] -.-> X
+    V["Vendor ISO 27001 change management:<br/>vendor's internal process, not a promise to Lakeshore"] -.-> X
+    X --> G["Gap: no advance visibility<br/>of vendor changes"]
+    G --> D["Record a decision in the vendor's file:<br/>push for a clause at renewal,<br/>or accept the risk formally"]
 ```
 
 ## What a reviewer would actually look for

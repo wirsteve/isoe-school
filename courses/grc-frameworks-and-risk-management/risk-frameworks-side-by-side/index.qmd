@@ -257,18 +257,17 @@ names them.
 
 ```{mermaid}
 flowchart TD
-    A["Routine inspection: investigator presents credentials<br/>and written notice — 21 U.S.C. 374(a)(1)"]
-    A --> B["May inspect facility, equipment, labeling,<br/>records, files, processes, controls<br/>(BECS records, LAB-07 maintenance log, SOPs, training files)"]
-    A --> X["Off-limits: financial, pricing, sales (other than shipment),<br/>research data, personnel data<br/>(except staff qualifications) — 374(a)(1)"]
-    B --> C["Before leaving: written report of observations — 374(b)(1)<br/>FDA's form for it: Form FDA 483"]
-    C --> O1["Observation 1: no documented periodic<br/>fitness-for-use review (LAB-07's shape)"]
-    C --> O2["Observation 2: SOP revision implemented<br/>before final approval signature dated"]
-    O1 --> R["Lakeshore's written response<br/>and further FDA review"]
-    O2 --> R
-    R --> D{"Classification — FDA's call"}
-    D --> N["NAI: no violations identified"]
-    D --> V["VAI: violations, below the OAI threshold<br/>Director's working hypothesis: probably VAI"]
-    D --> OA["OAI: serious, repeated or deliberate noncompliance"]
+    M["eQMS planning meeting:<br/>one new system, two risk conversations"]
+    M --> QA["Quality Analyst:<br/>ICH Q9(R1) risk assessment<br/>of the CAPA cutover"]
+    M --> SA["Systems administrator:<br/>'the usual people have the usual access'<br/>no named process, nothing written"]
+    QA --> G["Gap: no shared framework,<br/>no record of why risk was accepted"]
+    SA --> G
+    G --> C["Compare the same motion in three vocabularies:<br/>NIST RMF, ISO 31000, ICH Q9(R1)"]
+    C --> D{"Which has one named,<br/>formal go-live decision?"}
+    D -->|"RMF: Authorize"| R["Borrow RMF's structure for the eQMS,<br/>voluntarily, not a legal requirement"]
+    D -->|"ISO 31000: no single gate"| K["Keep as comparison point"]
+    D -->|"ICH Q9: Risk Acceptance,<br/>quality risk only"| K2["Quality keeps running it"]
+    R --> S7["Seven steps, SP 800-37 Rev. 2:<br/>Prepare, Categorize, Select, Implement,<br/>Assess, Authorize, Monitor"]
 ```
 
 ## Watch it explained
