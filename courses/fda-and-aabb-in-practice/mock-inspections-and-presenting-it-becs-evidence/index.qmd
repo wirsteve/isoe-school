@@ -3,6 +3,17 @@ title: "Mock Inspections and Presenting IT/BECS Evidence"
 order: 79
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can put the whole course's evidence in front of a reviewer who is actually in the room, and finally resolve what is still open from the data-integrity course.
+- **The punchline:** a contracted consultant plays an FDA investigator in the morning and an AABB assessor in the afternoon. DED-0458's "accurate" letter is closed by an independent manual check. The deferred-donor record moves from monthly to weekly updates, as Lakeshore's own documented choice.
+- **The rule in one line:** the monthly update is a floor, not a target (606.160(e)(3)). Weekly is Lakeshore's own risk-based decision, not a regulatory requirement, and AABB expects policies "followed as written."
+- **The IT lesson:** this is a game day or tabletop for regulators. It tests whether the 483 response, the BPDR filing and the audit log tell the same story under questioning.
+- **Ask on Monday:** "What was the reviewer's hardest follow-up question, and where is the dated record behind our answer?"
+- **The trap:** "a mock session that finds nothing proves the program is solid." It may only mean the exercise wasn't pushed hard enough.
+:::
+
 ## One room, two reviewers, one day
 
 The real FDA inspection is closed out. The real AABB (Association for the Advancement of

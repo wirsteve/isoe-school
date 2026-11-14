@@ -3,6 +3,17 @@ title: "Donor recruitment and screening"
 order: 2
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can walk a donor from recruitment through registration, health history and the eligibility decision, and name the record that proves the decision was made correctly.
+- **The punchline:** Marcus Webb is deferred on Monday for low hemoglobin at one drive. On Thursday he registers at a different drive. The question is whether Lakeshore's system knows, at that site, that he was turned away.
+- **The rule in one line:** consult the deferred-donor records before collection (21 CFR 630.10(d)(1)), get proof of identity (630.10(g)(1)), do not collect from an ineligible donor (630.10(h)), and notify the donor within 8 weeks (630.40).
+- **The IT lesson:** donor identity and the deferral registry are master data, a single source of truth checked at registration. A name-only match is a coincidence, not a control.
+- **Ask on Monday:** "What identity fields do we capture at registration, and how soon is a deferral entered at one site visible at every other site?"
+- **The trap:** "the donor's name or own word is close enough to check the registry." The rule requires proof of identity and an actual registry check.
+:::
+
 ## The ticket
 
 Marcus Webb shows up at a Lakeshore Blood Center mobile drive parked outside a downtown

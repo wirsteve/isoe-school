@@ -3,6 +3,17 @@ title: "Collection and testing"
 order: 4
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can explain how Lakeshore finds every product from one donation, and what stops any of them moving, when a test result comes back reactive.
+- **The punchline:** a Tuesday donation is split into red cells, plasma and platelets while its sample tubes are still being tested. Wednesday one test is reactive, and all three products, in three different places, must be found and held.
+- **The rule in one line:** one donor number links the unit to every product (21 CFR 606.160(c)). Nothing is released or shipped before testing is complete except narrow exceptions (610.40(g)), and a reactive result bars shipment or use (610.40(h)(1)).
+- **The IT lesson:** quarantine is a release gate, not a sequencing rule. Status must follow the donation number everywhere the products sit, the moment a result posts.
+- **Ask on Monday:** "When a result posts reactive, how long until every product from that donation shows quarantined, wherever it physically is?"
+- **The trap:** "if components are already separated, testing must be done." Processing and testing run in parallel. The question is whether anything moved past quarantine.
+:::
+
 ## The ticket
 
 A whole blood unit is drawn from a donor at a Lakeshore Blood Center mobile site Tuesday

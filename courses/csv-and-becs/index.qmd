@@ -3,6 +3,20 @@ title: "Computerized System Validation & BECS"
 order: 40
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+- This course teaches you to pick up a validation package for BECS, or a system that touches it,
+  and judge whether it would hold up: the requirements, the IQ, OQ and PQ evidence, and the
+  traceability matrix.
+- FDA's medical-device quality rules bind your BECS vendor, not Lakeshore, unless you start
+  building BECS software yourself. Knowing why changes what you ask the vendor for.
+- It covers Part 11 controls, whether a vendor-supported BECS is still a closed system, and how to
+  stay validated through patches and periodic review.
+- It finally answers the open question about VIA-0842: were twelve targeted tests enough?
+- You won't be the validation engineer. You'll be the system owner who can tell a package that
+  proves something from one that only looks finished.
+:::
+
 ## The finish line
 
 By the end of this course you can pick up a validation package for BECS (Blood Establishment

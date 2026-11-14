@@ -3,6 +3,17 @@ title: "ALCOA and Data Integrity"
 order: 56
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can define data integrity the way FDA's own guidance does, separate ALCOA from the industry term ALCOA+, and apply the five letters to a real Lakeshore electronic record.
+- **The punchline:** the Quality Analyst starts DI-0301 with one BECS record, DED-0458, a donor-eligibility determination. Attributable and legible pass. Original passes with a nuance about printouts. Contemporaneous is a trap, because its timestamp comes from an unsynchronized workstation clock. Accurate is still open.
+- **The rule in one line:** data integrity means complete, consistent and accurate data that should be attributable, legible, contemporaneously recorded, original or a true copy, and accurate (FDA 2018 Data Integrity Q&A, Section III, Question 1a). It is guidance, not regulation.
+- **The IT lesson:** a timestamp field is a claim, not proof. The systems administrator must show clock synchronization to a trusted time source with a configuration record and a log.
+- **Ask on Monday:** "Are our BECS workstation clocks synchronized to a trusted time source, and where is the record that proves it?"
+- **The trap:** "FDA requires ALCOA+." FDA's guidance uses the five letters of ALCOA and never the term ALCOA+, which is industry and international practice.
+:::
+
 ## DI-0301 opens: one record, five letters
 
 Your Quality Analyst (QA) is starting something new. She's calling it **DI-0301**: a

@@ -3,6 +3,17 @@ title: "BECS in the pipeline"
 order: 10
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can point at every place BECS touches the blood pipeline, and say in two sentences to your CIO why it isn't governed like a normal enterprise application.
+- **The punchline:** a routine operating system patch is queued for the BECS server. The sysadmin calls it a standard change. The Quality Analyst rejects it until a validation impact assessment exists, because BECS gates whether blood is released, even when no BECS code is touched.
+- **The rule in one line:** software that performs a CGMP step inherits the written-procedure expectation (21 CFR 606.100(b)) and must show "consistent intended performance" (21 CFR 11.10(a)).
+- **The IT lesson:** BECS changes need Quality as a blocking approver. A BECS malfunction opens two tracks: the IT incident, and a separate deviation determination under 606.171 that closes only when Quality documents an answer.
+- **Ask on Monday:** "Is the validation impact assessment for this BECS change written down, and has Quality signed it before it goes to CAB?"
+- **The trap:** "it's just a patch, so it needs no review." Size and intent of the change are not the test. Effect on validated behavior is.
+:::
+
 ## The ticket
 
 Friday, 3:40 p.m. IT Operations has a routine patch queued for Monday night: a vendor-released

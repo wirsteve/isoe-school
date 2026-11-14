@@ -3,6 +3,17 @@ title: "IQ, OQ, PQ, and the Traceability Matrix"
 order: 43
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can read executed validation evidence cold, tell a test that could fail from one that never really tried, read a traceability matrix both ways, and catch a version mismatch a non-technical reviewer would miss.
+- **The punchline:** VAL-1203 comes back executed and says "validated and ready" while a deviation is still open. The review finds five gaps, one honest non-gap (OQ-142 failed, was logged, fixed and re-tested), and a Director-only catch: IQ-02 tested database version 14.3, but the change record shows 14.4.2 went live.
+- **The rule in one line:** a written plan must require validation before routine use, and after any change that could affect functions (21 CFR 211.68(a), as cited in FDA's guidance). IQ, OQ and PQ are industry vocabulary, not regulation.
+- **The IT lesson:** cross-check the IQ record against the CMDB and change record. The package shows what we claim we tested, and the CMDB shows what is actually running.
+- **Ask on Monday:** "For each Pass in the validation package, what result would have been a Fail, and does the tested version match what is in production?"
+- **The trap:** "The test passed, so the requirement is proven." A pass only means something if the test could have failed.
+:::
+
 ## VAL-1203 comes back executed
 
 Last module, VAL-1203's draft validation plan went back for revision: an untestable URS (user

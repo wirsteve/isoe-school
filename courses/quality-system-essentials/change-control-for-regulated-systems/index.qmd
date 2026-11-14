@@ -3,6 +3,17 @@ title: "Change control for regulated systems"
 order: 19
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can take any change to a regulated process, document, equipment or system through request, impact assessment, approval, implementation and verification, and name the record behind each step.
+- **The punchline:** the Quality Analyst has the right fix for the CAPA, a tracked distribution list with signed acknowledgments. She plans to email it to site leads and call it done. You tell her to write it up as a change, not a memo.
+- **The rule in one line:** procedures must be established, maintained and followed, and available where used (21 CFR 606.100(b)). The words "change control" do not appear in Part 606. The five-stage process comes from AABB's framework.
+- **The IT lesson:** it is change enablement with extras. Quality is a required approver, training and issuance finish before the effective date, and verification needs evidence, not "deployed without errors."
+- **Ask on Monday:** "Show me the request, the impact assessment and both approvals as separate dated records for this change."
+- **The trap:** "we already fixed it." A good fix made outside change control looks, on the record, like an uncontrolled change.
+:::
+
 ## The ticket
 
 Two weeks after the Brookfield binder gets swapped, your Quality Analyst is back with what

@@ -3,6 +3,17 @@ title: "Reviewing a validation package: the decision trail"
 order: 34
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can review a BECS validation impact assessment and test summary for scope, criteria set before testing, failures handled honestly and sign-offs in the right order, and you know where your judgment stops.
+- **The punchline:** VIA-0842, an OS patch package, reads clean. But the protocol was approved after testing ran, step 7 failed then passed with no note, and the patch went live on 11/11, a day before Quality's 11/12 approval.
+- **The rule in one line:** the obligation to control the system sits on "persons who use" it, so Lakeshore, not the vendor (21 CFR 11.10, introductory sentence). A vendor's compatibility statement is an input, not Lakeshore's own determination.
+- **The IT lesson:** this is a go-live readiness pack with stricter rules. Criteria are fixed first, retries get explained, Quality's approval blocks, and only you can check the deployment log.
+- **Ask on Monday:** "What did we check ourselves beyond the vendor's notes, and do the approval dates come before the deployment date?"
+- **The trap:** "the vendor said it was compatible, so we're covered." It never discharges Lakeshore's own duty.
+:::
+
 ## The ticket
 
 Six weeks after your sysadmin stood in your office asking why one server gets a three-week

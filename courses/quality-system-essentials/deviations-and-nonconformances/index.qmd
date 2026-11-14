@@ -3,6 +3,17 @@ title: "Deviations and nonconformances"
 order: 15
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can take an unplanned event from discovery through containment, impact assessment, product disposition and a documented reportability decision, and say when it needs a CAPA.
+- **The punchline:** during a BECS downtime, Brookfield checked donors against a printed deferred-donor list that was days old. Owen Pruitt, deferred two days earlier, donated, and his red cell unit shipped to Riverside General Hospital. Monday's reconciliation caught it.
+- **The rule in one line:** do not collect from a deferred donor (21 CFR 630.10(h)). A deviation from a regulation that may affect safety, purity or potency, involving distributed product, is reportable (606.171(b)(1)(i), (b)(3)), and the 45-day clock starts at discovery.
+- **The IT lesson:** a deviation looks like an incident but adds product disposition, a regulatory clock, and extent-of-condition. The IT ticket closes at restore. The quality track closes when Quality documents its determination.
+- **Ask on Monday:** "For this deviation, show me discovery date, containment, extent-of-condition, disposition and the 606.171 call, all in writing."
+- **The trap:** "we contained it, so it's closed." Containment answers one of the five questions.
+:::
+
 ## The ticket
 
 Monday, 7:50 a.m. Your Quality Analyst is standing in your doorway before you've finished your

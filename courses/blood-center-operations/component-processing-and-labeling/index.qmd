@@ -3,6 +3,17 @@ title: "Component processing and labeling"
 order: 6
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can explain how one donation becomes several products with different shelf lives, and read an ISBT 128 label well enough to say what each part means.
+- **The punchline:** overnight, a vendor update loaded a new product code table into BECS. About forty units then printed labels with a product code one revision behind. Nothing physical was wrong, none had shipped, but release-eligibility became uncertain.
+- **The rule in one line:** the label needs a machine-readable barcode that includes the product code (21 CFR 606.121(c)(13)), and each component has its own dating period (610.53(b)).
+- **The IT lesson:** a "routine data refresh" to a label-printing system is a change and needs change control. Keep a queryable record of which print jobs ran against which table version.
+- **Ask on Monday:** "Did the last vendor update to our labeling system go through the same change control as any other production change?"
+- **The trap:** "ISBT 128 is an FDA requirement." The regulation requires a CBER-approved machine-readable format and never names ISBT 128. That standard is industry practice, governed by ICCBBA.
+:::
+
 ## The ticket
 
 Wednesday, 6:40 a.m., shift handoff. Tuesday's donation — the one module 2 followed through

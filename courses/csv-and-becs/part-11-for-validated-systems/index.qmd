@@ -3,6 +3,17 @@ title: "Part 11 for Validated Systems"
 order: 49
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can say which Part 11 controls a BECS validation must prove the system enforces, and reason through the closed-versus-open-system question instead of answering it on reflex.
+- **The punchline:** the vendor's consultant asks for standing remote access to the central BECS server with no expiration. The answer is "it depends on how access is built": Lakeshore-granted, logged and revocable stays closed, while standing credentials with no logging drift toward open. Separately, the URS has no testable rows for out-of-sequence or unauthorized releases.
+- **The rule in one line:** a closed system is one where access is controlled by the people responsible for the records (21 CFR 11.3(b)(4)), and sequencing and authority checks must be proven with tests (11.10(f), 11.10(g)).
+- **The IT lesson:** this is IAM and PAM thinking applied to records. Ask who grants vendor access, who logs it, and who can revoke it. A policy saying "only authorized staff release" is not a test that tried to make BECS refuse.
+- **Ask on Monday:** "Who grants, logs and revokes the vendor's remote access, and where is the test that tried to release a component out of sequence or from the wrong role?"
+- **The trap:** "A vendor connecting remotely automatically makes BECS an open system." The test is who controls access, not whether an outsider can connect.
+:::
+
 ## The remote-access line in VAL-1203's statement of work
 
 The vendor's implementation consultant has a new ask for VAL-1203. Buried in a statement-of-work

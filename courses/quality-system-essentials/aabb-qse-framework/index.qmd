@@ -3,6 +3,17 @@ title: "The AABB quality system at a glance"
 order: 13
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can name the ten Quality System Essentials, place any quality activity in the right one, and say how the framework mirrors ISO 9001 and the ITIL practices you already run.
+- **The punchline:** at the closing meeting of Lakeshore's AABB survey, the assessor says she did not see the change-control process cross-referenced under Process Control. The label existed, but she could not find what was filed behind it.
+- **The rule in one line:** the QSEs are AABB's framework, not federal law. The only place FDA's text names AABB is 21 CFR 606.100(d), which permits AABB manuals as an SOP base if they are at least as stringent as Part 606.
+- **The IT lesson:** the QSEs are AABB's version of ITIL practices. Ask for the cross-reference index that maps SOPs and records to each QSE, not just the manual's table of contents.
+- **Ask on Monday:** "What is actually filed under each of the ten QSEs, and where is the cross-reference index?"
+- **The trap:** "the QSEs are an FDA requirement." They sit at the AABB Standard tier, enforced through accreditation.
+:::
+
 ## The ticket
 
 Your new Quality Analyst's first week ends with her handing you two things: an org chart

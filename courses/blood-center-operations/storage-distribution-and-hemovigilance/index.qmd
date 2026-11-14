@@ -3,6 +3,17 @@ title: "Storage, distribution, and hemovigilance"
 order: 8
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can follow a released unit through storage, shipping and the hospital transfusion service to the patient, and say what has to happen, and be reported, when something goes wrong.
+- **The punchline:** a unit of red cells ships to Riverside General Hospital in range and is transfused Friday night. Ten minutes in, the patient spikes a fever and the nurse stops the transfusion. Riverside investigates, and the question is what Lakeshore must still do.
+- **The rule in one line:** shipping temperature is set by 21 CFR 600.15, shipment and receipt must be traceable (606.165), and adverse reactions need a thorough investigation, with a copy forwarded to the collecting facility if the product was at fault (606.170(a)).
+- **The IT lesson:** the lot number and paired distribution and receipt records are your traceability control across the boundary into the hospital's LIS and HIS. Lakeshore's BECS stops at handoff.
+- **Ask on Monday:** "If a hospital's investigation finds our product at fault, what makes sure that report actually comes back to us?"
+- **The trap:** "once it ships, it's the hospital's problem." The forwarded report and a possible 606.171 determination still land on Lakeshore.
+:::
+
 ## The ticket
 
 Thursday, 3:15 p.m. A unit of leukoreduced Red Blood Cells — O positive, correctly separated,

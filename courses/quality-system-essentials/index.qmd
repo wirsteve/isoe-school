@@ -3,6 +3,15 @@ title: "Quality System Essentials"
 order: 12
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- By the end you can take a deviation from discovery all the way through a CAPA effectiveness check, and defend document control and change control to an AABB assessor or an FDA investigator.
+- Seven modules cover the AABB quality system, deviations, CAPA, change control, document control and records, quality risk management, and internal audits with management review.
+- You already run most of this under ITIL names: incident, problem, change and knowledge. The quality version asks for more, and the course gives you the names, records and expectations an assessor uses.
+- Modules 2 through 5 follow one event at Lakeshore from the day it is found to the day the fix is proven. Module 7 asks whether all of it is working.
+:::
+
 ## The finish line
 
 By the end of this course you can take a deviation from discovery all the way through a CAPA

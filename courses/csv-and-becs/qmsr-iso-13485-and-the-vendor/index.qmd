@@ -3,6 +3,17 @@ title: "QMSR, ISO 13485, and the Vendor"
 order: 47
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can say which quality rules bind BECS's manufacturer and which bind Lakeshore, and what to do with the vendor's quality-system paperwork: use it as a validation input.
+- **The punchline:** the CIO says Lakeshore must comply with the QMSR and ISO 13485 since February 2026. It does not. Meanwhile the vendor's anomaly list, with a label-reprint edge case at the satellite sites, sits unread in a folder, and whether the in-house script makes Lakeshore a manufacturer is routed to regulatory affairs, not guessed.
+- **The rule in one line:** Part 820 does not apply to manufacturers of blood and blood components, who answer to subchapter F instead (21 CFR 820.1(a)(3)). The vendor's special controls, including the anomaly list and traceability matrix, are in 864.9165(b).
+- **The IT lesson:** the vendor's unresolved-anomalies list is a known error database. Feed it into the risk assessment and test plan, and show a dated line proving you read it. It is an input and never a substitute for your own validation.
+- **Ask on Monday:** "Where in our risk assessment does the vendor's anomaly list show up, and who owns the written question to regulatory affairs about our in-house script?"
+- **The trap:** "Since the QMSR took effect, Lakeshore has to comply like any device-adjacent company." Blood manufacturers are excluded by name.
+:::
+
 ## Three threads on the same desk
 
 VAL-1203 keeps generating paperwork. This week it's the vendor's formal release package for

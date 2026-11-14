@@ -3,6 +3,17 @@ title: "Designing an Internal Audit Program"
 order: 77
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can build an internal audit program that holds up, with auditor independence and competency, risk-based scheduling, real evidence sampling and a nonconformance grading scale with teeth.
+- **The punchline:** the AABB reassessment succeeded, but LAB-07's fitness-for-use gap was found by outside tools before Lakeshore's own audits caught it. The audits happened, but nothing was built to find what nobody expected.
+- **The rule in one line:** every finding owes a thorough, recorded investigation, whatever its tier (21 CFR 606.100(c)). Independence, competency, sampling and grading are industry practice and Lakeshore's own design choices.
+- **The IT lesson:** this is a vulnerability-scanning program done properly. Tier assets by risk, qualify the scanners, define the sample, and make severity change what happens next.
+- **Ask on Monday:** "Why does Fairview sit on the same audit interval as Brookfield, and what exactly did the last sample look like?"
+- **The trap:** "whoever's free that week audits whatever's due." Availability never answers who is independent and qualified enough to find something real.
+:::
+
 ## The debrief nobody wanted to have
 
 The AABB (Association for the Advancement of Blood & Biotherapies) on-site assessor left

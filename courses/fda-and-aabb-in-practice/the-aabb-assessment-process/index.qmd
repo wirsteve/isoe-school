@@ -3,6 +3,17 @@ title: "The AABB Assessment Process"
 order: 75
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can walk Lakeshore through both phases of an AABB reassessment, self-assessment and on-site, and say what an assessor expects that an FDA investigator doesn't.
+- **The punchline:** in APEX, AABB's self-assessment tool rediscovers LAB-07's missing fitness-for-use documentation, a gap DI-0301 already found. The on-site visit produces one nonconformance, Lakeshore resolves it, and accreditation continues for two more years.
+- **The rule in one line:** AABB expects "all standards are addressed in policies, processes and procedures (PPPs), and that PPPs are followed as written." A written policy and dated proof it is followed are two separate tests.
+- **The IT lesson:** this is a voluntary certification like ISO 27001 or SOC 2. It is not a legal requirement, but a hospital customer like Riverside General may demand it by contract.
+- **Ask on Monday:** "For this gap, show me the written procedure and the dated evidence it was actually followed."
+- **The trap:** "AABB isn't legally required, so losing it doesn't matter." It isn't a legal requirement, but the business consequences are real.
+:::
+
 ## A different kind of visitor, on a different kind of clock
 
 BPD-0512 is filed. The 483 response is sitting with FDA. And now a third thing lands on your

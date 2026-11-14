@@ -3,6 +3,17 @@ title: "Filing a Biological Product Deviation Report"
 order: 73
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can finish the job after the reportability call by filing the BPDR itself, on the right form, to the right office, in the right window.
+- **The punchline:** a BECS reference-table error printed one plasma lot with the wrong subtype, and the lot reached a hospital. The Quality Analyst knows it is reportable but not how to file. It becomes BPD-0512, filed electronically with CBER inside the 45-day clock, alongside the recall.
+- **The rule in one line:** report on Form FDA-3486 (606.171(d)) to CBER, on paper or electronically (606.171(e)), within 45 calendar days (606.171(c)). The establishment files, through Quality (606.171(a)).
+- **The IT lesson:** like a breach notification, the filing is separate from the remediation. Recipient and format are fixed by regulation, not negotiable.
+- **Ask on Monday:** "Which channel did we file through, on what date, and where is the separate internal investigation?"
+- **The trap:** "we filed the recall, so the BPDR is covered," or "it isn't reportable, so we're done." Both are wrong, because 606.171(f) still requires an investigation.
+:::
+
 ## The form that's still blank
 
 The plasma-labeling event is a week old. Your Quality Analyst (QA) walked you through it in

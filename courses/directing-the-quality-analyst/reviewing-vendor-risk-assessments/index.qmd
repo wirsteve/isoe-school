@@ -3,6 +3,17 @@ title: "Reviewing a vendor risk assessment: the decision trail"
 order: 36
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can check whether your Quality Analyst's vendor risk assessment covers the service Lakeshore actually buys and the risk that triggered the review, and whether someone with authority owns the risk decision.
+- **The punchline:** VRA-0219 reassesses the BECS vendor on change notification. The vendor's questionnaire says it notifies customers in advance, but Lakeshore's own record, DEV-1147, shows a 01:58 a.m. push with no notice.
+- **The rule in one line:** the obligation to control the system sits on "persons who use" it (21 CFR 11.10, introductory sentence). A vendor's word about itself never discharges it.
+- **The IT lesson:** this is the vendor questionnaire and SOC 2 review you already do, with two additions. Tier by what the software does, not the vendor's reputation, and give quality and security separate owners.
+- **Ask on Monday:** "What do our own records say about this claim, and who by name accepted the residual risk?"
+- **The trap:** trusting a vendor's self-attestation without checking Lakeshore's own records.
+:::
+
 ## The ticket
 
 CAPA-1147-A (corrective and preventive action, the record from `reviewing-deviations-and-capas`

@@ -3,6 +3,17 @@ title: "FDA Inspection Authority and Outcomes"
 order: 69
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can name what FDA's inspection authority lets an investigator do and ask for, explain what Form FDA 483 is and isn't, and name the three outcomes an inspection can end in.
+- **The punchline:** a routine inspection arrives, and the investigator leaves a 483 with two documentation observations, one matching LAB-07's known gap. No patient harm is involved, so the Director's working hypothesis is probably VAI. FDA makes the final call.
+- **The rule in one line:** the investigator may inspect records, files, processes and controls, but not financial, pricing, sales (other than shipment), research or most personnel data (21 U.S.C. 374(a)(1)). Congress sets that scope, not a negotiation.
+- **The IT lesson:** it looks like an external audit, but the scope is set by statute. BECS records, audit trails and access lists are all fair game.
+- **Ask on Monday:** "If an investigator walked in today, who is our single point of contact for records, and what known gaps would we tell them about first?"
+- **The trap:** "a 483 means we failed." It is one investigator's judgment before Lakeshore responds, and the three outcomes are NAI, VAI and OAI.
+:::
+
 ## The knock on the door
 
 An FDA (Food and Drug Administration) investigator is in Lakeshore's lobby. No surprise
