@@ -3,6 +3,17 @@ title: "Reading an ISO 27001 Certificate"
 order: 108
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** read a vendor's ISO 27001 certificate and Statement of Applicability for what they actually certify and what they leave out.
+- **The punchline:** The Quality Analyst thought the two-page certificate was basically the SOC 2 report. It is a different claim. It certifies a management process, and only its stated scope and the Statement of Applicability say what it covers.
+- **The rule in one line:** The certificate attests to an information security management system, not every control and not zero incidents. ISO/IEC 27001 is described here in our own words, never quoted.
+- **The IT lesson:** It is like a change advisory board that meets on schedule, which is not the same as every change being good. Check that the scope names your product, then check change management, supplier relationships and asset management.
+- **Ask on Monday:** "Does the certificate's scope name the exact product we use, and have we asked for the Statement of Applicability?"
+- **The trap:** "ISO 27001 certified means the whole company is covered." Scope decides what is covered.
+:::
+
 ## "It's just a PDF with a seal on it"
 
 Your Quality Analyst (QA) has the SOC 2 report closed on one monitor and a different document open

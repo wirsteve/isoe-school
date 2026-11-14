@@ -3,6 +3,17 @@ title: "POA&Ms and CAPAs"
 order: 90
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** write the eQMS's one open item as a tracked POA&M entry, and say honestly what a POA&M shares with a CAPA and where they differ.
+- **The punchline:** Four days after go-live, the Quality Analyst pointed out that the 30-day commitment lived only in meeting minutes. The team wrote a POA&M entry with the finding, action, owner, 30-day date, Director review and a closure rule.
+- **The rule in one line:** A POA&M lists the tasks, resources, milestones and completion dates, is reviewed by the authorizing official, and is used to monitor progress (NIST SP 800-37 Rev. 2, Ch. 3, Task A-6).
+- **The IT lesson:** This is problem management. A known gap needs a record with an owner and a date. POA&M and CAPA are that same discipline in two vocabularies.
+- **Ask on Monday:** "For every risk we accepted with a fix date, where is the tracked record with an owner, a date and a closure rule?"
+- **The trap:** "A POA&M and a CAPA are the same form." CAPA requires root cause and a pre-agreed effectiveness check. Task A-6 asks for neither.
+:::
+
 ## "Write it down the way we'd write down a CAPA"
 
 Four days after the eQMS (electronic quality-management system) go-live meeting, your Quality

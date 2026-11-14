@@ -3,6 +3,17 @@ title: "Supplier Qualification and Risk Tiering"
 order: 104
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** build a reasoned, reusable High, Medium and Low tiering scheme so each vendor gets the scrutiny its exposure earns.
+- **The punchline:** The Quality Analyst found no vendor file at all for the device-management vendor. Four questions put it at High. A reagent supplier landed at Medium, and the facilities and office-supplies vendors at Low.
+- **The rule in one line:** AABB expects supplier qualification as a recorded decision (QSE 4, "Supplier and Customer Issues"). It is a named theme only, with no verified standard number to cite.
+- **The IT lesson:** This is ITIL supplier management. Tier by data touch, system criticality, access level and blast radius, which describe exposure and not trust.
+- **Ask on Monday:** "Which of our vendors have no recorded tier, and what would the four questions say about each one?"
+- **The trap:** "We've used this vendor forever, so they must be low-risk." Tenure and track record are not inputs to the tier.
+:::
+
 ## "Who actually qualified this vendor?"
 
 Your Quality Analyst (QA) asks it the way she asks every question that's about to be

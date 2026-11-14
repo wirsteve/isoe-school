@@ -3,6 +3,17 @@ title: "Categorize and Select Controls"
 order: 84
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** size the eQMS's controls to how bad a failure would actually be, by deciding its impact first and then selecting and tailoring controls to match.
+- **The punchline:** The Quality Analyst asked whether anyone would know if a closed CAPA record were altered, whether another site could see open CAPAs, and what to hand an assessor if the eQMS were down. Those three questions became Categorize, and the answer was moderate-impact.
+- **The rule in one line:** Ask how bad a loss of confidentiality, integrity or availability would be, separately for each, then select an initial set of controls and tailor it (NIST SP 800-37 Rev. 2, §3.2 and Ch. 2).
+- **The IT lesson:** This is service classification. You decide whether a service is Tier 1 or Tier 3 before you set its SLA, change rigor or monitoring depth.
+- **Ask on Monday:** "For each control we propose on this system, which of confidentiality, integrity or availability does it protect?"
+- **The trap:** "Categorize is about how complex the system is." It is about the impact if the system fails.
+:::
+
 ## The CAPA record nobody can find
 
 Three weeks after the planning meeting that closed out the last module, you're sitting in a

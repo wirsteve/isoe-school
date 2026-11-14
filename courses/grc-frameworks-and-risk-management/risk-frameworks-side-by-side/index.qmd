@@ -3,6 +3,17 @@ title: "Risk Management Frameworks Side by Side"
 order: 82
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** see that NIST RMF, ISO 31000 and ICH Q9 are the same motion in three vocabularies, and why Lakeshore borrows RMF's structure for the eQMS.
+- **The punchline:** The Quality Analyst wanted an ICH Q9 risk assessment for the eQMS cutover. The systems administrator said he would make sure "the usual people have the usual access." Two risk conversations, no shared framework, so Lakeshore chose RMF voluntarily.
+- **The rule in one line:** RMF has seven steps, from Prepare to Monitor, and Authorize is the one named decision point where a person says the risk is acceptable (NIST SP 800-37 Rev. 2, Ch. 2).
+- **The IT lesson:** Think of Service Design, Service Transition and Continual Improvement applied to risk decisions. A documented go-live decision lets you answer "why" six months later.
+- **Ask on Monday:** "For our newest system, who decided its risk was acceptable, and where is that written down with a date?"
+- **The trap:** "We use RMF now, so it is a regulatory requirement." Lakeshore borrows its structure voluntarily.
+:::
+
 ## Three risk conversations, one new system
 
 The eQMS (electronic quality-management system) project has a name, a budget line, and — as of

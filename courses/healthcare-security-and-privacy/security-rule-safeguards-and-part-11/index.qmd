@@ -3,6 +3,17 @@ title: "Security Rule Safeguards and Part 11"
 order: 97
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** work out what the Security Rule actually required of the laptop's encryption, and compare its safeguards honestly with Part 11.
+- **The punchline:** The Quality Analyst asked if encryption was required. It is Addressable, and Lakeshore's full-disk policy was sound. But a migration left this laptop's status "not reported," so nobody can confirm it ran. That is a verification gap, not a breach finding.
+- **The rule in one line:** Addressable means assess, then implement or document why not and use an equivalent (45 CFR 164.306(d)(3)). Encryption is Addressable (164.312(a)(2)(iv)). Regular review of system activity is Required (164.308(a)(1)(ii)(D)).
+- **The IT lesson:** A policy proves intent, and a device's own status log proves compliance. Treat an "unknown" status field as a finding the moment you see it.
+- **Ask on Monday:** "For our laptops, can we show per device that encryption is on, and who reviews the status reports?"
+- **The trap:** "Addressable means optional." The assess-and-document process is mandatory.
+:::
+
 ## "Was that a Required control, or an Addressable one?"
 
 Your Quality Analyst (QA) is back, and she's narrowed the question. The minimum-necessary finding

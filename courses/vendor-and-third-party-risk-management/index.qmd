@@ -3,6 +3,15 @@ title: "Vendor & Third-Party Risk Management"
 order: 103
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- This course aims scrutiny outward at vendors, using the device-management platform behind the Brookfield incident as its running example.
+- You tier vendors by exposure, then read a SOC 2 report and an ISO 27001 certificate for what each covers and what it leaves out.
+- You walk what HIPAA requires a Business Associate Agreement to say, and separate a vendor's duty to report incidents from any duty to warn you of changes in advance.
+- For IT, it shows that a vendor's assurance documents are evidence and not a contract, and that your own change control does not govern the vendor's.
+:::
+
 ## The finish line
 
 By the end of this course you can read a SOC 2 report and an ISO 27001 certificate or Statement

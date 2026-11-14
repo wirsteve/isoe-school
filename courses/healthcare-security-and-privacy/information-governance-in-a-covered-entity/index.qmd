@@ -3,6 +3,17 @@ title: "Information Governance in a Covered Entity"
 order: 93
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** decide whether Lakeshore is a HIPAA covered entity and whether BECS donor data is PHI, so the rest of the course and the incident have a footing.
+- **The punchline:** A Brookfield staff member left a laptop holding a roughly 212-donor BECS extract in a shared ride. Nobody could say whether HIPAA applied at all. The reasoning concluded Lakeshore is a covered entity, as a working premise and not a verified fact.
+- **The rule in one line:** A health care provider that transmits health information electronically in connection with a covered transaction is a covered entity (45 CFR 160.103, clause (3)). Donor eligibility data held in BECS is PHI.
+- **The IT lesson:** Like a CMDB, you apply the definition to what you actually have. You do not assume the answer either way.
+- **Ask on Monday:** "Where is our written covered-entity determination, who reviewed it, and when do we revisit it?"
+- **The trap:** "We're a blood center, not a hospital, so HIPAA doesn't apply to us." The billing and transmission facts decide it.
+:::
+
 ## A laptop that isn't where it should be
 
 Your Quality Analyst (QA) catches you between meetings. A Brookfield-based staff member — part

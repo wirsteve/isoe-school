@@ -3,6 +3,17 @@ title: "Investigating a Healthcare Data Incident"
 order: 101
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** investigate the laptop incident as far as a real investigation can go, rank the root causes, and re-run the four-factor test to a final determination.
+- **The punchline:** Four leads (enrollment logs, check-in history, the vendor, and the network log plus an interview) all came up empty on whether encryption was active. The breach determination stayed final, and Lakeshore can now show it looked.
+- **The rule in one line:** The presumption of breach stands unless rebutted (45 CFR 164.402(2)). Lakeshore carries the burden of proof, so the file must show what it tried (164.414(b)).
+- **The IT lesson:** This is problem management. Keep digging after the fire is out. The top root cause was deployment sequencing, so no new device should leave the building before its first encryption attestation is confirmed.
+- **Ask on Monday:** "Can any newly enrolled device leave the building before its first compliance check has completed and been confirmed?"
+- **The trap:** "We couldn't resolve it, so the investigation failed." A documented, explained dead end is a successful investigation.
+:::
+
 ## "Go find out. Actually find out."
 
 That's what you told the systems administrator three modules ago, when `breach-notification-and-

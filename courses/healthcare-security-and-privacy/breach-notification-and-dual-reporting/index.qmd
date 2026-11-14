@@ -3,6 +3,17 @@ title: "Breach Notification and Dual Reporting"
 order: 99
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** run the lost-laptop incident through the four-factor breach test and work out who must be notified and when, including whether FDA's BPDR is also triggered.
+- **The punchline:** The Brookfield laptop is missing and its encryption status reads "not reported." None of the three exclusions fit and no factor rebuts the presumption. About 212 donors are treated as a breach, provisionally, and no BPDR is triggered.
+- **The rule in one line:** An impermissible use or disclosure is presumed a breach unless Lakeshore shows a low probability of compromise (45 CFR 164.402). Individuals must be notified within 60 calendar days of discovery (164.404(b)).
+- **The IT lesson:** This is major incident management with a federal test and clock written in. Contain, assess, notify the people affected, and notify the authority.
+- **Ask on Monday:** "For this incident, which of the four factors is still unresolved, and what date does our 60-day clock end?"
+- **The trap:** "We don't know for sure, so we'll wait." An unresolved factor does not pause anything, and the burden of proof sits on Lakeshore (164.414(b)).
+:::
+
 ## "So — is it a breach?"
 
 Your Quality Analyst (QA) is in your office with the systems administrator, and for once

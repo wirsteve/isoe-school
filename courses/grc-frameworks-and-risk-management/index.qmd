@@ -3,6 +3,16 @@ title: "GRC Frameworks & Risk Management"
 order: 81
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- This course runs a system through RMF's categorize, select, implement, assess, authorize and monitor steps, using the eQMS as the running example.
+- RMF is borrowed voluntarily from NIST. It is built for U.S. federal systems and is never a legal requirement for Lakeshore.
+- The same motion appears in ICH Q9, in ISO 31000, and in a validation release followed by periodic review, so one vocabulary covers quality, security and validation.
+- The course ends by tracking open gaps on a POA&M next to a CAPA: a known gap, a plan, an owner and a date.
+- For IT, it turns go/no-go gates and known errors into a risk decision someone signs and a record that survives a staff change.
+:::
+
 ## The finish line
 
 By the end of this course you can run a system or process through a full

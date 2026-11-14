@@ -3,6 +3,17 @@ title: "Implement and Assess Controls"
 order: 86
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** build the controls Select chose, write down how each one works, and have someone who did not build them check that they work.
+- **The punchline:** The systems administrator reported all three control families built, but the first quarterly access review had not run. The Quality Analyst's independent check cleared audit/logging and physical protection. She named the access review as implemented and documented but not yet exercised.
+- **The rule in one line:** Implement the controls and describe how they are employed. Assess whether they are implemented correctly, operating as intended, and producing the desired outcomes (NIST SP 800-37 Rev. 2, Ch. 2).
+- **The IT lesson:** Implement is change implementation. Assess is the post-implementation validation a mature change process never skips, run by someone other than the builder.
+- **Ask on Monday:** "Who other than the builder checked this control, and where is the written description of how it operates?"
+- **The trap:** "The person who built it is the best person to confirm it works." Independence is the only way a gap like an unrun review gets found.
+:::
+
 ## The schedule that said "quarterly" and the review that never ran
 
 Six weeks after the Select conversation that closed out the last module, you're back with your
