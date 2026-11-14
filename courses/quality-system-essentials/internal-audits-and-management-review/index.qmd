@@ -3,6 +3,17 @@ title: "Internal audits and management review"
 order: 25
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can explain what internal assessments do inside the quality system, what management review has to do with their results, and judge whether a management-review packet shows a quality system that works.
+- **The punchline:** an internal audit at Fairview finds the site lead's acknowledgment on file but the old SOP revision still in the binder. Days later, the draft management-review packet lists accurate counts but no trends, no effectiveness data and no decisions.
+- **The rule in one line:** a thorough, recorded investigation of any discrepancy is required (21 CFR 606.100(c)), however it was found. Audit programs and management review are AABB framework, not Part 606 text.
+- **The IT lesson:** an audit finding is a deviation through a different door and runs the same five stages. Management review is real only if it produces documented decisions and resource commitments.
+- **Ask on Monday:** "What did the last management review actually decide, and who owns each decision?"
+- **The trap:** "management review is a status update," or treating an audit-found deviation more leniently than one an outsider caught.
+:::
+
 ## The ticket
 
 Three weeks after your Quality Analyst's FMEA (Failure Mode and Effects Analysis) scored

@@ -3,6 +3,17 @@ title: "Reading a CFR citation"
 order: 1
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can take apart any CFR citation in this curriculum, say what it requires, and judge whether a proposed fix fits the rule.
+- **The punchline:** a Quality Analyst forwards a deviation where red cells sat at the wrong temperature for four hours. The fix says "retrain staff on 606.160," which stops short of what the records rule actually requires.
+- **The rule in one line:** 21 CFR 606.160(b)(3)(iii) requires storage temperature records, "including initialed temperature recorder charts," and 606.160(d) sets retention at 10 years after processing or 6 months past the latest expiration date, whichever is later.
+- **The IT lesson:** a citation is an address. Part, section, paragraph and sub-paragraph each narrow it, and a requirements trace that stops at "606.160" has not traced anything. One system can sit under several Parts at once.
+- **Ask on Monday:** "Which paragraph of that section are you citing?"
+- **The trap:** "Part 606 is the blood regulation," or treating guidance as a regulation. Part 606 is one program, and "should" is not "shall."
+:::
+
 ## The ticket
 
 A Quality Analyst at Lakeshore Blood Center forwards you a deviation report. A unit of red

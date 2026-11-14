@@ -3,6 +3,21 @@ title: "Data Integrity & Records"
 order: 55
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+- This course takes you through a data-integrity self-assessment of Lakeshore's records, called
+  DI-0301, covering BECS, a paper donor file at one satellite site, an aging instrument and the
+  cumulative deferred-donor record.
+- You learn to apply ALCOA to a real electronic record, review audit trails the way an inspector
+  would, and judge e-signatures against the specific Part 11 controls.
+- You also learn what a predicate rule is, how to handle paper and electronic hybrids and legacy
+  systems, and what retention really requires beyond the product-record clock.
+- It ends on multi-site governance: keeping one donor's identity and deferral status consistent
+  across every location.
+- The payoff for IT is knowing what evidence to ask for, such as logs, configurations and dated
+  reviews, instead of accepting a policy statement.
+:::
+
 ## The finish line
 
 By the end of this course you can apply ALCOA+ to a real electronic record, explain Part 11's

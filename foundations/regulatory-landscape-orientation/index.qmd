@@ -3,6 +3,17 @@ title: "Regulatory landscape orientation"
 order: 3
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can sort any rule into statute, FDA regulation, FDA guidance or AABB Standard, and say which one actually binds Lakeshore.
+- **The punchline:** a draft SOP says a confirmatory testing step is required by FDA regulation, FDA guidance and AABB Standards. The vendor says it is "just guidance" and wants to cut it. Both are partly wrong.
+- **The rule in one line:** 21 CFR 606.100(b)(22) requires a written procedure to control bacterial contamination risk. The specific testing step comes from FDA guidance, which is not law but needs a documented reason if you skip it.
+- **The IT lesson:** this is the SOX, ITIL and contract sort you already do. Split any bundled citation before it reaches your CAB, and ask which body is asking.
+- **Ask on Monday:** "Which of these is the regulation, which is guidance, and which is an AABB Standard?"
+- **The trap:** "guidance is optional." Skipping it silently is a finding. Another trap is judging a rule's tier by one word like "should," when the tier comes from where the rule lives.
+:::
+
 ## The ticket
 
 Lakeshore Blood Center is upgrading its Blood Establishment Computer Software (BECS — the

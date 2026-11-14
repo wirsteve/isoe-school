@@ -3,6 +3,17 @@ title: "Predicate Rules and Hybrid Systems"
 order: 60
 ---
 
+::: {.callout-tip appearance="simple"}
+## The short version
+
+- **Finish line:** you can explain what a predicate rule is and how it decides whether a record is a Part 11 record, and judge whether a mixed paper and electronic system is handling that defensibly.
+- **The punchline:** the Quality Analyst settles two threads. The live BECS record for DED-0458 stays the original, with printouts as convenience copies. At Fairview nobody had decided whether the paper donor file or the BECS entry was the record of record, so the SOP now names paper as the record and BECS as a reporting copy.
+- **The rule in one line:** Part 11 rides on a predicate rule. It applies when you choose electronic records in place of paper and rely on them, and FDA recommends deciding and documenting that in advance (21 CFR 11.2(a), 2003 guidance § III.B.1 and § III.B.2).
+- **The IT lesson:** this is the CMDB versus the old spreadsheet. Designate the authoritative source in writing, and treat the other as a convenience view.
+- **Ask on Monday:** "For each record we keep in two formats, which one do we actually rely on, and where is that written down?"
+- **The trap:** "Keeping a record in two formats is safer than one." Two formats with no documented authority is ambiguity waiting for the copies to disagree.
+:::
+
 ## DI-0301 continues: two threads about one question
 
 Your Quality Analyst (QA) is back with the next piece of **DI-0301**, her data-integrity
