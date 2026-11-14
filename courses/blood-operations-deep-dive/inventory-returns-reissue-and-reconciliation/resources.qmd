@@ -23,7 +23,7 @@ External links for this lesson. Every link below was checked with `curl` on 2026
 
 ## Video note
 
-No video embed for this module. Searched for blood inventory management, returned and reissued blood products, and transfusion service inventory. The results were equipment vendors' product videos and local policy documents. Nothing both specific enough and independently verifiable from a regulator, professional society, news or educational channel was found.
+- **[060CE: Transforming Inventory Management with Nancy Dunbar](https://www.youtube.com/watch?v=bdZtphRKtBI)** (Blood Bank Guy (D. Joe Chaffin MD)) — an interview on transfusion-service inventory management, from a transfusion-medicine educator's channel.
 
 ## Related lessons in this curriculum
 

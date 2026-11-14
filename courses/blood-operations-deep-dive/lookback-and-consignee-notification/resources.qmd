@@ -23,7 +23,7 @@ order: 193
 
 ## Video note
 
-No video embed for this module. Searched for a hepatitis C lookback explainer, a transfusion-transmitted infection lecture and an FDA blood-donor testing video. The results were regulatory documents and journal articles. Nothing both on topic and independently verifiable from a regulator, professional society, news or educational channel was found, so no video was embedded and none was verified with oEmbed.
+- **[Transfusion-Transmitted Infections](https://www.youtube.com/watch?v=03mugUc-tlE)** (Centers for Disease Control and Prevention (CDC)) — a general overview of transfusion-transmitted infections from CDC. It does not cover the lookback procedure itself.
 
 ## Related lessons in this curriculum
 

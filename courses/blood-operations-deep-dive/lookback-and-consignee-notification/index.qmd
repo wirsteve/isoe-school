@@ -346,7 +346,13 @@ flowchart TD
 
 ## Watch it explained
 
-No video embed for this module. Searches for a lookback, hepatitis C transfusion-transmission or transfusion-transmitted infection explainer from a regulator, professional society, news or educational channel returned documents and journal articles, and no verifiable on-topic video. Nothing was embedded rather than embed a weaker one. The diagram and the primary text carry the lesson, and the resources page lists the FDA's own rule-making record.
+A CDC video titled "Transfusion-Transmitted Infections". It is a general video on the topic, not specifically about lookback, consignee notification or Lakeshore's scenario, so use it as background on why lookback exists and rely on the lesson and the FDA rule-making record for the process itself.
+
+::: {.video-embed}
+<iframe src="https://www.youtube-nocookie.com/embed/03mugUc-tlE" title="Transfusion-Transmitted Infections" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+*Centers for Disease Control and Prevention (CDC), on YouTube. Title checked against YouTube's oEmbed record on 2026-11-14.*
 
 ## Lookback is not a recall
 

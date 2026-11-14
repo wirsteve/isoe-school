@@ -38,7 +38,7 @@ External links for this lesson. Each was loaded with `curl` on 2026-11-13 and th
 
 ## The video
 
-No video embed for this module. A search for a video on platelet bacterial contamination or transfusion sepsis returned vendor-sponsored webinars (commercial pathogen-reduction company pages) and written articles, and no public YouTube video from a regulator, professional society or academic channel that was specific to the topic and passed an oEmbed check. Nothing was embedded.
+- **[076: FDA Platelet Bacteria Guidance with Pat Kopko](https://www.youtube.com/watch?v=sMk4p9Jaavk)** (Blood Bank Guy (D. Joe Chaffin MD)) — an interview on FDA's platelet bacterial risk control guidance, from a transfusion-medicine educator's channel.
 
 ## Earlier lessons this one builds on
 
