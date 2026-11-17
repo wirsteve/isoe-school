@@ -109,12 +109,10 @@ the newest lessons:
   - vendor `vendor-change-notifications-and-your-own-change-control`
 - **Videos**
   - Before: 9 lessons had none.
-  - Now: 5 have a verified video.
-  - Four still honestly have none, after a second search:
-    - `mobile-collections-and-offline-systems`
-    - `program-data-feeds-and-reporting`
-    - `reds-structure-contracts-and-governance`
-    - `security-expectations-for-research-data`
+  - Now: all 92 have a verified video. Five were added on 2026-11-14 and the last four on 2026-11-17,
+    using a wider bar of reputable concept explainers (Computerphile, USENIX SREcon, NIH Fogarty,
+    NIH Funding). Each lesson's framing says when its video is general rather than blood-center
+    specific.
 - **Resources and Keep learning:** present everywhere.
 
 To re-run the parity audit, check each `courses/*/*/index.qmd` and `foundations/*/index.qmd` for:
@@ -124,3 +122,21 @@ To re-run the parity audit, check each `courses/*/*/index.qmd` and `foundations/
 - a ```{mermaid} block whose words overlap the lesson text (a score below about 0.8 means suspect)
 - a `video-embed` or an honest "no video" note
 - a resources.qmd with a "## Keep learning" section
+
+## Parity retrofit, round 2 (2026-11-17)
+
+- **One question format everywhere.** The 9 questions in the two HRSA lessons that used `**Qn.**` +
+  `## Answer` were converted to `## Qn:` callouts. The wording is identical, so review history keyed
+  to the question text carries over.
+- **Length.** The audit showed that older lessons are not longer than newer ones (most run 3–4.5k
+  words of prose). The outliers were three release-management lessons over the 5,000-word cap:
+  - `ci-cd-pipelines-under-gxp`: 6,119 words before, 4,655 after
+  - `release-management-deployment-and-change-control`: 5,422 before, 4,661 after
+  - `risk-based-testing-and-regression`: 5,204 before, 4,661 after
+
+  Detail passages were folded verbatim into collapsed "Go deeper" boxes. A verbatim check confirmed
+  that stripping the box markup returns the original text exactly.
+- **Narrator (loader v2).**
+  - Collapsed boxes that aren't quiz answers ("Go deeper") are now read aloud, and opened as they're
+    read.
+  - Quiz answers stay hidden unless "Read answers" is on.

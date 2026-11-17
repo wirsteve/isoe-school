@@ -268,12 +268,15 @@ paper's architecture; how the hub mediates it is an agreement detail we haven't 
 
 ## Watch it explained
 
-There's no embeddable video on REDS governance. The closest primary source is NIH's own recording
-of the [NHLBI and OASH State of the Science in Transfusion Medicine Symposium 2022 (Day 2)](https://videocast.nih.gov/watch=46109)
-on NIH VideoCast: NHLBI's transfusion-research community discussing priorities in the field REDS
-works in. It's a long symposium, not a REDS explainer, and it isn't on YouTube, so it's linked rather
-than embedded; skim the agenda for the sessions that interest you. The resources page also lists a
-podcast transcript with the paper's own authors.
+The video below is "Introduction to NIH and Fogarty extramural grants" from the Fogarty International Center at NIH channel. It is an NIH introduction to how NIH funds outside research through its extramural grants. It is general, not about REDS or transfusion medicine, and by its title it is about grants rather than contracts. For NHLBI's transfusion-research community, see the NIH VideoCast symposium recording listed on the resources page.
+
+::: {.video-embed}
+<iframe src="https://www.youtube-nocookie.com/embed/P6e2PK8ELis" title="Introduction to NIH and Fogarty extramural grants" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+*Fogarty International Center at NIH, on YouTube. Title checked against YouTube's oEmbed record on 2026-11-17.*
+
+For the transfusion-research side, NIH's own recording of the [NHLBI and OASH State of the Science in Transfusion Medicine Symposium 2022 (Day 2)](https://videocast.nih.gov/watch=46109) on NIH VideoCast shows NHLBI's transfusion-research community discussing priorities in the field REDS works in. It's a long symposium, not a REDS explainer, and it isn't on YouTube, so it's linked rather than embedded. The resources page also lists a podcast transcript with the paper's own authors.
 
 ## What an assessor or auditor would look for
 

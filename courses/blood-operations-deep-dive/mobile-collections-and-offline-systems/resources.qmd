@@ -25,7 +25,7 @@ External links for this lesson. Every link below was checked with `curl` on 2026
 
 ## Video note
 
-No video embed for this module. Searched for offline-first data synchronization, clock synchronization and NTP, and audit-trail explainers. Nine NTP explainers on YouTube passed an oEmbed check, but all came from small independent or training channels (none from a regulator, professional society, news outlet or educational institution), and none addressed offline drift, deferral lists or audit trails. The searches for offline-first synchronization turned up only written courses and blog posts. Nothing both specific enough and from an acceptable source was found.
+- **[Network Time Protocol (NTP) - Computerphile](https://www.youtube.com/watch?v=BAo5C2qbLq8)** (Computerphile, from oEmbed `author_name`) — a general explainer of how NTP keeps computer clocks synchronized; background for the clock-evidence discussion, not blood-center specific. Verified embeddable via YouTube oEmbed on 2026-11-17.
 
 ## Related lessons in this curriculum
 

@@ -489,12 +489,13 @@ The ticket closes when each track's owner has recorded a decision, not when IT's
 
 ## Watch it explained
 
-No video embed for this module. The two on-topic government videos found (HHS's Security Rule
-cybersecurity video and OCR's risk management video) are already embedded in the
-[investigating a healthcare data incident](../../healthcare-security-and-privacy/investigating-a-healthcare-data-incident/index.qmd)
-and [information governance](../../healthcare-security-and-privacy/information-governance-in-a-covered-entity/index.qmd)
-modules, and nothing else both on-topic and verifiable turned up (no NIH or NIST video on the genomic
-notice or SP 800-171). See the resources page.
+The video below is "Genomic Data Sharing and Other Sharing Policies" from the NIH Funding channel (NIH's Office of Extramural Research). It is NIH's own introduction to its data sharing policies, including genomic data sharing, which is the policy background for the controlled-access security expectations in this lesson. It is general and not blood-center specific; going by its title, it is a policy overview, so it does not walk through NIST SP 800-171 controls.
+
+::: {.video-embed}
+<iframe src="https://www.youtube-nocookie.com/embed/on2F8Y-22Pc" title="Genomic Data Sharing and Other Sharing Policies" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+*NIH Funding, on YouTube. Title checked against YouTube's oEmbed record on 2026-11-17.*
 
 ## What an assessor would look for
 

@@ -228,7 +228,13 @@ flowchart LR
 
 ## Watch it explained
 
-No video is embedded in this lesson. I searched for a public CIBMTR or NMDP upload on transplant outcomes data and on the program's data side. Nothing was found that was both specific enough to this topic and independently verifiable as embeddable. The diagram and the text carry the lesson. The resources page says so too.
+The video below is "SREcon21 - Horizontal Data Freshness Monitoring in Complex Pipelines" from the USENIX channel. It is a conference talk on monitoring whether data in a pipeline is still fresh, which is the idea behind noticing a feed that has gone quiet or stale. It is general, not specific to blood, cord blood or transplant program data.
+
+::: {.video-embed}
+<iframe src="https://www.youtube-nocookie.com/embed/yTBPxYrvVl0" title="SREcon21 - Horizontal Data Freshness Monitoring in Complex Pipelines" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+*USENIX, on YouTube. Title checked against YouTube's oEmbed record on 2026-11-17.*
 
 ## The response, step by step
 

@@ -324,9 +324,20 @@
         .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}️]/gu, '')
         .replace(/\s*\|\s*/g, ', ').replace(/_/g, ' ').replace(/\s+/g, ' ').trim();
     }
+    function isQuizCallout(callout) {
+      var tc = callout && $('.callout-title-container', callout);
+      return !!tc && /^(Q\d+\s*[:.)]|answer\b|show answer|reveal answer)/i.test(textOf(tc));
+    }
     function isHiddenAnswer(el) {
       var coll = el.closest('.callout-collapse');
-      return !!coll && !coll.classList.contains('show') && !S.prefs.readAnswers;
+      if (!coll || coll.classList.contains('show') || S.prefs.readAnswers) return false;
+      return isQuizCallout(coll.closest('.callout'));   // "Go deeper" boxes are read, not skipped
+    }
+    function openBox(el) {
+      var coll = el.closest('.callout-collapse');
+      if (!coll || coll.classList.contains('show') || isQuizCallout(coll.closest('.callout'))) return;
+      try { window.bootstrap.Collapse.getOrCreateInstance(coll, { toggle: false }).show(); }
+      catch (e) { coll.classList.add('show'); var hd = $('.callout-header', coll.closest('.callout')); if (hd) hd.classList.remove('collapsed'); }
     }
     function collect() {
       var cand = $all(BLOCK_SEL, main), list = [];
@@ -381,6 +392,7 @@
       $all('.isoe-reading').forEach(function (n) { n.classList.remove('isoe-reading'); });
       var b = blocks[idx]; if (!b) return;
       var target = b.el.classList.contains('callout-title-container') ? b.el.closest('.callout') : b.el;
+      openBox(b.el);
       target.classList.add('isoe-reading');
       var sec = target.closest('section.level2');
       if (sec && document.body.classList.contains('isoe-outline')) sec.classList.add('isoe-open');

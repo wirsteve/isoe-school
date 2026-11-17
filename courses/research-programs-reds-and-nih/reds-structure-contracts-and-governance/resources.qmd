@@ -45,8 +45,9 @@ the lesson comes from the local copies in `sources/`, not from these pages.
 
 - **[NIH VideoCast: NHLBI and OASH State of the Science in Transfusion Medicine Symposium 2022 (Day 2)](https://videocast.nih.gov/watch=46109)**
   — NIH's own recording of an NHLBI symposium on transfusion-medicine research priorities, the field
-  REDS works in. A long symposium, not a REDS explainer, and not embeddable here; no YouTube video on
-  REDS governance was found. Verified loading via `curl` on 2026-11-13 (HTTP 200; page title checked).
+  REDS works in. A long symposium, not a REDS explainer, and not embeddable here. Verified loading via `curl` on 2026-11-13 (HTTP 200; page title checked).
+
+- **[Introduction to NIH and Fogarty extramural grants](https://www.youtube.com/watch?v=P6e2PK8ELis)** (Fogarty International Center at NIH, from oEmbed `author_name`) — an NIH introduction to how NIH funds outside research through extramural grants; general background, not about REDS. Verified embeddable via YouTube oEmbed on 2026-11-17.
 
 ## Keep learning
 

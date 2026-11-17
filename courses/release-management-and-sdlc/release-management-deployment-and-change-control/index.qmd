@@ -62,11 +62,15 @@ The confusion is natural, because on a small team the same two people do all thr
 | **Release management** | "What exactly are we releasing, is it ready, and when do users get it?" | The Director owns the release record and calendar; the development lead assembles the release package; Quality reviews readiness. | The release record REL-0311: package contents, version, readiness checklist, validation summary, close-out. |
 | **Deployment management** | "How do the approved components get into the target environment, correctly?" | The systems administrator (the release role from module 3) moves the approved build, and configuration, into validation, then production. | The deployment record: what was installed, where, when, by whom, and the check that it matches what was approved. |
 
+::: {.callout-note collapse="true"}
+## Go deeper: three ways to keep the practices straight
+
 Three ways to keep them straight:
 
 1. **Authorization is not installation.** A change can be approved and sit on the calendar for two weeks. Approval is a decision; deployment is an action. Both need records, and the records have different authors.
 2. **Installation is not release.** Moving a build to production does not mean users have it. Hold that thought, because it is the most useful distinction for a regulated team: a deployed-but-not-enabled feature (behind a switch that is off) is *installed code*, and it still counts as a change to the production system. Flipping the switch is a second event that also needs a record. A "dark deploy" does not dodge change control; it splits one control event into two.
 3. **Release is not the end.** Release management does not finish at "deployed." It finishes at close-out: monitoring period complete, validation summary approved, record closed. That is why module 11 on hypercare and post-release review belongs to this course.
+:::
 
 Be honest about what is regulation and what is vocabulary. **No regulation says Lakeshore must have three ITIL practices.** What regulation and guidance say is narrower, and more demanding:
 
@@ -145,6 +149,9 @@ And the rule that sets Release C's scope:
 
 Read it twice. "the entire system" does not stop at BECS's own screens. HOP is a system that depends on BECS's interface, so for Release C the HOP-to-BECS interface is exactly the kind of "unchanged but vulnerable" portion the sentence is about. The same text appears in FDA's general guidance for device makers as section 4.7 (general thinking, not binding on Lakeshore).
 
+::: {.callout-note collapse="true"}
+## Go deeper: NIST change-control wording and the AABB note
+
 NIST's catalog is voluntary here, but its change-control wording is precise about who oversees changes and when that body meets:
 
 > a. Determine and document the types of changes to the system that are configuration-controlled;
@@ -161,6 +168,7 @@ NIST's catalog is voluntary here, but its change-control wording is precise abou
 Reading CM-3 as a release manager: **(a)** is "which changes need the full path and which are routine." **(d)** is deployment management, separate from (b) approval. **(g)** is the quiet gem. The oversight body is not just a standing meeting; it "convenes" on a frequency *or when conditions are met*, and those conditions are yours to define. Lakeshore's conditions should include "a vendor announces a release," "a release asks to enter a freeze window," and "two releases want the same interface window." Those are triggers that call the change authority together outside its normal rhythm.
 
 Finally, a theme-only note. AABB's Standards, Information Systems (section 3.9), address documented processes for implementing and modifying information systems and the records of validation and version designation. This course paraphrases themes and never quotes AABB text; the exact sub-numbering is edition-dependent, so confirm it in the current edition before citing it in a real document.
+:::
 
 ## Release types: how to classify what you are about to ship
 
@@ -179,7 +187,11 @@ Two overrides matter more than the table.
 
 **Interface-touching is its own flag, whatever the number says.** A release that changes anything on the HOP-to-BECS interface, on either side, is marked *interface-touching* in its release record, regardless of whether the developers call it a patch. That flag is what the calendar's collision rule reads. A vendor's release number gets the same treatment: Lakeshore classifies Release C by what it changes in Lakeshore's environment (it changes BECS, the system of record and HOP's interface partner), not by whether the vendor's label sounds modest. Module 5 does Release C's intake properly.
 
+::: {.callout-note collapse="true"}
+## Go deeper: ITIL standard changes
+
 One more ITIL idea belongs in the margin. ITIL has **standard changes**: pre-approved, low-risk, repeatable changes with a defined procedure. They are useful at Lakeshore for things like rotating a certificate on a non-validated host. For anything that can affect a validated system, a pre-approval has to be earned by an actual risk analysis and a written procedure, and the [crosswalk module](../../itsm-for-regulated-blood-services/itil-to-qse-crosswalk-change-and-problem/index.qmd) explains why "it's a standard change" is never enough by itself.
+:::
 
 ## Release units, packages and versioning
 
@@ -207,6 +219,9 @@ Two rules fall out of III.G:
 
 No regulation or guidance in this course says "freeze releases in a peak week." The calendar and its freezes are a **Lakeshore decision tied to blood-operations risk**, and the right way to build them is to list the risk and let the dates fall out.
 
+::: {.callout-note collapse="true"}
+## Go deeper: calendar inputs and elements
+
 **Inputs the Director collects:**
 
 - **Blood operations rhythm.** Weekly and seasonal demand, and the times of day when orders and distribution are busiest. The holiday week is the extreme case: collections fall, hospital demand does not, and the margin for a degraded order path is the smallest of the year.
@@ -223,6 +238,7 @@ No regulation or guidance in this course says "freeze releases in a peak week." 
 - **Monitoring period** after each deployment, sized to the system (BECS guidance III.G: "a period of time"). This is where interface error files are watched.
 - **Freeze windows:** periods when changes to a defined scope do not enter production.
 - **Exceptions:** only the emergency path (module 10), with a named waiver, and the people who can grant it written into the procedure. A waiver signed by one person who is also the requester is not a control.
+:::
 
 **A freeze is defined by path, not by system name.** Lakeshore's holiday freeze is on the **order and distribution path**: HOP, the HOP-to-BECS interface, BECS's distribution functions, and the shared infrastructure beneath them (network, authentication, hosting). Changes outside that path, to a non-validated internal tool, say, can continue under normal change control. A freeze defined as "no changes at all" gets waived by Tuesday; a freeze defined by what blood operations cannot afford to lose is one people respect.
 
@@ -326,9 +342,13 @@ An assessor will also probe independence: who approved a release the developers 
 
 **"Deploy equals release equals done."** A feature switched off in production is installed code and a change to the validated system. Switching it on is a second recorded event. And a release is not done until monitoring ends and the validation summary is approved.
 
+::: {.callout-note collapse="true"}
+## Go deeper: two more traps
+
 **"A freeze means nothing can ever change."** A freeze is defined by scope and has a defined exception path. Without the exception path, people route around it; with a loose one, the freeze is decorative. Neither is a control.
 
 **"The vendor's version number tells us the risk."** The vendor knows its own code. Lakeshore knows its own environment, interface and operational calendar. Risk is assessed on the combination, by Lakeshore.
+:::
 
 ## What this means for your job
 
