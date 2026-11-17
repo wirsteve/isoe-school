@@ -277,42 +277,32 @@ I can't tell you from the local sources what FDA's investigators ask in an inspe
 
 ## Check your understanding
 
-**Q1.** The vendor says their default code includes only the maternal MRN and the collection date, "not her name or SSN." Is that compliant?
-
 ::: {.callout-tip collapse="true"}
-## Answer
+## Q1: The vendor says their default code includes only the maternal MRN and the collection date, "not her name or SSN." Is that compliant?
 
 No. 1271.290(c) lists the medical record number alongside name and SSN: the code "may not include an individual's name, social security number, or medical record number." The code also has to be created "specifically for tracking," and an MRN-and-date scheme repurposes an identifier made for something else. The 1271.55(a)(1) exceptions (autologous, directed reproductive, first- or second-degree relatives) don't describe a public bank's unrelated-donor units.
 :::
 
-**Q2.** A transplant center calls about a unit it received before cutover and quotes the old code. What must the new system be able to do?
-
 ::: {.callout-tip collapse="true"}
-## Answer
+## Q2: A transplant center calls about a unit it received before cutover and quotes the old code. What must the new system be able to do?
 
 Resolve the old code to the unit and then to the donor and all its records. That is what the mapping procedure in 1271.290(c) is for, and it is migration test 1 (consignee to donor, 1271.290(d)). It must work promptly, and it must work whether the unit got a new code or kept its old one.
 :::
 
-**Q3.** Is it a regulatory requirement that Lakeshore's cord blood unit codes follow ISBT 128?
-
 ::: {.callout-tip collapse="true"}
-## Answer
+## Q3: Is it a regulatory requirement that Lakeshore's cord blood unit codes follow ISBT 128?
 
 Not on the sources this curriculum holds. ISBT 128 is a labeling standard used for blood components, not a Part 1271 requirement. 1271.290(c) sets the properties of the code and leaves the format to the bank. If the program agreement or an accreditation standard adds a format, that is a separate source to read with Quality.
 :::
 
-**Q4.** Lakeshore decommissions the legacy system after migration. Do its records still count as retained?
-
 ::: {.callout-tip collapse="true"}
-## Answer
+## Q4: Lakeshore decommissions the legacy system after migration. Do its records still count as retained?
 
 Only if they can be retrieved. 1271.55(d)(3) says records that can be "readily retrieved from another location by electronic means are considered 'retained'," and 1271.270(c) says the equipment needed to make records available and legible "must be readily available," with electronic records backed up. A decommissioned server with no way to read the records fails; a read-only archive that is tested for retrieval can pass. The retention clock itself runs from administration, or from distribution, disposition or expiration, whichever is latest (1271.270(d)).
 :::
 
-**Q5.** Explain the maternal-linkage change to the CIO in two sentences.
-
 ::: {.callout-tip collapse="true"}
-## Answer
+## Q5: Explain the maternal-linkage change to the CIO in two sentences.
 
 "The law says a licensed cord blood bank must keep the link between a baby's cord blood unit and the mother confidential, and the vendor's design put that link where every user could read it. We're moving it to a locked-down store with a short access list and a log, and generating our own unit codes so no chart number rides on the label."
 :::

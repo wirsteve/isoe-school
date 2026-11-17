@@ -136,7 +136,11 @@ The last sentence is the only place in the regulation text of this module that s
 
 The same document's Scope section says it "does not provide recommendations for the design and development verification or validation requirements for device software functions." BECS is a device (see [BECS as a regulated device](../../csv-and-becs/becs-as-a-regulated-device/index.qmd)), so **this guidance does not govern Lakeshore's validation of BECS, and Lakeshore cannot cite it as authority for a testing choice.** What it offers is a way of thinking: a risk-based approach to "establish confidence", with "additional rigor" where the risk warrants it, justified and documented. That is entirely consistent with the BECS guidance's own III.E. Use it as vocabulary and as evidence that FDA is comfortable with risk-proportionate effort, nothing more.
 
+::: {.callout-note collapse="true"}
+## Go deeper: scripted and unscripted testing vocabulary
+
 One more honesty note. The guidance describes testing methods, including how it uses the terms *scripted* and *unscripted* testing, in sections that are **not in this site's local excerpt**. This lesson therefore does not quote or characterize FDA's treatment of them. The scripted/exploratory vocabulary below is general industry usage, labeled as such. Read FDA's own text from the link on the resources page before citing it.
+:::
 
 ### NIST vocabulary for depth and evidence
 
@@ -211,20 +215,28 @@ How the Director and Quality might assign them for VAL-1418:
 | **Automated** | The check is stable, repeated every release and mechanical | The HOP-to-BECS interface suite (below) |
 | **Reliance on reviewed vendor evidence** | The function is an unchanged vendor function, not adjacent to a change or Lakeshore's configuration, and the documentation is reviewable | Tier 3 items, with the rationale |
 
+::: {.callout-note collapse="true"}
+## Go deeper: two cautions on exploratory testing
+
 Two cautions, both Lakeshore's to own rather than FDA's to dictate.
 
 **First, "unscripted" does not mean "unrecorded."** BECS guidance III.G describes executed cases in a "pre-defined written test plan" with expected and actual outputs. An exploratory session for a BECS-related release should therefore be defined in the plan (charter, scope, who, how long), notes kept, screen prints identified, and any defect recorded like any other. If the session finds nothing, the record still says what was explored. Quality should agree the approach before it is used for evidence, because the guidance's executed-record fields are written for scripted cases and whether a charter-based session satisfies them is a judgment for Quality and regulatory affairs.
 
 **Second, do not import the CSA guidance's testing menu as though it governed BECS.** Its scope excludes device software functions. A well-run exploratory session is good engineering and a reasonable choice for Tier 2; calling it "compliant with the CSA guidance" would be a claim the sources do not support.
+:::
 
 ## Move 4: designing the cases
 
 BECS guidance III.G names four families of input, and the lesson's tests should visibly use all of them where they apply.
 
+::: {.callout-note collapse="true"}
+## Go deeper: the four families of input in detail
+
 - **Normal:** values within the expected range. The routine reprint of a single-attribute product.
 - **Abnormal:** unacceptable results or values outside the normal range. A name just over the line length (LR-3).
 - **Boundary:** "at the limit, just below the limit, and just over the limit." The guidance's hematocrit example uses 37, 38 and 39 percent for a 38 percent cutoff. For Release C: the longest product name with the maximum number of modifiers and attributes (LR-1); a reprint requested in the same second as a quarantine status change, and one second either side (LR-5); and for HOP, a proposal at exactly the configured age limit, just under it and just over it (HOP-R35's stale marking).
 - **Absurd:** "invalid or nonsense results": alpha text in a numeric field, a result of 110 percent, a blank or leading blank. For the instrument and lab inbound path, that means feeding the translation script a blank result and a text value in a numeric field and checking that BECS rejects them visibly and does not post to a record.
+:::
 
 And two more from the guidance's wider list: **worst-case load** ("maximum numbers of users working simultaneously, all possible activities occurring simultaneously," III.D; LR-6 does this for reprints), and **simulated peak production times** with the maximum number of concurrent users (III.G).
 
@@ -294,7 +306,11 @@ To the Quality Analyst: the instinct to be safe is right, and the safe move is a
 
 TC-32a/b/c, TC-34 and TC-35 have already been run and re-run across HOP 3.0's release candidates, and they will be run again for Release C and for every future BECS baseline change. That is what automation is for.
 
+::: {.callout-note collapse="true"}
+## Go deeper: the HOP-BECS interface regression suite
+
 **What is a good candidate.** A check that is stable, mechanical and run every time the interface or either side's baseline moves. A reusable **HOP-BECS interface regression suite** is an obvious one: attempt the commit function under each HOP role and confirm no change appears in BECS (TC-32a), read the interface account's permissions (TC-32b), leave a proposal for the configured period and confirm no distribution record exists (TC-32c, which is slow by hand because it waits), compare what HOP shows with what BECS returns (TC-34) and change a status and watch HOP react (TC-35). A suite like this would also be exactly the kind of asset GPSV 5.2.7 means by archiving tests for later regression. (Whether Lakeshore builds one is a proposal for the Director and development lead to cost; nothing in this module says it already exists.)
+:::
 
 **What is not.** Visual label inspection and scanning on the real printers, where human judgment and physical equipment are the test. LR-2 stays a person with a scanner.
 

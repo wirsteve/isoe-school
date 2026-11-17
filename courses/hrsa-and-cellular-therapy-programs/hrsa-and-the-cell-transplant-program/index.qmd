@@ -272,34 +272,26 @@ Different readers want different documents. Here is what proves the map.
 
 ## Check your understanding
 
-**Q1.** The CIO's footnote says the registry and cord blood systems are excluded because HRSA doesn't inspect Lakeshore. Give a two-sentence reply a CIO would accept.
-
 ::: {.callout-tip collapse="true"}
-## Answer
+## Q1: The CIO's footnote says the registry and cord blood systems are excluded because HRSA doesn't inspect Lakeshore. Give a two-sentence reply a CIO would accept.
 
 "The program reaches us through agreements, and the statute still requires strict confidentiality of registry records and makes improper disclosure a crime. Separately, FDA inspects the cord blood bank as a licensed establishment, so both systems answer to requirements whether or not HRSA ever visits." The point is that "no inspection" describes one enforcement path, not the set of requirements.
 :::
 
-**Q2.** A colleague says, "Under 1271.3(d), the peripheral blood stem cells we collect for registry recipients are HCT/Ps, so they're 361 products." What is wrong?
-
 ::: {.callout-tip collapse="true"}
-## Answer
+## Q2: A colleague says, "Under 1271.3(d), the peripheral blood stem cells we collect for registry recipients are HCT/Ps, so they're 361 products." What is wrong?
 
 The definition lists HPCs derived from peripheral and cord blood as examples of HCT/Ps, but being an HCT/P doesn't settle whether a product is regulated solely under section 361 or as a 351 product (1271.1(b), 1271.10). And minimally manipulated bone marrow for homologous use is excluded altogether by 1271.3(d)(4). Classification of any registry collection is Quality and Regulatory Affairs' decision, not IT's.
 :::
 
-**Q3.** Does 21 CFR 1271.350 reporting apply to Lakeshore's licensed cord blood units?
-
 ::: {.callout-tip collapse="true"}
-## Answer
+## Q3: Does 21 CFR 1271.350 reporting apply to Lakeshore's licensed cord blood units?
 
 No. 1271.330 says subpart E, which includes 1271.350, doesn't apply to biological products regulated under section 351. Deviation reporting for licensed biological products falls under 21 CFR 600.14, which isn't in this curriculum's `sources/`, so confirm it with Regulatory Affairs. Module 4 returns to this.
 :::
 
-**Q4.** True or false: the QSO-25-18 memo says HLA testing is covered by CLIA, so Lakeshore's contracted lab is covered for registry typing.
-
 ::: {.callout-tip collapse="true"}
-## Answer
+## Q4: True or false: the QSO-25-18 memo says HLA testing is covered by CLIA, so Lakeshore's contracted lab is covered for registry typing.
 
 Not as stated. This is guidance, not regulation, and its tables differ. HLA testing is "Yes" in the blood table and histocompatibility testing is "Yes" in the organs table, but "Identity testing (ABO/Rh, HLA)" is "No" in the cells/tissue table. Which row fits a given test is for the contracted lab's director and your Regulatory Affairs team. IT's job is to make sure the certificate is in the contract file and the data path is on the map.
 :::

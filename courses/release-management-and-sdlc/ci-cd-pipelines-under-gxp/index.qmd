@@ -123,7 +123,11 @@ A word on the rebuttal "that is too heavy for two developers." It is the opposit
 
 [Module 4](../release-management-deployment-and-change-control/index.qmd) locked this rule: *promote what was validated, no rebuild*, from the BECS guidance's recommendation that after validation you "copy or move the file configuration on which you performed your validation into the production environment" (III.G). The pipeline is how that rule gets mechanical teeth.
 
+::: {.callout-note collapse="true"}
+## Go deeper: why a rebuild is not the same thing
+
 **Why a rebuild is not the same thing.** It is tempting to think that building the same source code twice gives the same program. Often it does not: a dependency may have updated between builds, the build machine may differ, a build step may embed a timestamp. The code you validated and the code you deployed are then two different artifacts with the same name, and your evidence is about the first.
+:::
 
 **The mechanism.**
 
@@ -134,13 +138,20 @@ A word on the rebuttal "that is too heavy for two developers." It is the opposit
 5. **Signing** (the pipeline cryptographically signs the artifact with a key the developers do not hold) goes one step further: it shows the artifact came from the trusted build process and was not swapped. A checksum shows *it has not changed since it was recorded*; a signature adds *who vouches for it*. For a two-developer team, a checksum recorded by the pipeline and re-verified at each stage is a sound minimum; signing is the stronger option and is worth a risk decision in [module 8](../secure-sdlc-and-software-supply-chain/index.qmd).
 6. Only **configuration** differs between environments (endpoints, credentials, feature settings), held outside the artifact, versioned, and recorded with the deployment. Module 4's release package already treats configuration as part of the package.
 
+::: {.callout-note collapse="true"}
+## Go deeper: NIST on release integrity and archiving
+
 NIST's secure-development framework (voluntary) names the underlying ideas. PS.2 is "Provide a Mechanism for Verifying Software Release Integrity," with the purpose to "help software acquirers ensure that the software they acquire is legitimate and has not been tampered with." PS.3 is "Archive and Protect Each Software Release," to "preserve software releases in order to help identify, analyze, and eliminate vulnerabilities discovered in the software after release." The second one has an operational dividend for Lakeshore: an archived, identified artifact is also what [module 9](../deployment-cutover-and-rollback/index.qmd) rolls back to.
+:::
 
 If a late fix is needed, it is a new rc with its own evidence, exactly as module 4 says. The pipeline makes that cheap, and it also makes the temptation to "just patch the artifact in place" impossible, because the artifact store is write-once.
 
 ## Environments and configuration as code
 
 Module 3's baseline was a list: versions, settings, interface endpoints, the BECS patch level on the other side. A pipeline can turn the list into something executable.
+
+::: {.callout-note collapse="true"}
+## Go deeper: infrastructure and configuration as code, and the BECS caution
 
 - **Infrastructure as code** describes the environments themselves (servers, runtime versions, network rules) in files under version control, so validation and production are built from the same description. Differences become visible as differences between two files, not as folklore.
 - **Configuration as code** holds the per-environment settings, in a repository the developers cannot push straight to production. Secrets (credentials) are held in a secrets store the release role controls, not in the repository.
@@ -149,6 +160,7 @@ Module 3's baseline was a list: versions, settings, interface endpoints, the BEC
 One caution, because module 3's story was a BECS test instance that fell a patch behind. The pipeline can only compare what it can see. HOP's artifact and configuration are in the pipeline's world; the BECS instance on the other end is managed by the vendor's processes and Lakeshore's change control. The baseline comparison has to *include* BECS's version, read from the interface or recorded by the systems administrator, or the pipeline will cheerfully certify an environment that is not equivalent.
 
 NIST's catalog (voluntary) names the intent in SA-10, developer configuration management: "Document, manage, and control the integrity of changes to [Assignment: organization-defined configuration items]" and "Implement only organization-approved changes to the system, component, or service."
+:::
 
 ## The pipeline's own audit trail
 
@@ -170,12 +182,16 @@ NIST's catalog (voluntary) names the intent in SA-10, developer configuration ma
 
 Part 11 (21 CFR Part 11, electronic records and signatures) reaches electronic records that another regulation already requires you to keep: the predicate rule logic from the [Part 11 module](../../csv-and-becs/part-11-for-validated-systems/index.qmd). Whether a pipeline's logs are such a record is not something this lesson can settle for Lakeshore, and it should not be answered by reflex in either direction. This is a Quality and regulatory-affairs judgment, documented.
 
+::: {.callout-note collapse="true"}
+## Go deeper: orienting thoughts on Part 11 for the pipeline
+
 Some orienting thoughts, labeled by what they are:
 
 - **Regulation.** 21 CFR 11.10(e) describes "secure, computer-generated, time-stamped audit trails to independently record the date and time of operator entries and actions that create, modify, or delete electronic records," adding that "Record changes shall not obscure previously recorded information" and that the documentation must be retained "for a period at least as long as that required for the subject electronic records." Authority checks (11.10(g)) are the regulatory wording for "only authorized individuals can... perform the operation at hand." These apply to Part 11 systems; whether the pipeline is one is the judgment.
 - **Guidance, a different domain.** FDA's guidance on software assurance for medical device manufacturers' production and quality software says, for that audience, that whether a record is necessary as evidence of a validated state is a key consideration for applying Part 11, and illustrates the contrast: documentation demonstrating a system correctly automates a required check "would generally be necessary as evidence," while routine startup activity logs that are "not necessary as evidence" would not be covered. This guidance is *scoped to device manufacturers' production and QMS software* and explicitly excludes device software functions; it does not govern Lakeshore or BECS. It is useful as a way of thinking: **ask whether the log is part of the evidence that a required control happened.**
 - **Applying that thinking to HOP.** The record that a production change was authorized and that the deployed build was the validated one is the evidence behind 211.68(b) and the BECS guidance's validation expectations. A reasonable position, if Quality agrees, is that the *release-and-deployment record* (the part of the pipeline's trail that shows approvals, artifact identity and deployment) is evidence that matters and should be treated with audit-trail discipline. The pipeline's routine debug output is not.
 - **The e-signature question.** If someone clicks "approve" in the pipeline, is that a signature in Part 11's sense? Only if Lakeshore is relying on it as one, and then Part 11's signature controls (unique identity, signature manifestation, and so on, see the [audit-trails module](../../data-integrity-and-records/audit-trails-and-esignatures/index.qmd)) have to be met. A cleaner design: the approval lives in the change record system where Lakeshore's signing controls already exist, and the pipeline *reads* that approval and refuses to proceed without it, while logging who triggered the promotion. Which design to choose is a Quality decision; the design most likely to be easy to defend is the one where approvals are made once, in the controlled system, and the pipeline only checks them.
+:::
 
 Whatever the classification, the practical controls are cheap and sound: logs write-once or tamper-evident, identities unique, clocks synchronized, and **retention set to match the release record**. Many pipeline tools keep run history only for a default period; if that is shorter than the release record's retention, the evidence evaporates. Export the deployment record into the release record at close-out.
 
@@ -185,11 +201,15 @@ The pipeline and the test tools are software that Lakeshore *relies on* to produ
 
 ### What the sources say, and what they do not
 
+::: {.callout-note collapse="true"}
+## Go deeper: what the sources say about tool assurance
+
 - **FDA's general software validation guidance** (device-makers; general thinking here) notes that software "components come in many different forms (e.g., application software, operating systems, compilers, debuggers, configuration management tools, and many more)," and says the software validation process "should be commensurate with the safety risk associated with the system, device, or process." That is a source for two ideas: tools are in the picture, and effort follows risk. It does not give a tool-validation procedure.
 - **FDA's computer software assurance guidance** describes "a risk-based approach to establish confidence in the automation used for production or quality management systems," and recommends basing the approach "on a justified and documented risk assessment and a determination of the potential of the system to affect product quality, patient safety, and record integrity." **Scope caveat, again:** the guidance is written for medical device manufacturers' production and quality-system software, expressly excludes device software functions, and does not govern a blood establishment's validation of BECS or its CI/CD tooling. Treat it as a published statement of risk-based thinking that Lakeshore can borrow, not as the rule for Lakeshore's pipeline.
 - **NIST SA-15, Development Process, Standards, and Tools** (voluntary): follow a documented development process that "Identifies the standards and tools used in the development process," "Documents the specific tool options and tool configurations used in the development process," and "Documents, manages, and ensures the integrity of changes to the process and/or tools used in development"; and review them on a defined frequency. Plainly put: know what your tools are, how they are set up, and control changes to them.
 - **NIST SSDF** (voluntary): PO.3, "Implement Supporting Toolchains," says to use automation to improve "accuracy, reproducibility, usability, and comprehensiveness of security practices throughout the SDLC, as well as provide a way to document and demonstrate the use of these practices." PO.5 asks that all components of development environments be "strongly protected from internal and external threats." PS.1 aims to "help prevent unauthorized changes to code, both inadvertent and intentional."
 - **Regulation.** 21 CFR 211.68(a) requires computers and related systems to be "routinely calibrated, inspected, or checked according to a written program designed to assure proper performance." Whether Lakeshore's pipeline is a "related system" in that sentence is a judgment for Quality and regulatory affairs. A defensible, low-regret position is to treat it as if the principle applies and to size the effort by risk.
+:::
 
 So there is **no source that tells Lakeshore how to validate a pipeline**. What exists is a consistent direction: know your tools, control their configuration and changes, and let the rigor follow what could go wrong.
 
@@ -362,6 +382,9 @@ An assessor will also read the production deployment log against the change cale
 
 **"The tests are the approval."** Tests are evidence about what was tested. Authorization (211.68(b)) is a decision about whether to change a validated production system now, by people who may do so; it weighs things no test covers, and a developer cannot authorize their own change (GPSV 4.9, general thinking). Automated tests earn their keep by making the evidence cheap, not by replacing the decision.
 
+::: {.callout-note collapse="true"}
+## Go deeper: three more traps
+
 **"The pipeline is infrastructure, not a validated system, so controls don't apply to it."** The pipeline is where the controls are *implemented*, which makes its own integrity a control question. Nobody can say the gate works if nobody checked it and anyone can change it. Whether Part 11 or 211.68(a) formally applies to the pipeline is a documented judgment; the *principle* (know your tools, control changes to them, test the ones that carry risk) holds either way.
 
 **"We can rebuild from the tagged source for production."** A rebuild is a different artifact with the same label. Dependency versions, build environment and timestamps can all differ, and the evidence is about the artifact that was tested. Promote the stored artifact; check its checksum.
@@ -369,6 +392,7 @@ An assessor will also read the production deployment log against the change cale
 **"If it has a log, it has an audit trail."** A log that the same developers can edit, that rolls off after thirty days, that does not name a unique person, or that does not record the approvals is a diary. Part 11 vocabulary (secure, time-stamped, not obscuring earlier information, retained as long as the record) is a useful checklist even if Quality judges that Part 11 does not formally reach it.
 
 **"Assuring the tool means validating the whole platform."** That is the opposite error. The effort follows risk: heavy for the gate, light for notifications. A short risk assessment and a day of challenge tests on the gate is a better answer than a six-month validation of every feature of a general-purpose tool.
+:::
 
 ## What this means for your job
 
