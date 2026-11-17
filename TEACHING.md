@@ -154,18 +154,21 @@ new lessons join it automatically** as long as they keep these conventions:
 - **Folders.** A lesson is `courses/<course>/<module>/index.qmd` or `foundations/<slug>/index.qmd`.
   A course page is `courses/<course>/index.qmd`. The script reads the sidebar for titles and order,
   so `order:` still decides the sequence.
-- **Questions.** Use one of the two formats already in use, with the answer always in a collapsed
-  tip callout:
-  - a callout titled with the question, i.e. `::: {.callout-tip collapse="true"}` followed by
-    `## Q1: question text`, with the answer inside; or
-  - a paragraph starting `**Q1.** question text`, followed by a callout whose heading is
-    `## Answer`.
+- **Questions.** Use this one format: a collapsed tip callout whose heading is the question, with
+  the answer inside, e.g. `::: {.callout-tip collapse="true"}` then `## Q1: question text`, then the
+  answer. (Every lesson uses it since 2026-11-17. The study layer still recognizes the older
+  `**Q1.**` paragraph + `## Answer` callout, but don't use it.)
 
   Keep the question wording stable once published: a card's review history is keyed to its text.
 - **Readable structure.** Use real headings, paragraphs and lists, not text inside images. The
   narrator reads headings, paragraphs, list items, quotes and table rows. It announces diagrams and
   videos instead of reading them, and it keeps hidden answers hidden unless the learner turns on
   "Read answers".
+- **Go deeper boxes.** When a lesson runs past 5,000 words of prose, fold detailed, reference-style
+  passages (extended examples, long lists, secondary traps), never the spine, into
+  `::: {.callout-note collapse="true"}` with a heading `## Go deeper: <title>`. The narrator reads
+  these boxes (and opens them as it goes); only quiz answers stay hidden. Never title a box "Answer"
+  or "Q1:".
 - **The short version** callout stays first. It is the skim layer, and also what Outline view leaves
   open.
 
