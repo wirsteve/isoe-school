@@ -219,7 +219,13 @@ The top half shows Lakeshore's new design: three ways the deferral is seen at th
 
 ## Watch it explained
 
-No video embed for this module. The searches found nothing both on topic and acceptable under the course's sourcing rules. See the note in the resources page.
+The video below is "Network Time Protocol (NTP) - Computerphile" from the Computerphile channel. It is a general explainer of how computers keep their clocks in step over a network, which is the idea behind the clock-evidence part of this lesson. It is not specific to blood centers, offline laptops or audit trails.
+
+::: {.video-embed}
+<iframe src="https://www.youtube-nocookie.com/embed/BAo5C2qbLq8" title="Network Time Protocol (NTP) - Computerphile" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+*Computerphile, on YouTube. Title checked against YouTube's oEmbed record on 2026-11-17.*
 
 ## The design, step by step
 

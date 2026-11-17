@@ -54,9 +54,7 @@ noted. Official sources come first.
   (NIST CSRC) — practical guidance on managing SSH keys for automated transfers, which is the kind of
   credential an sFTP job uses. Verified loading via `curl` on 2026-11-13 (HTTP 200).
 
-**No video embed for this module.** Searched for a video on NIH's controlled-access genomic data
-security notice and on NIST SP 800-171; the only candidates were on non-YouTube hosts (an NIH VideoCast
-page, a Defense Department site) or vendor webinars. The two government videos relevant to the HIPAA
+- **[Genomic Data Sharing and Other Sharing Policies](https://www.youtube.com/watch?v=on2F8Y-22Pc)** (NIH Funding, from oEmbed `author_name`) — NIH's own overview of its data sharing policies, including genomic data sharing; policy background, not a walk-through of NIST SP 800-171. Verified embeddable via YouTube oEmbed on 2026-11-17. No NIH or NIST video on SP 800-171 itself was found. The two government videos relevant to the HIPAA
 side (HHS's Security Rule cybersecurity video and OCR's risk management video) verified through
 YouTube oEmbed on 2026-11-13 but are already embedded elsewhere in the curriculum, in
 [investigating a healthcare data incident](../../healthcare-security-and-privacy/investigating-a-healthcare-data-incident/index.qmd)
